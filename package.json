@@ -1,0 +1,24 @@
+{
+  "name": "slapcenter-dashboard",
+  "version": "0.1.0",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-angular-filesort": "*",
+    "gulp-angular-templatecache": "*",
+    "gulp-concat": "*",
+    "gulp-less": "*",
+    "gulp-css": "*",
+    "gulp-minify-html": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-watch": "*",
+    "gulp-filter": "*",
+    "gulp-minify-css": "*",
+    "gulp-rename": "*",
+    "main-bower-files": "*",
+    "gulp-eslint": "*",
+    "gulp-webserver": "*",
+    "rimraf": "*"
+  }
+}

@@ -1,0 +1,1458 @@
+#sidebar-wrapper {
+  //background: #eef1f6;
+  //color: #7e7e7e;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  //font-family: "lato", sans-serif;
+  //direction: ltr;
+  //line-height: 20px;
+  //font-size: 13px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  //width: 100%;
+  //margin: 0;
+  //padding: 0;
+
+  a:focus {
+    outline: none;
+  }
+}
+
+/************** 3. Theme Header Style Start Here ********************/
+
+#sidebar-header {
+  background: #fff none repeat scroll 0 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 10;
+  position: relative;
+  //box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-left-header {
+  background: @sidebar-left-header-bg;
+  //background: #3498db;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 50px;
+  position: absolute;
+  float: left;
+  text-align: center;
+  width: @sidebar-width; //230px;
+  z-index: 999;
+
+  a {
+    color: @sidebar-left-header-color;
+
+    &:hover,
+    &:focus {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    i {
+      //color: #003c70;
+      font-size: 22px;
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+.sidebar-right-header {
+  background: #fff none repeat scroll 0 0;
+  height: 50px;
+  line-height: 50px;
+  z-index: 101;
+  margin-left: @sidebar-width; //230px;
+  position: relative;
+
+  > ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline;
+    float: left;
+  }
+
+  > li a {
+    color: #7e7e7e;
+    padding: 17px 15px;
+  }
+
+  li a:hover,
+  li a:focus {
+    background: #efefef;
+    text-decoration: none;
+  }
+
+  a i {
+    color: #7e7e7e;
+    font-size: 14px;
+  }
+
+  .right-navbar {
+    float: right;
+    padding-right: 7px !important;
+
+    li a i {
+      font-size: 14px;
+    }
+  }
+
+  .left-navbar > li:first-child {
+    padding-left: @sidebar-small-width; //50px;
+  }
+}
+
+.sidebar-toggle {
+
+  a:after {
+    background: transparent;
+    //border: 0 solid #efefef;
+    content: @sidebar-toggle-icon;
+    font-family: @sidebar-icon-font-name;
+    font-size: 14px;
+    line-height: 50px;
+    padding: 0 25px;
+    position: absolute;
+    color: #7e7e7e;
+    z-index: 1000;
+  }
+
+  a:hover:after {
+    background: #efefef;
+  }
+}
+
+.sidebar-left-header > .sidebar-toggle > a {
+  display: none
+}
+
+#sidebar-header {
+  .sidebar-left-header {
+    &[sidebar-position-type="relative"] {
+      position: relative;
+    }
+
+    &[sidebar-position-type="absolute"] {
+      position: absolute;
+    }
+
+    &[sidebar-position-type="fixed"] {
+      position: fixed;
+    }
+  }
+
+  .sidebar-right-header {
+    &[sidebar-position-type="relative"] {
+      position: relative;
+    }
+
+    &[sidebar-position-type="absolute"] {
+      position: absolute;
+    }
+
+    &[sidebar-position-type="fixed"] {
+      padding-right: @sidebar-width; //230px;
+      position: fixed;
+      width: 100%;
+    }
+  }
+}
+
+/*******************************Theme Header Style Close Here ***********************************/
+/******************************* 4. main container Style start Here ***********************************/
+#sidebar-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  clear: both;
+}
+
+/************************* 4.1 Theme Left Panel Style Start Here *********************************/
+#sidebar-left-panel {
+  background: @sidebar-left-panel-bg; //#FFF none repeat scroll 0 0;
+  color: @sidebar-left-panel-color; //#7e7e7e;
+  width: @sidebar-width; //230px;
+  top: 0;
+  position: absolute;
+  float: left;
+  min-height: 100%;
+  z-index: 100;
+  //box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+
+  //.profile-box {
+  //  border-bottom: 1px solid #efefef;
+  //  min-height: 50px;
+  //  padding: 5px 15px;
+  //  position: relative;
+  //
+  //  .media {
+  //    position: relative;
+  //
+  //    a {
+  //      margin-top: 2px;
+  //
+  //      img {
+  //        width: 40px;
+  //        height: 40px;
+  //      }
+  //
+  //      > img {
+  //        border: 1px solid #efefef;
+  //      }
+  //    }
+  //  }
+  //}
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-level {
+    padding: 5px 15px;
+    //border-top: 1px solid #efefef;
+    font-weight: bold;
+  }
+
+  //.nav-level:first-child {
+  //  border-top: 0 solid #efefef;
+  //}
+
+  .panel-list {
+    > li.sidebar-has-menu > ul.sidebar-sub-menu {
+      list-style: none;
+    }
+
+    > li > a {
+      background: @sidebar-left-item-bg; //#FFF;
+      //border-top: 1px solid #efefef;
+      color: @sidebar-left-item-color; //#7e7e7e;
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 15px 20px;
+      //padding: 10px 10px;
+      position: relative;
+    }
+
+    //> li:last-child > a {
+    //  border-bottom: 1px solid #efefef;
+    //}
+    //
+    //> li:first-child > a {
+    //  border-top: 0 solid #efefef;
+    //}
+
+    > li > a:hover,
+    > li > a:focus {
+      color: @sidebar-left-item-hover-color; //#000;
+      background: @sidebar-left-item-hover-bg; //#f1f1f1;
+    }
+
+    > li.active > a {
+      background: @sidebar-left-item-active-bg; //#f1f1f1;
+      //border-top: 1px solid #efefef;
+      color: @sidebar-left-item-active-color; //#000;
+    }
+
+    > li > a > i {
+      display: inline;
+      font-size: 14px;
+      padding-right: 6px;
+    }
+
+    > li > a span.menu-text {
+      display: inline-block;
+    }
+
+    > li.sidebar-has-menu > a:after {
+      font-family: @sidebar-icon-font-name;
+      content: @sidebar-has-menu-icon;
+      font-size: 15px;
+      position: relative;
+      float: right;
+    }
+
+    > li.sidebar-has-menu.opened > a {
+      background: @sidebar-left-item-hasmenu-opened-bg; //#f1f1f1;
+      color: @sidebar-left-item-hasmenu-opened-color; //#000;
+    }
+
+    > li.sidebar-has-menu.opened > a:after {
+      font-family: @sidebar-icon-font-name;
+      content: @sidebar-has-menu-opened-icon !important;
+      font-size: 15px;
+      float: right;
+      position: relative;
+    }
+
+    > li.sidebar-has-menu li.sidebar-has-menu > a:after {
+      font-family: @sidebar-icon-font-name;
+      content: @sidebar-has-menu-icon2;
+      font-size: 15px;
+      position: relative;
+      float: right;
+    }
+
+    > li.sidebar-has-menu li.sidebar-has-menu.opened > a:after {
+      font-family: @sidebar-icon-font-name;
+      content: @sidebar-has-menu-opened-icon2;
+      font-size: 15px;
+      position: relative;
+      float: right;
+    }
+
+    ul {
+      background: @sidebar-left-item-submenu-bg;
+      //box-shadow: -1px 2px 3px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    ul.sidebar-sub-menu li > a {
+      background: transparent;
+      //border-top: 1px solid #efefef;
+      color: @sidebar-left-item-submenu-color; //#7e7e7e;
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 20px 8px 40px;
+      position: relative;
+    }
+
+    > li.sidebar-has-menu > ul.sidebar-sub-menu {
+      display: none;
+    }
+
+    li.sidebar-has-menu > ul.sidebar-sub-menu li > a:hover,
+    li.sidebar-has-menu > ul.sidebar-sub-menu li > a:focus {
+      text-decoration: none;
+      color: @sidebar-left-item-hover-color; //#000;
+      background: @sidebar-left-item-hover-bg; //#f1f1f1;
+    }
+
+    > li.sidebar-has-menu > ul ul {
+      display: none;
+    }
+
+    > li.sidebar-has-menu.opened > ul {
+      display: block;
+    }
+
+    > li.sidebar-has-menu.opened > ul > li.sidebar-has-menu.opened > ul {
+      display: block;
+    }
+
+    > li.sidebar-has-menu.opened > ul > li.sidebar-has-menu.opened > ul > li.sidebar-has-menu.opened > ul {
+      display: block;
+    }
+
+    > li.sidebar-has-menu.active > ul {
+      display: block;
+    }
+
+    > li.sidebar-has-menu.active > ul > li.sidebar-has-menu.active > ul {
+      display: block;
+    }
+
+    > li.sidebar-has-menu.active > ul > li.sidebar-has-menu.active > ul > li.sidebar-has-menu.active > ul {
+      display: block;
+    }
+
+    > li.sidebar-has-menu > ul > li > a span.menu-text {
+      padding-left: 15px;
+      position: relative;
+    }
+
+    > li.sidebar-has-menu > ul.sidebar-sub-menu {
+      list-style: outside none none;
+    }
+
+    > li.sidebar-has-menu li.sidebar-has-menu > ul.sidebar-sub-menu {
+      list-style: outside none none;
+    }
+
+    > li.sidebar-has-menu > ul.sidebar-sub-menu {
+      list-style: outside none none;
+    }
+
+    > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > a span.menu-text {
+      padding-left: 25px;
+      position: relative;
+    }
+
+    > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > a span.menu-text {
+      padding-left: 35px;
+      position: relative;
+    }
+
+    > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > ul > li > a span.menu-text {
+      padding-left: 40px;
+      position: relative;
+    }
+
+    //> li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+    //  font-family: @sidebar-icon-font-name;
+    //  content: @sidebar-has-menu-text-icon;
+    //  font-size: 14px;
+    //  position: relative;
+    //  float: left;
+    //  left: 4px;
+    //}
+    //
+    //> li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+    //  font-family: @sidebar-icon-font-name;
+    //  content: @sidebar-has-menu-text-icon;
+    //  font-size: 12px;
+    //  position: relative;
+    //  float: left;
+    //  left: 15px;
+    //}
+    //
+    //> li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+    //  font-family: @sidebar-icon-font-name;
+    //  content: @sidebar-has-menu-text-icon;
+    //  font-size: 14px;
+    //  position: relative;
+    //  float: left;
+    //  left: 18px;
+    //}
+    //
+    //> li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+    //  font-family: @sidebar-icon-font-name;
+    //  content: @sidebar-has-menu-text-icon;
+    //  font-size: 12px;
+    //  position: relative;
+    //  float: left;
+    //  left: 30px;
+    //}
+
+    li.active > a .selected {
+      border-bottom: 7px solid transparent;
+      border-right: 7px solid @sidebar-left-item-selected-border-color;
+      border-top: 7px solid transparent;
+      display: inline-block;
+      height: 0;
+      position: absolute;
+      right: 0;
+      top: 13px;
+      vertical-align: middle;
+      width: 0;
+    }
+
+    li.sidebar-has-menu.active > a .selected {
+      display: none;
+    }
+
+    li a .label {
+      border-radius: 0.25em;
+      color: #7e7e7e;
+      display: inline;
+      font-size: 75%;
+      font-weight: 700;
+      line-height: 1;
+      padding: 4px 3px;
+      position: absolute;
+      right: 10px;
+      text-align: center;
+      vertical-align: baseline;
+      white-space: nowrap;
+    }
+  }
+
+  &[sidebar-position-type="relative"] {
+    position: relative;
+  }
+
+  &[sidebar-position-type="absolute"] {
+    position: absolute;
+  }
+
+  &[sidebar-position-type="fixed"] {
+    position: fixed;
+    top: 50px;
+  }
+}
+
+.sul {
+  background-color: #ebebeb;
+}
+
+/********************************** Theme Left Panel Style Close Here ******************************/
+/*************************** 4.2 Theme Content Section Style Start Here ********************************/
+#main-content {
+  margin-left: @sidebar-width; //230px;
+  position: relative;
+}
+
+/******************* Theme Content Section Style Close Here *******************************/
+/****************** 4.3 Minimized Left Panel Style Start Here *********************************/
+#sidebar-header {
+  &.sidebar-minimized-lpanel {
+    > .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: @sidebar-small-width; //50px;
+      padding-right: @sidebar-small-width; //50px;
+    }
+
+    > .sidebar-left-header {
+      width: @sidebar-small-width; //50px;
+    }
+
+    > .sidebar-left-header > a > span {
+      display: none;
+    }
+
+    > .sidebar-right-header {
+      margin-left: @sidebar-small-width; //50px;
+      padding-right: 0;
+    }
+  }
+
+}
+
+.sidebar-minimized-lpanel {
+  #sidebar-left-panel {
+    width: @sidebar-small-width; //50px;
+
+    .nav-level {
+      display: none;
+    }
+
+    .panel-list {
+      > li > a span.menu-text {
+        display: none;
+      }
+
+      > li.sidebar-has-menu > a:after {
+        display: none;
+      }
+
+      > li > a > i {
+        display: inline;
+        font-size: 15px;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+      > li:hover > a,
+      > li:focus > a {
+        display: block;
+        position: relative;
+        width: @sidebar-submenu-width + @sidebar-small-width; //230px;
+        margin-bottom: -1px;
+        border-radius: 0 4px 4px 0;
+      }
+
+      > li:hover > a,
+      > li:focus > a {
+        border-radius: 0 4px 4px 0;
+      }
+
+      > li.sidebar-has-menu:hover > a,
+      > li.sidebar-has-menu:focus > a {
+        border-radius: 0 4px 0 0;
+        background: @sidebar-left-item-hover-bg; //#f1f1f1;
+      }
+
+      > li:hover > a span.menu-text,
+      > li:focus > a span.menu-text {
+        display: inline-block;
+        position: absolute;
+        left: @sidebar-small-width + 2;
+      }
+
+      ul.sidebar-sub-menu li {
+        list-style: none;
+      }
+
+      ul.sidebar-sub-menu li > a {
+        padding: 8px 20px;
+      }
+
+      > li.sidebar-has-menu > ul.sidebar-sub-menu {
+        display: none !important;
+        position: absolute;
+        left: @sidebar-small-width; //50px;
+        width: @sidebar-submenu-width; //180px;
+      }
+
+      > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+      > li.sidebar-has-menu:focus > ul.sidebar-sub-menu {
+        display: block !important;
+        //border-right: 1px solid #efefef;
+        width: @sidebar-submenu-width; //180px;
+        left: @sidebar-small-width; //50px;
+      }
+
+      > li.sidebar-has-menu > ul.sidebar-sub-menu ul.sidebar-sub-menu {
+        display: none !important;
+        position: absolute;
+        width: @sidebar-submenu-width; //180px;
+        left: 0;
+      }
+
+      > li.sidebar-has-menu:hover > ul.sidebar-sub-menu ul.sidebar-sub-menu,
+      > li.sidebar-has-menu:focus > ul.sidebar-sub-menu ul.sidebar-sub-menu {
+        display: none !important;
+        left: 0;
+      }
+
+      > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+      > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:focus > ul.sidebar-sub-menu {
+        display: block !important;
+        position: relative;
+        left: 0;
+      }
+
+      > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+      > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:focus > ul.sidebar-sub-menu {
+        display: block !important;
+        position: relative;
+        left: 0;
+      }
+
+      > li.sidebar-has-menu li.sidebar-has-menu > a:after {
+        display: none;
+      }
+
+      > li.sidebar-has-menu li.sidebar-has-menu > a:after {
+        font-family: @sidebar-icon-font-name;
+        content: @sidebar-has-menu-icon2;
+        font-size: 15px;
+        position: relative;
+        float: right;
+        display: block;
+      }
+
+      > li.sidebar-has-menu li.sidebar-has-menu:hover > a:after,
+      > li.sidebar-has-menu li.sidebar-has-menu:focus > a:after {
+        font-family: @sidebar-icon-font-name;
+        content: @sidebar-has-menu-opened-icon2;
+        font-size: 15px;
+        position: relative;
+        float: right;
+        display: block;
+      }
+
+      li.sidebar-has-menu.active > li.active a .selected {
+        display: block;
+      }
+
+      > li.active:hover > a .selected,
+      > li.active:focus > a .selected {
+        display: none;
+      }
+
+      > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu li > a span.menu-text {
+        padding-left: 15px;
+        position: relative;
+      }
+
+      > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+        left: 4px;
+      }
+
+      > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+        left: 4px;
+      }
+
+      li .label {
+        display: none;
+      }
+
+      li:hover a .label {
+        display: block;
+        position: absolute;
+        right: 5px;
+        top: 10px;
+      }
+
+      > li.sidebar-has-menu.opened > a {
+        background: @sidebar-left-item-hasmenu-opened-bg; //#f1f1f1;
+        color: @sidebar-left-item-hasmenu-opened-color; //#000;
+      }
+    }
+  }
+
+  #main-content {
+    margin-left: @sidebar-small-width; //50px;
+  }
+}
+
+/****************** Minimized Left Panel Style Start Here *********************************/
+
+/******************* 4.4 Theme Style for Phone start here***************************************/
+#sidebar-wrapper {
+  &[sidebar-device-type="phone"] {
+    &.sidebar-hide-lpanel #sidebar-left-panel {
+      display: none;
+    }
+
+    #sidebar-header {
+      position: static;
+      height: 100px;
+    }
+
+    .sidebar-left-header {
+      width: 100%;
+      float: none;
+    }
+
+    #sidebar-left-panel[sidebar-position-type="fixed"] {
+      top: 100px;
+    }
+
+    .sidebar-right-header {
+      width: 100%;
+      padding-left: 0 !important;
+      position: relative;
+      z-index: 999;
+      top: 50px;
+    }
+
+    &.sidebar-hide-lpanel {
+      #sidebar-left-panel {
+        display: none;
+      }
+
+      .sidebar-right-header {
+        margin-left: 0;
+      }
+    }
+
+    .sidebar-right-header {
+      margin-left: 0;
+    }
+
+    #sidebar-left-panel {
+      display: block;
+      z-index: 1024;
+    }
+
+    #main-content {
+      margin-left: 0;
+    }
+
+    .sidebar-left-header > .sidebar-toggle > a {
+      display: block;
+    }
+
+    #sidebar-header > .sidebar-right-header .sidebar-toggle a:after {
+      display: none !important;
+    }
+  }
+
+  &[sidebar-device-type="desktop"] .sidebar-left-header .sidebar-toggle a:after,
+  &[sidebar-device-type="tablet"] .sidebar-left-header .sidebar-toggle a:after {
+    display: none !important;
+  }
+
+  &[sidebar-device-type="phone"] {
+    .sidebar-left-header .sidebar-toggle a:after {
+      background: transparent;
+      border-radius: 4px;
+      content: @sidebar-toggle-icon;
+      font-family: @sidebar-icon-font-name;
+      //font-size: 16px;
+      left: 5px;
+      line-height: 39px;
+      padding: 1px 13px;
+      position: absolute;
+      top: 3px;
+      z-index: 1000;
+      display: block !important;
+      color: @sidebar-left-header-color; //#003c70;
+      //border: 0 solid #003c70;
+      font-size: 14px;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-container[sidebar-lpanel-effect="shrink"] #main-content {
+      margin-left: 0;
+    }
+
+    #sidebar-container[sidebar-lpanel-effect="shrink"] #main-content {
+      margin-left: @sidebar-width; //230px;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-container[sidebar-lpanel-effect="overlay"] #main-content {
+      margin-left: 0;
+    }
+
+    #sidebar-container[sidebar-lpanel-effect="overlay"] #main-content {
+      margin-left: 0;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-container[sidebar-lpanel-effect="push"] #main-content {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    #sidebar-container[sidebar-lpanel-effect="push"] #main-content {
+      margin-left: @sidebar-width; //230px;
+      margin-right: ~"-@{sidebar-width}"; //-230px;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-header[sidebar-lpanel-effect="shrink"] .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-header[sidebar-lpanel-effect="shrink"] .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    #sidebar-header[sidebar-lpanel-effect="shrink"] .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    #sidebar-header[sidebar-lpanel-effect="shrink"] .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-header[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-header[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    &#sidebar-header[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    #sidebar-header[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-header[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    &.sidebar-hide-lpanel #sidebar-header[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    #sidebar-header[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    #sidebar-header[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+/*################ Theme Header With Content Overlay Effect Start #####################*/
+#sidebar-header {
+  // Overlay Effect start
+  &[sidebar-lpanel-effect="overlay"] {
+    .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: 0;
+      padding-right: 0;
+    }
+
+    &.sidebar-minimized-lpanel .sidebar-right-header[sidebar-position-type="fixed"] {
+      margin-left: @sidebar-small-width; //50px;
+      padding-right: @sidebar-small-width; //50px;
+    }
+
+    .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: 0;
+    }
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="relative"] {
+    margin-left: @sidebar-small-width; //50px;
+  }
+
+  &[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="relative"] .sidebar-sidebar-toggle a:after {
+    margin-left: @sidebar-width; //230px;
+
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="relative"] .sidebar-sidebar-toggle a:after {
+    margin-left: 0;
+  }
+
+  &[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="fixed"] .sidebar-sidebar-toggle a:after {
+    margin-left: @sidebar-width; //230px;
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="overlay"] .sidebar-right-header[sidebar-position-type="fixed"] .sidebar-sidebar-toggle a:after {
+    margin-left: 0;
+  }
+  // Overlay Effect end
+
+  // Push Effect start
+  &[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="fixed"] {
+    margin-left: @sidebar-width; //230px;
+    margin-right: ~"-@{sidebar-width}"; //~"-@{sidebar-width}";//-230px;
+    padding-right: 0
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="fixed"] {
+    margin-left: @sidebar-small-width; //50px;
+    margin-right: 0;
+    padding-right: @sidebar-small-width; //50px
+  }
+
+  &[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="relative"] {
+    margin-left: @sidebar-width; //230px;
+    margin-right: ~"-@{sidebar-width}"; //-230px;
+  }
+
+  &[sidebar-lpanel-effect="push"].sidebar-minimized-lpanel .sidebar-right-header[sidebar-position-type="relative"] {
+    margin-left: @sidebar-small-width; //50px;
+    margin-right: 0;
+  }
+
+  &[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="relative"] .sidebar-sidebar-toggle a:after {
+    margin-left: 0;
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="relative"] .sidebar-sidebar-toggle a:after {
+    margin-left: 0;
+  }
+
+  &[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="fixed"] .sidebar-sidebar-toggle a:after {
+    margin-left: 0;
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="push"] .sidebar-right-header[sidebar-position-type="fixed"] .sidebar-sidebar-toggle a:after {
+    margin-left: 0;
+  }
+  // Push Effect end
+
+  //shrink Effect start
+  &[sidebar-lpanel-effect="shrink"] {
+
+    .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: @sidebar-width; //230px;
+      padding-right: 0;
+    }
+
+    &.sidebar-minimized-lpanel .sidebar-right-header[sidebar-position-type="relative"] {
+      margin-left: @sidebar-small-width; //50px;
+      padding-right: 0;
+    }
+
+    .sidebar-right-header[sidebar-position-type="fixed"] {
+      padding-right: @sidebar-width; //230px;
+      margin-left: @sidebar-width; //230px;
+    }
+
+    &.sidebar-minimized-lpanel .sidebar-right-header[sidebar-position-type="fixed"] {
+      padding-right: @sidebar-small-width; //50px;
+      margin-left: @sidebar-small-width; //50px;
+    }
+
+    .sidebar-right-header[sidebar-position-type="relative"] .sidebar-sidebar-toggle a:after {
+      margin-left: 0;
+    }
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="shrink"] .sidebar-right-header[sidebar-position-type="relative"] .sidebar-sidebar-toggle a:after {
+    margin-left: 0;
+  }
+
+  &[sidebar-lpanel-effect="shrink"] .sidebar-right-header[sidebar-position-type="fixed"] .sidebar-sidebar-toggle a:after {
+    left: 0;
+  }
+
+  &.sidebar-minimized-lpanel[sidebar-lpanel-effect="shrink"] .sidebar-right-header[sidebar-position-type="fixed"] .sidebar-sidebar-toggle a:after {
+    left: 0;
+  }
+  //shrink Effect end
+}
+
+#sidebar-container {
+  // Overlay Effect
+  &[sidebar-lpanel-effect="overlay"] {
+    #main-content {
+      margin-left: @sidebar-small-width; //50px;
+    }
+
+    &.sidebar-minimized-lpanel #main-content {
+      margin-left: @sidebar-small-width; //50px;
+    }
+  }
+  // Overlay Effect end
+
+  // Push Effect start
+  &[sidebar-lpanel-effect="push"] {
+    #main-content {
+      margin-left: @sidebar-width; //230px;
+      margin-right: ~"-@{sidebar-width}"; //-230px;
+    }
+
+    .sidebar-minimized-lpanel #main-content {
+      margin-left: @sidebar-small-width; //50px;
+      margin-right: 0;
+    }
+  }
+  // Push Effect end
+
+  //shrink Effect start
+  &[sidebar-lpanel-effect="shrink"] {
+    #main-content {
+      margin-left: @sidebar-width; //230px;
+    }
+
+    &.sidebar-minimized-lpanel #main-content {
+      margin-left: @sidebar-small-width; //50px;
+    }
+  }
+  //shrink Effect end
+}
+
+/*################ Theme Header With Content Overlay Effect Close #####################*/
+
+/*#################### Right navigation Style Start Here ##################################*/
+
+body[sidebar-nav-placement="right"] {
+
+  #sidebar-wrapper {
+
+    &[sidebar-device-type="desktop"] .sidebar-left-header,
+    &[sidebar-device-type="tablet"] .sidebar-left-header {
+      right: 0;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-right-header,
+    &[sidebar-device-type="tablet"] .sidebar-right-header {
+      margin-left: 0;
+      margin-right: @sidebar-width; //230px;
+    }
+
+    &[sidebar-device-type="desktop"].left-navbar,
+    &[sidebar-device-type="tablet"].left-navbar {
+      float: right;
+    }
+
+    &[sidebar-device-type="desktop"] .right-navbar,
+    &[sidebar-device-type="tablet"] .right-navbar {
+      float: left;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-sidebar-toggle a:after,
+    &[sidebar-device-type="tablet"] .sidebar-sidebar-toggle a:after {
+      right: 0;
+    }
+
+    &[sidebar-device-type="desktop"] .left-navbar li:last-child,
+    &[sidebar-device-type="tablet"] .left-navbar li:last-child {
+      padding-right: @sidebar-small-width; //50px;
+    }
+
+    &[sidebar-device-type="desktop"] .left-navbar li:first-child,
+    &[sidebar-device-type="tablet"] .left-navbar li:first-child {
+      padding-right: 0;
+    }
+
+    &[sidebar-device-type="desktop"] #sidebar-left-panel,
+    &[sidebar-device-type="tablet"] #sidebar-left-panel {
+      right: 0;
+    }
+
+    &[sidebar-device-type="desktop"] #main-content,
+    &[sidebar-device-type="tablet"] #main-content {
+      margin-left: 0;
+      margin-right: @sidebar-width; //230px;
+    }
+
+    &[sidebar-device-type="desktop"] #styleSelector,
+    &[sidebar-device-type="tablet"] #styleSelector {
+      left: ~"-@{sidebar-width}"; //-230px;
+    }
+
+    &[sidebar-device-type="desktop"] .selector-toggle > a,
+    &[sidebar-device-type="tablet"] .selector-toggle > a {
+      border-radius: 0 4px 4px 0;
+      left: 228px;
+    }
+
+    &[sidebar-device-type="desktop"] #styleSelector.open,
+    &[sidebar-device-type="tablet"] #styleSelector.open {
+      right: 0;
+      left: 0;
+    }
+
+    &[sidebar-device-type="desktop"] .selector-toggle > a:before,
+    &[sidebar-device-type="tablet"] .selector-toggle > a:before {
+      content: "\f101";
+    }
+
+    &[sidebar-device-type="desktop"] .open .selector-toggle > a:before,
+    &[sidebar-device-type="tablet"] .open .selector-toggle > a:before {
+      content: "\f100";
+    }
+
+    &[sidebar-device-type="desktop"] #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > a span.menu-text,
+    &[sidebar-device-type="tablet"] #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > a span.menu-text {
+      padding-left: auto;
+      padding-right: 25px;
+    }
+
+    &[sidebar-device-type="desktop"] #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > a span.menu-text,
+    &[sidebar-device-type="tablet"] #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > a span.menu-text {
+      padding-left: auto;
+      padding-right: 35px;
+
+    }
+
+    &[sidebar-device-type="desktop"] #sidebar-header.sidebar-minimized-lpanel > .sidebar-right-header,
+    &[sidebar-device-type="tablet"] #sidebar-header.sidebar-minimized-lpanel > .sidebar-right-header {
+      margin-left: 0;
+      margin-right: @sidebar-small-width; //50px;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #main-content,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #main-content {
+      margin-left: 0;
+      margin-right: @sidebar-small-width; //50px;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel {
+      direction: rtl;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:hover > a span.menu-text,
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:focus > a span.menu-text,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:hover > a span.menu-text,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:focus > a span.menu-text {
+      right: @sidebar-small-width + 2; //52px;
+      left: auto;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list li:hover a .label,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list li:hover a .label {
+      left: 5px;
+      right: auto;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:hover > a,
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:focus > a,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:hover > a,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li:focus > a {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu:focus > ul.sidebar-sub-menu,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu:focus > ul.sidebar-sub-menu {
+      left: auto;
+      right: @sidebar-small-width; //50px;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu > a:after,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu > a:after {
+      float: left;
+    }
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu:hover > a:after,
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu:focus > a:after,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu:hover > a:after,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu:focus > a:after {
+      float: left;
+    }
+
+    //&[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before,
+    //&[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+    //  font-family: @sidebar-icon-font-name;
+    //  content: @sidebar-has-menu-text-icon2;
+    //  font-size: 14px;
+    //  position: relative;
+    //  float: right;
+    //  left: 4px;
+    //}
+    //
+    //&[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before,
+    //&[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+    //  font-family: @sidebar-icon-font-name;
+    //  content: @sidebar-has-menu-text-icon2;
+    //  font-size: 14px;
+    //  position: relative;
+    //  float: right;
+    //  left: 4px;
+    //}
+    //
+    //&[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > a span.menu-text,
+    //&[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > a span.menu-text {
+    //  padding-left: auto;
+    //  padding-right: 0;
+    //}
+    //
+    //&[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before,
+    //&[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+    //  font-family: @sidebar-icon-font-name;
+    //  content: @sidebar-has-menu-text-icon2;
+    //  font-size: 14px;
+    //  position: relative;
+    //  float: right;
+    //  left: 4px;
+    //}
+
+    &[sidebar-device-type="desktop"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > a span.menu-text,
+    &[sidebar-device-type="tablet"] .sidebar-minimized-lpanel #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > a span.menu-text {
+      padding-left: auto;
+      padding-right: 0;
+    }
+  }
+}
+
+/*#################### Right Sidebar Style Close Here ##################################*/
+
+/*#################### Horizantal Navigation Style Start Here ##################################*/
+body[sidebar-navigation-type="horizontal"] {
+  #sidebar-wrapper {
+    &[sidebar-device-type="desktop"] {
+      .sidebar-sidebar-toggle a:after {
+        display: none;
+      }
+
+      .left-navbar li:first-child {
+        padding-left: 0;
+      }
+
+      //  .theme-config a {
+      //  display: none
+      //}
+
+      #sidebar-left-panel {
+        float: left;
+        height: 46px;
+        width: 100%;
+        min-height: 40px;
+
+        .profile-box {
+          display: none;
+        }
+
+        .nav-level {
+          display: none !important;
+        }
+
+        .nav > li {
+          display: inline-block;
+          float: left;
+        }
+
+        .panel-list {
+          li a .label {
+            display: none;
+          }
+
+          > li.sidebar-has-menu > a:after {
+            font-family: @sidebar-icon-font-name;
+            content: @sidebar-has-menu-icon2;
+            font-size: 12px;
+            position: relative;
+            float: right;
+            padding-left: 6px;
+          }
+
+          li.active > a .selected {
+            display: none;
+          }
+
+          > li > a {
+            padding: 13px 10px;
+          }
+
+          ul.sidebar-sub-menu li > a {
+            padding: 10px 6px;
+          }
+        }
+
+      }
+
+      //#sidebar-container {
+      //  #sidebar-left-panel {
+      //    .panel-list {
+      //      li {
+      //        &:last-child > a {
+      //          border-bottom: 0 solid #efefef;
+      //          border-right: 0 solid #efefef;
+      //        }
+      //
+      //        > a {
+      //          border-top: 0 solid #efefef;
+      //
+      //        }
+      //      }
+      //    }
+      //  }
+      //}
+
+      #sidebar-left-panel .panel-list > li > a > i {
+        padding-right: 0;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu {
+        display: none;
+        list-style: outside none none;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu > ul.sidebar-sub-menu {
+        display: none;
+        list-style: outside none none;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu {
+        display: none;
+        list-style: outside none none;
+        width: 156px;
+        position: absolute;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu {
+        left: 156px;
+        position: absolute;
+        width: 156px;
+        z-index: 1;
+        margin-top: -41px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu {
+        left: 156px;
+        position: absolute;
+        width: 156px;
+        z-index: 1;
+        margin-top: -41px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu > a:after {
+        content: "\f101";
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu li.sidebar-has-menu.opened > a:after {
+        content: "\f100";
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu:focus > ul.sidebar-sub-menu {
+        display: block !important;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:hover > ul.sidebar-sub-menu {
+        display: block !important;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:hover > ul.sidebar-sub-menu,
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu:hover > ul.sidebar-sub-menu {
+        display: block !important;
+      }
+
+      #sidebar-container #sidebar-left-panel .panel-list > li.active > a {
+        border-top: 0 solid #96cd69;
+      }
+
+      #sidebar-left-panel > ul {
+        margin: 0 35px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+        //content: "\f105";
+        font-size: 14px;
+        float: left;
+        left: 4px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+        content: "\f105";
+        font-size: 14px;
+        left: 4px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li.sidebar-has-menu > ul.sidebar-sub-menu > li > a span.menu-text:before {
+        content: "\f105";
+        font-size: 14px;
+        float: left;
+        left: 4px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li > a span.menu-text {
+        padding-left: 13px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > a span.menu-text {
+        padding-left: 13px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > a span.menu-text {
+        padding-left: 13px;
+      }
+
+      #sidebar-left-panel .panel-list > li.sidebar-has-menu > ul > li.sidebar-has-menu > ul > li > ul > li > ul > li > a span.menu-text {
+        padding-left: 13px;
+      }
+
+      #main-content {
+        margin-left: 0;
+        padding-top: 50px;
+        position: relative;
+
+        .content-title {
+          border-top: 0 solid #e8e8e8;
+
+        }
+      }
+
+    }
+
+    &.compact-hmenu {
+      &[sidebar-device-type="desktop"] {
+        #sidebar-left-panel {
+
+          float: left;
+          height: 60px;
+          min-height: 40px;
+          width: 100%;
+
+          .panel-list > li > a > i {
+            display: block;
+            padding-right: 0;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+  }
+
+  #sidebar-container {
+    &[sidebar-lpanel-effect="push"] {
+      #main-content {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+/*#################### Horizantal Navigation Style Close Here ##################################*/

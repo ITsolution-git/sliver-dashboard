@@ -1,0 +1,169 @@
+// global
+//@media (min-width: @screen-xs) {
+.make-size(xs);
+//}
+
+// mobile
+@media (min-width: @screen-sm) {
+  .make-size(sm);
+}
+
+// tablet
+@media (min-width: @screen-md) {
+  .make-size(md);
+}
+
+// desktop
+@media (min-width: @screen-lg) {
+  .make-size(lg);
+}
+
+.make-size(@prefix) {
+
+  .loop-sizes(@index, @prefix) when (@index =< length(@width-values)) {
+    @value: extract(@width-values, @index);
+
+    .width-@{prefix}-@{value} {
+      width: ~"@{value}px" !important;
+    }
+    .max-width-@{prefix}-@{value} {
+      max-width: ~"@{value}px" !important;
+    }
+    .min-width-@{prefix}-@{value} {
+      min-width: ~"@{value}px" !important;
+    }
+
+    // height
+    .height-@{prefix}-@{value} {
+      height: ~"@{value}px" !important;
+    }
+    .max-height-@{prefix}-@{value} {
+      max-height: ~"@{value}px" !important;
+    }
+    .min-height-@{prefix}-@{value} {
+      min-height: ~"@{value}px" !important;
+    }
+
+    //.calc-grid-column(@index, @class, @type);
+    // next iteration
+    .loop-sizes((@index + 1), @prefix);
+  }
+
+  .loop-sizes(1, @prefix);
+
+  // width
+  .width-@{prefix}-full {
+    width: ~"100%" !important;
+  }
+  .max-width-@{prefix}-full {
+    max-width: ~"100%" !important;
+  }
+  .min-width-@{prefix}-full {
+    min-width: ~"100%" !important;
+  }
+
+  .width-@{prefix}-auto {
+    width: ~"auto" !important;
+  }
+  .max-width-@{prefix}-auto {
+    max-width: ~"auto" !important;
+  }
+  .min-width-@{prefix}-auto {
+    min-width: ~"auto" !important;
+  }
+
+  // height
+  .height-@{prefix}-full {
+    height: ~"100%" !important;
+  }
+  .max-height-@{prefix}-full {
+    max-height: ~"100%" !important;
+  }
+  .min-height-@{prefix}-full {
+    min-height: ~"100%" !important;
+  }
+
+  .height-@{prefix}-auto {
+    height: ~"auto" !important;
+  }
+  .max-height-@{prefix}-auto {
+    max-height: ~"auto" !important;
+  }
+  .min-height-@{prefix}-auto {
+    min-height: ~"auto" !important;
+  }
+}
+
+// init functions
+//
+//.make-size(@prefix) {
+//  .for(@width-values);
+//  .-each(@value) {
+//
+//    // width
+//    .width-@{prefix}-@{value} {
+//      width: ~"@{value}px" !important;
+//    }
+//    .max-width-@{prefix}-@{value} {
+//      max-width: ~"@{value}px" !important;
+//    }
+//    .min-width-@{prefix}-@{value} {
+//      min-width: ~"@{value}px" !important;
+//    }
+//
+//    // height
+//    .height-@{prefix}-@{value} {
+//      height: ~"@{value}px" !important;
+//    }
+//    .max-height-@{prefix}-@{value} {
+//      max-height: ~"@{value}px" !important;
+//    }
+//    .min-height-@{prefix}-@{value} {
+//      min-height: ~"@{value}px" !important;
+//    }
+//  }
+//
+//  // width
+//  .width-@{prefix}-full {
+//    width: ~"100%" !important;
+//  }
+//  .max-width-@{prefix}-full {
+//    max-width: ~"100%" !important;
+//  }
+//  .min-width-@{prefix}-full {
+//    min-width: ~"100%" !important;
+//  }
+//
+//  .width-@{prefix}-auto {
+//    width: ~"auto" !important;
+//  }
+//  .max-width-@{prefix}-auto {
+//    max-width: ~"auto" !important;
+//  }
+//  .min-width-@{prefix}-auto {
+//    min-width: ~"auto" !important;
+//  }
+//
+//  // height
+//  .height-@{prefix}-full {
+//    height: ~"100%" !important;
+//  }
+//  .max-height-@{prefix}-full {
+//    max-height: ~"100%" !important;
+//  }
+//  .min-height-@{prefix}-full {
+//    min-height: ~"100%" !important;
+//  }
+//
+//  .height-@{prefix}-auto {
+//    height: ~"auto" !important;
+//  }
+//  .max-height-@{prefix}-auto {
+//    max-height: ~"auto" !important;
+//  }
+//  .min-height-@{prefix}-auto {
+//    min-height: ~"auto" !important;
+//  }
+//}
+//
+//

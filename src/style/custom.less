@@ -1,0 +1,130 @@
+table.table-vertical-align {
+
+  thead tr th,
+  tbody tr td {
+    vertical-align: middle;
+    height: 50px;
+  }
+}
+
+//.m-t-50 {
+//  margin-top: 50px;
+//}
+
+//footer {
+//  height: 50px;
+//  padding: 10px 0;
+//  width: 100%;
+//  background: #f8f8f8;
+//  border-top:1px solid #e7e7e7;
+//  display: block;
+//  position: absolute;
+//  bottom: 0;
+//  left: 0;
+//}
+
+div.grid_item:hover {
+  border: 1px solid #000;
+}
+
+div.grid_item {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  border: 1px solid darkgrey;
+  //float: left;
+  //margin: 0 10px 10px 0;
+  overflow: hidden;
+}
+
+div.grid_item p {
+  z-index: 1;
+  position: relative;
+  padding-top: 10px;
+  text-align: center;
+
+}
+
+div.grid_item img, div.hover_item img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 0;
+  vertical-align: middle;
+}
+
+div.grid_wrapper, div.list_grid {
+  position: relative;
+  margin: 0 10px 10px 0;
+  display: inline-block;
+
+}
+
+div.grid_wrapper div.hover_item {
+  cursor: pointer;
+  position: absolute;
+  display: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+div.grid_wrapper:hover div.hover_item {
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: -21px;
+  z-index: 9999;
+  width: 315px;
+  height: 300px;
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid;
+}
+
+.toggle-descr {
+  height: 57px;
+  overflow: hidden;
+}
+//.last-grid{
+//  left: -200px !important;
+//}
+
+.active-tech {
+  background-color: rgba(26, 179, 148, 0.2)
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+[ui-view].ng-enter {
+  display: block;
+}
+
+[ui-view].ng-enter-active {
+  display: block;
+}
+
+[ui-view].ng-leave {
+  display: none;
+}
+
+[ui-view].ng-leave-active {
+  display: none;
+}
+
+#page-wrapper {
+  margin-left: 0;
+}
+
+//.nav > li.active {
+//  border-left: 4px solid #19aa8d;
+//  background: #e7eaec;
+//}
+
+//.left-sidebar {
+//  margin-top: 20px;
+//  padding: 5px 0;
+//  height: 100%;
+//  font-size: 15px
+//}

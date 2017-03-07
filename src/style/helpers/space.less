@@ -1,0 +1,101 @@
+// global
+//@media (min-width: @screen-xs) {
+  .make-space(@prefix: xs);
+//}
+
+// mobile
+@media (min-width: @screen-sm) {
+  .make-space(@prefix: sm);
+}
+
+// tablet
+@media (min-width: @screen-md) {
+  .make-space(@prefix: md);
+}
+
+// desktop
+@media (min-width: @screen-lg) {
+  .make-space(@prefix: lg);
+}
+
+.make-space(@prefix) {
+
+  .loop-space(@index, @prefix) when (@index =< length(@space-values)) {
+    @value: extract(@space-values, @index);
+
+    // padding
+    .p-@{prefix}-@{value} {
+      padding: ~"@{value}px" !important;
+    }
+    // padding vertical
+    .p-v-@{prefix}-@{value} {
+      padding-top: ~"@{value}px" !important;
+      padding-bottom: ~"@{value}px" !important;
+    }
+    // padding horizontal
+    .p-h-@{prefix}-@{value} {
+      padding-left: ~"@{value}px" !important;
+      padding-right: ~"@{value}px" !important;
+    }
+    // padding by side
+    .p-t-@{prefix}-@{value} {
+      padding-top: ~"@{value}px" !important;
+    }
+    .p-l-@{prefix}-@{value} {
+      padding-left: ~"@{value}px" !important;
+    }
+    .p-r-@{prefix}-@{value} {
+      padding-right: ~"@{value}px" !important;
+    }
+    .p-b-@{prefix}-@{value} {
+      padding-bottom: ~"@{value}px" !important;
+    }
+
+    // margin
+    .m-@{prefix}-@{value} {
+      margin: ~"@{value}px" !important;
+    }
+    // margin vertical
+    .m-v-@{prefix}-@{value} {
+      margin-top: ~"@{value}px" !important;
+      margin-bottom: ~"@{value}px" !important;
+    }
+    // margin horizontal
+    .m-h-@{prefix}-@{value} {
+      margin-left: ~"@{value}px" !important;
+      margin-right: ~"@{value}px" !important;
+    }
+    // margin by side
+    .m-t-@{prefix}-@{value} {
+      margin-top: ~"@{value}px" !important;
+    }
+    .m-l-@{prefix}-@{value} {
+      margin-left: ~"@{value}px" !important;
+    }
+    .m-r-@{prefix}-@{value} {
+      margin-right: ~"@{value}px" !important;
+    }
+    .m-b-@{prefix}-@{value} {
+      margin-bottom: ~"@{value}px" !important;
+    }
+
+    .p-w-@{prefix}-@{value} {
+      padding: ~"0 @{value}px" !important;
+    }
+    .p-h-@{prefix}-@{value} {
+      padding: ~"@{value}px 0" !important;
+    }
+    .m-w-@{prefix}-@{value} {
+      margin: ~"0 @{value}px" !important;
+    }
+    .m-h-@{prefix}-@{value} {
+      margin: ~"@{value}px 0" !important;
+    }
+
+    // next iteration
+    .loop-space((@index + 1), @prefix);
+  }
+
+  .loop-space(1, @prefix);
+}
+
