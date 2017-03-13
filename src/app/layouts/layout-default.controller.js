@@ -18,6 +18,11 @@
         $scope.message = '';
         $scope.sidebarHide = null;
 
+        $scope.logout = function() {
+            $auth.logout();
+            $state.go('login');
+        };
+
         $scope.closeMenu = function () {
             $scope.sidebarHide = 'sidebar-hide-lpanel';
         };

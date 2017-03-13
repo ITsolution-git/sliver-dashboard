@@ -6,6 +6,9 @@
         .constant('CONFIG', {
             "title": "Slapcenter",
             "tokenParam": "access-token",
-            "api": "http://localhost:8100"
+            "api": "http://localhost:8100",
+            "url": {
+                "static": ""
+            }
         })
 })();

@@ -44,17 +44,17 @@
         $authProvider.httpInterceptor = function () {
             return true;
         };
-        //$authProvider.tokenPrefix = '_';
+        // $authProvider.tokenPrefix = '_';
         $authProvider.loginUrl = CONFIG.api + '/v1/auth';
         $authProvider.signupUrl = CONFIG.api + '/v1/auth/signup';
         $authProvider.tokenRoot = 'data';//compensates success response macro
         $authProvider.withCredentials = false;
         $authProvider.baseUrl = CONFIG.api + '/';
         $authProvider.unlinkUrl = CONFIG.api + '/auth/unlink/';
-        // $authProvider.tokenName = 'token';
-        // $authProvider.tokenPrefix = 'satellizer';
-        // $authProvider.tokenHeader = 'Authorization';
-        // $authProvider.tokenType = 'Bearer';
+        $authProvider.tokenName = 'token';
+        $authProvider.tokenPrefix = 'satellizer';
+        $authProvider.tokenHeader = 'Authorization';
+        $authProvider.tokenType = 'Bearer';
         $authProvider.storageType = 'localStorage';
 
     }

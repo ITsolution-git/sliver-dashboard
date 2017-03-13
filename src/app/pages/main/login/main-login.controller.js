@@ -6,11 +6,11 @@
         .controller('MainLoginController', MainLoginController);
 
     /* @ngInject */
-    function MainLoginController($stateParams, $scope, $auth, $state, toaster, pageService, userService) {
+    function MainLoginController($scope, $auth, $state, toaster, pageService, userService) {
 
         // --- vars ---
         $scope.login = {
-            email: $stateParams.email ? $stateParams.email : '',
+            email: '',
             password: ''
         };
         // cartService.onLogin();
@@ -21,7 +21,7 @@
         $scope.submit = function () {
             $auth.login($scope.login).then(
                 function (response) {
-                    if (response.data.result) {
+                    if (response.data.token) {
                         toaster.pop({type: 'success', body: "Welcome!"});
 
                         // update user data
@@ -36,27 +36,27 @@
             );
         };
 
-        $scope.authenticate = function(provider) {
-            $auth.authenticate(provider)
-                .then(function(response) {
-                    console.log(response);
-                    toastr.success('You have successfully signed in with ' + provider + '!');
-                    userService.loadUser(true).then(function () {
-                        $state.go('home');
-                    });
-                })
-                .catch(function(error) {
-                    if (error.error) {
-                        // Popup error - invalid redirect_uri, pressed cancel button, etc.
-                        toastr.error(error.error);
-                    } else if (error.data) {
-                        // HTTP response error from server
-                        toastr.error(error.data.message, error.status);
-                    } else {
-                        toastr.error(error);
-                    }
-                });
-        };
+        // $scope.authenticate = function(provider) {
+        //     $auth.authenticate(provider)
+        //         .then(function(response) {
+        //             console.log(response);
+        //             toastr.success('You have successfully signed in with ' + provider + '!');
+        //             userService.loadUser(true).then(function () {
+        //                 $state.go('home');
+        //             });
+        //         })
+        //         .catch(function(error) {
+        //             if (error.error) {
+        //                 // Popup error - invalid redirect_uri, pressed cancel button, etc.
+        //                 toastr.error(error.error);
+        //             } else if (error.data) {
+        //                 // HTTP response error from server
+        //                 toastr.error(error.data.message, error.status);
+        //             } else {
+        //                 toastr.error(error);
+        //             }
+        //         });
+        // };
 
         // --- init ---
 

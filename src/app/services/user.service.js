@@ -16,18 +16,23 @@
 
         me.loadUser = function (refresh) {
             var deferred = $q.defer();
-
+            
             if (!refresh && me.user) {
                 deferred.resolve(me.user);
             } else {
-                // me.rest().get().then(function (resp) {
-                //     $rootScope.$broadcast('userEvent');
-                //     me.user = resp.data.identity;
-                //     deferred.resolve(me.user);
-                // });
+                me.rest().get().then(function (resp) {
+                    $rootScope.$broadcast('userEvent');
+                    me.user = {
+                        name : resp.data.name,
+                        email : resp.data.email
+                    };
+                    console.log(me.user);
+
+                    deferred.resolve(me.user);
+                });
                 deferred.resolve(me.user);
             }
-
+            
             return deferred.promise;
         };
 

@@ -3,10 +3,10 @@
 
     angular
         .module('app.pages', [
-            'app.pages.main',
+            'app.pages.main'
             // 'app.pages.cart',
             // 'app.pages.media',
-            'app.pages.clients'
+            // 'app.pages.clients'
             // 'app.pages.projects',
             // 'app.pages.apps',
             // 'app.pages.company',
