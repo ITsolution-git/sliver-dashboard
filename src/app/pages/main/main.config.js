@@ -111,7 +111,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/reset/{auth_key}',
+                url: '/reset/{token}',
                 parent: 'blank',
                 views: {
                     content: {

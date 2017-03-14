@@ -11,9 +11,9 @@
         // --- vars ---
 
         $scope.reset = {
-            new_passw: ''
+            new_password: ''
         };
-        $scope.auth_key = $stateParams.auth_key;
+        $scope.token = $stateParams.token;
 
 
         $scope.errors = {};
@@ -21,11 +21,11 @@
         // --- methods ---
 
         $scope.submit = function () {
-            if($scope.reset.new_passw == ''){
-                $scope.errors = {'new_passw':['New Password are empty!']};
+            if($scope.reset.new_password == ''){
+                $scope.errors = {'new_password':['New Password are empty!']};
             }else {
-                userService.setPassword($scope.reset,$scope.auth_key).then(function (response) {
-                    if(response.data[0].success && !response.data[0].errors){
+                userService.setPassword($scope.reset,$scope.token).then(function (response) {
+                    if(response.data._id){
                         $state.go('login');
                         toaster.pop({type: 'success', body: "Password has been saved!"});
                     }else{
@@ -39,14 +39,14 @@
 
 
         // --- init ---
-        userService.check($scope.auth_key).then(function(response){
-            if(!response.data[0].result){
-                $state.go('login');
-            }
-        });
-        if (!$scope.auth_key) {
-            $state.go('login');
-        }
+        // userService.check($scope.auth_key).then(function(response){
+        //     if(!response.data[0].result){
+        //         $state.go('login');
+        //     }
+        // });
+        // if (!$scope.auth_key) {
+        //     $state.go('login');
+        // }
 
         pageService.reset().addCrumb({name: 'Reset Password', path: 'reset_password'});
 
