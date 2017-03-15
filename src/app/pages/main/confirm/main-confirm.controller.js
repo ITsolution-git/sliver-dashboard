@@ -45,14 +45,14 @@
         };
 
         // --- init ---
-        userService.check($scope.auth_key).then(function(response){
-            if(!response.data.result){
-                $state.go('login');
-            }
-        });
-        if (!$scope.auth_key) {
-            $state.go('login');
-        }
+        // userService.check($scope.auth_key).then(function(response){
+        //     if(!response.data.result){
+        //         $state.go('login');
+        //     }
+        // });
+        // if (!$scope.auth_key) {
+        //     $state.go('login');
+        // }
         pageService.reset().addCrumb({name: 'Create Password', path: 'confirm'});
 
     }

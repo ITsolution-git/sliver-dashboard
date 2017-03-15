@@ -21,17 +21,19 @@
         };
 
         $scope.submit = function () {
-            userService.reset($scope.email).then(
-                function (response) {
-                    if (response.data[0].result) {
-                        toaster.pop({type: 'success', body: "Confirm email was sent!"});
+            userService.reset($scope.email)
+                .then(
+                    function (response) {
+                        if (response.data[0].result) {
+                            toaster.pop({type: 'success', body: "Confirm email was sent!"});
+                        }
+                        $scope.errors = response.data[0].errors;
+                        console.log('empty errors => ' + $scope.errors);
                     }
-                    $scope.errors = response.data[0].errors;
-                    console.log('empty errors => ' + $scope.errors);
-                }, function () {
+                )
+                .catch(function(err) {
                     toaster.pop({type: 'error', body: "User is not found!"});
-                }
-            );
+                });
         };
 
         // --- init ---

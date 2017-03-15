@@ -19,21 +19,20 @@
         // --- methods ---
 
         $scope.submit = function () {
-            $auth.login($scope.login).then(
-                function (response) {
-                    if (response.data.token) {
+            $auth.login($scope.login)
+                .then(
+                    function (response) {
                         toaster.pop({type: 'success', body: "Welcome!"});
 
                         // update user data
                         userService.loadUser(true).then(function () {
                             $state.go('home');
                         });
-                    } else {
-                        toaster.pop({type: 'error', body: response.data.errors ? response.data.errors : 'Whoops, your password or email are incorrect'});
                     }
-                    $scope.errors = response.data.errors;
-                }
-            );
+                )
+                .catch(function(err) {
+                    toaster.pop({type: 'error', body: err.data.message ? err.data.message : 'Whoops, your password or email are incorrect'});
+                });
         };
 
         // $scope.authenticate = function(provider) {
