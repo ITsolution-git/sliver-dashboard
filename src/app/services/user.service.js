@@ -48,10 +48,10 @@
         };
 
         me.check = function (token) {
-            return apiService.rest.all('auth').all('check').getList({'access-token': token})
+            return apiService.rest.all('auth').all('check').getList({'access-token': token});
         };
         me.reset = function (email) {
-            return apiService.rest.all('auth').all('reset').getList({'email': email})
+            return apiService.rest.one('auth').one('reset').get({'email': email});
         };
 
         me.getData = function (field) {
