@@ -21,7 +21,9 @@
                 "exp_month": 12,
                 "exp_year": 2018,
                 "cvc": '123'
-            }
+            },
+            planId: "58e4d8006b2eaf44403a6e50",
+            buildId: '58e4d8d0bb228a457f85074f'
         };
         
         $scope.errors = {};

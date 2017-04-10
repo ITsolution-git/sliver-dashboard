@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="row">
+        <header class="container">
+            <div class="col-md-12">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <a ui-sref="signup.step2">leave</a>
+            </div>
+            <div class="header-contents">
+                <div class="col-md-3 header-logo">
+                    <a href=""><img src="../images/logo.png" alt="logo"></a>
+                </div>
+                <div class="col-md-6 header-caption">
+                    <h1>set up your account</h1>
+                </div>
+                <div class="col-md-3 header-step">
+                    <div>
+                        <span>Step</span>
+                        <div class="oval">
+                            <span>1</span>
+                        </div>
+                        <div class="oval">
+                            <span>2</span>
+                        </div>
+                        <div class="oval oval-active">
+                            <span>3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <article class="container">
+            <div class="row registration">
+                <div class="col-md-offset-1 col-md-3 registration-sidebar">
+                    <div class="promo-sidebar">
+                        <div class="registration-sidebar-header">
+                            <h3 class="text-center">promo code</h3>
+                        </div>
+                        <div class="registration-sidebar-content">
+                            <div class="text-center">
+                                <md-input-container >
+                                    <label>Title</label>
+                                    <input>
+                                </md-input-container>
+                                <md-button md-no-ink class="md-primary">apply</md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-sidebar">
+                        <div class="registration-sidebar-header">
+                            <h3 class="text-center">payment summary</h3>
+                        </div>
+                        <div class="registration-sidebar-content">
+                            <div class="payment-content">
+                                <p>today's payment</p>
+                                <hr>
+                                <!--<div>-->
+                                    <p class="leftstr">monthlySLAP</p>
+                                    <p class="rightstr">$300</p>
+                                    <p class="leftstr">SLAPbuild</p>
+                                    <p class="rightstr">$2500</p>
+                                    <div style="clear: left"></div>
+                                    <p class="text-center">today's total $2800</p>
+                                <!--</div>-->
+                            </div>
+                            <div class="payment-content">
+                                <p>monthly payment</p>
+                                <hr>
+                                <!--<div>-->
+                                <p class="leftstr">monthlySLAP</p>
+                                <p class="rightstr">$200</p>
+                                <p class="leftstr">SLAPbuild</p>
+                                <p class="rightstr">-</p>
+                                <div style="clear: left"></div>
+                                <p class="text-center">monthly total $300</p>
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 registration-content">
+                    <form name="">
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>Name</label>
+                                <input ng-model="user.name" type="text">
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <label>Last Name</label>
+                                <input ng-model="user.lastName" type="text">
+                            </md-input-container>
+                        </div>
+                        <md-input-container class="md-block">
+                            <label>Business Name</label>
+                            <input type="text" ng-model="user.businessName">
+                        </md-input-container>
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>Email</label>
+                                <input ng-model="user.email" type="text">
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <label>Phone Number</label>
+                                <input ng-model="user.phone" type="text">
+                            </md-input-container>
+                        </div>
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>Password</label>
+                                <input ng-model="user.name" type="text">
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <label>Confirm Password</label>
+                                <input ng-model="user.lastName" type="text">
+                            </md-input-container>
+                        </div>
+                        <h3>payment info</h3>
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>Credit Card Number</label>
+                                <input ng-model="user.name" type="text">
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <label>Expiration Date</label>
+                                <input ng-model="user.lastName" type="text">
+                            </md-input-container>
+                        </div>
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>Security Code</label>
+                                <input ng-model="user.name" type="text">
+                            </md-input-container>
+                            <md-input-container flex="50">
+                                <label>Billing Address</label>
+                                <input ng-model="user.lastName" type="text">
+                            </md-input-container>
+                        </div>
+                        <md-input-container class="md-block">
+                            <md-checkbox>
+                                I agree with <span class="text-main-color">Terms and Conditions</span>
+                            </md-checkbox>
+                        </md-input-container>
+                    </form>
+                </div>
+            </div>
+        </article>
+        <div class="row">
+            <div class="next-bottom">
+                <div class="col-md-12 finish">
+                    <a ui-sref="signup.step3">Finish</a>
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

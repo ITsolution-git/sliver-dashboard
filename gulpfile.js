@@ -131,7 +131,9 @@ gulp.task('html', function () {
 
 gulp.task('css', function () {
     return gulp.src(path.src.css + '/style.less')
+        // .pipe(sourcemaps.init())
         .pipe(less())
+        // .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.dest.css));
 });
 

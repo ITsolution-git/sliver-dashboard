@@ -10,6 +10,8 @@
                 'ngRoute',
                 'ngAnimate',
                 'ngSanitize',
+                'ngMaterial',
+                'ngAria',
 
                 'angular-loading-bar',
                 'restangular',

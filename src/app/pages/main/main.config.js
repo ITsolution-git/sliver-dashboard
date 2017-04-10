@@ -56,17 +56,31 @@
                 }
             })
             .state('signup', {
+                abstract: true,
                 data: {
                     access: '?'
                 },
-                url: '/signup?invite&email&refer',
+                url: '/signup',
                 parent: 'blank',
                 views: {
                     content: {
-                        controller: 'MainRegistrationController',
-                        templateUrl: 'pages/main/registration/main-registration.html'
+                        // controller: 'MainRegistrationController',
+                        // templateUrl: 'pages/main/registration/main-registration.html'
+                        template: '<ui-view/>'
                     }
                 }
+            })
+            .state('signup.step1', {
+                url: '',
+                templateUrl: 'pages/main/registration/main-registration.html'
+            })
+            .state('signup.step2', {
+                url: '/step2',
+                templateUrl: 'pages/main/registration/registration-step2.html'
+            })
+            .state('signup.step3', {
+                url: '/step3',
+                templateUrl: 'pages/main/registration/registration-step3.html'
             })
             .state('profile', {
                 data: {
