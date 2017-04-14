@@ -28,6 +28,7 @@
             if(productStorage.getBuild() && productStorage.getBuild()._id == build._id) {
                 $(event.target).closest('.rectangle').removeClass('rectangle-active');
                 productStorage.setBuild(null);
+                vm.active = null;
                 return;
             }
 

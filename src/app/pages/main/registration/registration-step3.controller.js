@@ -40,6 +40,7 @@
                             vm.user.auth_key = response.data._id;
                             // toaster.pop({type: 'success', body: "Confirmation email was sent! Run to your inbox to check it out"});
                             toaster.pop({type: 'success', body: "Registered. Enter your login and password to enter the site"});
+                            productStorage.resetStorage();
                             $state.go('login');
                         }
                         // $scope.errors = response.data.errors;

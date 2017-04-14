@@ -25,6 +25,11 @@
             _build = build;
         };
 
+        this.resetStorage = function() {
+            _build = null;
+            _plan = null;
+        };
+
         /**
          * Calculate the total cost build
          *
