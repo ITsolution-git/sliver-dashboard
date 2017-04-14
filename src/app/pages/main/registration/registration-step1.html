@@ -1,0 +1,131 @@
+<!--<div class="container m-t-xs-50">-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12 col-md-4 col-md-offset-4">-->
+
+<!--<form ng-disabled="lock.state" id="signup-form">-->
+<!--<div class="panel panel-default animated fadeInDown">-->
+
+<!--<div class="panel-body" >-->
+<!--<h3>Sign up</h3>-->
+<!--<hr/>-->
+
+<!--<div class="form-group" ng-class="{'has-error':errors.name}">-->
+<!--<input type="text" ng-model="signup.name" class="form-control" name="name"-->
+<!--placeholder="Name">-->
+<!--<div class="help-block help-block-error" ng-show="errors.name"-->
+<!--ng-bind-html="errors.name | joinBr"></div>-->
+<!--</div>-->
+<!--<div class="form-group" ng-class="{'has-error':errors.email}">-->
+<!--<input type="text" ng-model="signup.email" class="form-control"-->
+<!--name="email"-->
+<!--placeholder="Email">-->
+<!--<div class="help-block help-block-error" ng-show="errors.email"-->
+<!--ng-bind-html="errors.email | joinBr"></div>-->
+<!--</div>-->
+
+<!--<div class="form-group" ng-class="{'has-error':errors.password}">-->
+<!--<input type="password" ng-model="signup.password" class="form-control" name="password"-->
+<!--placeholder="Password">-->
+<!--<div class="help-block help-block-error" ng-show="errors.password"-->
+<!--ng-bind-html="errors.password | joinBr"></div>-->
+<!--</div>-->
+<!--<div  class="form-group" ng-class="{'has-error':errors.confirmPassword}">-->
+<!--<input type="password" ng-model="signup.confirmPassword" class="form-control"-->
+<!--name="confirmPassword"-->
+<!--placeholder="Confirmation Password">-->
+<!--<div class="help-block help-block-error" ng-show="errors.confirmPassword"-->
+<!--ng-bind-html="errors.confirmPassword | joinBr"></div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<div class="text-center" ng-if="!signHide">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>Thanks! We sent you an email with a confirmation link to complete your registration.</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--<hr>-->
+
+<!--<div  class="text-center">-->
+<!--<button ng-disabled="lock.state" type="submit" ng-click="submit()" class="btn btn-primary btn-fullwidth">-->
+<!--Sign up-->
+<!--</button>-->
+<!--</div>-->
+
+
+<!--</div>-->
+
+<!--</div>-->
+<!--</form>-->
+
+<!--<p class="text-center">-->
+<!--<a ui-sref="login" class="text-white">Already have an account? Sign in!</a>-->
+<!--</p>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="container">
+    <div class="row">
+        <header class="container">
+            <div class="col-md-12">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <a ui-sref="login">leave</a>
+            </div>
+            <div class="header-contents">
+                <div class="col-md-3 header-logo">
+                    <a ui-sref="login"><img src="../images/logo.png" alt="logo"></a>
+                </div>
+                <div class="col-md-6 header-caption">
+                    <h1>choose your program</h1>
+                </div>
+                <div class="col-md-3 header-step">
+                    <div>
+                        <span>Step</span>
+                        <div class="oval oval-active">
+                            <span>1</span>
+                        </div>
+                        <div class="oval">
+                            <span>2</span>
+                        </div>
+                        <div class="oval">
+                            <span>3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <article class="container plan">
+            <div class="row">
+                <div class="col-md-2" ng-repeat="plan in vm.plans" ng-click="vm.choosePlan(plan,$event)">
+                    <div class="rectangle" ng-class="{'rectangle-active': plan._id == vm.plan._id}">
+                        <div class="rectangle-header">
+                            <h3>{{ plan.productName }}</h3>
+                        </div>
+                        <div class="rectangle-content">
+                            <div class="amount-plan">
+                                <span>{{ plan.costProduct }}</span>
+                            </div>
+                            <p class="text-center">per month</p>
+                            <ul class="plan-list" ng-if="plan._id == vm.plans[0]._id">
+                                <li>SLAPcenter</li>
+                                <li>SLAPassistant</li>
+                                <li>SLAPschool</li>
+                                <li>SLAPworld</li>
+                            </ul>
+                            <p class="plan-self text-center" ng-if="plan._id != vm.plans[0]._id">selfSLAP</p>
+                            <div class="plan-group" ng-if="plan._id != vm.plans[0]._id">
+                                <p class="text-center">1 Group Call Per Month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+        <div class="container next-bottom">
+            <div class="col-md-12">
+                <a ui-sref="step2" ng-click="vm.nextStep($event)">Next</a>
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</div>

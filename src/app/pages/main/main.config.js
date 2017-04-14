@@ -57,9 +57,6 @@
             })
             .state('signup', {
                 abstract: true,
-                data: {
-                    access: '?'
-                },
                 url: '/signup',
                 parent: 'blank',
                 views: {
@@ -70,16 +67,31 @@
                     }
                 }
             })
-            .state('signup.step1', {
+            .state('step1', {
+                data: {
+                    access: '?'
+                },
                 url: '',
-                templateUrl: 'pages/main/registration/main-registration.html'
+                parent: 'signup',
+                controller: 'RegistrationStep1Controller as vm',
+                templateUrl: 'pages/main/registration/registration-step1.html'
             })
-            .state('signup.step2', {
+            .state('step2', {
+                data: {
+                    access: '?'
+                },
                 url: '/step2',
+                parent: 'signup',
+                controller: 'RegistrationStep2Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step2.html'
             })
-            .state('signup.step3', {
+            .state('step3', {
+                data: {
+                    access: '?'
+                },
                 url: '/step3',
+                parent: 'signup',
+                controller: 'RegistrationStep3Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step3.html'
             })
             .state('profile', {

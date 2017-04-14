@@ -3,7 +3,7 @@
         <header class="container">
             <div class="col-md-12">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                <a ui-sref="signup.step2">leave</a>
+                <a ui-sref="step2">leave</a>
             </div>
             <div class="header-contents">
                 <div class="col-md-3 header-logo">
@@ -19,7 +19,7 @@
                             <span>1</span>
                         </div>
                         <div class="oval">
-                            <span>2</span>
+                            <a ui-sref="step2"><span>2</span></a>
                         </div>
                         <div class="oval oval-active">
                             <span>3</span>
@@ -38,7 +38,7 @@
                         <div class="registration-sidebar-content">
                             <div class="text-center">
                                 <md-input-container >
-                                    <label>Title</label>
+                                    <label>Enter Promo Code</label>
                                     <input>
                                 </md-input-container>
                                 <md-button md-no-ink class="md-primary">apply</md-button>
@@ -55,11 +55,12 @@
                                 <hr>
                                 <!--<div>-->
                                     <p class="leftstr">monthlySLAP</p>
-                                    <p class="rightstr">$300</p>
+                                    <p class="rightstr">{{ vm.plan.costProduct }}</p>
                                     <p class="leftstr">SLAPbuild</p>
-                                    <p class="rightstr">$2500</p>
+                                    <p class="rightstr" ng-show="vm.build">{{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment }}</p>
+                                    <p class="rightstr" ng-hide="vm.build">-</p>
                                     <div style="clear: left"></div>
-                                    <p class="text-center">today's total $2800</p>
+                                    <p class="text-center">today's total {{ vm.calculateTodayPayment }}</p>
                                 <!--</div>-->
                             </div>
                             <div class="payment-content">
@@ -67,77 +68,222 @@
                                 <hr>
                                 <!--<div>-->
                                 <p class="leftstr">monthlySLAP</p>
-                                <p class="rightstr">$200</p>
+                                <p class="rightstr">{{ vm.plan.costProduct }}</p>
                                 <p class="leftstr">SLAPbuild</p>
-                                <p class="rightstr">-</p>
+                                <p class="rightstr">{{vm.build.buildType == 1 ? vm.build.costProduct : '-' }}</p>
                                 <div style="clear: left"></div>
-                                <p class="text-center">monthly total $300</p>
+                                <p class="text-center">monthly total {{ vm.calculateMonthlyPayment }}</p>
                                 <!--</div>-->
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-7 registration-content">
-                    <form name="">
+                    <form name="registerForm">
                         <div layout="row">
-                            <md-input-container flex="50">
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Name</label>-->
+                                <!--<input ng-model="vm.user.name" type="text">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Name</label>
-                                <input ng-model="user.name" type="text">
+                                <input md-maxlength="30" required name="name" ng-model="vm.user.name" />
+
+                                <div ng-messages="registerForm.name.$error" ng-hide="registerForm.name.$valid">
+                                    <div ng-message-exp="['required', 'maxlength']">
+
+                                    </div>
+                                </div>
+
                             </md-input-container>
-                            <md-input-container flex="50">
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Last Name</label>-->
+                                <!--<input ng-model="vm.user.lastName" type="text">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Last Name</label>
-                                <input ng-model="user.lastName" type="text">
+                                <input md-maxlength="30" required name="lastName" ng-model="vm.user.lastName" />
+
+                                <div ng-messages="registerForm.lastName.$error" ng-hide="registerForm.lastName.$valid">
+                                    <div ng-message-exp="['required', 'maxlength']">
+
+                                    </div>
+                                </div>
                             </md-input-container>
                         </div>
+                        <!--<md-input-container class="md-block">-->
+                            <!--<label>Business Name</label>-->
+                            <!--<input ng-model="vm.user.businessName" type="text" >-->
+                        <!--</md-input-container>-->
+
                         <md-input-container class="md-block">
                             <label>Business Name</label>
-                            <input type="text" ng-model="user.businessName">
+                            <input required name="businessName" ng-model="vm.user.businessName" />
+
+                            <div ng-messages="registerForm.businessName.$error" ng-hide="registerForm.businessName.$valid">
+                                <div ng-message-exp="['required', 'maxlength']">
+
+                                </div>
+                            </div>
                         </md-input-container>
+
                         <div layout="row">
-                            <md-input-container flex="50">
+                            <md-input-container class="md-block" flex="50">
                                 <label>Email</label>
-                                <input ng-model="user.email" type="text">
+                                <input name="email" ng-model="vm.user.email"
+                                       required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                                <div ng-messages="registerForm.email.$error" ng-hide="registerForm.email.$valid">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                        Only letters and numbers are allowed (a-z,A-Z)
+                                    </div>
+                                </div>
                             </md-input-container>
-                            <md-input-container flex="50">
+
+
+                            <!--<md-input-container class="md-block">-->
+                                <!--<label>Email</label>-->
+                                <!--<input required type="email" name="email" ng-model="vm.user.email"-->
+                                       <!--minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />-->
+
+                                <!--<div ng-messages="registerForm.email.$error" role="alert">-->
+                                    <!--<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">-->
+                                        <!--Your email must be between 10 and 100 characters long and look like an e-mail address.-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</md-input-container>-->
+
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Phone Number</label>-->
+                                <!--<input ng-model="vm.user.phone" type="text">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Phone Number</label>
-                                <input ng-model="user.phone" type="text">
+                                <input name="phone" required ng-model="vm.user.phone"  />
+
+
+                                <div ng-messages="registerForm.phone.$error" ng-hide="registerForm.phone.$valid">
+                                    <div ng-message-exp="['required']">
+                                        Your phone number
+                                    </div>
+                                </div>
                             </md-input-container>
                         </div>
                         <div layout="row">
-                            <md-input-container flex="50">
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Password</label>-->
+                                <!--<input ng-model="vm.user.password" type="password">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Password</label>
-                                <input ng-model="user.name" type="text">
+                                <input required type="password" name="password" ng-model="vm.user.password"
+                                       minlength="6" md-maxlength="30" />
+
+                                <div ng-messages="registerForm.password.$error" role="alert" ng-hide="registerForm.password.$valid">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        Password should be at least 6 until 30 characters
+                                    </div>
+                                </div>
                             </md-input-container>
-                            <md-input-container flex="50">
+
+
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Confirm Password</label>-->
+                                <!--<input ng-model="vm.user.confirmPassword"  type="password">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Confirm Password</label>
-                                <input ng-model="user.lastName" type="text">
+                                <input required type="password" name="confirm" ng-model="vm.user.confirmPassword"
+                                       minlength="6" md-maxlength="30" pass-compare="vm.user.password"/>
+
+                                <div ng-messages="registerForm.confirm.$error" role="alert" ng-hide="registerForm.confirm.$valid">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        Passwords are not the same
+                                    </div>
+                                </div>
                             </md-input-container>
                         </div>
                         <h3>payment info</h3>
                         <div layout="row">
-                            <md-input-container flex="50">
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Credit Card Number</label>-->
+                                <!--<input ng-model="vm.user.card.number" type="text">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Credit Card Number</label>
-                                <input ng-model="user.name" type="text">
+                                <input name="creditCard" required ng-model="vm.user.card.number" ng-pattern="/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/" />
+
+                                <div class="hint" ng-show="registerForm.creditCard.$invalid && registerForm.creditCard.$dirty">####-####-####-####</div>
+
+                                <div ng-messages="registerForm.creditCard.$error" ng-hide="registerForm.creditCard.$valid">
+                                    <div ng-message-exp="['required', 'pattern']">
+                                        Enter a valid credit card number
+                                    </div>
+                                </div>
                             </md-input-container>
-                            <md-input-container flex="50">
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Expiration Date</label>-->
+                                <!--<input ng-model="vm.user.card.exp_date"  type="text">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Expiration Date</label>
-                                <input ng-model="user.lastName" type="text">
+                                <input name="expDate" required ng-model="vm.user.card.date" ng-pattern="/^[0-9]{2}[/][0-9]{4}$/" />
+
+                                <div class="hint" ng-show="registerForm.expDate.$invalid && registerForm.expDate.$dirty">##/####</div>
+
+                                <div ng-messages="registerForm.expDate.$error" ng-hide="registerForm.expDate.$valid">
+                                    <div ng-message-exp="['required', 'pattern']">
+                                        Enter a valid expiration date
+                                    </div>
+                                </div>
                             </md-input-container>
                         </div>
                         <div layout="row">
-                            <md-input-container flex="50">
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Security Code</label>-->
+                                <!--<input ng-model="vm.user.card.cvc"  type="text">-->
+                            <!--</md-input-container>-->
+
+                            <md-input-container class="md-block" flex="50">
                                 <label>Security Code</label>
-                                <input ng-model="user.name" type="text">
+                                <input name="cvc" required ng-model="vm.user.card.cvc" type="password" ng-pattern="/^[0-9]{3}$/" md-maxlength="3"/>
+
+                                <div ng-messages="registerForm.cvc.$error" ng-hide="registerForm.cvc.$valid">
+                                    <div ng-message-exp="['required', 'pattern']">
+                                        Enter a valid security code (CVV)
+                                    </div>
+                                </div>
                             </md-input-container>
-                            <md-input-container flex="50">
+
+                            <!--<md-input-container flex="50">-->
+                                <!--<label>Billing Address</label>-->
+                                <!--<input ng-model="vm.user.card.index"  type="text">-->
+                            <!--</md-input-container>-->
+                            <md-input-container class="md-block" flex="50">
                                 <label>Billing Address</label>
-                                <input ng-model="user.lastName" type="text">
+                                <input name="address" required ng-model="vm.user.billingAddress" ng-pattern="/^[0-9]{5}$/" md-maxlength="5"/>
+
+                                <div ng-messages="registerForm.address.$error" ng-hide="registerForm.address.$valid">
+                                    <div ng-message-exp="['required', 'pattern']">
+                                        Enter a valid billing address (ZIP code)
+                                    </div>
+                                </div>
                             </md-input-container>
                         </div>
+                        <!--<md-input-container class="md-block">-->
+                            <!--<md-checkbox ng-model="vm.user.check">-->
+                                <!--I agree with <span class="text-main-color">Terms and Conditions</span>-->
+                            <!--</md-checkbox>-->
+                        <!--</md-input-container>-->
                         <md-input-container class="md-block">
-                            <md-checkbox>
+                            <md-checkbox name="tos" ng-model="vm.user.check" required>
                                 I agree with <span class="text-main-color">Terms and Conditions</span>
                             </md-checkbox>
+                            <div ng-messages="registerForm.tos.$error" ng-hide="registerForm.tos.$modelValue">
+                                <div ng-message="required">
+                                    You must accept the terms of service before you can proceed.
+                                </div>
+                            </div>
                         </md-input-container>
                     </form>
                 </div>
@@ -146,7 +292,7 @@
         <div class="row">
             <div class="next-bottom">
                 <div class="col-md-12 finish">
-                    <a ui-sref="signup.step3">Finish</a>
+                    <a href="#" ng-click="vm.signup($event, registerForm)">Finish</a>
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </div>
             </div>

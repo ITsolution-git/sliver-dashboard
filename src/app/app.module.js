@@ -26,6 +26,7 @@
 
                 'app.services',
                 'app.filters',
+                'app.components',
                 'app.directives',
                 'app.pages'
             ]
