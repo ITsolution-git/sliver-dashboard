@@ -1,0 +1,80 @@
+<div class="container welcome-container">
+    <div class="row row-flex">
+        <div class="col-md-5 sidebar-welcome">
+            <div class="sidebar-welcome-logo">
+                <a ui-sref="home"><img src="../images/logo.png" alt=""></a>
+            </div>
+            <div class="welcome">
+                <h2>Welcome to <br> the SLAPworld</h2>
+                    <p>You have more than you think. <br>
+                        Let’s find it. </p>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="content-welcome">
+                <h2>YES! Time to start SLAPn!</h2>
+                <hr>
+                <p>Your payment details are in your email!</p>
+                <hr>
+                <p class="choose-time">Choose a time to meet your SLAPassistant,<br> then start exploring SLAPcenter!</p>
+
+                <div class="welcome-block">
+                    <div class="caption">
+                        <div class="oval oval-active">
+                            <span>1</span>
+                        </div>
+                        <p>Meet your SLAPassistant</p>
+                    </div>
+                    <p>Your SLAPassistant is your cheerleader, your accountability and your guide.<br> First, they will get you set up! Find a time to meet!</p>
+                    <div class="welcome-calendar">
+                        <div class="col-xs-5">
+                            <div uib-datepicker ng-model="dt" datepicker-options="options"></div>
+                        </div>
+                        <div class="time-checkbox col-xs-7">
+                            <h4>Availability on {{ dt | date:'EEE,MMM,dd'}}</h4>
+                            <div class="col-xs-3 ">
+                                <div ng-repeat="t in ['12:30','01:00','01:30','02:00','02:30']">
+                                    <input type="checkbox" id="time' + {{ t }} + '">
+                                    <label for="time' + {{ t }} + '">{{ t }} pm</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div ng-repeat="t in ['03:00','03:30','04:00','04:30','06:00']">
+                                    <input type="checkbox" id="time' + {{ t }} + '">
+                                    <label for="time' + {{ t }} + '">{{ t }} pm</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div ng-repeat="t in ['06:30','07:00','07:30','08:00','08:30']">
+                                    <input type="checkbox" id="time' + {{ t }} + '">
+                                    <label for="time' + {{ t }} + '">{{ t }} pm</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div>
+                                    <input type="checkbox" id="time">
+                                    <label for="time">09:00 pm</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom bottom-blue">
+                        <a href="">CONFIRM THIS TIME</a>
+                    </div>
+                </div>
+                <div class="welcome-block">
+                    <div class="caption">
+                        <div class="oval oval-active">
+                            <span>2</span>
+                        </div>
+                        <p>Explore SLAPcenter </p>
+                    </div>
+                    <p>Note down any questions that come up while you explore and your <br> SLAPassistant will answer them when you meet!</p>
+                    <div class="bottom bottom-grey">
+                        <a ui-sref="home">GO TO SLAPCENTER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

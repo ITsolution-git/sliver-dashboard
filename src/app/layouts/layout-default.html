@@ -1,56 +1,58 @@
-<div sidebar id="sidebar-wrapper" class="sidebar-hide-lpanel" ng-class="sidebarHide" sidebar-device-type="desktop">
+<!--<div sidebar id="sidebar-wrapper" class="sidebar-hide-lpanel" ng-class="sidebarHide" sidebar-device-type="desktop" ng-hide="pages == 'welcome'">-->
 
-    <header id="sidebar-header" sidebar-lpanel-effect="shrink">
-        <div class="sidebar-left-header">
-            <a ui-sref="home">
-                <div class="site-logo">
-                    <img ng-src="{{logo}}">
-                </div>
-            </a>
-            <span class="sidebar-toggle"><a href="javascript:void(0)" ng-click="sidebarHideOff()"></a></span>
-        </div>
-        <div class="sidebar-right-header" sidebar-position-type="relative">
-            <button class="btn btn-danger" ng-click="logout()">Logout</button>
-            <!--<span class="sidebar-toggle"><a href="javascript:void(0)"></a></span>-->
-        </div>
-    </header>
+    <!--<header id="sidebar-header" sidebar-lpanel-effect="shrink">-->
+        <!--<div class="sidebar-left-header">-->
+            <!--<a ui-sref="home">-->
+                <!--<div class="site-logo">-->
+                    <!--<img ng-src="{{logo}}">-->
+                <!--</div>-->
+            <!--</a>-->
+            <!--<span class="sidebar-toggle"><a href="javascript:void(0)" ng-click="sidebarHideOff()"></a></span>-->
+        <!--</div>-->
+        <!--<div class="sidebar-right-header" sidebar-position-type="relative">-->
+            <!--<button class="btn btn-danger" ng-click="logout()">Logout</button>-->
+            <!--&lt;!&ndash;<span class="sidebar-toggle"><a href="javascript:void(0)"></a></span>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</header>-->
 
-    <div id="sidebar-container" sidebar-lpanel-effect="shrink">
-        <aside id="sidebar-left-panel" sidebar-position-type="absolute">
-            <ul class="nav panel-list" >
-                <li ui-sref-active="active">
-                    <a ui-sref="home">
-                        <i class="fa fa-dashboard fa-fw"></i>
-                        <span class="menu-text">Dashboard</span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
+    <!--<div id="sidebar-container" sidebar-lpanel-effect="shrink">-->
+        <!--<aside id="sidebar-left-panel" sidebar-position-type="absolute">-->
+            <!--<ul class="nav panel-list" >-->
+                <!--<li ui-sref-active="active">-->
+                    <!--<a ui-sref="home">-->
+                        <!--<i class="fa fa-dashboard fa-fw"></i>-->
+                        <!--<span class="menu-text">Dashboard</span>-->
+                        <!--<span class="selected"></span>-->
+                    <!--</a>-->
+                <!--</li>-->
 
-                <li ui-sref-active="active" class="sidebar-has-menu">
-                    <a href="javascript:void(0)">
-                        <i class="fa fa-cogs fa-fw"></i>
-                        <span class="menu-text">Settings</span>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sidebar-sub-menu">
-                        <li ui-sref-active="active">
-                            <a ui-sref="settings.account">
-                                <span class="menu-text">
-                                    <i class="fa fa-male fa-fw"></i> Account Settings
-                                </span>
-                                <span class="selected"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li ui-sref-active="active" class="sidebar-has-menu">
-                    <hr/>
-                    <div class="sidebar-state">
-                        <div ng-bind-html="message"></div>
-                    </div>
-                </li>
-            </ul>
-        </aside>
+                <!--<li ui-sref-active="active" class="sidebar-has-menu">-->
+                    <!--<a href="javascript:void(0)">-->
+                        <!--<i class="fa fa-cogs fa-fw"></i>-->
+                        <!--<span class="menu-text">Settings</span>-->
+                        <!--<span class="selected"></span>-->
+                    <!--</a>-->
+                    <!--<ul class="sidebar-sub-menu">-->
+                        <!--<li ui-sref-active="active">-->
+                            <!--<a ui-sref="settings.account">-->
+                                <!--<span class="menu-text">-->
+                                    <!--<i class="fa fa-male fa-fw"></i> Account Settings-->
+                                <!--</span>-->
+                                <!--<span class="selected"></span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li ui-sref-active="active" class="sidebar-has-menu">-->
+                    <!--<hr/>-->
+                    <!--<div class="sidebar-state">-->
+                        <!--<div ng-bind-html="message"></div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</aside>-->
 
-    </div>
-</div>
+    <!--</div>-->
+<!--</div>-->
+
+<div ui-view="content"></div>

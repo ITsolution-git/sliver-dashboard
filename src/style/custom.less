@@ -122,6 +122,7 @@ div.grid_wrapper:hover div.hover_item {
 
 /////////////////////////////////////////////////
 @main-blue-color : #0e7cb5;
+@main-black-color: #373c37;
 
 body {
   background-image: url(../images/background.jpg);
@@ -178,7 +179,7 @@ header > div:first-child{
       letter-spacing: -1.6px;
       text-align: center;
       text-transform: capitalize;
-      color: #373c37;
+      color: @main-black-color;
     }
   }
 
@@ -189,45 +190,43 @@ header > div:first-child{
 
     > div > span {
       margin-right: 10px;
-      //width: 29px;
-      //height: 24px;
       //font-family: .HelveticaNeueDeskInterface;
       font-size: 14px;
       line-height: 1.71;
       color: #576875;
     }
+  }
+}
 
-    .oval {
-      margin-right: 5px;
-      width: 32px;
-      height: 32px;
-      opacity: 0.5;
-      background-color: #ffffff;
-      border: solid 2px #ffffff;
-      border-radius: 50%;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+.oval {
+  margin-right: 5px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  background-color: #ffffff;
+  border: solid 2px #ffffff;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
-      > span {
-        width: 28px;
-        height: 16px;
-        opacity: 0.5;
-        //font-family: .HelveticaNeueDeskInterface;
-        font-size: 20px;
-        line-height: 0.8;
-        text-align: center;
-        color: #373c37;
-      }
-    }
+  > span {
+    width: 28px;
+    height: 16px;
+    opacity: 0.5;
+    //font-family: .HelveticaNeueDeskInterface;
+    font-size: 20px;
+    line-height: 0.8;
+    text-align: center;
+    color: @main-black-color;
+  }
+}
 
-    .oval-active {
-      border: solid 2px black;
+.oval-active {
+  border: solid 2px black;
 
-      > span {
-        color: black;
-      }
-    }
+  > span {
+    color: black;
   }
 }
 
@@ -291,7 +290,7 @@ header > div:first-child{
           height: 29px;
           font-size: 24px;
           letter-spacing: -0.7px;
-          color: #373c37;
+          color: @main-black-color;
           position: absolute;
           top: 10px;
           left: -10px;
@@ -324,7 +323,7 @@ header > div:first-child{
         content: '\f00c';
         width: 11.7px;
         height: 8.9px;
-        color: #373c37;
+        color: @main-black-color;
         font-size: 0.5em;
         margin-right: 20px;
 
@@ -345,7 +344,7 @@ header > div:first-child{
         //display: inline-block;
         font-size: 16px;
         line-height: 1.5;
-        color: #373c37;
+        color: @main-black-color;
         margin-bottom: 0;
       }
       &::before {
@@ -365,7 +364,7 @@ header > div:first-child{
       //font-family: .HelveticaNeueDeskInterface;
       font-size: 16px;
       line-height: 3;
-      color: #373c37;
+      color: @main-black-color;
       margin-top: 25px;
 
       > li {
@@ -376,7 +375,7 @@ header > div:first-child{
           content: '\f00c';
           width: 11.7px;
           height: 8.9px;
-          color: #373c37;
+          color: @main-black-color;
           font-size: 0.5em;
           margin-right: 20px;
         }
@@ -408,7 +407,7 @@ header > div:first-child{
         text-align: center;
         line-height: 24px;
         size: 16px;
-        color: #373c37;
+        color: @main-black-color;
       }
     }
   }
@@ -502,7 +501,7 @@ header > div:first-child{
           > p {
             font-size: 18px;
             line-height: 1.78;
-            color: #373c37;
+            color: @main-black-color;
             text-transform: capitalize;
           }
 
@@ -542,7 +541,7 @@ header > div:first-child{
       opacity: 0.5;
       font-size: 24px;
       line-height: 1.5;
-      color: #373c37;
+      color: @main-black-color;
     }
 
     md-input-container {
@@ -554,7 +553,7 @@ header > div:first-child{
         opacity: 0.5;
         font-size: 24px;
         line-height: 1.5;
-        color: #373c37;
+        color: @main-black-color;
       }
 
       .text-main-color {
@@ -612,6 +611,155 @@ header > div:first-child{
   }
 }
 
+.row-flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.welcome-container {
+  background-color: #ffffff;
+}
+
+.sidebar-welcome {
+  background-color: @main-blue-color;
+
+  .sidebar-welcome-logo {
+    margin: 105px 88px 0;
+
+    > img {
+      width: 100px;
+    }
+  }
+
+  .welcome {
+    margin-left: 88px;
+
+    h2 {
+      //font-family: .HelveticaNeueDeskInterface;
+      font-size: 56px;
+      letter-spacing: -1.6px;
+      color: #ffffff;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 24px;
+      line-height: 1.33;
+      color: #ffffff;
+    }
+  }
+}
+
+.content-welcome {
+  margin: 105px 0 0 72px;
+
+  h2 {
+    font-size: 32px;
+    line-height: 0.59;
+    letter-spacing: -0.6px;
+    color: @main-black-color;
+  }
+
+  > p:first-of-type {
+    font-family: .HelveticaNeueDeskInterface;
+    font-size: 18px;
+    line-height: 1.78;
+    color: #576875;
+
+    &::before {
+      font-family: FontAwesome;
+      content: '\f00c';
+      width: 11.7px;
+      height: 8.9px;
+      color: @main-black-color;
+      font-size: 0.5em;
+      margin-right: 20px;
+    }
+  }
+
+  .choose-time {
+    margin: 40px 0;
+    font-family: .HelveticaNeueDeskInterface;
+    font-size: 24px;
+    line-height: 1.33;
+    color: #576875;
+  }
+
+  .welcome-calendar {
+    //width: 768px;
+    height: 321px;
+    border: solid 1px lightgrey;
+
+    > div {
+      margin: 35px 0;
+    }
+
+    label {
+      color: rgba(55, 60, 55, 0.3);
+    }
+  }
+}
+
+.welcome-block {
+  margin-bottom: 50px;
+
+  .caption  > p {
+    display: inline;
+    font-family: .HelveticaNeueDeskInterface;
+    font-size: 24px;
+    line-height: 2;
+    letter-spacing: -0.5px;
+    color: #33444d;
+  }
+
+  .caption + p {
+    font-family: .HelveticaNeueDeskInterface;
+    font-size: 18px;
+    line-height: 1.78;
+    color: #576875;
+  }
+}
+
+.bottom {
+  margin: 25px 0;
+  width: 336px;
+  height: 64px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    font-family: .HelveticaNeueDeskInterface;
+    font-size: 16px;
+    line-height: 0.88;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+
+.bottom-blue {
+  background-color: @main-blue-color;
+}
+
+.bottom-grey {
+  background-color: rgba(55, 60, 55, 0.1);
+}
+
+.picker-calendar {
+
+}
+
+.time-checkbox {
+
+  .col-xs-3 {
+    padding: 0px;
+  }
+
+  .col-xs-3 > div {
+    display: inline-block;
+  }
+}
 
 
 

@@ -18,6 +18,8 @@
                 'satellizer',
                 'toaster',
                 'ui.router',
+                'ui.bootstrap',
+                'ui.mask',
                 'frapontillo.bootstrap-switch',
                 'mgcrea.ngStrap',
                 'ngTable',

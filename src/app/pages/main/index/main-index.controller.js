@@ -6,7 +6,8 @@
         .controller('MainIndexController', MainIndexController);
 
     /* @ngInject */
-    function MainIndexController($scope, pageService, toaster, dashboardService, NgTableParams, newsService, $state, $stateParams, paymentService) {
+    function MainIndexController($scope, pageService) {
+
 
         // --- vars ---
 

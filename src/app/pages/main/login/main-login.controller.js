@@ -26,7 +26,7 @@
 
                         // update user data
                         userService.loadUser(true).then(function () {
-                            $state.go('home');
+                            $state.go('welcome');
                         });
                     }
                 )

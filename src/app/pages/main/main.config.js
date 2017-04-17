@@ -94,16 +94,19 @@
                 controller: 'RegistrationStep3Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step3.html'
             })
-            .state('profile', {
+            .state('welcome', {
                 data: {
                     access: '@'
                 },
+                params: {
+                    param1: 'welcome'
+                },
                 parent: 'default',
-                url: '/profile',
+                url: '/welcome',
                 views: {
                     content: {
-                        controller: 'ClientsEditController',
-                        templateUrl: 'pages/clients/edit/client-edit.html'
+                        controller: 'WelcomeController',
+                        templateUrl: 'pages/main/welcome/welcome-index.html'
                     }
                 }
             })
