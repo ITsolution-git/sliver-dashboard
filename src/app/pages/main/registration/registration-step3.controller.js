@@ -6,7 +6,7 @@
         .controller('RegistrationStep3Controller', RegistrationStep3Controller);
 
     /* @ngInject */
-    function RegistrationStep3Controller($state,productStorage,toaster,$auth) {
+    function RegistrationStep3Controller($state,productStorage,toaster,$auth,couponService) {
         if(!productStorage.getPlan()) {
             $state.go('step1');
             return;
@@ -19,13 +19,21 @@
 
         vm.user = {
             planId: vm.plan._id,
-            buildId:  vm.build ? vm.build._id : null
+            buildId:  vm.build ? vm.build._id : null,
+            code: null
         };
+
+        vm.useCoupon = false;
 
         vm.calculateTodayPayment = productStorage.calculateTodayPayment();
         vm.calculateMonthlyPayment = productStorage.calculateMonthlyPayment();
 
-        vm.signup = function(event,form) {
+        vm.signup = signup;
+        vm.apply = apply;
+
+        //////////////////
+
+        function signup(event,form) {
             event.preventDefault();
 
             if(form.$invalid) {
@@ -48,6 +56,24 @@
                 )
                 .catch( function(err) {
                     toaster.pop({type: 'error', body: err.data.message ? err.data.message : err.data.errmsg });
+                });
+        }
+
+        function apply() {
+            if(vm.useCoupon) {
+                return;
+            }
+
+            couponService.validCoupon(vm.user.code,vm.plan._id)
+                .then(function(response) {
+                    productStorage.setCoupon(response.data);
+                    vm.calculateTodayPayment = productStorage.calculateTodayPayment();
+                    vm.calculateMonthlyPayment = productStorage.calculateMonthlyPayment();
+                    vm.useCoupon = true;
+                    toaster.pop({type:'success',body: 'Your promo code is valid and applied successfully'});
+                })
+                .catch(function(err) {
+                    toaster.pop({type:'error',body: err.data.message});
                 });
         }
     }

@@ -8,6 +8,7 @@
     function productStorage() {
         var _plan = null;
         var _build = null;
+        var _coupon = null;
 
         this.getPlan = function() {
             return _plan;
@@ -28,6 +29,11 @@
         this.resetStorage = function() {
             _build = null;
             _plan = null;
+            _coupon = null;
+        };
+
+        this.setCoupon = function(coupon) {
+            _coupon = coupon;
         };
 
         /**
@@ -46,6 +52,10 @@
          * @return {number}
          **/
         this.calculateTodayPayment = function() {
+            if(_coupon) {
+                this._calculateCoupon();
+            }
+
             if(_build) {
                 return _plan.costProduct + (_build.buildType == 2 ? _build.costProduct : _build.amountFirstPayment);
             }
@@ -63,6 +73,13 @@
             }
 
             return _plan.costProduct;
+        };
+
+        this._calculateCoupon = function() {
+            if(_coupon.typeCoupon) {
+                return _plan.costProduct = _plan.costProduct - (_plan.costProduct * _coupon.amount) / 100;
+            }
+            return _plan.costProduct = _plan.costProduct - _coupon.amount;
         }
 
     }

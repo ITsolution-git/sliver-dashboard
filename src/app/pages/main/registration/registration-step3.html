@@ -39,9 +39,9 @@
                             <div class="text-center">
                                 <md-input-container >
                                     <label>Enter Promo Code</label>
-                                    <input>
+                                    <input ng-model="vm.user.code">
                                 </md-input-container>
-                                <md-button md-no-ink class="md-primary">apply</md-button>
+                                <md-button md-no-ink class="md-primary" ng-click="vm.apply()" ng-disabled="!vm.user.code">apply</md-button>
                             </div>
                         </div>
                     </div>
@@ -81,44 +81,32 @@
                 <div class="col-md-7 registration-content">
                     <form name="registerForm">
                         <div layout="row">
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Name</label>-->
-                                <!--<input ng-model="vm.user.name" type="text">-->
-                            <!--</md-input-container>-->
                             <md-input-container class="md-block" flex="50">
                                 <label>Name</label>
                                 <input md-maxlength="30" required name="name" ng-model="vm.user.name" />
 
-                                <div ng-messages="registerForm.name.$error" ng-hide="registerForm.name.$valid">
-                                    <div ng-message-exp="['required', 'maxlength']">
+                                <!--<div ng-messages="registerForm.name.$error" ng-hide="registerForm.name.$valid">-->
+                                    <!--<div ng-message-exp="['required', 'maxlength']">-->
 
-                                    </div>
-                                </div>
-
+                                    <!--</div>-->
+                                <!--</div>-->
                             </md-input-container>
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Last Name</label>-->
-                                <!--<input ng-model="vm.user.lastName" type="text">-->
-                            <!--</md-input-container>-->
+
                             <md-input-container class="md-block" flex="50">
                                 <label>Last Name</label>
                                 <input md-maxlength="30" required name="lastName" ng-model="vm.user.lastName" />
 
-                                <div ng-messages="registerForm.lastName.$error" ng-hide="registerForm.lastName.$valid">
-                                    <div ng-message-exp="['required', 'maxlength']">
+                                <!--<div ng-messages="registerForm.lastName.$error" ng-hide="registerForm.lastName.$valid">-->
+                                    <!--<div ng-message-exp="['required', 'maxlength']">-->
 
-                                    </div>
-                                </div>
+                                    <!--</div>-->
+                                <!--</div>-->
                             </md-input-container>
                         </div>
-                        <!--<md-input-container class="md-block">-->
-                            <!--<label>Business Name</label>-->
-                            <!--<input ng-model="vm.user.businessName" type="text" >-->
-                        <!--</md-input-container>-->
 
                         <md-input-container class="md-block">
-                            <label>Business Name</label>
-                            <input required name="businessName" ng-model="vm.user.businessName" />
+                            <label for="businessName">Business Name</label>
+                            <input required name="businessName" ng-model="vm.user.businessName" id="businessName"/>
 
                             <div ng-messages="registerForm.businessName.$error" ng-hide="registerForm.businessName.$valid">
                                 <div ng-message-exp="['required', 'maxlength']">
@@ -129,8 +117,8 @@
 
                         <div layout="row">
                             <md-input-container class="md-block" flex="50">
-                                <label>Email</label>
-                                <input name="email" ng-model="vm.user.email"
+                                <label for="email">Email</label>
+                                <input name="email" ng-model="vm.user.email" id="email"
                                        required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
                                 <div ng-messages="registerForm.email.$error" ng-hide="registerForm.email.$valid">
@@ -140,26 +128,9 @@
                                 </div>
                             </md-input-container>
 
-
-                            <!--<md-input-container class="md-block">-->
-                                <!--<label>Email</label>-->
-                                <!--<input required type="email" name="email" ng-model="vm.user.email"-->
-                                       <!--minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />-->
-
-                                <!--<div ng-messages="registerForm.email.$error" role="alert">-->
-                                    <!--<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">-->
-                                        <!--Your email must be between 10 and 100 characters long and look like an e-mail address.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</md-input-container>-->
-
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Phone Number</label>-->
-                                <!--<input ng-model="vm.user.phone" type="text">-->
-                            <!--</md-input-container>-->
                             <md-input-container class="md-block" flex="50">
-                                <label>Phone Number</label>
-                                <input name="phone" required ng-model="vm.user.phone"  />
+                                <label for="phone">Phone Number</label>
+                                <input name="phone" required ng-model="vm.user.phone"  id="phone"/>
 
 
                                 <div ng-messages="registerForm.phone.$error" ng-hide="registerForm.phone.$valid">
@@ -169,15 +140,12 @@
                                 </div>
                             </md-input-container>
                         </div>
+
                         <div layout="row">
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Password</label>-->
-                                <!--<input ng-model="vm.user.password" type="password">-->
-                            <!--</md-input-container>-->
                             <md-input-container class="md-block" flex="50">
-                                <label>Password</label>
+                                <label for="password">Password</label>
                                 <input required type="password" name="password" ng-model="vm.user.password"
-                                       minlength="6" md-maxlength="30" />
+                                       minlength="6" md-maxlength="30" id="password"/>
 
                                 <div ng-messages="registerForm.password.$error" role="alert" ng-hide="registerForm.password.$valid">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength']">
@@ -186,15 +154,10 @@
                                 </div>
                             </md-input-container>
 
-
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Confirm Password</label>-->
-                                <!--<input ng-model="vm.user.confirmPassword"  type="password">-->
-                            <!--</md-input-container>-->
                             <md-input-container class="md-block" flex="50">
-                                <label>Confirm Password</label>
+                                <label for="confirm">Confirm Password</label>
                                 <input required type="password" name="confirm" ng-model="vm.user.confirmPassword"
-                                       minlength="6" md-maxlength="30" pass-compare="vm.user.password"/>
+                                       minlength="6" md-maxlength="30" pass-compare="vm.user.password" id="confirm"/>
 
                                 <div ng-messages="registerForm.confirm.$error" role="alert" ng-hide="registerForm.confirm.$valid">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength']">
@@ -205,21 +168,16 @@
                         </div>
                         <h3>payment info</h3>
                         <div layout="row">
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Credit Card Number</label>-->
-                                <!--<input ng-model="vm.user.card.number" type="text">-->
-                            <!--</md-input-container>-->
+
                             <md-input-container class="md-block" flex="50">
-                                <label>Credit Card Number</label>
+                                <label for="creditCard">Credit Card Number</label>
                                 <input
                                     name="creditCard"
                                     required
                                     ng-model="vm.user.card.number"
                                     ui-mask="9999-9999-9999-9999"
+                                    id="creditCard"
                                     />
-                                    <!--ng-pattern="/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/" />-->
-
-                                <!--<div class="hint" ng-show="registerForm.creditCard.$invalid && registerForm.creditCard.$dirty">####-####-####-####</div>-->
 
                                 <div ng-messages="registerForm.creditCard.$error" ng-hide="registerForm.creditCard.$valid">
                                     <div ng-message-exp="['required', 'pattern']">
@@ -227,22 +185,16 @@
                                     </div>
                                 </div>
                             </md-input-container>
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Expiration Date</label>-->
-                                <!--<input ng-model="vm.user.card.exp_date"  type="text">-->
-                            <!--</md-input-container>-->
+
                             <md-input-container class="md-block" flex="50">
-                                <label>Expiration Date</label>
+                                <label for="exp_date">Expiration Date</label>
                                 <input
                                     name="expDate"
                                     required
                                     ng-model="vm.user.card.date"
                                     ui-mask="99/9999"
+                                    id="exp_date"
                                      />
-                                <!--ng-pattern="/^[0-9]{2}[/][0-9]{4}$/"-->
-
-
-                                <!--<div class="hint" ng-show="registerForm.expDate.$invalid && registerForm.expDate.$dirty">##/####</div>-->
 
                                 <div ng-messages="registerForm.expDate.$error" ng-hide="registerForm.expDate.$valid">
                                     <div ng-message-exp="['required', 'pattern']">
@@ -251,15 +203,12 @@
                                 </div>
                             </md-input-container>
                         </div>
-                        <div layout="row">
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Security Code</label>-->
-                                <!--<input ng-model="vm.user.card.cvc"  type="text">-->
-                            <!--</md-input-container>-->
 
+                        <div layout="row">
                             <md-input-container class="md-block" flex="50">
-                                <label>Security Code</label>
-                                <input name="cvc" required ng-model="vm.user.card.cvc" type="password" ng-pattern="/^[0-9]{3}$/" md-maxlength="3"/>
+                                <label for="code">Security Code</label>
+                                <input name="cvc" required ng-model="vm.user.card.cvc" type="password"
+                                       ng-pattern="/^[0-9]{3}$/" md-maxlength="3" id="code"/>
 
                                 <div ng-messages="registerForm.cvc.$error" ng-hide="registerForm.cvc.$valid">
                                     <div ng-message-exp="['required', 'pattern']">
@@ -268,13 +217,10 @@
                                 </div>
                             </md-input-container>
 
-                            <!--<md-input-container flex="50">-->
-                                <!--<label>Billing Address</label>-->
-                                <!--<input ng-model="vm.user.card.index"  type="text">-->
-                            <!--</md-input-container>-->
                             <md-input-container class="md-block" flex="50">
-                                <label>Billing Address</label>
-                                <input name="address" required ng-model="vm.user.billingAddress" ng-pattern="/^[0-9]{5}$/" md-maxlength="5"/>
+                                <label for="billing">Billing Address</label>
+                                <input name="address" required ng-model="vm.user.billingAddress"
+                                       ng-pattern="/^[0-9]{5}$/" md-maxlength="5" id="billing"/>
 
                                 <div ng-messages="registerForm.address.$error" ng-hide="registerForm.address.$valid">
                                     <div ng-message-exp="['required', 'pattern']">
@@ -283,11 +229,7 @@
                                 </div>
                             </md-input-container>
                         </div>
-                        <!--<md-input-container class="md-block">-->
-                            <!--<md-checkbox ng-model="vm.user.check">-->
-                                <!--I agree with <span class="text-main-color">Terms and Conditions</span>-->
-                            <!--</md-checkbox>-->
-                        <!--</md-input-container>-->
+
                         <md-input-container class="md-block">
                             <md-checkbox name="tos" ng-model="vm.user.check" required>
                                 I agree with <span class="text-main-color">Terms and Conditions</span>
