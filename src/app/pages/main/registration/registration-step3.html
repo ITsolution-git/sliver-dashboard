@@ -208,7 +208,7 @@
                             <md-input-container class="md-block" flex="50">
                                 <label for="code">Security Code</label>
                                 <input name="cvc" required ng-model="vm.user.card.cvc" type="password"
-                                       ng-pattern="/^[0-9]{3}$/" md-maxlength="3" id="code"/>
+                                       ng-maxlength="4" ng-minlength="3" id="code"/>
 
                                 <div ng-messages="registerForm.cvc.$error" ng-hide="registerForm.cvc.$valid">
                                     <div ng-message-exp="['required', 'pattern']">
@@ -220,7 +220,7 @@
                             <md-input-container class="md-block" flex="50">
                                 <label for="billing">Billing Address</label>
                                 <input name="address" required ng-model="vm.user.billingAddress"
-                                       ng-pattern="/^[0-9]{5}$/" md-maxlength="5" id="billing"/>
+                                       id="billing"/>
 
                                 <div ng-messages="registerForm.address.$error" ng-hide="registerForm.address.$valid">
                                     <div ng-message-exp="['required', 'pattern']">

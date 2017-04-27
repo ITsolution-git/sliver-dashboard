@@ -19,7 +19,9 @@
 
         vm.user = {
             planId: vm.plan._id,
+            plan_date: new Date(),
             buildId:  vm.build ? vm.build._id : null,
+            build_date: vm.build ? new Date() : null,
             code: null
         };
 
