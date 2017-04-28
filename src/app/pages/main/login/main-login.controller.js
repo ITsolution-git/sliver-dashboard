@@ -25,9 +25,9 @@
                         toaster.pop({type: 'success', body: "Welcome!"});
 
                         // update user data
-                        userService.loadUser(true).then(function () {
-                            $state.go('welcome');
-                        });
+                        // userService.loadUser(true).then(function () {
+                        $state.go('welcome');
+                        // });
                     }
                 )
                 .catch(function(err) {

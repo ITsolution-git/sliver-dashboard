@@ -3,7 +3,8 @@
 
     angular
         .module('app.pages', [
-            'app.pages.main'
+            'app.pages.main',
+            'app.pages.settingsUser'
             // 'app.pages.cart',
             // 'app.pages.media',
             // 'app.pages.clients'

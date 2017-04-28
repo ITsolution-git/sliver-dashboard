@@ -27,6 +27,16 @@
                     }
                 }
 
+            })
+            .state('one', {
+                abstract:true,
+                parent:'blank',
+                views: {
+                    content: {
+                        controller: 'LayoutOneController',
+                        template: '<div ui-view="content"></div>'
+                    }
+                }
             });
 
         // set default routes when no path specified

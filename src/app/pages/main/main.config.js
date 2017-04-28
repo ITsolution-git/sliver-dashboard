@@ -101,7 +101,7 @@
                 params: {
                     param1: 'welcome'
                 },
-                parent: 'default',
+                parent: 'one',
                 url: '/welcome',
                 views: {
                     content: {

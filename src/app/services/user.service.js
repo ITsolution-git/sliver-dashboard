@@ -11,28 +11,36 @@
 
         // --- vars ---
         me.user = null;
-
+        me.resolveUser = null;
+        me.userPromise = new Promise(function (resolve) {
+            me.resolveUser = resolve;
+        });
         // --- methods ---
+
+        me.getUser = function () {
+            return me.userPromise;
+        };
 
         me.loadUser = function (refresh) {
             var deferred = $q.defer();
-            
+
             if (!refresh && me.user) {
                 deferred.resolve(me.user);
             } else {
                 me.rest().get().then(function (resp) {
-                    $rootScope.$broadcast('userEvent');
+                    // $rootScope.$broadcast('userEvent');
                     me.user = {
-                        name : resp.data.name,
-                        email : resp.data.email
+                        name: resp.data.name,
+                        email: resp.data.email,
+                        id: resp.data._id
                     };
                     console.log(me.user);
-
+                    me.resolveUser(me.user);
                     deferred.resolve(me.user);
                 });
                 deferred.resolve(me.user);
             }
-            
+
             return deferred.promise;
         };
 
