@@ -825,6 +825,7 @@ a:hover {
 .left-panel-parent {
   background-color: #576875;
   padding-right: 0;
+  padding-left: 0;
 }
 
 .left-panel {
@@ -875,6 +876,7 @@ a:hover {
 
       &::after {
         content: '';
+        z-index: 5;
         position: absolute;
         right: -54px;
         top: -1px;
@@ -925,6 +927,18 @@ a:hover {
     color: #FFFFFF;
   }
 }
+
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  text-align: center;
+}
+
+
 
 
 

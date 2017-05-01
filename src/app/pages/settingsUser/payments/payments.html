@@ -12,7 +12,7 @@
                     <!--</div>-->
                     <!--<hr>-->
 
-                    <table ng-table-dynamic="list with cols" class="table table-hover table-vertical-align ng-cloak">
+                    <table ng-table-dynamic="list with cols" class="table table-hover table-vertical-align ng-cloak col-md-12">
                         <tr ng-repeat="row in $data">
                             <td ng-repeat="col in $columns" ng-switch="col.format" ng-class="col.style">
                                 <div ng-switch-when="raw" ng-bind-html="col.getValue(row)"></div>

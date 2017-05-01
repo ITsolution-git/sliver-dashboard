@@ -12,8 +12,9 @@
         // --- vars ---
         me.user = null;
         me.resolveUser = null;
+
         me.userPromise = new Promise(function (resolve) {
-            me.resolveUser = resolve;
+            return me.resolveUser = resolve;
         });
         // --- methods ---
 

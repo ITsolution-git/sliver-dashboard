@@ -7,10 +7,6 @@
 
     /* @ngInject */
     function PaymentsController($scope,paymentsService,NgTableParams) {
-        // paymentsService.getAllPayments()
-        //     .then(function(payments) {
-        //         console.log(payments);
-        //     })
 
         function getValue(row) {
             return row[this.field];
@@ -18,51 +14,34 @@
 
         $scope.cols = [
             {
-                field: "productName",
-                title: "Name",
+                field: "paymentDate",
+                title: "Payment Date",
                 show: true,
                 format: 'raw',
                 getValue: function (row) {
-                    // return '<a href="' + $state.href('plans.item', {product_id: row['_id']}) + '">' + row['productName'] + '</a>';
+                    return row['paymentDate'] ? moment(row['paymentDate']).format('ll') : '-'
                 }
             }, {
-                field: "productDescription",
-                title: "Description",
+                field: "programName",
+                title: "SLAProgram Name",
                 show: true,
                 format: 'raw',
                 getValue: getValue
             }, {
                 field: "costProduct",
-                title: "Cost Product",
+                title: "Price for SLAProgram/Build",
                 show: true,
                 getValue: getValue
             }, {
-                field: "billingFrequency",
-                title: "# Billing Frequency",
+                field: "discount",
+                title: "Discount/Promo code",
                 show: true,
                 getValue: getValue
             }, {
-                field: "expertHours",
-                title: "Expert Hours",
+                field: "amountCharges",
+                title: "Total amount charged",
                 show: true,
                 getValue: getValue
-            }, {
-                field: "amountFirstPayment",
-                title: "Amount First Payment",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "createdAt",
-                title: "Date Created",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "action",
-                title: "",
-                format: 'compile',
-                getValue: function (row) {
-                    return '<button class="btn btn-danger btn-sm" ng-click="delete(row)"><span class="glyphicon glyphicon-trash"></span></button>';
-                }
             }
         ];
 
@@ -71,8 +50,7 @@
                 getData: function (params) {
                     return paymentsService.getAllPayments()
                         .then(function (response) {
-                            console.log(response.data)
-                            // return response.data;
+                            return paymentsService.transformationData(response.data);
                         });
                 }
             }
