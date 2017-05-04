@@ -58,12 +58,27 @@
                         name: 'Your Commitment'
                     },
                     next: {
-                        sref: null,
-                        name: null
+                        sref: 'mindset.privilegeAndResponsibility',
+                        name: 'Privilege and Responsibility'
                     }
                 },
                 controller: 'SlapMindsetController',
                 templateUrl: 'pages/mindset/get-slap-mindset/get-slap-mindset.html'
+            })
+            .state('mindset.privilegeAndResponsibility', {
+                url: '/privilegeAndResponsibility',
+                params: {
+                    prev: {
+                        sref: 'mindset.slapMindset',
+                        name: 'SLAPmindset'
+                    },
+                    next: {
+                        sref: null,
+                        name: null
+                    }
+                },
+                controller: 'PrivilegeAndResponsibilityController',
+                templateUrl: 'pages/mindset/privilege_and_responsibility/privilege-and-responsibility.html'
             });
 
     }

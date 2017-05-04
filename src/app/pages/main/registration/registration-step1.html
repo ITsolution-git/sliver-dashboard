@@ -94,8 +94,9 @@
             </div>
         </header>
         <article class="container signup plan">
+
             <div class="row">
-                <div class="col-md-2" ng-repeat="plan in vm.plans" ng-click="vm.choosePlan(plan,$event)">
+                <div class="col-md-2 outline-0" ng-repeat="plan in vm.plans" ng-click="vm.choosePlan(plan,$event)">
                     <div class="rectangle" ng-class="{'rectangle-active': plan._id == vm.plan._id}">
                         <div class="rectangle-header">
                             <h3>{{ plan.productName }}</h3>
