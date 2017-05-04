@@ -5,13 +5,17 @@
         .module('app')
         .run(runApp);
 
-    function runApp($rootScope, $timeout, $window, $state, $auth, pageService, CONFIG, userService) {
+    function runApp($rootScope, $timeout, $window, $state, $auth, pageService, CONFIG, userService, footerService) {
         $rootScope.isReady = false;
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             // запоминаем, куда пытаемся перейти и с какими параметрами
             $rootScope.toState = toState;
             $rootScope.toStateParams = toStateParams;
+
+            if(toState.params) {
+                footerService.setParams(toState.params);
+            }
 
             if (!$rootScope.isReady) {
                 event.preventDefault();

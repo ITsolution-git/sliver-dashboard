@@ -1,12 +1,20 @@
-(function() {
+(function () {
     'use strict';
 
     var slapFooter = {
-        bindings: {
+        bindings: {},
+        controller: function ($scope, footerService,$timeout,$rootScope,$state) {
+            $timeout(function() {
+                $scope.state = footerService._state;
+            });
 
-        },
-        controller: function() {
+            $scope.next = function() {
+                $state.go($scope.state.next.sref);
+            };
 
+            $scope.prev = function() {
+                $state.go($scope.state.prev.sref);
+            }
         },
         templateUrl: 'components/slap-footer/slap-footer.html'
     };

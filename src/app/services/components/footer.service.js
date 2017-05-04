@@ -6,34 +6,16 @@
         .service('footerService', footerService);
 
     function footerService() {
-        var _statePrev = null;
-        var _stateNext = null;
+        var self = this;
+        self._state = {};
 
-        this.setParams = setParams;
-        this.getPrev = getPrev;
-        this.getNext = getNext;
-        this.getAll = getAll;
+        self.setParams = setParams;
 
         //////////////////////////
 
         function setParams(params) {
-            _statePrev = params.statePrev;
-            _stateNext = params.stateNext;
-        }
-
-        function getPrev() {
-            return _statePrev;
-        }
-
-        function getNext() {
-            return _stateNext;
-        }
-
-        function getAll() {
-            return {
-                prev: _statePrev,
-                next: _stateNext
-            }
+            self._state.prev = params.prev;
+            self._state.next = params.next;
         }
     }
 }());

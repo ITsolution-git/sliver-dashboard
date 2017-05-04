@@ -1,19 +1,19 @@
 <div class="container-fluid">
     <div class="row ">
         <div class="col-xs-6 footer-column footer-column-left">
-            <div>
-                <a class="button-oval pull-left" ui-sref="#">
+            <div ng-show="state.prev.sref">
+                <a class="button-oval pull-left" ng-click="prev()">
                     <i class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
                 </a>
-                <span class="pull-left"></span>
+                <span class="pull-left">{{ state.prev.name }}</span>
             </div>
         </div>
         <div class="col-xs-6 footer-column footer-column-right">
-            <div>
-                <a class="button-oval pull-right" ui-sref="#">
+            <div ng-show="state.next.sref">
+                <a class="button-oval pull-right" ng-click="next()">
                     <i class="fa fa-2x fa-arrow-right" aria-hidden="true"></i>
                 </a>
-                <span class="pull-right"></span>
+                <span class="pull-right">{{ state.next.name }}</span>
             </div>
         </div>
     </div>
