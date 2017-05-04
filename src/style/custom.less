@@ -121,7 +121,7 @@ div.grid_wrapper:hover div.hover_item {
 }
 
 /////////////////////////////////////////////////
-@main-blue-color : #0e7cb5;
+@main-blue-color: #0e7cb5;
 @main-black-color: #373c37;
 
 body {
@@ -267,7 +267,7 @@ a:hover {
     }
 
     &::after {
-      border-top:  10px solid #FFFFFF;
+      border-top: 10px solid #FFFFFF;
       bottom: -19px;
     }
   }
@@ -393,7 +393,7 @@ a:hover {
   }
 
   .rectangle-content-flex {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -401,7 +401,7 @@ a:hover {
   .rectangle-footer {
     height: 100px;
     border-top: 1px solid #EFEFEF;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -452,11 +452,11 @@ a:hover {
     }
 
     &::after &::before {
-      border-top:  10px solid @main-blue-color;
+      border-top: 10px solid @main-blue-color;
     }
 
     &::after {
-      border-top:  10px solid @main-blue-color;
+      border-top: 10px solid @main-blue-color;
     }
   }
 }
@@ -512,7 +512,7 @@ a:hover {
 
           .leftstr, .rightstr {
             float: left;
-            width:50%;
+            width: 50%;
             text-transform: none;
           }
 
@@ -708,7 +708,7 @@ a:hover {
 .welcome-block {
   margin-bottom: 50px;
 
-  .caption  > p {
+  .caption > p {
     display: inline;
     font-family: .HelveticaNeueDeskInterface;
     font-size: 24px;
@@ -820,7 +820,6 @@ a:hover {
   color: @main-black-color;
 }
 
-
 //LEFT PANEL
 .left-panel-parent {
   background-color: #576875;
@@ -846,7 +845,7 @@ a:hover {
 
   .left-panel-item-active {
     background-color: #3B4A56;
-    border-color: #3B4A56;
+    //border-color: #3B4A56;
   }
 
   .enclosed-list {
@@ -865,14 +864,19 @@ a:hover {
       text-transform: capitalize;
       font-size: 16px;
       line-height: 3;
-      color: #dbdbdb;
+
+      > a {
+        color: #dbdbdb;
+      }
     }
 
     .enclosed-list-item-active {
       border-color: #243039;
       background-color: #243039;
       position: relative;
-      color: #FFFFFF;
+      > a {
+        color: #FFFFFF;
+      }
 
       &::after {
         content: '';
@@ -928,7 +932,6 @@ a:hover {
   }
 }
 
-
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -937,6 +940,265 @@ a:hover {
 .table > tfoot > tr > td {
   text-align: center;
 }
+
+.footer-column {
+  padding: 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
+  height: 112px;
+
+  .footer-column-left {
+    border-right: 0.5px solid rgba(0, 0, 0, .1);
+  }
+
+  .footer-column-right {
+    border-left: 0.5px solid rgba(0, 0, 0, .1);
+  }
+
+  span {
+    //font-family: .HelveticaNeueDeskInterface;
+    font-size: 20px;
+    line-height: 0.8;
+    color: #373c37;
+    text-transform: capitalize;
+    margin-top: 46px;
+  }
+}
+
+.button-oval {
+  margin: 28px 32px;
+  width: 56px;
+  height: 56px;
+  background-color: #0e7cb5;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .fa-arrow-left, .fa-arrow-right {
+    color: #FFFFFF;
+  }
+}
+
+.video-container {
+  position: relative;
+  min-height: 106px;
+
+  .video-panel {
+    height: 106px;
+    position: absolute;
+    z-index: 5;
+
+    > p {
+      display: inline-block;
+      font-size: 32px;
+      line-height: 0.59;
+      letter-spacing: -0.6px;
+      color: #373c37;
+      text-transform: capitalize;
+      margin-top: 39px;
+      margin-left: 38px;
+    }
+
+    .switch {
+      margin-top: 36px;
+      margin-right: 50px;
+    }
+  }
+
+  .video-panel-show {
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
+  }
+
+  .video-content {
+    //position: absolute;
+  }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 72px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(48px);
+  -ms-transform: translateX(48px);
+  transform: translateX(48px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 100px;
+
+  span {
+    margin-right: 11px;
+    margin-top: 7px;
+    margin-left: 7px;
+    width: 30px;
+    height: 9px;
+    //font-family: .HelveticaNeueDeskInterface;
+    font-size: 12px;
+    line-height: 0.75;
+    color: #ffffff;
+  }
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.sample-show-hide {
+  transition: all linear 0.9s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity: 0;
+}
+
+//slider
+.rzslider {
+
+  .rz-pointer {
+    background-color: #0e7cb5;
+    top: -8px;
+    z-index: 3;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border-radius: 16px;
+    //left: 514px !important;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      background: #0e7cb5;
+      border-radius: 0;
+      content: '';
+    }
+
+    &:active {
+      top: -14px;
+      z-index: 3;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      background-color: #0e7cb5;
+      border-radius: 16px;
+    }
+  }
+
+  .rz-tick {
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #0e7cb5;
+  }
+
+  .rz-bar {
+    height: 2px;
+    width: 98%;
+  }
+
+  .rz-bar-wrapper {
+    left: 12px;
+    z-index: 1;
+    width: 99%;
+    height: 32px;
+    padding-top: 14px;
+    margin-top: -16px;
+    box-sizing: border-box;
+  }
+
+  .rz-tick.rz-selected {
+    background: #0e7cb5;
+  }
+}
+
+.rz-pointer:hover:after {
+  background-color: #fff;
+}
+
+.custom-rzslider {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  > p {
+    //font-family: .HelveticaNeueDeskInterface;
+    font-size: 20px;
+    line-height: 0.8;
+    color: #373c37;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+
+  span {
+    position: absolute;
+    font-family: .HelveticaNeueDeskInterface;
+    font-size: 16px;
+    line-height: 1;
+    color: #33444d;
+  }
+}
+
+.position-left {
+  left: 0;
+}
+.position-right {
+  right: 0;
+}
+
+.content-margin {
+  margin: 48px 0;
+}
+
+
 
 
 

@@ -1,50 +1,66 @@
 <div class="left-panel">
-    <ul class="list-group left-panel">
-        <li class="list-group-item left-panel-item">
-            <div class="item-circle">
-                <span>1</span>
+    <ul class="list-group left-panel" id="accordion2">
+        <div ng-repeat="item in $ctrl.data">
+            <li class="list-group-item left-panel-item" data-toggle="collapse" data-target="#collapse{{$index}}"
+                data-parent="#accordion2" ng-click="$ctrl.collapse($event)">
+                <div class="item-circle">
+                    <span>{{ $index + 1}}</span>
+                </div>
+                <span>{{ item.name }}</span>
+            </li>
+            <div class="collapse enclosed-list" id="collapse{{ $index }}">
+                <ul class="list-group">
+                    <li class="list-group-item enclosed-list-item" ng-class="{'enclosed-list-item-active' : $index == 0}" ng-repeat="sub in item.subs">
+                        <a ui-sref="{{ sub.sref }}">{{ sub.name }}</a>
+                    </li>
+                </ul>
             </div>
-            <span>slapstatement</span>
-        </li>
-        <li class="list-group-item left-panel-item">
-            <div class="item-circle">
-                <span>2</span>
-            </div>
-            <span>Year goal</span>
-        </li>
-        <li class="list-group-item left-panel-item">
-            <!--<div class="item-circle">-->
-                <!--<span>3</span>-->
-            <!--</div>-->
-            <div class="item-circle item-circle-check">
-                <i class="fa fa-check fa-lg" aria-hidden="true"></i>
-            </div>
-            <span>ideal client</span>
-        </li>
-        <li class="list-group-item left-panel-item left-panel-item-active" data-toggle="collapse"
-            data-target="#collapseActionPlan">
-            <div class="item-circle item-circle-active">
-                <span>4</span>
-            </div>
-            <span>action plan</span>
-        </li>
-        <div class="collapse enclosed-list" id="collapseActionPlan">
-            <ul class="list-group">
-                <li class="list-group-item enclosed-list-item enclosed-list-item-active">personal expenses</li>
-                <li class="list-group-item enclosed-list-item">business expenses</li>
-                <li class="list-group-item enclosed-list-item">revenue streams</li>
-                <li class="list-group-item enclosed-list-item">average selling price</li>
-                <li class="list-group-item enclosed-list-item">variable costs</li>
-                <li class="list-group-item enclosed-list-item">goal check</li>
-                <li class="list-group-item enclosed-list-item">reality check</li>
-            </ul>
         </div>
-        <li class="list-group-item left-panel-item">
-            <div class="item-circle">
-                <span>5</span>
-            </div>
-            <span>execute</span>
-        </li>
+        <!--<li class="list-group-item left-panel-item" data-toggle="collapse" data-target="#collapseYearGoal"-->
+            <!--data-parent="#accordion" ng-click="$ctrl.collapse($event)">-->
+            <!--<div class="item-circle">-->
+                <!--<span>2</span>-->
+            <!--</div>-->
+            <!--<span>Year goal</span>-->
+        <!--</li>-->
+        <!--<div class="collapse enclosed-list" id="collapseYearGoal">-->
+            <!--<ul class="list-group">-->
+                <!--<li class="list-group-item enclosed-list-item enclosed-list-item-active"><a ui-sref="yearGoal.index">index</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<li class="list-group-item left-panel-item">-->
+            <!--&lt;!&ndash;<div class="item-circle">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span>3</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="item-circle item-circle-check">-->
+                <!--<i class="fa fa-check fa-lg" aria-hidden="true"></i>-->
+            <!--</div>-->
+            <!--<span>ideal client</span>-->
+        <!--</li>-->
+        <!--<li class="list-group-item left-panel-item " data-toggle="collapse" data-parent="#accordion"-->
+            <!--data-target="#collapseActionPlan" ng-click="$ctrl.collapse($event)">-->
+            <!--<div class="item-circle">-->
+                <!--<span>4</span>-->
+            <!--</div>-->
+            <!--<span>action plan</span>-->
+        <!--</li>-->
+        <!--<div class="collapse enclosed-list" id="collapseActionPlan">-->
+            <!--<ul class="list-group">-->
+                <!--<li class="list-group-item enclosed-list-item enclosed-list-item-active"><a href="">personal expenses</a></li>-->
+                <!--<li class="list-group-item enclosed-list-item"><a href="">business expenses</a></li>-->
+                <!--<li class="list-group-item enclosed-list-item"><a href="">revenue streams</a></li>-->
+                <!--<li class="list-group-item enclosed-list-item"><a href="">average selling price</a></li>-->
+                <!--<li class="list-group-item enclosed-list-item"><a href="">variable costs</a></li>-->
+                <!--<li class="list-group-item enclosed-list-item"><a href="">goal check</a></li>-->
+                <!--<li class="list-group-item enclosed-list-item"><a href="">reality check</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<li class="list-group-item left-panel-item">-->
+            <!--<div class="item-circle">-->
+                <!--<span>5</span>-->
+            <!--</div>-->
+            <!--<span>execute</span>-->
+        <!--</li>-->
 
     </ul>
 </div>

@@ -25,6 +25,7 @@
                 'ngTable',
                 'ngCsv',
                 'daterangepicker',
+                'rzModule',
 
                 'app.services',
                 'app.filters',

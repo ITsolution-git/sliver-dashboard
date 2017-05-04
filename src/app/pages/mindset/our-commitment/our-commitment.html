@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 video-container content-margin">
+            <div class="video-panel col-md-offset-2 col-md-8 sample-show-hide" ng-class="{'video-panel-show': $ctrl.visible}">
+                <p>module title lorem ipsum</p>
+                <button-switch visible="$ctrl.visible"></button-switch>
+            </div>
+            <div class="video-content sample-show-hide" ng-show="!$ctrl.visible">
+                <video controls preload="none" class="col-md-offset-2 col-md-8" poster="../images/carr.png" >
+                    <source src="http://media.w3.org/2016/01/Emmy-Award.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
