@@ -5,24 +5,8 @@
         binding: {
 
         },
-        controller: function(asideService) {
-            var vm = this;
-            // vm.collapse = function (event) {
-            //     var prevActive = $('.left-panel-item-active');
-            //     $('.in').removeClass('in');
-            //     if (prevActive.length > 0) {
-            //         prevActive.removeClass('left-panel-item-active');
-            //         $('.item-circle-active').removeClass('item-circle-active');
-            //     }
-            //
-            //     var parent = $(event.target).closest('.left-panel-item');
-            //     var circle = $(event.target).prevAll('.item-circle');
-            //
-            //     parent.addClass('left-panel-item-active');
-            //     circle.addClass('item-circle-active');
-            // };
-
-            vm.data = asideService.getData();
+        controller: function($scope,asideService) {
+            $scope.statements = asideService.getSlapStatement();
         },
         templateUrl: 'components/slap-left-panel/leftPanel.html'
     };

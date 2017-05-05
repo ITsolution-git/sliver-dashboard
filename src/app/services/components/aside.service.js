@@ -7,38 +7,21 @@
 
     /* @ngInject */
     function asideService() {
-        var vm = this;
-        var data = [
+        var slapstatement = [
             {
-                name: 'slapstatement',
-                subs: [
-                    {
-                        name: 'index',
-                        sref: 'statement.index'
-                    }
-                ]
+                name: 'overview',
+                sref: 'statement.overview'
             }, {
-                name: 'year goal',
-                subs: [
-                    {
-                        name: 'index',
-                        sref: 'yearGoal.index'
-                    }
-                ]
-            }, {
-                name: 'ideal client'
-            }, {
-                name: 'action plan'
-            }, {
-                name: 'execute'
+                name: 'your statement',
+                sref: 'statement.yourStatement'
             }
         ];
 
-        this.getData = getData;
+        this.getSlapStatement = getSlapStatement;
 
         ////////////////////////
-        function getData() {
-            return data;
+        function getSlapStatement() {
+            return slapstatement;
         }
     }
 }());

@@ -13,9 +13,7 @@
             $rootScope.toState = toState;
             $rootScope.toStateParams = toStateParams;
 
-            if(toState.params) {
-                footerService.setParams(toState.params);
-            }
+            toState.params ? footerService.setParams(toState.params) : footerService.reset();
 
             if (!$rootScope.isReady) {
                 event.preventDefault();

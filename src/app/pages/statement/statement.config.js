@@ -20,10 +20,16 @@
                     }
                 }
             })
-            .state('statement.index', {
-                url: '',
+            .state('statement.overview', {
+                url: '/overview',
                 controller: '',
-                template: '<h1>Hello statement</h1>'
+                templateUrl: 'pages/statement/overview/overview.html'
             })
+            .state('statement.yourStatement', {
+                url: '/yourSlapStatement',
+                controller: '',
+                templateUrl: 'pages/statement/yourStatement/your-statement.html'
+            })
+
     }
 }());
