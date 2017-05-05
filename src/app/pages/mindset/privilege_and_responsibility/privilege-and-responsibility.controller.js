@@ -38,7 +38,7 @@
             showInfoBlock: false,
             showVideoBlock: false,
             showStaticTextBlock: false,
-            showDropdownBlock: true
+            showDropdownBlock: false
         });
 
         $scope.checkDropdownModels = checkDropdownModels;

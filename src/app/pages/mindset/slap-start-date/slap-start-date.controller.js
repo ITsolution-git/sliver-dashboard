@@ -18,7 +18,10 @@
             model: {
                 year: currentYear,
                 month: currentMonth
-            }
+            },
+            showVideoBlock: false,
+            showStaticTextBlock: false,
+            showStartDate: false
         });
 
         $scope.$watch('model.month', function (value) {

@@ -4,9 +4,9 @@
 
         <div class="panel-body">
 
-            <button-switch visible="$ctrl.visible"></button-switch>
+            <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block></video-block>
+            <video-block visible="showVideoBlock"></video-block>
 
         </div>
 
@@ -16,9 +16,9 @@
 
         <div class="panel-body static-text-panel">
 
-            <button-switch visible="$ctrl.visible"></button-switch>
+            <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text></slap-static-text>
+            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -28,11 +28,11 @@
 
         <div class="panel-body">
 
-            <button-switch visible="$ctrl.visible"></button-switch>
+            <button-switch visible="showStartDate"></button-switch>
 
             <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
 
-            <div class="col-md-12">
+            <div class="col-md-12 sample-show-hide" ng-hide="showStartDate">
                 <h4>Choose Your Start Date</h4>
 
                 <p>I will start to put my SLAP into Action no later than the first day of <br>
