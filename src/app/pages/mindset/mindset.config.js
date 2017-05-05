@@ -73,19 +73,34 @@
                         name: 'Get the SLAPmindset'
                     },
                     next: {
-                        name: 'Cashflow / Capacity Cath 22',
-                        sref: 'mindset.cashFlow'
+                        name: 'Are You Stuck?',
+                        sref: 'mindset.areYourStuck'
                     }
                 },
                 controller: 'PrivilegeAndResponsibilityController',
                 templateUrl: 'pages/mindset/privilege_and_responsibility/privilege-and-responsibility.html'
             })
-            .state('mindset.cashFlow', {
-                url: '/cashFlow',
+            .state('mindset.areYourStuck', {
+                url: '/areYourStuck',
                 params: {
                     prev: {
                         name: 'Privilege and Responsibility',
                         sref: 'mindset.privilegeAndResponsibility'
+                    },
+                    next: {
+                        name: 'Cashflow / Capacity Cath 22',
+                        sref: 'mindset.cashFlow'
+                    }
+                },
+                controller: 'AreYourStuckController',
+                templateUrl: 'pages/mindset/are-your-stuck/are-your-stuck.html'
+            })
+            .state('mindset.cashFlow', {
+                url: '/cashFlow',
+                params: {
+                    prev: {
+                        name: 'Are You Stuck?',
+                        sref: 'mindset.areYourStuck'
 
                     },
                     next: {

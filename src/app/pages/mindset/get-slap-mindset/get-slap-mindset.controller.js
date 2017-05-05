@@ -6,9 +6,16 @@
         .controller('SlapMindsetController', SlapMindsetController);
 
     /* @ngInject */
-    function SlapMindsetController() {
-        var vm = this;
-        this.visible = true;
-    }
+    function SlapMindsetController($scope,pageService) {
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
 
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('Get the SLAPmindset ');
+    }
 }());
