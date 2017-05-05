@@ -22,14 +22,37 @@
             })
             .state('statement.overview', {
                 url: '/overview',
-                controller: '',
-                templateUrl: 'pages/statement/overview/overview.html'
+                params: {
+                    prev: {
+                        name: 'Start SLAPn',
+                        sref: 'mindset.startSlapn'
+
+                    },
+                    next: {
+                        name: 'SLAPstatement Q&A',
+                        sref: 'statement.qa'
+                    }
+                },
+                controller: 'StatementOverviewController',
+                templateUrl: 'pages/statement/statement-overview/statement-overview.html'
             })
-            .state('statement.yourStatement', {
-                url: '/yourSlapStatement',
-                controller: '',
-                templateUrl: 'pages/statement/yourStatement/your-statement.html'
-            })
+            .state('statement.qa', {
+                url: '/Q&A',
+                params: {
+                    prev: {
+                        name: 'SLAPstatement Overview',
+                        sref: 'statement.overview'
+
+                    },
+                    next: {
+                        name: '1 Year Goal Overview',
+                        sref: 'yearGoal.overview'
+                    }
+                },
+                controller: 'StatementQAController',
+                templateUrl: 'pages/statement/statement-qa/statement-qa.html'
+            });
+
 
     }
 }());
