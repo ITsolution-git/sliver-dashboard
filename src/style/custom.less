@@ -26,6 +26,11 @@ table.table-vertical-align {
 //  left: 0;
 //}
 
+.slap-footer {
+  position: absolute;
+  bottom: 0;
+}
+
 div.grid_item:hover {
   border: 1px solid #000;
 }
@@ -1045,6 +1050,14 @@ a:hover {
   display: none;
 }
 
+.vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+  background-image: -webkit-linear-gradient(bottom, @start-color @start-percent, @end-color @end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(bottom, @start-color @start-percent, @end-color @end-percent);  // Opera 12
+  background-image: linear-gradient(to top, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
 /* The slider */
 .slider {
   position: absolute;
@@ -1056,6 +1069,7 @@ a:hover {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  .vertical(#919191, #eaeaea);
 }
 
 .slider:before {
@@ -1072,6 +1086,7 @@ a:hover {
 
 input:checked + .slider {
   background-color: #2196F3;
+  .vertical(#2196F3, #eaeaea);
 }
 
 input:focus + .slider {
@@ -1276,6 +1291,10 @@ h3.logo {
 
 .margin-b-65 {
   margin-bottom: 65px;
+}
+
+.margin-b-140 {
+  margin-bottom: 140px;
 }
 
 .blue-vertical-line {
