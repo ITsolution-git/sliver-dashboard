@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.pages.main')
+        .module('app.pages.mindset')
         .controller('PrivilegeAndResponsibilityController', PrivilegeAndResponsibilityController);
 
     /* @ngInject */
