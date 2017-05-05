@@ -6,7 +6,7 @@
         .controller('YourCommitmentController', YourCommitmentController);
 
     /* @ngInject */
-    function YourCommitmentController($scope,mindsetService) {
+    function YourCommitmentController($scope,mindsetService,pageService) {
 
         angular.extend($scope, {
             showInfoBlock: false,

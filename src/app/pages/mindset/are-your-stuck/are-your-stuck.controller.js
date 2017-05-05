@@ -6,7 +6,7 @@
         .controller('AreYourStuckController', AreYourStuckController);
 
     /* @ngInject */
-    function AreYourStuckController($scope,mindsetService) {
+    function AreYourStuckController($scope,mindsetService,pageService) {
 
         angular.extend($scope, {
             showInfoBlock: false,
