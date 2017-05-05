@@ -22,8 +22,14 @@
                 name: 'Our Commitment To You',
                 sref: 'mindset.ourCommitment'
             },{
+                name: 'Your Commitment to Us',
+                sref: 'mindset.yourCommitment'
+            },{
                 name: 'Get the SLAPmindset',
                 sref: 'mindset.slapMindset'
+            },{
+                name: 'Privilege and Responsibility',
+                sref: 'mindset.privilegeAndResponsibility'
             },{
                 name: 'Cashflow / Capacity Cath 22',
                 sref: 'mindset.cashFlow'
@@ -34,8 +40,11 @@
                 name: 'Top Down, Bottom Up',
                 sref: 'mindset.topDownBottomUp'
             },{
-                name: 'Start SLAPn',
+                name: 'Start SLAP\'n!',
                 sref: 'mindset.startSlapn'
+            },{
+                name: 'Your SLAP Start Date',
+                sref: 'mindset.slapStartDate'
             }
         ];
 
