@@ -1,28 +1,58 @@
 <div class="slap-start-date container">
 
-    <div class="panel panel-default margin-t-15">
+    <div class="panel panel-default margin-t-40">
 
         <div class="panel-body">
 
-            <h4>Choose Your Start Date</h4>
+            <button-switch visible="$ctrl.visible"></button-switch>
 
-            <p>I will start to put my SLAP into Action no later than the first day of <br>
-                <select ng-model="model.month" class="outline-0 dropdown-box">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-                <span class="year">{{model.year}}</span>
-            </p>
+            <video-block></video-block>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default margin-t-40">
+
+        <div class="panel-body static-text-panel">
+
+            <button-switch visible="$ctrl.visible"></button-switch>
+
+            <slap-static-text></slap-static-text>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default margin-t-40 margin-b-65">
+
+        <div class="panel-body">
+
+            <button-switch visible="$ctrl.visible"></button-switch>
+
+            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+
+            <div class="col-md-12">
+                <h4>Choose Your Start Date</h4>
+
+                <p>I will start to put my SLAP into Action no later than the first day of <br>
+                    <select ng-model="model.month" class="outline-0 dropdown-box">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <span class="year">{{model.year}}</span>
+                </p>
+            </div>
 
         </div>
     </div>
