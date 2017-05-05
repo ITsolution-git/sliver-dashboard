@@ -6,7 +6,17 @@
         .controller('StatementQAController', StatementQAController);
 
     /* @ngInject */
-    function StatementQAController() {
-        console.log('StatementQAController');
+    function StatementQAController($scope, pageService) {
+
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('SLAPstatement Q&A');
     }
 }());

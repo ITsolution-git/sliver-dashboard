@@ -48,7 +48,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Dashboard');
+            .setPageTitle('Privilege and Responsibility');
 
         userService.getUser().then(function (user) {
             if (!_.isEmpty(user)) {

@@ -6,7 +6,7 @@
         .controller('SlapStartDateController', SlapStartDateController);
 
     /* @ngInject */
-    function SlapStartDateController($scope) {
+    function SlapStartDateController($scope, pageService) {
 
         $scope.visible = true;
 
@@ -24,6 +24,7 @@
             showStartDate: false
         });
 
+
         $scope.$watch('model.month', function (value) {
             if (value !== undefined) {
                 if (+value < +currentMonth) {
@@ -33,6 +34,12 @@
                 }
             }
         });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('Your SLAP Start Date');
     }
 
 }());

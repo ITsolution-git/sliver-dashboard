@@ -6,7 +6,17 @@
         .controller('IdealClientOverviewController', IdealClientOverviewController);
 
     /* @ngInject */
-    function IdealClientOverviewController() {
-        console.log('IdealClientOverviewController');
+    function IdealClientOverviewController($scope, pageService) {
+
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('SLAPstatement Q&A');
     }
 }());

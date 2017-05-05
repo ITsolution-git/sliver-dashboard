@@ -6,7 +6,17 @@
         .controller('ActionPlanQAController', ActionPlanQAController);
 
     /* @ngInject */
-    function ActionPlanQAController() {
-        console.log('ActionPlanQAController');
+    function ActionPlanQAController($scope, pageService) {
+
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('SLAPstatement Q&A');
     }
 }());

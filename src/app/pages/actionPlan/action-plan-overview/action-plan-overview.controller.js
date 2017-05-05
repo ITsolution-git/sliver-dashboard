@@ -6,7 +6,17 @@
         .controller('ActionPlanOverviewController', ActionPlanOverviewController);
 
     /* @ngInject */
-    function ActionPlanOverviewController() {
-        console.log('ActionPlanOverviewController');
+    function ActionPlanOverviewController($scope, pageService) {
+
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('SLAPstatement Q&A');
     }
 }());
