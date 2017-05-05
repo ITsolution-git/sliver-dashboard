@@ -1,13 +1,42 @@
 <div class="privilege-and-responsibility container">
-    <div class="panel panel-default margin-t-15">
+
+    <div class="panel panel-default margin-t-40">
 
         <div class="panel-body">
 
-            <div class="row form-group">
-                <div class="col-sm-6 col-sm-offset-1">
+            <button-switch visible="showVideoBlock"></button-switch>
+
+            <video-block visible="showVideoBlock"></video-block>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default margin-t-40">
+
+        <div class="panel-body static-text-panel">
+
+            <button-switch visible="showStaticTextBlock"></button-switch>
+
+            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default margin-t-40" ng-class="{'margin-b-65': !showInfoBlock}">
+
+        <div class="panel-body">
+
+            <button-switch visible="showDropdownBlock"></button-switch>
+
+            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+
+            <div class=" form-group">
+                <div class="col-md-8">
                     <label for="first" class="label-text control-label">Growing my business allows me to provide for my family</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <select id="first" ng-model="model.first" ng-change="checkDropdownModels()" class="dropdown-box outline-0"
                             ng-class="{'active': model.first}">
                         <option ng-repeat="item in options">{{item.label}}</option>
@@ -15,11 +44,11 @@
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-sm-6 col-sm-offset-1">
+            <div class="form-group">
+                <div class="col-md-8">
                     <label for="second" class="label-text control-label">Growing my business allows me to create jobs</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <select id="second" ng-model="model.second" ng-change="checkDropdownModels()"
                             class="dropdown-box outline-0" ng-class="{'active': model.second}">
                         <option ng-repeat="item in options">{{item.label}}</option>
@@ -27,11 +56,11 @@
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-sm-6 col-sm-offset-1">
+            <div class="form-group">
+                <div class="col-md-8">
                     <label for="third" class="label-text control-label">Growing my business allows me to give more to my community</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <select id="third" ng-model="model.third" ng-change="checkDropdownModels()"
                             class="dropdown-box outline-0" ng-class="{'active': model.third}">
                         <option ng-repeat="item in options">{{item.label}}</option>
@@ -39,11 +68,11 @@
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-sm-6 col-sm-offset-1">
-                    <label for="fourth" class="label-text control-label">Growing my business means Iam helping the economy</label>
+            <div class="form-group margin-b-50">
+                <div class="col-md-8">
+                    <label for="fourth" class="label-text control-label">Growing my business means I am helping the economy</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <select id="fourth" ng-model="model.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels()"
                             ng-class="{'active': model.fourth}">
                         <option ng-repeat="item in options">{{item.label}}</option>
@@ -53,21 +82,21 @@
         </div>
     </div>
 
-    <div class="panel panel-default" ng-show="showInfoBlock">
+    <div class="panel panel-default margin-t-40 margin-b-65" ng-show="showInfoBlock">
 
         <div class="panel-body">
 
             <h4>{{model.businessName}} Impact Goal</h4>
 
-            <p>Because I will grow my business this year I will be able to {{model.first}} and am committed to
+            <p>Because I will grow my business this year I will be able to {{model.result}} and am committed to
                 providing/creating/giving/helping <input class="outline-0" type="text"></p>
 
-            <h4>{{model.businessName}} Impact Goal 2</h4>
+            <!--<h4>{{model.businessName}} Impact Goal 2</h4>-->
 
-            <p>If you want to set a measurable goal for a second Impact Goal, fill in the blanks. If one enough go to
-                next page.</p>
-            <p>Because I will grow my business this year I will be able to {{model.second}} and am committed to
-                providing/creating/giving/helping <input class="outline-0" type="text"></p>
+            <!--<p>If you want to set a measurable goal for a second Impact Goal, fill in the blanks. If one enough go to-->
+                <!--next page.</p>-->
+            <!--<p>Because I will grow my business this year I will be able to {{model.second}} and am committed to-->
+                <!--providing/creating/giving/helping <input class="outline-0" type="text"></p>-->
 
         </div>
     </div>

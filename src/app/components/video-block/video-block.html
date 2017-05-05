@@ -1,0 +1,13 @@
+<div class="video-container">
+    <div class="row">
+        <div class="video-panel col-md-12 sample-show-hide" ng-class="{'video-panel-show': $ctrl.visible}">
+            <p>module title lorem ipsum</p>
+        </div>
+    </div>
+    <div class="video-content sample-show-hide row" ng-hide="$ctrl.visible">
+        <video controls preload="none" class="col-md-12" poster="../images/carr.png">
+            <source src="http://media.w3.org/2016/01/Emmy-Award.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
