@@ -33,7 +33,8 @@
                     me.user = {
                         name: resp.data.name,
                         email: resp.data.email,
-                        id: resp.data._id
+                        id: resp.data._id,
+                        businessName: resp.data.businessName
                     };
                     console.log(me.user);
                     me.resolveUser(me.user);

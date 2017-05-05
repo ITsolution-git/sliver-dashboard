@@ -36,8 +36,8 @@
                             BEST plan. In about 30 days you will be focused, clear, challenged and supported - and armed with
                             a rock solid plan to bring to life!</p>
             </div>
-            <div class="col-md-6 col-md-offset-3 ">
-                <div class="col-md-6" ng-repeat="build in vm.builds" ng-click="vm.chooseBuild(build,$event)">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-6 outline-0" ng-repeat="build in vm.builds" ng-click="vm.chooseBuild(build,$event)">
                     <div class="rectangle build" ng-class="{'rectangle-active': build._id == vm.build._id}">
                         <div class="rectangle-header">
                             <h3 ng-show="build.buildType == 2">pay now</h3>
