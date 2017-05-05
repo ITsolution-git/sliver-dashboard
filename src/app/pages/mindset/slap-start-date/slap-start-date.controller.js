@@ -5,7 +5,7 @@
         .module('app.pages.mindset')
         .controller('SlapStartDateController', SlapStartDateController);
 
-
+    /* @ngInject */
     function SlapStartDateController($scope) {
 
         $scope.visible = true;

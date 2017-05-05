@@ -28,72 +28,91 @@
                         name: null
                     },
                     next: {
-                        sref: 'mindset.yourCommitment',
-                        name: 'Your Commitment'
+                        sref: 'mindset.slapMindset',
+                        name: 'Get the SLAPmindset'
                     }
                 },
                 controller: 'OurCommitmentController',
                 templateUrl: 'pages/mindset/our-commitment/our-commitment.html'
             })
-            .state('mindset.yourCommitment', {
-                params: {
-                    prev: {
-                        sref: 'mindset.ourCommitment',
-                        name: 'Our Commitment'
-                    },
-                    next: {
-                        sref: 'mindset.slapMindset',
-                        name: 'SLAPmindset'
-                    }
-                },
-                url: '/yourCommitment',
-                controller: 'YourCommitmentController',
-                templateUrl: 'pages/mindset/your-commitment/your-commitment.html'
-            })
             .state('mindset.slapMindset', {
                 url: '/SLAPmindset',
                 params: {
                     prev: {
-                        sref: 'mindset.yourCommitment',
-                        name: 'Your Commitment'
+                        sref: 'mindset.ourCommitment',
+                        name: 'Our Commitment To You'
                     },
                     next: {
-                        sref: 'mindset.privilegeAndResponsibility',
-                        name: 'Privilege and Responsibility'
+                        name: 'Cashflow / Capacity Cath 22',
+                        sref: 'mindset.cashFlow'
                     }
                 },
                 controller: 'SlapMindsetController',
                 templateUrl: 'pages/mindset/get-slap-mindset/get-slap-mindset.html'
             })
-            .state('mindset.privilegeAndResponsibility', {
-                url: '/privilegeAndResponsibility',
+            .state('mindset.cashFlow', {
+                url: '/cashFlow',
                 params: {
                     prev: {
                         sref: 'mindset.slapMindset',
-                        name: 'SLAPmindset'
+                        name: 'Get the SLAPmindset'
+
                     },
                     next: {
-                        sref: 'mindset.slapStartDate',
-                        name: 'Your SLAP Start Date'
+                        sref: 'mindset.yourBusiness',
+                        name: 'Your Business With / Without A SLAP'
                     }
                 },
-                controller: 'PrivilegeAndResponsibilityController',
-                templateUrl: 'pages/mindset/privilege_and_responsibility/privilege-and-responsibility.html'
+                controller: 'CashFlowController',
+                templateUrl: 'pages/mindset/cashflow/cashflow.html'
             })
-            .state('mindset.slapStartDate', {
-                url: '/slapStartDate',
+            .state('mindset.yourBusiness', {
+                url: '/yourBusiness',
                 params: {
                     prev: {
-                        sref: 'mindset.privilegeAndResponsibility',
-                        name: 'Privilege and Responsibility'
+                        name: 'Cashflow / Capacity Cath 22',
+                        sref: 'mindset.cashFlow'
+
                     },
                     next: {
-                        sref: null,
-                        name: null
+                        name: 'Top Down, Bottom Up',
+                        sref: 'mindset.topDownBottomUp'
                     }
                 },
-                controller: 'SlapStartDateController',
-                templateUrl: 'pages/mindset/slap-start-date/slap-start-date.html'
+                controller: 'YourBusinessController',
+                templateUrl: 'pages/mindset/your-business/your-business.html'
+            })
+            .state('mindset.topDownBottomUp', {
+                url: '/topDownBottomUp',
+                params: {
+                    prev: {
+                        sref: 'mindset.yourBusiness',
+                        name: 'Your Business With / Without A SLAP'
+
+                    },
+                    next: {
+                        name: 'Start SLAPn',
+                        sref: 'mindset.startSlapn'
+                    }
+                },
+                controller: 'TopDownBottomUpController',
+                templateUrl: 'pages/mindset/top-down-bottom-up/top-down-bottom-up.html'
+            })
+            .state('mindset.startSlapn', {
+                url: '/startSLAPn',
+                params: {
+                    prev: {
+                        name: 'Top Down, Bottom Up',
+                        sref: 'mindset.topDownBottomUp'
+
+                    },
+                    next: {
+                        name: 'SLAPstatement Overview',
+                        sref: 'statement.overview'
+                    }
+                },
+                controller: 'StartSlapnController',
+                templateUrl: 'pages/mindset/start-slapn/start-slapn.html'
             });
 
     }

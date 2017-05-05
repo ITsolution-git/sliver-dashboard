@@ -2,84 +2,111 @@
     <ul class="list-group left-panel">
         <div>
             <li class="list-group-item left-panel-item" aside-collapse
-                ui-sref-active="{'left-panel-item-active' : 'statement.*' }" data-toggle="collapse" data-target="#asideStatement">
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'statement.*' }">
+                ui-sref-active="{'left-panel-item-active' : 'mindset.*' }" data-toggle="collapse"
+                data-target="#asideMindset">
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'mindset.*' }">
                     <span>1</span>
+                </div>
+                <span>SLAPmindset</span>
+            </li>
+            <div class="enclosed-list collapse" id="asideMindset" ui-sref-active="{'in' : 'mindset.*' }">
+                <ul class="list-group">
+                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
+                        ng-repeat="mindset in subList.slapMindset">
+                        <a ui-sref="{{ mindset.sref }}">{{ mindset.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <li class="list-group-item left-panel-item" aside-collapse
+                ui-sref-active="{'left-panel-item-active' : 'statement.*' }" data-toggle="collapse"
+                data-target="#asideStatement">
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'statement.*' }">
+                    <span>2</span>
                 </div>
                 <span>SLAPStatement</span>
             </li>
-            <div class="enclosed-list collapse" id="asideStatement">
+            <div class="enclosed-list collapse" id="asideStatement" ui-sref-active="{'in' : 'statement.*' }">
                 <ul class="list-group">
-                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active" ng-repeat="statement in statements">
+                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
+                        ng-repeat="statement in subList.slapStatement">
                         <a ui-sref="{{ statement.sref }}">{{ statement.name }}</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div>
-            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'yearGoal.*' }" aside-collapse
-                data-toggle="collapse" data-target="#asideyearGoal">
+            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'yearGoal.*' }"
+                aside-collapse
+                data-toggle="collapse" data-target="#asideYearGoal">
                 <div class="item-circle" ui-sref-active="{'item-circle-active' : 'yearGoal.*' }">
-                    <span>2</span>
+                    <span>3</span>
                 </div>
                 <span>Year goal</span>
             </li>
-            <div class="enclosed-list collapse" id="asideyearGoal">
+            <div class="enclosed-list collapse" id="asideYearGoal" ui-sref-active="{'in' : 'yearGoal.*' }">
                 <ul class="list-group">
-                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active">
-                        <a ui-sref="#">1</a>
+                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
+                        ng-repeat="yearGoal in subList.yearGoals">
+                        <a ui-sref="{{ yearGoal.sref }}">{{ yearGoal.name }}</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div>
-            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'idealClien.*' }" aside-collapse>
-                <!--<div class="item-circle" ui-sref-active="{'left-panel-item-active' : 'idealClien.*' }">-->
-                <!--<span>3</span>-->
-                <!--</div>-->
-                <div class="item-circle item-circle-check">
-                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
-                </div>
-                <span>ideal client</span>
-            </li>
-            <div class="enclosed-list collapse">
-                <ul class="list-group">
-                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active">
-                        <a ui-sref="#"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div aside-collapse >
-            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'actionPlan.*' }" aside-collapse>
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'actionPlan.*' }">
+            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'idealClient.*' }"
+                aside-collapse data-toggle="collapse" data-target="#asideIdealClient">
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'idealClient.*' }">
                     <span>4</span>
                 </div>
-                <span>action plan</span>
+                <!--<div class="item-circle item-circle-check">-->
+                <!--<i class="fa fa-check fa-lg" aria-hidden="true"></i>-->
+                <!--</div>-->
+                <span>ideal client</span>
             </li>
-            <div class="enclosed-list collapse">
+            <div class="enclosed-list collapse" id="asideIdealClient" ui-sref-active="{'in' : 'idealClient.*' }">
                 <ul class="list-group">
-                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active">
-                        <a ui-sref="#"></a>
+                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
+                        ng-repeat="idealClient in subList.idealClients">
+                        <a ui-sref="{{ idealClient.sref }}">{{ idealClient.name }}</a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div aside-collapse>
-            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'execute.*' }" aside-collapse>
+        <div>
+            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'actionPlan.*' }"
+                aside-collapse data-toggle="collapse" data-target="#asideActionPlan">
                 <div class="item-circle" ui-sref-active="{'item-circle-active' : 'actionPlan.*' }">
                     <span>5</span>
                 </div>
-                <span>execute</span>
+                <span>action plan</span>
             </li>
-            <div class="enclosed-list collapse">
+            <div class="enclosed-list collapse" id="asideActionPlan" ui-sref-active="{'in' : 'actionPlan.*' }">
                 <ul class="list-group">
-                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active">
-                        <a ui-sref="#"></a>
+                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
+                        ng-repeat="actionPlan in subList.actionPlans">
+                        <a ui-sref="{{ actionPlan.sref }}">{{ actionPlan.name }}</a>
                     </li>
                 </ul>
             </div>
         </div>
-
+        <div>
+            <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'execute.*' }"
+                aside-collapse data-toggle="collapse" data-target="#asideExecute">
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'execute.*' }">
+                    <span>6</span>
+                </div>
+                <span>execute</span>
+            </li>
+            <div class="enclosed-list collapse" id="asideExecute" ui-sref-active="{'in' : 'execute.*' }">
+                <ul class="list-group">
+                    <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
+                        ng-repeat="exec in subList.execute">
+                        <a ui-sref="{{ exec.sref }}">{{ exec.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </ul>
 </div>
