@@ -75,7 +75,10 @@
             }
         ];
 
+        var _stuckSliders = null;
+
         this.getSliders = getSliders;
+        this.getStuckSliders = getStuckSliders;
 
         ////////////////////////////
 
@@ -83,5 +86,8 @@
             return _sliders;
         }
 
+        function getStuckSliders() {
+            return  _stuckSliders;
+        }
     }
 }());

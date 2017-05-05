@@ -3,10 +3,10 @@
 
     angular
         .module('app.pages.mindset')
-        .controller('YourCommitmentController', YourCommitmentController);
+        .controller('AreYourStuckController', AreYourStuckController);
 
     /* @ngInject */
-    function YourCommitmentController($scope,mindsetService) {
+    function AreYourStuckController($scope,mindsetService) {
 
         angular.extend($scope, {
             showInfoBlock: false,
@@ -19,6 +19,6 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Your Commitment To Us');
+            .setPageTitle('Are You Stuck?');
     }
 }());

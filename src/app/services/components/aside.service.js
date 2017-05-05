@@ -31,6 +31,9 @@
                 name: 'Privilege and Responsibility',
                 sref: 'mindset.privilegeAndResponsibility'
             },{
+                name: 'Are You Stuck?',
+                sref: 'mindset.areYourStuck'
+            },{
                 name: 'Cashflow / Capacity Cath 22',
                 sref: 'mindset.cashFlow'
             },{

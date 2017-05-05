@@ -4,7 +4,7 @@
     angular
         .module('app')
         .constant('CONFIG', {
-            "title": "Slapcenter",
+            "title": "SLAPcenter",
             "tokenParam": "access-token",
             "api": "http://localhost:8000",
             "url": {
