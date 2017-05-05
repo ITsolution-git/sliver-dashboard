@@ -6,7 +6,17 @@
         .controller('CashFlowController', CashFlowController);
 
     /* @ngInject */
-    function CashFlowController() {
-        console.log('CashFlowController')
+    function CashFlowController($scope, pageService) {
+
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('Cashflow Capacity Catch 22');
     }
 }());
