@@ -28,34 +28,64 @@
                         name: null
                     },
                     next: {
-                        sref: 'mindset.slapMindset',
-                        name: 'Get the SLAPmindset'
+                        sref: 'mindset.yourCommitment',
+                        name: 'Your Commitment to Us'
                     }
                 },
                 controller: 'OurCommitmentController',
                 templateUrl: 'pages/mindset/our-commitment/our-commitment.html'
             })
+            .state('mindset.yourCommitment', {
+                url: '/yourCommitment',
+                params: {
+                    prev: {
+                        sref: 'mindset.ourCommitment',
+                        name: 'Our Commitment to You'
+                    },
+                    next: {
+                        sref: 'mindset.slapMindset',
+                        name: 'Get the SLAPmindset'
+                    }
+                },
+                controller: 'YourCommitmentController',
+                templateUrl: 'pages/mindset/your-commitment/your-commitment.html'
+            })
             .state('mindset.slapMindset', {
                 url: '/SLAPmindset',
                 params: {
                     prev: {
-                        sref: 'mindset.ourCommitment',
-                        name: 'Our Commitment To You'
+                        sref: 'mindset.yourCommitment',
+                        name: 'Your Commitment to Us'
+                    },
+                    next: {
+                        name: 'Privilege and Responsibility',
+                        sref: 'mindset.privilegeAndResponsibility'
+                    }
+                },
+                controller: 'SlapMindsetController',
+                templateUrl: 'pages/mindset/get-slap-mindset/get-slap-mindset.html'
+            })
+            .state('mindset.privilegeAndResponsibility', {
+                url: '/privilageAndResponsibility',
+                params: {
+                    prev: {
+                        sref: 'mindset.slapMindset',
+                        name: 'Get the SLAPmindset'
                     },
                     next: {
                         name: 'Cashflow / Capacity Cath 22',
                         sref: 'mindset.cashFlow'
                     }
                 },
-                controller: 'SlapMindsetController',
-                templateUrl: 'pages/mindset/get-slap-mindset/get-slap-mindset.html'
+                controller: 'PrivilegeAndResponsibilityController',
+                templateUrl: 'pages/mindset/privilege_and_responsibility/privilege-and-responsibility.html'
             })
             .state('mindset.cashFlow', {
                 url: '/cashFlow',
                 params: {
                     prev: {
-                        sref: 'mindset.slapMindset',
-                        name: 'Get the SLAPmindset'
+                        name: 'Privilege and Responsibility',
+                        sref: 'mindset.privilegeAndResponsibility'
 
                     },
                     next: {
@@ -107,12 +137,28 @@
 
                     },
                     next: {
-                        name: 'SLAPstatement Overview',
-                        sref: 'statement.overview'
+                        name: 'Your SLAP Start Date',
+                        sref: 'mindset.slapStartDate'
                     }
                 },
                 controller: 'StartSlapnController',
                 templateUrl: 'pages/mindset/start-slapn/start-slapn.html'
+            })
+            .state('mindset.slapStartDate', {
+                url: '/slapStartDate',
+                params: {
+                    prev: {
+                        name: 'Start SLAP\'n!',
+                        sref: 'mindset.startSlapn'
+
+                    },
+                    next: {
+                        name: 'SLAPstatement Overview',
+                        sref: 'statement.overview'
+                    }
+                },
+                controller: 'SlapStartDateController',
+                templateUrl: 'pages/mindset/slap-start-date/slap-start-date.html'
             });
 
     }

@@ -24,8 +24,8 @@
                 url: '/overview',
                 params: {
                     prev: {
-                        name: 'Start SLAPn',
-                        sref: 'mindset.startSlapn'
+                        name: 'Your SLAP Start Date',
+                        sref: 'mindset.slapStartDate'
 
                     },
                     next: {
@@ -52,7 +52,5 @@
                 controller: 'StatementQAController',
                 templateUrl: 'pages/statement/statement-qa/statement-qa.html'
             });
-
-
     }
 }());
