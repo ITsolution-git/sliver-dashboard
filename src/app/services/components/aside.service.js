@@ -114,8 +114,29 @@
                 name: 'Ideal Client Overview',
                 sref: 'idealClient.overview'
             }, {
+                name: 'Who Are Your Ideal Clients?',
+                sref: 'idealClient.whoAreYourIdealClients'
+            },{
+                name: 'Define Your Ideal Client',
+                sref: 'idealClient.defineYourIdealClient'
+            }, {
+                name: 'Name Your Ideal Client',
+                sref: 'idealClient.nameYourIdealClient'
+            }, {
                 name: 'Ideal Client Q&A',
                 sref: 'idealClient.qa'
+            }, {
+                name: 'Commit To Your Ideal Client',
+                sref: 'idealClient.commitYourIdealClient'
+            }, {
+                name: 'Double Check',
+                sref: 'idealClient.doubleCheck'
+            }, {
+                name: 'SLAPstatement',
+                sref: 'idealClient.slapStatement'
+            }, {
+                name: 'Step 3 SLAPsummary',
+                sref: 'idealClient.step3Summary'
             }
         ];
 
@@ -123,6 +144,18 @@
             {
                 name: 'Action Plan Overview',
                 sref: 'actionPlan.overview'
+            }, {
+                name: 'The World Around You',
+                sref: 'actionPlan.worldAroundYou'
+            },{
+                name: 'Double Check Start Date',
+                sref: 'actionPlan.doubleCheckStartDate'
+            }, {
+                name: 'What\'s Happening in Q1-Q4',
+                sref: 'actionPlan.whatsHappening'
+            }, {
+                name: 'Rate the 10 Connecting Strategies',
+                sref: 'actionPlan.rateConnectingStrategies'
             }, {
                 name: 'Action Plan Q&A',
                 sref: 'actionPlan.qa'
