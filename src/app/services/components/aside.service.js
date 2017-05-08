@@ -12,8 +12,20 @@
                 name: 'SLAPstatement Overview',
                 sref: 'statement.overview'
             }, {
+                name: 'Your SLAPstatement',
+                sref: 'statement.your'
+            }, {
                 name: 'SLAPstatement Q&A',
                 sref: 'statement.qa'
+            }, {
+                name: 'Commit To Your',
+                sref: 'statement.commitToYour'
+            }, {
+                name: 'SLAPStatement',
+                sref: 'statement.statement'
+            }, {
+                name: 'Step 1 SLAPsummary',
+                sref: 'statement.step1Summary'
             }
         ];
 

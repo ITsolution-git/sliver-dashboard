@@ -24,8 +24,8 @@
                 url: '/overview',
                 params: {
                     prev: {
-                        name: 'SLAPstatement Q&A',
-                        sref: 'statement.qa'
+                        name: 'Step 1 SLAPsummary',
+                        sref: 'statement.step1Summary'
 
                     },
                     next: {
