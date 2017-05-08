@@ -157,8 +157,35 @@
                 name: 'Rate the 10 Connecting Strategies',
                 sref: 'actionPlan.rateConnectingStrategies'
             }, {
+                name: 'Choose Your Connecting Strategies',
+                sref: 'actionPlan.chooseYourConnectingStrategies'
+            }, {
+                name: 'Connecting Strategy Strategizing',
+                sref: 'actionPlan.connectingStrategyStrategizing'
+            }, {
+                name: 'Action Items',
+                sref: 'actionPlan.actionItems'
+            }, {
+                name: 'Action Plan Review',
+                sref: 'actionPlan.actionPlanReview'
+            }, {
+                name: 'Quarterly Goals',
+                sref: 'actionPlan.quarterlyGoals'
+            }, {
+                name: 'Double Check 1 Year Goal',
+                sref: 'actionPlan.doubleCheckYearGoal'
+            }, {
                 name: 'Action Plan Q&A',
                 sref: 'actionPlan.qa'
+            }, {
+                name: 'Commit To Your Action Plan',
+                sref: 'actionPlan.commitYourActionPlan'
+            }, {
+                name: 'Step 4 SLAPsummary',
+                sref: 'actionPlan.step4Summary'
+            }, {
+                name: 'Second SLAPexpert Review',
+                sref: 'actionPlan.secondExpertReview'
             }
         ];
 
