@@ -113,28 +113,36 @@
             {
                 name: 'Ideal Client Overview',
                 sref: 'idealClient.overview'
-            }, {
+            },
+            {
                 name: 'Who Are Your Ideal Clients?',
-                sref: 'idealClient.whoAreYourIdealClients'
-            }, {
+                sref: 'idealClient.whoAreYouIdealClient'
+            },
+            {
                 name: 'Define Your Ideal Client',
                 sref: 'idealClient.defineYourIdealClient'
-            }, {
+            },
+            {
                 name: 'Name Your Ideal Client',
                 sref: 'idealClient.nameYourIdealClient'
-            }, {
+            },
+            {
                 name: 'Ideal Client Q&A',
                 sref: 'idealClient.qa'
-            }, {
+            },
+            {
                 name: 'Commit To Your Ideal Client',
                 sref: 'idealClient.commitYourIdealClient'
-            }, {
+            },
+            {
                 name: 'Double Check',
                 sref: 'idealClient.doubleCheck'
-            }, {
+            },
+            {
                 name: 'SLAPstatement',
                 sref: 'idealClient.slapStatement'
-            }, {
+            },
+            {
                 name: 'Step 3 SLAPsummary',
                 sref: 'idealClient.step3Summary'
             }

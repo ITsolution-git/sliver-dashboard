@@ -29,14 +29,14 @@
                     },
                     next: {
                         name: 'Who Are Your Ideal Clients?',
-                        sref: 'idealClient.whoAreYourIdealClients'
+                        sref: 'idealClient.whoAreYouIdealClient'
                     }
                 },
                 controller: 'IdealClientOverviewController',
                 templateUrl: 'pages/idealClient/ideal-client-overview/ideal-client-overview.html'
             })
-            .state('idealClient.whoAreYourIdealClients', {
-                url: '/whoAreYourIdealClients',
+            .state('idealClient.whoAreYouIdealClient', {
+                url: '/whoAreYouIdealClient',
                 params: {
                     prev: {
                         name: 'Ideal Client Overview',
@@ -47,8 +47,8 @@
                         sref: 'idealClient.defineYourIdealClient'
                     }
                 },
-                controller: 'WhoAreYourIdealClientsController',
-                templateUrl: 'pages/idealClient/who-are-your-ideal-clients/who-are-your-ideal-clients.html'
+                controller: 'WhoAreYouIdealClientController',
+                templateUrl: 'pages/idealClient/who-are-you-ideal-client/who-are-you-ideal-client.html'
             })
             .state('idealClient.defineYourIdealClient', {
                 url: '/defineYourIdealClient',
