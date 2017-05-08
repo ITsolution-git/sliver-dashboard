@@ -24,8 +24,8 @@
                 url: '/overview',
                 params: {
                     prev: {
-                        name: '1 Year Goal Q&A',
-                        sref: 'yearGoal.qa'
+                        name: 'First SLAPexpert Review',
+                        sref: 'yearGoal.firstExpertReview'
                     },
                     next: {
                         name: 'Ideal Client Q&A',
