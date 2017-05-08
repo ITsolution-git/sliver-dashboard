@@ -116,7 +116,7 @@
             }, {
                 name: 'Who Are Your Ideal Clients?',
                 sref: 'idealClient.whoAreYourIdealClients'
-            },{
+            }, {
                 name: 'Define Your Ideal Client',
                 sref: 'idealClient.defineYourIdealClient'
             }, {
@@ -147,7 +147,7 @@
             }, {
                 name: 'The World Around You',
                 sref: 'actionPlan.worldAroundYou'
-            },{
+            }, {
                 name: 'Double Check Start Date',
                 sref: 'actionPlan.doubleCheckStartDate'
             }, {
@@ -189,7 +189,21 @@
             }
         ];
 
-        var execute = [];
+        var execute = [
+            {
+                name: 'Living SLAP Day-to-Day',
+                sref: 'execute.livingDayToDay'
+            }, {
+                name: 'Commit to Yourself',
+                sref: 'execute.commitYourSelf'
+            }, {
+                name: 'Set Yourself Up For Success',
+                sref: 'execute.setYourselfUpForSuccess'
+            }, {
+                name: 'Tour of SLAPcenter - Execute',
+                sref: 'execute.tourExecute'
+            }
+        ];
 
         this.getAll = getAll;
 

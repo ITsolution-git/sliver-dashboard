@@ -9,7 +9,8 @@
             'app.pages.mindset',
             'app.pages.yearGoal',
             'app.pages.idealClient',
-            'app.pages.actionPlan'
+            'app.pages.actionPlan',
+            'app.pages.execute'
             // 'app.pages.cart',
             // 'app.pages.media',
             // 'app.pages.clients'

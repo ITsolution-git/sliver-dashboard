@@ -238,8 +238,8 @@
                         sref: 'actionPlan.step4Summary'
                     },
                     next: {
-                        name: '',
-                        sref: ''
+                        name: 'Living SLAP Day-to-Day',
+                        sref: 'execute.livingDayToDay'
                     }
                 },
                 controller: 'SecondExpertReviewController',
