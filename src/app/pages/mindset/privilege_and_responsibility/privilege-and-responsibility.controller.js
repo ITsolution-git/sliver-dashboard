@@ -8,6 +8,8 @@
     /* @ngInject */
     function PrivilegeAndResponsibilityController($scope, pageService, userService) {
 
+        var answersList = [];
+
         angular.extend($scope, {
             model: {
                 first: '',
@@ -38,10 +40,12 @@
             showInfoBlock: false,
             showVideoBlock: false,
             showStaticTextBlock: false,
-            showDropdownBlock: false
+            showDropdownBlock: false,
+            showNotice: false
         });
 
         $scope.checkDropdownModels = checkDropdownModels;
+        $scope.closeNotice = closeNotice;
         // --- vars ---
 
         pageService
@@ -56,36 +60,66 @@
             }
         });
 
-        function checkDropdownModels() {
-            if (!_.isEmpty($scope.model.first) && !_.isEmpty($scope.model.second) && !_.isEmpty($scope.model.third) && !_.isEmpty($scope.model.fourth)) {
-                $scope.showInfoBlock = true;
 
-                var resultList = _.cloneDeep($scope.options);
-                resultList = _.reverse(resultList);
+        function checkDropdownModels(model) {
 
-                _.each(resultList, function (value) {
-
-                    if ($scope.model.first === value.label) {
-                        $scope.model.result = 'provide for my family';
-                        return true;
-                    }
-
-                    if ($scope.model.second === value.label) {
-                        $scope.model.result = 'create jobs';
-                        return true;
-                    }
-
-                    if ($scope.model.third === value.label) {
-                        $scope.model.result = 'give more to my community';
-                        return true;
-                    }
-
-                    if ($scope.model.fourth === value.label) {
-                        $scope.model.result = 'helping the economy';
-                        return true;
-                    }
-                });
+            if (_.indexOf(answersList, model) === -1) {
+                answersList.push(model);
+                $scope.showNotice = false;
+            } else {
+                $scope.showNotice = true;
+                $scope.showInfoBlock = false;
             }
+
+            if (!_.isEmpty($scope.model.first) && !_.isEmpty($scope.model.second) && !_.isEmpty($scope.model.third) && !_.isEmpty($scope.model.fourth)) {
+
+                if (findDuplicate()) {
+                    $scope.showInfoBlock = true;
+                    $scope.showNotice = false;
+                    findPrimaryLabel();
+                }
+            }
+        }
+
+        function findPrimaryLabel() {
+            var resultList = _.cloneDeep($scope.options);
+            resultList = _.reverse(resultList);
+
+            _.each(resultList, function (value) {
+
+                if ($scope.model.first === value.label) {
+                    $scope.model.result = 'provide for my family';
+                    return true;
+                }
+
+                if ($scope.model.second === value.label) {
+                    $scope.model.result = 'create jobs';
+                    return true;
+                }
+
+                if ($scope.model.third === value.label) {
+                    $scope.model.result = 'give more to my community';
+                    return true;
+                }
+
+                if ($scope.model.fourth === value.label) {
+                    $scope.model.result = 'helping the economy';
+                    return true;
+                }
+            });
+        }
+
+        function closeNotice() {
+            $scope.showNotice = false;
+        }
+
+        // If user selected two or more identical values, return false
+        function findDuplicate() {
+
+            var modelsArray = [$scope.model.first, $scope.model.second, $scope.model.third, $scope.model.fourth];
+            var filteringModelsArray = _.uniq(modelsArray);
+
+            return filteringModelsArray.length === modelsArray.length;
         }
     }
 

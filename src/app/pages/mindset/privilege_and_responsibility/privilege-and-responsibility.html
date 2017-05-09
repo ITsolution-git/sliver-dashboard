@@ -24,6 +24,15 @@
 
     </div>
 
+    <div class="row sample-show-hide" ng-show="showNotice">
+        <div class="col-md-12">
+            <div class="notice-box col-md-12 sample-show-hide">
+                <span>You can choose only one highes priority</span>
+                <span class="close-btn" ng-click="closeNotice()"></span>
+            </div>
+        </div>
+    </div>
+
     <div class="panel panel-default margin-t-40" ng-class="{'margin-b-140': !showInfoBlock}">
 
         <div class="panel-body">
@@ -39,7 +48,7 @@
                         <label for="first" class="label-text control-label">Growing my business allows me to provide for my family</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="first" ng-model="model.first" ng-change="checkDropdownModels()" class="dropdown-box outline-0"
+                        <select id="first" ng-model="model.first" ng-change="checkDropdownModels(model.first)" class="dropdown-box outline-0"
                                 ng-class="{'active': model.first}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
@@ -51,7 +60,7 @@
                         <label for="second" class="label-text control-label">Growing my business allows me to create jobs</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="second" ng-model="model.second" ng-change="checkDropdownModels()"
+                        <select id="second" ng-model="model.second" ng-change="checkDropdownModels(model.second)"
                                 class="dropdown-box outline-0" ng-class="{'active': model.second}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
@@ -63,7 +72,7 @@
                         <label for="third" class="label-text control-label">Growing my business allows me to give more to my community</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="third" ng-model="model.third" ng-change="checkDropdownModels()"
+                        <select id="third" ng-model="model.third" ng-change="checkDropdownModels(model.third)"
                                 class="dropdown-box outline-0" ng-class="{'active': model.third}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
@@ -75,7 +84,7 @@
                         <label for="fourth" class="label-text control-label">Growing my business means I am helping the economy</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="fourth" ng-model="model.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels()"
+                        <select id="fourth" ng-model="model.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(model.fourth)"
                                 ng-class="{'active': model.fourth}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
