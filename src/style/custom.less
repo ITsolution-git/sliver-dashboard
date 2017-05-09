@@ -151,6 +151,56 @@ slap-header {
   padding-left: 0;
   padding-right: 0;
   padding-top: 82px;
+
+  .active {
+    .opacity(1);
+  }
+
+  h4 {
+    color: #373c37;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+
+  .input-box {
+
+    input {
+      border-bottom: 2px solid #0e7cb5;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      color: #33444d;
+      font-size: 16px;
+      height: 42px;
+    }
+
+    .label {
+      color: #33444d;
+      font-size: 24px;
+      font-weight: normal;
+      line-height: 36px;
+      padding-left: 0;
+      position: absolute;
+      top: 0;
+      .transition(all linear 0.25s);
+      .opacity(0.5);
+    }
+
+    input {
+      margin-top: 10px;
+      .opacity(0.5);
+    }
+
+    input:focus + .label, input:valid + .label {
+      .opacity(0);
+    }
+
+    input:valid {
+      .opacity(1);
+    }
+
+  }
 }
 
 h3 {
