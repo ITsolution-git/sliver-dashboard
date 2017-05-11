@@ -55,7 +55,7 @@
                 params: {
                     prev: {
                         name: 'Who Are Your Ideal Clients?',
-                        sref: 'idealClient.whoAreYourIdealClients'
+                        sref: 'idealClient.whoAreYouIdealClient'
                     },
                     next: {
                         name: 'Name Your Ideal Client',

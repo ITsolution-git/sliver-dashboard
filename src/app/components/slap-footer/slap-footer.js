@@ -2,14 +2,27 @@
     'use strict';
 
     var slapFooter = {
-        bindings: {},
-        controller: function ($scope, footerService, $timeout, $rootScope, $state) {
+        bindings: {
+            send: '&',
+            forward: '='
+        },
+        controller: function (footerService, $timeout, $rootScope, $state) {
+            var vm = this;
+
             $timeout(function () {
-                $scope.state = footerService._state;
+                vm.state = footerService._state;
             });
 
-            $scope.next = function () {
-                $state.go($scope.state.next.sref);
+            vm.next = function () {
+                if (vm.forward) {
+                    vm.send().then(function (response) {
+                        $state.go(vm.state.next.sref);
+                        $timeout(scrollTop);
+                    });
+                    return;
+                }
+
+                $state.go(vm.state.next.sref);
                 $timeout(scrollTop);
             };
 

@@ -5,7 +5,7 @@
         .module('app.services')
         .service('mindsetService', mindsetService);
 
-    function mindsetService() {
+    function mindsetService(apiService) {
         var _sliders = [
             {
                 name: 'I Know I Am In Charge Of My Bussiness Success',
