@@ -1,3 +1,69 @@
-<h1>name-your-ideal-client</h1>
+<div class="slap-page container">
+
+    <div class="panel panel-default margin-t-40">
+
+        <div class="panel-body">
+
+            <button-switch visible="showVideoBlock"></button-switch>
+
+            <video-block visible="showVideoBlock"></video-block>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default margin-t-40">
+
+        <div class="panel-body static-text-panel">
+
+            <button-switch visible="showStaticTextBlock"></button-switch>
+
+            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default margin-t-40 margin-b-140">
+
+        <div class="panel-body padding-b-0">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button-switch visible="showIdealClientNameBlock"></button-switch>
+
+                    <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+                </div>
+            </div>
+
+            <div class="row sample-show-hide" ng-hide="showIdealClientNameBlock">
+                <div class="col-md-11 padding-l-r-30">
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a
+                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                </div>
+            </div>
+
+            <div class="row sample-show-hide" ng-hide="showIdealClientNameBlock">
+
+                <div class="col-md-12 padding-l-r-30 margin-b-24">
+                    <h4>Naming your Ideal Client</h4>
+                </div>
+
+                <div class="col-md-12 row-flex padding-l-r-30 margin-b-38">
+
+                    <div class="input-box">
+                        <input type="text" id="firstName" class="outline-0"
+                               ng-class="{'active': model.firstName}"
+                               ng-model="model.firstName" required>
+                        <label class="label" for="firstName">First Name</label>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
 
 <slap-footer></slap-footer>

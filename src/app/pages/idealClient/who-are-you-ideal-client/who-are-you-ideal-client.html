@@ -26,7 +26,7 @@
 
     <div class="panel panel-default margin-t-40 margin-b-140 sample-show-hide">
 
-        <div class="panel-body">
+        <div class="panel-body padding-b-0">
 
             <div class="row">
                 <div class="col-md-12">
@@ -36,75 +36,97 @@
                 </div>
             </div>
 
-            <div class="row" ng-hide="showIdealClientTextBlock">
+            <div class="row sample-show-hide" ng-hide="showIdealClientTextBlock">
                 <div class="col-md-11 padding-l-r-30">
                     <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a
                         dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
                 </div>
             </div>
 
-            <div class="row" ng-hide="showIdealClientTextBlock">
+            <div class="row sample-show-hide" ng-hide="showIdealClientTextBlock">
                 <div class="col-md-12 padding-l-r-30">
                     <h4>Who Are Your Ideal Clients?</h4>
                 </div>
             </div>
 
-            <div class="input-group-wrap" ng-hide="showIdealClientTextBlock">
+            <div class="input-group-wrap sample-show-hide" ng-hide="showIdealClientTextBlock">
 
                 <div class="input-group-item row" ng-repeat="item in clients">
 
                     <div class="col-md-12 row-flex padding-l-r-30 padding-t-45 margin-b-38">
 
                         <div class="input-box">
-                            <input type="text" id="name-{{$index}}" class="name outline-0" ng-model="item.name" required>
+                            <input type="text" id="name-{{$index}}" class="name outline-0"
+                                   ng-class="{'active': item.name}"
+                                   ng-change="checkFormElements(item)"
+                                   ng-model="item.name" required>
                             <label class="label name-label" for="name-{{$index}}">Name</label>
                         </div>
 
-                        <select ng-model="item.gender" class="gender dropdown-box outline-0">
-                            <option>Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
+                        <select ng-model="item.gender" ng-change="checkFormElements(item)"
+                                ng-class="{'active': item.gender !== '0'}"
+                                class="gender dropdown-box outline-0">
+                            <option value="0">Gender</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
                         </select>
 
                         <div class="input-box">
-                            <input ng-model="item.age" type="text" id="age-{{$index}}" class="age outline-0" required>
+                            <input ng-model="item.age" type="text" id="age-{{$index}}"
+                                   ng-class="{'active': item.age}"
+                                   ng-change="checkFormElements(item)"
+                                   class="age outline-0" required>
                             <label class="label age-label" for="age-{{$index}}">Age</label>
                         </div>
 
-                        <select ng-model="item.maritalStatus" class="marital-status dropdown-box outline-0">
+                        <select ng-model="item.maritalStatus" ng-change="checkFormElements(item)"
+                                ng-class="{'active': item.maritalStatus !== '0'}"
+                                class="marital-status dropdown-box outline-0">
                             <option value="0">Marital status</option>
-                            <option value="1">Married</option>
-                            <option value="2">Single</option>
-                            <option value="3">Widowed</option>
-                            <option value="4">Divorced</option>
-                            <option value="5">Common-Law</option>
+                            <option value="1">Single</option>
+                            <option value="2">Married</option>
+                            <option value="3">Divorced</option>
+                            <option value="4">Widowed</option>
                         </select>
 
-                        <select ng-model="item.kids" class="kids dropdown-box outline-0">
-                            <option>Kids</option>
-                            <option>Yes</option>
-                            <option>No</option>
+                        <select ng-model="item.kids" ng-change="checkFormElements(item)"
+                                ng-class="{'active': item.kids !== '0'}"
+                                class="kids dropdown-box outline-0">
+                            <option value="0">Kids</option>
+                            <option value="1">None</option>
+                            <option value="2">Young</option>
+                            <option value="3">Teens</option>
+                            <option value="4">Adults</option>
                         </select>
 
                     </div>
 
-                    <div class="col-md-12 row-flex padding-l-r-30 margin-b-50">
+                    <div class="col-md-12 row-flex padding-l-r-30 margin-b-56">
 
-                        <select ng-model="item.employment" class="employment dropdown-box outline-0">
+                        <select ng-model="item.employment" ng-change="checkFormElements(item)"
+                                ng-class="{'active': item.employment !== '0'}"
+                                class="employment dropdown-box outline-0">
                             <option value="0">Employment</option>
-                            <option value="1">Employed</option>
-                            <option value="2">Self-Employed</option>
+                            <option value="1">Doesn’t Work Established Entrepreneur</option>
+                            <option value="2">Small Entrepreneur</option>
+                            <option value="3">Senior Employed</option>
+                            <option value="4">Mid Level Employed</option>
+                            <option value="5">Junior Employed</option>
                         </select>
 
-                        <select ng-model="item.location" class="location dropdown-box outline-0">
+                        <select ng-model="item.location" ng-change="checkFormElements(item)"
+                                ng-class="{'active': item.location !== '0'}"
+                                class="location dropdown-box outline-0">
                             <option value="0">Location</option>
-                            <option value="1">City Center</option>
-                            <option value="2">Outskirts</option>
-                            <option value="3">Suburb</option>
-                            <option value="4">Rural</option>
+                            <option value="1">City</option>
+                            <option value="2">Suburbs</option>
+                            <option value="3">Rural</option>
+                            <option value="4">Other</option>
                         </select>
 
-                        <select ng-model="item.home" class="home dropdown-box outline-0">
+                        <select ng-model="item.home" ng-change="checkFormElements(item)"
+                                ng-class="{'active': item.home !== '0'}"
+                                class="home dropdown-box outline-0">
                             <option value="0">Home</option>
                             <option value="1">Condo</option>
                             <option value="2">Apartment</option>
@@ -113,19 +135,30 @@
                             <option value="5">Other</option>
                         </select>
 
-                        <select ng-model="item.transit" class="transit dropdown-box outline-0">
+                        <select ng-model="item.transit" ng-change="checkFormElements(item)"
+                                ng-class="{'active': item.transit !== '0'}"
+                                class="transit dropdown-box outline-0">
                             <option value="0">Transit</option>
                             <option value="1">Car</option>
-                            <option value="2">Walk/Bike</option>
+                            <option value="2">Bike</option>
+                            <option value="2">Train</option>
+                            <option value="2">Walking</option>
+                            <option value="2">Planes</option>
+                            <option value="2">Other</option>
                         </select>
 
                         <div class="input-box">
-                            <input ng-model="item.hobbies" type="text" id="hobbies-{{$index}}" class="hobbies outline-0" required>
+                            <input ng-model="item.hobbies" type="text" id="hobbies-{{$index}}"
+                                   class="hobbies outline-0" ng-change="checkFormElements(item)"
+                                   ng-class="{'active': item.hobbies}" required>
                             <label class="label hobbies-label" for="hobbies-{{$index}}">Hobbies</label>
                         </div>
 
                         <div class="input-box">
-                            <input ng-model="item.reads" type="text" id="reads-{{$index}}" class="reads outline-0" required>
+                            <input ng-model="item.reads" type="text" id="reads-{{$index}}"
+                                   class="reads outline-0"
+                                   ng-class="{'active': item.reads}"
+                                   ng-change="checkFormElements(item)" required>
                             <label class="label reads-label" for="reads-{{$index}}">Reads</label>
                         </div>
                     </div>
