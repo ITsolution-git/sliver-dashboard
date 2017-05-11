@@ -26,8 +26,8 @@
                 $timeout(scrollTop);
             };
 
-            $scope.prev = function () {
-                $state.go($scope.state.prev.sref);
+            vm.prev = function () {
+                $state.go(vm.state.prev.sref);
                 $timeout(scrollTop);
             };
 
