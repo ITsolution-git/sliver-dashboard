@@ -7,6 +7,7 @@
 
     /* @ngInject */
     function TourExecuteController($scope, pageService) {
+
         angular.extend($scope, {
             showVideoBlock: false,
             showStaticTextBlock: false

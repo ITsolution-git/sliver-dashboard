@@ -5,7 +5,17 @@
         .module('app.pages.yearGoal')
         .controller('VariableBusinessExpensesController', VariableBusinessExpensesController);
 
-    function VariableBusinessExpensesController() {
+    function VariableBusinessExpensesController($scope, pageService) {
 
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('Year Goal');
     }
 }());

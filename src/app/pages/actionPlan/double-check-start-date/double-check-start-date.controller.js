@@ -5,7 +5,17 @@
         .module('app.pages.actionPlan')
         .controller('DoubleCheckStartDateController', DoubleCheckStartDateController);
 
-    function DoubleCheckStartDateController() {
+    function DoubleCheckStartDateController($scope, pageService) {
 
+        angular.extend($scope, {
+            showVideoBlock: false,
+            showStaticTextBlock: false
+        });
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('Action Plan Review');
     }
 }());
