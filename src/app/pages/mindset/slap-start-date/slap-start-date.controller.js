@@ -21,8 +21,11 @@
             },
             showVideoBlock: false,
             showStaticTextBlock: false,
-            showStartDate: false
+            showStartDate: false,
+            forward: true
         });
+
+        $scope.sendData = sendData;
 
 
         $scope.$watch('model.month', function (value) {
@@ -40,6 +43,15 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Your SLAP Start Date');
+
+        function sendData() {
+            var urls = $state.current.name.split('.');
+
+            return stepService.sendApiData(urls[urls.length - 1], $scope.model)
+                .then(function (response) {
+                    console.log(response);
+                });
+        }
     }
 
 }());

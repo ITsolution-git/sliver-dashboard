@@ -9,7 +9,8 @@
 
         angular.extend($scope, {
             showVideoBlock: false,
-            showStaticTextBlock: false
+            showStaticTextBlock: false,
+            showContent: false
         });
 
         pageService

@@ -102,7 +102,7 @@
             <h4>{{model.businessName}} Impact Goal</h4>
 
             <p>Because I will grow my business this year I will be able to {{model.result}} and am committed to
-                providing/creating/giving/helping <input class="outline-0" type="text"></p>
+                providing/creating/giving/helping <input ng-model="model.text" class="outline-0" type="text"></p>
 
             <!--<h4>{{model.businessName}} Impact Goal 2</h4>-->
 
@@ -115,4 +115,4 @@
     </div>
 </div>
 
-<slap-footer></slap-footer>
+<slap-footer send="sendData()" forward="forward"></slap-footer>

@@ -6,7 +6,7 @@
         .controller('PrivilegeAndResponsibilityController', PrivilegeAndResponsibilityController);
 
     /* @ngInject */
-    function PrivilegeAndResponsibilityController($scope, pageService, userService) {
+    function PrivilegeAndResponsibilityController($scope, $state, pageService, userService, stepService) {
 
         var answersList = [];
 
@@ -16,6 +16,7 @@
                 second: '',
                 third: '',
                 fourth: '',
+                text: '',
                 businessName: _.get(userService, 'user.businessName'),
                 result: ''
             },
@@ -41,11 +42,13 @@
             showVideoBlock: false,
             showStaticTextBlock: false,
             showDropdownBlock: false,
-            showNotice: false
+            showNotice: false,
+            forward: true
         });
 
         $scope.checkDropdownModels = checkDropdownModels;
         $scope.closeNotice = closeNotice;
+        $scope.sendData = sendData;
         // --- vars ---
 
         pageService
@@ -59,6 +62,22 @@
                 $scope.model.businessName = user.businessName;
             }
         });
+
+        function sendData() {
+            var urls = $state.current.name.split('.');
+            var data = angular.extend({}, {
+                first: $scope.model.first,
+                second: $scope.model.second,
+                third: $scope.model.third,
+                fourth: $scope.model.fourth,
+                text: $scope.model.text
+            });
+
+            return stepService.sendApiData(urls[urls.length - 1], data)
+                .then(function (response) {
+                    console.log(response);
+                });
+        }
 
 
         function checkDropdownModels(model) {
