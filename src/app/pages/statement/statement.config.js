@@ -29,50 +29,50 @@
 
                     },
                     next: {
-                        name: 'Your SLAPstatement',
-                        sref: 'statement.your'
+                        name: 'SLAPstatement Q&A',
+                        sref: 'statement.qa'
                     }
                 },
                 controller: 'StatementOverviewController',
                 templateUrl: 'pages/statement/statement-overview/statement-overview.html'
             })
-            .state('statement.your', {
-                url: '/yourStatement',
-                params: {
-                    prev: {
-                        name: 'SLAPstatement Overview',
-                        sref: 'statement.overview'
-                    },
-                    next: {
-                        name: 'SLAPstatement Q&A',
-                        sref: 'statement.qa'
-                    }
-                },
-                controller: 'YourStatementController',
-                templateUrl: 'pages/statement/your-statement/your-statement.html'
-            })
             .state('statement.qa', {
                 url: '/Q&A',
                 params: {
                     prev: {
-                        name: 'Your SLAPstatement',
-                        sref: 'statement.your'
+                        name: 'SLAPstatement Overview',
+                        sref: 'statement.overview'
 
+                    },
+                    next: {
+                        name: 'Your SLAPstatement',
+                        sref: 'statement.yourStatement'
+                    }
+                },
+                controller: 'StatementQAController',
+                templateUrl: 'pages/statement/statement-qa/statement-qa.html'
+            })
+            .state('statement.yourStatement', {
+                url: '/yourStatement',
+                params: {
+                    prev: {
+                        name: 'SLAPstatement Q&A',
+                        sref: 'statement.qa'
                     },
                     next: {
                         name: 'Commit To Your',
                         sref: 'statement.commitToYour'
                     }
                 },
-                controller: 'StatementQAController',
-                templateUrl: 'pages/statement/statement-qa/statement-qa.html'
+                controller: 'YourStatementController',
+                templateUrl: 'pages/statement/your-statement/your-statement.html'
             })
             .state('statement.commitToYour', {
                 url: '/commitToYour',
                 params: {
                     prev: {
-                        name: 'SLAPstatement Q&A',
-                        sref: 'statement.qa'
+                        name: 'Your SLAPstatement',
+                        sref: 'statement.yourStatement'
 
                     },
                     next: {

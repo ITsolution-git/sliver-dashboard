@@ -28,9 +28,13 @@
 
         <div class="panel-body">
 
-            <button-switch visible="showStartDate"></button-switch>
+            <button-switch visible="showContent"></button-switch>
 
             <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+
+            <div class="col-md-10 sample-show-hide" ng-hide="showContent">
+                <p>{{user.businessName}} {{first[+model.first]}} {{model.second}} {{third[+model.third]}} {{model.fourth}} on a {{fifth[+model.fifth]}} scale.</p>
+            </div>
 
         </div>
     </div>

@@ -6,7 +6,7 @@
         .controller('WhoAreYouIdealClientController', WhoAreYouIdealClientController);
 
     /* @ngInject */
-    function WhoAreYouIdealClientController($scope, $q, $timeout, pageService) {
+    function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService) {
 
         angular.extend($scope, {
             clients: [],
@@ -26,12 +26,23 @@
             },
             showVideoBlock: false,
             showStaticTextBlock: false,
-            showIdealClientTextBlock: false
+            showIdealClientTextBlock: false,
+            forward: true
         });
 
         $scope.checkFormElements = checkFormElements;
+        $scope.sendData = sendData;
 
         $timeout(addNewClient);
+
+        function sendData() {
+            var urls = $state.current.name.split('.');
+
+            return stepService.sendApiData(urls[urls.length - 1], $scope.clients)
+                .then(function (response) {
+                    console.log(response);
+                });
+        }
 
         function addNewClient(currentClientNumber) {
 
@@ -47,7 +58,6 @@
         function checkFormElements(model) {
 
             findEmptyInputs(model).then(function (result) {
-                console.log(result);
                 if (result) {
                     addNewClient(model.number);
                 }

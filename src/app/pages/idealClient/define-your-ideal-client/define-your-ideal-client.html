@@ -32,6 +32,97 @@
 
             <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
 
+            <div class="col-md-10 sample-show-hide" ng-hide="showContent">
+
+                <div class="row" ng-repeat="client in model.clients">
+
+                    <h4>Ideal Client - {{$index + 1}}</h4>
+
+                    <div class="ideal-clients-list list-group">
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Name:</div>
+                                <div class="col-md-7">{{client.name}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Gender:</div>
+                                <div class="col-md-7">{{gender[+client.gender]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Age:</div>
+                                <div class="col-md-7">{{client.age}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Marital status:</div>
+                                <div class="col-md-7">{{maritalStatus[+client.maritalStatus]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Kids:</div>
+                                <div class="col-md-7">{{kids[+client.kids]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Employment:</div>
+                                <div class="col-md-7">{{employment[+client.employment]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Location:</div>
+                                <div class="col-md-7">{{location[+client.location]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Home:</div>
+                                <div class="col-md-7">{{home[+client.home]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Transit:</div>
+                                <div class="col-md-7">{{transit[+client.transit]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Hobbies:</div>
+                                <div class="col-md-7">{{client.hobbies}}</div>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3 label">Reads:</div>
+                                <div class="col-md-7">{{client.reads}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 

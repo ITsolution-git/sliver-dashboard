@@ -6,7 +6,7 @@
         .controller('SlapStartDateController', SlapStartDateController);
 
     /* @ngInject */
-    function SlapStartDateController($scope, pageService) {
+    function SlapStartDateController($scope, $state, pageService, stepService) {
 
         $scope.visible = true;
 
