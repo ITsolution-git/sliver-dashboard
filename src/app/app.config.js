@@ -6,7 +6,7 @@
         .config(config);
 
     /* @ngInject */
-    function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG) {
+    function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider) {
 
         $stateProvider
         // app blank layout
@@ -46,6 +46,8 @@
         // always goto 404 if route not found
         //$urlRouterProvider.otherwise('/');
         $urlRouterProvider.otherwise('/404');
+
+        $compileProvider.debugInfoEnabled(true);  // in production false
 
         // loading bar config
         cfpLoadingBarProvider.includeSpinner = false;

@@ -15,11 +15,12 @@
 
             vm.next = function () {
                 if (vm.forward) {
-                    vm.send().then(function (response) {
-                        $state.go(vm.state.next.sref);
-                        $timeout(scrollTop);
-                    });
-                    return;
+                    // vm.send().then(function (response) {
+                    //     $state.go(vm.state.next.sref);
+                    //     $timeout(scrollTop);
+                    // });
+                    // return;
+                    vm.send();
                 }
 
                 $state.go(vm.state.next.sref);
