@@ -22,15 +22,19 @@
             })
             .state('statement.overview', {
                 url: '/overview',
-                params: {
-                    prev: {
-                        name: 'Your SLAP Start Date',
-                        sref: 'mindset.slapStartDate'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'SLAPstatement Q&A',
-                        sref: 'statement.qa'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'StatementOverviewController',
@@ -38,15 +42,19 @@
             })
             .state('statement.qa', {
                 url: '/Q&A',
-                params: {
-                    prev: {
-                        name: 'SLAPstatement Overview',
-                        sref: 'statement.overview'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Your SLAPstatement',
-                        sref: 'statement.yourStatement'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'StatementQAController',
@@ -54,14 +62,19 @@
             })
             .state('statement.yourStatement', {
                 url: '/yourStatement',
-                params: {
-                    prev: {
-                        name: 'SLAPstatement Q&A',
-                        sref: 'statement.qa'
-                    },
-                    next: {
-                        name: 'Commit To Your',
-                        sref: 'statement.commitToYour'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'YourStatementController',
@@ -69,15 +82,19 @@
             })
             .state('statement.commitToYour', {
                 url: '/commitToYour',
-                params: {
-                    prev: {
-                        name: 'Your SLAPstatement',
-                        sref: 'statement.yourStatement'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'SLAPStatement',
-                        sref: 'statement.statement'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'CommitToYourController',
@@ -85,32 +102,40 @@
             })
             .state('statement.statement', {
                 url: '/SLAPstatement',
-                params: {
-                    prev: {
-                        name: 'Commit To Your',
-                        sref: 'statement.commitToYour'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Step 1 SLAPsummary',
-                        sref: 'statement.step1Summary'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'StatementController',
                 templateUrl: 'pages/statement/statement/statement.html'
             }).state('statement.step1Summary', {
                 url: '/step1SLAPsummary',
-                params: {
-                    prev: {
-                        name: 'SLAPStatement',
-                        sref: 'statement.statement'
+            resolve: {
+                activeStep: function (stepService, $state) {
+                    return stepService.resolveActiveStep(this)
+                        .then(function (active) {
+                            if (active) {
+                                return active;
+                            }
 
-                    },
-                    next: {
-                        name: '1 Year Goal Overview',
-                        sref: 'yearGoal.overview'
-                    }
-                },
+                            return stepService.getLastFinished()
+                                .then(function (finishedStep) {
+                                    $state.go(finishedStep.sref);
+                                });
+                        })
+                }
+            },
                 controller: 'Step1SummaryController',
                 templateUrl: 'pages/statement/step1-summary/step1-summary.html'
             });

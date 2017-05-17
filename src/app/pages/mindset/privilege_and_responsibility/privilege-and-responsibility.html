@@ -48,8 +48,8 @@
                         <label for="first" class="label-text control-label">Growing my business allows me to provide for my family</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="first" ng-model="model.first" ng-change="checkDropdownModels(model.first)" class="dropdown-box outline-0"
-                                ng-class="{'active': model.first}">
+                        <select id="first" ng-model="data.first" ng-change="checkDropdownModels(data.first)" class="dropdown-box outline-0"
+                                ng-class="{'active': data.first}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
                     </div>
@@ -60,8 +60,8 @@
                         <label for="second" class="label-text control-label">Growing my business allows me to create jobs</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="second" ng-model="model.second" ng-change="checkDropdownModels(model.second)"
-                                class="dropdown-box outline-0" ng-class="{'active': model.second}">
+                        <select id="second" ng-model="data.second" ng-change="checkDropdownModels(data.second)"
+                                class="dropdown-box outline-0" ng-class="{'active': data.second}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
                     </div>
@@ -72,8 +72,8 @@
                         <label for="third" class="label-text control-label">Growing my business allows me to give more to my community</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="third" ng-model="model.third" ng-change="checkDropdownModels(model.third)"
-                                class="dropdown-box outline-0" ng-class="{'active': model.third}">
+                        <select id="third" ng-model="data.third" ng-change="checkDropdownModels(data.third)"
+                                class="dropdown-box outline-0" ng-class="{'active': data.third}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
                     </div>
@@ -84,8 +84,8 @@
                         <label for="fourth" class="label-text control-label">Growing my business means I am helping the economy</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="fourth" ng-model="model.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(model.fourth)"
-                                ng-class="{'active': model.fourth}">
+                        <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth)"
+                                ng-class="{'active': data.fourth}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
                     </div>
@@ -99,10 +99,10 @@
 
         <div class="panel-body">
 
-            <h4>{{model.businessName}} Impact Goal</h4>
+            <h4>{{data.businessName}} Impact Goal</h4>
 
-            <p>Because I will grow my business this year I will be able to {{model.result}} and am committed to
-                providing/creating/giving/helping <input ng-model="model.text" class="outline-0" type="text"></p>
+            <p>Because I will grow my business this year I will be able to {{data.result}} and am committed to
+                providing/creating/giving/helping <input ng-model="data.text" class="outline-0" type="text"></p>
 
             <!--<h4>{{model.businessName}} Impact Goal 2</h4>-->
 

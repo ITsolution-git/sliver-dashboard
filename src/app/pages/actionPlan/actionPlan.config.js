@@ -22,14 +22,19 @@
             })
             .state('actionPlan.overview', {
                 url: '/overview',
-                params: {
-                    prev: {
-                        name: 'Step 3 SLAPsummary',
-                        sref: 'idealClient.step3Summary'
-                    },
-                    next: {
-                        name: 'The World Around You',
-                        sref: 'actionPlan.worldAroundYou'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'ActionPlanOverviewController',
@@ -37,14 +42,19 @@
             })
             .state('actionPlan.worldAroundYou', {
                 url: '/worldAroundYou',
-                params: {
-                    prev: {
-                        name: 'Action Plan Overview',
-                        sref: 'actionPlan.overview'
-                    },
-                    next: {
-                        name: 'Double Check Start Date',
-                        sref: 'actionPlan.doubleCheckStartDate'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'WorldAroundYouController',
@@ -52,14 +62,19 @@
             })
             .state('actionPlan.doubleCheckStartDate', {
                 url: '/doubleCheckStartDate',
-                params: {
-                    prev: {
-                        name: 'The World Around You',
-                        sref: 'actionPlan.worldAroundYou'
-                    },
-                    next: {
-                        name: 'What\'s Happening in Q1-Q4',
-                        sref: 'actionPlan.whatsHappening'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'DoubleCheckStartDateController',
@@ -67,14 +82,19 @@
             })
             .state('actionPlan.whatsHappening', {
                 url: '/whatsHappeningInQ1-Q4',
-                params: {
-                    prev: {
-                        name: 'Double Check Start Date',
-                        sref: 'actionPlan.doubleCheckStartDate'
-                    },
-                    next: {
-                        name: 'Rate the 10 Connecting Strategies',
-                        sref: 'actionPlan.rateConnectingStrategies'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'WhatsHappeningController',
@@ -82,14 +102,19 @@
             })
             .state('actionPlan.rateConnectingStrategies', {
                 url: '/rateThe10ConnectingStrategies',
-                params: {
-                    prev: {
-                        name: 'What\'s Happening in Q1-Q4',
-                        sref: 'actionPlan.whatsHappening'
-                    },
-                    next: {
-                        name: 'Choose Your Connecting Strategies',
-                        sref: 'actionPlan.chooseYourConnectingStrategies'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'RateConnectingStrategiesController',
@@ -97,14 +122,19 @@
             })
             .state('actionPlan.chooseYourConnectingStrategies', {
                 url: '/chooseYourConnectingStrategies',
-                params: {
-                    prev: {
-                        name: 'Rate the 10 Connecting Strategies',
-                        sref: 'actionPlan.rateConnectingStrategies'
-                    },
-                    next: {
-                        name: 'Connecting Strategy Strategizing',
-                        sref: 'actionPlan.connectingStrategyStrategizing'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'ChooseYourConnectingStrategiesController',
@@ -112,14 +142,19 @@
             })
             .state('actionPlan.connectingStrategyStrategizing', {
                 url: '/connectingStrategyStrategizing',
-                params: {
-                    prev: {
-                        name: 'Choose Your Connecting Strategies',
-                        sref: 'actionPlan.chooseYourConnectingStrategies'
-                    },
-                    next: {
-                        name: 'Action Items',
-                        sref: 'actionPlan.actionItems'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'ConnectingStrategyStrategizingController',
@@ -127,14 +162,19 @@
             })
             .state('actionPlan.actionItems', {
                 url: '/actionItems',
-                params: {
-                    prev: {
-                        name: 'Connecting Strategy Strategizing',
-                        sref: 'actionPlan.connectingStrategyStrategizing'
-                    },
-                    next: {
-                        name: 'Action Plan Review',
-                        sref: 'actionPlan.actionPlanReview'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'ActionItemsController',
@@ -142,14 +182,19 @@
             })
             .state('actionPlan.actionPlanReview', {
                 url: '/actionPlanReview',
-                params: {
-                    prev: {
-                        name: 'Action Items',
-                        sref: 'actionPlan.actionItems'
-                    },
-                    next: {
-                        name: 'Quarterly Goals',
-                        sref: 'actionPlan.quarterlyGoals'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'ActionPlanReviewController',
@@ -157,14 +202,19 @@
             })
             .state('actionPlan.quarterlyGoals', {
                 url: '/quarterlyGoals',
-                params: {
-                    prev: {
-                        name: 'Action Plan Review',
-                        sref: 'actionPlan.actionPlanReview'
-                    },
-                    next: {
-                        name: 'Double Check 1 Year Goal',
-                        sref: 'actionPlan.doubleCheckYearGoal'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'QuarterlyGoalsController',
@@ -172,14 +222,19 @@
             })
             .state('actionPlan.doubleCheckYearGoal', {
                 url: '/doubleCheckYearGoal',
-                params: {
-                    prev: {
-                        name: 'Quarterly Goals',
-                        sref: 'actionPlan.quarterlyGoals'
-                    },
-                    next: {
-                        name: 'Action Plan Q&A',
-                        sref: 'actionPlan.qa'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'DoubleCheckYearGoalController',
@@ -187,14 +242,19 @@
             })
             .state('actionPlan.qa', {
                 url: '/Q&A',
-                params: {
-                    prev: {
-                        name: 'Double Check 1 Year Goal',
-                        sref: 'actionPlan.doubleCheckYearGoal'
-                    },
-                    next: {
-                        name: 'Commit To Your Action Plan',
-                        sref: 'actionPlan.commitYourActionPlan'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'ActionPlanQAController',
@@ -202,14 +262,19 @@
             })
             .state('actionPlan.commitYourActionPlan', {
                 url: '/commitToYourActionPlan',
-                params: {
-                    prev: {
-                        name: 'Action Plan Q&A',
-                        sref: 'actionPlan.qa'
-                    },
-                    next: {
-                        name: 'Step 4 SLAPsummary',
-                        sref: 'actionPlan.step4Summary'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'CommitYourActionPlanController',
@@ -217,14 +282,19 @@
             })
             .state('actionPlan.step4Summary', {
                 url: '/step4SLAPsummary',
-                params: {
-                    prev: {
-                        name: 'Commit To Your Action Plan',
-                        sref: 'actionPlan.commitYourActionPlan'
-                    },
-                    next: {
-                        name: 'Second SLAPexpert Review',
-                        sref: 'actionPlan.secondExpertReview'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'Step4SummaryController',
@@ -232,14 +302,19 @@
             })
             .state('actionPlan.secondExpertReview', {
                 url: '/secondSLAPexpertReview',
-                params: {
-                    prev: {
-                        name: 'Step 4 SLAPsummary',
-                        sref: 'actionPlan.step4Summary'
-                    },
-                    next: {
-                        name: 'Living SLAP Day-to-Day',
-                        sref: 'execute.livingDayToDay'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'SecondExpertReviewController',

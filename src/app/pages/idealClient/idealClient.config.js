@@ -22,14 +22,19 @@
             })
             .state('idealClient.overview', {
                 url: '/overview',
-                params: {
-                    prev: {
-                        name: 'First SLAPexpert Review',
-                        sref: 'yearGoal.firstExpertReview'
-                    },
-                    next: {
-                        name: 'Who Are Your Ideal Clients?',
-                        sref: 'idealClient.whoAreYouIdealClient'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'IdealClientOverviewController',
@@ -37,14 +42,19 @@
             })
             .state('idealClient.whoAreYouIdealClient', {
                 url: '/whoAreYouIdealClient',
-                params: {
-                    prev: {
-                        name: 'Ideal Client Overview',
-                        sref: 'idealClient.overview'
-                    },
-                    next: {
-                        name: 'Define Your Ideal Client',
-                        sref: 'idealClient.defineYourIdealClient'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'WhoAreYouIdealClientController',
@@ -52,14 +62,19 @@
             })
             .state('idealClient.defineYourIdealClient', {
                 url: '/defineYourIdealClient',
-                params: {
-                    prev: {
-                        name: 'Who Are Your Ideal Clients?',
-                        sref: 'idealClient.whoAreYouIdealClient'
-                    },
-                    next: {
-                        name: 'Name Your Ideal Client',
-                        sref: 'idealClient.nameYourIdealClient'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'DefineYourIdealClientController',
@@ -67,14 +82,19 @@
             })
             .state('idealClient.nameYourIdealClient', {
                 url: '/nameYourIdealClient',
-                params: {
-                    prev: {
-                        name: 'Define Your Ideal Client',
-                        sref: 'idealClient.defineYourIdealClient'
-                    },
-                    next: {
-                        name: 'Ideal Client Q&A',
-                        sref: 'idealClient.qa'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'NameYourIdealClientController',
@@ -82,14 +102,19 @@
             })
             .state('idealClient.qa', {
                 url: '/Q&A',
-                params: {
-                    prev: {
-                        name: 'Name Your Ideal Client',
-                        sref: 'idealClient.nameYourIdealClient'
-                    },
-                    next: {
-                        name: 'Commit To Your Ideal Client',
-                        sref: 'idealClient.commitYourIdealClient'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'IdealClientQAController',
@@ -97,14 +122,19 @@
             })
             .state('idealClient.commitYourIdealClient', {
                 url: '/commitToYourIdealClient',
-                params: {
-                    prev: {
-                        name: 'Ideal Client Q&A',
-                        sref: 'idealClient.qa'
-                    },
-                    next: {
-                        name: 'Double Check',
-                        sref: 'idealClient.doubleCheck'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'CommitYourIdealClientController',
@@ -112,14 +142,19 @@
             })
             .state('idealClient.doubleCheck', {
                 url: '/doubleCheck',
-                params: {
-                    prev: {
-                        name: 'Commit To Your Ideal Client',
-                        sref: 'idealClient.commitYourIdealClient'
-                    },
-                    next: {
-                        name: 'SLAPstatement',
-                        sref: 'idealClient.slapStatement'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'DoubleCheckController',
@@ -127,14 +162,19 @@
             })
             .state('idealClient.slapStatement', {
                 url: '/SLAPstatement',
-                params: {
-                    prev: {
-                        name: 'Double Check ',
-                        sref: 'idealClient.doubleCheck'
-                    },
-                    next: {
-                        name: 'Step 3 SLAPsummary',
-                        sref: 'idealClient.step3Summary'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'SlapStatementController',
@@ -142,14 +182,19 @@
             })
             .state('idealClient.step3Summary', {
                 url: '/step3Summary',
-                params: {
-                    prev: {
-                        name: 'SLAPstatement',
-                        sref: 'idealClient.slapStatement'
-                    },
-                    next: {
-                        name: 'Action Plan Overview',
-                        sref: 'actionPlan.overview'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'Step3SummaryController',

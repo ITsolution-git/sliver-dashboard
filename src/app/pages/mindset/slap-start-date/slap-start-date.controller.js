@@ -6,7 +6,7 @@
         .controller('SlapStartDateController', SlapStartDateController);
 
     /* @ngInject */
-    function SlapStartDateController($scope, $state, pageService, stepService) {
+    function SlapStartDateController($scope, $state, pageService, stepService, activeStep) {
 
         $scope.visible = true;
 
@@ -14,29 +14,28 @@
         var currentMonth = date.getMonth().toString();
         var currentYear = date.getFullYear();
 
-        angular.extend($scope, {
-            model: {
-                year: currentYear,
-                month: currentMonth
-            },
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            showStartDate: false,
-            forward: true
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
-        $scope.sendData = sendData;
+        if ($scope.data.year === null) {
+            $scope.data.year = currentYear
+        }
 
+        if ($scope.data.month === null) {
+            $scope.data.month = currentMonth
+        }
 
-        $scope.$watch('model.month', function (value) {
-            if (value !== undefined) {
-                if (+value < +currentMonth) {
-                    $scope.model.year += 1;
-                } else {
-                    $scope.model.year = currentYear;
+            $scope.$watch('data.month', function (value) {
+                if (value !== undefined) {
+                    if (+value < +currentMonth) {
+                        $scope.data.year += 1;
+                    } else {
+                        $scope.data.year = currentYear;
+                    }
                 }
-            }
-        });
+            });
 
         pageService
             .reset()
@@ -45,11 +44,15 @@
             .setPageTitle('Your SLAP Start Date');
 
         function sendData() {
-            var urls = $state.current.name.split('.');
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.model)
-                .then(function (response) {
-                    console.log(response);
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var urls = activeStep.sref.split('.');
+
+            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
     }
