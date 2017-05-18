@@ -7,7 +7,11 @@
             videoSrc: '='
         },
         templateUrl: 'components/video-block/video-block.html',
-        controller: function() {
+        controller: function($scope, $state, stepService) {
+
+            $scope.title = stepService.getActiveStep().name;
+            console.log(stepService.getActiveStep());
+
         }
 
     };
