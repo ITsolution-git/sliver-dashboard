@@ -1,14 +1,23 @@
 <div class="left-panel">
     <ul class="list-group left-panel">
+
         <div>
             <li class="list-group-item left-panel-item" aside-collapse
                 ui-sref-active="{'left-panel-item-active' : 'mindset.*' }" data-toggle="collapse"
-                data-target="#asideMindset">
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'mindset.*' }">
+                data-target="#asideMindset" check-aside-section="subList.slapMindset" check-section="checkMindset">
+
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'mindset.*' }" ng-hide="checkMindset">
                     <span>1</span>
                 </div>
+
+                <div class="item-circle item-circle-check" ng-show="checkMindset" ui-sref-active="{'item-circle-active' : 'mindset.*' }">
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                </div>
+
                 <span>SLAPmindset</span>
+
             </li>
+
             <div class="enclosed-list collapse" id="asideMindset" ui-sref-active="{'in' : 'mindset.*' }">
                 <ul class="list-group">
                     <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
@@ -17,16 +26,26 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+
         <div>
+
             <li class="list-group-item left-panel-item" aside-collapse
                 ui-sref-active="{'left-panel-item-active' : 'statement.*' }" data-toggle="collapse"
-                data-target="#asideStatement">
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'statement.*' }">
+                data-target="#asideStatement"  check-aside-section="subList.slapStatement" check-section="checkStatement">
+
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'statement.*' }" ng-hide="checkStatement">
                     <span>2</span>
                 </div>
+
+                <div class="item-circle item-circle-check" ng-show="checkStatement" ui-sref-active="{'item-circle-active' : 'statement.*' }">
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                </div>
+
                 <span>SLAPStatement</span>
             </li>
+
             <div class="enclosed-list collapse" id="asideStatement" ui-sref-active="{'in' : 'statement.*' }">
                 <ul class="list-group">
                     <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
@@ -35,16 +54,26 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+
         <div>
+
             <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'yearGoal.*' }"
-                aside-collapse
-                data-toggle="collapse" data-target="#asideYearGoal">
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'yearGoal.*' }">
+                aside-collapse data-toggle="collapse" data-target="#asideYearGoal"
+                check-aside-section="subList.yearGoals" check-section="checkYearGoal">
+
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'yearGoal.*' }" ng-hide="checkYearGoal">
                     <span>3</span>
                 </div>
+
+                <div class="item-circle item-circle-check" ng-show="checkYearGoal" ui-sref-active="{'item-circle-active' : 'yearGoal.*' }">
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                </div>
+
                 <span>Year goal</span>
             </li>
+
             <div class="enclosed-list collapse" id="asideYearGoal" ui-sref-active="{'in' : 'yearGoal.*' }">
                 <ul class="list-group">
                     <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
@@ -53,18 +82,26 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+
         <div>
+
             <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'idealClient.*' }"
-                aside-collapse data-toggle="collapse" data-target="#asideIdealClient">
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'idealClient.*' }">
+                aside-collapse data-toggle="collapse" data-target="#asideIdealClient"
+                check-aside-section="subList.idealClients" check-section="checkIdealClient" >
+
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'idealClient.*' }" ng-hide="checkIdealClient">
                     <span>4</span>
                 </div>
-                <!--<div class="item-circle item-circle-check">-->
-                <!--<i class="fa fa-check fa-lg" aria-hidden="true"></i>-->
-                <!--</div>-->
+
+                <div class="item-circle item-circle-check" ng-show="checkIdealClient" ui-sref-active="{'item-circle-active' : 'idealClient.*' }">
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                </div>
+
                 <span>ideal client</span>
             </li>
+
             <div class="enclosed-list collapse" id="asideIdealClient" ui-sref-active="{'in' : 'idealClient.*' }">
                 <ul class="list-group">
                     <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
@@ -73,15 +110,27 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+
         <div>
+
             <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'actionPlan.*' }"
-                aside-collapse data-toggle="collapse" data-target="#asideActionPlan">
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'actionPlan.*' }">
+                aside-collapse data-toggle="collapse" data-target="#asideActionPlan"
+                check-aside-section="subList.actionPlans" check-section="checkActionPlan" >
+
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'actionPlan.*' }" ng-hide="checkActionPlan">
                     <span>5</span>
                 </div>
+
+                <div class="item-circle item-circle-check" ng-show="checkActionPlan" ui-sref-active="{'item-circle-active' : 'actionPlan.*' }">
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                </div>
+
                 <span>action plan</span>
+
             </li>
+
             <div class="enclosed-list collapse" id="asideActionPlan" ui-sref-active="{'in' : 'actionPlan.*' }">
                 <ul class="list-group">
                     <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
@@ -90,15 +139,27 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+
         <div>
+
             <li class="list-group-item left-panel-item" ui-sref-active="{'left-panel-item-active' : 'execute.*' }"
-                aside-collapse data-toggle="collapse" data-target="#asideExecute">
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'execute.*' }">
+                aside-collapse data-toggle="collapse" data-target="#asideExecute"
+                check-aside-section="subList.execute" check-section="checkExecute" >
+
+                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'execute.*' }" ng-hide="checkExecute">
                     <span>6</span>
                 </div>
+
+                <div class="item-circle item-circle-check" ng-show="checkExecute" ui-sref-active="{'item-circle-active' : 'execute.*' }">
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
+                </div>
+
                 <span>execute</span>
+
             </li>
+
             <div class="enclosed-list collapse" id="asideExecute" ui-sref-active="{'in' : 'execute.*' }">
                 <ul class="list-group">
                     <li class="list-group-item enclosed-list-item" ui-sref-active-eq="enclosed-list-item-active"
@@ -107,6 +168,8 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+
     </ul>
 </div>

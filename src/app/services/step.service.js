@@ -470,6 +470,8 @@
         this.resolveActiveStep = resolveActiveStep;
         this.getLastFinished = getLastFinished;
 
+        this.checkStepsIsFinishedSection = checkStepsIsFinishedSection;
+
         this.sendApiData = sendApiData;
         this.getApiData = getApiData;
 
@@ -614,6 +616,18 @@
             }
 
             return null;
+        }
+
+        function checkStepsIsFinishedSection(stepsGroup, prevNameStep) {
+            if(stepsGroup[stepsGroup.length - 1].sref === prevNameStep) return true;
+
+            var lastStepGroupIndex = steps.findIndex(function(item,index) {
+                return item.sref === stepsGroup[stepsGroup.length - 1].sref; //TODO:bottleneck
+            });
+
+            return finishedSteps.find(function(item) {
+                return item === lastStepGroupIndex;
+            })
         }
     }
 }());
