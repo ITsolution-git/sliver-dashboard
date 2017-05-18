@@ -106,79 +106,202 @@
                 }
             }, {
                 name: 'SLAPstatement Overview',
-                sref: 'statement.overview'
+                sref: 'statement.overview',
+                model: {
+                    showInfoBlock: false,
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Your SLAPstatement',
-                sref: 'statement.yourStatement'
+                sref: 'statement.yourStatement',
+                model: {
+                    data: {
+                        first: '0',
+                        second: '',
+                        third: '0',
+                        fourth: '',
+                        fifth: '0'
+                    },
+                    businessName: null,
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showFormBlock: false
+                }
             }, {
                 name: 'SLAPstatement Q&A',
-                sref: 'statement.qa'
+                sref: 'statement.qa',
+                model: {
+                    showInfoBlock: false,
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Commit To Your SLAPStatement',
-                sref: 'statement.commitToYour'
+                sref: 'statement.commitToYour',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showContent: false,
+                    data: {},
+                    businessName: null
+                }
             }, {
                 name: 'Step 1 SLAPsummary',
-                sref: 'statement.step1Summary'
+                sref: 'statement.step1Summary',
+                model: {
+                    showInfoBlock: false,
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+
+                }
             }, {
                 name: '1 Year Goal Overview',
-                sref: 'yearGoal.overview'
+                sref: 'yearGoal.overview',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Personal Expenses',
-                sref: 'yearGoal.personalExpenses'
+                sref: 'yearGoal.personalExpenses',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Fixed Business Expenses',
-                sref: 'yearGoal.fixedBusinessExpenses'
+                sref: 'yearGoal.fixedBusinessExpenses',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Total Fixed Expenses Revenue',
-                sref: 'yearGoal.totalFixedExpensesRevenue'
+                sref: 'yearGoal.totalFixedExpensesRevenue',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Selling Price',
-                sref: 'yearGoal.sellingPrice'
+                sref: 'yearGoal.sellingPrice',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Variable Business Expenses',
-                sref: 'yearGoal.variableBusinessExpenses'
+                sref: 'yearGoal.variableBusinessExpenses',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Profit Margin',
-                sref: 'yearGoal.profitMargin'
+                sref: 'yearGoal.profitMargin',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Revenue Breakdown',
-                sref: 'yearGoal.revenueBreakdown'
+                sref: 'yearGoal.revenueBreakdown',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Your 1 Year Goal',
-                sref: 'yearGoal.yourYearGoal'
+                sref: 'yearGoal.yourYearGoal',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Adjust your 1 Year Goal',
-                sref: 'yearGoal.adjustYourYearGoal'
+                sref: 'yearGoal.adjustYourYearGoal',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: '1 Year Goal Q&A',
-                sref: 'yearGoal.qa'
+                sref: 'yearGoal.qa',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Commit To Your 1 Year Goal',
-                sref: 'yearGoal.commitYourYearGoal'
+                sref: 'yearGoal.commitYourYearGoal',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Step 2 SLAPsummary',
-                sref: 'yearGoal.step2Summary'
+                sref: 'yearGoal.step2Summary',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'First SLAPexpert Review',
-                sref: 'yearGoal.firstExpertReview'
+                sref: 'yearGoal.firstExpertReview',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Ideal Client Overview',
-                sref: 'idealClient.overview'
+                sref: 'idealClient.overview',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Who Are Your Ideal Clients?',
-                sref: 'idealClient.whoAreYouIdealClient'
+                sref: 'idealClient.whoAreYouIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showIdealClientTextBlock: false,
+                    clients: []
+                }
             }, {
                 name: 'Define Your Ideal Client',
-                sref: 'idealClient.defineYourIdealClient'
+                sref: 'idealClient.defineYourIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showContent: false
+                }
             }, {
                 name: 'Name Your Ideal Client',
-                sref: 'idealClient.nameYourIdealClient'
+                sref: 'idealClient.nameYourIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showIdealClientNameBlock: false,
+                    data: {
+                        firstName: null
+                    },
+                }
             }, {
                 name: 'Ideal Client Q&A',
-                sref: 'idealClient.qa'
+                sref: 'idealClient.qa',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Commit To Your Ideal Client',
-                sref: 'idealClient.commitYourIdealClient'
+                sref: 'idealClient.commitYourIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             },
             // {
             //     name: 'Double Check',
@@ -190,64 +313,144 @@
             // },
             {
                 name: 'Step 3 SLAPsummary',
-                sref: 'idealClient.step3Summary'
+                sref: 'idealClient.step3Summary',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Action Plan Overview',
-                sref: 'actionPlan.overview'
+                sref: 'actionPlan.overview',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'The World Around You',
-                sref: 'actionPlan.worldAroundYou'
+                sref: 'actionPlan.worldAroundYou',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Double Check Start Date',
-                sref: 'actionPlan.doubleCheckStartDate'
+                sref: 'actionPlan.doubleCheckStartDate',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'What\'s Happening in Q1-Q4',
-                sref: 'actionPlan.whatsHappening'
+                sref: 'actionPlan.whatsHappening',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Rate the 10 Connecting Strategies',
-                sref: 'actionPlan.rateConnectingStrategies'
+                sref: 'actionPlan.rateConnectingStrategies',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Choose Your Connecting Strategies',
-                sref: 'actionPlan.chooseYourConnectingStrategies'
+                sref: 'actionPlan.chooseYourConnectingStrategies',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Connecting Strategy Strategizing',
-                sref: 'actionPlan.connectingStrategyStrategizing'
+                sref: 'actionPlan.connectingStrategyStrategizing',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Action Items',
-                sref: 'actionPlan.actionItems'
+                sref: 'actionPlan.actionItems',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Action Plan Review',
-                sref: 'actionPlan.actionPlanReview'
+                sref: 'actionPlan.actionPlanReview',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Quarterly Goals',
-                sref: 'actionPlan.quarterlyGoals'
+                sref: 'actionPlan.quarterlyGoals',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Double Check 1 Year Goal',
-                sref: 'actionPlan.doubleCheckYearGoal'
+                sref: 'actionPlan.doubleCheckYearGoal',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Action Plan Q&A',
-                sref: 'actionPlan.qa'
+                sref: 'actionPlan.qa',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Commit To Your Action Plan',
-                sref: 'actionPlan.commitYourActionPlan'
+                sref: 'actionPlan.commitYourActionPlan',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Step 4 SLAPsummary',
-                sref: 'actionPlan.step4Summary'
+                sref: 'actionPlan.step4Summary',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Second SLAPexpert Review',
-                sref: 'actionPlan.secondExpertReview'
+                sref: 'actionPlan.secondExpertReview',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Living SLAP Day-to-Day',
-                sref: 'execute.livingDayToDay'
+                sref: 'execute.livingDayToDay',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Commit to Yourself',
-                sref: 'execute.commitYourSelf'
+                sref: 'execute.commitYourSelf',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Set Yourself Up For Success',
-                sref: 'execute.setYourselfUpForSuccess'
+                sref: 'execute.setYourselfUpForSuccess',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
                 name: 'Tour of SLAPcenter - Execute',
-                sref: 'execute.tourExecute'
+                sref: 'execute.tourExecute',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }];
 
         var finishedSteps = [];

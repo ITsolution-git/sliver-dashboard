@@ -5,11 +5,11 @@
         .module('app.pages.actionPlan')
         .controller('DoubleCheckYearGoalController', DoubleCheckYearGoalController);
 
-    function DoubleCheckYearGoalController($scope, pageService) {
+    function DoubleCheckYearGoalController($scope, activeStep, pageService, stepService, $state) {
 
-        angular.extend($scope, {
-            showVideoBlock: false,
-            showStaticTextBlock: false
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
         pageService
@@ -17,5 +17,14 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Action Plan');
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
     }
 }());

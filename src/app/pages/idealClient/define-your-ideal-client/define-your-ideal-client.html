@@ -34,7 +34,7 @@
 
             <div class="col-md-10 sample-show-hide" ng-hide="showContent">
 
-                <div class="row" ng-repeat="client in model.clients">
+                <div class="row" ng-repeat="client in data.clients">
 
                     <h4>Ideal Client - {{$index + 1}}</h4>
 
@@ -128,4 +128,4 @@
 
 </div>
 
-<slap-footer></slap-footer>
+<slap-footer send="sendData()" forward="forward"></slap-footer>

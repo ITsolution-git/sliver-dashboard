@@ -6,11 +6,11 @@
         .controller('YearGoalOverviewController', YearGoalOverviewController);
 
     /* @ngInject */
-    function YearGoalOverviewController($scope, pageService) {
+    function YearGoalOverviewController($scope, pageService, activeStep, stepService, $state) {
 
-        angular.extend($scope, {
-            showVideoBlock: false,
-            showStaticTextBlock: false
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
         pageService
@@ -18,6 +18,15 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('SLAPstatement Q&A');
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
     }
 
 }());

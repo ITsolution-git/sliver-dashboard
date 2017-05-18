@@ -33,7 +33,7 @@
             <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
 
             <div class="col-md-10 sample-show-hide" ng-hide="showContent">
-                <p>{{user.businessName}} {{first[+model.first]}} {{model.second}} {{third[+model.third]}} {{model.fourth}} on a {{fifth[+model.fifth]}} scale.</p>
+                <p>{{businessName}} {{first[+data.first]}} {{data.second}} {{third[+data.third]}} {{data.fourth}} on a {{fifth[+data.fifth]}} scale.</p>
             </div>
 
         </div>
@@ -41,4 +41,4 @@
 
 </div>
 
-<slap-footer></slap-footer>
+<slap-footer send="sendData()" forward="forward"></slap-footer>

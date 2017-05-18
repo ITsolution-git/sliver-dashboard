@@ -53,8 +53,8 @@
 
                     <div class="input-box">
                         <input type="text" id="firstName" class="outline-0"
-                               ng-class="{'active': model.firstName}"
-                               ng-model="model.firstName" required>
+                               ng-class="{'active': data.firstName}"
+                               ng-model="data.firstName" required>
                         <label class="label" for="firstName">First Name</label>
                     </div>
 
@@ -66,4 +66,4 @@
     </div>
 </div>
 
-<slap-footer></slap-footer>
+<slap-footer send="sendData()" forward="forward"></slap-footer>
