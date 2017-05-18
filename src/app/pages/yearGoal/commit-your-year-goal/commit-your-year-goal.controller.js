@@ -8,6 +8,9 @@
     function CommitYourYearGoalController($scope, pageService) {
 
         angular.extend($scope, {
+            model: {
+                first: 'Dropdown Label'
+            },
             showVideoBlock: false,
             showStaticTextBlock: false
         });

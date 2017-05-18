@@ -1,4 +1,4 @@
-<div class="slap-page container">
+<div class="define-client slap-page container">
 
     <div class="panel panel-default margin-t-40 margin-b-140">
 
@@ -30,95 +30,40 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">moment</span></h3>
 
-            <div class="col-md-10 sample-show-hide" ng-hide="showContent">
-
-                <div class="row" ng-repeat="client in model.clients">
-
-                    <h4>Ideal Client - {{$index + 1}}</h4>
-
-                    <div class="ideal-clients-list list-group">
-
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Name:</div>
-                                <div class="col-md-7">{{client.name}}</div>
-                            </div>
+            <div class="col-md-12">
+                <div class="row sample-show-hide" ng-hide="showContent">
+                    <div class="row">
+                        <div class="col-md-11 padding-l-r-30">
+                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a
+                                dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Gender:</div>
-                                <div class="col-md-7">{{gender[+client.gender]}}</div>
-                            </div>
-                        </div>
+            <div class="col-md-12 row-flex sample-show-hide padding-t-45" ng-hide="showContent">
 
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Age:</div>
-                                <div class="col-md-7">{{client.age}}</div>
-                            </div>
-                        </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="row margin-t-15 margin-b-50" ng-repeat="client in model.clients">
 
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Marital status:</div>
-                                <div class="col-md-7">{{maritalStatus[+client.maritalStatus]}}</div>
-                            </div>
-                        </div>
+                        <div class="ideal-clients-list col-md-12">
 
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Kids:</div>
-                                <div class="col-md-7">{{kids[+client.kids]}}</div>
-                            </div>
-                        </div>
+                            <div class="blue-circle"><span>!</span></div>
 
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Employment:</div>
-                                <div class="col-md-7">{{employment[+client.employment]}}</div>
-                            </div>
-                        </div>
+                            <p>
+                                <span>{{client.name}}</span> who is a <span>{{client.age}}</span> years old <span>{{gender[+client.gender]}}</span>,
+                                <span>{{maritalStatus[+client.maritalStatus]}}</span>, father of <span>{{kids[+client.kids]}}</span>,
+                                work as an <span>{{employment[+client.employment]}}</span>, lives in
+                                <span>{{location[+client.location]}}</span>,
+                                generally on transit by <span>{{transit[+client.transit]}}</span>, likes to <span>{{client.hobbies}}</span>
+                                and read <span>{{client.reads}}</span>.
+                            </p>
 
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Location:</div>
-                                <div class="col-md-7">{{location[+client.location]}}</div>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Home:</div>
-                                <div class="col-md-7">{{home[+client.home]}}</div>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Transit:</div>
-                                <div class="col-md-7">{{transit[+client.transit]}}</div>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Hobbies:</div>
-                                <div class="col-md-7">{{client.hobbies}}</div>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-3 label">Reads:</div>
-                                <div class="col-md-7">{{client.reads}}</div>
-                            </div>
                         </div>
 
                     </div>
-
                 </div>
 
             </div>

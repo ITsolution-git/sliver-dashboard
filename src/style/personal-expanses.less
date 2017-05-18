@@ -1,0 +1,109 @@
+.personal-expanses {
+
+  .form-box {
+
+    h4 {
+      font-size: 20px;
+      line-height: 24px;
+      color: #373c37;
+    }
+
+    .delete-btn {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      text-align: center;
+      font-size: 18px;
+      right: 40px;
+      bottom: 5px;
+      display: none;
+    }
+
+    .item:hover {
+      background-color: #f8f8f8;
+
+      .delete-btn {
+        display: block;
+      }
+    }
+
+    .input-box {
+
+      input {
+        width: 100%;
+        height: 60px;
+        font-size: 24px;
+        color: #33444d;
+
+        & + .label {
+          top: 13px;
+        }
+      }
+
+      span {
+        color: #373c37;
+        font-size: 20px;
+      }
+
+      .currency {
+        position: absolute;
+        bottom: 13px;
+        font-size: 24px;
+        color: #373c37;
+        .opacity(0.5);
+
+        & + input {
+          padding-left: 25px;
+        }
+      }
+    }
+
+    .incidentals-wrap {
+      align-items: flex-end;
+
+      .result {
+        line-height: 57px;
+      }
+
+      .currency {
+        left: 15px;
+      }
+    }
+
+    .total-expense-wrap {
+      align-items: flex-end;
+      background-color: #f8f8f8;
+      border: solid 1px rgba(0, 0, 0, 0.1);
+      font-size: 24px;
+      line-height: 2;
+      letter-spacing: -0.5px;
+      color: #33444d;
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 10px;
+
+      .result {
+
+        span {
+          font-size: 20px;
+          display: block;
+          width: 100%;
+        }
+
+        span + span {
+          font-size: 24px;
+          line-height: 2;
+          letter-spacing: -0.5px;
+        }
+      }
+    }
+  }
+
+  .result {
+    font-size: 24px;
+    padding-top: 18px;
+    color: #33444d;
+    line-height: 36px;
+  }
+
+}

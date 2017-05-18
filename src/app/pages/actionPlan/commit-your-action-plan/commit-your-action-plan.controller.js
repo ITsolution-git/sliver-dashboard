@@ -8,8 +8,12 @@
     function CommitYourActionPlanController($scope, pageService) {
 
         angular.extend($scope, {
+            model: {
+                first: 'Dropdown Label'
+            },
             showVideoBlock: false,
-            showStaticTextBlock: false
+            showStaticTextBlock: false,
+            showContent: false
         });
 
         pageService

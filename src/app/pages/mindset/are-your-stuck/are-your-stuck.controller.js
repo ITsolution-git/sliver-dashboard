@@ -15,8 +15,8 @@
             sliders: mindsetService.getSliders(),
             forward: true
         });
-        $scope.sendData = sendData;
 
+        $scope.sendData = sendData;
 
         pageService
             .reset()

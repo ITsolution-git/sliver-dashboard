@@ -32,6 +32,7 @@
                     // $rootScope.$broadcast('userEvent');
                     me.user = {
                         name: resp.data.name,
+                        lastName: resp.data.lastName,
                         email: resp.data.email,
                         id: resp.data._id,
                         businessName: resp.data.businessName

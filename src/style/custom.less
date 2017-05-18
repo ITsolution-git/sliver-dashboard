@@ -1303,6 +1303,132 @@ h3.logo {
     margin-top: 30px;
     margin-right: 40px;
   }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+
+    .dropdown-box {
+      width: 100%;
+    }
+  }
+
+  .label-text {
+    font-size: 16px;
+    color: #33444d;
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+}
+
+/* Define your ideal client page styles */
+.define-client {
+
+  .row-flex {
+    justify-content: center;
+  }
+
+  .ideal-clients-list {
+    border: solid 4px #576875;
+    padding: 30px;
+    color: #33444d;
+
+    span {
+      color: #373c37;
+    }
+
+    .blue-circle {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      z-index: 10;
+      margin-top: -56px;
+      display: flex;
+      justify-content: center;
+
+
+      span {
+        width: 48px;
+        height: 48px;
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        line-height: 48px;
+        font-weight: bold;
+        border-radius: 50%;
+        background-color: #50cfe3;
+      }
+    }
+  }
+}
+
+/* Step3 summary page styles  */
+.step3-summary {
+
+  .content-box {
+
+    .dotted-line {
+      position: absolute;
+      left: 45px;
+      width: 3px;
+      margin-top: 60px;
+      border-left: 1px dotted black;
+
+      &.height-135 {
+        height: 135px;
+      }
+
+      &.height-255 {
+        height: 255px;
+      }
+    }
+
+    .grey-circle-box {
+      position: absolute;
+      left: 20px;
+      border-radius: 50%;
+      border: 1px dotted black;
+      width: 50px;
+      height: 50px;
+      margin-top: 10px;
+      z-index: 10;
+
+      .grey-circle {
+        background-color: rgba(55, 60, 55, 0.1);
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        font-size: 24px;
+        line-height: 40px;
+        border: 3px solid white;
+        border-radius: 50%;
+      }
+    }
+
+    p {
+      font-size: 24px;
+    }
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+    font-size: 18px;
+  }
+}
+
+.video-block-600 {
+
+  .video-container {
+
+    .video-content {
+
+      video {
+        height: 600px;
+      }
+    }
+  }
 }
 
 .aqua-green {
@@ -1345,17 +1471,41 @@ h3.logo {
   padding-left: 15px;
 }
 
+.padding-l-20 {
+  padding-left: 20px;
+}
+
 .padding-l-24 {
   padding-left: 24px;
+}
+
+.padding-l-30 {
+  padding-left: 30px;
 }
 
 .padding-l-32 {
   padding-left: 32px;
 }
 
+.padding-l-100 {
+  padding-left: 100px;
+}
+
 .padding-l-r-30 {
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.padding-r-30 {
+  padding-right: 30px;
+}
+
+.padding-r-40 {
+  padding-right: 40px;
+}
+
+.padding-r-50 {
+  padding-right: 50px;
 }
 
 .margin-b-24 {
@@ -1423,21 +1573,7 @@ body {
   }
 }
 
-.ideal-clients-list {
 
-  font-size: 18px;
-  line-height: 32px;
-  color: #576875;
-
-  .label {
-    font-size: 18px;
-    color: black;
-    font-weight: normal;
-    padding: 0 30px;
-    text-align: right;
-    line-height: 32px;
-  }
-}
 
 
 

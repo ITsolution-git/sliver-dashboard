@@ -29,7 +29,7 @@
         // --- vars ---
 
         userService.getUser().then(function (user) {
-            $scope.model.businessName = user.businessName;
+            $scope.model.businessName = user.name + ' ' + user.lastName;
         });
 
         pageService
