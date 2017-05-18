@@ -1,4 +1,4 @@
-<div class="slap-page your-statement container">
+<div class="slap-page your-statement container" scroll-top>
 
     <div class="panel panel-default margin-t-40 margin-b-140">
 
@@ -47,9 +47,9 @@
 
                 <div class="col-md-12 row-flex padding-l-r-30 margin-b-38">
 
-                    <span class="line-text margin-r-20" ng-bind="model.businessName"></span>
+                    <span class="line-text margin-r-20" ng-bind="data.businessName"></span>
 
-                    <select ng-model="model.first"
+                    <select ng-model="data.first"
                             class="first-select active margin-r-20 dropdown-box outline-0">
                         <option value="0">Does</option>
                         <option value="1">Provides</option>
@@ -57,8 +57,8 @@
                     </select>
 
                     <div class="input-box">
-                        <input ng-model="item.second" type="text" id="second"
-                               ng-class="{'active': model.second}"
+                        <input ng-model="data.second" type="text" id="second"
+                               ng-class="{'active': data.second}"
                                class="second-input outline-0" required>
                         <label class="label" for="second">What</label>
                     </div>
@@ -67,22 +67,22 @@
 
                 <div class="col-md-12 row-flex padding-l-r-30 margin-b-38">
 
-                    <select ng-model="model.third"
+                    <select ng-model="data.third"
                             class="third-select active margin-r-20 dropdown-box outline-0">
                         <option value="0">For</option>
                         <option value="1">To</option>
                     </select>
 
                     <div class="input-box">
-                        <input ng-model="model.fourth" type="text" id="fourth"
-                               ng-class="{'active': model.fourth}"
+                        <input ng-model="data.fourth" type="text" id="fourth"
+                               ng-class="{'active': data.fourth}"
                                class="fourth-input margin-r-20 outline-0" required>
                         <label class="label" for="fourth">Whom</label>
                     </div>
 
                     <span class="line-text margin-r-20">on a</span>
 
-                    <select ng-model="model.fifth"
+                    <select ng-model="data.fifth"
                             class="fifth-select active margin-r-20 dropdown-box outline-0">
                         <option value="0">Market size</option>
                         <option value="1">Local</option>
@@ -97,8 +97,8 @@
 
                 <div class="col-md-9 row-flex margin-b-38">
                     <div class="input-box col-md-12">
-                        <input ng-model="model.sixth" type="text" id="sixth"
-                               ng-class="{'active': model.sixth}"
+                        <input ng-model="data.sixth" type="text" id="sixth"
+                               ng-class="{'active': data.sixth}"
                                class="sixth-input margin-r-20 outline-0" required>
                         <label class="label" for="sixth">Because</label>
                     </div>

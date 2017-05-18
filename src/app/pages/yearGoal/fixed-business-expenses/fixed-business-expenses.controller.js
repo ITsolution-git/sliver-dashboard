@@ -5,9 +5,9 @@
         .module('app.pages.yearGoal')
         .controller('FixedBusinessExpensesController', FixedBusinessExpensesController);
     
-    function FixedBusinessExpensesController($scope, $timeout, pageService) {
+    function FixedBusinessExpensesController($scope,$timeout, pageService,activeStep,stepService,$state) {
 
-        angular.extend($scope, {
+        angular.extend($scope, activeStep.model,{
             model: {
                 expenses: [],
                 incidentals: '1.00',
@@ -17,9 +17,9 @@
                 expense: '',
                 monthlyCost: ''
             },
-            showContent: false,
-            showVideoBlock: false,
-            showStaticTextBlock: false
+
+            forward: true,
+            sendData: sendData
         });
 
         $scope.checkFormElements = checkFormElements;
@@ -32,6 +32,15 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Year Goal');
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
 
         function addNewExpense(model) {
 

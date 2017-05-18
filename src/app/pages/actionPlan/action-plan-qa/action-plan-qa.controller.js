@@ -6,11 +6,11 @@
         .controller('ActionPlanQAController', ActionPlanQAController);
 
     /* @ngInject */
-    function ActionPlanQAController($scope, pageService) {
+    function ActionPlanQAController($scope, activeStep, pageService, stepService, $state) {
 
-        angular.extend($scope, {
-            showVideoBlock: false,
-            showStaticTextBlock: false
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
         pageService
@@ -18,5 +18,14 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('SLAPstatement Q&A');
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
     }
 }());

@@ -1,13 +1,15 @@
-(function() {
+(function () {
     'use strict';
-    
+
     angular
         .module('app.pages.yearGoal')
         .controller('PersonalExpensesController', PersonalExpensesController);
-    
-    function PersonalExpensesController($scope, $timeout, pageService) {
 
-        angular.extend($scope, {
+    function PersonalExpensesController($scope,$timeout, pageService, activeStep,stepService, $state) {
+
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData,
             model: {
                 expenses: [],
                 incidentals: '1.00',
@@ -16,10 +18,8 @@
             emptyExpense: {
                 expense: '',
                 monthlyCost: ''
-            },
-            showContent: false,
-            showVideoBlock: false,
-            showStaticTextBlock: false
+            }
+
         });
 
         $scope.checkFormElements = checkFormElements;
@@ -73,5 +73,14 @@
             }
         }
 
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
     }
 }());

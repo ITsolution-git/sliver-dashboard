@@ -5,15 +5,14 @@
         .module('app.pages.actionPlan')
         .controller('ActionItemsController', ActionItemsController);
 
-    function ActionItemsController($scope, pageService) {
+    function ActionItemsController($scope, activeStep, pageService,stepService, $state) {
 
-        angular.extend($scope, {
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData,
             model: {
                 first: 'Dropdown Label'
-            },
-            showContent: false,
-            showVideoBlock: false,
-            showStaticTextBlock: false
+            }
         });
 
         pageService
@@ -21,5 +20,15 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Action Plan');
+
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
     }
 }());

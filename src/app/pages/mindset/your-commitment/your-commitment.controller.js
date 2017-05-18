@@ -6,18 +6,16 @@
         .controller('YourCommitmentController', YourCommitmentController);
 
     /* @ngInject */
-    function YourCommitmentController($scope, mindsetService, pageService, stepService, $state) {
+    function YourCommitmentController($scope, activeStep, pageService, stepService, mindsetService, $state) {
 
-        angular.extend($scope, {
-            showInfoBlock: false,
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            sliders: mindsetService.getSliders()
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
-        $scope.forward = true;
-
-        $scope.sendData = sendData;
+        if($scope.sliders === null) {
+            $scope.sliders = mindsetService.getSliders();
+        }
 
         pageService
             .reset()
@@ -26,11 +24,15 @@
             .setPageTitle('Your Commitment To Us');
 
         function sendData() {
-            var urls = $state.current.name.split('.');
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var urls = activeStep.sref.split('.');
 
             return stepService.sendApiData(urls[urls.length - 1], $scope.sliders)
-                .then(function (response) {
-                    console.log(response);
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
     }

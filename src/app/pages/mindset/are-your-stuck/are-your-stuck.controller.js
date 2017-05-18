@@ -6,17 +6,16 @@
         .controller('AreYourStuckController', AreYourStuckController);
 
     /* @ngInject */
-    function AreYourStuckController($scope,mindsetService,pageService,stepService,$state) {
+    function AreYourStuckController($scope, activeStep, mindsetService, pageService, stepService, $state) {
 
-        angular.extend($scope, {
-            showInfoBlock: false,
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            sliders: mindsetService.getSliders(),
-            forward: true
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
-        $scope.sendData = sendData;
+        if($scope.sliders === null) {
+            $scope.sliders = mindsetService.getStuckSliders();
+        }
 
         pageService
             .reset()
@@ -25,14 +24,15 @@
             .setPageTitle('Are You Stuck?');
 
         function sendData() {
-            var urls = $state.current.name.split('.');
-            var data = angular.extend({}, {
-                sliders: $scope.sliders
-            });
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
 
-            return stepService.sendApiData(urls[urls.length - 1], data.sliders)
-                .then(function (response) {
-                    console.log(response);
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var urls = activeStep.sref.split('.');
+
+            return stepService.sendApiData(urls[urls.length - 1], $scope.sliders)
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
     }

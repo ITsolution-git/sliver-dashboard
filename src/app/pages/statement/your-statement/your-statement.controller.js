@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -6,31 +6,18 @@
         .controller('YourStatementController', YourStatementController);
 
     /* @ngInject */
-    function YourStatementController($scope, $state, pageService, userService, stepService) {
+    function YourStatementController($scope, activeStep, $state, pageService, userService, stepService) {
 
-        angular.extend($scope, {
-            model: {
-                first: '0',
-                second: '',
-                third: '0',
-                fourth: '',
-                fifth: '0',
-                businessName: ''
-            },
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            showFormBlock: false,
-            forward: true
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
-        $scope.sendData = sendData;
-
-
-        // --- vars ---
-
-        userService.getUser().then(function (user) {
-            $scope.model.businessName = user.name + ' ' + user.lastName;
-        });
+        if ($scope.fullName === null) {
+            userService.getUser().then(function (user) {
+                $scope.fullName = user.name + ' ' + user.lastName;
+            });
+        }
 
         pageService
             .reset()
@@ -39,11 +26,15 @@
             .setPageTitle('SLAP | Your SLAPstatement');
 
         function sendData() {
-            var urls = $state.current.name.split('.');
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.model)
-                .then(function (response) {
-                    console.log(response);
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var urls = activeStep.sref.split('.');
+
+            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
     }

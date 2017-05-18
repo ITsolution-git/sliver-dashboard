@@ -22,14 +22,19 @@
             })
             .state('mindset.ourCommitment', {
                 url: '/ourCommitment',
-                params: {
-                    prev: {
-                        sref: null,
-                        name: null
-                    },
-                    next: {
-                        sref: 'mindset.yourCommitment',
-                        name: 'Your Commitment to Us'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'OurCommitmentController',
@@ -37,14 +42,20 @@
             })
             .state('mindset.yourCommitment', {
                 url: '/yourCommitment',
-                params: {
-                    prev: {
-                        sref: 'mindset.ourCommitment',
-                        name: 'Our Commitment to You'
-                    },
-                    next: {
-                        sref: 'mindset.slapMindset',
-                        name: 'Get the SLAPmindset'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'YourCommitmentController',
@@ -52,14 +63,19 @@
             })
             .state('mindset.slapMindset', {
                 url: '/SLAPmindset',
-                params: {
-                    prev: {
-                        sref: 'mindset.yourCommitment',
-                        name: 'Your Commitment to Us'
-                    },
-                    next: {
-                        name: 'Privilege and Responsibility',
-                        sref: 'mindset.privilegeAndResponsibility'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'SlapMindsetController',
@@ -67,14 +83,19 @@
             })
             .state('mindset.privilegeAndResponsibility', {
                 url: '/privilageAndResponsibility',
-                params: {
-                    prev: {
-                        sref: 'mindset.slapMindset',
-                        name: 'Get the SLAPmindset'
-                    },
-                    next: {
-                        name: 'Are You Stuck?',
-                        sref: 'mindset.areYourStuck'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'PrivilegeAndResponsibilityController',
@@ -82,14 +103,19 @@
             })
             .state('mindset.areYourStuck', {
                 url: '/areYourStuck',
-                params: {
-                    prev: {
-                        name: 'Privilege and Responsibility',
-                        sref: 'mindset.privilegeAndResponsibility'
-                    },
-                    next: {
-                        name: 'Cashflow / Capacity Cath 22',
-                        sref: 'mindset.cashFlow'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'AreYourStuckController',
@@ -97,15 +123,19 @@
             })
             .state('mindset.cashFlow', {
                 url: '/cashFlow',
-                params: {
-                    prev: {
-                        name: 'Are You Stuck?',
-                        sref: 'mindset.areYourStuck'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        sref: 'mindset.yourBusiness',
-                        name: 'Your Business With / Without A SLAP'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'CashFlowController',
@@ -113,15 +143,19 @@
             })
             .state('mindset.yourBusiness', {
                 url: '/yourBusiness',
-                params: {
-                    prev: {
-                        name: 'Cashflow / Capacity Cath 22',
-                        sref: 'mindset.cashFlow'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Top Down, Bottom Up',
-                        sref: 'mindset.topDownBottomUp'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'YourBusinessController',
@@ -129,15 +163,19 @@
             })
             .state('mindset.topDownBottomUp', {
                 url: '/topDownBottomUp',
-                params: {
-                    prev: {
-                        sref: 'mindset.yourBusiness',
-                        name: 'Your Business With / Without A SLAP'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Start SLAPn',
-                        sref: 'mindset.startSlapn'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'TopDownBottomUpController',
@@ -145,15 +183,19 @@
             })
             .state('mindset.startSlapn', {
                 url: '/startSLAPn',
-                params: {
-                    prev: {
-                        name: 'Top Down, Bottom Up',
-                        sref: 'mindset.topDownBottomUp'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Your SLAP Start Date',
-                        sref: 'mindset.slapStartDate'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'StartSlapnController',
@@ -161,15 +203,19 @@
             })
             .state('mindset.slapStartDate', {
                 url: '/slapStartDate',
-                params: {
-                    prev: {
-                        name: 'Start SLAP\'n!',
-                        sref: 'mindset.startSlapn'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'SLAPstatement Overview',
-                        sref: 'statement.overview'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'SlapStartDateController',

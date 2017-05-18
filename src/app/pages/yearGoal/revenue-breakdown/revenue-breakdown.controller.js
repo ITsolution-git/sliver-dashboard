@@ -5,15 +5,14 @@
         .module('app.pages.yearGoal')
         .controller('RevenueBreakdownController', RevenueBreakdownController);
 
-    function RevenueBreakdownController($scope, pageService) {
+    function RevenueBreakdownController($scope, pageService, activeStep, stepService,$state) {
 
-        angular.extend($scope, {
+        angular.extend($scope, activeStep.model,{
+            forward: true,
+            sendData:sendData,
             model: {
                 first: 'Dropdown Label'
-            },
-            showContent: false,
-            showVideoBlock: false,
-            showStaticTextBlock: false
+            }
         });
 
         pageService
@@ -21,5 +20,14 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Year Goal');
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
     }
 }());

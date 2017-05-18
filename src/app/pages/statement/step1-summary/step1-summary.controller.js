@@ -1,48 +1,41 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('app.pages.statement')
         .controller('Step1SummaryController', Step1SummaryController);
 
-    function Step1SummaryController($scope, $state, pageService, userService, stepService) {
+    function Step1SummaryController($scope, $state, pageService, userService, stepService, activeStep) {
 
-        angular.extend($scope, {
-            model: {
-                first: '0',
-                second: '',
-                third: '0',
-                fourth: '',
-                fifth: '0',
-                sixth: '',
-                businessName: ''
-            },
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            showFormBlock: false,
-            forward: true
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData
         });
 
-        $scope.sendData = sendData;
+        if ($scope.data.businessName === null) {
+            userService.getUser().then(function (user) {
+                $scope.data.businessName = user.businessName;
+            });
+        }
 
-        userService.getUser().then(function (user) {
-            $scope.model.businessName = user.businessName;
-        });
 
         pageService
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('Statement')
             .setPageTitle('SLAP | Step 1 SLAPsummary');
 
-
-
         function sendData() {
-            var urls = $state.current.name.split('.');
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.model)
-                .then(function (response) {
-                    console.log(response);
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var urls = activeStep.sref.split('.');
+
+            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
     }

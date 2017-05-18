@@ -22,15 +22,19 @@
             })
             .state('yearGoal.overview', {
                 url: '/overview',
-                params: {
-                    prev: {
-                        name: 'Step 1 SLAPsummary',
-                        sref: 'statement.step1Summary'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Personal Expenses',
-                        sref: 'yearGoal.personalExpenses'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'YearGoalOverviewController',
@@ -38,15 +42,19 @@
             })
             .state('yearGoal.personalExpenses', {
                 url: '/personalExpenses',
-                params: {
-                    prev: {
-                        name: '1 Year Goal Overview',
-                        sref: 'yearGoal.overview'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Fixed Business Expenses',
-                        sref: 'yearGoal.fixedBusinessExpenses'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'PersonalExpensesController',
@@ -54,15 +62,19 @@
             })
             .state('yearGoal.fixedBusinessExpenses', {
                 url: '/fixedBusinessExpenses',
-                params: {
-                    prev: {
-                        name: 'Personal Expenses',
-                        sref: 'yearGoal.personalExpenses'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Total Fixed Expenses Revenue',
-                        sref: 'yearGoal.totalFixedExpensesRevenue'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'FixedBusinessExpensesController',
@@ -70,15 +82,19 @@
             })
             .state('yearGoal.totalFixedExpensesRevenue', {
                 url: '/totalFixedExpensesRevenue',
-                params: {
-                    prev: {
-                        name: 'Fixed Business Expenses',
-                        sref: 'yearGoal.fixedBusinessExpenses'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Selling Price',
-                        sref: 'yearGoal.sellingPrice'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'TotalFixedExpensesRevenueController',
@@ -86,15 +102,19 @@
             })
             .state('yearGoal.sellingPrice', {
                 url: '/sellingPrice',
-                params: {
-                    prev: {
-                        name: 'Total Fixed Expenses Revenue',
-                        sref: 'yearGoal.totalFixedExpensesRevenue'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Variable Business Expenses',
-                        sref: 'yearGoal.variableBusinessExpenses'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'SellingPriceController',
@@ -102,15 +122,19 @@
             })
             .state('yearGoal.variableBusinessExpenses', {
                 url: '/variableBusinessExpenses',
-                params: {
-                    prev: {
-                        name: 'Selling Price',
-                        sref: 'yearGoal.sellingPrice'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Profit Margin',
-                        sref: 'yearGoal.profitMargin'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'VariableBusinessExpensesController',
@@ -118,15 +142,19 @@
             })
             .state('yearGoal.profitMargin', {
                 url: '/profitMargin',
-                params: {
-                    prev: {
-                        name: 'Variable Business Expenses',
-                        sref: 'yearGoal.variableBusinessExpenses'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Revenue Breakdown',
-                        sref: 'yearGoal.revenueBreakdown'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'ProfitMarginController',
@@ -134,15 +162,19 @@
             })
             .state('yearGoal.revenueBreakdown', {
                 url: '/revenueBreakdown',
-                params: {
-                    prev: {
-                        name: 'Profit Margin',
-                        sref: 'yearGoal.profitMargin'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Your 1 Year Goal',
-                        sref: 'yearGoal.yourYearGoal'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'RevenueBreakdownController',
@@ -150,15 +182,19 @@
             })
             .state('yearGoal.yourYearGoal', {
                 url: '/yourYearGoal',
-                params: {
-                    prev: {
-                        name: 'Revenue Breakdown',
-                        sref: 'yearGoal.revenueBreakdown'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Adjust your 1 Year Goal',
-                        sref: 'yearGoal.adjustYourYearGoal'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'YourYearGoalController',
@@ -166,15 +202,19 @@
             })
             .state('yearGoal.adjustYourYearGoal', {
                 url: '/adjustYourYearGoal',
-                params: {
-                    prev: {
-                        name: 'Your 1 Year Goal',
-                        sref: 'yearGoal.yourYearGoal'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: '1 Year Goal Q&A',
-                        sref: 'yearGoal.qa'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'AdjustYourYearGoalController',
@@ -182,15 +222,19 @@
             })
             .state('yearGoal.qa', {
                 url: '/Q&A',
-                params: {
-                    prev: {
-                        name: 'Adjust your 1 Year Goal',
-                        sref: 'yearGoal.adjustYourYearGoal'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Commit To Your 1 Year Goal',
-                        sref: 'yearGoal.commitYourYearGoal'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'YearGoalQAController',
@@ -198,15 +242,19 @@
             })
             .state('yearGoal.commitYourYearGoal', {
                 url: '/commitYourYearGoal',
-                params: {
-                    prev: {
-                        name: '1 Year Goal Q&A',
-                        sref: 'yearGoal.qa'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
 
-                    },
-                    next: {
-                        name: 'Step 2 SLAPsummary',
-                        sref: 'yearGoal.step2Summary'
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'CommitYourYearGoalController',
@@ -214,14 +262,19 @@
             })
             .state('yearGoal.step2Summary', {
                 url: '/step2Summary',
-                params: {
-                    prev: {
-                        name: 'Commit To Your 1 Year Goal',
-                        sref: 'yearGoal.commitYourYearGoal'
-                    },
-                    next: {
-                        name: 'First SLAPexpert Review',
-                        sref: 'yearGoal.firstExpertReview'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'Step2SummaryController',
@@ -229,14 +282,19 @@
             })
             .state('yearGoal.firstExpertReview', {
                 url: '/firstSLAPexpertReview',
-                params: {
-                    prev: {
-                        name: 'Step 2 SLAPsummary',
-                        sref: 'yearGoal.step2Summary'
-                    },
-                    next: {
-                        name: 'Ideal Client Overview',
-                        sref: 'idealClient.overview'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'FirstExpertReviewController',

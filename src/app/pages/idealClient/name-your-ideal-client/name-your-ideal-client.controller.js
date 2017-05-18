@@ -5,22 +5,18 @@
         .module('app.pages.idealClient')
         .controller('NameYourIdealClientController', NameYourIdealClientController);
 
-    function NameYourIdealClientController($scope, $state, pageService, stepService) {
+    function NameYourIdealClientController($scope, pageService, activeStep,stepService,$state) {
 
-        angular.extend($scope, {
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData,
             model: {
                 firstName: ''
             },
             showVideoBlock: false,
             showStaticTextBlock: false,
-            showIdealClientNameBlock: false,
-            forward: true
+            showIdealClientNameBlock: false
         });
-
-        $scope.sendData = sendData;
-
-
-        // --- vars ---
 
         pageService
             .reset()
@@ -28,14 +24,16 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Name Your Ideal Client');
 
-
-
         function sendData() {
-            var urls = $state.current.name.split('.');
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.model)
-                .then(function (response) {
-                    console.log(response);
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var urls = activeStep.sref.split('.');
+
+            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
 

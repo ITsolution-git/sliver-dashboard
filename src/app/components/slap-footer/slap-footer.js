@@ -6,36 +6,26 @@
             send: '&',
             forward: '='
         },
-        controller: function (footerService, $timeout, $rootScope, $state) {
+        controller: function (stepService, $timeout, $rootScope, $state) {
             var vm = this;
 
-            $timeout(function () {
-                vm.state = footerService._state;
-            });
+            vm.state = stepService.getNextAndPrevStep();
 
             vm.next = function () {
                 if (vm.forward) {
-                    // vm.send().then(function (response) {
-                    //     $state.go(vm.state.next.sref);
-                    //     $timeout(scrollTop);
-                    // });
-                    // return;
-                    vm.send();
+                    vm.send();  //TODO: forward true, validation absent sccroll top
                 }
-
-                $state.go(vm.state.next.sref);
-                $timeout(scrollTop);
             };
 
             vm.prev = function () {
-                $state.go(vm.state.prev.sref);
-                $timeout(scrollTop);
+                $state.go(vm.state.prevStep.sref);
+                // $timeout(scrollTop);
             };
 
-            function scrollTop() {
-                var body = $("body, html");
-                body.animate({scrollTop: 0}, 400);
-            }
+            // function scrollTop() {
+            //     var body = $("body, html");
+            //     body.animate({scrollTop: 0}, 400);
+            // }
         },
         templateUrl: 'components/slap-footer/slap-footer.html'
     };

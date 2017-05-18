@@ -6,20 +6,11 @@
         .controller('PrivilegeAndResponsibilityController', PrivilegeAndResponsibilityController);
 
     /* @ngInject */
-    function PrivilegeAndResponsibilityController($scope, $state, pageService, userService, stepService) {
+    function PrivilegeAndResponsibilityController($scope, $state, pageService, userService, stepService, activeStep) {
 
         var answersList = [];
 
-        angular.extend($scope, {
-            model: {
-                first: '',
-                second: '',
-                third: '',
-                fourth: '',
-                text: '',
-                businessName: _.get(userService, 'user.businessName'),
-                result: ''
-            },
+        angular.extend($scope, activeStep.model, {
             options: [
                 {
                     code: 1,
@@ -38,17 +29,16 @@
                     label: 'Not important to me'
                 }
             ],
-            showInfoBlock: false,
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            showDropdownBlock: false,
-            showNotice: false,
-            forward: true
+            forward: true,
+            sendData:sendData
         });
+
+        if ($scope.businessName === null) {
+            $scope.businessName = _.get(userService, 'user.businessName');
+        }
 
         $scope.checkDropdownModels = checkDropdownModels;
         $scope.closeNotice = closeNotice;
-        $scope.sendData = sendData;
         // --- vars ---
 
         pageService
@@ -59,23 +49,28 @@
 
         userService.getUser().then(function (user) {
             if (!_.isEmpty(user)) {
-                $scope.model.businessName = user.businessName;
+                $scope.data.businessName = user.businessName;
             }
         });
 
         function sendData() {
-            var urls = $state.current.name.split('.');
+            var urls = activeStep.sref.split('.');
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
             var data = angular.extend({}, {
-                first: $scope.model.first,
-                second: $scope.model.second,
-                third: $scope.model.third,
-                fourth: $scope.model.fourth,
-                text: $scope.model.text
+                first: $scope.data.first,
+                second: $scope.data.second,
+                third: $scope.data.third,
+                fourth: $scope.data.fourth,
+                text: $scope.data.text
             });
 
             return stepService.sendApiData(urls[urls.length - 1], data)
-                .then(function (response) {
-                    console.log(response);
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
 
@@ -90,7 +85,7 @@
                 $scope.showInfoBlock = false;
             }
 
-            if (!_.isEmpty($scope.model.first) && !_.isEmpty($scope.model.second) && !_.isEmpty($scope.model.third) && !_.isEmpty($scope.model.fourth)) {
+            if (!_.isEmpty($scope.data.first) && !_.isEmpty($scope.data.second) && !_.isEmpty($scope.data.third) && !_.isEmpty($scope.data.fourth)) {
 
                 if (findDuplicate()) {
                     $scope.showInfoBlock = true;
@@ -106,23 +101,23 @@
 
             _.each(resultList, function (value) {
 
-                if ($scope.model.first === value.label) {
-                    $scope.model.result = 'provide for my family';
+                if ($scope.data.first === value.label) {
+                    $scope.data.result = 'provide for my family';
                     return true;
                 }
 
-                if ($scope.model.second === value.label) {
-                    $scope.model.result = 'create jobs';
+                if ($scope.data.second === value.label) {
+                    $scope.data.result = 'create jobs';
                     return true;
                 }
 
-                if ($scope.model.third === value.label) {
-                    $scope.model.result = 'give more to my community';
+                if ($scope.data.third === value.label) {
+                    $scope.data.result = 'give more to my community';
                     return true;
                 }
 
-                if ($scope.model.fourth === value.label) {
-                    $scope.model.result = 'helping the economy';
+                if ($scope.data.fourth === value.label) {
+                    $scope.data.result = 'helping the economy';
                     return true;
                 }
             });
@@ -135,7 +130,7 @@
         // If user selected two or more identical values, return false
         function findDuplicate() {
 
-            var modelsArray = [$scope.model.first, $scope.model.second, $scope.model.third, $scope.model.fourth];
+            var modelsArray = [$scope.data.first, $scope.data.second, $scope.data.third, $scope.data.fourth];
             var filteringModelsArray = _.uniq(modelsArray);
 
             return filteringModelsArray.length === modelsArray.length;

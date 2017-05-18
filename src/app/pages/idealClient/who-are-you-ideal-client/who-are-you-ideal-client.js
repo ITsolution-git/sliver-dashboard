@@ -6,10 +6,9 @@
         .controller('WhoAreYouIdealClientController', WhoAreYouIdealClientController);
 
     /* @ngInject */
-    function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService) {
+    function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService,activeStep) {
 
-        angular.extend($scope, {
-            clients: [],
+        angular.extend($scope, activeStep.model,{
             emptyClient: {
                 name: '',
                 gender: '0',
@@ -24,9 +23,6 @@
                 reads: '',
                 number: 0
             },
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            showIdealClientTextBlock: false,
             forward: true
         });
 
@@ -36,11 +32,15 @@
         $timeout(addNewClient);
 
         function sendData() {
-            var urls = $state.current.name.split('.');
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var urls = activeStep.sref.split('.');
 
             return stepService.sendApiData(urls[urls.length - 1], $scope.clients)
-                .then(function (response) {
-                    console.log(response);
+                .then(function () {
+                    $state.go(nextStep.sref);
                 });
         }
 

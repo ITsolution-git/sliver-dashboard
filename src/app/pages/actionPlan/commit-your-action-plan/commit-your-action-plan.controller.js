@@ -5,15 +5,14 @@
         .module('app.pages.actionPlan')
         .controller('CommitYourActionPlanController', CommitYourActionPlanController);
 
-    function CommitYourActionPlanController($scope, pageService) {
+    function CommitYourActionPlanController($scope, activeStep, pageService, stepService, $state) {
 
-        angular.extend($scope, {
+        angular.extend($scope, activeStep.model, {
+            forward: true,
+            sendData: sendData,
             model: {
                 first: 'Dropdown Label'
-            },
-            showVideoBlock: false,
-            showStaticTextBlock: false,
-            showContent: false
+            }
         });
 
         pageService
@@ -21,5 +20,14 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Action Plan');
+
+        function sendData() {
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+
+            var nextStep = stepService.getNextAndPrevStep().nextStep;
+
+            $state.go(nextStep.sref);
+        }
     }
 }());

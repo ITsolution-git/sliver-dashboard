@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -22,14 +22,19 @@
             })
             .state('execute.livingDayToDay', {
                 url: '/livingSlapDayToDay',
-                params: {
-                    prev: {
-                        name: 'Second SLAPexpert Review',
-                        sref: 'actionPlan.secondExpertReview'
-                    },
-                    next: {
-                        name: 'Commit to Yourself',
-                        sref: 'execute.commitYourSelf'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'LivingDayToDayController',
@@ -37,14 +42,19 @@
             })
             .state('execute.commitYourSelf', {
                 url: '/commitToYourself',
-                params: {
-                    prev: {
-                        name: 'Living SLAP Day-to-Day',
-                        sref: 'execute.livingDayToDay'
-                    },
-                    next: {
-                        name: 'Set Yourself Up For Success',
-                        sref: 'execute.setYourselfUpForSuccess'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'CommitYourselfController',
@@ -52,14 +62,19 @@
             })
             .state('execute.setYourselfUpForSuccess', {
                 url: '/setYourselfUpForSuccess',
-                params: {
-                    prev: {
-                        name: 'Commit to Yourself',
-                        sref: 'execute.commitYourSelf'
-                    },
-                    next: {
-                        name: 'Tour of SLAPcenter - Execute',
-                        sref: 'execute.tourExecute'
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'SetYourselfUpForSuccessController',
@@ -67,14 +82,19 @@
             })
             .state('execute.tourExecute', {
                 url: '/tourOfSLAPcenterExecute',
-                params: {
-                    prev: {
-                        name: 'Set Yourself Up For Success',
-                        sref: 'execute.setYourselfUpForSuccess'
-                    },
-                    next: {
-                        name: null,
-                        sref: null
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
                     }
                 },
                 controller: 'TourExecuteController',
