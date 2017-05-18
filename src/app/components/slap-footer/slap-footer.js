@@ -19,13 +19,13 @@
 
             vm.prev = function () {
                 $state.go(vm.state.prevStep.sref);
-                $timeout(scrollTop);
+                // $timeout(scrollTop);
             };
 
-            function scrollTop() {
-                var body = $("body, html");
-                body.animate({scrollTop: 0}, 400);
-            }
+            // function scrollTop() {
+            //     var body = $("body, html");
+            //     body.animate({scrollTop: 0}, 400);
+            // }
         },
         templateUrl: 'components/slap-footer/slap-footer.html'
     };
