@@ -618,9 +618,9 @@
                     if(step) {
                         if (Array.isArray(data.slapMindset[key]) && data.slapMindset[key].length <= 0) {
                             step.model.data = null;
+                        } else {
+                            step.model.data = data.slapMindset[key];
                         }
-
-                        step.model.data = data.slapMindset[key];
                     }
                 }
             }
