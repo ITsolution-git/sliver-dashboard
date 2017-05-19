@@ -38,7 +38,7 @@
             var nextStep = stepService.getNextAndPrevStep().nextStep;
             var urls = activeStep.sref.split('.');
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.clients)
+            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
                     $state.go(nextStep.sref);
                 });
@@ -48,10 +48,10 @@
 
             currentClientNumber = currentClientNumber || 0;
 
-            if ($scope.clients.length === currentClientNumber) {
+            if ($scope.data.length === currentClientNumber) {
                 var clientModel = _.cloneDeep($scope.emptyClient);
                 clientModel.number = currentClientNumber + 1;
-                $scope.clients.push(clientModel);
+                $scope.data.push(clientModel);
             }
         }
 

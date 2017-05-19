@@ -287,7 +287,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showIdealClientTextBlock: false,
-                    clients: []
+                    data: []
                 }
             }, {
                 name: 'Define Your Ideal Client',
@@ -608,11 +608,45 @@
                         return item.sref === sref;
                     });
 
-                    if (data.slapMindset[key].isArray && data.slapMindset[key].length <= 0) {
-                        step.model.data = null;
-                    }
+                    if(step) {
+                        if (Array.isArray(data.slapMindset[key]) && data.slapMindset[key].length <= 0) {
+                            step.model.data = null;
+                        }
 
-                    step.model.data = data.slapMindset[key];
+                        step.model.data = data.slapMindset[key];
+                    }
+                }
+            }
+
+            if(data.statement) {
+                for (var key in data.statement) {
+                    var sref = 'statement.' + key;
+                    var step = steps.find(function (item) {
+                        return item.sref === sref;
+                    });
+
+                    if(step) {
+                        if (Array.isArray(data.statement[key]) && data.statement[key].length <= 0) {
+                            step.model.data = null;
+                        }
+                        step.model.data = data.statement[key];
+                    }
+                }
+            }
+
+            if(data.idealClient) {
+                for (var key in data.idealClient) {
+                    var sref = 'idealClient.' + key;
+                    var step = steps.find(function (item) {
+                        return item.sref === sref;
+                    });
+
+                    if(step) {
+                        if (Array.isArray(data.idealClient[key]) && data.idealClient[key].length === 0) {
+                            step.model.data = null;
+                        }
+                        step.model.data = data.idealClient[key];
+                    }
                 }
             }
         }
