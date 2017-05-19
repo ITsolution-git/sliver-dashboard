@@ -61,7 +61,7 @@
                     data: null
                 }
             }, {
-                name: 'Cashflow / Capacity Cath 22',
+                name: 'Cashflow Capacity Cath 22',
                 sref: 'mindset.cashFlow',
                 model: {
                     showInfoBlock: false,
@@ -306,7 +306,7 @@
                     showIdealClientNameBlock: false,
                     data: {
                         firstName: null
-                    },
+                    }
                 }
             }, {
                 name: 'Ideal Client Q&A',
@@ -316,7 +316,7 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'Commit To Your Ideal Client',
+                name: 'SLAPstatement Re-Commitment',
                 sref: 'idealClient.commitYourIdealClient',
                 model: {
                     showVideoBlock: false,
@@ -489,6 +489,13 @@
 
         var finishedSteps = [];
 
+
+        // temporary crutch
+        // _.forEach(steps, function (value, key) {
+        //     finishedSteps.push(key);
+        // });
+
+
         var activeStepIndex = null;
         var activeStep = null;
         var prevStep = null;
@@ -581,7 +588,7 @@
         function _initApiData() {
             var deferred = $q.defer();
 
-            if (finishedSteps.length <= 0 && !requestApi) {
+            if (finishedSteps.length === 0 && !requestApi) {
                 requestApi = !requestApi;
                 return getFinishedStepsAPI()
                     .then(function (response) {

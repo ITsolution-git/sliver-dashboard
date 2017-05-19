@@ -12,11 +12,9 @@
             sendData: sendData
         });
 
-        if ($scope.data.businessName === null) {
-            userService.getUser().then(function (user) {
-                $scope.data.businessName = user.businessName;
-            });
-        }
+        userService.getUser().then(function (user) {
+            $scope.data.fullName = user.name + ' ' + user.lastName;
+        });
 
 
         pageService

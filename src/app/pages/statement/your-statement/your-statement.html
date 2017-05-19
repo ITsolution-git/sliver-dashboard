@@ -54,7 +54,8 @@
                     <span class="line-text margin-r-20" ng-bind="fullName"></span>
 
                     <select ng-model="data.first"
-                            class="first-select active margin-r-20 dropdown-box outline-0">
+                            ng-class="{'active': data.first !== '0'}"
+                            class="first-select margin-r-20 dropdown-box outline-0">
                         <option value="0">Does</option>
                         <option value="1">Provides</option>
                         <option value="2">Sells</option>
@@ -72,7 +73,8 @@
                 <div class="col-md-9 row-flex padding-l-r-30 margin-b-38">
 
                     <select ng-model="data.third"
-                            class="third-select active margin-r-20 dropdown-box outline-0">
+                            ng-class="{'active': data.third !== '0'}"
+                            class="third-select margin-r-20 dropdown-box outline-0">
                         <option value="0">For</option>
                         <option value="1">To</option>
                     </select>

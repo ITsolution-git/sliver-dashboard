@@ -8,7 +8,7 @@
     function DefineYourIdealClientController($scope, $state, pageService, stepService,activeStep) {
 
         angular.extend($scope, activeStep,{
-            data: {
+            model: {
                 clients: []
             },
             gender: ['Empty', 'Male', 'Female'],
@@ -31,7 +31,7 @@
             return stepService.getApiData(url)
                 .then(function (response) {
                     if (response && response.status === 200) {
-                        $scope.data.clients = _.get(response, 'data.whoAreYouIdealClient', []);
+                        $scope.model.clients = _.get(response, 'data.whoAreYouIdealClient', []);
                     }
                 });
         }

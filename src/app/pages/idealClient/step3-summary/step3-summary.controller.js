@@ -11,6 +11,7 @@
             model: {
                 clients: []
             },
+            fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             gender: ['Empty', 'Male', 'Female'],
             maritalStatus: ['Empty', 'Single', 'Married', 'Divorced', 'Widowed'],
             kids: ['Empty', 'None', 'Young', 'Teens',' Adults'],
@@ -43,7 +44,17 @@
 
         function getData() {
 
-            return stepService.getApiData('whoAreYouIdealClient')  //TODO: request api? data service
+            stepService.getApiData('step1Summary')  //TODO: request api? data service
+                .then(function (response) {
+                    if (response && response.status === 200) {
+
+                        angular.extend($scope.model, {
+                            stepOneSummary: _.get(response, 'data.step1Summary', {})
+                        });
+                    }
+                });
+
+            stepService.getApiData('whoAreYouIdealClient')  //TODO: request api? data service
                 .then(function (response) {
                     if (response && response.status === 200) {
                         $scope.model.clients = _.get(response, 'data.whoAreYouIdealClient', []);

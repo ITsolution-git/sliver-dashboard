@@ -6,9 +6,9 @@
         .controller('WhoAreYouIdealClientController', WhoAreYouIdealClientController);
 
     /* @ngInject */
-    function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService,activeStep) {
+    function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService, activeStep) {
 
-        angular.extend($scope, activeStep.model,{
+        angular.extend($scope, activeStep.model, {
             emptyClient: {
                 name: '',
                 gender: '0',
@@ -38,19 +38,37 @@
             var nextStep = stepService.getNextAndPrevStep().nextStep;
             var urls = activeStep.sref.split('.');
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+            var clients = $scope.data;
+
+            if ($scope.data.length > 1) {
+
+                clients = [];
+
+                _.forEach($scope.data, function (value) {
+
+                    if (!angular.equals(value, $scope.emptyClient)) {
+                        clients.push(value);
+                    }
+
+                });
+            }
+
+            return stepService.sendApiData(urls[urls.length - 1], clients)
                 .then(function () {
                     $state.go(nextStep.sref);
                 });
         }
 
-        function addNewClient(currentClientNumber) {
+        function addNewClient(model) {
 
-            currentClientNumber = currentClientNumber || 0;
+            var index;
 
-            if ($scope.data.length === currentClientNumber) {
+            if (model) {
+                index = _.findIndex($scope.data, model);
+            }
+
+            if ($scope.data.length === 0 || $scope.data.length === index + 1) {
                 var clientModel = _.cloneDeep($scope.emptyClient);
-                clientModel.number = currentClientNumber + 1;
                 $scope.data.push(clientModel);
             }
         }
@@ -59,7 +77,7 @@
 
             findEmptyInputs(model).then(function (result) {
                 if (result) {
-                    addNewClient(model.number);
+                    addNewClient(model);
                 }
             });
         }
