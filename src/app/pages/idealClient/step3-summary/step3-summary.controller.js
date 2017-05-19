@@ -44,12 +44,12 @@
 
         function getData() {
 
-            stepService.getApiData('step1Summary')  //TODO: request api? data service
+            stepService.getApiData('yourStatement')  //TODO: request api? data service
                 .then(function (response) {
                     if (response && response.status === 200) {
 
                         angular.extend($scope.model, {
-                            stepOneSummary: _.get(response, 'data.step1Summary', {})
+                            stepOneSummary: _.get(response, 'data.yourStatement', {})
                         });
                     }
                 });

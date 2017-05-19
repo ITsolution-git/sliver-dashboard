@@ -12,9 +12,7 @@
             sendData: sendData
         });
 
-        userService.getUser().then(function (user) {
-            $scope.data.fullName = user.name + ' ' + user.lastName;
-        });
+        getData();
 
 
         pageService
@@ -35,6 +33,22 @@
                 .then(function () {
                     $state.go(nextStep.sref);
                 });
+        }
+
+        function getData() {
+
+            stepService.getApiData('yourStatement')  //TODO: request api? data service
+                .then(function (response) {
+                    console.log(response);
+                    if (response && response.status === 200) {
+
+                        $scope.data = _.get(response, 'data.yourStatement', {});
+                        userService.getUser().then(function (user) {
+                            $scope.data.businessName = user.businessName;
+                        });
+                    }
+                });
+
         }
     }
 }());

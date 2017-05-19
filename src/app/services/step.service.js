@@ -104,7 +104,11 @@
                     showStaticTextBlock: false,
                     showStartDate: false
                 }
-            }, {
+            },
+
+            // Slapstatement
+
+            {
                 name: 'SLAPstatement Overview',
                 sref: 'statement.overview',
                 model: {
@@ -163,7 +167,82 @@
                         businessName: null
                     }
                 }
+            },
+
+            // Ideal client
+
+            {
+                name: 'Ideal Client Overview',
+                sref: 'idealClient.overview',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
             }, {
+                name: 'Who Are Your Ideal Clients?',
+                sref: 'idealClient.whoAreYouIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showIdealClientTextBlock: false,
+                    data: []
+                }
+            }, {
+                name: 'Define Your Ideal Client',
+                sref: 'idealClient.defineYourIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showContent: false
+                }
+            }, {
+                name: 'Name Your Ideal Client',
+                sref: 'idealClient.nameYourIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showIdealClientNameBlock: false,
+                    data: {
+                        firstName: null
+                    }
+                }
+            }, {
+                name: 'Ideal Client Q&A',
+                sref: 'idealClient.qa',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false
+                }
+            }, {
+                name: 'SLAPstatement Re-Commitment',
+                sref: 'idealClient.commitYourIdealClient',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showContent: false
+                }
+            },
+            // {
+            //     name: 'Double Check',
+            //     sref: 'idealClient.doubleCheck'
+            // },
+            // {
+            //     name: 'SLAPstatement',
+            //     sref: 'idealClient.slapStatement'
+            // },
+            {
+                name: 'Step 3 SLAPsummary',
+                sref: 'idealClient.step3Summary',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showContent: false
+                }
+            },
+
+            // 1 Year goal
+
+            {
                 name: '1 Year Goal Overview',
                 sref: 'yearGoal.overview',
                 model: {
@@ -273,74 +352,11 @@
                     showStaticTextBlock: false,
                     showContent: false
                 }
-            }, {
-                name: 'Ideal Client Overview',
-                sref: 'idealClient.overview',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false
-                }
-            }, {
-                name: 'Who Are Your Ideal Clients?',
-                sref: 'idealClient.whoAreYouIdealClient',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showIdealClientTextBlock: false,
-                    data: []
-                }
-            }, {
-                name: 'Define Your Ideal Client',
-                sref: 'idealClient.defineYourIdealClient',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
-                }
-            }, {
-                name: 'Name Your Ideal Client',
-                sref: 'idealClient.nameYourIdealClient',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showIdealClientNameBlock: false,
-                    data: {
-                        firstName: null
-                    }
-                }
-            }, {
-                name: 'Ideal Client Q&A',
-                sref: 'idealClient.qa',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false
-                }
-            }, {
-                name: 'SLAPstatement Re-Commitment',
-                sref: 'idealClient.commitYourIdealClient',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
-                }
             },
-            // {
-            //     name: 'Double Check',
-            //     sref: 'idealClient.doubleCheck'
-            // },
-            // {
-            //     name: 'SLAPstatement',
-            //     sref: 'idealClient.slapStatement'
-            // },
+
+            // Action plan
+
             {
-                name: 'Step 3 SLAPsummary',
-                sref: 'idealClient.step3Summary',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
-                }
-            }, {
                 name: 'Action Plan Overview',
                 sref: 'actionPlan.overview',
                 model: {
@@ -457,7 +473,11 @@
                     showStaticTextBlock: false,
                     showContent: false
                 }
-            }, {
+            },
+
+            // Execute
+
+            {
                 name: 'Living SLAP Day-to-Day',
                 sref: 'execute.livingDayToDay',
                 model: {
@@ -491,9 +511,9 @@
 
 
         // temporary crutch
-        // _.forEach(steps, function (value, key) {
-        //     finishedSteps.push(key);
-        // });
+        _.forEach(steps, function (value, key) {
+            finishedSteps.push(key);
+        });
 
 
         var activeStepIndex = null;

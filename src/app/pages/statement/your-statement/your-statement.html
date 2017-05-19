@@ -38,7 +38,8 @@
 
             <div class="row sample-show-hide" ng-hide="showFormBlock">
                 <div class="col-md-11 padding-l-r-30 margin-b-24">
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra
+                        elit, a
                         dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
                 </div>
             </div>
@@ -46,16 +47,15 @@
             <div class="row sample-show-hide" ng-hide="showFormBlock">
 
                 <!--<div class="col-md-12 padding-l-r-30 margin-b-24">-->
-                    <!--<h4>Naming your Ideal Client</h4>-->
+                <!--<h4>Naming your Ideal Client</h4>-->
                 <!--</div>-->
 
-                <div class="col-md-10 row-flex padding-l-r-30 margin-b-38">
+                <div class="col-md-12 row-flex padding-l-r-30 margin-b-38">
 
-                    <span class="line-text margin-r-20" ng-bind="fullName"></span>
+                    <span class="line-text margin-r-20" data-ng-bind="::data.businessName"></span>
 
                     <select ng-model="data.first"
-                            ng-class="{'active': data.first !== '0'}"
-                            class="first-select margin-r-20 dropdown-box outline-0">
+                            class="first-select active margin-r-20 dropdown-box outline-0">
                         <option value="0">Does</option>
                         <option value="1">Provides</option>
                         <option value="2">Sells</option>
@@ -70,11 +70,10 @@
 
                 </div>
 
-                <div class="col-md-9 row-flex padding-l-r-30 margin-b-38">
+                <div class="col-md-12 row-flex padding-l-r-30 margin-b-38">
 
                     <select ng-model="data.third"
-                            ng-class="{'active': data.third !== '0'}"
-                            class="third-select margin-r-20 dropdown-box outline-0">
+                            class="third-select active margin-r-20 dropdown-box outline-0">
                         <option value="0">For</option>
                         <option value="1">To</option>
                     </select>
@@ -97,9 +96,19 @@
                         <option value="4">Global</option>
                     </select>
 
-                    <span class="line-text">scale.</span>
+                    <span class="line-text">scale because</span>
 
                 </div>
+
+                <div class="col-md-9 row-flex margin-b-38">
+                    <div class="input-box col-md-12">
+                        <input ng-model="data.sixth" type="text" id="sixth"
+                               ng-class="{'active': data.sixth}"
+                               class="sixth-input margin-r-20 outline-0" required>
+                        <label class="label" for="sixth">Because</label>
+                    </div>
+                </div>
+
             </div>
 
 
