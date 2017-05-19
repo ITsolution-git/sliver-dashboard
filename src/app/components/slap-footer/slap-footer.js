@@ -22,10 +22,6 @@
                 // $timeout(scrollTop);
             };
 
-            // function scrollTop() {
-            //     var body = $("body, html");
-            //     body.animate({scrollTop: 0}, 400);
-            // }
         },
         templateUrl: 'components/slap-footer/slap-footer.html'
     };

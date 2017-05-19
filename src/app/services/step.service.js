@@ -22,7 +22,7 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    sliders: null
+                    data: null
                 }
             }, {
                 name: 'Get the SLAPmindset',
@@ -58,7 +58,7 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    sliders: null
+                    data: null
                 }
             }, {
                 name: 'Cashflow / Capacity Cath 22',
@@ -338,7 +338,7 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false,
+                    showContent: false
                 }
             }, {
                 name: 'Action Plan Overview',
@@ -538,7 +538,7 @@
         function resolveActiveStep(state) {
 
             return $q(function (resolve, reject) {
-                return initApiData()
+                return _initApiData()
                     .then(function () {
                         var step = getStateStep(state);
                         var prev = getPrevStep(stepIndex);
@@ -578,16 +578,16 @@
             })
         }
 
-        function initApiData() {
+        function _initApiData() {
             var deferred = $q.defer();
 
             if (finishedSteps.length <= 0 && !requestApi) {
                 requestApi = !requestApi;
                 return getFinishedStepsAPI()
                     .then(function (response) {
-                        console.log(response);
-                        if (response.data.finishedSteps.length > 0) {
-                            finishedSteps = response.data.finishedSteps;
+                        if (response.data) {
+                            finishedSteps = response.data.steps.finishedSteps;
+                            _setDataStepModel(response.data);
                         }
                     })
                     .catch(function (err) {
@@ -598,6 +598,23 @@
             deferred.resolve();
 
             return deferred.promise;
+        }
+
+        function _setDataStepModel(data) {
+            if (data.slapMindset) {
+                for (var key in data.slapMindset) {
+                    var sref = 'mindset.' + key;
+                    var step = steps.find(function (item) {
+                        return item.sref === sref;
+                    });
+
+                    if (data.slapMindset[key].isArray && data.slapMindset[key].length <= 0) {
+                        step.model.data = null;
+                    }
+
+                    step.model.data = data.slapMindset[key];
+                }
+            }
         }
 
         function isFinished(index) {
@@ -653,13 +670,13 @@
         }
 
         function checkStepsIsFinishedSection(stepsGroup, prevNameStep) {
-            if(stepsGroup[stepsGroup.length - 1].sref === prevNameStep) return true;
+            if (stepsGroup[stepsGroup.length - 1].sref === prevNameStep) return true;
 
-            var lastStepGroupIndex = steps.findIndex(function(item,index) {
+            var lastStepGroupIndex = steps.findIndex(function (item) {
                 return item.sref === stepsGroup[stepsGroup.length - 1].sref; //TODO:bottleneck
             });
 
-            return finishedSteps.find(function(item) {
+            return finishedSteps.find(function (item) {
                 return item === lastStepGroupIndex;
             })
         }

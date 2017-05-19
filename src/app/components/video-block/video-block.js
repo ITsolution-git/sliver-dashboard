@@ -10,7 +10,7 @@
         controller: function($scope, $state, stepService) {
 
             $scope.title = stepService.getActiveStep().name;
-            console.log(stepService.getActiveStep());
+            // console.log(stepService.getActiveStep());
 
         }
 

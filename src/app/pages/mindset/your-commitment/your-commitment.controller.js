@@ -13,8 +13,9 @@
             sendData: sendData
         });
 
-        if($scope.sliders === null) {
-            $scope.sliders = mindsetService.getSliders();
+        if($scope.data === null) {
+
+            $scope.data = mindsetService.getSliders();
         }
 
         pageService
@@ -30,7 +31,7 @@
             var nextStep = stepService.getNextAndPrevStep().nextStep;
             var urls = activeStep.sref.split('.');
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.sliders)
+            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
                     $state.go(nextStep.sref);
                 });
