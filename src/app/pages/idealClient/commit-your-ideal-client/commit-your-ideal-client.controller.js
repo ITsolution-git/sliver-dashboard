@@ -18,7 +18,7 @@
         getData();  // TODO: request api? data service no reload
 
         userService.getUser().then(function (user) {
-            $scope.fullName = user.name + ' ' + user.lastName;
+            $scope.businessName = user.businessName;
         });
 
         pageService

@@ -13,9 +13,7 @@
             sendData: sendData
         });
 
-        userService.getUser().then(function (user) {
-            $scope.data.businessName = user.businessName;
-        });
+        getData();
 
         pageService
             .reset()
@@ -33,6 +31,26 @@
             return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
                     $state.go(nextStep.sref);
+                });
+        }
+
+        function getData() {
+            // var urls = _.get($state.current, 'params.prev.sref').split('.');
+            var url = '/allMindsetUser';
+
+            userService.getUser().then(function (user) {
+                $scope.data.businessName = user.businessName;
+            });
+
+            // return stepService.getApiData(urls[urls.length - 1])
+            return stepService.getApiData(url) //TODO: Think over the dynamics url
+                .then(function (response) {
+                    console.log(response);
+                    if (response && response.status === 200) {
+                        angular.extend($scope.data, {
+                            privilegeInfo: _.get(response, 'data.privilegeAndResponsibility', {})
+                        });
+                    }
                 });
         }
     }

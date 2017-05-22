@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="panel panel-default margin-t-40" ng-class="{'margin-b-140': !showInfoBlock}">
+    <div class="panel panel-default margin-t-40 margin-b-140">
 
         <div class="panel-body">
 
@@ -91,28 +91,42 @@
                     </div>
                 </div>
 
+                <div class="col-md-12 margin-b-50" ng-show="showInfoBlock">
+
+                    <h4>{{data.businessName}} Impact Goal</h4>
+
+                    <p>Because I will grow my business this year I will be able to {{data.result}} and am committed to
+                         <select ng-model="data.text" class="dropdown-box goal-select outline-0">
+                             <option>providing</option>
+                             <option>creating</option>
+                             <option>giving</option>
+                             <option>helping</option>
+                         </select></p>
+
+                </div>
+
             </div>
         </div>
     </div>
 
-    <div class="panel panel-default margin-t-40 margin-b-140 sample-show-hide" ng-show="showInfoBlock">
+    <!--<div class="panel panel-default margin-t-40 margin-b-140 sample-show-hide" ng-show="showInfoBlock">-->
 
-        <div class="panel-body">
+        <!--<div class="panel-body">-->
 
-            <h4>{{data.businessName}} Impact Goal</h4>
+            <!--<h4>{{data.businessName}} Impact Goal</h4>-->
 
-            <p>Because I will grow my business this year I will be able to {{data.result}} and am committed to
-                providing/creating/giving/helping <input ng-model="data.text" class="outline-0" type="text"></p>
+            <!--<p>Because I will grow my business this year I will be able to {{data.result}} and am committed to-->
+                <!--providing/creating/giving/helping <input ng-model="data.text" class="outline-0" type="text"></p>-->
 
-            <!--<h4>{{model.businessName}} Impact Goal 2</h4>-->
+            <!--&lt;!&ndash;<h4>{{model.businessName}} Impact Goal 2</h4>&ndash;&gt;-->
 
-            <!--<p>If you want to set a measurable goal for a second Impact Goal, fill in the blanks. If one enough go to-->
-                <!--next page.</p>-->
-            <!--<p>Because I will grow my business this year I will be able to {{model.second}} and am committed to-->
-                <!--providing/creating/giving/helping <input class="outline-0" type="text"></p>-->
+            <!--&lt;!&ndash;<p>If you want to set a measurable goal for a second Impact Goal, fill in the blanks. If one enough go to&ndash;&gt;-->
+                <!--&lt;!&ndash;next page.</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p>Because I will grow my business this year I will be able to {{model.second}} and am committed to&ndash;&gt;-->
+                <!--&lt;!&ndash;providing/creating/giving/helping <input class="outline-0" type="text"></p>&ndash;&gt;-->
 
-        </div>
-    </div>
+        <!--</div>-->
+    <!--</div>-->
 </div>
 
 <slap-footer send="sendData()" forward="forward"></slap-footer>

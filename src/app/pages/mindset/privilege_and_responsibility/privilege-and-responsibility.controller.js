@@ -65,7 +65,8 @@
                 second: $scope.data.second,
                 third: $scope.data.third,
                 fourth: $scope.data.fourth,
-                text: $scope.data.text
+                text: $scope.data.text,
+                result: $scope.data.result
             });
 
             return stepService.sendApiData(urls[urls.length - 1], data)
