@@ -36,7 +36,7 @@
 
         function getData() {
             // var urls = _.get($state.current, 'params.prev.sref').split('.');
-            var url = '/allMindsetUser';
+            var url = 'allMindsetUser';
 
             userService.getUser().then(function (user) {
                 $scope.data.businessName = user.businessName;

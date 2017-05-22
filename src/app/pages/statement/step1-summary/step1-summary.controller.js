@@ -37,6 +37,16 @@
 
         function getData() {
 
+            stepService.getApiData('allMindsetUser') //TODO: Think over the dynamics url
+                .then(function (response) {
+                    console.log(response);
+                    if (response && response.status === 200) {
+                        angular.extend($scope.data, {
+                            privilegeInfo: _.get(response, 'data.privilegeAndResponsibility', {})
+                        });
+                    }
+                });
+
             stepService.getApiData('yourStatement')  //TODO: request api? data service
                 .then(function (response) {
                     console.log(response);

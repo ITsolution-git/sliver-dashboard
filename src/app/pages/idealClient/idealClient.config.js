@@ -181,8 +181,8 @@
                 controller: 'SlapStatementController',
                 templateUrl: 'pages/idealClient/slap-statement/slap-statement.html'
             })
-            .state('idealClient.step3Summary', {
-                url: '/step3Summary',
+            .state('idealClient.step2Summary', {
+                url: '/step2Summary',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -198,8 +198,8 @@
                             })
                     }
                 },
-                controller: 'Step3SummaryController',
-                templateUrl: 'pages/idealClient/step3-summary/step3-summary.html'
+                controller: 'Step2SummaryController',
+                templateUrl: 'pages/idealClient/step2-summary/step2-summary.html'
             });
     }
 }());

@@ -232,7 +232,7 @@
             // },
             {
                 name: 'Step 2 SLAPsummary',
-                sref: 'idealClient.step3Summary',
+                sref: 'idealClient.step2Summary',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
@@ -338,7 +338,7 @@
                 }
             }, {
                 name: 'Step 3 SLAPsummary',
-                sref: 'yearGoal.step2Summary',
+                sref: 'yearGoal.step3Summary',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,

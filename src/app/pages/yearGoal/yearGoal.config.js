@@ -260,8 +260,8 @@
                 controller: 'CommitYourYearGoalController',
                 templateUrl: 'pages/yearGoal/commit-your-year-goal/commit-your-year-goal.html'
             })
-            .state('yearGoal.step2Summary', {
-                url: '/step2Summary',
+            .state('yearGoal.step3Summary', {
+                url: '/step3Summary',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -277,8 +277,8 @@
                             })
                     }
                 },
-                controller: 'Step2SummaryController',
-                templateUrl: 'pages/yearGoal/step2-summary/step2-summary.html'
+                controller: 'Step3SummaryController',
+                templateUrl: 'pages/yearGoal/step3-summary/step3-summary.html'
             })
             .state('yearGoal.firstExpertReview', {
                 url: '/firstSLAPexpertReview',

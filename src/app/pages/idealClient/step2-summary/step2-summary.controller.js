@@ -3,9 +3,9 @@
 
     angular
         .module('app.pages.idealClient')
-        .controller('Step3SummaryController', Step3SummaryController);
+        .controller('Step2SummaryController', Step2SummaryController);
     
-    function Step3SummaryController($scope, activeStep, pageService,stepService, $state) {
+    function Step2SummaryController($scope, activeStep, pageService,stepService, $state) {
 
         angular.extend($scope, activeStep.model,{
             model: {
@@ -43,6 +43,16 @@
 
 
         function getData() {
+
+            stepService.getApiData('yourStatement')  //TODO: request api? data service
+                .then(function (response) {
+                    if (response && response.status === 200) {
+
+                        angular.extend($scope.model, {
+                            stepOneSummary: _.get(response, 'data.yourStatement', {})
+                        });
+                    }
+                });
 
             stepService.getApiData('yourStatement')  //TODO: request api? data service
                 .then(function (response) {
