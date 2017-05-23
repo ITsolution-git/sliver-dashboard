@@ -7,13 +7,16 @@
 
     function CommitToYourController($scope, $state, pageService, stepService, userService, activeStep) {
 
-        angular.extend($scope, activeStep.model,{
-            first: ['Does', 'Provides', 'Sells'],
-            third: ['For', 'To'],
+        angular.extend($scope, activeStep.model, {
+            first: ['does', 'provides', 'sells'],
+            third: ['for', 'to'],
             fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
+            showWhatInput: false,
             forward: true,
             sendData: sendData
         });
+
+        var originalData;
 
         userService.getUser().then(function (user) {
             $scope.businessName = user.businessName;
@@ -22,15 +25,21 @@
         getData();  // TODO: request api? data service no reload
 
         function getData() {
-            // var urls = _.get($state.current, 'params.prev.sref').split('.');
-            var url = '/yourStatement';
 
-            // return stepService.getApiData(urls[urls.length - 1])
-            return stepService.getApiData(url) //TODO: Think over the dynamics url
+            stepService.getApiData('allMindsetUser') //TODO: Think over the dynamics url
                 .then(function (response) {
-                    console.log(response);
+                    if (response && response.status === 200) {
+                        angular.extend($scope, {
+                            privilegeInfo: _.get(response, 'data.privilegeAndResponsibility', {})
+                        });
+                    }
+                });
+
+            return stepService.getApiData('yourStatement') //TODO: Think over the dynamics url
+                .then(function (response) {
                     if (response && response.status === 200) {
                         $scope.data = _.get(response, 'data.yourStatement', []);
+                        originalData = _.clone($scope.data);
                     }
                 });
         }
@@ -42,12 +51,22 @@
             .setPageTitle('Statement');
 
         function sendData() {
-            stepService.updateActiveModel($scope);
-            stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            console.log($scope.data);
 
-            $state.go(nextStep.sref);
+            // stepService.updateActiveModel($scope);
+            // stepService.setFinishActiveStep();
+            //
+            // var nextStep = stepService.getNextAndPrevStep().nextStep;
+            //
+            // if (angular.equals($scope.data, originalData)) {
+            //     $state.go(nextStep.sref);
+            // } else {
+            //     stepService.sendApiData('yourStatement', $scope.data)
+            //         .then(function () {
+            //             $state.go(nextStep.sref);
+            //         });
+            // }
         }
     }
 }());

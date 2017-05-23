@@ -45,7 +45,6 @@
             // return stepService.getApiData(urls[urls.length - 1])
             return stepService.getApiData(url) //TODO: Think over the dynamics url
                 .then(function (response) {
-                    console.log(response);
                     if (response && response.status === 200) {
                         angular.extend($scope.data, {
                             privilegeInfo: _.get(response, 'data.privilegeAndResponsibility', {})
