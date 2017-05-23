@@ -61,7 +61,7 @@
                     data: null
                 }
             }, {
-                name: 'Cashflow Capacity Cath 22',
+                name: 'Cashflow Capacity Catch 22',
                 sref: 'mindset.cashFlow',
                 model: {
                     showInfoBlock: false,
@@ -511,9 +511,9 @@
 
 
         // temporary crutch
-        // _.forEach(steps, function (value, key) {
-        //     finishedSteps.push(key);
-        // });
+        _.forEach(steps, function (value, key) {
+            finishedSteps.push(key);
+        });
 
 
         var activeStepIndex = null;
