@@ -3,7 +3,7 @@
 
     var slapHeader = {
         binding: {},
-        controller: function ($auth, $state, userService) {
+        controller: function ($auth, $state, userService, $window) {
             var vm = this;
 
             userService.getUser().then(function (user) {
@@ -12,6 +12,7 @@
 
             this.logout = function () {
                 $auth.logout();
+                $window.location.reload();
                 $state.go('login');
             }
         },
