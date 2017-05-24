@@ -9,6 +9,9 @@
     function YourStatementController($scope, activeStep, $state, pageService, userService, stepService) {
 
         angular.extend($scope, activeStep.model, {
+            privilegesData: {
+                second: ['providing', 'creating', 'giving', 'helping']
+            },
             forward: true,
             sendData: sendData
         });

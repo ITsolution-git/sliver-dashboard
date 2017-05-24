@@ -48,7 +48,7 @@
                         <label for="first" class="label-text control-label">Growing my business allows me to provide for my family</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="first" ng-model="data.first" ng-change="checkDropdownModels(data.first)" class="dropdown-box outline-0"
+                        <select id="first" ng-model="data.first" ng-change="checkDropdownModels(data.first, 'provide for my family')" class="dropdown-box outline-0"
                                 ng-class="{'active': data.first}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
@@ -60,7 +60,7 @@
                         <label for="second" class="label-text control-label">Growing my business allows me to create jobs</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="second" ng-model="data.second" ng-change="checkDropdownModels(data.second)"
+                        <select id="second" ng-model="data.second" ng-change="checkDropdownModels(data.second, 'create jobs')"
                                 class="dropdown-box outline-0" ng-class="{'active': data.second}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
@@ -72,7 +72,7 @@
                         <label for="third" class="label-text control-label">Growing my business allows me to give more to my community</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="third" ng-model="data.third" ng-change="checkDropdownModels(data.third)"
+                        <select id="third" ng-model="data.third" ng-change="checkDropdownModels(data.third, 'give more to my community')"
                                 class="dropdown-box outline-0" ng-class="{'active': data.third}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
@@ -84,7 +84,7 @@
                         <label for="fourth" class="label-text control-label">Growing my business means I am helping the economy</label>
                     </div>
                     <div class="col-md-4">
-                        <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth)"
+                        <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth, 'helping the economy')"
                                 ng-class="{'active': data.fourth}">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
@@ -95,13 +95,15 @@
 
                     <h4>{{data.businessName}} Impact Goal</h4>
 
-                    <p>Because I will grow my business this year I will be able to {{data.result}} and am committed to
+                    <p>Because I will grow my business this year I will be able to {{data.result}} and I am committed to
                          <select ng-model="data.text" class="dropdown-box goal-select outline-0">
-                             <option>providing</option>
-                             <option>creating</option>
-                             <option>giving</option>
-                             <option>helping</option>
-                         </select></p>
+                             <option value="0">providing</option>
+                             <option value="1">creating</option>
+                             <option value="2">giving</option>
+                             <option value="3">helping</option>
+                         </select>
+                        <input ng-model="data.additionalText" class="outline-0" type="text">
+                    </p>
 
                 </div>
 
@@ -109,24 +111,6 @@
         </div>
     </div>
 
-    <!--<div class="panel panel-default margin-t-40 margin-b-140 sample-show-hide" ng-show="showInfoBlock">-->
-
-        <!--<div class="panel-body">-->
-
-            <!--<h4>{{data.businessName}} Impact Goal</h4>-->
-
-            <!--<p>Because I will grow my business this year I will be able to {{data.result}} and am committed to-->
-                <!--providing/creating/giving/helping <input ng-model="data.text" class="outline-0" type="text"></p>-->
-
-            <!--&lt;!&ndash;<h4>{{model.businessName}} Impact Goal 2</h4>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;<p>If you want to set a measurable goal for a second Impact Goal, fill in the blanks. If one enough go to&ndash;&gt;-->
-                <!--&lt;!&ndash;next page.</p>&ndash;&gt;-->
-            <!--&lt;!&ndash;<p>Because I will grow my business this year I will be able to {{model.second}} and am committed to&ndash;&gt;-->
-                <!--&lt;!&ndash;providing/creating/giving/helping <input class="outline-0" type="text"></p>&ndash;&gt;-->
-
-        <!--</div>-->
-    <!--</div>-->
 </div>
 
 <slap-footer send="sendData()" forward="forward"></slap-footer>

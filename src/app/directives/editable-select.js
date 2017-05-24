@@ -18,7 +18,7 @@
             restrict: 'A',
             scope: {
                 modelValue: "=",
-                valuesList: "="
+                valuesList: "="       // list of all select tag options
             },
             link: function (scope, el, attr) {
 
@@ -30,7 +30,7 @@
                 function edit(e) {
                     scope.showField = true;
                     var inputEl = $(e.target).next();
-                    inputEl.css('width', e.target.offsetWidth + 15 + 'px');
+                    inputEl.css('width', e.target.offsetWidth + 45 + 'px');
 
                     $timeout( function () {
                         inputEl.focus();

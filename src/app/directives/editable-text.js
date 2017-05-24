@@ -27,7 +27,7 @@
                 function edit(e) {
                     scope.showInput = true;
                     var inputEl = $(e.target).next();
-                    inputEl.css('width', e.target.offsetWidth + 8 + 'px');
+                    inputEl.css('width', e.target.offsetWidth + 20 + 'px');
 
                     $timeout( function () {
                         inputEl.focus();

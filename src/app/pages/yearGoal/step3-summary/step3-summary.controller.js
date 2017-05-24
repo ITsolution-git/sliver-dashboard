@@ -11,6 +11,10 @@
             model: {
                 clients: []
             },
+            data: {},
+            privilegesData: {
+                second: ['providing', 'creating', 'giving', 'helping']
+            },
             fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             gender: ['Empty', 'Male', 'Female'],
             maritalStatus: ['Empty', 'Single', 'Married', 'Divorced', 'Widowed'],
@@ -54,12 +58,12 @@
                     }
                 });
 
-            stepService.getApiData('yourStatement')  //TODO: request api? data service
+            stepService.getApiData('allMindsetUser') //TODO: Think over the dynamics url
                 .then(function (response) {
+                    console.log(response);
                     if (response && response.status === 200) {
-
-                        angular.extend($scope.model, {
-                            stepOneSummary: _.get(response, 'data.yourStatement', {})
+                        angular.extend($scope.data, {
+                            privilegeInfo: _.get(response, 'data.privilegeAndResponsibility', {})
                         });
                     }
                 });

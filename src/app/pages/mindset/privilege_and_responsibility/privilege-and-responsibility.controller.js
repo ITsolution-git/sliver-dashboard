@@ -29,7 +29,7 @@
                     label: 'Not important to me'
                 }
             ],
-            forward: true,
+            forward: false,
             sendData:sendData
         });
 
@@ -39,6 +39,9 @@
 
         $scope.checkDropdownModels = checkDropdownModels;
         $scope.closeNotice = closeNotice;
+
+        checkFormModels();
+
         // --- vars ---
 
         pageService
@@ -54,6 +57,11 @@
         });
 
         function sendData() {
+
+            if (_.isEmpty($scope.data.text)) {
+                return false;
+            }
+
             var urls = activeStep.sref.split('.');
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
@@ -66,7 +74,9 @@
                 third: $scope.data.third,
                 fourth: $scope.data.fourth,
                 text: $scope.data.text,
-                result: $scope.data.result
+                additionalText: $scope.data.additionalText,
+                result: $scope.data.result,
+                resultId: $scope.data.resultId
             });
 
             return stepService.sendApiData(urls[urls.length - 1], data)
@@ -76,22 +86,33 @@
         }
 
 
-        function checkDropdownModels(model) {
+        function checkDropdownModels(model, result) {
+
+            if (model === 'My primary driver') {
+                $scope.showInfoBlock = true;
+                // $scope.data.result = result;
+                findPrimaryLabel();
+            }
 
             if (_.indexOf(answersList, model) === -1) {
                 answersList.push(model);
                 $scope.showNotice = false;
             } else {
                 $scope.showNotice = true;
-                $scope.showInfoBlock = false;
+                // $scope.showInfoBlock = false;
             }
 
+            checkFormModels();
+        }
+
+        function checkFormModels() {
             if (!_.isEmpty($scope.data.first) && !_.isEmpty($scope.data.second) && !_.isEmpty($scope.data.third) && !_.isEmpty($scope.data.fourth)) {
 
                 if (findDuplicate()) {
-                    $scope.showInfoBlock = true;
+                    // $scope.showInfoBlock = true;
                     $scope.showNotice = false;
                     findPrimaryLabel();
+                    $scope.forward = true;
                 }
             }
         }
@@ -104,21 +125,25 @@
 
                 if ($scope.data.first === value.label) {
                     $scope.data.result = 'provide for my family';
+                    $scope.data.resultId = '0';
                     return true;
                 }
 
                 if ($scope.data.second === value.label) {
                     $scope.data.result = 'create jobs';
+                    $scope.data.resultId = '1';
                     return true;
                 }
 
                 if ($scope.data.third === value.label) {
                     $scope.data.result = 'give more to my community';
+                    $scope.data.resultId = '2';
                     return true;
                 }
 
                 if ($scope.data.fourth === value.label) {
                     $scope.data.result = 'helping the economy';
+                    $scope.data.resultId = '3';
                     return true;
                 }
             });
