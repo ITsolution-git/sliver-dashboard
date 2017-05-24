@@ -6,7 +6,7 @@
         .controller('PrivilegeAndResponsibilityController', PrivilegeAndResponsibilityController);
 
     /* @ngInject */
-    function PrivilegeAndResponsibilityController($scope, $state, pageService, userService, stepService, activeStep) {
+    function PrivilegeAndResponsibilityController($scope, $state, $timeout, pageService, userService, stepService, activeStep) {
 
         var answersList = [];
 
@@ -40,7 +40,7 @@
         $scope.checkDropdownModels = checkDropdownModels;
         $scope.closeNotice = closeNotice;
 
-        checkFormModels();
+        $timeout(checkFormModels);
 
         // --- vars ---
 
