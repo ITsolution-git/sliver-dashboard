@@ -106,10 +106,11 @@
         }
 
         function checkFormModels() {
+
             if (!_.isEmpty($scope.data.first) && !_.isEmpty($scope.data.second) && !_.isEmpty($scope.data.third) && !_.isEmpty($scope.data.fourth)) {
 
                 if (findDuplicate()) {
-                    // $scope.showInfoBlock = true;
+                    $scope.showInfoBlock = true;
                     $scope.showNotice = false;
                     findPrimaryLabel();
                     $scope.forward = true;

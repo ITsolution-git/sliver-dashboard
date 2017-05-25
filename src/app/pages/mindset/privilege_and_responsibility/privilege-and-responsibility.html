@@ -27,7 +27,7 @@
     <div class="row sample-show-hide" ng-show="showNotice">
         <div class="col-md-12">
             <div class="notice-box col-md-12 sample-show-hide">
-                <span>You can choose only one highes priority</span>
+                <span>You can only select one of these are your Primary Driver</span>
                 <span class="close-btn" ng-click="closeNotice()"></span>
             </div>
         </div>
@@ -95,7 +95,7 @@
 
                     <h4>{{data.businessName}} Impact Goal</h4>
 
-                    <p>Because I will grow my business this year I will be able to {{data.result}} and I am committed to
+                    <p>Because I will grow my business this year I will be able to <span class="aqua-green">{{data.result}}</span> and I am committed to
                          <select ng-model="data.text" class="dropdown-box goal-select outline-0">
                              <option value="0">providing</option>
                              <option value="1">creating</option>
