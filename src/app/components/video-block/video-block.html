@@ -5,7 +5,11 @@
         </div>
 
     <div class="video-content sample-show-hide row sample-show-hide" ng-hide="$ctrl.visible">
-        <video controls preload="none" class="col-md-12" poster="../images/carr.png">
+        <video controls preload="none" class="col-md-12 hidden-xs" poster="../images/carr.png">
+            <source src="http://media.w3.org/2016/01/Emmy-Award.mp4" type="video/mp4">
+        </video>
+
+        <video controls preload="none" class="col-xs-12 visible-xs" poster="../images/carr.png">
             <source src="http://media.w3.org/2016/01/Emmy-Award.mp4" type="video/mp4">
         </video>
     </div>

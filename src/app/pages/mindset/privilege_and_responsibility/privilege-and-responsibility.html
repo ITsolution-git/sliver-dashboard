@@ -44,10 +44,10 @@
             <div class="sample-show-hide" ng-hide="showDropdownBlock">
 
                 <div class=" form-group">
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-xs-12">
                         <label for="first" class="label-text control-label">Growing my business allows me to provide for my family</label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-xs-12">
                         <select id="first" ng-model="data.first" ng-change="checkDropdownModels(data.first, 'provide for my family')" class="dropdown-box outline-0"
                                 ng-class="{'active': data.first}">
                             <option ng-repeat="item in options">{{item.label}}</option>
@@ -56,10 +56,10 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-xs-12">
                         <label for="second" class="label-text control-label">Growing my business allows me to create jobs</label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-xs-12">
                         <select id="second" ng-model="data.second" ng-change="checkDropdownModels(data.second, 'create jobs')"
                                 class="dropdown-box outline-0" ng-class="{'active': data.second}">
                             <option ng-repeat="item in options">{{item.label}}</option>
@@ -68,10 +68,10 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-xs-12">
                         <label for="third" class="label-text control-label">Growing my business allows me to give more to my community</label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-xs-12">
                         <select id="third" ng-model="data.third" ng-change="checkDropdownModels(data.third, 'give more to my community')"
                                 class="dropdown-box outline-0" ng-class="{'active': data.third}">
                             <option ng-repeat="item in options">{{item.label}}</option>
@@ -80,10 +80,10 @@
                 </div>
 
                 <div class="form-group margin-b-50">
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-xs-12">
                         <label for="fourth" class="label-text control-label">Growing my business means I am helping the economy</label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-xs-12">
                         <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth, 'helping the economy')"
                                 ng-class="{'active': data.fourth}">
                             <option ng-repeat="item in options">{{item.label}}</option>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 margin-b-50" ng-show="showInfoBlock">
+                <div class="col-md-12 col-xs-12 margin-b-50" ng-show="showInfoBlock">
 
                     <h4>{{data.businessName}} Impact Goal</h4>
 

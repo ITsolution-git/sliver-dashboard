@@ -6,6 +6,13 @@
       p {
         margin-top: 29px;
       }
+
+      @media(max-width: 768px) {
+
+        p {
+          margin-top: 0;
+        }
+      }
     }
   }
 
@@ -38,6 +45,7 @@
   .form-group {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .margin-t-15 {
@@ -87,7 +95,7 @@
     }
 
     &.goal-select {
-      width: 200px;
+      width: 140px;
       font-size: 18px;
       margin-left: 10px;
       .opacity(1);
