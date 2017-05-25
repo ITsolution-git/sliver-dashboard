@@ -28,7 +28,6 @@
                     scope.showInput = true;
                     var inputEl = $(e.target).next();
                     inputEl.css('width', e.target.offsetWidth + 20 + 'px');
-                    inputEl.css('font-size',  '18px');
 
                     $timeout( function () {
                         inputEl.focus();

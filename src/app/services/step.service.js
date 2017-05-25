@@ -511,9 +511,9 @@
 
 
         // temporary crutch
-        // _.forEach(steps, function (value, key) {
-        //     finishedSteps.push(key);
-        // });
+        _.forEach(steps, function (value, key) {
+            finishedSteps.push(key);
+        });
 
 
         var activeStepIndex = null;
