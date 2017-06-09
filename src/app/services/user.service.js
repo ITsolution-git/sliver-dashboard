@@ -41,7 +41,7 @@
                     me.resolveUser(me.user);
                     deferred.resolve(me.user);
                 });
-                deferred.resolve(me.user);
+                // deferred.resolve(me.user);
             }
 
             return deferred.promise;

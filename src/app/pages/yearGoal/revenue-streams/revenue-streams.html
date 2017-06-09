@@ -1,0 +1,71 @@
+
+
+
+
+<div class="slap-page revenue-page personal-expanses" scroll-top>
+
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+
+            <button-switch visible="showVideoBlock"></button-switch>
+
+            <video-block visible="showVideoBlock"></video-block>
+
+        </div>
+
+    </div>
+
+    <div class="panel panel-default ">
+
+        <div class="panel-body static-text-panel">
+
+            <button-switch visible="showStaticTextBlock"></button-switch>
+
+            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+
+        </div>
+
+    </div>
+
+    <slap-notifications notifications="notifications" ></slap-notifications>
+    <div class="panel panel-default">
+
+        <div class="panel-body slap-work-panel">
+
+            <button-switch visible="showContent"></button-switch>
+
+            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+
+            <div class="sample-show-hide" ng-hide="showContent">
+                
+                <div class="revenue-row">
+                    <div class="revenue-name-container text-center">
+                        Revenue Streams
+                    </div>
+                </div>
+                <div class="revenue-row" ng-repeat="revenue in data.revenues">
+                    <div class="revenue-name-container" >
+                        
+                        <div class="input-box" style="width: calc(100% - 20px); display: inline-block">
+                            <input ng-model="revenue.name" type="text"
+                                   class="monthly-cost outline-0"
+                                   ng-blur="checkRevenueCompleted(revenue, $event)"
+                                   ng-class="{'active': revenue.name}" required>
+                            <label class="label expense-label" >Add  Revenue</label>
+                        </div>
+                        <span class="delete-btn outline-0 pull-right" ng-click="deleteRevenue(revenue)" style="padding-top: 20px">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<slap-footer send="sendData"" forward="forward"></slap-footer>
+

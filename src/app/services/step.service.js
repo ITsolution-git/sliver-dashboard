@@ -201,10 +201,7 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showIdealClientNameBlock: false,
-                    data: {
-                        firstName: null
-                    }
+                    showIdealClientNameBlock: false
                 }
             }, {
                 name: 'Ideal Client Q&A',
@@ -247,7 +244,7 @@
                 sref: 'yearGoal.overview',
                 model: {
                     showVideoBlock: false,
-                    showStaticTextBlock: false
+                    showStaticTextBlock: false,
                 }
             }, {
                 name: 'Personal Expenses',
@@ -255,7 +252,12 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        expenses: [],
+                        incidentals: '1.00',
+                        expensesSum: 0
+                    }
                 }
             }, {
                 name: 'Fixed Business Expenses',
@@ -263,7 +265,13 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        expenses: [],
+                        incidentals: '1.00',
+                        expensesSum: 0,
+                        profit: '0.00'
+                    }
                 }
             }, {
                 name: 'Total Fixed Expenses Revenue',
@@ -274,12 +282,28 @@
                     showContent: false
                 }
             }, {
+                name: 'Revenue Streams',
+                sref: 'yearGoal.revenueStreams',
+                model: {
+                    showVideoBlock: false,
+                    showStaticTextBlock: false,
+                    showContent: false,
+                    data: {
+                        revenues: [],
+                        totalBreakdown: 0,
+                    }
+                }
+            }, {
                 name: 'Selling Price',
                 sref: 'yearGoal.sellingPrice',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        revenues: [],
+                        totalBreakdown: 0,
+                    }
                 }
             }, {
                 name: 'Variable Business Expenses',
@@ -287,7 +311,11 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        revenues: [],
+                        totalBreakdown: 0,
+                    }
                 }
             }, {
                 name: 'Profit Margin',
@@ -295,7 +323,11 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        revenues: [],
+                        totalBreakdown: 0,
+                    }
                 }
             }, {
                 name: 'Revenue Breakdown',
@@ -303,7 +335,11 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        revenues: [],
+                        totalBreakdown: 0,
+                    }
                 }
             }, {
                 name: 'Your 1 Year Goal',
@@ -311,7 +347,11 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        revenues: [],
+                        totalBreakdown: 0,
+                    }
                 }
             }, {
                 name: 'Adjust your 1 Year Goal',
@@ -319,7 +359,11 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        revenues: [],
+                        totalBreakdown: 0,
+                    }
                 }
             }, {
                 name: '1 Year Goal Q&A',
@@ -334,7 +378,12 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        expenses: [],
+                        incidentals: '1.00',
+                        expensesSum: 0
+                    }
                 }
             }, {
                 name: 'Step 3 SLAPsummary',
@@ -344,16 +393,7 @@
                     showStaticTextBlock: false,
                     showContent: false
                 }
-            }, {
-                name: 'First SLAPexpert Review',
-                sref: 'yearGoal.firstExpertReview',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
-                }
-            },
-
+            }, 
             // Action plan
 
             {
@@ -530,6 +570,7 @@
         this.getAllSteps = getAllSteps;
         this.resolveActiveStep = resolveActiveStep;
         this.getLastFinished = getLastFinished;
+        this.setRequestApiFlag = setRequestApiFlag;
 
         this.checkStepsIsFinishedSection = checkStepsIsFinishedSection;
 
@@ -608,7 +649,7 @@
         function _initApiData() {
             var deferred = $q.defer();
 
-            if (finishedSteps.length === 0 && !requestApi) {
+            if (finishedSteps.length === 0 || !requestApi) {
                 requestApi = !requestApi;
                 return getFinishedStepsAPI()
                     .then(function (response) {
@@ -676,6 +717,23 @@
                     }
                 }
             }
+
+
+            if(data.yearGoal) {
+                for (var key in data.yearGoal) {
+                    var sref = 'yearGoal.' + key;
+                    var step = steps.find(function (item) {
+                        return item.sref === sref;
+                    });
+
+                    if(step) {
+                        if (Array.isArray(data.yearGoal[key]) && data.yearGoal[key].length === 0) {
+                            step.model.data = null;
+                        }
+                        step.model.data = data.yearGoal[key];
+                    }
+                }
+            }
         }
 
         function isFinished(index) {
@@ -740,6 +798,10 @@
             return finishedSteps.find(function (item) {
                 return item === lastStepGroupIndex;
             })
+        }
+
+        function setRequestApiFlag(){
+            requestApi = false;
         }
     }
 }());

@@ -56,18 +56,24 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Statement');
 
-        function sendData() {
-
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
+            stepService.setRequestApiFlag();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
 
             if (angular.equals($scope.data, originalData) && angular.equals($scope.privilegeInfo, originalPrivilagesData)) {
-                $state.go(nextStep.sref);
+                if(direction == 'forward')
+                    $state.go(nextprevStep.nextStep.sref);
+                else
+                    $state.go(nextprevStep.prevStep.sref);
             } else {
                 updateData().then(function () {
-                    $state.go(nextStep.sref);
+                    if(direction == 'forward')
+                        $state.go(nextprevStep.nextStep.sref);
+                    else
+                        $state.go(nextprevStep.prevStep.sref);
                 });
             }
         }

@@ -1,0 +1,11 @@
+
+<div ng-repeat="notification in $ctrl.notifications">
+    <div class="row sample-show-hide" ng-show="notification.show">
+        <div class="col-xs-12">
+            <div class="notice-box col-md-12 sample-show-hide notice-error">
+                <span>{{notification.message}}</span>
+                <span class="close-btn" ng-click="closeNotice(notification)"></span>
+            </div>
+        </div>
+    </div>
+</div>

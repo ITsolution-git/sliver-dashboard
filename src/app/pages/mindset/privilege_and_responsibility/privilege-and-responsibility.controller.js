@@ -33,12 +33,26 @@
             sendData:sendData
         });
 
+        $scope.availableOptions = [
+            {
+                code: 2,
+                label: 'Very important to me'
+            },
+            {
+                code: 3,
+                label: 'Neutral'
+            },
+            {
+                code: 4,
+                label: 'Not important to me'
+        }];
+        $scope.notifications = [];
+        checkShowBlockStatus();
         if ($scope.businessName === null) {
             $scope.businessName = _.get(userService, 'user.businessName');
         }
 
         $scope.checkDropdownModels = checkDropdownModels;
-        $scope.closeNotice = closeNotice;
 
         $timeout(checkFormModels);
 
@@ -56,7 +70,23 @@
             }
         });
 
-        function sendData() {
+        function checkShowBlockStatus(){
+            
+            if(($scope.data.first == 'My primary driver')
+                || ($scope.data.second == 'My primary driver')
+                || ($scope.data.third == 'My primary driver')
+                || ($scope.data.fourth == 'My primary driver')){
+                    
+                $scope.showInfoBlock = true;
+                $scope.forward = true;
+            }
+            else{
+                $scope.notifications = [{name: 'Missing Primary Driver', type: 'error', message: 'Please select at least one Primary Driver', show: true}];
+                $scope.showInfoBlock = false;
+                $scope.forward = false;
+            }
+        }
+        function sendData(direction) {
 
             if (_.isEmpty($scope.data.text)) {
                 return false;
@@ -66,7 +96,7 @@
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
 
             var data = angular.extend({}, {
                 first: $scope.data.first,
@@ -81,26 +111,30 @@
 
             return stepService.sendApiData(urls[urls.length - 1], data)
                 .then(function () {
-                    $state.go(nextStep.sref);
+                    if(direction == 'forward')  
+                        $state.go(nextprevStep.nextStep.sref); 
+                    else
+                        $state.go(nextprevStep.prevStep.sref);
                 });
         }
 
 
-        function checkDropdownModels(model, result) {
-
+        function checkDropdownModels(model, result, changedItem) {
             if (model === 'My primary driver') {
                 $scope.showInfoBlock = true;
-                // $scope.data.result = result;
                 findPrimaryLabel();
+            } else {
+                checkShowBlockStatus();
             }
 
-            if (_.indexOf(answersList, model) === -1) {
-                answersList.push(model);
-                $scope.showNotice = false;
-            } else {
-                $scope.showNotice = true;
+            // if (_.indexOf(answersList, model) === -1) {
+            //     answersList.push(model);
+            //     $scope.showNotice = false;
+            //     $scope.notifications = [];
+            // } else {
+                // $scope.notifications = [{name: 'Missing Primary Driver', type: 'error', message: 'Please select at least one Primary Driver', show: true}];
                 // $scope.showInfoBlock = false;
-            }
+            // }
 
             checkFormModels();
         }
@@ -111,7 +145,7 @@
 
                 if (findDuplicate()) {
                     $scope.showInfoBlock = true;
-                    $scope.showNotice = false;
+                    $scope.notifications = [];
                     findPrimaryLabel();
                     $scope.forward = true;
                 }
@@ -150,9 +184,6 @@
             });
         }
 
-        function closeNotice() {
-            $scope.showNotice = false;
-        }
 
         // If user selected two or more identical values, return false
         function findDuplicate() {
@@ -162,6 +193,7 @@
 
             return filteringModelsArray.length === modelsArray.length;
         }
+
     }
 
 

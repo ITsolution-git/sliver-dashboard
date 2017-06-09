@@ -6,24 +6,25 @@
         .controller('WhoAreYouIdealClientController', WhoAreYouIdealClientController);
 
     /* @ngInject */
-    function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService, activeStep) {
+    function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService, activeStep, idealclientService) {
 
         angular.extend($scope, activeStep.model, {
             emptyClient: {
                 name: '',
                 gender: '0',
-                age: '',
+                age: '0',
                 maritalStatus: '0',
                 kids: '0',
                 employment: '0',
                 location: '0',
                 home: '0',
                 transit: '0',
-                hobbies: '',
-                reads: '',
+                hobbies: '0',
+                reads: '0',
                 number: 0
             },
-            forward: true
+            forward: true,
+            idealClientSelects: idealclientService.getClientSliders()
         });
 
         $scope.checkFormElements = checkFormElements;
@@ -31,11 +32,11 @@
 
         $timeout(addNewClient);
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
             var clients = $scope.data;
@@ -55,7 +56,10 @@
 
             return stepService.sendApiData(urls[urls.length - 1], clients)
                 .then(function () {
-                    $state.go(nextStep.sref);
+                    if(direction == 'forward')  
+                        $state.go(nextprevStep.nextStep.sref); 
+                    else
+                        $state.go(nextprevStep.prevStep.sref);
                 });
         }
 
@@ -67,7 +71,14 @@
                 index = _.findIndex($scope.data, model);
             }
 
-            if ($scope.data.length === 0 || $scope.data.length === index + 1) {
+            var force = false;
+            if ($scope.data.length > 0) {
+                var lastItem = $scope.data[$scope.data.length - 1];
+                if (!angular.equals(lastItem, $scope.emptyClient)) {
+                    force = true;
+                }
+            }
+            if ($scope.data.length === 0 || $scope.data.length === index + 1 || force) {
                 var clientModel = _.cloneDeep($scope.emptyClient);
                 $scope.data.push(clientModel);
             }

@@ -19,11 +19,14 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Cashflow Capacity Catch 22');
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
-            $state.go(nextStep.sref);
+            var nextprevStep = stepService.getNextAndPrevStep();
+            if(direction == 'forward')  
+				$state.go(nextprevStep.nextStep.sref); 
+            else
+				$state.go(nextprevStep.prevStep.sref);
         }
     }
 }());

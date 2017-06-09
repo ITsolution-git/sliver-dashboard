@@ -43,8 +43,8 @@
                     if (token) {
                         params = params || {};
                         // console.log(element, operation, what, url, headers, params);
-                        params['access-token'] = $auth.getToken();
-                        //headers.Authorization = 'Bearer ' + token;
+                        // params['access-token'] = $auth.getToken();
+                        headers.Authorization = 'Bearer ' + token;
                     }
                 });
         });

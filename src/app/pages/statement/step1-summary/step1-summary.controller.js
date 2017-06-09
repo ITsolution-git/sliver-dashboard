@@ -26,16 +26,19 @@
             .setPageTitle('Statement')
             .setPageTitle('SLAP | Step 1 SLAPsummary');
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
             return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
-                    $state.go(nextStep.sref);
+                    if(direction == 'forward')  
+                        $state.go(nextprevStep.nextStep.sref); 
+                    else
+                        $state.go(nextprevStep.prevStep.sref);
                 });
         }
 

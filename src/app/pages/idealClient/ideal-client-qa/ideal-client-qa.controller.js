@@ -19,13 +19,16 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('SLAPstatement Q&A');
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
 
-            $state.go(nextStep.sref);
+            if(direction == 'forward')  
+				$state.go(nextprevStep.nextStep.sref); 
+            else
+				$state.go(nextprevStep.prevStep.sref);
         }
     }
 }());

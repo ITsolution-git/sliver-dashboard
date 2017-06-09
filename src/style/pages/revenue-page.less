@@ -1,0 +1,118 @@
+
+.revenue-page .slap-work-panel > div{
+  color: #33444d;
+  font-size: 17px;
+  .input-box {
+    input {
+      width: ~"calc(100% - 30px)";
+      font-size: 1em;
+      background-color: white;
+      color: #33444d;
+    }
+    font-size: 1em;
+  }
+  .info-text {
+    line-height: 3em;
+  }
+  div {
+    position: relative;
+  }
+  label.expense-label {
+    left: 0px;
+    font-size: 1em;
+  }
+
+  > div > div{
+    padding: 10px;
+  }
+  .revenue-row {
+    clear: both;
+    padding: 0 0 0;
+    overflow: auto;
+    color: #33444d;
+    > div.show-border{
+      border-left: solid 4px #576875;
+      border-right: solid 4px #576875;
+
+    }
+    
+    @from : 1 ;
+    @to : 20;
+    .loop-revenue-sizes(@index) when (@index =< @to) {
+      .row-@{index}th{
+        height: unit(@index * 48 + 20 + 80, px);
+      }
+      .loop-revenue-sizes(@index + 1);
+    }
+
+    .loop-revenue-sizes(@from);
+
+    &:first-child {
+      padding-top: 1.6em;
+      > div {
+        padding-top: 30px;
+      }
+      > div.show-border {
+        border-top: solid 4px #576875;
+        position: relative;
+        .blue-circle {
+          position: absolute !important;
+          top: 30px;
+        }
+      }
+      
+    }
+    &:last-child {
+      > div.show-border{
+        border-bottom: solid 4px #576875;
+      }
+    }
+  }
+  .delete-btn {
+    padding-top: 10px;
+  }
+  .revenue-name-container {
+    width: 30%;
+    float: left;
+  }
+  .revenue-price-container {
+    width: 30%;
+    float: left;
+
+    .variable-row {
+      clear: both;
+
+      .variable-name {
+        float: left;
+        width: 50%;
+      }
+
+      .variable-price {
+        float: left;
+        width: ~"calc(50% - 20px)";
+      }
+    }
+  }
+  .revenue-margin-container {
+    width: 10%;
+    float: left;
+    // padding-top: 15px;
+  }
+  .revenue-breakdown-container {
+    width: 15%;
+    float: left;
+  }
+  .revenue-unit-container {
+    width: 15%;
+    float: left;
+  }
+
+  .item-circle {
+    width: 1em;
+    height: 1em;
+    > i {
+      padding-left: 0px;
+      font-size: 1em;
+    }
+  }
+}

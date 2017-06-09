@@ -5,21 +5,16 @@
         .module('app.pages.idealClient')
         .controller('DefineYourIdealClientController', DefineYourIdealClientController);
 
-    function DefineYourIdealClientController($scope, $state, pageService, stepService,activeStep) {
+    function DefineYourIdealClientController($scope, $state, pageService, stepService,activeStep, idealclientService) {
 
         angular.extend($scope, activeStep,{
             model: {
                 clients: []
             },
-            gender: ['Empty', 'Male', 'Female'],
-            maritalStatus: ['Empty', 'Single', 'Married', 'Divorced', 'Widowed'], //TODO: service select data
-            kids: ['Empty', 'None', 'Young', 'Teens',' Adults'],
-            employment: ['Empty', 'Doesn’t Work Established Entrepreneur', 'Small Entrepreneur', 'Senior Employed', 'Mid Level Employed', 'Junior Employed'],
-            location: ['Empty', 'City', 'Suburbs', 'Rural', 'Other'],
-            home: ['Empty', 'Condo', 'Apartment', 'House', 'Farm', 'Other'],
-            transit: ['Empty', 'Car', 'Bike', 'Train', 'Walking', 'Planes', 'Other'],
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            idealClientSelects: idealclientService.getClientSliders(),
+            client: {}
         });
 
         getData();
@@ -33,6 +28,8 @@
                     if (response && response.status === 200) {
                         $scope.model.clients = _.get(response, 'data.whoAreYouIdealClient', []);
                     }
+
+                    $scope.client = idealclientService.calcIdealClient($scope.model.clients);
                 });
         }
 
@@ -41,14 +38,19 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Ideal Client');
+        
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
 
-            $state.go(nextStep.sref);
+            if(direction == 'forward')
+                $state.go(nextprevStep.nextStep.sref);
+            else
+                $state.go(nextprevStep.prevStep.sref);
         }
+        
     }
 }());

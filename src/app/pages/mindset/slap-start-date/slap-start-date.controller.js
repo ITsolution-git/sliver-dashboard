@@ -11,7 +11,7 @@
         $scope.visible = true;
 
         var date = new Date();
-        var currentMonth = date.getMonth().toString();
+        var currentMonth = (date.getMonth()+1).toString();
         var currentYear = date.getFullYear();
 
         angular.extend($scope, activeStep.model, {
@@ -30,7 +30,7 @@
             $scope.$watch('data.month', function (value) {
                 if (value !== undefined) {
                     if (+value < +currentMonth) {
-                        $scope.data.year += 1;
+                        $scope.data.year = currentYear + 1;
                     } else {
                         $scope.data.year = currentYear;
                     }
@@ -43,16 +43,19 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Your SLAP Start Date');
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
             return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
-                    $state.go(nextStep.sref);
+                    if(direction == 'forward')  
+				$state.go(nextprevStep.nextStep.sref); 
+            else
+				$state.go(nextprevStep.prevStep.sref);
                 });
         }
     }

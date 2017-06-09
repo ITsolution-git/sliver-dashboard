@@ -13,12 +13,22 @@
 
             vm.next = function () {
                 if (vm.forward) {
-                    vm.send();  //TODO: forward true, validation absent sccroll top
+                    vm.send()('forward');  //TODO: forward true, validation absent sccroll top
+                } else {
+                    $('body').animate({
+                        scrollTop: $("slap-notifications").offset().top
+                    }, 400);
                 }
             };
 
             vm.prev = function () {
-                $state.go(vm.state.prevStep.sref);
+                if (vm.forward) {
+                    vm.send()('backward');
+                } else {
+                    $('body').animate({
+                        scrollTop: $("slap-notifications").offset().top
+                    }, 400);
+                }
                 // $timeout(scrollTop);
             };
 

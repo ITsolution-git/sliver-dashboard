@@ -9,8 +9,8 @@
         var _sliders = [
             {
                 name: 'I Know I Am In Charge Of My Bussiness Success',
-                left: 'i am a victim of circumstance',
-                right: 'i am SO IN CHARGE!!',
+                left: 'I am a victim of circumstance',
+                right: 'I am SO IN CHARGE!!',
                 value: 0,
                 options: {
                     floor: -5,

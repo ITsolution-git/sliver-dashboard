@@ -1,6 +1,9 @@
-<div class="slap-page container" scroll-top>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+
+
+<div class="slap-page revenue-page personal-expanses" scroll-top>
+
+    <div class="panel panel-default">
 
         <div class="panel-body">
 
@@ -12,7 +15,7 @@
 
     </div>
 
-    <div class="panel panel-default margin-t-40">
+    <div class="panel panel-default ">
 
         <div class="panel-body static-text-panel">
 
@@ -24,27 +27,117 @@
 
     </div>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <slap-notifications notifications="notifications" ></slap-notifications>
+    <div class="panel panel-default">
 
-        <div class="panel-body">
+        <div class="panel-body slap-work-panel">
 
             <button-switch visible="showContent"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
 
             <div class="sample-show-hide" ng-hide="showContent">
+                
+                <div class="revenue-row">
+                    <div class="revenue-name-container text-center">
+                        Revenue Streams
+                    </div>
+                    <div class="revenue-price-container text-center">
+                        Selling Price &amp; Variable Expenses
+                    </div>
+                    <div class="revenue-margin-container text-center">
+                        Profit Margin
+                    </div>
+                    <div class="revenue-breakdown-container text-center show-border">
+                        <div class="blue-circle"><span><i class="fa fa-arrow-down" aria-hidden="true"></i></span></div>
+                        Revenue Breakdown
+                    </div>
+                    <!--<div class="revenue-unit-container text-right">
+                        Unit of Sales
+                    </div>-->
+                </div>
+                <div class="revenue-row" ng-repeat="revenue in data.revenues">
+                    <div class="revenue-name-container">
+                        
+                        <div class="input-box">
+                            <input ng-model="revenue.name" type="text"
+                                   class="monthly-cost outline-0" disabled
+                                   ng-blur="checkRevenueCompleted(revenue, $event)"
+                                   ng-class="{'active': revenue.name}" required>
+                        </div>
+                    </div>
+                    <div class="revenue-price-container">
+                        <div class="">
+                            <div class="input-box">
+                                <span class="currency">$</span>
+                                <input ng-model="revenue.sellingPrice" type="text"
+                                        class="monthly-cost outline-0"
+                                        ng-blur="checkRevenueCompleted(revenue, $event)" disabled
+                                        ng-keydown="checkValidity(revenue.sellingPrice, $event)"
+                                        ng-class="{'active': revenue.sellingPrice}" required>
+                            </div>
+                        </div>
 
-                <div class=" form-group">
-                    <div class="col-md-3">
-                        <label for="first" class="label-text control-label">Lorem ipsum dolor sit armet</label>
+                        <div class="variable-row" ng-repeat="variableExpense in revenue.variableExpenses" ng-if="variableExpense.expense != '' && variableExpense.cost != '0.00'">
+                            <div class="variable-name ">
+                                <div class="input-box">
+                                    <input ng-model="variableExpense.expense" type="text"
+                                            class="monthly-cost outline-0" disabled
+                                            ng-blur="checkVariableExpenseCompleted(variableExpense, revenue, $event)"
+                                            ng-class="{'active': variableExpense.expense}" required>
+
+                                </div>
+                            </div>
+                            <div class="variable-price ">
+                                <div class="input-box">
+                                    <span class="currency">-$</span>
+                                    <input ng-model="variableExpense.cost" type="text"
+                                            class="monthly-cost outline-0" disabled
+                                            ng-blur="checkVariableExpenseCompleted(variableExpense, revenue, $event)"
+                                            ng-keydown="checkValidity(variableExpense.cost, $event)"
+                                            ng-class="{'active': variableExpense.cost}" required>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <select id="first" ng-model="model.first" class="dropdown-box outline-0">
-                            <option>Dropdown Label</option>
-                        </select>
+                    <div class="revenue-margin-container text-center">
+                        <span class="info-text">%{{revenue.margin}}</span>
                     </div>
+                    <div class="revenue-breakdown-container text-center show-border" ng-class=" 'row-' + calcHeight(revenue, $index) + 'th'">
+                        <div class="input-box">
+                            <span class="currency">%</span>
+                            <input ng-model="revenue.breakdown" type="text"
+                                    class="incidentals outline-0"
+                                    ng-blur="doCalculation()"
+                                    ng-keydown="checkValidity(revenue.breakdown, $event)"
+                                    ng-class="{'active': revenue.breakdown}" required>
+                        </div>
+                    </div>
+
+                    <!--<div class="revenue-unit-container text-center">
+                        <span class="info-text">{{revenue.unit}} Units</span>
+
+                    </div>-->
                 </div>
 
+                <div class="revenue-row">
+                    <div class="revenue-name-container">
+                    </div>
+                    <div class="revenue-price-container">
+                    </div>
+                    <div class="revenue-margin-container ">
+                    </div>
+                    <div class="revenue-breakdown-container text-center show-border">
+                        <span style="font-size: 14px" class="pull-left">Total</span>
+                        
+                        <div class="item-circle item-circle-check pull-right" ng-if="data.totalBreakdown == 100">
+                            <i class="fa fa-check fa-lg text-white" aria-hidden="true"></i>
+                        </div><br/>
+                        <span>%{{ data.totalBreakdown }}</span>
+                    </div>  
+                    <!--<div class="revenue-unit-container">
+                    </div>-->
+                </div>
             </div>
 
         </div>
@@ -52,4 +145,4 @@
 
 </div>
 
-<slap-footer send="sendData()" forward="forward"></slap-footer>
+<slap-footer send="sendData"" forward="forward"></slap-footer>

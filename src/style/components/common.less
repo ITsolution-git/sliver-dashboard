@@ -1,0 +1,52 @@
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 72px;
+  height: 24px;
+  z-index: 6;
+  input {
+    display: none;
+  }
+  margin-top: 30px;
+  margin-right: 40px;
+  @media  (min-width: 410px) and (max-width: 768px) {
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+  @media (max-width: 410px) {
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+}
+
+.vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+  background-image: -webkit-linear-gradient(bottom, @start-color @start-percent, @end-color @end-percent); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(bottom, @start-color @start-percent, @end-color @end-percent); // Opera 12
+  background-image: linear-gradient(to top, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)", argb(@start-color), argb(@end-color))); // IE9 and down
+}
+
+h3.logo {
+  font-size: 32px;
+  color: #373c37;
+}
+
+
+.aqua-green {
+  color: #50cfe3;
+}
+
+.position-left {
+  left: 0;
+}
+
+.position-right {
+  right: 0;
+}
+
+.content-margin {
+  margin: 48px 0;
+}

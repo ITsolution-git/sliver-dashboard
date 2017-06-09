@@ -100,6 +100,26 @@
                 controller: 'TotalFixedExpensesRevenueController',
                 templateUrl: 'pages/yearGoal/total-fixed-expenses-revenue/total-fixed-expenses-revenue.html'
             })
+            .state('yearGoal.revenueStreams', {
+                url: '/revenueStreams',
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+
+                                return stepService.getLastFinished()
+                                    .then(function (finishedStep) {
+                                        $state.go(finishedStep.sref);
+                                    });
+                            })
+                    }
+                },
+                controller: 'RevenueStreamsController',
+                templateUrl: 'pages/yearGoal/revenue-streams/revenue-streams.html'
+            })
             .state('yearGoal.sellingPrice', {
                 url: '/sellingPrice',
                 resolve: {
@@ -117,7 +137,7 @@
                             })
                     }
                 },
-                controller: 'SellingPriceController',
+                controller: 'RevenueStreamsController',
                 templateUrl: 'pages/yearGoal/selling-price/selling-price.html'
             })
             .state('yearGoal.variableBusinessExpenses', {
@@ -137,7 +157,7 @@
                             })
                     }
                 },
-                controller: 'VariableBusinessExpensesController',
+                controller: 'RevenueStreamsController',
                 templateUrl: 'pages/yearGoal/variable-business-expenses/variable-business-expenses.html'
             })
             .state('yearGoal.profitMargin', {
@@ -157,7 +177,7 @@
                             })
                     }
                 },
-                controller: 'ProfitMarginController',
+                controller: 'RevenueStreamsController',
                 templateUrl: 'pages/yearGoal/profit-margin/profit-margin.html'
             })
             .state('yearGoal.revenueBreakdown', {
@@ -177,7 +197,7 @@
                             })
                     }
                 },
-                controller: 'RevenueBreakdownController',
+                controller: 'RevenueStreamsController',
                 templateUrl: 'pages/yearGoal/revenue-breakdown/revenue-breakdown.html'
             })
             .state('yearGoal.yourYearGoal', {
@@ -217,7 +237,7 @@
                             })
                     }
                 },
-                controller: 'AdjustYourYearGoalController',
+                controller: 'RevenueStreamsController',
                 templateUrl: 'pages/yearGoal/adjust-your-year-goal/adjust-your-year-goal.html'
             })
             .state('yearGoal.qa', {
@@ -257,7 +277,7 @@
                             })
                     }
                 },
-                controller: 'CommitYourYearGoalController',
+                controller: 'RevenueStreamsController',
                 templateUrl: 'pages/yearGoal/commit-your-year-goal/commit-your-year-goal.html'
             })
             .state('yearGoal.step3Summary', {

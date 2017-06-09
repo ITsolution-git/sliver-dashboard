@@ -11,12 +11,25 @@
             forward: true,
             sendData: sendData,
             model: {
-                firstName: ''
+                fourth: null
             },
             showVideoBlock: false,
             showStaticTextBlock: false,
             showIdealClientNameBlock: false
         });
+
+        getData();  // TODO: request api? data service no reload
+
+        function getData() {
+
+            stepService.getApiData('nameYourIdealClient') //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+                        $scope.model.fourth = response.data;
+                    }
+                });
+
+        }
 
         pageService
             .reset()
@@ -24,16 +37,20 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Name Your Ideal Client');
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            stepService.setRequestApiFlag();
+            
+            var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+            return stepService.sendApiData(urls[urls.length - 1], $scope.model)
                 .then(function () {
-                    $state.go(nextStep.sref);
+                    if(direction == 'forward')  
+				$state.go(nextprevStep.nextStep.sref); 
+            else
+				$state.go(nextprevStep.prevStep.sref);
                 });
         }
 

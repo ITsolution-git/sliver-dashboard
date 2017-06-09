@@ -1,6 +1,6 @@
-<div class="slap-page personal-expanses container" scroll-top>
+<div class="slap-page personal-expanses" scroll-top>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
         <div class="panel-body">
 
@@ -12,7 +12,7 @@
 
     </div>
 
-    <div class="panel panel-default margin-t-40">
+    <div class="panel panel-default">
 
         <div class="panel-body static-text-panel">
 
@@ -23,21 +23,21 @@
         </div>
 
     </div>
-
+    <slap-notifications notifications="notifications" ></slap-notifications>
     <div class="panel panel-default margin-t-40 margin-b-140">
 
-        <div class="panel-body">
+        <div class="panel-body slap-work-panel">
 
             <button-switch visible="showContent"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
 
             <div class="col-md-9">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a dapibus ex. In
                     venenatis tempor odio, non ultrices lectus</p>
             </div>
 
-            <div class="form-box sample-show-hide col-md-12" ng-hide="showContent">
+            <div class="form-box sample-show-hide col-xs-12" ng-hide="showContent">
 
                 <div class="row">
                     <div class="col-md-5"><h4>What is the name of the expense?</h4></div>
@@ -45,13 +45,36 @@
                     <div class="col-md-4"><h4>Yearly Expense</h4></div>
                 </div>
 
-                <div class="row margin-b-50 item" ng-repeat="item in model.expenses">
+                <div class="row  item">
+                    <div class="col-md-5">
+                        <div class="input-box">
+                            <input ng-model="data.expenses[0].expense" type="text" id="expense-0"
+                                class="expense outline-0"
+                                disabled
+                                ng-class="{'active': data.expenses[0].expense}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-box">
+                            <span class="currency">$</span>
+
+                            <input value="{{data.expenses[0].monthlyCost | number:2}}" type="text"
+                                   class="monthly-cost outline-0"
+                                   disabled
+                                   ng-class="{'active': data.expenses[0].monthlyCost}" required>
+                        </div>
+                    </div>
+                    <div class="result col-md-4">
+                        <div ng-show="data.expenses[0].monthlyCost">&#215;12 = ${{data.expenses[0].monthlyCost ? (data.expenses[0].monthlyCost * 12) : '' | number:2}}</div>
+                    </div>
+                </div>
+
+                <div class="row item" ng-repeat="item in data.expenses.slice(1)">
                     <div class="col-md-5">
                         <div class="input-box">
                             <input ng-model="item.expense" type="text" id="expense-{{$index}}"
                                    class="expense outline-0"
-                                   ng-blur="checkFormElements(item)"
-                                   ng-keydown="$event.keyCode === 13 && checkFormElements(item)"
+                                   ng-keydown="$event.keyCode === 13"
                                    ng-class="{'active': item.expense}" required>
                             <label class="label expense-label" for="expense-{{$index}}">Add Another Expense</label>
                         </div>
@@ -61,8 +84,8 @@
                             <span class="currency">$</span>
                             <input ng-model="item.monthlyCost" type="text"
                                    class="monthly-cost outline-0"
-                                   ng-blur="checkFormElements(item)"
-                                   ng-keydown="$event.keyCode === 13 && checkFormElements(item)"
+                                   ng-blur="checkFormElements(item, $event)"
+                                   ng-keydown="$event.keyCode === 13 && checkFormElements(item, $event)"
                                    ng-class="{'active': item.monthlyCost}" required>
                         </div>
                     </div>
@@ -75,24 +98,49 @@
                     </div>
                 </div>
 
-                <div class="row row-flex incidentals-wrap margin-b-50">
+                <div class="row row-flex incidentals-wrap m-t-es-30">
                     <div class="col-md-5">
                         <div class="input-box">
                             <span>Incidentals for</span>
                             <span class="currency">%</span>
-                            <input ng-model="model.incidentals" type="text" id="incidentals"
-                                   class="incidentals outline-0" required>
+                            <input ng-model="data.incidentals" type="text" id="incidentals"
+                                   class="incidentals outline-0" ng-blur="checkNumberValid(data.incidentals, $event)" required>
                         </div>
                     </div>
                     <div class="result col-md-3">
-                        <span>${{model.incidentals * 0.01 * model.expensesSum | number:2}}</span>
+                        <span>${{data.incidentals * 0.01 * data.expensesSum | number:2}}</span>
                     </div>
                     <div class="result col-md-4">
-                        &#215;12 = ${{(model.incidentals * 0.01) * model.expensesSum * 12 | number:2}}
+                        &#215;12 = ${{(data.incidentals * 0.01) * data.expensesSum * 12 | number:2}}
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row row-flex incidentals-wrap  m-t-es-30">
+                    <div class="col-md-5">
+                        <div class="input-box">
+                            <input  type="text" 
+                                class="expense outline-0"
+                                disabled value="Expected Profit"
+                                ng-class="{'active': data.expenses[0].expense}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-box">
+                            <span class="currency">$</span>
+
+                            <input ng-model="data.profit" type="text"
+                                   class="monthly-cost outline-0"
+                                   ng-blur="checkNumberValid(data.profit, $event)"
+                                   ng-keydown="$event.keyCode === 13 && checkNumberValid(data.profit, $event)"
+                                   ng-class="{'active': data.profit}" required>
+                        </div>
+                    </div>
+                    <div class="result col-md-4">
+                        &#215;12 = ${{data.profit * 12 | number:2}}
+                    </div>
+                </div>
+
+                <div class="row m-t-es-50">
                     <div class="col-md-12 margin-b-50">
                         <div class="col-md-12 row-flex total-expense-wrap">
                             <div class="col-md-5 padding-l-30">
@@ -100,11 +148,11 @@
                             </div>
                             <div class="result col-md-3">
                                 <span>Total Monthly</span>
-                                <span>${{model.expensesSum + model.incidentals * 0.01 * model.expensesSum | number:2}}</span>
+                                <span>${{data.expensesSum + data.incidentals * 0.01 * data.expensesSum + (+data.profit) | number:2}}</span>
                             </div>
                             <div class="result col-md-4 padding-l-20">
                                 <span>Total Yearly</span>
-                                <span>&#215;12 = ${{(model.expensesSum + model.incidentals * 0.01 * model.expensesSum) * 12 | number:2}}</span>
+                                <span>&#215;12 = ${{(data.expensesSum + data.incidentals * 0.01 * data.expensesSum + (+data.profit)) * 12 | number:2}}</span>
                             </div>
                         </div>
                     </div>
@@ -117,4 +165,4 @@
 
 </div>
 
-<slap-footer send="sendData()" forward="forward"></slap-footer>
+<slap-footer send="sendData"" forward="forward"></slap-footer>

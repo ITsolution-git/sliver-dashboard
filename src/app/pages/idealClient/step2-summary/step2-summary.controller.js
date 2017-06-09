@@ -5,7 +5,7 @@
         .module('app.pages.idealClient')
         .controller('Step2SummaryController', Step2SummaryController);
     
-    function Step2SummaryController($scope, activeStep, pageService,stepService, $state) {
+    function Step2SummaryController($scope, activeStep, pageService,stepService, $state, userService, idealclientService) {
 
         angular.extend($scope, activeStep.model,{
             model: {
@@ -35,13 +35,16 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Ideal Client');
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
 
-            $state.go(nextStep.sref);
+            if(direction == 'forward')  
+				$state.go(nextprevStep.nextStep.sref); 
+            else
+				$state.go(nextprevStep.prevStep.sref);
         }
 
 
@@ -53,6 +56,9 @@
 
                         angular.extend($scope.model, {
                             stepOneSummary: _.get(response, 'data.yourStatement', {})
+                        });
+                        userService.getUser().then(function (user) {
+                            $scope.data.businessName = user.businessName;
                         });
                     }
                 });
@@ -70,6 +76,7 @@
                 .then(function (response) {
                     if (response && response.status === 200) {
                         $scope.model.clients = _.get(response, 'data.whoAreYouIdealClient', []);
+                        $scope.client = idealclientService.calcIdealClient($scope.model.clients);
                     }
                 });
         }

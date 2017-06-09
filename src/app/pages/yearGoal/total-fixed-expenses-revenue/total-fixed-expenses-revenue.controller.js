@@ -10,24 +10,43 @@
         angular.extend($scope, activeStep.model,{
             forward: true,
             sendData: sendData,
+            total: 0,
             model: {
                 first: 'Dropdown Label'
             }
         });
 
+        getData();
         pageService
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Year Goal');
 
-        function sendData() {
+        function getData() {
+            // var urls = _.get($state.current, 'params.prev.sref').split('.');
+            var url = 'fixedBusinessExpenses';
+
+            // return stepService.getApiData(urls[urls.length - 1])
+            return stepService.getApiData(url) //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+                        // data.personalExpenses.sum hold totla president salary
+                        $scope.total = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum) * 12;
+                    }
+                });
+        }
+
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
 
-            $state.go(nextStep.sref);
+            if(direction == 'forward')  
+				$state.go(nextprevStep.nextStep.sref); 
+            else
+				$state.go(nextprevStep.prevStep.sref);
         }
     }
 }());

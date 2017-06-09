@@ -24,16 +24,19 @@
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('SLAP | Your SLAPstatement');
 
-        function sendData() {
+        function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextStep = stepService.getNextAndPrevStep().nextStep;
+            var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
             return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
-                    $state.go(nextStep.sref);
+                    if(direction == 'forward')  
+				$state.go(nextprevStep.nextStep.sref); 
+            else
+				$state.go(nextprevStep.prevStep.sref);
                 });
         }
 
@@ -41,7 +44,7 @@
             // var urls = _.get($state.current, 'params.prev.sref').split('.');
             var url = 'allMindsetUser';
 
-            userService.getUser().then(function (user) {
+            userService.loadUser().then(function (user) {
                 $scope.data.businessName = user.businessName;
             });
 

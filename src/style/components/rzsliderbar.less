@@ -1,0 +1,159 @@
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  .vertical(#919191, #eaeaea);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+  .vertical(#2196F3, #eaeaea);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(48px);
+  -ms-transform: translateX(48px);
+  transform: translateX(48px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 100px;
+
+  span {
+    margin-right: 11px;
+    margin-top: 7px;
+    margin-left: 7px;
+    width: 30px;
+    height: 9px;
+    //font-family: .HelveticaNeueDeskInterface;
+    font-size: 12px;
+    line-height: 0.75;
+    color: #ffffff;
+  }
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.sample-show-hide {
+  transition: all linear 0.9s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity: 0;
+}
+
+//slider
+.rzslider {
+
+  .rz-pointer {
+    background-color: #0e7cb5;
+    top: -8px;
+    z-index: 3;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border-radius: 16px;
+    //left: 514px !important;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      background: #0e7cb5;
+      border-radius: 0;
+      content: '';
+    }
+
+    &:active {
+      top: -14px;
+      z-index: 3;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      background-color: #0e7cb5;
+      border-radius: 16px;
+    }
+  }
+
+  .rz-tick {
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #0e7cb5;
+  }
+
+  .rz-bar {
+    height: 2px;
+    width: 98%;
+  }
+
+  .rz-bar-wrapper {
+    left: 12px;
+    z-index: 1;
+    width: 99%;
+    height: 32px;
+    padding-top: 14px;
+    margin-top: -16px;
+    box-sizing: border-box;
+  }
+
+  .rz-tick.rz-selected {
+    background: #0e7cb5;
+  }
+}
+
+.rz-pointer:hover:after {
+  background-color: #fff;
+}
+
+.custom-rzslider {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  > p {
+    //font-family: .HelveticaNeueDeskInterface;
+    font-size: 20px;
+    line-height: 0.8;
+    color: #373c37;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+
+  span {
+    position: absolute;
+    font-family: .HelveticaNeueDeskInterface;
+    font-size: 16px;
+    line-height: 1;
+    color: #33444d;
+  }
+}
