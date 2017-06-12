@@ -310,12 +310,15 @@
                 return notification.name == name;
             });
         }
+        
         function sendData(direction) {
-            if (!isExpensesValid()){
-                $('body').animate({
-                    scrollTop: $("slap-notifications").offset().top
-                }, 400);
-                return false;
+            if (!($scope.pageName == 'profitMargin')) {
+                if (!isExpensesValid()){
+                    $('body').animate({
+                        scrollTop: $("slap-notifications").offset().top
+                    }, 400);
+                    return false;
+                }
             }
             
             stepService.updateActiveModel($scope);
@@ -343,7 +346,7 @@
                 .then(function () {
                     if(direction == 'forward')  
                         $state.go(nextprevStep.nextStep.sref); 
-                    else
+                    else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
                 });
         }
@@ -356,5 +359,8 @@
             }
             
         }
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());

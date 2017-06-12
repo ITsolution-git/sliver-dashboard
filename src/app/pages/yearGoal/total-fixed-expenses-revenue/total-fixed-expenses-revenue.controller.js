@@ -32,7 +32,7 @@
                 .then(function (response) {
                     if (response && response.status === 200) {
                         // data.personalExpenses.sum hold totla president salary
-                        $scope.total = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum) * 12;
+                        $scope.total = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum) * 12  + (+response.data.fixedBusinessExpenses.profit);
                     }
                 });
         }
@@ -45,8 +45,11 @@
 
             if(direction == 'forward')  
 				$state.go(nextprevStep.nextStep.sref); 
-            else
+            else if(direction == 'backward')
 				$state.go(nextprevStep.prevStep.sref);
         }
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());

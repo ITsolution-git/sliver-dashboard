@@ -66,13 +66,13 @@
             if (angular.equals($scope.data, originalData) && angular.equals($scope.privilegeInfo, originalPrivilagesData)) {
                 if(direction == 'forward')
                     $state.go(nextprevStep.nextStep.sref);
-                else
+                else if(direction == 'backward')
                     $state.go(nextprevStep.prevStep.sref);
             } else {
                 updateData().then(function () {
                     if(direction == 'forward')
                         $state.go(nextprevStep.nextStep.sref);
-                    else
+                    else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
                 });
             }
@@ -158,5 +158,8 @@
 
             return res;
         }
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());

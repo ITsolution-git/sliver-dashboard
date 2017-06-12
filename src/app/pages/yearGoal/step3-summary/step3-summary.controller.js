@@ -25,6 +25,11 @@
             transit: ['Empty', 'Car', 'Bike', 'Train', 'Walking', 'Planes', 'Other'],
             forward: true,
             sendData: sendData,
+
+            age: ['Age','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90'],
+            hobbies: ['Hobbies', 'Volunteering',  'Working Out', 'Shopping',  'Traveling',   'Sports',  'Reading',  'Arts & Culture'],
+            reads: ['Reads', 'Business Book', 'Self Help Book', 'Magazine', 'Novel', 'Blog Posts',  'Newspaper'],
+            
             months: ['','January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
             totalFixedExpenses: '0.00',
@@ -47,7 +52,7 @@
 
             if(direction == 'forward')  
 				$state.go(nextprevStep.nextStep.sref); 
-            else
+            else if(direction == 'backward')
 				$state.go(nextprevStep.prevStep.sref);
         }
 
@@ -117,10 +122,14 @@
             stepService.getApiData('fixedBusinessExpenses')  //TODO: request api? data service
                 .then(function (response) {
                     if (response && response.status === 200) {
-                        // $scope.totalFixedExpenses = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum + (+response.data.fixedBusinessExpenses.profit)) * 12
+                        $scope.totalFixedExpenses = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum) * 12  + (+response.data.fixedBusinessExpenses.profit);
+
                         $scope.profit = response.data.fixedBusinessExpenses.profit;
                     }
                 });
         }
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());

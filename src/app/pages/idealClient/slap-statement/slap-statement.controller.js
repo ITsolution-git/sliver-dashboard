@@ -21,5 +21,10 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('SLAPstatement');
+
+
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());

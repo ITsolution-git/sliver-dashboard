@@ -51,7 +51,7 @@
 
             <div class="input-group-wrap sample-show-hide" ng-hide="showIdealClientTextBlock">
 
-                <div class="input-group-item row m-w-es-10 m-w-md-30" ng-repeat="item in data">
+                <div class="input-group-item row m-w-es-10 m-w-md-30" ng-repeat="item in data.clients">
 
                     <div class="col-md-12 row-flex p-b-es-10">
 
@@ -127,9 +127,79 @@
                             <option value="{{$index}}" ng-repeat="reads in idealClientSelects.reads">{{reads}}</option>
                         </select>
                     </div>
-
+                    
                 </div>
 
+                <div class="input-group-item row m-w-es-10 m-w-md-30 sample-show-hide" ng-hide="showIdealClientTextBlock" id="idealclient-box"  ng-if="shouldSelctIdeal">
+                    <span>My Ideal Client is </span> a 
+                    <span>
+
+                        <select ng-model="data.idealClient.age" 
+                                ng-class="{'active': data.idealClient.age !== '0'}"
+                                class="age dropdown-box outline-0">
+                            <option value="{{age}}" ng-repeat="age in client.age">{{idealClientSelects.age[+age]}}</option>
+                        </select>
+                    </span> years old 
+                    <span>
+                        <select ng-model="data.idealClient.gender" 
+                                ng-class="{'active': data.idealClient.gender !== '0'}"
+                                class="gender dropdown-box outline-0">
+                            <option value="{{gender}}" ng-repeat="gender in client.gender">{{idealClientSelects.gender[+gender]}}</option>
+                        </select>
+                    </span>,
+                    <span>
+                        <select ng-model="data.idealClient.maritalStatus" 
+                                ng-class="{'active': data.idealClient.maritalStatus !== '0'}"
+                                class="marital-status dropdown-box outline-0">
+                            <option value="{{maritalStatus}}" ng-repeat="maritalStatus in client.maritalStatus">{{idealClientSelects.maritalStatus[+maritalStatus]}}</option>
+                        </select>
+                    </span>, father of 
+                    <span>
+                        <select ng-model="data.idealClient.kids" 
+                                ng-class="{'active': data.idealClient.kids !== '0'}"
+                                class="kids dropdown-box outline-0">
+                            <option value="{{kids}}" ng-repeat="kids in client.kids">{{idealClientSelects.kids[+kids]}}</option>
+                        </select>
+                    </span>,
+                    work as an 
+                    <span>
+                        <select ng-model="data.idealClient.employment" 
+                                ng-class="{'active': data.idealClient.employment !== '0'}"
+                                class="employment dropdown-box outline-0">
+                            <option value="{{employment}}" ng-repeat="employment in client.employment">{{idealClientSelects.employment[+employment]}}</option>
+                        </select>
+                    </span>, lives in
+                    <span>
+                        <select ng-model="data.idealClient.location" 
+                                ng-class="{'active': item.location !== '0'}"
+                                class="location dropdown-box outline-0">
+                            <option value="{{location}}" ng-repeat="location in client.location">{{idealClientSelects.location[+location]}}</option>
+                        </select>
+                    </span>,
+                    generally on transit by 
+                    <span>
+                        <select ng-model="data.idealClient.transit" 
+                                ng-class="{'active': data.idealClient.transit !== '0'}"
+                                class="transit dropdown-box outline-0">
+                            <option value="{{transit}}" ng-repeat="transit in client.transit">{{idealClientSelects.transit[+transit]}}</option>
+                        </select>
+                    </span>, likes to 
+                    <span>
+                        <select ng-model="data.idealClient.hobbies" 
+                                ng-class="{'active': data.idealClient.hobbies !== '0'}"
+                                class="hobbies dropdown-box outline-0">
+                            <option value="{{hobbies}}" ng-repeat="hobbies in client.hobbies">{{idealClientSelects.hobbies[+hobbies]}}</option>
+                        </select>
+                    </span>
+                    and read 
+                    <span>
+                        <select ng-model="data.idealClient.reads" 
+                                ng-class="{'active': data.idealClient.reads !== '0'}"
+                                class="reads dropdown-box outline-0">
+                            <option value="{{reads}}" ng-repeat="reads in client.reads">{{idealClientSelects.reads[+reads]}}</option>
+                        </select>
+                    </span>.
+                </div>
             </div>
         </div>
     </div>

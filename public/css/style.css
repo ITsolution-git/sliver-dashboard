@@ -17690,6 +17690,9 @@ body li {
 .who-ideal-client .home {
   width: 112px;
 }
+.who-ideal-client #idealclient-box {
+  line-height: 3em;
+}
 .your-statement .input-box .label {
   font-size: 18px;
 }
@@ -17781,6 +17784,7 @@ body li {
   height: 60px;
   font-size: 24px;
   color: #33444d;
+  background-color: #fff;
 }
 .personal-expanses .form-box .input-box input + .label {
   top: 13px;

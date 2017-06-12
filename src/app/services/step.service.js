@@ -193,7 +193,24 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        clients: [],
+                        idealClient: {
+                            name: '',
+                            gender: '0',
+                            age: '0',
+                            maritalStatus: '0',
+                            kids: '0',
+                            employment: '0',
+                            location: '0',
+                            home: '0',
+                            transit: '0',
+                            hobbies: '0',
+                            reads: '0',
+                            number: 0
+                        }
+                    }
                 }
             }, {
                 name: 'Name Your Ideal Client',

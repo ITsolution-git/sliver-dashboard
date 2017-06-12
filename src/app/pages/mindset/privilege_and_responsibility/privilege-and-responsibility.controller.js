@@ -47,14 +47,13 @@
                 label: 'Not important to me'
         }];
         $scope.notifications = [];
-        checkShowBlockStatus();
         if ($scope.businessName === null) {
             $scope.businessName = _.get(userService, 'user.businessName');
         }
 
         $scope.checkDropdownModels = checkDropdownModels;
 
-        $timeout(checkFormModels);
+        $timeout(checkShowBlockStatus);
 
         // --- vars ---
 
@@ -71,7 +70,13 @@
         });
 
         function checkShowBlockStatus(){
-            
+            if (!_.isEmpty($scope.data.first) && !_.isEmpty($scope.data.second) && !_.isEmpty($scope.data.third) && !_.isEmpty($scope.data.fourth)) 
+            {
+                $scope.showInfoBlock = true;
+                $scope.notifications = [];
+                findPrimaryLabel();
+                $scope.forward = true;
+            }
             if(($scope.data.first == 'My primary driver')
                 || ($scope.data.second == 'My primary driver')
                 || ($scope.data.third == 'My primary driver')
@@ -113,43 +118,14 @@
                 .then(function () {
                     if(direction == 'forward')  
                         $state.go(nextprevStep.nextStep.sref); 
-                    else
+                    else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
                 });
         }
 
 
         function checkDropdownModels(model, result, changedItem) {
-            if (model === 'My primary driver') {
-                $scope.showInfoBlock = true;
-                findPrimaryLabel();
-            } else {
-                checkShowBlockStatus();
-            }
-
-            // if (_.indexOf(answersList, model) === -1) {
-            //     answersList.push(model);
-            //     $scope.showNotice = false;
-            //     $scope.notifications = [];
-            // } else {
-                // $scope.notifications = [{name: 'Missing Primary Driver', type: 'error', message: 'Please select at least one Primary Driver', show: true}];
-                // $scope.showInfoBlock = false;
-            // }
-
-            checkFormModels();
-        }
-
-        function checkFormModels() {
-
-            if (!_.isEmpty($scope.data.first) && !_.isEmpty($scope.data.second) && !_.isEmpty($scope.data.third) && !_.isEmpty($scope.data.fourth)) {
-
-                if (findDuplicate()) {
-                    $scope.showInfoBlock = true;
-                    $scope.notifications = [];
-                    findPrimaryLabel();
-                    $scope.forward = true;
-                }
-            }
+            checkShowBlockStatus();
         }
 
         function findPrimaryLabel() {
@@ -185,15 +161,9 @@
         }
 
 
-        // If user selected two or more identical values, return false
-        function findDuplicate() {
-
-            var modelsArray = [$scope.data.first, $scope.data.second, $scope.data.third, $scope.data.fourth];
-            var filteringModelsArray = _.uniq(modelsArray);
-
-            return filteringModelsArray.length === modelsArray.length;
-        }
-
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 
 

@@ -23,6 +23,9 @@
             location: ['Empty', 'City', 'Suburbs', 'Rural', 'Other'],
             home: ['Empty', 'Condo', 'Apartment', 'House', 'Farm', 'Other'],
             transit: ['Empty', 'Car', 'Bike', 'Train', 'Walking', 'Planes', 'Other'],
+            age: ['Age','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90'],
+            hobbies: ['Hobbies', 'Volunteering',  'Working Out', 'Shopping',  'Traveling',   'Sports',  'Reading',  'Arts & Culture'],
+            reads: ['Reads', 'Business Book', 'Self Help Book', 'Magazine', 'Novel', 'Blog Posts',  'Newspaper'],
             forward: true,
             sendData: sendData
         });
@@ -43,7 +46,7 @@
 
             if(direction == 'forward')  
 				$state.go(nextprevStep.nextStep.sref); 
-            else
+            else if(direction == 'backward')
 				$state.go(nextprevStep.prevStep.sref);
         }
 
@@ -79,6 +82,11 @@
                         $scope.client = idealclientService.calcIdealClient($scope.model.clients);
                     }
                 });
+                
         }
+        
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());

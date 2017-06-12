@@ -125,8 +125,10 @@
                         </div>
                     </div>
                     <div class="col-md-3">
+                    </div>
+                    <div class="result col-md-4">
                         <div class="input-box">
-                            <span class="currency">$</span>
+                            <span class="currency" style="line-height: 36px;">$</span>
 
                             <input ng-model="data.profit" type="text"
                                    class="monthly-cost outline-0"
@@ -134,9 +136,6 @@
                                    ng-keydown="$event.keyCode === 13 && checkNumberValid(data.profit, $event)"
                                    ng-class="{'active': data.profit}" required>
                         </div>
-                    </div>
-                    <div class="result col-md-4">
-                        &#215;12 = ${{data.profit * 12 | number:2}}
                     </div>
                 </div>
 
@@ -148,11 +147,11 @@
                             </div>
                             <div class="result col-md-3">
                                 <span>Total Monthly</span>
-                                <span>${{data.expensesSum + data.incidentals * 0.01 * data.expensesSum + (+data.profit) | number:2}}</span>
+                                <span>${{data.expensesSum + data.incidentals * 0.01 * data.expensesSum  | number:2}}</span>
                             </div>
                             <div class="result col-md-4 padding-l-20">
                                 <span>Total Yearly</span>
-                                <span>&#215;12 = ${{(data.expensesSum + data.incidentals * 0.01 * data.expensesSum + (+data.profit)) * 12 | number:2}}</span>
+                                <span>&#215;12 = ${{(data.expensesSum + data.incidentals * 0.01 * data.expensesSum ) * 12 + (+data.profit) | number:2}}</span>
                             </div>
                         </div>
                     </div>

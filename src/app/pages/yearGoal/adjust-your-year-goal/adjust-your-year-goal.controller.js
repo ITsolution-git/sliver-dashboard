@@ -300,5 +300,8 @@
         function calcHeight(revenue, $index) {
             return $scope.data.revenues[$index].variableExpenses.length;
         }
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());

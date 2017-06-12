@@ -139,10 +139,13 @@
             return stepService.sendApiData(urls[urls.length - 1], data)
                 .then(function () {
                     if(direction == 'forward')  
-				$state.go(nextprevStep.nextStep.sref); 
-            else
-				$state.go(nextprevStep.prevStep.sref);
+                        $state.go(nextprevStep.nextStep.sref); 
+                    else if(direction == 'backward')
+                        $state.go(nextprevStep.prevStep.sref);
                 });
         }
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            sendData();
+        });
     }
 }());
