@@ -2,5 +2,5 @@
 !/images/
 !/fonts/museo
 !.gitignore
-js/
+
 !index.html
