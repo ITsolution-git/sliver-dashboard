@@ -10,7 +10,8 @@
 
         angular.extend($scope, activeStep.model, {
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         pageService

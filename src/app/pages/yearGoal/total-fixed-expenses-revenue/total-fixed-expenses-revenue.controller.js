@@ -48,8 +48,5 @@
             else if(direction == 'backward')
 				$state.go(nextprevStep.prevStep.sref);
         }
-        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
-        });
     }
 }());

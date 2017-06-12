@@ -17,7 +17,8 @@
             },
             showWhatInput: false,
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         var originalData, originalPrivilagesData;

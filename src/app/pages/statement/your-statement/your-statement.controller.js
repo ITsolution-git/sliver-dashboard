@@ -13,7 +13,8 @@
                 second: ['providing', 'creating', 'giving', 'helping']
             },
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         getData();
@@ -37,6 +38,7 @@
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
+                    $state.saved = true;
                 });
         }
 
@@ -59,7 +61,9 @@
                 });
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

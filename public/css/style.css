@@ -17317,9 +17317,10 @@ body li {
   line-height: 0.59;
   letter-spacing: -0.6px;
   color: #373c37;
-  text-transform: capitalize;
+  text-transform: uppercase;
   margin-left: 38px;
   margin-top: 20px;
+  font-weight: 600;
 }
 @media (min-width: 768px) {
   .slap-page .panel .panel-title {
@@ -17503,12 +17504,6 @@ body li {
 .slap-page .input-box input:focus + .label,
 .slap-page .input-box input:valid + .label {
   display: none;
-}
-.slap-page .input-box input:valid {
-  opacity: 1;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  filter: alpha(opacity=100);
-  border-bottom: 2px solid #0e7cb5;
 }
 .slap-page .blue-circle {
   position: absolute;

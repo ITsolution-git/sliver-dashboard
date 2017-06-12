@@ -15,7 +15,8 @@
             },
             showVideoBlock: false,
             showStaticTextBlock: false,
-            showIdealClientNameBlock: false
+            showIdealClientNameBlock: false,
+            saved: false
         });
 
         getData();  // TODO: request api? data service no reload

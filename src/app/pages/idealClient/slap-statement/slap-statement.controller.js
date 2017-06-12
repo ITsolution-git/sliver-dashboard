@@ -13,7 +13,8 @@
             },
             showContent: false,
             showVideoBlock: false,
-            showStaticTextBlock: false
+            showStaticTextBlock: false,
+            saved: false
         });
 
         pageService

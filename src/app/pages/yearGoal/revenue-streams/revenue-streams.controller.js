@@ -33,7 +33,8 @@
             deleteRevenue: deleteRevenue,
             deleteVariableExpense: deleteVariableExpense,
             calcHeight: calcHeight,
-            doCalculation: doCalculation
+            doCalculation: doCalculation,
+            saved: false
         });
         
         getData();
@@ -163,7 +164,16 @@
         }
 
         function isExpensesValid() {
-            
+            if ($scope.pageName == 'revenueStreams') {
+                if ($scope.data.revenues.length == 1) {
+
+                    addNotification($scope.notifications, {name: 'Revenue Length Invalid', type: 'error', message:'Please Fill at least 1 Revenue.', show: true});
+                    return false;
+                } else {
+                    removeNotificaton($scope.notifications, 'Revenue Length Invalid');
+                    return true;
+                }
+            }
             if (($scope.pageName == 'revenueStreams') || ($scope.pageName == 'sellingPrice') ) {
                 return true;
             } else if ($scope.pageName == 'variableBusinessExpenses') {
@@ -323,27 +333,27 @@
             
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-            stepService.setRequestApiFlag();
+
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
             var data = {};
 
-            if ($scope.data.revenues.length > 1) {
-                var revenues = [];
-                _.forEach($scope.data.revenues, function (value) {
+            var revenues = [];
+            _.forEach($scope.data.revenues, function (value) {
 
-                    if (!angular.equals(value, $scope.emptyRevenue)) {
-                        revenues.push(value);
-                    }
+                if (!angular.equals(value, $scope.emptyRevenue)) {
+                    revenues.push(value);
+                }
 
-                });
-                data.revenues = revenues;
-            }
+            });
+            data.revenues = revenues;
 
 
             return stepService.sendApiData('revenueStreams', data)
                 .then(function () {
+                    $scope.saved = true;
+                    stepService.setRequestApiFlag();
                     if(direction == 'forward')  
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
@@ -360,7 +370,9 @@
             
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

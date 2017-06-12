@@ -27,7 +27,8 @@
             hobbies: ['Hobbies', 'Volunteering',  'Working Out', 'Shopping',  'Traveling',   'Sports',  'Reading',  'Arts & Culture'],
             reads: ['Reads', 'Business Book', 'Self Help Book', 'Magazine', 'Novel', 'Blog Posts',  'Newspaper'],
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         getData();

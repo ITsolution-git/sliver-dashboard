@@ -185,7 +185,10 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showIdealClientTextBlock: false,
-                    data: []
+                    data: {
+                        clients: [],
+                        idealClient: {}
+                    }
                 }
             }, {
                 name: 'Define Your Ideal Client',

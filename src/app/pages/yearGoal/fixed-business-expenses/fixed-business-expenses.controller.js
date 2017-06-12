@@ -13,7 +13,8 @@
             emptyExpense: {
                 expense: '',
                 monthlyCost: ''
-            }
+            },
+            saved: false
 
         });
 
@@ -138,6 +139,7 @@
 
             return stepService.sendApiData(urls[urls.length - 1], data)
                 .then(function () {
+                    $scope.saved = true;
                     if(direction == 'forward')  
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
@@ -145,7 +147,9 @@
                 });
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

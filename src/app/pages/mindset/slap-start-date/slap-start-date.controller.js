@@ -16,7 +16,8 @@
 
         angular.extend($scope, activeStep.model, {
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         if ($scope.data.year === null) {
@@ -56,11 +57,14 @@
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
+                    $scope.saved = true;
                 });
         }
 
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 

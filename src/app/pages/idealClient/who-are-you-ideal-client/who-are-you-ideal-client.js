@@ -25,7 +25,8 @@
             },
             forward: true,
             shouldSelctIdeal: false,
-            idealClientSelects: idealclientService.getClientSliders()
+            idealClientSelects: idealclientService.getClientSliders(),
+            saved: false
         });
 
         var originalModel = activeStep.model;
