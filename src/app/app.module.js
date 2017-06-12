@@ -22,7 +22,6 @@
                 'ui.mask',
                 'frapontillo.bootstrap-switch',
                 'mgcrea.ngStrap',
-                'ngTable',
                 'ngCsv',
                 'daterangepicker',
                 'rzModule',

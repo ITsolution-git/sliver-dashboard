@@ -24,6 +24,7 @@
     "commit": "d03cab513eda96f1a68395bf9bd76d2da00e8d51"
   },
   "_source": "https://github.com/mgonto/restangular.git",
-  "_target": "*",
-  "_originalSource": "restangular"
+  "_target": "^1.6.1",
+  "_originalSource": "restangular",
+  "_direct": true
 }

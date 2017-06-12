@@ -29,6 +29,7 @@
     "commit": "a4b90187d6e33392c9be591324e1299bc3d35e85"
   },
   "_source": "https://github.com/FontFaceKit/open-sans.git",
-  "_target": "*",
-  "_originalSource": "open-sans-fontface"
+  "_target": "^1.4.2",
+  "_originalSource": "open-sans-fontface",
+  "_direct": true
 }

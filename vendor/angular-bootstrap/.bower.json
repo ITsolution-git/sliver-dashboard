@@ -27,5 +27,6 @@
   },
   "_source": "https://github.com/angular-ui/bootstrap-bower.git",
   "_target": "^2.5.0",
-  "_originalSource": "angular-bootstrap"
+  "_originalSource": "angular-bootstrap",
+  "_direct": true
 }

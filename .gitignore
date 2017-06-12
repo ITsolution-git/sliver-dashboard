@@ -1,5 +1,5 @@
 /node_modules
 /tmp
-
+/vendor
 app.local.js
 .idea
