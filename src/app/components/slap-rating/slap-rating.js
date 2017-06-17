@@ -1,14 +1,13 @@
 (function () {
     'use strict';
 
-    var videoBlock = {
+    var slapRating = {
         bindings: {
-            visible: '=',
-            videoSrc: '='
+            rate: '='
         },
-        templateUrl: 'components/video-block/video-block.html',
+        templateUrl: 'components/slap-rating/slap-rating.html',
         controller: function($scope, $state, stepService) {
-            var $ctrl = this;
+
             $scope.title = stepService.getActiveStep().name;
             // console.log(stepService.getActiveStep());
 
@@ -18,5 +17,5 @@
 
     angular
         .module('app.components')
-        .component('videoBlock', videoBlock);
+        .component('slapRating', slapRating);
 }());

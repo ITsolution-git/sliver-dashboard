@@ -240,6 +240,15 @@
     display: flex;
     justify-content: center;
 
+    &.show-title {
+      span {
+        border-radius: 20px;
+        // transition: all linear 0.3s;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: auto;
+      }
+    }
     span {
       width: 48px;
       height: 48px;
@@ -250,6 +259,68 @@
       font-weight: bold;
       border-radius: 50%;
       background-color: #50cfe3;
+      cursor: pointer;
+      
+      &:hover {
+        box-shadow: 0 5px 15px #50cfe3;
+      }
+      &:focus {
+        outline: none;
+      }
+      .title.ng-animate {
+        display: none;
+      }
     }
+  }
+  .quater-letter-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    .quater-letter {
+      margin-left: 20px;
+      margin-right: 20px;
+      text-align: center;
+      a{
+        font-size: 2.5em;
+        color: @color-dark-gray;
+        cursor: pointer;
+      }
+      a:hover {
+        color: @color-dark;
+        background-color: #fff;
+        border: none; 
+        border-bottom: 1px solid #ddd;
+      }
+    }
+    .quater-letter.active {
+      a {
+        color: @color-dark;
+        background-color: #fff;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+      }
+      &:after {
+        content: '';
+        width: 0; 
+        height: 0; 
+        position: absolute;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        
+        border-top: 10px solid @color-aqua;
+      }
+    }
+
+  }
+  .quater-tab-container {
+    margin: 2em;
+  }
+
+  .slap-work-box {
+    border: solid 4px #576875;
+    padding: 30px;  
+    color: #33444d;
   }
 }

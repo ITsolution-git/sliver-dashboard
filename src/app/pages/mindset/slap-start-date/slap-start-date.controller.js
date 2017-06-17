@@ -42,7 +42,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Your SLAP Start Date');
+            .setPageTitle(stepService.getActiveStep().name);
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);
@@ -53,11 +53,12 @@
 
             return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
+                    stepService.setRequestApiFlag();
+                    $scope.saved = true;
                     if(direction == 'forward')  
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
-                    $scope.saved = true;
                 });
         }
 

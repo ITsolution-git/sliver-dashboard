@@ -77,7 +77,7 @@
                             })
                     }
                 },
-                controller: 'DoubleCheckStartDateController',
+                controller: 'SlapStartDateController',
                 templateUrl: 'pages/actionPlan/double-check-start-date/double-check-start-date.html'
             })
             .state('actionPlan.whatsHappening', {
@@ -120,26 +120,6 @@
                 controller: 'RateConnectingStrategiesController',
                 templateUrl: 'pages/actionPlan/rate-connecting-strategies/rate-connecting-strategies.html'
             })
-            .state('actionPlan.chooseYourConnectingStrategies', {
-                url: '/chooseYourConnectingStrategies',
-                resolve: {
-                    activeStep: function (stepService, $state) {
-                        return stepService.resolveActiveStep(this)
-                            .then(function (active) {
-                                if (active) {
-                                    return active;
-                                }
-
-                                return stepService.getLastFinished()
-                                    .then(function (finishedStep) {
-                                        $state.go(finishedStep.sref);
-                                    });
-                            })
-                    }
-                },
-                controller: 'ChooseYourConnectingStrategiesController',
-                templateUrl: 'pages/actionPlan/choose-your-connecting-strategies/choose-your-connecting-strategies.html'
-            })
             .state('actionPlan.connectingStrategyStrategizing', {
                 url: '/connectingStrategyStrategizing',
                 resolve: {
@@ -177,28 +157,8 @@
                             })
                     }
                 },
-                controller: 'ActionItemsController',
+                controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/action-items/action-items.html'
-            })
-            .state('actionPlan.actionPlanReview', {
-                url: '/actionPlanReview',
-                resolve: {
-                    activeStep: function (stepService, $state) {
-                        return stepService.resolveActiveStep(this)
-                            .then(function (active) {
-                                if (active) {
-                                    return active;
-                                }
-
-                                return stepService.getLastFinished()
-                                    .then(function (finishedStep) {
-                                        $state.go(finishedStep.sref);
-                                    });
-                            })
-                    }
-                },
-                controller: 'ActionPlanReviewController',
-                templateUrl: 'pages/actionPlan/action-plan-review/action-plan-review.html'
             })
             .state('actionPlan.quarterlyGoals', {
                 url: '/quarterlyGoals',
@@ -217,7 +177,7 @@
                             })
                     }
                 },
-                controller: 'QuarterlyGoalsController',
+                controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/quarterly-goals/quarterly-goals.html'
             })
             .state('actionPlan.doubleCheckYearGoal', {
@@ -237,7 +197,7 @@
                             })
                     }
                 },
-                controller: 'DoubleCheckYearGoalController',
+                controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/double-check-year-goal/double-check-year-goal.html'
             })
             .state('actionPlan.qa', {
@@ -260,7 +220,7 @@
                 controller: 'ActionPlanQAController',
                 templateUrl: 'pages/actionPlan/action-plan-qa/action-plan-qa.html'
             })
-            .state('actionPlan.commitYourActionPlan', {
+            .state('actionPlan.commitToYourActionPlan', {
                 url: '/commitToYourActionPlan',
                 resolve: {
                     activeStep: function (stepService, $state) {
@@ -277,7 +237,7 @@
                             })
                     }
                 },
-                controller: 'CommitYourActionPlanController',
+                controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/commit-your-action-plan/commit-your-action-plan.html'
             })
             .state('actionPlan.step4Summary', {
@@ -317,7 +277,7 @@
                             })
                     }
                 },
-                controller: 'SecondExpertReviewController',
+                controller: 'Step4SummaryController',
                 templateUrl: 'pages/actionPlan/second-expert-review/second-expert-review.html'
             });
     }

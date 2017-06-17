@@ -91,21 +91,7 @@
                         $scope.client = idealclientService.calcIdealClient($scope.model.clients);
                     }
                 });
-
-            stepService.getApiData('revenueStreams')  //TODO: request api? data service
-                .then(function (response) {
-                    if (response && response.status === 200) {
-                        $scope.model.revenues = _.get(response, 'data.revenueStreams.revenues', []);
-                    }
-                });
-
-            stepService.getApiData('revenueStreams')  //TODO: request api? data service
-                .then(function (response) {
-                    if (response && response.status === 200) {
-                        $scope.model.revenues = _.get(response, 'data.revenueStreams.revenues', []);
-                    }
-                });
-
+                
             stepService.getApiData('revenueStreams')  //TODO: request api? data service
                 .then(function (response) {
                     if (response && response.status === 200) {

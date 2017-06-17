@@ -239,14 +239,6 @@
                     showContent: false
                 }
             },
-            // {
-            //     name: 'Double Check',
-            //     sref: 'idealClient.doubleCheck'
-            // },
-            // {
-            //     name: 'SLAPstatement',
-            //     sref: 'idealClient.slapStatement'
-            // },
             {
                 name: 'Step 2 SLAPsummary',
                 sref: 'idealClient.step2Summary',
@@ -429,7 +421,10 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {
+                        eventsByMonth: []
+                    } 
                 }
             }, {
                 name: 'Double Check Start Date',
@@ -437,7 +432,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: {}
                 }
             }, {
                 name: 'What\'s Happening in Q1-Q4',
@@ -445,7 +441,25 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: [
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                    ]
                 }
             }, {
                 name: 'Rate the 10 Connecting Strategies',
@@ -453,15 +467,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
-            }, {
-                name: 'Choose Your Connecting Strategies',
-                sref: 'actionPlan.chooseYourConnectingStrategies',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: []
                 }
             }, {
                 name: 'Connecting Strategy Strategizing',
@@ -469,22 +476,21 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: [
+                        {}, {}, {}, {}
+                    ]
                 }
             }, {
-                name: 'Action Items',
+                name: 'Action Items',   
                 sref: 'actionPlan.actionItems',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
-            }, {
-                name: 'Action Plan Review',
-                sref: 'actionPlan.actionPlanReview',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false
+                    showContent: false,
+                    data: [
+                        {}, {}, {}, {}
+                    ]
                 }
             }, {
                 name: 'Quarterly Goals',
@@ -492,7 +498,10 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: [
+                        {}, {}, {}, {}
+                    ]
                 }
             }, {
                 name: 'Double Check 1 Year Goal',
@@ -500,7 +509,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: []
                 }
             }, {
                 name: 'Action Plan Q&A',
@@ -511,11 +521,12 @@
                 }
             }, {
                 name: 'Commit To Your Action Plan',
-                sref: 'actionPlan.commitYourActionPlan',
+                sref: 'actionPlan.commitToYourActionPlan',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
+                    showContent: false,
+                    data: []
                 }
             }, {
                 name: 'Step 4 SLAPsummary',
@@ -751,6 +762,23 @@
                             step.model.data = null;
                         }
                         step.model.data = data.yearGoal[key];
+                    }
+                }
+            }
+
+
+            if(data.actionPlan) {
+                for (var key in data.actionPlan) {
+                    var sref = 'actionPlan.' + key;
+                    var step = steps.find(function (item) {
+                        return item.sref === sref;
+                    });
+
+                    if(step) {
+                        if (Array.isArray(data.actionPlan[key]) && data.actionPlan[key].length === 0) {
+                            step.model.data = null;
+                        }
+                        step.model.data = data.actionPlan[key];
                     }
                 }
             }

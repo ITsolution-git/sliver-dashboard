@@ -1,0 +1,45 @@
+
+<div class="modal-header">
+    <button type="button" class="close"  ng-click="$ctrl.cancel()">&times;</button>
+    <h3 class="modal-title" id="modal-title">{{$ctrl.strategy.name}}</h3>
+</div>
+<div class="modal-body" id="modal-body ">
+    <div class="prev-strategy" ng-click="$ctrl.goPrevStrategy()">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+            <video controls preload="none" class="col-sm-12" poster="../images/carr.png">
+                <source ng-src="{{$ctrl.strategy.video}}" type="video/mp4">
+            </video>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+            <!--<h3>{{$ctrl.strategy.name}}</h3>-->
+            <p>How it work for you and your ideal client?</p>
+            <br/>
+            
+            <slap-rating rate="$ctrl.strategy.rating"></slap-rating>
+
+            <div class="textarea-box m-t-es-20">
+                <textarea ng-model="$ctrl.strategy.reason" type="text"
+                    class="monthly-cost outline-0" 
+                    
+                    ng-class="{'active': data[nthQut-1].impactClient}" 
+                    placeholder="Why that rating?" 
+                    style="width: 100%"
+                    rows="3" required></textarea>
+
+            </div>
+            <button class="btn btn-custom m-t-es-10 pull-right" type="button" ng-click="$ctrl.ok()">SAVE RATING</button>
+        </div>
+    </div>
+    <div class="next-strategy"  ng-click="$ctrl.goNextStrategy()">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <!--<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>-->
+</div>

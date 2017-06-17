@@ -5,32 +5,97 @@
         .module('app.pages.actionPlan')
         .controller('WhatsHappeningController', WhatsHappeningController);
 
-    function WhatsHappeningController($scope, activeStep, pageService,stepService, $state) {
+    function WhatsHappeningController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService) {
 
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,
-            model: {
-                first: 'Dropdown Label'
-            }
+            startDate: {},
+            QMonths: [],
+            monthNames: actionplanService.getMonthLongNames(),
+            currentQut: 1,
+            saved: false,
+            showEventsBox: true
         });
 
         pageService
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Action Plan');
+            .setPageTitle(stepService.getActiveStep().name);
+        if ($scope.data.length == 0) {
+            $scope.data = [
+                {
+                    "impactClient" : "",
+                    "impactBusiness" : ""
+                },
+                {
+                    "impactClient" : "",
+                    "impactBusiness" : ""
+                },
+                {
+                    "impactClient" : "",
+                    "impactBusiness" : ""
+                },
+                {
+                    "impactClient" : "",
+                    "impactBusiness" : ""
+                },
+            ];
+        }
+        getData();
+        function getData() {
+            // var urls = _.get($state.current, 'params.prev.sref').split('.');
+            var url = 'allMindsetUser';
+
+            // return stepService.getApiData(urls[urls.length - 1])
+            stepService.getApiData(url) //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+
+                        $scope.startDate = response.data.slapStartDate;
+                        $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 1));
+                        $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 2));
+                        $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 3));
+                        $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 4));
+                    }
+                });
+
+
+            url = 'worldAroundYou';
+
+            // return stepService.getApiData(urls[urls.length - 1])
+            stepService.getApiData(url) //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+                        $scope.eventsByMonth = response.data.worldAroundYou.eventsByMonth;
+                    }
+                });
+        }
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
             var nextprevStep = stepService.getNextAndPrevStep();
+            var urls = activeStep.sref.split('.');
 
-            if(direction == 'forward')
-                $state.go(nextprevStep.nextStep.sref);
-            else
-                $state.go(nextprevStep.prevStep.sref);
+            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+                .then(function () {
+                    $scope.saved = true;
+                    stepService.setRequestApiFlag();
+                    if(direction == 'forward')  
+                        $state.go(nextprevStep.nextStep.sref); 
+                    else if(direction == 'backward')
+                        $state.go(nextprevStep.prevStep.sref);
+                });
         }
+
+
+        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+            if ($scope.saved != true) {
+                sendData();
+            }
+        });
     }
 }());

@@ -1,0 +1,32 @@
+
+.modal-lg {
+  width: 90%;
+  .modal-content {
+    .modal-body {
+      .next-strategy, .prev-strategy{
+        position: absolute;
+        height: 100%;
+        display: flex;
+        top: 0px;
+        flex-direction: column;
+        font-size: 50px;
+        color: white;
+        cursor: pointer;
+        justify-content: center; 
+        
+      }
+      .prev-strategy {
+        left: -55px;
+        &:hover {
+         left: -65px; 
+        }
+      }
+      .next-strategy {
+        right: -55px;
+        &:hover {
+         right: -65px; 
+        }
+      }
+    }
+  }
+}

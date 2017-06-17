@@ -117,11 +117,11 @@
 
             return stepService.sendApiData(urls[urls.length - 1], data)
                 .then(function () {
+                    $scope.saved = true;
                     if(direction == 'forward')  
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
-                    $scope.saved = true;
                 });
         }
 

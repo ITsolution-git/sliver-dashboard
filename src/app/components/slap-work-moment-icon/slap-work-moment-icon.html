@@ -1,0 +1,9 @@
+<div class="blue-circle" ng-class="!$ctrl.visible ? 'show-title' : ''">
+    <span ng-click="$ctrl.visible=!$ctrl.visible">
+        
+        <i class="fa fa-arrow-down" aria-hidden="true" ng-show="$ctrl.visible && $ctrl.type=='work'"></i>
+        <i class="fa fa-exclamation" aria-hidden="true" ng-show="$ctrl.visible  && $ctrl.type=='moment'"></i>
+        <span ng-show="!$ctrl.visible" class="title">{{$ctrl.title}}</span>
+        <i class="fa fa-plus" aria-hidden="true" ng-show="!$ctrl.visible"></i>
+    </span>
+</div>

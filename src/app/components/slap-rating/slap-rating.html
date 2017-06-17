@@ -1,0 +1,8 @@
+<div class="slap-rating">
+    <div ng-repeat="r in [1,2,3,4,5].slice(0, $ctrl.rate)" class="rate-item  active"  ng-click="$event.preventDefault(); $ctrl.rate=r">
+        <span>{{r}}</span>
+    </div>
+    <div ng-repeat="r in [1,2,3,4,5].slice($ctrl.rate)" class="rate-item " ng-click="$event.preventDefault(); $ctrl.rate=r">
+        <span>{{r}}</span>
+    </div>
+</div>
