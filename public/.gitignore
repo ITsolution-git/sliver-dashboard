@@ -4,3 +4,4 @@
 !.gitignore
 !js/vendor.js
 !index.html
+js/app.min.js
