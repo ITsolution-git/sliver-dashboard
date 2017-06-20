@@ -196,16 +196,21 @@
             var url = 'whatsHappening';
 
             var data = {};
-
+            
             var eventsByMonth = _.map($scope.eventsByMonth, function (month) {
-                return {events: month.events, actionItems: month.actionItems.slice(0, month.actionItems.length - 1)};
+                if ($scope.pageName != 'quarterlyGoals') {
+                    return {events: month.events, actionItems: month.actionItems.slice(0, month.actionItems.length - 1)};
+                } else {
+                    return {events: month.events, actionItems: month.actionItems};
+                }
+                
             });
             data.eventsByMonth = eventsByMonth;
 
             return stepService.sendApiData(url, $scope.data)
                 .then(function () {
 
-                    if (($scope.pageName!='actionItems') || ($scope.pageName!='commitToYourActionPlan')) { //Do not save when current page is not Action Items
+                    if (($scope.pageName != 'actionItems') && ($scope.pageName != 'commitToYourActionPlan')) { //Do not save when current page is not Action Items
                         $scope.saved = true;
                         stepService.setRequestApiFlag();
                         if(direction == 'forward')  
