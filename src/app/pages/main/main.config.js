@@ -35,6 +35,23 @@
                 },
                 parent: 'default',
                 url: '/?refer',
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+                                return stepService.getLastFinished()
+                                .then(function (finishedStep) {
+                                    if (finishedStep.sref == 'welcome')
+                                        return true;
+                                    else
+                                        $state.go(finishedStep.sref);
+                                });
+                            });
+                    }
+                },
                 views: {
                     content: {
                         controller: 'MainIndexController',
@@ -103,6 +120,23 @@
                 },
                 parent: 'one',
                 url: '/welcome',
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+                                return stepService.getLastFinished()
+                                .then(function (finishedStep) {
+                                    if (finishedStep.sref == 'welcome')
+                                        return true;
+                                    else
+                                        $state.go(finishedStep.sref);
+                                });
+                            });
+                    }
+                },
                 views: {
                     content: {
                         controller: 'WelcomeController',

@@ -45,14 +45,14 @@
 
             <div class="col-md-12 row-flex sample-show-hide padding-t-45" ng-hide="showContent">
 
-                <div class="col-md-12 col-lg-8">
+                <div class="col-xs-12 col-lg-8 col-lg-offset-2">
                     <div class="row m-t-es-15 m-b-es-50">
 
                         <div class="ideal-clients-list col-md-12">
 
                             <div class="blue-circle"><span>!</span></div>
 
-                            <p ng-repeat="revenue in data.revenues" class="text-center">
+                            <p ng-repeat="revenue in data.revenues | filter:{deleted: false}" class="text-center">
                                 Selling <span>{{revenue.unit}} Units</span> of <span>{{revenue.name}} </span> for <span>${{revenue.sellingPrice}}</span>.
                             </p>
 

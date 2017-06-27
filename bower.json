@@ -43,7 +43,10 @@
     "ng-csv": "^0.3.6",
     "open-sans-fontface": "^1.4.2",
     "moment": "^2.18.1",
-    "angular-ui-router": "ui-router#~0.4.2"
+    "angular-ui-router": "ui-router#~0.4.2",
+    "angular-svg-round-progressbar": "0.4.8",
+    "angular-filter": "^0.5.16",
+    "angular-data-grid": "*"
   },
   "resolutions": {
     "angular": "1.6.4",

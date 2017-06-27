@@ -180,6 +180,7 @@
                 return notification.name == name;
             });
         }
+        
         function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
@@ -237,13 +238,14 @@
                 var totalRevenue = +$scope.data[0].units[revenue.name] + +$scope.data[1].units[revenue.name] + +$scope.data[2].units[revenue.name] + +$scope.data[3].units[revenue.name]; 
                 if (totalRevenue != revenue.unit){
                     valid = false;
-                    addNotification($scope.notifications, {name: 'Invalid Sum', type: 'error', message:'Total Sum of Revenue Streams of each Quater should be exactly same as Yearly Goal.', show: true});
-                } else {
-                    removeNotificaton($scope.notifications,'Invalid Sum');
                 }
                     
             })
-            
+            if (!valid){
+                addNotification($scope.notifications, {name: 'Invalid Sum', type: 'error', message:'Total Sum of Revenue Streams of each Quater should be exactly same as Yearly Goal.', show: true});
+            } else {
+                removeNotificaton($scope.notifications,'Invalid Sum');
+            }
             return valid;
         }
 

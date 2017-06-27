@@ -1,0 +1,134 @@
+<md-dialog aria-label="List dialog" class="excute-dialog" ng-class="{'excute-dialog-actions': formData.type == 'action','excute-dialog-sales': formData.type == 'sales','excute-dialog-reflextion': formData.type == 'reflextion'}">
+	<section>
+		<section class="slap-excute-dialog-header m-b-es-20" layout="row" layout-align="space-between center">
+			<slap-color-switch color="{{colorAction}}" name="Actions" value="filter.showActions"  static="true" ng-if="formData.type=='action'"></slap-color-switch>
+			<slap-color-switch color="{{colorSales}}" name="Sales" value="filter.showActions"  static="true" ng-if="formData.type=='sales'"></slap-color-switch>
+			<slap-color-switch color="{{colorReflextion}}" name="Reflextion" value="filter.showActions"  static="true" ng-if="formData.type=='reflextion'"></slap-color-switch>
+			<a ng-click="closeDialog()"><i class="material-icons">highlight_off</i></a>
+		</section>
+		<section layout="column" ng-if="formData.type == 'action'">
+			<form layout="row" layout-wrap layout-align="center center" name="form">
+				<md-input-container  flex="100">
+					<label>Action Title</label>
+					<input ng-model="formData.title" required name="title">
+					<div ng-messages="form.title.$error">
+						<ng-message when="required">Action Title is required.</div>
+					</div>
+				</md-input-container>
+				
+				<md-input-container flex="50" ng-if="curMode == 'add'">
+					<md-select ng-model="formData.recurrency">
+						<md-option ng-value="'No Recurrency'">No Recurrency</md-option>
+						<md-option ng-value="'Daily'">Daily</md-option>
+						<md-option ng-value="'Weekly'">Weekly</md-option>
+						<md-option ng-value="'Monthly'">Monthly</md-option>
+						<md-option ng-value="'Quaterly'">Quaterly</md-option>
+					</md-select>
+					<div class="md-errors-spacer"></div>
+				</md-input-container>
+				
+				<md-input-container flex="50" ng-if="formData.recurrency == 'No Recurrency' || curMode == 'edit'">
+					<label>Due Date</label>
+					<md-datepicker ng-model="formData.dueDate" md-min-date="today" md-max-date="endDate" name="dueDate"></md-datepicker>
+					<div ng-messages="form.dueDate.$error">
+						<div ng-message="valid">The entered value is not a date!</div>
+						<div ng-message="required">This date is required!</div>
+						<div ng-message="mindate">Date is too early!</div>
+						<div ng-message="maxdate">Date is too late!</div>
+					</div>
+				</md-input-container>
+
+
+
+				<md-checkbox ng-model="formData.setRecurDeadline" aria-label="Set DeadLine?" flex="20"  ng-if="formData.recurrency != 'No Recurrency' && curMode == 'add'">
+					Set Deadline?
+				</md-checkbox>
+
+				<md-input-container flex="30"  ng-if="formData.recurrency != 'No Recurrency' && curMode == 'add'" >
+					<label>Recurrency Deadline</label>
+					<md-datepicker ng-model="formData.recurDeadline" md-min-date="today" md-max-date="endDate"
+					ng-disabled="formData.setRecurDeadline == false"
+					name="recurDeadline"></md-datepicker>
+
+					<div ng-messages="form.recurDeadline.$error">
+						<div ng-message="valid">The entered value is not a date!</div>
+						<div ng-message="required">This date is required!</div>
+						<div ng-message="mindate">Date is too early!</div>
+						<div ng-message="maxdate">Date is too late!</div>
+					</div>
+				</md-input-container>
+				<section flex></section>
+
+				<md-input-container flex="100">
+					<label>Notes</label>
+					<input ng-model="formData.notes">
+				</md-input-container>
+
+				<md-slider-container layout flex="100">
+					<div flex="20">
+						<span>Set Your progress</span>
+					</div>	
+					<md-slider flex class="md-primary" md-discrete ng-model="formData.progress" step="1" min="1" max="100" aria-label="progress">
+					</md-slider>
+				</md-slider-container>
+			</form>
+		</section>
+
+		<section layout="column" ng-if="formData.type == 'sales'">
+			<form layout="row" layout-wrap layout-align="center center" name="form">
+				
+				<md-input-container flex="100">
+					<md-select ng-model="formData.title">
+						<md-option ng-value="revenue.id" ng-repeat="revenue in revenues | filter : {deleted:false}">{{revenue.name}}</md-option>
+					</md-select>
+					<div class="md-errors-spacer"></div>
+				</md-input-container>
+				
+				<md-input-container  flex="50">
+					<label>Sales Unit</label>
+					<input ng-model="formData.saleUnit" type="number" required name="saleUnit" step="any" min="1" >
+					<div ng-messages="form.saleUnit.$error">
+						<ng-message when="required">Sales Unit is required.</ng-message>
+						<!--<ng-message when="pattern">Sales Unit is not valid number.</div>-->
+						<!--<ng-message when="min">Sales Unit is not valid number.</div>-->
+					</div>
+				</md-input-container>
+
+				<md-input-container flex="50">
+					<label>Due Date</label>
+					<md-datepicker ng-model="formData.dueDate" md-min-date="today" md-max-date="endDate" name="dueDate"></md-datepicker>
+					<div ng-messages="form.dueDate.$error">
+						<div ng-message="valid">The entered value is not a date!</div>
+						<div ng-message="required">This date is required!</div>
+						<div ng-message="mindate">Date is too early!</div>
+						<div ng-message="maxdate">Date is too late!</div>
+					</div>
+				</md-input-container>
+				<section flex></section>
+				<md-input-container flex="100">
+					<label>Notes</label>
+					<input ng-model="formData.notes">
+				</md-input-container>
+
+				<md-slider-container layout flex="100">
+					<div flex="20">
+						<span>Set Your progress</span>
+					</div>	
+					<md-slider flex class="md-primary" md-discrete ng-model="formData.progress" step="1" min="1" max="100" aria-label="progress">
+					</md-slider>
+				</md-slider-container>
+			</form>
+		</section>
+	</section>
+
+	<md-dialog-actions>
+		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="curMode == 'edit'" ng-disabled="form.$invalid">
+			Edit
+		</md-button>
+		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="curMode == 'add'" ng-disabled="form.$invalid">
+			Add
+		</md-button>
+		<md-button ng-click="closeDialog()" class="md-primary">Close Dialog</md-button>
+
+	</md-dialog-actions>
+</md-dialog>

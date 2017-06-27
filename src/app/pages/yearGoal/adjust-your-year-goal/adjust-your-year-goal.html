@@ -55,7 +55,7 @@
                         Unit of Sales
                     </div>
                 </div>
-                <div class="revenue-row" ng-repeat="revenue in data.revenues">
+                <div class="revenue-row" ng-repeat="revenue in data.revenues | filter:{deleted: false}">
                     <div class="revenue-name-container">
                         
                         <div class="input-box">

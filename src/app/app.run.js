@@ -7,7 +7,7 @@
 
     function runApp($rootScope, $timeout, $window, $state, $auth, pageService, CONFIG, userService) {
         $rootScope.isReady = false;
-
+        $rootScope.dateFormat = "MM/DD/YYYY";
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             // запоминаем, куда пытаемся перейти и с какими параметрами
             $rootScope.toState = toState;

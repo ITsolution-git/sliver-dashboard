@@ -602,7 +602,9 @@
         this.resolveActiveStep = resolveActiveStep;
         this.getLastFinished = getLastFinished;
         this.setRequestApiFlag = setRequestApiFlag;
+        this.getAllUserData = getAllUserData
 
+        
         this.checkStepsIsFinishedSection = checkStepsIsFinishedSection;
 
         this.sendApiData = sendApiData;
@@ -625,12 +627,21 @@
 
         function getLastFinished() {
             return $q(function (resolve) {
-                if (finishedSteps.length <= 0) {
-                    return resolve(steps[0]);
+                if (finishedSteps.length == 0) {
+                    return resolve({sref: "welcome"});
+                } else if (finishedSteps.length >= 52) {
+                    return resolve({sref: "slapExcute.main"});
                 } else {
                     var lastSteps = finishedSteps[finishedSteps.length - 1];
                     return resolve(steps[lastSteps]);
                 }
+            });
+        }
+        
+        function getAllUserData() {
+           return getFinishedStepsAPI()
+            .then(function (response) {
+                return response.data;
             });
         }
 

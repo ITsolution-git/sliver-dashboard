@@ -1,0 +1,35 @@
+.slap-color-switch {
+	border: 2px solid @color-gray;
+	padding: 5px 10px;
+	border-radius: 20px;
+	cursor: pointer;
+	&:hover, &:focus {
+		outline: none
+	}
+	&:hover {
+    	box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+    	.color-dot {
+
+    		box-shadow: 0 1px 3px 0 rgba(0,0,0,1);
+    	}
+	}
+	&.no-border {
+		border: none;
+		box-shadow: none;
+		cursor: default;
+		&:hover {
+			box-shadow: none;
+		}
+	}
+	.color-dot {
+		border: 1px solid @color-gray;
+		margin-right: 5px;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+    	box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+	}
+	span {
+		font-size: 12px;
+	}
+}

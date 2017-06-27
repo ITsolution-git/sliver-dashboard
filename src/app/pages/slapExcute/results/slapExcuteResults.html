@@ -1,0 +1,127 @@
+<div class="slap-excute" layout="column">
+    <section layout="row" layout-align="start center">
+        <md-button ui-sref="slapExcute.main"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Back</md-button>
+        <h2 class="text-color-strong">SLAP<small class="text-aqua">excute</small><span style="font-weight:300; font-size: 0.9em">/Results</span></h2>
+    </section>
+
+	<section flex=100 layout="row">
+		<!-- ACTION CARD -->
+		<md-card flex=50>
+			<md-card-content layout="row">
+				<section flex=30 layout-margin  class="m-r-es-20">
+					<section class="progress-container" layout="row" layout-align="center center">
+						<round-progress
+					    max="123"
+					    current="23"
+					    color="{{colorSales}}"
+					    bgcolor="{{progress.bgcolor}}"
+					    radius="{{progress.radius}}"
+					    stroke="{{progress.stroke}}"
+					    semi="false"
+					    rounded="true"
+					    clockwise="true"
+					    responsive="true"
+					    duration="{{progress.duration}}"
+					    animation="{{progress.animation}}"
+					    animation-delay="{{progress.delay}}">
+					    </round-progress>
+					    <section class="progress-text">
+					    	<p class="text-color-strong">{{ '1000' | currency}}</p>
+					    	<small>Out of 44400 Q2 Revenue goal</small>
+					    </section>
+					</section>
+
+
+				</section>
+				<section flex=70 layout="column" layout-align="center center">
+					<p>
+						<span  class="md-headline text-color-middle">Your Q2 Goal Progress</span>
+						<br/>
+						<small>
+							You need to sell {{ '2000' | currency}} to reach your Q2 revenue goal.
+						</small>
+					</p>
+
+					<md-button class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
+				</section>
+			</md-card-content>
+		</md-card>
+		<!-- ACTION CARD ENDS-->
+		<!-- ACTION CARD -->
+		<md-card flex=50>
+			<md-card-content layout="row">
+				<section flex=30 layout-margin  class="m-r-es-20">
+					<section class="progress-container" layout="row" layout-align="center center">
+						<round-progress
+					    max="123"
+					    current="23"
+					    color="{{colorSales}}"
+					    bgcolor="{{progress.bgcolor}}"
+					    radius="{{progress.radius}}"
+					    stroke="{{progress.stroke}}"
+					    semi="false"
+					    rounded="true"
+					    clockwise="true"
+					    responsive="true"
+					    duration="{{progress.duration}}"
+					    animation="{{progress.animation}}"
+					    animation-delay="{{progress.delay}}">
+					    </round-progress>
+					    <section class="progress-text">
+					    	<p class="text-color-strong">{{ '70003' | currency}}</p>
+                            <small>Out of {{ '230343' | currency }} annual revenue goal</small>
+					    </section>
+					</section>
+
+				</section>
+				<section flex=70 layout="column" layout-align="center center">
+					<p>
+						<span  class="md-headline text-color-middle">Your Annual Goal Progress</span>
+						<br/>
+						<small>
+							You need to sell {{ '10002' | currency }} to reach your annual revenue goal.
+						</small>
+					</p>
+
+					<md-button class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
+				</section>
+			</md-card-content>
+		</md-card>
+		<!-- ACTION CARD ENDS-->
+	</section>
+
+
+
+	<section layout="column" class="m-t-es-50">
+
+        <div flex="100" layout="row" layout-align="space-between center" class="md-body-1">
+            <span>Results By Revenue Streams</span>
+			<section layout="row" layout-align="end center">
+				<span>Filter By Quater&nbsp&nbsp</span>
+				<slap-color-switch color="{{colorSales}}" name="Q1" value="filter.showQ"  static="false" quater="1"></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Q2" value="filter.showQ"  static="false" quater="2" ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Q3" value="filter.showQ"  static="false" quater="3"  ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Q4" value="filter.showQ "  static="false" quater="4" ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Year" value="filter.showQ "  static="false" quater="-1" ></slap-color-switch>
+			</section>
+        </div>
+		<md-content layout-padding flex class="tab-content">
+            <md-card layout="column"  flex layout-fill ng-cloak>
+
+                <md-content style="height: auto">
+                    <section >
+                        <md-subheader class="text-color-strong">Today</md-subheader>
+                        <md-list class="text-color-main">
+                            <md-list-item ng-repeat-start="item in filtered('today',  'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
+                                
+                                <slap-list-item item="item" title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
+                            </md-list-item>
+                            <md-divider ng-if="!$last" ng-repeat-end></md-divider>
+                        </md-list>
+                    </section>
+                    
+            </md-card>
+		</md-content>
+	</section>
+
+</div>

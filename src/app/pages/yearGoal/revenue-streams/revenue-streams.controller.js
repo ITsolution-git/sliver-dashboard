@@ -20,7 +20,8 @@
                 margin: '0.00',
                 breakdown: '0.00',
                 unit: 0,
-                totalVExp: 0
+                totalVExp: 0,
+                deleted: false,
             },
             emptyVariableExpense: {
                 expense: '',
@@ -60,7 +61,7 @@
                 .then(function (response) {
                     if (response && response.status === 200) {
 
-                        $scope.totalFixedExpenses = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum + (+response.data.fixedBusinessExpenses.profit)) * 12
+                        $scope.totalFixedExpenses = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum) * 12  + (+response.data.fixedBusinessExpenses.profit);
                         doCalculation();
                     }
                 });
@@ -75,13 +76,15 @@
 
             var force = false;
             if ($scope.data.revenues.length > 0) {
+                
                 var lastItem = $scope.data.revenues[$scope.data.revenues.length - 1];
-                if (!angular.equals(lastItem, $scope.emptyRevenue)) {
+                if (lastItem.id != $scope.data.revenues.length + 1) {  //If no empty item is added
                     force = true;
                 }
             }
             if ($scope.data.revenues.length === 0 || $scope.data.revenues.length === index + 1 || force) {
                 var revenueModel = _.cloneDeep($scope.emptyRevenue);
+                revenueModel.id = $scope.data.revenues.length + 1;
                 $scope.data.revenues.push(revenueModel);
             }
         }
@@ -164,6 +167,11 @@
         }
 
         function isExpensesValid() {
+            var nonDeleted  = [];
+            _.each($scope.data.revenues, function(revenue) {
+                if (revenue.deleted == false) 
+                    nonDeleted.push(revenue);
+            });
             if ($scope.pageName == 'revenueStreams') {
                 if ($scope.data.revenues.length == 1) {
 
@@ -180,7 +188,7 @@
                 var valid = true;
 
                 // Validable Expenses valid
-                _.each($scope.data.revenues, function(revenue) {
+                _.each(nonDeleted, function(revenue) {
                     var totalVariableExpenses = 0;
                     _.each(revenue.variableExpenses, function(variableExpense) {
                         totalVariableExpenses += +variableExpense.cost;
@@ -204,7 +212,7 @@
                 var valid = true;
 
                 // Validable Expenses valid
-                _.each($scope.data.revenues, function(revenue) {
+                _.each(nonDeleted, function(revenue) {
                     var totalVariableExpenses = 0;
                     _.each(revenue.variableExpenses, function(variableExpense) {
                         totalVariableExpenses += +variableExpense.cost;
@@ -233,7 +241,7 @@
 
                 // revenue breakdown should sum 100
                 var totalBreakdown = 0;
-                _.each($scope.data.revenues, function(revenue) {
+                _.each(nonDeleted, function(revenue) {
                     totalBreakdown += +revenue.breakdown;
                 });
                 if (totalBreakdown != 100) {
@@ -253,7 +261,12 @@
 
         function doCalculation() {
             //Profit margin
+            var nonDeleted  = [];
             _.each($scope.data.revenues, function(revenue) {
+                if (revenue.deleted == false) 
+                    nonDeleted.push(revenue);
+            });
+            _.each(nonDeleted, function(revenue) {
                 var totalVariableExpenses = 0;
                 _.each(revenue.variableExpenses, function(variableExpense) {
                     totalVariableExpenses += +variableExpense.cost;
@@ -268,14 +281,14 @@
             // Breakdown
 
             var totalBreakdown = 0;
-            _.each($scope.data.revenues, function(revenue) {
+            _.each(nonDeleted, function(revenue) {
                 totalBreakdown += +revenue.breakdown;
             });
             $scope.data.totalBreakdown = totalBreakdown.toFixed(2);
 
             // Unit of Sales
 
-            _.each($scope.data.revenues, function(revenue) {
+            _.each(nonDeleted, function(revenue) {
                 var C = $scope.totalFixedExpenses * +revenue.breakdown * 0.01;
                 var A = +revenue.sellingPrice - +revenue.totalVExp;
                 if (A != 0){
@@ -287,12 +300,8 @@
         }
 
         function deleteRevenue(revenue) {
-            if ($scope.data.revenues.length > 1) {
-                _.remove($scope.data.revenues, function (n) {
-                    return n === revenue;
-                });
-                doCalculation();
-            }
+            revenue.deleted = true;
+            doCalculation();
         }
 
 
@@ -342,7 +351,7 @@
             var revenues = [];
             _.forEach($scope.data.revenues, function (value) {
 
-                if (!angular.equals(value, $scope.emptyRevenue)) {
+                if (value.name.trim() != '') {
                     revenues.push(value);
                 }
 

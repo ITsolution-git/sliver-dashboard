@@ -12,6 +12,7 @@
                 'ngSanitize',
                 'ngMaterial',
                 'ngAria',
+                'ngMessages',
 
                 'angular-loading-bar',
                 'restangular',
@@ -25,6 +26,11 @@
                 'ngCsv',
                 'daterangepicker',
                 'rzModule',
+                'angular-svg-round-progressbar',
+                'angular.filter',
+                'dataGrid', 
+                // 'pagination',
+
 
                 'app.services',
                 'app.filters',

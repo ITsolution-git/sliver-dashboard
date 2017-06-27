@@ -6,7 +6,10 @@
         .config(config);
 
     /* @ngInject */
-    function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider) {
+    function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider, $mdThemingProvider, RestangularProvider) {
+        RestangularProvider.setRestangularFields({
+            id: "_id"
+        });
 
         $stateProvider
         // app blank layout
@@ -35,6 +38,16 @@
                     content: {
                         controller: 'LayoutOneController',
                         template: '<div ui-view="content"></div>'
+                    }
+                }
+            })
+            .state('withNavbar', {
+                abstract:true,
+                parent:'blank',
+                views: {
+                    content: {
+                        controller: 'LayoutWithNavbarController',
+                        template: '<slap-header></slap-header><div class="slap-container" ui-view="content"></div>'
                     }
                 }
             });
@@ -68,6 +81,19 @@
         $authProvider.tokenHeader = 'Authorization';
         $authProvider.tokenType = 'Bearer';
         $authProvider.storageType = 'localStorage';
+
+
+        // Extend the red theme with a different color and make the contrast color black instead of white.
+        // For example: raised button text will be black instead of white.
+        var slapTheme = $mdThemingProvider.extendPalette('light-blue', {
+        });
+
+        // Register the new color palette map with the name <code>neonRed</code>
+        $mdThemingProvider.definePalette('slapTheme', slapTheme);
+
+        // Use that theme for the primary intentions
+        $mdThemingProvider.theme('default')
+        .primaryPalette('slapTheme');
 
     }
 })();

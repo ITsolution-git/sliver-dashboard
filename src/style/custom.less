@@ -3,13 +3,39 @@
 
 @color-dark : #373c37;
 @color-aqua : #50cfe3;
+@color-gray: #eaeaea;
 @color-dark-gray: #99a2a6;
 @color-dark-blue: #0e7cb5;
+@color-main-blue: #007cb1;
+@color-action: #2778f5;
+@color-sales: #38b636;
+@color-reflextion: #f8d144;
+
+
+@color-text-main: #77848e;
+@color-text-middle: #35464e;
+@color-text-strong: #4c504d;
+
+.text-color-main {
+  color: @color-text-main;
+}
+
+.text-color-middle {
+  color: @color-text-middle;
+  font-weight: 600;
+}
+
+.text-color-strong {
+  color: @color-text-strong;
+  font-weight: 900;
+}
+
+
 /* Define your ideal client page styles */
 .define-client {
 
   .row-flex {
-    justify-content: center;
+  
   }
 
   .ideal-clients-list {
@@ -200,8 +226,17 @@ body {
     font-weight: 300;
   }
 }
-.main-container{
-  background: radial-gradient(farthest-corner at 60% 55%, white, #dfdee3); /* Standard syntax */
-
+ui-view, div[ui-view=''] {
+  height: 100%;
+  width: 100%;
 }
 
+.main-container, div[ui-view]{
+  // background: radial-gradient(farthest-corner at 60% 55%, white, #dfdee3); /* Standard syntax */
+  background-color: #f8f8f8;
+}
+
+body.md-toast-animating { overflow: auto !important; }
+md-toast {
+  position: fixed;
+}

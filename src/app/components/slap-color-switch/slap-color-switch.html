@@ -1,0 +1,9 @@
+<div class="slap-color-switch " layout="row" layout-align="center center" 
+	ng-class="{'inactive' : $ctrl.value , 'no-border': $ctrl.static}" 
+	ng-click="$ctrl.toggleValue()">
+	<div class="color-dot" ng-style="{'background-color': $ctrl.bgcolor}">
+	</div>
+	<span>
+		{{$ctrl.name}}
+	</span>
+</div>

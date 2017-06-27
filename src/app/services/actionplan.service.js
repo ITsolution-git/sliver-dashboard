@@ -118,6 +118,7 @@
         this.getDefaultEvents = getDefaultEvents;
         this.getMonthLongNames = getMonthLongNames;
         this.getNthQuaterMonths = getNthQuaterMonths;
+        this.getNthQuater = getNthQuater;
         this.getDefaultConnectingStrategies = getDefaultConnectingStrategies;
         this.calculateTopStrategies = calculateTopStrategies;
 
@@ -137,6 +138,22 @@
             months.push((+startMonth + 3 * (indexQut - 1)) % 12);
             months.push((+startMonth + 3 * (indexQut - 1) + 1) % 12);
             return months;
+        }
+
+        function getNthQuater(startDate, indexQut) {
+            var months = [];
+            months.push((+startDate.month + 3 * (indexQut - 1) - 1) % 12);
+            months.push((+startDate.month + 3 * (indexQut - 1)) % 12);
+            months.push((+startDate.month + 3 * (indexQut - 1) + 1) % 12);
+
+            var startQuater = moment({year: startDate.year + ((+startDate.month + 3 * (indexQut - 1) - 1) / 12), month:months[0], day: 1 });
+            var endQuater = moment({year: startDate.year + ((+startDate.month + 3 * (indexQut - 1) + 1) / 12), month:months[2], day: 1 }).endOf('month');
+            return {
+                months: months,
+                start: startQuater,
+                end: endQuater,
+                nth: indexQut
+            };
         }
 
         function getDefaultConnectingStrategies() {
