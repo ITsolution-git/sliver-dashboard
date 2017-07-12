@@ -6,6 +6,228 @@
         .service('actionplanService', actionplanService);
 
     function actionplanService() {
+        var _defaultActionItems = [
+            {
+                strategyId: 1,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month2-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month2-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month2-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month3-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month3-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Connect Prep Month3-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 2,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Referrals Month1-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 3,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month2-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month2-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month2-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month3-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month3-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Partnerships Month3-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 4,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Hit List Month1-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 5,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Events Month1-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 6,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Media Month1-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 7,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 8,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Online Connecting Month1-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 9,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-3'}
+                    ],
+
+                ] 
+
+            },
+            {
+                strategyId: 10,
+                actions: [
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month1-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month2-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month2-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month2-3'}
+                    ],
+                    [
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month3-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month3-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'SLAPnap Month3-3'}
+                    ],
+
+                ] 
+
+            },
+        ]
         var _defaultEvents = [
             {
                 events: [
@@ -121,6 +343,7 @@
         this.getNthQuater = getNthQuater;
         this.getDefaultConnectingStrategies = getDefaultConnectingStrategies;
         this.calculateTopStrategies = calculateTopStrategies;
+        this.getDefaultActionsByStrategy = getDefaultActionsByStrategy;
 
         ////////////////////////////
 
@@ -171,6 +394,11 @@
                     break;
             }
             return topRated;
+        }
+
+        function getDefaultActionsByStrategy(id) {
+            var itemMonth = _.find(_defaultActionItems, {strategyId: id});
+            return itemMonth;
         }
     }
 }());

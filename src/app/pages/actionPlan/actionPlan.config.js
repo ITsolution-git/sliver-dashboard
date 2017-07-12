@@ -75,7 +75,10 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    excuteItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems();
+                    },
                 },
                 controller: 'SlapStartDateController',
                 templateUrl: 'pages/actionPlan/double-check-start-date/double-check-start-date.html'
@@ -134,8 +137,13 @@
                                     .then(function (finishedStep) {
                                         $state.go(finishedStep.sref);
                                     });
-                            })
-                    }
+                            });
+                    },
+                    actionItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
+                            return excuteItems.filter(function(item){ return item.type == 'action';});
+                        });
+                    },
                 },
                 controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/connecting-strategy-strategizing/connecting-strategy-strategizing.html'
@@ -155,7 +163,12 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    actionItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
+                            return excuteItems.filter(function(item){ return item.type == 'action';});
+                        });
+                    },
                 },
                 controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/action-items/action-items.html'
@@ -175,7 +188,12 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    actionItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
+                            return excuteItems.filter(function(item){ return item.type == 'action';});
+                        });
+                    },
                 },
                 controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/quarterly-goals/quarterly-goals.html'
@@ -195,7 +213,12 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    actionItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
+                            return excuteItems.filter(function(item){ return item.type == 'action';});
+                        });
+                    },
                 },
                 controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/double-check-year-goal/double-check-year-goal.html'
@@ -235,7 +258,12 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    actionItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
+                            return excuteItems.filter(function(item){ return item.type == 'action';});
+                        });
+                    },
                 },
                 controller: 'ConnectingStrategyStrategizingController',
                 templateUrl: 'pages/actionPlan/commit-your-action-plan/commit-your-action-plan.html'
@@ -255,7 +283,12 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    actionItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
+                            return excuteItems.filter(function(item){ return item.type == 'action';});
+                        });
+                    },
                 },
                 controller: 'Step4SummaryController',
                 templateUrl: 'pages/actionPlan/step4-summary/step4-summary.html'
@@ -275,7 +308,12 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    actionItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
+                            return excuteItems.filter(function(item){ return item.type == 'action';});
+                        });
+                    },
                 },
                 controller: 'Step4SummaryController',
                 templateUrl: 'pages/actionPlan/second-expert-review/second-expert-review.html'

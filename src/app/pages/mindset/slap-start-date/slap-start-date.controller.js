@@ -6,18 +6,24 @@
         .controller('SlapStartDateController', SlapStartDateController);
 
     /* @ngInject */
-    function SlapStartDateController($scope, $state, pageService, stepService, activeStep) {
+    function SlapStartDateController($scope, $state, pageService, stepService, activeStep, excuteItemService, excuteItems) {
 
         $scope.visible = true;
+        $scope.changed = false;
 
         var date = new Date();
         var currentMonth = (date.getMonth()+1).toString();
         var currentYear = date.getFullYear();
+        var excuteItems = excuteItems;
+
+        $scope.notifications = [];
 
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,
-            saved: false
+            saved: false,
+
+            valueChanged: false
         });
 
         if ($scope.data.year === null) {
@@ -28,15 +34,18 @@
             $scope.data.month = currentMonth
         }
 
-            $scope.$watch('data.month', function (value) {
-                if (value !== undefined) {
-                    if (+value < +currentMonth) {
-                        $scope.data.year = currentYear + 1;
-                    } else {
-                        $scope.data.year = currentYear;
-                    }
+        var beforeSave = moment({year: $scope.data.year, month: +$scope.data.month - 1, day:1});
+
+        $scope.$watch('data.month', function (value) {
+            if (value !== undefined) {
+                if (+value < +currentMonth) {
+                    $scope.data.year = currentYear + 1;
+                } else {
+                    $scope.data.year = currentYear;
                 }
-            });
+                $scope.changed = true;
+            }
+        });
 
         pageService
             .reset()
@@ -53,6 +62,26 @@
 
             return stepService.sendApiData(urls[urls.length - 1], $scope.data)
                 .then(function () {
+
+                    //If user changed the date and have excute items.
+                    if (($scope.data.month != (beforeSave.month() + 1)) && (excuteItems.length != 0)) {
+                        //As a matter of fact, the new startdate cannot be a past of now because of $scope.$watch('data.month', function (value) { line codes
+                        var newStartDate = moment({year: $scope.data.year, month: $scope.data.month, day:1});
+                        if (newStartDate.isBefore(moment(), 'day')) {
+                            $scope.notifications = [{name: 'Wrong Start Date', type: 'error', message: 'You cannot set SLAP Start Date to past.', show: true}];
+                        } else {
+                            $scope.notifications = [];
+
+                            /// Now move all excute items according to its start date
+                            var deltaMonths = $scope.data.month - (beforeSave.month()+1);
+                            if (deltaMonths < 0) // If selected a month in next year
+                                deltaMonths += 12; // should add 1 year
+
+                            _.each(excuteItems, function(item){
+                                
+                            });
+                        }
+                    }
                     stepService.setRequestApiFlag();
                     $scope.saved = true;
                     if(direction == 'forward')  

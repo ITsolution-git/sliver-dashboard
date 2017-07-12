@@ -7,7 +7,7 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">Second SLAP<span class="aqua-green">expert</span>Review</p>
+            <p class="logo panel-title">SLAP<span class="aqua-green">summary</span></p>
 
             <div class="col-xs-12 col-lg-12 sample-show-hide" ng-hide="showContent">
 
@@ -102,7 +102,8 @@
                                         <p>{{monthsShort[QMonths[0][0]]}}-{{monthsShort[QMonths[0][2]]}}</p>
                                     </div>
                                     <div class="col-xs-8">
-                                        <p style="font-size: 14px;">Using <span class="text-aqua">{{quaters[0].strategy.name}}</span> to connect with my ideal client.</p>
+                                        <p style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[0].strategy.id)}}
+                                        </span> to connect with my ideal client.</p>
                                     </div>
                                 </div>
                                 <div class="quater-box row">
@@ -111,7 +112,7 @@
                                         <p>{{monthsShort[QMonths[1][0]]}}-{{monthsShort[QMonths[1][2]]}}</p>
                                     </div>
                                     <div class="col-xs-8">
-                                        <p style="font-size: 14px;">Using <span class="text-aqua">{{quaters[1].strategy.name}}</span> to connect with my ideal client.</p>
+                                        <p style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[1].strategy.id)}}</span> to connect with my ideal client.</p>
                                     </div>
                                 </div>
                                 <div class="quater-box row">
@@ -127,7 +128,7 @@
                                         <p>{{monthsShort[QMonths[2][0]]}}-{{monthsShort[QMonths[2][2]]}}</p>
                                     </div>
                                     <div class="col-xs-8">
-                                        <p  style="font-size: 14px;">Using <span class="text-aqua">{{quaters[2].strategy.name}}</span> to connect with my ideal client.</p>
+                                        <p  style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[2].strategy.id)}}</span> to connect with my ideal client.</p>
                                     </div>
                                 </div>
                                 <div class="quater-box row">
@@ -136,13 +137,13 @@
                                         <p>{{monthsShort[QMonths[3][0]]}}-{{monthsShort[QMonths[3][2]]}}</p>
                                     </div>
                                     <div class="col-xs-8">
-                                        <p style="font-size: 14px;">Using <span class="text-aqua">{{quaters[3].strategy.name}}</span> to connect with my ideal client.</p>
+                                        <p style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[3].strategy.id)}}</span> to connect with my ideal client.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                        <div ng-init="showSummary4Detail = true" style="position: relative">
+                        <div ng-init="showSummary4Detail = false" style="position: relative">
                             <hr/>
                             <button class="btn btn-custom" ng-click="showSummary4Detail = !showSummary4Detail" >
                                 {{showSummary4Detail ? 'Close' : 'Show'}} Detailed View
@@ -151,7 +152,7 @@
 
                         <div class="sample-show-hide  p-w-xs-70" ng-show="showSummary4Detail">
                             <div ng-repeat="QID in [0, 1, 2, 3]" class="m-b-es-20">
-                                <p style="font-size: 1.3em">Q{{QID+1}} - {{quaters[QID].strategy.name}}</p>
+                                <p style="font-size: 1.3em">Q{{QID+1}} - {{getStrategyName(quaters[QID].strategy.id)}}</p>
                                 <p style="word-wrap: break-word">
                                     {{quaters[QID].strategy.description}}
                                 </p>

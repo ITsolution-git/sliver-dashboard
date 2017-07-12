@@ -74,7 +74,11 @@
                             <div ng-show="showStrategyBox" class="sample-show-hide">
                                 <div>
                                     I will use 
-                                    <span class="text-aqua">{{data[nthQut-1].strategy.name}}</span>
+                                    <select ng-model="data[nthQut-1].strategy.id" 
+                                        class="dropdown-box outline-0 active m-w-es-30" 
+                                        style="width: 200px" disabled> 
+                                        <option ng-value="strategy.id" ng-repeat="strategy in topRatingStrategies">{{strategy.name}}</option>
+                                    </select>
                                     to find my Ideal Client by
                                 </div>
                                 <div class="textarea-box">
@@ -93,20 +97,20 @@
                                 <div ng-repeat="monthID in QMonths[nthQut - 1]"  class="col-xs-12 col-sm-12">
                                     <p class="m-t-es-40">{{monthNames[monthID]}}</p>
                                     
-                                    <div ng-repeat="action in eventsByMonth[monthID].actionItems">
+                                    <div ng-repeat="action in filterActionItemsByMonth(monthID)">
 
                                         <div class="textarea-box" 
                                             style="width: calc(100% - 20px); display: inline-block">
-                                            <textarea ng-model="action.name" type="text"
+                                            <textarea ng-model="action.title" type="text"
                                                     class="monthly-cost outline-0 strategy-description" 
-                                                    ng-blur="checkActionCompleted(action, eventsByMonth[monthID], $event)"
+                                                    ng-blur="checkActionCompleted(action, monthID, $event)"
                                                     placeholder="Add ActionItem" 
                                                     style="width: 100%"
                                                     ng-keyup="autoExpand($event)" required ></textarea>
 
                                         </div>
 
-                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, eventsByMonth[monthID])" style="padding-top: 10px">
+                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID)" style="padding-top: 10px">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </span>
                                     </div>

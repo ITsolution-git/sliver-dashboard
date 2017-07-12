@@ -12,6 +12,7 @@
                 clients: []
             },
             data: {},
+            defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']
             },
@@ -37,6 +38,7 @@
 
             quaters:[],
             QMonths: [],
+            getStrategyName: getStrategyName
         });
 
         getData();
@@ -144,5 +146,11 @@
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             sendData();
         });
+
+        function getStrategyName(id) {
+            var obj = _.find($scope.defaultStrategies, {id: id});
+            if (obj) return obj.name;
+            else return ''
+        }
     }
 }());

@@ -3,7 +3,7 @@
 		<section class="slap-excute-dialog-header m-b-es-20" layout="row" layout-align="space-between center">
 			<slap-color-switch color="{{colorAction}}" name="Actions" value="filter.showActions"  static="true" ng-if="formData.type=='action'"></slap-color-switch>
 			<slap-color-switch color="{{colorSales}}" name="Sales" value="filter.showActions"  static="true" ng-if="formData.type=='sales'"></slap-color-switch>
-			<slap-color-switch color="{{colorReflextion}}" name="Reflextion" value="filter.showActions"  static="true" ng-if="formData.type=='reflextion'"></slap-color-switch>
+			<slap-color-switch color="{{colorReflextion}}" name="Pause & Reflect" value="filter.showActions"  static="true" ng-if="formData.type=='reflextion'"></slap-color-switch>
 			<a ng-click="closeDialog()"><i class="material-icons">highlight_off</i></a>
 		</section>
 		<section layout="column" ng-if="formData.type == 'action'">
@@ -119,10 +119,89 @@
 				</md-slider-container>
 			</form>
 		</section>
+
+		<section layout="column" ng-if="formData.type == 'reflextion'">
+			<!-- //Step1 -->
+			<section ng-if="formData.reflextWhat == ''" layout="row" layout-wrap layout-align="center center" style="width:350px;">
+				<h4 flex="100"> Reflext 
+				</h4>
+				<md-input-container flex="100" class="md-block">
+					<md-select ng-model="tempReflextWhat">
+						<md-option ng-value="'week'">Week</md-option>
+						<md-option ng-value="'month'">Month</md-option>
+						<md-option ng-value="'quater'">Quater</md-option>
+					</md-select>
+				</md-input-container>{{tempReflextWhat}}
+				<md-button ng-click="selectReflextWhat(tempReflextWhat)" class="md-primary" >
+					Next
+				</md-button>
+			</section>
+
+			<!-- Step2 -->
+			<section ng-if="formData.reflextWhat != '' && formData.title == ''" layout="row" layout-wrap layout-align="center center">
+				<section flex="{{emotion.id <= 4 ? 25 : 33}}" ng-repeat="emotion in reflextionData">
+					<md-card layout="column" layout-align='center center' class="emotion-card" ng-click="selectEmotion(emotion)">
+						<section style="font-size: 40px">{{emotion.icon}}</section>
+
+						<section>{{emotion.emotion}}</section>
+					</md-card>
+				</section>
+				<md-button ng-click="formData.reflextWhat = ''" class="md-primary" >
+					Back
+				</md-button>
+			</section>
+
+			<!-- Step3 -->
+			<section ng-if="formData.reflextWhat != '' && formData.title != ''" layout="row" layout-wrap layout-align="center center">
+				<section class="text-color-strong">
+					<section layout="column">
+						<section layout="row" layout-align="space-between center">
+							<h3 flex> 
+								How do you feel today? {{formData.feeling.icon}} {{formData.feeling.emotion}}
+								
+							</h3>
+							<md-button flex="15" class="md-primary" ng-click="formData.title = ''">Edit Feeling</md-button>
+						</section>
+						
+						<p style="font-size: 1.1em">
+							{{formData.feeling.description1}}
+						</p>
+					</section>
+
+					<section class=" m-w-es-30">
+						<section ng-repeat="qa in formData.feeling.qas">
+							<p>{{qa.question}}</p>
+							<md-input-container class="md-block">
+								<label></label>
+								<textarea ng-model="qa.answer" 	rows="2" md-select-on-focus></textarea>
+						    </md-input-container>
+						</section>
+
+						<p style="font-size: 1.1em">{{formData.feeling.description2}}</p>
+					</section>
+
+
+					<section class=" m-w-es-30">
+						<h3>Recommended Actions</h3>
+						<p style="font-size: 1.1em">{{formData.feeling.description3}}</p>
+						<section ng-repeat="action in formData.feeling.actions">
+							<section layout="row" layout-align="space-between center">
+								<h4>Action{{$index+1}}</h4>
+								<md-button flex="15" class="md-primary" ng-if="action.added==false" ng-click="action.added=true">ADD ACTION</md-button>
+								<md-button flex="15" class="md-primary" ng-if="action.added==true" disabled>ACTION ADDED</md-button>
+							</section>
+							<span>{{action.title}}</span>
+						</section>
+					</section>
+				</section>
+			</section>
+		</section>
 	</section>
 
-	<md-dialog-actions>
-		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="curMode == 'edit'" ng-disabled="form.$invalid">
+	<!--hide edit & add button in feeling selecting screen-->
+	<md-dialog-actions ng-if="(!(formData.type=='reflextion' && (formData.title == '' || formData.reflextWhat == '')))">
+		
+		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="(curMode == 'edit')" ng-disabled="form.$invalid">
 			Edit
 		</md-button>
 		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="curMode == 'add'" ng-disabled="form.$invalid">

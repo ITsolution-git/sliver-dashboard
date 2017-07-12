@@ -30,7 +30,7 @@
         if ($scope.data.eventsByMonth.length == 0) {
             $scope.data.eventsByMonth = actionplanService.getDefaultEvents();
         }
-
+        
         $timeout(function() {
             _.each($scope.data.eventsByMonth, function(month){
                 addNewEvents(month);

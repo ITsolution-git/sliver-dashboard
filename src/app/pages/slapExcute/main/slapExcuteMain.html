@@ -6,7 +6,7 @@
 		<md-card-content flex="100" layout="row" layout-align="space-around center">
 			<span flex="15"  class="text-color-strong"> Revenue Status&nbsp;&nbsp;&nbsp; </span>
 			<section flex="70">
-				<uib-progressbar class="one-line-bar" max="100" value="23"><span style="color:white; white-space:nowrap;">23</span></uib-progressbar>
+				<uib-progressbar class="one-line-bar" max="100" value="dashData.TRevenueGoalPercent"><span style="color:white; white-space:nowrap;">{{dashData.TRevenueGoalPercent}}%</span></uib-progressbar>
 			</section>
 			<md-button flex="15" ng-click="changeView()">Review Results&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></md-button>
 
@@ -21,8 +21,8 @@
 				<section flex=50 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
-					    max="123"
-					    current="23"
+					    max="dashData.quaterTotalActions"
+					    current="dashData.quaterClosedActions"
 					    color="{{colorAction}}"
 					    bgcolor="{{progress.bgcolor}}"
 					    radius="{{progress.radius}}"
@@ -36,8 +36,9 @@
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
 					    <section class="progress-text">
-					    	<p class="text-color-strong">27/72</p>
-					    	<small>Q2 Action Items</small>
+
+							<p class="text-color-strong">{{dashData.quaterClosedActions}}/{{dashData.quaterTotalActions}}</p>
+					    	<small>Q{{currentQuater.nth}} Action Items</small>
 					    </section>
 					</section>
 
@@ -48,7 +49,7 @@
 						<span  class="md-headline text-color-middle">You're rockin it! Keep that way.</span>
 						<br/>
 						<small>
-							You have done 27 out of 72 action items this quater.
+							You have done {{dashData.quaterClosedActions}} out of {{dashData.quaterTotalActions}} action items this quater.
 						</small>
 					</p>
 
@@ -63,8 +64,8 @@
 				<section flex=50 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
-					    max="123"
-					    current="23"
+					    max="100"
+					    current="dashData.cQRevenueGoalPercent"
 					    color="{{colorSales}}"
 					    bgcolor="{{progress.bgcolor}}"
 					    radius="{{progress.radius}}"
@@ -78,8 +79,9 @@
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
 					    <section class="progress-text">
-					    	<p class="text-color-strong">75%</p>
-					    	<small>From you Q2 revenue goals</small>
+
+					    	<p class="text-color-strong">{{dashData.cQRevenueGoalPercent}}%</p>
+					    	<small>From you Q{{currentQuater.nth}} revenue goals</small>
 					    </section>
 					</section>
 
@@ -89,7 +91,7 @@
 						<span  class="md-headline text-color-middle">It's time to make deals!</span>
 						<br/>
 						<small>
-							You have 7 days to reach you Q3 revenue goal.
+							You have {{dashData.daysLeft}} days to reach you Q{{currentQuater.nth}} revenue goal.
 						</small>
 					</p>
 
@@ -104,8 +106,8 @@
 				<section flex=50 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
-					    max="123"
-					    current="23"
+					    max="dashData.daysPassed"
+					    current="dashData.daysReflected"
 					    color="{{colorReflextion}}"
 					    bgcolor="{{progress.bgcolor}}"
 					    radius="{{progress.radius}}"
@@ -119,7 +121,7 @@
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
 					    <section class="progress-text">
-					    	<p class="text-color-strong">20/23</p>
+					    	<p class="text-color-strong">{{dashData.daysReflected}}/{{dashData.daysPassed}}</p>
 					    	<small>Days you passed and reflected</small>
 					    </section>
 					</section>
@@ -143,7 +145,7 @@
 
 
 
-	<section layout="column" layout="column">
+	<section layout="column" layout="column" ng-if="mainView=='tab'">
 
 		<md-toolbar>
 			<div class="md-toolbar-tools" layout="row">
@@ -155,7 +157,7 @@
 					<span>Filter By Type&nbsp&nbsp</span>
 					<slap-color-switch color="{{colorAction}}" name="Actions" value="filter.showActions" static="false"></slap-color-switch>&nbsp&nbsp
 					<slap-color-switch color="{{colorSales}}" name="Sales" value="filter.showSales"  static="false"></slap-color-switch>&nbsp&nbsp
-					<slap-color-switch color="{{colorReflextion}}" name="Reflextion" value="filter.showReflextion"  static="false"></slap-color-switch>
+					<slap-color-switch color="{{colorReflextion}}" name="Reflection" value="filter.showReflextion"  static="false"></slap-color-switch>
 				</div>
 			</div>
 		</md-toolbar>
@@ -166,52 +168,19 @@
 				<md-card layout="column"  flex layout-fill ng-cloak>
 
 					<md-content style="height: auto">
-						<section >
+						<!--Original design-->
+						<!--<section >
 							<md-subheader class="text-color-strong">Today</md-subheader>
 							<md-list class="text-color-main">
-								<md-list-item ng-repeat-start="item in filtered('today',  'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
+								<md-list-item ng-repeat-start="item in filteredForTabView('today',  'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
 									
 									<slap-list-item item="item" title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
 								</md-list-item>
 								<md-divider ng-if="!$last" ng-repeat-end></md-divider>
 							</md-list>
-						</section>
+						</section>-->
+						<!--filtered('week',  'upcoming') quater year...-->
 						
-						<section >
-							<md-subheader class="text-color-strong">This week</md-subheader>
-							<md-list class="text-color-main">
-								<md-list-item ng-repeat-start="item in filtered('week',  'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
-									
-									<slap-list-item item="item"  title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}"  open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
-								</md-list-item>
-								<md-divider ng-if="!$last" ng-repeat-end></md-divider>
-							</md-list>
-						</section>
-
-
-						<section >
-							<md-subheader class="text-color-strong">This Month</md-subheader>
-							<md-list class="text-color-main">
-								<md-list-item ng-repeat-start="item in filtered('month',  'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
-									
-									<slap-list-item item="item"  title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
-								</md-list-item>
-								<md-divider ng-if="!$last" ng-repeat-end></md-divider>
-							</md-list>
-						</section>
-
-
-
-						<section >
-							<md-subheader class="text-color-strong">Year</md-subheader>
-							<md-list class="text-color-main">
-								<md-list-item ng-repeat-start="item in filtered('year', 'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
-									
-									<slap-list-item item="item"  title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
-								</md-list-item>
-								<md-divider ng-if="!$last" ng-repeat-end></md-divider>
-							</md-list>
-						</section>
 					</md-content>
 				</md-card>
 			</div>
@@ -220,24 +189,57 @@
 				
 				<md-card layout="column"  flex layout-fill ng-cloak>
 
-					<md-content style="height: auto">
-						<section >
-							<md-subheader class="text-color-strong">Today</md-subheader>
-							<md-list class="text-color-main">
-								<md-list-item ng-repeat-start="item in filtered('week',  'done')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
-									
-									<slap-list-item item="item"  title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
-								</md-list-item>
-								<md-divider ng-if="!$last" ng-repeat-end></md-divider>
-							</md-list>
-						</section>
-					</md-content>
 				</md-card>
 			</div>
 		</ng-switch>
 		</md-content>
 	</section>
 
+
+	<section layout="column" layout="column" ng-if="mainView=='list'" class="m-t-es-50">
+		<md-toolbar layout="row" layout-align="start center ">		
+			<md-select ng-model="filter.period" flex="50">
+				<md-option ng-value="'week'">This Week</md-option>
+				<md-option ng-value="'month'">This Month</md-option>
+				<md-option ng-repeat="quaterID in [0,1,2,3]" ng-value="'quater'+quaterID">{{quaterID + 1 == currentQuater.nth ? 'This Quater' : 'Q' + (quaterID+1)}}</md-option>
+			</md-select>
+			<span>{{filter.periodStr}}</span>
+		</md-toolbar>
+		<md-toolbar>
+			<div class="md-toolbar-tools" layout="row">
+				<md-tabs md-selected="tabs.selectedIndex" flex="50">
+					<md-tab id="tab-overdue-id" aria-controls="tab-overdue" ng-click="filter.status='overdue'">OVERDUE</md-tab>
+					<md-tab id="tab-upcoming-id" aria-controls="tab-upcoming" ng-click="filter.status='upcoming'">UPCOMING</md-tab>
+					<md-tab id="tab-done-id" aria-controls="tab-done" ng-click="filter.status='done'">DONE</md-tab>
+				</md-tabs>
+				<div flex="50" layout="row" layout-align="end center" class="md-body-1">
+					<span>Filter By Type&nbsp&nbsp</span>
+					<slap-color-switch color="{{colorAction}}" name="Actions" value="filter.showActions" static="false"></slap-color-switch>&nbsp&nbsp
+					<slap-color-switch color="{{colorSales}}" name="Sales" value="filter.showSales"  static="false"></slap-color-switch>&nbsp&nbsp
+					<slap-color-switch color="{{colorReflextion}}" name="Reflection" value="filter.showReflextion"  static="false"></slap-color-switch>
+				</div>
+			</div>
+		</md-toolbar>
+
+		<md-content layout-padding flex class="tab-content">
+			<md-card layout="column"  flex layout-fill ng-cloak>
+
+				<md-content style="height: auto">
+					<section >
+						<md-list class="text-color-main">
+							<md-list-item ng-repeat-start="item in filteredForListView()" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
+								<slap-list-item item="item" title="{{item.type=='sales' ? revenues[item.title-1].name : (item.type=='reflextion' ? capitalize(item.reflextWhat) + 'ly Reflection' : item.title )}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" layout-align='space-between center' flex="100"></slap-list-item>
+							</md-list-item>
+							<md-divider ng-if="!$last" ng-repeat-end></md-divider>
+						</md-list>
+					</section>
+					
+					
+				</md-content>
+			</md-card>
+			
+		</md-content>
+	</section>
 </div>
 
 
@@ -264,8 +266,8 @@
 				<section flex=30 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
-					    max="123"
-					    current="23"
+					    max="dashData.totalQuaterRevenue"
+					    current="dashData.closedQuaterRevenue"
 					    color="{{colorSales}}"
 					    bgcolor="{{progress.bgcolor}}"
 					    radius="{{progress.radius}}"
@@ -279,8 +281,8 @@
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
 					    <section class="progress-text">
-					    	<p class="text-color-strong">{{ '1000' | currency}}</p>
-					    	<small>Out of 44400 Q2 Revenue goal</small>
+					    	<p class="text-color-strong">{{ dashData.closedQuaterRevenue | currency}}</p>
+					    	<small>Out of {{dashData.totalQuaterRevenue}} Q{{currentQuater.nth}} Revenue goal</small>
 					    </section>
 					</section>
 
@@ -288,10 +290,10 @@
 				</section>
 				<section flex=70 layout="column" layout-align="center center">
 					<p>
-						<span  class="md-headline text-color-middle">Your Q2 Goal Progress</span>
+						<span  class="md-headline text-color-middle">Your {{currentQuater.nth}} Goal Progress</span>
 						<br/>
 						<small>
-							You need to sell {{ '2000' | currency}} to reach your Q2 revenue goal.
+							You need to sell {{ dashData.totalQuaterRevenue | currency}} to reach your Q{{currentQuater.nth}} revenue goal.
 						</small>
 					</p>
 
@@ -306,8 +308,8 @@
 				<section flex=30 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
-					    max="123"
-					    current="23"
+					    max="dashData.totalYearRevenue"
+					    current="dashData.closedYearRevenue"
 					    color="{{colorSales}}"
 					    bgcolor="{{progress.bgcolor}}"
 					    radius="{{progress.radius}}"
@@ -321,8 +323,8 @@
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
 					    <section class="progress-text">
-					    	<p class="text-color-strong">{{ '70003' | currency}}</p>
-                            <small>Out of {{ '230343' | currency }} annual revenue goal</small>
+					    	<p class="text-color-strong">{{ dashData.closedYearRevenue | currency}}</p>
+                            <small>Out of {{ dashData.totalYearRevenue | currency }} annual revenue goal</small>
 					    </section>
 					</section>
 
@@ -332,7 +334,7 @@
 						<span  class="md-headline text-color-middle">Your Annual Goal Progress</span>
 						<br/>
 						<small>
-							You need to sell {{ '10002' | currency }} to reach your annual revenue goal.
+							You need to sell {{ dashData.totalYearRevenue | currency }} to reach your annual revenue goal.
 						</small>
 					</p>
 
@@ -351,11 +353,11 @@
             <h4  class="text-color-strong">Results By Revenue Streams</h4>
 			<section layout="row" layout-align="end center">
 				<span>Filter By Quater&nbsp&nbsp</span>
-				<slap-color-switch color="{{colorSales}}" name="Q1" value="filter.showQ"  static="false" quater="1"></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Q2" value="filter.showQ"  static="false" quater="2" ></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Q3" value="filter.showQ"  static="false" quater="3"  ></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Q4" value="filter.showQ "  static="false" quater="4" ></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Year" value="filter.showQ "  static="false" quater="5" ></slap-color-switch>
+				<slap-color-switch color="{{colorSales}}" name="Q1" value="filter.showQ" ng-click="filterSales()" static="false" quater="1"></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Q2" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="2" ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Q3" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="3"  ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Q4" value="filter.showQ "  ng-click="filterSales()"  static="false" quater="4" ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorSales}}" name="Year" value="filter.showQ "  ng-click="filterSales()"  static="false" quater="5" ></slap-color-switch>
 			</section>
         </div>
 		<md-card layout="column"  flex layout-fill ng-cloak>

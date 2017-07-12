@@ -5,10 +5,11 @@
         .module('app.pages.actionPlan')
         .controller('ConnectingStrategyStrategizingController', ConnectingStrategyStrategizingController);
 
-    function ConnectingStrategyStrategizingController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService) {
+    function ConnectingStrategyStrategizingController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService, actionItems, excuteItemService, $q) {
 
         angular.extend($scope, activeStep.model, {
             forward: true,
+            actionItems: actionItems,
             sendData: sendData,
             startDate: {},
             QMonths: [],
@@ -23,7 +24,9 @@
             revenues: [],
 
             checkValidity: checkValidity,
-            notifications: []
+            notifications: [],
+
+            filterActionItemsByMonth: filterActionItemsByMonth
         });
 
         pageService
@@ -33,15 +36,17 @@
             .setPageTitle(stepService.getActiveStep().name);
 
         getData();
-        
+
         var nextprevStep = stepService.getNextAndPrevStep();
         var urls = activeStep.sref.split('.');
         $scope.pageName = urls[urls.length - 1];
         
         $timeout(function(){
             $scope.autoExpand('strategy-description');
+            
         },0);
         
+
         function getData() {
             // var urls = _.get($state.current, 'params.prev.sref').split('.');
             var url = 'allMindsetUser';
@@ -56,6 +61,20 @@
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 2));
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 3));
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 4));
+
+                        
+                        //If Action Item is empty, should load default action items.
+                        //TODO: When user chooses another strategy for that quater, should updated it?
+                        if($scope.actionItems.length == 0) {
+                            loadDefaultActionItems();
+                        }
+
+                        $timeout(function(){
+                            for (var i = 0; i < 12; i++) {
+                                addNewActions(i);
+                            }
+                        });
+
                     }
                 });
             
@@ -73,22 +92,14 @@
             stepService.getApiData(url) //TODO: Think over the dynamics url
                 .then(function (response) {
                     if (response && response.status === 200) {
+                        
                         $scope.eventsByMonth = response.data.worldAroundYou.eventsByMonth;
-                        if ($scope.pageName != 'quarterlyGoals') {
-                            $timeout(function() {
-                                _.each($scope.eventsByMonth, function(month){
-                                    addNewActions(month);
-                                });
-                            });
-    
-                        }
                         $timeout(function(){
                             $scope.autoExpand('strategy-description');
                         },1000);
                     }
                 });
-
-
+                
             stepService.getApiData('revenueStreams')  //TODO: request api? data service
                 .then(function (response) {
                     if (response && response.status === 200) {
@@ -97,6 +108,28 @@
                     }
                 });
 
+        }
+
+
+        function loadDefaultActionItems(){
+            _.each($scope.data, function(quater, QID){
+
+                var itemsByMonth = actionplanService.getDefaultActionsByStrategy(quater.strategy.id);
+                _.each(itemsByMonth.actions, function(itemsMonths, monthID) {
+                    var dueDate = moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + 3 * QID - 1 + monthID)/12)), month: $scope.QMonths[QID][monthID], day: 1 }).endOf('month').format('YYYY-MM-DD');
+                    console.log(dueDate);
+                    _.each(itemsMonths, function(item){
+                        //Set Due date to end of that month
+                        var copied = angular.copy(item);
+                        copied.dueDate = dueDate;
+                        excuteItemService.createItem(copied).then(function(item){
+                            $scope.actionItems.push(item.data);
+                        }); 
+                        
+                    });
+                });
+            })
+            
         }
 
         function initiateUnits() {
@@ -116,37 +149,36 @@
         }
 
 
-        function addNewActions(month, model) {
-            var index;
-
-            if (model) {
-                index = _.findIndex(month, model);
-            }
+        function addNewActions(monthID, event) {
 
             var force = false;
 
-            if (_.isUndefined(month.actionItems)) {
-                month.actionItems = [];
-                force = true;
-            } else {
-            
-                if (month.actionItems.length > 0) {
-                    var lastItem = month.actionItems[month  .actionItems.length - 1];
-                    if (!angular.equals(lastItem, {name:''})) {
-                        force = true;
-                    }
+            var monthActions = filterActionItemsByMonth(monthID);
+
+            if (monthActions.length > 0) {
+                var lastItem = monthActions[monthActions.length - 1];
+                if (lastItem.title != '') {
+                    force = true;
                 }
+            } else {
+                force = true;
             }
 
-            if (month.actionItems.length === 0 || month.actionItems.length === index + 1 || force) {
-                month.actionItems.push({name: ''});
+            if (force) {
+                $scope.actionItems.push({
+                    type: 'action', 
+                    dueDate: moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + monthID)/12)), month: monthID, day: 1 }).endOf('month').format('YYYY-MM-DD'),
+                    progress: 0, 
+                    feeling: null, 
+                    notes: '', 
+                    title:''});
             }
         }
         
 
-        function checkActionCompleted(action, month, evt) {
-            if (action.name.trim() != '') {
-                addNewActions(month, event);
+        function checkActionCompleted(action, monthID, evt) {
+            if (action.title.trim() != '') {
+                addNewActions(monthID, event);
             } else {
             }
         }
@@ -184,13 +216,22 @@
         function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-            
-            if ((($scope.pageName == 'quarterlyGoals') || ($scope.pageName == 'commitToYourActionPlan')) && !checkQuaterUnitsValid()) {
+            //Validations Before sending Data
+
+            if ((($scope.pageName == 'quarterlyGoals') || ($scope.pageName == ' commitToYourActionPlan')) && !checkQuaterUnitsValid()) { //quater units sum should same as quaterly goal.
                 $('body').animate({
                     scrollTop: $("slap-notifications").offset().top
                 }, 400);
                 return false;
             }
+
+            if ((($scope.pageName == 'connectingStrategyStrategizing')) && !checkQuaterStrategiesValid()) { //quater units sum should same as quaterly goal.
+                $('body').animate({
+                    scrollTop: $("slap-notifications").offset().top
+                }, 400);
+                return false;
+            }
+
             var nextprevStep = stepService.getNextAndPrevStep();
             
             
@@ -198,13 +239,8 @@
 
             var data = {};
             
-            var eventsByMonth = _.map($scope.eventsByMonth, function (month) {
-                if ($scope.pageName != 'quarterlyGoals') {
-                    return {events: month.events, actionItems: month.actionItems.slice(0, month.actionItems.length - 1)};
-                } else {
-                    return {events: month.events, actionItems: month.actionItems};
-                }
-                
+            var eventsByMonth = _.map($scope.eventsByMonth, function (month) {    
+                return {events: month.events};
             });
             data.eventsByMonth = eventsByMonth;
 
@@ -219,7 +255,16 @@
                         else if(direction == 'backward')
                             $state.go(nextprevStep.prevStep.sref);
                     } else {
-                        return stepService.sendApiData('worldAroundYou', data)
+                        $q.all($scope.actionItems.map(function(item){
+                            if (item.title == '')
+                                return true;
+                            if (_.isUndefined(item._id)) {
+                                return excuteItemService.createItem(item);
+                            } else {
+                                return item.save();
+                            }
+                        })).then(function(resp){
+                            return stepService.sendApiData('worldAroundYou', data)
                             .then(function () {
                                 $scope.saved = true;
                                 stepService.setRequestApiFlag();
@@ -227,7 +272,8 @@
                                     $state.go(nextprevStep.nextStep.sref); 
                                 else if(direction == 'backward')
                                     $state.go(nextprevStep.prevStep.sref);
-                            });
+                            });    
+                        })
                     }
                 });
         }
@@ -249,11 +295,35 @@
             return valid;
         }
 
+        function checkQuaterStrategiesValid() {
+            var valid = true;
+            _.each($scope.data, function(quater, index) {
+                if ((!quater.strategy) || (!quater.strategy.id)) {
+                    valid = false;
+                }
+            });
+
+            if (!valid) {
+                addNotification($scope.notifications, {name: 'Invalid Strategy', type: 'error', message:'Please choose strategies for each Quater ', show: true});
+            } else {
+                removeNotificaton($scope.notifications, 'Invalid Strategy');
+            }
+            return valid;
+        }
+
         function deleteAction(action, month) {
-            if (month.actionItems.length > 1) {
-                _.remove(month.actionItems, function (n) {
-                    return n === action;
-                });
+            if ($scope.actionItems.length > 1) {
+                if (!_.isUndefined(action._id)) {
+                    action.remove().then(function(response){
+                        _.remove($scope.actionItems, function (n) {
+                            return n === action;
+                        });
+                    });
+                } else {
+                    _.remove($scope.actionItems, function (n) {
+                            return n === action;
+                        });
+                }
             }
         }
 
@@ -263,6 +333,12 @@
                 var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
                 if (scrollHeight != 0) 
                     element.style.height =  scrollHeight + "px";    
+            });
+        }
+
+        function filterActionItemsByMonth(monthID) {
+            return $scope.actionItems.filter(function(item){
+                return moment(item.dueDate).month() == monthID;
             });
         }
 

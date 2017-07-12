@@ -76,7 +76,10 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    excuteItemServicecuteItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems();
+                    },
                 },
                 controller: 'SlapMindsetController',
                 templateUrl: 'pages/mindset/get-slap-mindset/get-slap-mindset.html'
@@ -216,7 +219,10 @@
                                         $state.go(finishedStep.sref);
                                     });
                             })
-                    }
+                    },
+                    excuteItems: function (excuteItemService) {
+                        return excuteItemService.loadExcuteItems();
+                    },
                 },
                 controller: 'SlapStartDateController',
                 templateUrl: 'pages/mindset/slap-start-date/slap-start-date.html'
