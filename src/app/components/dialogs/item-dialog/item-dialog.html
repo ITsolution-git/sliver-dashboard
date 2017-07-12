@@ -139,6 +139,9 @@
 
 			<!-- Step2 -->
 			<section ng-if="formData.reflextWhat != '' && formData.title == ''" layout="row" layout-wrap layout-align="center center">
+				<section flex="100">
+					<h3>{{capitalize(formData.reflextWhat) + 'ly Reflection'}} </h3>
+				</section>
 				<section flex="{{emotion.id <= 4 ? 25 : 33}}" ng-repeat="emotion in reflextionData">
 					<md-card layout="column" layout-align='center center' class="emotion-card" ng-click="selectEmotion(emotion)">
 						<section style="font-size: 40px">{{emotion.icon}}</section>

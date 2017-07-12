@@ -71,7 +71,8 @@
                         <p>By <span class="aqua-green">{{months[+slapStartDate.month]}} 31, {{slapStartDate.year}}</span>, I will sell</p>
 
                         <ul class="revenue-summary row">
-                            <li class="col-xs-4 col-sm-3 col-md-2" ng-repeat="revenue in model.revenues">
+                            <li class="col-xs-4 col-sm-3 col-md-2" ng-repeat="revenue in model.revenues | filter: {deleted: false}" >
+
                                 <p>
                                     <span class="aqua-green">{{revenue.unit}} Units</span> of <span class="aqua-green">{{revenue.name}} </span> for avg. price <span  class="aqua-green">${{revenue.sellingPrice}}</span>.
                                 </p>

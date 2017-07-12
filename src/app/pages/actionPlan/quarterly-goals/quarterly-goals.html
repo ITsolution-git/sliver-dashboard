@@ -90,49 +90,20 @@
                                 </div>
                             </div>
                         </div>
-
-
-                            <div ng-show="showActionItemsBox" class="sample-show-hide">
-                                <div ng-repeat="monthID in QMonths[nthQut - 1]"  class="col-xs-12 col-sm-12">
-                                    <p class="m-t-es-40">{{monthNames[monthID]}}</p>
-                                    
-                                    <div ng-repeat="action in filterActionItemsByMonth(monthID)">
-
-                                        <div class="textarea-box" 
-                                            style="width: calc(100% - 20px); display: inline-block">
-                                            <textarea ng-model="action.title" type="text"
-                                                    class="monthly-cost outline-0 strategy-description" 
-                                                    ng-blur="checkActionCompleted(action, monthID, $event)"
-                                                    placeholder="Add ActionItem" 
-                                                    style="width: 100%"
-                                                    ng-keyup="autoExpand($event)" required ></textarea>
-
-                                        </div>
-
-                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID)" style="padding-top: 10px">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="slap-work-box m-t-es-40 col-xs-12" ng-init="showActionItemsBox=true">
                             <slap-work-moment-icon visible="showActionItemsBox"  type="'moment'" title="'ActionItems'"></slap-work-moment-icon>
-
                             <div ng-show="showActionItemsBox" class="sample-show-hide">
                                 <div ng-repeat="monthID in QMonths[nthQut - 1]"  class="col-xs-12 col-sm-12">
                                     <p class="m-t-es-40">{{monthNames[monthID]}}</p>
                                     
                                     <div ng-repeat="action in filterActionItemsByMonth(monthID)">
 
-                                        <div class="textarea-box" 
-                                            style="width: calc(100% - 20px); display: inline-block">
+                                        <div class="textarea-box" ng-if="action.title!=''" >
                                             <textarea ng-model="action.title" type="text"
                                                     class="monthly-cost outline-0 strategy-description" 
-    
                                                     placeholder="Add ActionItem" 
                                                     style="width: 100%"
-                                                    ng-keyup="autoExpand($event)" required disabled></textarea>
+                                                    ng-keyup="autoExpand($event)" required   disabled></textarea>
 
                                         </div>
 

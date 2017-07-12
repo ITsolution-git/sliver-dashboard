@@ -309,7 +309,8 @@
                 if(isValid)
                     results.push(item);
             });
-            return results;
+            return _.sortBy(results, ['type', 'dueDate']);
+             
             
         }
 
@@ -584,12 +585,13 @@
                         dataUpdated();
                     });
                 } else if ($scope.formData.type == 'reflextion') {
+                    $scope.formData.progress = 100;
                     $scope.formData.save()
                     .then(function(response){
                         var index = _.findIndex($scope.excuteItems, {_id: $scope.formData._id});
                         $scope.excuteItems[index] = $scope.formData;
                         // showToast('Updated ' + capitalize($scope.formData.type) + ' ' + $scope.revenues[formData.title].name);
-                        showToast('Updated ' + capitalize($scope.formData.type) + ' ' + 'Item');
+                        showToast('Reflected ' + capitalize($scope.formData.reflextWhat));
                         dataUpdated();
                     });
                 }
@@ -788,7 +790,7 @@
 
             });
 
-            current = moment($scope.startDate);
+            current = moment($scope.startDate).endOf('month');
             for (var i = 0; i < 12; i++) {
                 var type = 'month';
                 if ((i+1) % 3 == 0) 

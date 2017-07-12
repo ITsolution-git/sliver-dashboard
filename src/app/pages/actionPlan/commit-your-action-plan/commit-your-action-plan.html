@@ -98,26 +98,25 @@
                                 <div ng-repeat="monthID in QMonths[nthQut - 1]"  class="col-xs-12 col-sm-12">
                                     <p class="m-t-es-40">{{monthNames[monthID]}}</p>
                                     
-                                    <div ng-repeat="action in eventsByMonth[monthID].actionItems">
+                                    <div ng-repeat="action in filterActionItemsByMonth(monthID)">
 
                                         <div class="textarea-box" 
                                             style="width: calc(100% - 20px); display: inline-block">
-                                            <textarea ng-model="action.name" type="text"
+                                            <textarea ng-model="action.title" type="text"
                                                     class="monthly-cost outline-0 strategy-description" 
-                                                    ng-blur="checkActionCompleted(action, eventsByMonth[monthID], $event)"
+                                                    ng-blur="checkActionCompleted(action, monthID, $event)"
                                                     placeholder="Add ActionItem" 
                                                     style="width: 100%"
                                                     ng-keyup="autoExpand($event)" required ></textarea>
 
                                         </div>
 
-                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, eventsByMonth[monthID])" style="padding-top: 10px">
+                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID)" style="padding-top: 10px">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
 
@@ -143,7 +142,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="revenue in revenues">
+                            <tr ng-repeat="revenue in revenues | filter: {deleted: false}">
                                 <td>{{revenue.name}}</td>
                                 <td ng-repeat="nthQut in [1,2,3,4]">
                                     <div class="input-box" >
