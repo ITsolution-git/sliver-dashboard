@@ -1,0 +1,13 @@
+<div class="col-md-12" ng-show="$ctrl.breadcrumbs.showBC">
+    <ol class="breadcrumb" ng-show="$ctrl.breadcrumbs.crumbs.length > 0">
+        <li><a ui-sref="home"><i class="fa fa-home"></i></a></li>
+        <li ng-repeat="crumb in $ctrl.breadcrumbs.crumbs"
+            ng-class="{'active':$ctrl.breadcrumbs.crumbs.length-1 == $index}">
+            <a ng-hide="$ctrl.breadcrumbs.crumbs.length-1 == $index"
+               ui-sref="{{crumb.path}}(crumb.opts)">{{crumb.name}}</a>
+            <span ng-show="$ctrl.breadcrumbs.crumbs.length-1 == $index">{{crumb.name}}</span>
+        </li>
+    </ol>
+
+    <h1>{{$ctrl.breadcrumbs.h1}}</h1>
+</div>

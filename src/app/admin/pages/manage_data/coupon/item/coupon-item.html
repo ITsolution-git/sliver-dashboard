@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!--<h1>Create Products</h1>-->
+                    <form name="couponForm" novalidate>
+                        <div class="col-xs-12">
+                            <div class="text-right col-xs-12">
+                                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+                                <!--<button type="submit" class="btn btn-default" ng-click="apply()" ng-show="productID">Apply</button>-->
+                                <a class="btn btn-danger" ui-sref="coupon.list">Cancel</a>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+
+                        <div class="form-group" ng-class="{'has-error' : !couponForm.name.$valid && couponForm.name.$dirty || couponForm.$submitted}">
+                            <label for="couponName">Coupon name *</label>
+                            <input type="text" class="form-control" id="couponName"
+                                   ng-model="coupon.name" required name="name">
+                            <div class="help-block help-block-error" ng-show="couponForm.name.$invalid && couponForm.name.$dirty">
+                                <span ng-show="couponForm.name.$error.required">Required</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-xs-10" ng-class="{'has-error' : !couponForm.code.$valid && couponForm.code.$dirty || couponForm.$submitted}">
+                                <label for="couponCode">Coupon code *</label>
+                                <input type="text" class="form-control" id="couponCode"
+                                       ng-model="coupon.code" name="code">
+                                <div class="help-block help-block-error" ng-show="errors['couponCode']">
+                                    <span ng-show="couponForm.code.$error.required">Required</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-2 btn-margin">
+                                <button type="button" class="btn btn-success" ng-click="generate()">Generate</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Coupon Type</label><br>
+                                    <input
+                                            type="checkbox"
+                                            bs-switch
+                                            ng-model="coupon.switchType"
+                                            switch-on-text="Percentage"
+                                            switch-off-text="Fixed Amount"
+                                            switch-change="typeChange()"
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" ng-class="{'has-error' : !couponForm.amount.$valid && couponForm.amount.$dirty || couponForm.$submitted}">
+                                    <label for="couponAmount">Amount *</label>
+                                    <input type="text" class="form-control" id="couponAmount" name="amount"
+                                           ng-model="coupon.amount" placeholder="{{ coupon.switchType ? '%' : 'USD' }}" required>
+
+                                    <div class="help-block help-block-error" ng-show="couponForm.amount.$invalid && couponForm.amount.$dirty">
+                                        <span ng-show="couponForm.amount.$error.required">Required</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" ng-class="{'has-error' : errors['expertHours']}">
+                                    <label for="applyOn">Apply On*</label>
+
+                                    <select
+                                        name="" id="applyOn" ng-model="coupon.plan" class="form-control"
+                                            ng-options="plan.productName for plan in plans track by plan._id"></select>
+
+                                    <div class="help-block help-block-error" ng-show="errors['expertHours']"
+                                         ng-bind-html="errors['expertHours']"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error' : errors['redemption']}">
+                                    <label for="redemption">Maximum Redemptions</label>
+                                    <input type="text" class="form-control" id="redemption" ng-model="coupon.redemption">
+
+                                    <div class="help-block help-block-error" ng-show="errors['redemption']"
+                                         ng-bind-html="errors['redemption']"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-6">
+                                    <popup-date label="Valid from" ng-model="coupon.dateFrom"></popup-date>
+                                </div>
+                                <div class="col-md-6">
+                                    <popup-date label="Valid until" ng-model="coupon.dateUntil"></popup-date>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12" ng-init="coupon.duration">
+                                <div class="form-inline">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="oneTime" ng-model="coupon.duration"
+                                               ng-value="oneTime" ng-change="coupon.durationLimited = null">
+                                        One Time
+                                    </label>
+                                </div>
+                                <div class="form-inline">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="forever" ng-model="coupon.duration" ng-value="forever" ng-change="coupon.durationLimited = null">
+                                        Forever
+                                    </label>
+                                </div>
+                                <div class="form-inline">
+                                    <label class="form-group">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="coupon.duration" ng-value="limited" >
+                                        Limited Period
+                                        <input type="text" class="form-control" ng-model="coupon.durationLimited" ng-disabled="coupon.duration != limited">month(s)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <span>Fields with * are required.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
