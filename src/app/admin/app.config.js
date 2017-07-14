@@ -9,22 +9,7 @@
 
     function config($stateProvider, $urlRouterProvider,$authProvider,CONFIG) {
 
-        $stateProvider
-            .state('blank', {
-                abstract : true,
-                controller : 'AdminLayoutBlankController',
-                templateUrl : 'admin/layouts/layout-blank.html'
-            })
-            .state('default', {
-                abstract : true,
-                parent : 'blank',
-                views : {
-                    content : {
-                        controller : 'AdminLayoutDefaultController',
-                        templateUrl : 'admin/layouts/layout-default.html'
-                    }
-                }
-            });
+        
 
         $urlRouterProvider.when('', '/');
 

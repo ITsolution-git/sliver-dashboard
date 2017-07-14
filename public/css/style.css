@@ -7837,88 +7837,88 @@ body[sidebar-navigation-type="horizontal"] #sidebar-container[sidebar-lpanel-eff
   margin-right: 0;
 }
 /*#################### Horizantal Navigation Style Close Here ##################################*/
-slap-header {
+.slap-header {
   position: absolute;
   width: 100%;
   z-index: 100;
 }
-slap-header .navbar {
+.slap-header .navbar {
   margin-bottom: 0;
 }
-slap-header .navbar-default {
+.slap-header .navbar-default {
   background-color: #0e7cb5;
   border-color: #0e7cb5;
 }
-slap-header .navbar-default .navbar-header {
+.slap-header .navbar-default .navbar-header {
   height: 80px;
   overflow: hidden;
   position: relative;
   float: left;
 }
-slap-header .navbar-default .navbar-header > a > .logo-img {
+.slap-header .navbar-default .navbar-header > a > .logo-img {
   position: relative;
   top: -50px;
   margin-left: 60px;
 }
 @media (max-width: 768px) {
-  slap-header .navbar-default .navbar-header > a > .logo-img {
+  .slap-header .navbar-default .navbar-header > a > .logo-img {
     top: -10px;
     height: 100px;
     margin-left: 30px;
   }
 }
 @media (max-width: 410px) {
-  slap-header .navbar-default .navbar-header > a > .logo-img {
+  .slap-header .navbar-default .navbar-header > a > .logo-img {
     margin-left: 10px;
   }
 }
-slap-header .navbar-default .navbar-header .navbar-toggle {
+.slap-header .navbar-default .navbar-header .navbar-toggle {
   margin-top: 20px;
   margin-left: 10px;
 }
-slap-header .navbar-default .profile-dropdown {
+.slap-header .navbar-default .profile-dropdown {
   color: #FFFFFF;
   margin-right: 20px;
 }
 @media (max-width: 410px) {
-  slap-header .navbar-default .profile-dropdown {
+  .slap-header .navbar-default .profile-dropdown {
     margin-left: 10px;
   }
 }
 @media (max-width: 768px) {
-  slap-header .navbar-default .profile-dropdown {
+  .slap-header .navbar-default .profile-dropdown {
     margin-top: 15px;
   }
 }
-slap-header .navbar-default .profile-dropdown > a {
+.slap-header .navbar-default .profile-dropdown > a {
   padding: 0px;
 }
-slap-header .navbar-default .profile-dropdown .profile-image {
+.slap-header .navbar-default .profile-dropdown .profile-image {
   width: 50px;
   height: 50px;
 }
-slap-header .navbar-default .profile-dropdown .dropdown-menu a {
+.slap-header .navbar-default .profile-dropdown .dropdown-menu a {
   color: #000 !important;
 }
-slap-header .navbar-default .navbar-nav > li > a {
+.slap-header .navbar-default .navbar-nav > li > a {
   color: #FFFFFF;
   font-size: 14px;
   text-align: right;
   text-transform: uppercase;
 }
-slap-header .navbar-default .navbar-nav {
+.slap-header .navbar-default .navbar-nav {
   margin-top: 16px;
 }
-slap-header .navbar-default .navbar-nav > .open > a,
-slap-header .navbar-default .navbar-nav > .open > a:hover,
-slap-header .navbar-default .navbar-nav > .open > a:focus {
+.slap-header .navbar-default .navbar-nav > .open > a,
+.slap-header .navbar-default .navbar-nav > .open > a:hover,
+.slap-header .navbar-default .navbar-nav > .open > a:focus {
   background-color: #0e7cb5;
   color: #373c37;
 }
 @media (max-width: 768px) {
-  slap-header .navbar-default .navbar-nav > .open > a,
-  slap-header .navbar-default .navbar-nav > .open > a:hover,
-  slap-header .navbar-default .navbar-nav > .open > a:focus {
+  .slap-header .navbar-default .navbar-nav > .open > a,
+  .slap-header .navbar-default .navbar-nav > .open > a:hover,
+  .slap-header .navbar-default .navbar-nav > .open > a:focus {
     background-color: transparent;
   }
 }
@@ -18693,11 +18693,7 @@ body {
 .slap-container {
   padding-left: 0;
   padding-right: 0;
-}
-@media (min-width: 992px) {
-  .slap-container {
-    padding-top: 82px;
-  }
+  padding-top: 82px;
 }
 .slap-container .active {
   opacity: 1;
@@ -19243,4 +19239,7 @@ a:hover {
 .button-oval .fa-arrow-left,
 .button-oval .fa-arrow-right {
   color: #FFFFFF;
+}
+.admin-content-root-container {
+  font-size: 14px;
 }

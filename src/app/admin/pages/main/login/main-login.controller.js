@@ -5,9 +5,9 @@
         .module('adminapp.pages.main')
         .controller('AdminMainLoginController', AdminMainLoginController);
 
-    AdminMainLoginController.$inject = ['$auth','toaster','userService', '$state'];
+    AdminMainLoginController.$inject = ['$auth','toaster','userService', 'adminUserService', '$state'];
 
-    function AdminMainLoginController($auth,toaster,userService,$state) {
+    function AdminMainLoginController($auth,toaster, userService, adminUserService,$state) {
         var vm = this;
         vm.login = {
             email : '',
@@ -25,7 +25,7 @@
                         // update user data
                         userService.loadUser(true)
                             .then(function () {
-                                $state.go('home');
+                                $state.go('admin.home');
                             });
                     }
                 )

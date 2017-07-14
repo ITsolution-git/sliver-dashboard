@@ -5,13 +5,13 @@
         bindings : {
 
         },
-        controller : function(BCService) {
-            this.breadcrumbs = BCService;
+        controller : function(pageService) {
+            this.breadcrumbs = pageService;
         },
         templateUrl : 'admin/components/breadcrumb/slap-breadcrumb.html'
     };
 
-    slapBreadcrumb.$inject = ['BCService'];
+    slapBreadcrumb.$inject = ['pageService'];
 
     angular
         .module('adminapp.components')

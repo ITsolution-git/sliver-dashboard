@@ -5,7 +5,7 @@
         .module('app')
         .run(runApp);
 
-    function runApp($rootScope, $timeout, $window, $state, $auth, pageService, CONFIG, userService) {
+    function runApp($rootScope, $timeout, $window, $state, $auth, pageService, CONFIG, userService, adminUserService) {
         $rootScope.isReady = false;
         $rootScope.dateFormat = "MM/DD/YYYY";
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
@@ -38,13 +38,16 @@
         });
 
         $rootScope.setDocumentTitle = function (title) {
-            $window.document.title = CONFIG.title + ' | ' + title;
+            $window.document.title = title;
         };
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toStateParams) {
             // set title page
             $timeout(function () {
-                $rootScope.setDocumentTitle(pageService.h1);
+                var portion = 'SLAPcenter |';
+                if(toState.parent == 'admin')
+                    portion = 'SLAPadmin |';
+                $rootScope.setDocumentTitle(portion + pageService.h1);
             });
         });
 

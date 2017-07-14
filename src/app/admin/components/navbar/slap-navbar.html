@@ -1,4 +1,4 @@
-<header>
+<header class="slap-header">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,50 +9,69 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">SLAP Admin Panel</a>
+                <a ui-sref="admin.home"><img src="./images/logo.png" alt="" class="logo-img"></a>
+                
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage data <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <!--<li><a href="#">Accounts</a></li>-->
-                            <!--<li><a href="#">Users</a></li>-->
-                            <li><a ui-sref="plans.list">Plans</a></li>
-                            <li><a ui-sref="coupon.list">Promocode</a></li>
-                            <!--<li><a ui-sref="products.create">Create</a></li>-->
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="financial_tracker.list">Financila tracker</a></li>
-                            <!--<li><a href="#">SLAP Reviews</a></li>-->
-                        </ul>
-                    </li>
+
+
+            <div class='dropdown pull-right profile-dropdown visible-xs'>
+                
+                <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <img src="images/carr-avatar.png" class="profile-image img-circle"> 
+                    {{ $ctrl.user.name }}
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="payments">Payments</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a ng-click="$ctrl.logout()">Logout</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right" ng-if="$ctrl.isAuthenticated">
-                    <li>
-                        <a href="#">Hello
-                            <span ng-show="$ctrl.userService.user">{{ $ctrl.userService.user.name }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" ng-click="$ctrl.logout()" ng-show="$ctrl.userService.user">Signout</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right" ng-if="!$ctrl.isAuthenticated">
-                    <li>
-                        <a href="#">
-                            <span>Hello Guest</span>
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
+            <ul class="nav navbar-nav navbar-right hidden-xs">
+
+                <li><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="slapsters.index">SLAPsters</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <!--<li><a ui-sref="financial_tracker.list">Financila tracker</a></li>-->
+                        <li><a ui-sref="report-builder.index">Report Builder</a></li>
+                        
+                        <!--<li><a href="#">SLAP Reviews</a></li>-->
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="plans.list">Plans</a></li>
+                        <li><a ui-sref="coupon.list">Promocode</a></li>
+                        <li><a ui-sref="users.list">Users</a></li>
+                    </ul>
+                </li>
+                
+
+
+                <li class='dropdown pull-right profile-dropdown'>
+                    
+                    <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img src="images/carr-avatar.png" class="profile-image img-circle"> 
+                        {{ $ctrl.user.name }}
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!--<li><a ui-sref="payments">Payments</a></li>-->
+                        <li role="separator" class="divider"></li>
+                        <li><a ng-click="$ctrl.logout()">Logout</a></li>
+                    </ul>
+
+                </li>
+            </ul>
         </div><!-- /.container-fluid -->
     </nav>
 </header>

@@ -6,5 +6,6 @@
         .controller('AdminLayoutBlankController', AdminLayoutBlankController);
 
     function AdminLayoutBlankController() {
+    	console.log('Admin Layout Blank');
     }
 }());

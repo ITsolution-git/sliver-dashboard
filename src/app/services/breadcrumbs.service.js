@@ -3,10 +3,10 @@
 
     angular
         .module('app.services')
-        .service('BCService', BCService);
+        .service('pageService', pageService);
 
     /* @ngInject */
-    function BCService() {
+    function pageService($rootScope) {
         var me = this;
 
         // --- vars ---
@@ -18,7 +18,6 @@
         // --- methods ---
 
         me.addCrumb = function (item) {
-            // item.opts = item.opts || {};
             me.crumbs.push(item);
             return me;
         };
@@ -37,7 +36,7 @@
 
         me.setPageTitle = function (title) {
             me.h1 = title;
-            // $rootScope.setDocumentTitle(title);
+            $rootScope.setDocumentTitle(title);
             return me;
         };
     }

@@ -16,7 +16,7 @@
 
         me.rest = Restangular.withConfig(function (RestangularConfigurer) {
             RestangularConfigurer
-                .setBaseUrl(CONFIG.api + '/admin')
+                .setBaseUrl(CONFIG.api + '/v1')
                 .setDefaultHeaders(me.headers)
                 .setFullResponse(true)
                 .setErrorInterceptor(function (response) {

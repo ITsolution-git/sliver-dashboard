@@ -9,12 +9,12 @@
 
     function moduleConfig($stateProvider) {
         $stateProvider
-            .state('home', {
+            .state('admin.home', {
                 data: {
-                    access: '@'
+                    access: 'admin'
                 },
-                parent : 'default',
-                url : '/',
+                parent : 'admin',
+                url : '/home',
                 views : {
                     content : {
                         controller : 'AdminMainIndexController',
@@ -22,12 +22,12 @@
                     }
                 }
             })
-            .state('login', {
+            .state('admin-login', {
                 data: {
                     access: '?'
                 },
                 parent : 'blank',
-                url : '/login',
+                url : '/admin/login',
                 views : {
                     content : {
                         controller : 'AdminMainLoginController as vm',

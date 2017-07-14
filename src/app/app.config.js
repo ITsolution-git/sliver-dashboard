@@ -50,6 +50,20 @@
                         template: '<slap-header></slap-header><div class="slap-container" ui-view="content"></div>'
                     }
                 }
+            })
+            .state('admin', {
+                data: {
+                    access: 'admin'
+                },
+                abstract:true,
+                url : '/admin',
+                parent:'blank',
+                views : {
+                    content : {
+                        controller : 'AdminLayoutDefaultController',
+                        templateUrl : 'admin/layouts/layout-default.html'
+                    }
+                }
             });
 
         // set default routes when no path specified

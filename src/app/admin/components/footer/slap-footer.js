@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var slapFooter = {
+    var adminSlapFooter = {
         binding : {
 
         },
@@ -13,5 +13,5 @@
 
     angular
         .module('adminapp.components')
-        .component('slapFooter', slapFooter);
+        .component('adminSlapFooter', adminSlapFooter);
 }());

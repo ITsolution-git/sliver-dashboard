@@ -19,7 +19,6 @@
                 'frapontillo.bootstrap-switch',
 
                 'adminapp.filters',
-                'adminapp.services',
                 'adminapp.components',
                 'adminapp.directives',
                 'adminapp.pages'

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var slapNavbar = {
+    var adminSlapNavbar = {
         bindings : {
         },
         controller : function($auth,$state,userService,$scope) {
@@ -14,6 +14,15 @@
             vm.userService = userService;
             vm.isAuthenticated = false;
 
+            userService.getUser().then(function (user) {
+                 vm.user = user;
+            });
+
+            this.logout = function () {
+                $auth.logout();
+                $window.location.reload();
+                $state.go('login');
+            }
             $scope.$watch($auth.isAuthenticated, function(newValue) {
                 vm.isAuthenticated = newValue;
             });
@@ -23,5 +32,5 @@
 
     angular
         .module('adminapp.components')
-        .component('slapNavbar', slapNavbar);
+        .component('adminSlapNavbar', adminSlapNavbar);
 }());

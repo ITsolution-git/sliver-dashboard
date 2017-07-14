@@ -5,10 +5,10 @@
         .module('adminapp.pages.main')
         .controller('AdminMainIndexController', AdminMainIndexController);
 
-    AdminMainIndexController.$inject = ['BCService'];
+    AdminMainIndexController.$inject = ['pageService'];
 
-    function AdminMainIndexController(BCService) {
-        BCService
+    function AdminMainIndexController(pageService) {
+        pageService
             .reset()
             .setShowBC(true)
             .addCrumb({name: 'Dashboard', path: 'home'})

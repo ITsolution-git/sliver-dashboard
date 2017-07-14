@@ -5,6 +5,7 @@
         .module(
             'app',
             [
+                'adminapp',
                 'templates',
 
                 'ngRoute',
