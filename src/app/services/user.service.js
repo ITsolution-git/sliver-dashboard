@@ -30,15 +30,32 @@
             } else {
                 me.rest().get().then(function (resp) {
                     // $rootScope.$broadcast('userEvent');
-                    me.user = {
-                        name: resp.data.name,
-                        lastName: resp.data.lastName,
-                        email: resp.data.email,
-                        id: resp.data._id,
-                        businessName: resp.data.businessName,
-                        role: resp.data.role,
-                        status: resp.data.status
-                    };
+                    me.user = resp.data;
+
+                    // For security
+
+                    // me.user = {
+                    //     name: resp.data.name,
+                    //     lastName: resp.data.lastName,
+                    //     email: resp.data.email,
+                    //     id: resp.data._id,
+                    //     businessName: resp.data.businessName,
+                    //     role: resp.data.role,
+                    //     status: resp.data.status
+                    // };
+                    // var accounts = resp.data.accounts.map(function(acc){
+                    //     return {
+                    //         name: acc.name,
+                    //         lastName: acc.lastName,
+                    //         email: acc.email,
+                    //         id: acc._id,
+                    //         businessName: acc.businessName,
+                    //         role: acc.role,
+                    //         status: acc.status
+                    //     };
+                    // });
+                    // me.user.accounts = accounts;
+                    
                     console.log(me.user);
                     me.resolveUser(me.user);
                     deferred.resolve(me.user);

@@ -3,57 +3,31 @@
 
     angular
         .module('app.pages.settingsUser')
-        .controller('PaymentsController', PaymentsController);
+        .controller('MyaccountsController', MyaccountsController);
 
     /* @ngInject */
-    function PaymentsController($scope,paymentsService,NgTableParams) {
+    function MyaccountsController($scope, productStorage, $state, userService, $auth) {
+        $scope.renewAccount = renewAccount;
 
-        function getValue(row) {
-            return row[this.field];
+        function renewAccount() {
+            productStorage.resetStorage();
+            productStorage.setRenew();
+            
+            userService.loadUser().then(function(user){
+                var renewuser = {
+                    businessName: user.businessName,
+                    email: user.email,
+                    lastName: user.lastName,
+                    name: user.name,
+                    phone: user.phone,
+                    role: 4,
+                    status: 'active'
+                };
+                productStorage.setRenewFrom(user._id);
+                productStorage.setUser(renewuser);
+                $auth.logout();
+                $state.go('step1');
+            })
         }
-
-        $scope.cols = [
-            {
-                field: "paymentDate",
-                title: "Payment Date",
-                show: true,
-                format: 'raw',
-                getValue: function (row) {
-                    return row['paymentDate'] ? moment(row['paymentDate']).format('ll') : '-'
-                }
-            }, {
-                field: "programName",
-                title: "SLAProgram Name",
-                show: true,
-                format: 'raw',
-                getValue: getValue
-            }, {
-                field: "costProduct",
-                title: "Price for SLAProgram/Build",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "discount",
-                title: "Discount/Promo code",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "amountCharges",
-                title: "Total amount charged",
-                show: true,
-                getValue: getValue
-            }
-        ];
-
-        $scope.list = new NgTableParams({},
-            {
-                getData: function (params) {
-                    return paymentsService.getAllPayments()
-                        .then(function (response) {
-                            return paymentsService.transformationData(response.data);
-                        });
-                }
-            }
-        );
     }
 }());

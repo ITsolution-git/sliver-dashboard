@@ -9,6 +9,9 @@
         var _plan = null;
         var _build = null;
         var _coupon = null;
+        var _user = null;
+        var _isRenew = false;
+        var _renewFrom = null;
 
         this.getPlan = function() {
             return _plan;
@@ -22,14 +25,35 @@
             return _build;
         };
 
+        this.getUser = function() {
+            return _user;
+        };
+
+        this.isRenew = function() {
+            return _isRenew;
+        }
+
         this.setBuild = function(build) {
             _build = build;
+        };
+
+        this.setRenewFrom = function(id) {
+            _renewFrom = id;
+        }
+        this.setRenew = function() {
+            _isRenew = true;
+        }
+
+        this.setUser = function(user) {
+            _user = user;
         };
 
         this.resetStorage = function() {
             _build = null;
             _plan = null;
             _coupon = null;
+            _isRenew = false;
+            _user = null;
         };
 
         this.setCoupon = function(coupon) {

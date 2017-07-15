@@ -15,6 +15,14 @@
                 $window.location.reload();
                 $state.go('login');
             }
+            
+            this.selectSLAPyear = function(user) {
+                if(user._id == vm.user._id)
+                    return;
+
+                // $auth.logout();
+
+            }
         },
         templateUrl: 'components/slap-header/slap-header.html'
     };

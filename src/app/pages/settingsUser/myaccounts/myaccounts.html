@@ -1,33 +1,28 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-
-                <div class="panel-body">
-                    <!--<div class="row">-->
-                    <!--<h2 class="col-md-8">Manage Products</h2>-->
-                    <!--<div class="text-right">-->
-                    <!--<a class="btn btn-primary" ui-sref="products.add"><i class="fa fa-plus"></i> Add</a>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<hr>-->
-
-                    <table ng-table-dynamic="list with cols" class="table table-hover table-vertical-align ng-cloak col-md-12">
-                        <tr ng-repeat="row in $data">
-                            <td ng-repeat="col in $columns" ng-switch="col.format" ng-class="col.style">
-                                <div ng-switch-when="raw" ng-bind-html="col.getValue(row)"></div>
-                                <div ng-switch-when="compile" compile="col.getValue(row)"></div>
-                                <div ng-switch-default ng-bind-html="col.getValue(row)"></div>
-                            </td>
-                        </tr>
-                        <tr ng-if="!list.data.length">
-                            <td colspan="{{cols.length}}" class="text-center">You do not have records for display</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-
-        </div>
+<div class="container-fluid m-t-es-30" >
+<div class="row">
+<div class="col-md-12">
+    <h1> My Accounts </h1>
+    <div class="panel panel-default">
+        Reset Password
     </div>
+
+    <div class="panel panel-default">
+        Email User name biz name Update
+    </div>
+
+    <div class="panel panel-default">
+        Account status
+    </div>
+
+    <div class="panel panel-default p-es-10">
+        <h3> Renew Account </h3>
+        <div>
+            <button class="btn btn-primary pull-right" ng-click="renewAccount()">
+                Renew Account
+            </button>
+        </div>  
+        <div class="clearfix"></div>
+    </div>
+</div>
+</div>
 </div>

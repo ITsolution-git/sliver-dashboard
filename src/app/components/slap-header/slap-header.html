@@ -30,6 +30,24 @@
                 <li><a ui-sref="mindset.ourCommitment">get help</a></li>
                 <li><a ui-sref="mindset.ourCommitment">slapschool</a></li>
                 <li><a ui-sref="mindset.ourCommitment">slapworld</a></li>
+                
+                <li class='dropdown'>
+                    
+                    <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        SLAP YEARS
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="user in $ctrl.user.accounts">
+                            <a ng-click="selectSLAPyear(user)">
+                                <span style="font-size: 16px; color:blue">{{'YEAR ' + ($index+1) + ' '}}</span>
+                                {{ user.createdAt | date: 'yyyy-MM-dd'}}
+                                <span class="label label-primary" ng-if="user._id == $ctrl.user._id">current</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+                
                 <li class='dropdown pull-right profile-dropdown'>
                     
                     <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

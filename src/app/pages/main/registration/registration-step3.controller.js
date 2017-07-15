@@ -13,18 +13,27 @@
         }
 
         var vm = this;
-
+        vm.isRenew = false;
+        
         vm.plan = productStorage.getPlan();
         vm.build = productStorage.getBuild();
-
-        vm.user = {
-            planId: vm.plan._id,
-            plan_date: new Date(),
-            buildId:  vm.build ? vm.build._id : null,
-            build_date: vm.build ? new Date() : null,
-            code: null
-        };
-
+        if (productStorage.isRenew()){
+            vm.isRenew = true;
+            vm.user = productStorage.getUser();
+            vm.planId = vm.plan._id;
+            vm.planDate = new Date();
+            vm.buildId = vm.build ? vm.build._id : null;
+            vm.build_date = vm.build ? new Date() : null;
+            vm.code = null;
+        } else
+            vm.user = {
+                planId: vm.plan._id,
+                plan_date: new Date(),
+                buildId:  vm.build ? vm.build._id : null,
+                build_date: vm.build ? new Date() : null,
+                code: null
+            };
+        
         vm.useCoupon = false;
 
         vm.calculateTodayPayment = productStorage.calculateTodayPayment();

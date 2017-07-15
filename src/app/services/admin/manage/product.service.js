@@ -6,7 +6,7 @@
         .service('productsService', productsService);
 
     /* @ngInject */
-    function productsService(adminApiService) {
+    function productsService(adminApiService, apiService) {
         var self = this;
 
         var SELECT_MONTH = [
@@ -74,5 +74,17 @@
         self.getActivePlans = function() {
             return adminApiService.rest.all('plans').getList();
         };
+
+        self.all = function() {
+            return apiService.rest.all('products');
+        };
+
+        self.getPlans = function() {
+            return self.all().one('plans').getList();
+        };
+
+        self.getBuilds = function() {
+            return self.all().one('builds').getList();
+        }
     }
 }());

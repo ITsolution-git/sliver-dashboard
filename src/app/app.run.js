@@ -67,9 +67,10 @@
             $state.go('home');
         });
         if ($auth.isAuthenticated()) {
-
+            
             userService.loadUser().then(function (data) {
                 $rootScope.isReady = true;
+                
                 $state.go(
                     _.get($rootScope, 'toState.name', 'home'),
                     _.get($rootScope, 'toStateParams')

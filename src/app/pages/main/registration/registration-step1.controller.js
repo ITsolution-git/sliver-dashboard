@@ -11,7 +11,7 @@
 
         vm.active = null;
         vm.plan= productStorage.getPlan();
-
+        
         productsService.getPlans().then(function(response) {
             vm.plans = response.data;
         });
