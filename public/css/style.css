@@ -18505,100 +18505,6 @@ md-content.tab-content {
 a {
   cursor: pointer;
 }
-#revenue-grid th:focus,
-#revenue-grid a:focus {
-  outline: none;
-}
-#revenue-grid .mdl-data-table {
-  width: 100%;
-}
-#revenue-grid .mdl-data-table th {
-  cursor: pointer;
-}
-#revenue-grid .mdl-data-table tr {
-  transition: none !important;
-}
-#revenue-grid th md-select {
-  margin: 0;
-}
-#revenue-grid .md-errors-spacer {
-  display: none;
-}
-#revenue-grid ul.pagination {
-  padding: 0;
-  font-size: 0;
-  display: inline-block;
-}
-#revenue-grid .pagination > li {
-  display: inline-block;
-  vertical-align: middle;
-  height: 30px;
-  border: 1px solid #ddd;
-  border-left: 0;
-}
-#revenue-grid .pagination > li:first-child {
-  border-left: 1px solid #ddd;
-  border-radius: 2px 0 0 2px;
-}
-#revenue-grid .pagination > li:last-child {
-  border-radius: 0 2px 2px 0;
-}
-#revenue-grid .pagination a {
-  color: #444;
-  font-size: 13px;
-  padding: 0 10px;
-  line-height: 30px;
-  display: inline-block;
-  text-decoration: none;
-}
-#revenue-grid .pagination .active {
-  background: #3f51b5;
-  border-color: #3f51b5;
-}
-#revenue-grid .pagination .active a {
-  color: #fff;
-}
-#revenue-grid .pagination-page.active {
-  background: #3f51b5;
-}
-#revenue-grid .pagination-page.active a {
-  color: #fff;
-}
-#revenue-grid .material-icons,
-#revenue-grid .sortable span:before,
-#revenue-grid .sortable span:after {
-  font-family: 'Material Icons';
-  font-size: 18px;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-#revenue-grid .sortable span {
-  position: relative;
-}
-#revenue-grid .sortable span:before {
-  content: 'arrow_drop_down';
-  position: absolute;
-  right: -18px;
-  top: -2px;
-}
-#revenue-grid .sortable span:after {
-  content: 'arrow_drop_up';
-  position: absolute;
-  right: -18px;
-  top: -9px;
-}
-#revenue-grid .sortable.sort-ascent span:before {
-  display: none;
-}
-#revenue-grid .sortable.sort-ascent span:after {
-  top: -5px;
-}
-#revenue-grid .sortable.sort-descent span:before {
-  top: -5px;
-}
-#revenue-grid .sortable.sort-descent span:after {
-  display: none;
-}
 table.table-vertical-align thead tr th,
 table.table-vertical-align tbody tr td {
   vertical-align: middle;
@@ -19239,6 +19145,100 @@ a:hover {
 .button-oval .fa-arrow-left,
 .button-oval .fa-arrow-right {
   color: #FFFFFF;
+}
+.slap-grid th:focus,
+.slap-grid a:focus {
+  outline: none;
+}
+.slap-grid .mdl-data-table {
+  width: 100%;
+}
+.slap-grid .mdl-data-table th {
+  cursor: pointer;
+}
+.slap-grid .mdl-data-table tr {
+  transition: none !important;
+}
+.slap-grid th md-select {
+  margin: 0;
+}
+.slap-grid .md-errors-spacer {
+  display: none;
+}
+.slap-grid ul.pagination {
+  padding: 0;
+  font-size: 0;
+  display: inline-block;
+}
+.slap-grid .pagination > li {
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-left: 0;
+}
+.slap-grid .pagination > li:first-child {
+  border-left: 1px solid #ddd;
+  border-radius: 2px 0 0 2px;
+}
+.slap-grid .pagination > li:last-child {
+  border-radius: 0 2px 2px 0;
+}
+.slap-grid .pagination a {
+  color: #444;
+  font-size: 13px;
+  padding: 0 10px;
+  line-height: 30px;
+  display: inline-block;
+  text-decoration: none;
+}
+.slap-grid .pagination .active {
+  background: #3f51b5;
+  border-color: #3f51b5;
+}
+.slap-grid .pagination .active a {
+  color: #fff;
+}
+.slap-grid .pagination-page.active {
+  background: #3f51b5;
+}
+.slap-grid .pagination-page.active a {
+  color: #fff;
+}
+.slap-grid .material-icons,
+.slap-grid .sortable span:before,
+.slap-grid .sortable span:after {
+  font-family: 'Material Icons';
+  font-size: 18px;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.slap-grid .sortable span {
+  position: relative;
+}
+.slap-grid .sortable span:before {
+  content: 'arrow_drop_down';
+  position: absolute;
+  right: -18px;
+  top: -2px;
+}
+.slap-grid .sortable span:after {
+  content: 'arrow_drop_up';
+  position: absolute;
+  right: -18px;
+  top: -9px;
+}
+.slap-grid .sortable.sort-ascent span:before {
+  display: none;
+}
+.slap-grid .sortable.sort-ascent span:after {
+  top: -5px;
+}
+.slap-grid .sortable.sort-descent span:before {
+  top: -5px;
+}
+.slap-grid .sortable.sort-descent span:after {
+  display: none;
 }
 .admin-content-root-container {
   font-size: 14px;

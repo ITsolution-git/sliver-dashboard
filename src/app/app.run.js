@@ -44,9 +44,9 @@
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toStateParams) {
             // set title page
             $timeout(function () {
-                var portion = 'SLAPcenter |';
-                if(toState.parent == 'admin')
-                    portion = 'SLAPadmin |';
+                var portion = 'SLAPcenter | ';
+                if(toState.data && toState.data.isAdminPage)
+                    portion = 'SLAPadmin | ';
                 $rootScope.setDocumentTitle(portion + pageService.h1);
             });
         });

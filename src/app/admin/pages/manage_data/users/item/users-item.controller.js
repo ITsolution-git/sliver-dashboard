@@ -6,83 +6,70 @@
         .controller('AdminUsersItemController', AdminUsersItemController);
 
     /* @ngInject */
-    function AdminUsersItemController($scope, pageService, productsService, toaster, $state, $stateParams) {
-        // $scope.product = {
-        //     switchProduct: true,
-        //     switchStatus: false,
-        //     switchBuildType: true,
-        //     // typeProduct: productsService.TYPE_PLAN,
-        //     // status: productsService.ACTIVE,
-        //     billingFrequency : 1,
-        //     // buildType : productsService.BUILD_INSTALLMENTS
-        // };
+    function AdminUsersItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster) {
+        angular.extend($scope,  {
+            user: {},
+            userID: $stateParams.user_id,
+            ROLES: adminUserService.ROLES,
+            STATUSES: adminUserService.STATUSES,
 
-        // $scope.typeChange = function () {
-        //     $scope.product.typeProduct = $scope.product.switchProduct ? productsService.TYPE_PLAN : productsService.TYPE_BUILD;
-        //     $scope.product.amountFirstPayment = $scope.product.switchProduct ? null : $scope.product.amountFirstPayment;
-        //     // $scope.product.buildType = $scope.product.switchProduct ? null : productsService.BUILD_INSTALLMENTS;
-        // };
-
-        // $scope.statusChange = function () {
-        //     $scope.product.status = $scope.product.switchStatus ? productsService.ACTIVE : productsService.INACTIVE;
-        // };
-
-        // $scope.buildTypeChange = function () {
-        //     $scope.product.buildType = $scope.product.switchBuildType ? productsService.BUILD_INSTALLMENTS : productsService.BUILD_ONETIME;
-        //     $scope.product.billingFrequency = $scope.product.switchBuildType ?  $scope.product.billingFrequency : 1;
-        //     $scope.product.amountFirstPayment = $scope.product.switchBuildType ? $scope.product.amountFirstPayment : null;
-
-        // };
-
-        // $scope.errors = {};
-
-        // $scope.productID = $stateParams.product_id;
-
-        // $scope.select_month = productsService.getSelectMonth();
-
-        // $scope.save = function () {
-        //     $scope.apply().then(function () {
-        //         $state.go('plans.list');
-        //     });
-        // };
-        // $scope.apply = function () {
-        //     return $scope.update().then(
-        //         function (response) {
-        //             toaster.pop({type: 'success', body: 'Data success saved'});
-        //         },
-        //         function (err) {
-        //             err.data.forEach(function (item) {
-        //                 $scope.errors[item.param] = item.msg;
-        //             });
-        //         })
-        // };
-
-        // $scope.update = function () {
-        //     return ($stateParams.product_id) ? productsService.update($scope.product) : productsService.add($scope.product);
-        // };
+            deleteItem: deleteItem,
+            createOrSave: createOrSave
+        });
 
 
-        // pageService
-        //     .reset()
-        //     .setShowBC(true)
-        //     .addCrumb({name: 'Plans', path: 'plans.list'});
+        pageService
+            .reset()
+            .setShowBC(true)
+            .addCrumb({name: 'Users', path: 'users.list'});
 
-        // if (!$stateParams.product_id) {
-        //     pageService
-        //         .addCrumb({name: 'Add', path: 'plans.add'})
-        //         .setPageTitle('New plans');
-        // } else {
-        //     productsService.get($stateParams.product_id).then(function (response) {
-        //         $scope.product = response.data;
-        //         $scope.product.switchStatus = response.data.status ? true : false;
-        //         $scope.product.switchProduct = response.data.typeProduct == productsService.TYPE_PLAN ? true : false;
-        //         $scope.product.switchBuildType = response.data.buildType == productsService.BUILD_INSTALLMENTS ? true : false;
+        if (!$scope.userID) {
+            pageService
+                .addCrumb({name: 'Add', path: 'users.add'})
+                .setPageTitle('Create User');
+            $scope.user = {};
+            $scope.user.role = adminUserService.ROLE_ADMIN;
+            $scope.user.status = adminUserService.STATUS_ACTIVE;
+        } else {
+            adminUserService.get($scope.userID).then(function (response) {
+                $scope.user = response.data;
+                
+                pageService
+                    .addCrumb({name: $scope.user.name + ' ' + $scope.user.lastName, path: 'users.list'})
+                    .setPageTitle('Edit User');
+            });
+        }
 
-        //         pageService
-        //             .addCrumb({name: $scope.product.productName, path: 'plans.list'})
-        //             .setPageTitle('Edit "' + $scope.product.productName + '"');
-        //     });
-        // }
+        function createOrSave(event) {
+            update().then(function(){
+                toaster.pop({type: 'success', body: 'User saved.'});
+                $state.go('users.list');
+            }).catch(function(err){
+                console.log(err);
+            });
+        }
+
+        function update() {
+            if($scope.userID){
+                return adminUserService.update($scope.user);
+            } else {
+                return adminUserService.add($scope.user);
+            }
+        }
+        function deleteItem(event) {
+            var success = function(){
+
+                adminUserService.delete($scope.user).then(function() {
+                    toaster.pop({type: 'success', body: 'User deleted.'});
+                    $state.go('users.list');
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+            }
+            commonDialogService.openDeleteItemDialog(event, 'Do you really want to delete?', success);
+
+        }
 
     }
 }());

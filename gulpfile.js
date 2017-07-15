@@ -60,7 +60,9 @@ gulp.task('vendor:js', function () {
             bowerDirectory: path.src.vendor
         }
     });
-
+    //For angular-data-grid pagination
+    vendors.push('vendor/angular-data-grid/dist/pagination.js');
+    
     return gulp.src(vendors)
         .pipe(filter('**/*.js'))
         .pipe(concat('vendor.js'))

@@ -11,7 +11,8 @@
         $stateProvider
             .state('admin.home', {
                 data: {
-                    access: 'admin'
+                    access: 'admin',
+                    isAdminPage: true
                 },
                 parent : 'admin',
                 url : '/home',
@@ -24,7 +25,8 @@
             })
             .state('admin-login', {
                 data: {
-                    access: '?'
+                    access: '?',
+                    isAdminPage: true
                 },
                 parent : 'blank',
                 url : '/admin/login',

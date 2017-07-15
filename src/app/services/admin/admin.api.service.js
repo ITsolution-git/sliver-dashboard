@@ -34,9 +34,7 @@
                     }
                     if (response.status === 401) {
                         $rootScope.$broadcast('authUnauthorized');
-                    } else {
-                        toaster.pop({type: 'error', body: 'Saving error!'});
-                    }
+                    } 
                 })
                 .addFullRequestInterceptor(function (element, operation, what, url, headers, params) {
                     var token = $auth.getToken();

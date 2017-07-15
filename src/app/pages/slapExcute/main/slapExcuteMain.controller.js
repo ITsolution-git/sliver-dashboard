@@ -5,7 +5,7 @@
         .module('app.pages.slapExcute')
         .controller('SlapExcuteMainController', SlapExcuteMainController);
 
-    function SlapExcuteMainController($scope, $rootScope, pageService,stepService, $state, $timeout, actionplanService,  $mdDialog, excuteItems, excuteItemService, userAllData, $mdToast, $q,Restangular, apiService) {
+    function SlapExcuteMainController($scope, $rootScope, pageService,stepService, $state, $timeout, actionplanService,  $mdDialog, excuteItems, excuteItemService, userAllData, $mdToast, $q, Restangular, apiService) {
 
         angular.extend($scope,  {
             userAllData: userAllData, //All user data from finishedsteps api

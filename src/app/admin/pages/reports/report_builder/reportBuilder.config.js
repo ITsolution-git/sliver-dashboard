@@ -11,7 +11,8 @@
             .state('report-builder',{
                 abstract: true,
                 data: {
-                    access: '@'
+                    access: 'admin',
+                    isAdminPage: true
                 },
                 url: '/report-builder',
                 parent: 'admin',

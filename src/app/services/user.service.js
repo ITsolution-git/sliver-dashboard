@@ -36,7 +36,8 @@
                         email: resp.data.email,
                         id: resp.data._id,
                         businessName: resp.data.businessName,
-                        admin: resp.data.admin
+                        role: resp.data.role,
+                        status: resp.data.status
                     };
                     console.log(me.user);
                     me.resolveUser(me.user);
@@ -75,7 +76,7 @@
         };
 
         me.isAdmin = function () {
-            return (me.user && me.user.admin);
+            return (me.user && me.user.role == 1);
         };
 
         me.rest = function () {

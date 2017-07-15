@@ -1,129 +1,77 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <!--<h1>Create Products</h1>-->
+<div layout="column" style="width: 100%;">
+<md-card flex="100" class="p-es-30 m-w-es-40">
+    <form layout="row" layout-wrap layout-align="center center" name="form">
+        <md-input-container  flex="100">
+            <label>Business Name</label>
+            <input ng-model="user.businessName" required name="businessName">
+            <div ng-messages="form.businessName.$error">
+                <ng-message when="required">Business Name is required.</ng-message>
+            </div>
+        </md-input-container>
+        <md-input-container  flex="50">
+            <label>First Name</label>
+            <input ng-model="user.name" required name="name">
+            <div ng-messages="form.name.$error">
+                <ng-message when="required">First Name is required.</ng-message>
+            </div>
+        </md-input-container>
+        
+        <md-input-container  flex="50">
+            <label>Last Name</label>
+            <input ng-model="user.lastName" required name="lastName">
+            <div ng-messages="form.lastName.$error">
+                <ng-message when="required">Last Name is required.</ng-message>
+            </div>
+        </md-input-container>
+        
+        <md-input-container flex="50">
+            <md-select ng-model="user.status">
+                <md-option ng-repeat="status in STATUSES" ng-value="status.id">{{status.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        
 
-                    <form name="createProductsForm">
-                        <div class="col-xs-12">
-                            <div class="col-xs-4 text-left">
-                                <input
-                                    type="checkbox"
-                                    bs-switch
-                                    ng-model="product.switchProduct"
-                                    switch-on-text="Plan"
-                                    switch-off-text="Build"
-                                    switch-change="typeChange()"
-                                >
-                            </div>
-                            <div class="col-xs-4 build-form">
-                                <div class="form-group build-form" ng-hide="product.switchProduct">
-                                    <input
-                                            type="checkbox"
-                                            bs-switch
-                                            ng-model="product.switchBuildType"
-                                            switch-on-text="Installments"
-                                            switch-off-text="One Time Payments"
-                                            switch-change="buildTypeChange()"
-                                    >
-                                </div>
+        <md-input-container flex="50">
+            <md-select ng-model="user.role">
+                <md-option ng-value="role.id" ng-repeat="role in ROLES">
+                    {{role.name}}
+                </md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
 
-                            </div>
-                            <div class="text-right col-xs-4">
-                                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
-                                <button type="submit" class="btn btn-default" ng-click="apply()" ng-show="productID">Apply</button>
-                                <a class="btn btn-danger" ui-sref="plans.list">Cancel</a>
-                                <div class="switch-status">
-                                    <input
-                                            type="checkbox"
-                                            bs-switch
-                                            ng-model="product.switchStatus"
-                                            switch-on-text="Active"
-                                            switch-off-text="Inactive"
-                                            switch-change="statusChange()"
-                                    >
-                                </div>
-                            </div>
-                        </div>
 
-                        <br>
-                        <hr>
+        <md-input-container class="md-block" flex="50">
+            <label for="email">Email</label>
+            <input name="email" ng-model="user.email" id="email"
+                    required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-                        <div class="form-group" ng-class="{'has-error' : errors['productName']}">
-                            <label for="productName" ng-show="product.switchProduct">Name of SLAPplan*</label>
-                            <label for="productName" ng-hide="product.switchProduct">Name of SLAPbuild*</label>
-                            <input type="text" class="form-control" id="productName"
-                                   ng-model="product.productName">
-                            <div class="help-block help-block-error" ng-show="errors['productName']"
-                                 ng-bind-html="errors['productName']"></div>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error' : errors['productDescription']}">
-                            <label for="productDescription" ng-show="product.switchProduct">Description of SLAPplan*</label>
-                            <label for="productDescription" ng-hide="product.switchProduct">Description of SLAPbuild*</label>
-                            <textarea class="form-control" id="productDescription" rows="3"
-                                      ng-model="product.productDescription"></textarea>
-                            <div class="help-block help-block-error" ng-show="errors['productDescription']"
-                                 ng-bind-html="errors['productDescription']"></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group" ng-class="{'has-error' : errors['costProduct']}">
-                                    <label for="costProduct" ng-show="product.switchProduct">Monthly Payment for SLAPplan*</label>
-                                    <label for="costProduct" ng-hide="product.switchProduct || product.buildType == 2">Monthly Payment for SLAPbuild*</label>
-                                    <label for="costProduct" ng-hide="product.switchProduct || product.buildType == 1">Amount for One Time SLAPbuild*</label>
-                                    <input type="number" class="form-control" id="costProduct"
-                                           ng-model="product.costProduct">
-                                    <div class="help-block help-block-error" ng-show="errors['costProduct']"
-                                         ng-bind-html="errors['costProduct']"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group" ng-class="{'has-error' : errors['billingFrequency']}">
-                                    <label for="billingFrequency" ng-show="product.switchProduct">Billing Frequency*</label>
-                                    <label for="billingFrequency" ng-hide="product.switchProduct">Billing Frequency*</label>
-
-                                    <select
-                                        class="form-control"
-                                        id="billingFrequency"
-                                        ng-model="product.billingFrequency"
-                                        ng-disabled="product.buildType == 2 && !product.switchProduct"
-                                        ng-options="mount.id as mount.id for mount in select_month"
-                                    >
-                                    </select>
-
-                                    <div class="help-block help-block-error" ng-show="errors['billingFrequency']"
-                                         ng-bind-html="errors['billingFrequency']"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group" ng-class="{'has-error' : errors['expertHours']}">
-                                    <label for="expertHours" ng-show="product.switchProduct">SLAPexpert Hours*</label>
-                                    <label for="expertHours" ng-hide="product.switchProduct">SLAPexpert Hours*</label>
-                                    <input type="number" class="form-control" id="expertHours"
-                                           ng-model="product.expertHours">
-                                    <div class="help-block help-block-error" ng-show="errors['expertHours']"
-                                         ng-bind-html="errors['expertHours']"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 build-form" ng-hide="product.switchProduct || product.buildType == 2">
-                                <div class="form-group" ng-class="{'has-error' : errors['amountFirstPayment']}">
-                                    <label for="amountFirstPayment">First Payment for SLAPbuild</label>
-                                    <input type="number" class="form-control" id="amountFirstPayment"
-                                           ng-model="product.amountFirstPayment">
-                                    <div class="help-block help-block-error" ng-show="errors['amountFirstPayment']"
-                                         ng-bind-html="errors['amountFirstPayment']"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <hr>
-                    <span>Fields with * are required.</span>
+            <div ng-messages="form.email.$error" ng-hide="form.email.$valid">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Only letters and numbers are allowed (a-z,A-Z)
                 </div>
             </div>
-        </div>
-    </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex="50">
+            <label for="phone">Phone Number</label>
+            <input name="phone" required ng-model="user.phone"  id="phone"/>
+
+            <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid">
+                <ng-message when="required">Phone Number is required.</ng-message>
+            </div>
+        </md-input-container>
+
+        <section layout="row" layout-align="end center" flex="100">
+            <md-button ng-click="createOrSave($event)" class="md-primary" >
+                Save
+            </md-button>
+            <md-button ng-click="deleteItem($event)" class="md-warn">
+                Delete
+            </md-button>
+        </section>
+    </form>
+
+</md-card>
 </div>

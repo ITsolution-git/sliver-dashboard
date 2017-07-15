@@ -30,7 +30,7 @@
                 'angular-svg-round-progressbar',
                 'angular.filter',
                 'dataGrid', 
-                // 'pagination',
+                'pagination',
 
 
                 'app.services',

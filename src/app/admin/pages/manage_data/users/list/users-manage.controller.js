@@ -5,88 +5,97 @@
         .module('manage.users.module')
         .controller('AdminUsersManageController', AdminUsersManageController);
 
-    // ProductsManageController.$inject = ['productsService'];
+    function AdminUsersManageController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService) {
+        angular.extend($scope,  {
+            gridData: {
+                gridOptions: {data:[]},
+                gridActions: {}
+            },
+            users: [],
+            searchKeyword: '',
+            dataloaded: false,
+            dataReady: false,
+            ROLES: adminUserService.ROLES,
+            STATUSES: adminUserService.STATUSES,
 
-    function AdminUsersManageController($scope, $state, pageService, productsService, NgTableParams) {
-        // var vm = this;
-
-        function getValue(row) {
-            return row[this.field];
-        }
-
-        $scope.cols = [
-            {
-                field: "productName",
-                title: "Name",
-                show: true,
-                format: 'raw',
-                getValue: function (row) {
-                    return '<a href="' + $state.href('plans.item', {product_id: row['_id']}) + '">' + row['productName'] + '</a>';
-                }
-            }, {
-                field: "productDescription",
-                title: "Description",
-                show: true,
-                format: 'raw',
-                getValue: getValue
-            }, {
-                field: "costProduct",
-                title: "Cost Product",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "billingFrequency",
-                title: "# Billing Frequency",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "expertHours",
-                title: "Expert Hours",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "amountFirstPayment",
-                title: "Amount First Payment",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "createdAt",
-                title: "Date Created",
-                show: true,
-                getValue: getValue
-            }, {
-                field: "action",
-                title: "",
-                format: 'compile',
-                getValue: function (row) {
-                    return '<button class="btn btn-danger btn-sm" ng-click="delete(row)"><span class="glyphicon glyphicon-trash"></span></button>';
-                }
-            }
-        ];
-
-        $scope.list = new NgTableParams({},
-            {
-                getData: function (params) {
-                    return productsService.list()
-                        .then(function (response) {
-                            return response.data;
-                        });
-                }
-            }
-        );
-
-        $scope.delete = function(row) {
-            productsService.delete(row).then(function() {
-                $scope.list.reload();
-            })
-            .catch(function(err) {
-                console.log(err);
-            });
-        };
+            buildGridData: buildGridData,
+            deleteItem: deleteItem
+        });
 
         pageService
             .reset()
             .addCrumb({name: 'Users', path: 'users.list'})
             .setPageTitle('Manage Users');
+
+
+        $timeout(activate);
+        function activate() {
+            reloadData();
+            
+        }
+
+        function reloadData() {
+            $scope.dataloaded = false;
+            adminUserService.list()
+            .then(function (response) {
+                $scope.users = response.data;
+                $scope.dataloaded = true;
+                buildGridData();
+            });
+        }
+
+    
+        function buildGridData() {
+            var data = {}; 
+            
+            $scope.dataReady = false;
+            $timeout(function(){
+
+                var filtered = $scope.users.filter(function(user){
+                    var valid = false;
+                    if ($scope.searchKeyword.trim() != ''){
+                        if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            valid = true;
+                        if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            valid = true;
+                        if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            valid = true;
+                    } else { valid = true; }
+                    return valid;
+                })
+
+                data.data = filtered.map(function(user){
+                    var role = _.find($scope.ROLES, {id: user.role});
+                    user.displayRole = role ? role.name : '';
+                    var status = _.find($scope.STATUSES, {id: user.status});
+                    user.displayStatus = status ? status.name : '';
+                    return user;
+                });
+
+                data.urlSync = false;
+                    $scope.gridData = {
+                    gridOptions: data,
+                    gridActions: {},
+                };
+                $scope.dataReady = true;
+            })
+            // $scope.$apply(function () {
+            // });
+            
+        }
+
+        function deleteItem(event, item) {
+            var success = function(){
+
+                item.remove().then(function() {
+                    reloadData();
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+            }
+            commonDialogService.openDeleteItemDialog(event, 'Do you really want to delete?', success);
+        }
+
     }
 }());
