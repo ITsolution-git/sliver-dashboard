@@ -8,7 +8,7 @@
     /* @ngInject */
     function RegistrationStep1Controller(productsService,productStorage,toaster) {
         var vm = this;
-
+        // TODO set pageservice for registration page1 2, 3
         vm.active = null;
         vm.plan= productStorage.getPlan();
         

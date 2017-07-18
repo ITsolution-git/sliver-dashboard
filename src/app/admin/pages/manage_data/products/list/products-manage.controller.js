@@ -3,11 +3,11 @@
 
     angular
         .module('manage.products.module')
-        .controller('ProductsManageController', ProductsManageController);
+        .controller('AdminProductsManageController', AdminProductsManageController);
 
     // ProductsManageController.$inject = ['productsService'];
 
-    function ProductsManageController($scope, $state, BCService, productsService, NgTableParams) {
+    function AdminProductsManageController($scope, $state, pageService, productsService, NgTableParams) {
         // var vm = this;
 
         function getValue(row) {
@@ -84,7 +84,7 @@
             });
         };
 
-        BCService
+        pageService
             .reset()
             .addCrumb({name: 'Plans', path: 'plans.list'})
             .setPageTitle('Manage Plans');

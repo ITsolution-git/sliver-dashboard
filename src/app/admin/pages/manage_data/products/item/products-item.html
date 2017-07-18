@@ -6,43 +6,40 @@
                     <!--<h1>Create Products</h1>-->
 
                     <form name="createProductsForm">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 m-b-es-20">
+                            
+                            <button type="submit" class="btn btn-primary pull-right" ng-click="save()">Save</button>
+                            <button type="submit" class="btn btn-default pull-right" ng-click="apply()" ng-show="productID">Apply</button>
+                            <a class="btn btn-danger pull-right" ui-sref="plans.list">Cancel</a>
+                        </div>
+                        <div class="col-xs-12 m-b-es-20">
                             <div class="col-xs-4 text-left">
-                                <input
-                                    type="checkbox"
-                                    bs-switch
-                                    ng-model="product.switchProduct"
-                                    switch-on-text="Plan"
-                                    switch-off-text="Build"
-                                    switch-change="typeChange()"
-                                >
+                                
+                                <select
+                                    name="switchProduct" id="switchProduct" ng-model="product.switchProduct" class="form-control" ng-change="typeChange()">
+                                    <option ng-value='true' >Plan</option>
+                                    <option ng-value='false'>Build</option>
+                                </select>
                             </div>
                             <div class="col-xs-4 build-form">
                                 <div class="form-group build-form" ng-hide="product.switchProduct">
-                                    <input
-                                            type="checkbox"
-                                            bs-switch
-                                            ng-model="product.switchBuildType"
-                                            switch-on-text="Installments"
-                                            switch-off-text="One Time Payments"
-                                            switch-change="buildTypeChange()"
-                                    >
+                                    
+
+                                    <select
+                                        name="switchBuildType" id="switchBuildType" ng-model="product.switchBuildType" class="form-control" ng-change="buildTypeChange()">
+                                        <option ng-value='true' >Installments</option>
+                                        <option ng-value='false'>One Time Payments</option>
+                                    </select>
                                 </div>
 
                             </div>
                             <div class="text-right col-xs-4">
-                                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
-                                <button type="submit" class="btn btn-default" ng-click="apply()" ng-show="productID">Apply</button>
-                                <a class="btn btn-danger" ui-sref="plans.list">Cancel</a>
                                 <div class="switch-status">
-                                    <input
-                                            type="checkbox"
-                                            bs-switch
-                                            ng-model="product.switchStatus"
-                                            switch-on-text="Active"
-                                            switch-off-text="Inactive"
-                                            switch-change="statusChange()"
-                                    >
+                                    <select
+                                        name="switchStatus" id="switchStatus" ng-model="product.switchStatus" class="form-control" ng-change="statusChange()">
+                                        <option ng-value='true' >Active</option>
+                                        <option ng-value='false'>Inactive</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

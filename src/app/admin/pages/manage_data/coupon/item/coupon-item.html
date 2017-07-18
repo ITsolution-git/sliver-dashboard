@@ -42,14 +42,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Coupon Type</label><br>
-                                    <input
-                                            type="checkbox"
-                                            bs-switch
-                                            ng-model="coupon.switchType"
-                                            switch-on-text="Percentage"
-                                            switch-off-text="Fixed Amount"
-                                            switch-change="typeChange()"
-                                    >
+                                    <select
+                                        name="typeCoupon" id="typeCoupon" ng-model="coupon.typeCoupon" class="form-control">
+                                        <option ng-value='1' >Percentage</option>
+                                        <option ng-value='0'>Fixed Amount</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">

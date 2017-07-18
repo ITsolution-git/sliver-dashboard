@@ -6,7 +6,7 @@
         .service('userService', userService);
 
     /* @ngInject */
-    function userService($q, apiService, $rootScope) {
+    function userService($q, apiService, $rootScope, adminUserService) {
         var me = this;
 
         // --- vars ---
@@ -20,6 +20,10 @@
 
         me.getUser = function () {
             return me.userPromise;
+        };
+        
+        me.selectSLAPyear = function(userId) {
+            return apiService.rest.all('auth').all('selectslapyear').one(userId).post();
         };
 
         me.loadUser = function (refresh) {

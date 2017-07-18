@@ -38,7 +38,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li ng-repeat="user in $ctrl.user.accounts">
-                            <a ng-click="selectSLAPyear(user)">
+                            <a ng-click="$ctrl.selectSLAPyear(user)">
                                 <span style="font-size: 16px; color:blue">{{'YEAR ' + ($index+1) + ' '}}</span>
                                 {{ user.createdAt | date: 'yyyy-MM-dd'}}
                                 <span class="label label-primary" ng-if="user._id == $ctrl.user._id">current</span>

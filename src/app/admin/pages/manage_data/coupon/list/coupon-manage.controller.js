@@ -6,7 +6,7 @@
         .controller('CouponManageController', CouponManageController);
 
     /* @ngInject */
-    function CouponManageController($scope, $state, BCService, couponService, NgTableParams) {
+    function CouponManageController($scope, $state, pageService, couponService, NgTableParams) {
 
         $scope.cols = [
             {
@@ -103,7 +103,7 @@
             });
         };
 
-        BCService
+        pageService
             .reset()
             .addCrumb({name: 'Coupon', path: 'coupon.list'})
             .setPageTitle('Manage Coupon');

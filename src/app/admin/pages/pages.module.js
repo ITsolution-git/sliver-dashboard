@@ -6,6 +6,7 @@
             [
                 'adminapp.pages.main',
                 'adminapp.pages.manage',
-                'adminapp.pages.reports'
+                'adminapp.pages.reports',
+                'adminapp.pages.slapsters'
             ]);
 }());

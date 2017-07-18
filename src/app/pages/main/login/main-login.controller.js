@@ -6,7 +6,7 @@
         .controller('MainLoginController', MainLoginController);
 
     /* @ngInject */
-    function MainLoginController($scope, $auth, $state, toaster, pageService, userService) {
+    function MainLoginController($scope, $auth, $state, toaster, pageService, userService, adminUserService) {
 
         // --- vars ---
         $scope.login = {
@@ -25,8 +25,11 @@
                         toaster.pop({type: 'success', body: "Welcome!"});
 
                         // update user data
-                        userService.loadUser(true).then(function () {
-                            $state.go('welcome');
+                        userService.loadUser(true).then(function (user) {
+                            if(user.role == adminUserService.ROLE_ADMIN)
+                                $state.go('admin.home');
+                            else
+                                $state.go('welcome');
                         });
 
                     }

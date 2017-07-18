@@ -6,8 +6,14 @@
         .controller('MyaccountsController', MyaccountsController);
 
     /* @ngInject */
-    function MyaccountsController($scope, productStorage, $state, userService, $auth) {
+    function MyaccountsController($scope, pageService, productStorage, $state, userService, $auth) {
         $scope.renewAccount = renewAccount;
+
+        pageService
+            .reset()
+            .setShowBC(false)
+            .addCrumb({name: 'Dashboard', path: 'home'})
+            .setPageTitle('My accounts');
 
         function renewAccount() {
             productStorage.resetStorage();

@@ -29,6 +29,10 @@
             return _user;
         };
 
+        this.getRenewFrom = function(id) {
+            return _renewFrom;
+        }
+        
         this.isRenew = function() {
             return _isRenew;
         }
@@ -40,6 +44,7 @@
         this.setRenewFrom = function(id) {
             _renewFrom = id;
         }
+
         this.setRenew = function() {
             _isRenew = true;
         }

@@ -1,0 +1,207 @@
+<div layout="column" style="width: 100%; font-size: 17px;">
+<md-card flex="100" class="p-es-30 m-es-40 slapster-at-a-glance"  ng-init="showAtAGlance = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>SLAPster At a Glance</h3>
+        <button-switch visible="showAtAGlance"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showAtAGlance">
+
+        <form layout="row" layout-wrap layout-align="center center" name="form">
+            <md-input-container  flex="100">
+                <label>Business Name</label>
+                <input ng-model="user.businessName" required name="businessName">
+                <div ng-messages="form.businessName.$error">
+                    <ng-message when="required">Business Name is required.</ng-message>
+                </div>
+            </md-input-container>
+            <md-input-container  flex="50">
+                <label>First Name</label>
+                <input ng-model="user.name" required name="name">
+                <div ng-messages="form.name.$error">
+                    <ng-message when="required">First Name is required.</ng-message>
+                </div>
+            </md-input-container>
+            
+            <md-input-container  flex="50">
+                <label>Last Name</label>
+                <input ng-model="user.lastName" required name="lastName">
+                <div ng-messages="form.lastName.$error">
+                    <ng-message when="required">Last Name is required.</ng-message>
+                </div>
+            </md-input-container>
+            
+            <md-input-container flex="50">
+                <md-select ng-model="user.status">
+                    <md-option ng-repeat="status in STATUSES" ng-value="status.id">{{status.name}}</md-option>
+                </md-select>
+                <div class="md-errors-spacer"></div>
+            </md-input-container>
+            
+
+            <md-input-container flex="50">
+                <md-select ng-model="user.role">
+                    <md-option ng-value="role.id" ng-repeat="role in ROLES">
+                        {{role.name}}
+                    </md-option>
+                </md-select>
+                <div class="md-errors-spacer"></div>
+            </md-input-container>
+
+
+            <md-input-container class="md-block" flex="50">
+                <label for="email">Email</label>
+                <input name="email" ng-model="user.email" id="email"
+                        required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                <div ng-messages="form.email.$error" ng-hide="form.email.$valid">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Only letters and numbers are allowed (a-z,A-Z)
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex="50">
+                <label for="phone">Phone Number</label>
+                <input name="phone" required ng-model="user.phone"  id="phone"/>
+
+                <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid">
+                    <ng-message when="required">Phone Number is required.</ng-message>
+                </div>
+            </md-input-container>
+
+            <section layout="row" layout-align="end center" flex="100">
+                <md-button ng-click="createOrSave($event)" class="md-primary" >
+                    Save
+                </md-button>
+                <md-button ng-click="deleteItem($event)" class="md-warn">
+                    Delete
+                </md-button>
+            </section>
+        </form>
+    </section>
+</md-card>
+
+
+
+<md-card flex="100" class="p-es-30 m-es-40 slapster-ideal-client-journey"  ng-init="showJourney = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>Ideal Client Journey</h3>
+        <button-switch visible="showJourney"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showAtAGlance">
+
+        Ideal Client Journey
+        <table class="table table-responsive ">
+            <thead>
+                <tr>
+                    <td>Start</td>
+                    <td>Onboard</td>
+                    <td>Build</td>
+                    <td>Approve</td>
+                    <td>Execute Onboard</td>
+                    <td>Q1</td>
+                    <td>Q2</td>
+                    <td>Q3</td>
+                    <td>Q4</td>
+                    <td>Renew</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>✔Account Created<br/>
+                        ✔T&C Signed<br/>
+                        ✔Payment Set Up<br/>
+                        ✔Onboard Call Set<br/>
+                        ✔SE Calls Set<br/>
+                    </td>
+                    <td>CCCCCCC</td>
+                    <td>CCCCCCC</td>
+                    <td>CCCCCCC</td>
+                    <td>CCCCCCC</td>
+                    <td>CCCCCCC</td>
+                    <td>CCCCCCC</td>
+                    <td>CCCCCCC</td>
+                    <td>x% of AI <br/>
+                        x% of Sales <br/>
+                        x% of P&R <br/>
+                        x/x SE Calls <br/>
+                        x/x SA Calls<br/>
+                        x/x SSchool<br/>
+                        x/x SWorld<br/>
+                        ✔SLAPstuff Out<br/>
+                        ✔Quarterly Summary<br/>
+                        x/3 Paid<br/>
+                    </td>
+                    <td>CCCCCCC</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+</md-card>
+
+
+
+
+<md-card flex="100" class="p-es-30 m-es-40 slapster-success-metrics"  ng-init="showSuccessMetrics = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>Success Metrics</h3>
+        <button-switch visible="showJourney"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showSuccessMetrics">
+        Success Metrics Grid.....
+    </section>
+</md-card>
+
+
+
+<md-card flex="100" class="p-es-30 m-es-40 slapster-payments"  ng-init="showPayments = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>Payments</h3>
+        <button-switch visible="showPayments"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showAtAGlance">
+        Payments Grid
+    </section>
+</md-card>
+
+
+<md-card flex="100" class="p-es-30 m-es-40 slapster-slap-milestones"  ng-init="showSlapMilestones = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>SLAPmanager Milestones</h3>
+        <button-switch visible="showJourney"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showSlapMilestones">
+        SLAPmanager Milestones Checks
+    </section>
+</md-card>
+
+
+<md-card flex="100" class="p-es-30 m-es-40 slapster-activity"  ng-init="showActivity = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>Activity</h3>
+        <button-switch visible="showActivity"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showAtAGlance">
+        Activity
+    </section>
+</md-card>
+
+<md-card flex="100" class="p-es-30 m-es-40 slapster-expert-hours"  ng-init="showExpertHours = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>Expert Hours</h3>
+        <button-switch visible="showExpertHours"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showAtAGlance">
+        Activity
+    </section>
+</md-card>
+
+</div>

@@ -3,10 +3,10 @@
 
     angular
         .module('manage.products.module')
-        .controller('ProductsItemController', ProductsItemController);
+        .controller('AdminProductsItemController', AdminProductsItemController);
 
     /* @ngInject */
-    function ProductsItemController($scope, BCService, productsService, toaster, $state, $stateParams) {
+    function AdminProductsItemController($scope, pageService, productsService, toaster, $state, $stateParams) {
         $scope.product = {
             switchProduct: true,
             switchStatus: false,
@@ -62,13 +62,13 @@
         };
 
 
-        BCService
+        pageService
             .reset()
             .setShowBC(true)
             .addCrumb({name: 'Plans', path: 'plans.list'});
 
         if (!$stateParams.product_id) {
-            BCService
+            pageService
                 .addCrumb({name: 'Add', path: 'plans.add'})
                 .setPageTitle('New plans');
         } else {
@@ -78,7 +78,7 @@
                 $scope.product.switchProduct = response.data.typeProduct == productsService.TYPE_PLAN ? true : false;
                 $scope.product.switchBuildType = response.data.buildType == productsService.BUILD_INSTALLMENTS ? true : false;
 
-                BCService
+                pageService
                     .addCrumb({name: $scope.product.productName, path: 'plans.list'})
                     .setPageTitle('Edit "' + $scope.product.productName + '"');
             });

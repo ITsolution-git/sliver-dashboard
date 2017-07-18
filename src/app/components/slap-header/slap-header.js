@@ -20,7 +20,17 @@
                 if(user._id == vm.user._id)
                     return;
 
-                // $auth.logout();
+                userService.selectSLAPyear(user._id)
+                .then(function(req){
+                    $auth.setToken(req.data.token);
+                    // userService.getUser(true).then(function (user) {
+                    //     vm.user = user;
+                    //     // $state.go('home');
+                    // });
+                    $state.go('home');
+                    $window.location.reload();
+
+                })
 
             }
         },

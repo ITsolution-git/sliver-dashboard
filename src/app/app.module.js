@@ -15,6 +15,8 @@
                 'ngAria',
                 'ngMessages',
 
+                'ngTable',
+
                 'angular-loading-bar',
                 'restangular',
                 'satellizer',
@@ -23,6 +25,7 @@
                 'ui.bootstrap',
                 'ui.mask',
                 'frapontillo.bootstrap-switch',
+                'ui.select',
                 'mgcrea.ngStrap',
                 'ngCsv',
                 'daterangepicker',

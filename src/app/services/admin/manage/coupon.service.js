@@ -6,7 +6,7 @@
         .service('couponService', couponService);
 
     /* @ngInject */
-    function couponService(adminApiService) {
+    function couponService(adminApiService, apiService) {
         this.TYPE_PERCENTAGE = 1;
         this.TYPE_FIXED = 0;
         this.ONE_TIME = 1;
@@ -45,6 +45,10 @@
 
         this.delete = function(coupon) {
             return coupon.remove();
+        }
+
+        this.validCoupon = function(code,planId) {
+            return apiService.rest.all('coupon').one(code).one(planId).get();
         }
     }
 }());

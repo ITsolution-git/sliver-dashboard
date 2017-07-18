@@ -26,7 +26,8 @@
             checkValidity: checkValidity,
             notifications: [],
 
-            filterActionItemsByMonth: filterActionItemsByMonth
+            filterActionItemsByMonth: filterActionItemsByMonth,
+            defaultActionItemsAdded: false
         });
 
         pageService
@@ -65,9 +66,6 @@
                         
                         //If Action Item is empty, should load default action items.
                         //TODO: When user chooses another strategy for that quater, should updated it?
-                        if($scope.actionItems.length == 0) {
-                            loadDefaultActionItems();
-                        }
 
                         $timeout(function(){
                             for (var i = 0; i < 12; i++) {
@@ -110,24 +108,26 @@
 
         }
 
-
+        //TODO Load Default items
         function loadDefaultActionItems(){
             _.each($scope.data, function(quater, QID){
+                if(quater.strategy && quater.strategy.id) {
 
-                var itemsByMonth = actionplanService.getDefaultActionsByStrategy(quater.strategy.id);
-                _.each(itemsByMonth.actions, function(itemsMonths, monthID) {
-                    var dueDate = moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + 3 * QID - 1 + monthID)/12)), month: $scope.QMonths[QID][monthID], day: 1 }).endOf('month').format('YYYY-MM-DD');
-                    console.log(dueDate);
-                    _.each(itemsMonths, function(item){
-                        //Set Due date to end of that month
-                        var copied = angular.copy(item);
-                        copied.dueDate = dueDate;
-                        excuteItemService.createItem(copied).then(function(item){
-                            $scope.actionItems.push(item.data);
-                        }); 
-                        
+                    var itemsByMonth = actionplanService.getDefaultActionsByStrategy(quater.strategy.id);
+                    _.each(itemsByMonth.actions, function(itemsMonths, monthID) {
+                        var dueDate = moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + 3 * QID - 1 + monthID)/12)), month: $scope.QMonths[QID][monthID], day: 1 }).endOf('month').format('YYYY-MM-DD');
+                        console.log(dueDate);
+                        _.each(itemsMonths, function(item){
+                            //Set Due date to end of that month
+                            var copied = angular.copy(item);
+                            copied.dueDate = dueDate;
+                            excuteItemService.createItem(copied).then(function(item){
+                                $scope.actionItems.push(item.data);
+                            }); 
+                            
+                        });
                     });
-                });
+                }
             })
             
         }

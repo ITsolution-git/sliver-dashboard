@@ -20,11 +20,11 @@
         if (productStorage.isRenew()){
             vm.isRenew = true;
             vm.user = productStorage.getUser();
-            vm.planId = vm.plan._id;
-            vm.planDate = new Date();
-            vm.buildId = vm.build ? vm.build._id : null;
-            vm.build_date = vm.build ? new Date() : null;
-            vm.code = null;
+            vm.user.planId = vm.plan._id;
+            vm.user.planDate = new Date();
+            vm.user.buildId = vm.build ? vm.build._id : null;
+            vm.user.build_date = vm.build ? new Date() : null;
+            vm.user.code = null;
         } else
             vm.user = {
                 planId: vm.plan._id,
@@ -46,12 +46,13 @@
 
         function signup(event,form) {
             event.preventDefault();
-
-            if(form.$invalid) {
+            
+            if(!vm.isRenew && form.$invalid) {
                 toaster.pop({type: 'error', body: "Please check your details" });
                 return;
             }
-
+            vm.user.isRenew = vm.isRenew;
+            vm.user.renewFrom = productStorage.getRenewFrom();
             $auth.signup(vm.user)
                 .then(
                     function (response) {

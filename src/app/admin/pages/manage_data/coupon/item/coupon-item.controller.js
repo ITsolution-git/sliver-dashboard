@@ -6,7 +6,7 @@
         .controller('CouponItemController', CouponItemController);
 
     /* @ngInject */
-    function CouponItemController($scope,BCService,productsService,couponService,toaster,$stateParams,$state) {
+    function CouponItemController($scope,pageService,productsService,couponService,toaster,$stateParams,$state) {
 
         $scope.coupon = {
             switchType: true,
@@ -59,13 +59,13 @@
             return ($stateParams.coupon_id) ? couponService.update($scope.coupon) : couponService.add($scope.coupon);
         };
 
-        BCService
+        pageService
             .reset()
             .setShowBC(true)
             .addCrumb({name: 'Coupon', path: 'coupon.list'});
 
         if (!$stateParams.coupon_id) {
-            BCService
+            pageService
                 .addCrumb({name: 'Add', path: 'coupon.add'})
                 .setPageTitle('New product');
         } else {
@@ -83,7 +83,7 @@
                 // $scope.product.switchProduct = response.data.product.typeProduct == productsService.TYPE_PLAN ? true : false;
                 // $scope.product.switchBuildType = response.data.product.buildType == productsService.BUILD_INSTALLMENTS ? true : false;
 
-                BCService
+                pageService
                     .addCrumb({name: $scope.coupon.name, path: 'coupon.list'})
                     .setPageTitle('Edit "' + $scope.coupon.name + '"');
             });
