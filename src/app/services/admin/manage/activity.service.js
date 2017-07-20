@@ -13,6 +13,19 @@
         this.FOREVER = 2;
         this.LIMITED = 3;
 
+        this.activityTypes = [
+            { id: "Milestone", name: "Milestone", show: true },
+            { id: "ActionItem", name: "ActionItem", show: true },
+            { id: "Pause & Reflect", name: "Pause & Reflect", show: true },
+            { id: "Sales", name: "Milestone", show: true },
+            { id: "Common", name: "Common", show: true },
+            { id: "SLAPexpert", name: "SLAPexpert", show: true },
+            { id: "SLAPassistant", name: "SLAPassistant", show: true },
+            { id: "SLAPworld", name: "SLAPworld", show: true },
+            { id: "SLAPschool", name: "SLAPschool", show: true },
+            { id: "SLAPmanager", name: "SLAPmanager", show: true }
+        ];
+
         this.add = function(activity) {
             return apiService.rest.all('acitivites').all(activity.userId).post(activity);
         };

@@ -6,8 +6,10 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService) {
+    function AdminSlapstersItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService) {
+
         angular.extend($scope,  {
+            
             user: {},
             buildData: buildData,
             programData: productData.filter(function(pro){return pro.typeProduct == 1}),
@@ -42,7 +44,59 @@
             anualInfo: {},
             //Payment:
             togglePayment: togglePayment,
-            charge: charge
+            charge: charge,
+            //Slap manager Milestones
+            SMmilestones:[
+                {
+                    title: "Onboarding Call Set",
+                    journey: {section: 'start', name: 'Onboarding Call Set'}
+                },
+                {
+                    title: "Execute Call Set",
+                    journey: {section: 'excute', name: 'Execute Call Set'}
+                },
+                {
+                    title: "SE Calls Set",
+                    journey: {section: 'start', name: 'SE Calls Set'}
+                },
+                {
+                    title: "SM Calls Set",
+                    journey: {section: 'onboard', name: 'SM Calls Set'}
+                },
+                {
+                    title: "SLAPstuff Sent",
+                    journey: {section: 'q1', name: 'SLAPstuff Sent'}
+                },
+                {
+                    title: "SLAPbuddy Connected",
+                    journey: {section: 'q2', name: 'SLAPbuddy Connected'}
+                },
+                {
+                    title: "Q3 Hustle Call Set",
+                    journey: {section: 'q3', name: 'Q3 Hustle Call Set'}
+                },
+            ],
+            toggleSMmilestone: toggleSMmilestone,
+            //Activity Grid
+
+            activityGridData: {
+                gridOptions: {data:[]},
+                gridActions: {}
+            },
+            activityGridReady: false,
+            activitySearchKeyword: '',
+            buildActivityGridData: buildActivityGridData,
+            activityTypes: activityService.activityTypes,
+            activityFilter: {Milestone:true},
+
+            //Activity dialog
+
+            curMode: '',
+            openItemDialog: openItemDialog,
+            openDeleteItemDialog: openDeleteItemDialog,
+            closeDialog: closeDialog,
+            updateItem: updateItem,
+            formData: {},
         });
         
 
@@ -58,6 +112,8 @@
             activatePayments();
 
             initializeIdealJourney();
+
+            buildActivityGridData();
 
             var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
             $scope.startDate = startDate;
@@ -196,6 +252,7 @@
 
                 
                 $scope.dataloaded = true;
+                buildActivityGridData(); //Call after user data loaded
             });
         }
 
@@ -303,5 +360,145 @@
                     toaster.pop({type: 'error', body: 'Payment Failed.'});
                 });
         }
+        
+        function toggleSMmilestone(item) {
+            var activity = {
+                userId: $scope.userID,
+                title: item.title,
+                type: 'SLAPmanager',  
+                notes: item.title,
+                journey: item.journey
+            };
+            activityService.add(activity)
+                .then(function(resp){
+                    $scope.activityData.push(resp.data);
+                });    
+        }
+
+        function buildActivityGridData() {
+            var data = {}; 
+            
+            $scope.activityGridReady = false;
+            $timeout(function(){
+
+                var filtered = $scope.activityData.filter(function(activity){
+                    var valid = false;
+                    if ($scope.activitySearchKeyword.trim() != ''){
+                        if (activity.title.toLowerCase().indexOf($scope.activitySearchKeyword) != -1)
+                            valid = true;
+                        if (activity.notes.toLowerCase().indexOf($scope.activitySearchKeyword) != -1)
+                            valid = true;
+                    } else { valid = true; }
+                    return valid;
+                })
+
+                data.data = filtered.map(function(act){
+                    // var role = _.find($scope.ROLES, {id: user.role});
+                    // user.displayRole = role ? role.name : '';
+                    var updateBy = _.find($scope.userData, {_id: act.updatedBy});
+                    act.updatedByUserName = updateBy ? updateBy.name + ' ' + updateBy.lastName : 'Admin';
+                    act.createdAtStr = moment(act.createdAt).format('ll');
+                    return act;
+                });
+
+                data.urlSync = false;
+                $scope.activityGridData = {
+                    gridOptions: data,
+                    gridActions: {},
+                };
+                $scope.activityGridReady = true;
+            })
+            
+        }
+
+
+        function closeDialog() {
+            $mdDialog.hide();
+        }
+
+        function openItemDialog($event, mode, item) {
+            $scope.curMode = mode;
+            if ($scope.curMode == 'add') {
+                var newForm = {
+                    type: '',
+                    title: '',
+                    notes: '',
+                    userId: $scope.userID
+                };
+                
+                $scope.formData = newForm;
+            } else if ($scope.curMode == 'edit') {
+                $scope.formData = apiService.rest.copy(item);
+            }
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope, 
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/activity-dialog/activity-dialog.html',
+                controller: 'ActivityDialogController',
+                autoWrap: true
+            });
+        }
+        
+        function updateItem($event) {
+            if ($scope.curMode == 'add') {
+                
+                activityService.add($scope.formData)
+                .then(function(response){
+                    $scope.activityData.push(response.data);
+                    showToast('Added Activity');
+                    buildActivityGridData();
+                });
+            } else if($scope.curMode == 'edit') {
+                
+                $scope.formData.save().then(function(item){
+                    var index = _.findIndex($scope.activityData, {_id: $scope.formData._id});
+                    $scope.activityData[index] = $scope.formData;
+                    showToast('Updated');
+                    buildActivityGridData();
+                });
+            } 
+            $mdDialog.hide($event);
+        }
+        
+
+        function showToast(message) {
+            var toast = $mdToast.simple()
+            .textContent(message)
+            .action('OK')
+            .hideDelay(3000)
+            .position("bottom right");
+
+            $mdToast.show(toast).then(function(response) {
+                if ( response == 'ok' ) {
+                    $mdToast.hide();
+                }
+            });
+        }
+
+        function openDeleteItemDialog($event, item) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.confirm()
+                .title('Confirm Delete')
+                .textContent('Would you like to delete?')
+                .ariaLabel('Delete')
+                .targetEvent($event)
+                .ok('Delete')
+                .cancel('No');
+
+            $mdDialog.show(confirm).then(function() {
+                item.remove().then(function(response) {
+                    var index = _.findIndex($scope.activityData, {_id: item._id});
+                    $scope.activityData.splice(index, 1);
+                    showToast('Deleted Activity');
+                    buildActivityGridData();
+                    
+                });
+            }, function() {
+                
+            });
+        }
+
     }
 }());

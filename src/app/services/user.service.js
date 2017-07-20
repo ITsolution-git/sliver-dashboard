@@ -97,12 +97,23 @@
         };
 
         me.isAdmin = function () {
-            return (me.user && me.user.role == 1);
+            return (me.user && ((me.user.role == 1) || (me.user.role == 3) || (me.user.role == 2) || (me.user.role == 5)));
         };
 
         me.rest = function () {
-            return apiService.rest.one('auth')
+            return apiService.rest.one('auth');
         };
+
+        me.updateMe = function(userData) {
+            return apiService.rest.one('me').put(userData).then(function(user){
+                console.log(user.data);
+                return me.user = user.data;
+            });
+        }
+
+        me.changeMyPassword = function(password) {
+            //TODO ;;change password;
+        }
 
     }
 })();

@@ -29,8 +29,9 @@
                 item.products.forEach(function (prod) {
                     row.costProduct += prod.cost ? prod.cost : prod.amount;
                 });
-                var discount = row.costProduct - item.amountCharges;
-                row.discount = discount ? '-' + discount : '-';
+                // var discount = row.costProduct - item.amountCharges;
+                // row.discount = discount ? '-' + discount : '-';
+                row.discount = row.costProduct - item.amountCharges;
                 row.amountCharges = item.amountCharges;
                 row.status = item.status;
                 

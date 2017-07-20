@@ -114,7 +114,7 @@
                             <a ui-sref="users.item({user_id:item._id, mode:'edit'})" style="margin:0px">
                                 Edit
                             </a>
-                            <a ng-click="users.item({user_id:item._id, mode:'view'})" style="margin:0px">
+                            <a ui-sref="slapsters.item({user_id:item._id})" style="margin:0px" ng-if="item.role == 4">
                                 View
                             </a>    
                             <a ng-click="deleteItem($event, item)" style="margin:0px">
@@ -125,6 +125,6 @@
                 </tbody>
             </table>
         </div>
-
-    </md-card>
+    </div>
+</md-card>
 </div>

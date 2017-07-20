@@ -14,7 +14,14 @@
             STATUSES: adminUserService.STATUSES,
 
             deleteItem: deleteItem,
-            createOrSave: createOrSave
+            createOrSave: createOrSave,
+
+            showSetPasswordDialog: showSetPasswordDialog,
+            password: {
+                password: '',
+                confirm_password: ''
+            },
+            setPassword: setPassword
         });
 
 
@@ -41,9 +48,9 @@
         }
 
         function createOrSave(event) {
+            
             update().then(function(){
                 toaster.pop({type: 'success', body: 'User saved.'});
-                $state.go('users.list');
             }).catch(function(err){
                 console.log(err);
             });
@@ -71,5 +78,39 @@
 
         }
 
+        function showSetPasswordDialog($event) {
+            $scope.password.password = '';
+            $scope.password.confirm_password = '';
+            
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope, 
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/password-dialog/password-dialog.html',
+                controller: 'PasswordDialogController',
+                autoWrap: true
+            });
+        }
+
+        function setPassword($event) {
+            $scope.user.password = $scope.password.password;
+            createOrSave();
+            $mdDialog.hide($event);
+        }
+
+        function showToast(message) {
+            var toast = $mdToast.simple()
+            .textContent(message)
+            .action('OK')
+            .hideDelay(3000)
+            .position("bottom right");
+
+            $mdToast.show(toast).then(function(response) {
+                if ( response == 'ok' ) {
+                    $mdToast.hide();
+                }
+            });
+        }
     }
 }());

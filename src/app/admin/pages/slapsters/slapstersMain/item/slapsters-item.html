@@ -201,7 +201,7 @@
                     <td>{{isJouneyItemDone('start', 'Account Created') ? '✔' : ''}}Account Created<br/>
                         {{isJouneyItemDone('start', 'T&C Signed') ? '✔' : ''}}T&C Signed<br/>
                         {{isJouneyItemDone('start', 'Payment Set Up') ? '✔' : ''}}Payment Set Up<br/>
-                        {{isJouneyItemDone('start', 'Onboard Call Set') ? '✔' : ''}}Onboard Call Set<br/>
+                        {{isJouneyItemDone('start', 'Onboarding Call Set') ? '✔' : ''}}Onboard Call Set<br/>
                         {{isJouneyItemDone('start', 'SE Calls Set') ? '✔' : ''}}SE Calls Set<br/>
                     </td>
                     <td>
@@ -221,14 +221,14 @@
                         {{isJouneyItemDone('approve', 'Full Approval') ? '✔' : ''}}Full Approval<br/>
                     </td>
                     <td>
-                        {{isJouneyItemDone('excute', 'Call Happened') ? '✔' : ''}}Call Happened<br/>
+                        {{isJouneyItemDone('excute', 'Execute Call Set') ? '✔' : ''}}Call Happened<br/>
                     </td>
                     <td>
                         {{quaters[0].quaterProgress['action']}}% of AI <br/>
                         {{quaters[0].quaterProgress['sales']}}% of Sales <br/>
                         {{quaters[0].quaterProgress['reflextion']}}% of P&R <br/>
 
-                        {{isJouneyItemDone('q1', 'SLAPstuff Out') ? '✔' : ''}}SLAPstuff Out<br/>
+                        {{isJouneyItemDone('q1', 'SLAPstuff Sent') ? '✔' : ''}}SLAPstuff Out<br/>
                         {{isJouneyItemDone('q1', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary<br/>
                         x/3 Paid 
                     </td>
@@ -237,7 +237,8 @@
                         {{quaters[1].quaterProgress['action']}}% of AI <br/>
                         {{quaters[1].quaterProgress['sales']}}% of Sales <br/>
                         {{quaters[1].quaterProgress['reflextion']}}% of P&R <br/>
-                        {{isJouneyItemDone('Q2', 'SLAPmatch') ? '✔' : ''}}SLAPmatch<br/>
+                        {{isJouneyItemDone('q2', 'SLAPmatch') ? '✔' : ''}}SLAPmatch<br/>
+                        {{isJouneyItemDone('q2', 'SLAPbuddy Connected') ? '✔' : ''}}SLAPbuddy Connected<br/>
                         {{isJouneyItemDone('q2', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary<br/>
                         x/3 Paid 
                     </td>
@@ -246,7 +247,7 @@
                         {{quaters[2].quaterProgress['sales']}}% of Sales <br/>
                         {{quaters[2].quaterProgress['reflextion']}}% of P&R <br/>
 
-                        {{isJouneyItemDone('Q3', 'Q4 Prep Call') ? '✔' : ''}}Q4 Prep Call<br/>
+                        {{isJouneyItemDone('q3', 'Q3 Hustle Call Set') ? '✔' : ''}}Q3 Hustle Call Set<br/>
                         {{isJouneyItemDone('q3', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary<br/>
                         x/3 Paid 
                     </td>
@@ -254,7 +255,7 @@
                         {{quaters[3].quaterProgress['action']}}% of AI <br/>
                         {{quaters[3].quaterProgress['sales']}}% of Sales <br/>
                         {{quaters[3].quaterProgress['reflextion']}}% of P&R <br/>
-                        {{isJouneyItemDone('Q4', 'Renewal Confirmed') ? '✔' : ''}}Renewal Confirmed<br/>
+                        {{isJouneyItemDone('q4', 'Renewal Confirmed') ? '✔' : ''}}Renewal Confirmed<br/>
                         x/3 Paid 
                     </td>
                     <td>
@@ -350,7 +351,7 @@
 
 
 
-<md-card flex="100" class="p-es-30 m-es-40 slapster-payments"  ng-init="showPayments = true">
+<md-card flex="100" class="p-es-30 m-es-40 slapster-payments"  ng-init="showPayments = false">
     <section layout="row" layout-align="space-between center">
 
         <h3>Payments</h3>
@@ -375,9 +376,9 @@
                 <tbody>
                     <tr ng-repeat="item in paymentData">
                         <td>{{item.programName}}</td>
-                        <td>{{item.costProduct}}</td>
+                        <td>{{item.costProduct | currency}}</td>
                         <td>{{item.promoCode}}</td>
-                        <td>{{item.discount}}</td>
+                        <td>{{item.discount | currency}}</td>
                         <td   ng-class="item.status ? '' : 'bg-danger' ">{{item.status == 0 ? 'Declined' : 'Paid'}}</td>
                         <td>{{item.paymentDate}}</td>
                     </tr>
@@ -401,14 +402,29 @@
 </md-card>
 
 
-<md-card flex="100" class="p-es-30 m-es-40 slapster-slap-milestones"  ng-init="showSlapMilestones = true">
+<md-card flex="100" class="p-es-30 m-es-40 slapster-slap-milestones"  ng-init="showSlapMilestones = false">
     <section layout="row" layout-align="space-between center">
 
         <h3>SLAPmanager Milestones</h3>
-        <button-switch visible="showJourney"></button-switch>
+        <button-switch visible="showSlapMilestones"></button-switch>
     </section>
     <section class="  sample-show-hide"  ng-show="showSlapMilestones">
-        SLAPmanager Milestones Checks
+        <section layout="row" layout-align="center center">
+            <table class="table table-responsive table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <td> Scheduled Call</td>
+                        <td>Completion</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in SMmilestones">
+                        <td>{{item.title}}</td>
+                        <td ng-click="toggleSMmilestone(item)">{{isJouneyItemDone(item.journey.section, item.journey.name) ? '✔' : ''}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </section>
 </md-card>
 
@@ -419,8 +435,126 @@
         <h3>Activity</h3>
         <button-switch visible="showActivity"></button-switch>
     </section>
-    <section class="  sample-show-hide"  ng-show="showAtAGlance">
-        Activity
+    <section class="  sample-show-hide"  ng-show="showActivity">
+
+        <section>
+            <md-button class="md-primary pull-right" ng-click="openItemDialog($event, 'add')">
+                Create Activity
+            </md-button>
+        </section>
+
+        <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
+            <md-input-container class="md-icon-float md-block" flex="50" style="margin: 0px">
+                <md-icon >
+                    <i class="material-icons">search</i>
+                </md-icon>
+                <input ng-model="activitySearchKeyword" ng-keydown="buildActivityGridData()" type="text" placeholder="Search">
+            </md-input-container>
+        </div>
+        
+        <section layout="row">
+            <section flex="50"></section>
+
+            <section layout="row" flex="50" layout-wrap> 
+                <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes"></slap-color-switch>
+                <span ng-repeat-end>&nbsp&nbsp</span>
+            </section>
+        </section>
+
+        <div grid-data class='slap-grid' id="activity-grid"
+        grid-options="activityGridData.gridOptions" grid-actions="activityGridData.gridActions" ng-if="activityGridReady">
+            <div layout-gt-sm="row" layout-sm="column" layout-align="center">
+                <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
+                    <span>{{filtered.length}} activities</span>
+                </div>
+                <div flex-gt-sm="75" flex-xs="100">
+                    <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+                        <grid-pagination max-size="5"
+                            boundary-links="true"
+                            class="pagination mdl-shadow--2dp"
+                            ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                            total-items="paginationOptions.totalItems"
+                            ng-model="paginationOptions.currentPage"
+                            ng-change="reloadGrid()"
+                            items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                        <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                            <md-select ng-init="paginationOptions.itemsPerPage = '5'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
+                                
+                                <md-option value="5">5</md-option>
+                                <md-option value="10">10</md-option>
+                                <md-option value="20">20</md-option>
+                                <md-option value="50">50</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th sortable="title" class="sortable">
+                                <span>Activity</span>
+                            </th>
+                            <th sortable="type" class="sortable">
+                                <span>Type</span>
+                                <!--<md-select filter-by="type"
+                                            filter-type="select"
+                                            ng-model="selectedTitle"
+                                            placeholder="Type"
+                                            ng-change="filter()" 
+                                            style="margin: 0px">
+                                    <md-option value="">All </md-option>
+                                    <md-option value="{{type.id}}" ng-repeat="type in activityTypes">
+                                        {{type.name}}
+                                    </md-option>
+                                </md-select>-->
+                            </th>
+
+                            <th sortable="updatedByUserName" class="sortable">
+                                <span>Updated By</span>
+                            </th>
+                            <th sortable="createdAtStr" class="sortable">
+                                <span>Date</span>
+                            </th>
+                            <th sortable="notes" class="sortable">
+                                <span>Notes</span>
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr grid-item >
+                            <td>
+                                {{item.title}}
+                            </td>
+                            <td>
+                                {{item.type}}
+                            </td>
+                            <td>
+                                {{item.updatedByUserName}}
+                            </td>
+                            <td>
+                                {{item.createdAtStr}}
+                            </td>
+                            <td>
+                                <span  style="overflow: hidden; text-overflow: ellipsis;">{{item.notes}}</span>
+                            </td>
+                            
+                            <td>
+                                <a ng-click="openItemDialog($event, 'edit', item)"style="margin:0px">
+                                    Edit
+                                </a>
+                                <a ng-click="openDeleteItemDialog($event, item)" style="margin:0px">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </section>
 </md-card>
 
@@ -430,7 +564,7 @@
         <h3>Expert Hours</h3>
         <button-switch visible="showExpertHours"></button-switch>
     </section>
-    <section class="  sample-show-hide"  ng-show="showAtAGlance">
+    <section class="  sample-show-hide"  ng-show="showExpertHours">
         Activity
     </section>
 </md-card>
