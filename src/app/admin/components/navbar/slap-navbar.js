@@ -4,7 +4,7 @@
     var adminSlapNavbar = {
         bindings : {
         },
-        controller : function($auth,$state,userService,$scope) {
+        controller : function($auth,$state,userService,$scope, $window) {
             var vm = this;
             vm.logout = function() {
                 $auth.logout();

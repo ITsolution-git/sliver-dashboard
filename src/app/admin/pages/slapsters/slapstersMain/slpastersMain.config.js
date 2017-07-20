@@ -36,6 +36,34 @@
                     access: 'admin',
                     isAdminPage: true
                 },
+                resolve: {
+                    excuteItems: function (excuteItemService, $stateParams, $state) {
+                        return excuteItemService.loadExcuteItemsByUser($stateParams.user_id)
+                        .catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    },
+                    buildData: function (stepService, $stateParams, $state) {
+                        return stepService.getAllStepDataByUser($stateParams.user_id).then(function(response){
+                            return response.data;
+                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    },
+                    productData: function (productsService, $state) {
+                        return productsService.getAllProducts().then(function(response) {
+                            return  response.data;
+                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    },
+                    promocodeData: function (couponService, $state) {
+                        return couponService.list()
+                        .then(function (response) {
+                            return response.data;
+                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    },
+                    activityData: function (activityService, $stateParams, $state) {
+                        return activityService.list($stateParams.user_id)
+                        .then(function (response) {
+                            return response.data;
+                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    }
+                },
                 url: '/{user_id}',
                 controller: 'AdminSlapstersItemController',
                 templateUrl: 'admin/pages/slapsters/slapstersMain/item/slapsters-item.html'

@@ -5,7 +5,7 @@
         .module('app.pages.statement')
         .controller('Step1SummaryController', Step1SummaryController);
 
-    function Step1SummaryController($scope, $state, pageService, userService, stepService, activeStep) {
+    function Step1SummaryController($scope, $state, pageService, userService, stepService, activeStep, activityService) {
 
         angular.extend($scope, activeStep.model, {
             privilegesData: {
@@ -29,8 +29,18 @@
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);
-            stepService.setFinishActiveStep();
+            if(stepService.setFinishActiveStep())
 
+                userService.loadUser().then(function(me){
+                    activityService.add({
+                        userId: me.userId,
+                        title: 'Step1 Done',
+                        type: 'Milestone',  
+                        notes: me.businessName + ' finished building Step1.',
+                        journey: {section: 'build', name: 'Step1 Done'}})
+                        .then(function(){});    
+                });
+            
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 

@@ -9,6 +9,16 @@
     function moduleConfig($stateProvider) {
 
         $stateProvider
+            .state('unauthorized', {
+                parent: 'blank',
+                url: '/unauthorized',
+                views: {
+                    content: {
+                        controller: 'MainUnauthorizedController',
+                        templateUrl: 'pages/main/unauthorized/main-unauthorized.html'
+                    }
+                }
+            })
             .state('404', {
                 parent: 'blank',
                 url: '/404',

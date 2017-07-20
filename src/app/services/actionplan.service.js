@@ -336,7 +336,8 @@
             {id: 10, name: 'SLAPnap', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
         ];
 
-        var _monthLongNames = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October","November", "December"]
+        var _monthLongNames = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October","November", "December"];
+        var _monthShortNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
         this.getDefaultEvents = getDefaultEvents;
         this.getMonthLongNames = getMonthLongNames;
         this.getNthQuaterMonths = getNthQuaterMonths;
@@ -375,7 +376,8 @@
                 months: months,
                 start: startQuater,
                 end: endQuater,
-                nth: indexQut
+                nth: indexQut,
+                monthsString: _monthShortNames[months[0]] + ', ' + _monthShortNames[months[1]] + ', ' + _monthShortNames[months[2]]
             };
         }
 

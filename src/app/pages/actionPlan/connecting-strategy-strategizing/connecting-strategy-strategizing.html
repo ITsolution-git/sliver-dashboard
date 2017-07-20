@@ -75,10 +75,9 @@
                             <div ng-show="showStrategyBox" class="sample-show-hide">
                                 <div>
                                     I will use 
-
                                     <select ng-model="data[nthQut-1].strategy.id" 
                                         class="dropdown-box outline-0 active m-w-es-30" 
-                                        style="width: 200px"> 
+                                        style="width: 200px" ng-change="qStgChanged[nthQut-1] = true"> 
                                         <option ng-value="strategy.id" ng-repeat="strategy in topRatingStrategies">{{strategy.name}}</option>
                                     </select>
                                     to find my Ideal Client by

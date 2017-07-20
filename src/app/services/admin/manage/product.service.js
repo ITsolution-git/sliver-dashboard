@@ -86,5 +86,10 @@
         self.getBuilds = function() {
             return self.all().one('builds').getList();
         }
+
+        self.getAllProducts = function() {
+            return self.all().one('all').getList();
+        }
     }
+
 }());

@@ -34,6 +34,11 @@
                     event.preventDefault();
                     return $state.go('home');
                 }
+
+                if (userService.isAdmin() && !toState.data.isAdminPage) {
+                    event.preventDefault();
+                    return $state.go('admin.home');
+                }
             }
         });
 

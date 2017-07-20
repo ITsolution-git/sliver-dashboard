@@ -868,6 +868,15 @@
 
         // --- methods ---
 
+        me.loadExcuteItemsByUser = function (userId) {
+            
+            return apiService.rest.all('excuteItemsByUser').one(userId).getList().then(function (excuteItems) {
+                return excuteItems.data;
+            });
+            
+            
+        };
+        
         me.loadExcuteItems = function (refresh) {
             var deferred = $q.defer();
             

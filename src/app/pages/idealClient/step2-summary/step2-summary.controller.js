@@ -5,7 +5,7 @@
         .module('app.pages.idealClient')
         .controller('Step2SummaryController', Step2SummaryController);
     
-    function Step2SummaryController($scope, activeStep, pageService,stepService, $state, userService, idealclientService) {
+    function Step2SummaryController($scope, activeStep, pageService,stepService, $state, userService, idealclientService, activityService) {
 
         angular.extend($scope, activeStep.model,{
             model: {
@@ -41,8 +41,16 @@
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);
-            stepService.setFinishActiveStep();
-
+            if(stepService.setFinishActiveStep())
+                userService.loadUser().then(function(me){
+                    activityService.add({
+                        userId: me.userId,
+                        title: 'Step2 Done',
+                        type: 'Milestone',  
+                        notes: me.businessName + ' finished building Step2.',
+                        journey: {section: 'build', name: 'Step2 Done'}})
+                        .then(function(){});    
+                });
             var nextprevStep = stepService.getNextAndPrevStep();
 
             if(direction == 'forward')  

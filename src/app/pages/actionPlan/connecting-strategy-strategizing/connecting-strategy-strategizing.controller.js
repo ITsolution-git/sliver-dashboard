@@ -27,7 +27,9 @@
             notifications: [],
 
             filterActionItemsByMonth: filterActionItemsByMonth,
-            defaultActionItemsAdded: false
+            defaultActionItemsAdded: false,
+
+            qStgChanged: [false,false,false,false]  //Quater Strategy changed
         });
 
         pageService
@@ -109,26 +111,32 @@
         }
 
         //TODO Load Default items
-        function loadDefaultActionItems(){
-            _.each($scope.data, function(quater, QID){
-                if(quater.strategy && quater.strategy.id) {
+        function loadDefaultActionItems(QID){
 
-                    var itemsByMonth = actionplanService.getDefaultActionsByStrategy(quater.strategy.id);
-                    _.each(itemsByMonth.actions, function(itemsMonths, monthID) {
-                        var dueDate = moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + 3 * QID - 1 + monthID)/12)), month: $scope.QMonths[QID][monthID], day: 1 }).endOf('month').format('YYYY-MM-DD');
-                        console.log(dueDate);
-                        _.each(itemsMonths, function(item){
-                            //Set Due date to end of that month
-                            var copied = angular.copy(item);
-                            copied.dueDate = dueDate;
-                            excuteItemService.createItem(copied).then(function(item){
-                                $scope.actionItems.push(item.data);
-                            }); 
-                            
-                        });
+            //Delete actions item in that quater and reload
+
+            // if(!confirm("You changed the strategy for Q" + (QID+1))+ '. Do you want reload default action items. Reloading will delete origial default action items.') {
+            //     return;
+            // }
+            var quater = $scope.data[QID];
+            if(quater.strategy && quater.strategy.id) {
+
+                var itemsByMonth = actionplanService.getDefaultActionsByStrategy(quater.strategy.id);
+                _.each(itemsByMonth.actions, function(itemsMonths, monthID) {
+                    var dueDate = moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + 3 * QID - 1 + monthID)/12)), month: $scope.QMonths[QID][monthID], day: 1 }).endOf('month').format('YYYY-MM-DD');
+                    console.log(dueDate);
+                    _.each(itemsMonths, function(item){
+                        //Set Due date to end of that month
+                        var copied = angular.copy(item);
+                        copied.dueDate = dueDate;
+                        copied.isPriorItem = 1;
+                        excuteItemService.createItem(copied).then(function(item){
+                            $scope.actionItems.push(item.data);
+                        }); 
+                        
                     });
-                }
-            })
+                });
+            }
             
         }
 
@@ -214,8 +222,6 @@
         }
         
         function sendData(direction) {
-            stepService.updateActiveModel($scope);
-            stepService.setFinishActiveStep();
             //Validations Before sending Data
 
             if ((($scope.pageName == 'quarterlyGoals') || ($scope.pageName == ' commitToYourActionPlan')) && !checkQuaterUnitsValid()) { //quater units sum should same as quaterly goal.
@@ -234,7 +240,31 @@
 
             var nextprevStep = stepService.getNextAndPrevStep();
             
-            
+            stepService.updateActiveModel($scope);
+            stepService.setFinishActiveStep();
+            //loadDefaultActionItems
+
+            //TODO delete only updated strategy quater and reload data for that quater.
+            if($scope.qStgChanged[0] || $scope.qStgChanged[1] || $scope.qStgChanged[2] || $scope.qStgChanged[3]) {
+                
+                //Delete all actions iteas and reload again
+                $q.all($scope.actionItems.filter(function(item){
+                    if (item.type=='action' && item.isPriorItem){
+                        return item.remove();
+                    }
+                })).then(function(responses){
+                    loadDefaultActionItems(0);
+                    loadDefaultActionItems(1);
+                    loadDefaultActionItems(2);
+                    loadDefaultActionItems(3);
+                })
+
+                // qStgChanged.forEach(function(item, ind){
+                //     if(item)
+                //         loadDefaultActionItems(ind);
+                // });
+            }
+
             var url = 'whatsHappening';
 
             var data = {};

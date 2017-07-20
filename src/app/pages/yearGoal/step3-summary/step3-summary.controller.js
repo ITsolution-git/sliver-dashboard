@@ -5,7 +5,7 @@
         .module('app.pages.yearGoal')
         .controller('Step3SummaryController', Step3SummaryController);
 
-    function Step3SummaryController($scope, activeStep, pageService,stepService, $state, userService, idealclientService) {
+    function Step3SummaryController($scope, activeStep, pageService,stepService, $state, userService, idealclientService, activityService) {
 
         angular.extend($scope, activeStep.model,{
             model: {
@@ -46,7 +46,17 @@
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);
-            stepService.setFinishActiveStep();
+            if(stepService.setFinishActiveStep())
+                userService.loadUser().then(function(me){
+                    activityService.add({
+                        userId: me.userId,
+                        title: 'Step3 Done',
+                        type: 'Milestone',  
+                        notes: me.businessName + ' finished building Step3.',
+                        journey: {section: 'build', name: 'Step3 Done'}})
+                        .then(function(){});    
+                });
+            
 
             var nextprevStep = stepService.getNextAndPrevStep();
 

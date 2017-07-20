@@ -603,7 +603,7 @@
         this.getLastFinished = getLastFinished;
         this.setRequestApiFlag = setRequestApiFlag;
         this.getAllUserData = getAllUserData
-
+        this.getAllStepDataByUser = getAllStepDataByUser;
         
         this.checkStepsIsFinishedSection = checkStepsIsFinishedSection;
 
@@ -821,7 +821,9 @@
         function setFinishActiveStep() {
             if (finishedSteps.indexOf(activeStepIndex) === -1) {
                 finishedSteps.push(activeStepIndex);
-            }
+                return true; // This means that the activeStep is new and should make activity
+            } 
+            return false;
         }
 
         function getAllSteps() {
@@ -861,6 +863,10 @@
 
         function setRequestApiFlag(){
             requestApi = false;
+        }
+
+        function getAllStepDataByUser(user_id) {
+            return apiService.rest.all('getFinishedUserStep').one(user_id).get();
         }
     }
 }());
