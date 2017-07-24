@@ -58,7 +58,7 @@
 
         function update() {
             if($scope.userID){
-                return adminUserService.update($scope.user);
+                return $scope.user.save();
             } else {
                 return adminUserService.add($scope.user);
             }

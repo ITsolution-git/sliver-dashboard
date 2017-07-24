@@ -32,7 +32,7 @@
 
         self.get = function (id) {
             // console.log(user);
-            return adminApiService.rest.all('users').one(id).get();
+            return adminApiService.rest.all('users').get(id);
         };
 
         self.add = function (user) {

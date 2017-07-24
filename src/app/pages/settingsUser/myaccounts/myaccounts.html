@@ -53,7 +53,7 @@
 
                 <section layout="row" layout-align="end center" flex="100" >
                     
-                    <button class="btn btn-primary pull-right" ng-click="saveBasic()">
+                    <button class="btn btn-primary pull-right" ng-click="saveBasic()"  ng-disabled="form.$invalid">
                         Save Basic
                     </button>
                 </section>
@@ -91,7 +91,7 @@
                 </md-input-container>
                 <section layout="row" layout-align="end center" flex="100" >
                     
-                    <button class="btn btn-primary pull-right" ng-click="changePassword()">
+                    <button class="btn btn-primary pull-right" ng-click="changePassword()" ng-disabled="passwordform.$invalid">
                         Change Password
                     </button>
                 </section>
@@ -101,11 +101,91 @@
 
     </div>
 
-    <div class="panel panel-default p-es-10">
-        Account status
+    <div class="panel panel-default p-es-10" ng-if="!stateData.isAdminPage">
+        <h3>Credit Card</h3>
+        <!--TODO should show the credit card he's using-->
+        <div>
+            <form layout="column" layout-wrap  name="creditform">
+                
+                <button class="btn btn-primary pull-right" ng-click="getCreditCard()">
+                    Current Card Number
+                </button>
+                <div class="clearfix"></div>
+                <div class="alert alert-success" ng-if="user.last4">    
+                    You are using card ****-****-****-{{user.last4}}
+                </div>
+                <div layout="row" flex="100">
+
+                    <md-input-container class="md-block" flex="50">
+                        <label for="creditCard">Credit Card Number</label>
+                        <input
+                            name="creditCard"
+                            required
+                            ng-model="user.card.number"
+                            ui-mask="9999-9999-9999-9999"
+                            id="creditCard"
+                            />
+
+                        <div ng-messages="creditform.creditCard.$error" ng-hide="creditform.creditCard.$valid">
+                            <div ng-message-exp="['required', 'pattern']">
+                                Enter a valid credit card number
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex="50">
+                        <label for="exp_date">Expiration Date</label>
+                        <input
+                            name="expDate"
+                            required
+                            ng-model="user.card.date"
+                            ui-mask="99/9999"
+                            id="exp_date"
+                            />
+
+                        <div ng-messages="creditform.expDate.$error" ng-hide="creditform.expDate.$valid">
+                            <div ng-message-exp="['required', 'pattern']">
+                                Enter a valid expiration date
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div layout="row" flex="100">
+                    <md-input-container class="md-block" flex="50">
+                        <label for="code">Security Code</label>
+                        <input name="cvc" required ng-model="user.card.cvc" type="password"
+                            ng-maxlength="4" ng-minlength="3" id="code"/>
+
+                        <div ng-messages="creditform.cvc.$error" ng-hide="creditform.cvc.$valid">
+                            <div ng-message-exp="['required', 'pattern']">
+                                Enter a valid security code (CVV)
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex="50">
+                        <label for="billing">Billing Address</label>
+                        <input name="address" required ng-model="user.card.billingAddress"
+                            id="billing"/>
+
+                        <div ng-messages="creditform.address.$error" ng-hide="creditform.address.$valid">
+                            <div ng-message-exp="['required', 'pattern']">
+                                Enter a valid billing address (ZIP code)
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+            </form>
+            <button class="btn btn-primary pull-right" ng-click="changeCreditCard()" ng-disabled="creditform.$invalid">
+                Change Credit Card
+            </button>
+            <div class="clearfix"></div>
+        </div>
     </div>
 
-    <div class="panel panel-default p-es-10">
+    <div class="panel panel-default p-es-10" ng-if="!stateData.isAdminPage">
         <h3> Renew Account </h3>
         <p>
             You can renew account with same basic information.

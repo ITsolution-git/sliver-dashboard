@@ -17,6 +17,7 @@
                 'restangular',
                 'ngTable',
                 'frapontillo.bootstrap-switch',
+                'textAngular',
 
                 'adminapp.filters',
                 'adminapp.components',

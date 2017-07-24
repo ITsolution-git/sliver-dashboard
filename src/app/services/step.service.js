@@ -696,7 +696,7 @@
                 return getFinishedStepsAPI()
                     .then(function (response) {
                         if (response.data) {
-                            finishedSteps = response.data.steps.finishedSteps;
+                            finishedSteps = response.data.steps.finishedSteps.map(function(step){ return parseInt(step); });
                             _setDataStepModel(response.data);
                         }
                     })

@@ -59,7 +59,7 @@
                                         placeholder="Filter By Type"
                                         ng-change="filter()">
                                 <md-option value="">All </md-option>
-                                <md-option value="{{role.name}}" ng-repeat="role in ROLES">
+                                <md-option ng-value="role.name" ng-repeat="role in ROLES">
                                     {{role.name}}
                                 </md-option>
                             </md-select>
@@ -78,7 +78,7 @@
                         <th class="st-sort-disable th-dropdown">
                             <md-select filter-by="displayStatus"
                                         filter-type="select"
-                                        ng-model="selectedTypeStr"
+                                        ng-model="selectedStatusStr"
                                         placeholder="Filter By Status"
                                         ng-change="filter()">
                                 <md-option value="">All</md-option>

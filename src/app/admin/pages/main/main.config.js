@@ -16,6 +16,14 @@
                 },
                 parent : 'admin',
                 url : '/home',
+                resolve: {
+                    allUsers: function (adminUserService, $state) {
+                        return adminUserService.list()
+                        .then(function (response) {
+                            return response.data;
+                        });
+                    }
+                },
                 views : {
                     content : {
                         controller : 'AdminMainIndexController',
@@ -34,6 +42,21 @@
                     content : {
                         controller : 'AdminMainLoginController as vm',
                         templateUrl : 'admin/pages/main/login/main-login.html'
+                    }
+                }
+            })
+            
+            .state('admin.myaccounts', {
+                data: {
+                    access: 'admin',
+                    isAdminPage: true
+                },
+                parent: 'admin',
+                url: '/myaccounts',
+                views: {
+                    content: {
+                        controller: 'MyaccountsController',
+                        templateUrl: 'pages/settingsUser/myaccounts/myaccounts.html'
                     }
                 }
             });

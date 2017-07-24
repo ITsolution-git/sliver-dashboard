@@ -1,8 +1,11 @@
 <div layout="column" style="width: 100%; font-size: 17px;">
 <section layout="row" layout-align="end center" class="m-w-es-40">
-    <md-select ng-model="selectedUserID" ng-change="changeUser(selectedUserID)" style="margin: 0px">
+    <!--<md-select ng-model="selectedUserID" ng-change="changeUser(selectedUserID)" style="margin: 0px" aria-label="SLAP-select">
         <md-option ng-repeat="user in accounts" ng-value="user._id">{{$index+1}} YEAR  {{user.createdAt | date: 'yyyy-MM-dd'}}</md-option>
-    </md-select>
+    </md-select>-->
+    <select class="form-control" ng-model="selectedUserID" ng-change="changeUser(selectedUserID)" style="margin: 0px; width: 300px; font-size: 19px" aria-label="SLAP-select">
+        <option ng-repeat="user in accounts" ng-value="user._id">{{$index+1}} YEAR  {{user.createdAt | date: 'yyyy-MM-dd'}}</option>
+    </select>
     <div class="md-errors-spacer"></div>
 </section>
 <md-card flex="100" class="p-es-30 m-es-40 slapster-at-a-glance"  ng-init="showAtAGlance = false">
@@ -41,7 +44,7 @@
 
                 <md-input-container >
                     <label>Partner/Affiliate</label>
-                    <md-select ng-model="partnerId">
+                    <md-select ng-model="partnerId"  aria-label="partner-select">
                         <md-option ng-repeat="user in userData | filter: {role: 5}" ng-value="user._id">{{user.name + ' ' + user.lastName}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
@@ -114,13 +117,13 @@
 
                 <md-input-container >
                     <label>Original Date</label>
-                    <input type="text" disabled ng-value="buildData.slapMindset.slapStartDate ? (buildData.slapMindset.slapStartDate.year + '-' +   buildData.slapMindset.slapStartDate.month) + '01' : 'Not Set'">
+                    <input type="text" disabled ng-value="buildData.slapMindset.slapStartDate ? (buildData.slapMindset.slapStartDate.year + '-' +   buildData.slapMindset.slapStartDate.month) + '-01' : 'Not Set'">
                     
                 </md-input-container>
 
                 <md-input-container >
                     <label>SLAPProgram</label>
-                    <md-select ng-model="user.planId" >
+                    <md-select ng-model="user.planId"  aria-label="plan-select">
                         <md-option ng-repeat="product in programData | filter: {buildType: 1}" ng-value="product._id">{{product.productName}}</md-option>
                     </md-select>    
 					<div class="md-errors-spacer"></div>
@@ -128,7 +131,7 @@
         
                 <md-input-container >
                     <label>Promo Code</label>
-                    <md-select ng-model="user.couponId" >
+                    <md-select ng-model="user.couponId"  aria-label="coupon-select">
                         <md-option ng-repeat="promocode in promocodeData" ng-value="promocode._id">{{promocode.name}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
@@ -144,7 +147,7 @@
 
                 <md-input-container >
                     <label>SLAPexpert</label>
-                    <md-select ng-model="user.expertId">
+                    <md-select ng-model="user.expertId"  aria-label="expert-select">
                         <md-option ng-repeat="user in userData | filter: {role: 2}" ng-value="user._id">{{user.name +' ' + user.lastName}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
@@ -276,13 +279,14 @@
     <section layout="row" layout-align="space-between center">
 
         <h3>Success Metrics</h3>
+        <button-switch visible="showSuccessMetrics"></button-switch>
+    </section>
+    <section class="  sample-show-hide" ng-show="showSuccessMetrics">
+
         <div class="alert alert-danger" ng-if="!revenues" style="margin: 0px">
             This account have <strong> no revenue streams </strong> yet.
         </div>
-        <button-switch visible="showSuccessMetrics" ng-if="revenues"></button-switch>
-    </section>
-    <section class="  sample-show-hide"  ng-show="showSuccessMetrics">
-        <table class="table table-responsive table-bordered table-striped table-hover" >
+        <table class="table table-responsive table-bordered table-striped table-hover" ng-if="revenues"  >
             <thead  class="thead-default"> 
                 <tr>
                     <th></th>
@@ -330,17 +334,17 @@
                 </tr>
 
                 <tr>
+                    <td>%</td>
                     <td></td>
-                    <td>{{anualInfo.unit}}</td>
-                    <td>{{anualInfo.actualUnit}}</td>
-                    <td>{{anualInfo.quaterSale[0].targetUnit}}</td>
-                    <td>{{anualInfo.quaterSale[0].actualUnit}}</td>
-                    <td>{{anualInfo.quaterSale[1].targetUnit}}</td>
-                    <td>{{anualInfo.quaterSale[1].actualUnit}}</td>
-                    <td>{{anualInfo.quaterSale[2].targetUnit}}</td>
-                    <td>{{anualInfo.quaterSale[2].actualUnit}}</td>
-                    <td>{{anualInfo.quaterSale[3].targetUnit}}</td>
-                    <td>{{anualInfo.quaterSale[3].actualUnit}}</td>
+                    <td>{{anualInfo.progress.toFixed(2)}}</td>
+                    <td></td>
+                    <td>{{anualInfo.quaterSale[0].progress.toFixed(2)}}</td>
+                    <td></td>
+                    <td>{{anualInfo.quaterSale[1].progress.toFixed(2)}}</td>
+                    <td></td>
+                    <td>{{anualInfo.quaterSale[2].progress.toFixed(2)}}</td>
+                    <td></td>
+                    <td>{{anualInfo.quaterSale[3].progress.toFixed(2)}}</td>
                 </tr>
             </tbody>
 
@@ -456,7 +460,7 @@
             <section flex="50"></section>
 
             <section layout="row" flex="50" layout-wrap> 
-                <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes"></slap-color-switch>
+                <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>
                 <span ng-repeat-end>&nbsp&nbsp</span>
             </section>
         </section>

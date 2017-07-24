@@ -33,7 +33,7 @@
 
                 userService.loadUser().then(function(me){
                     activityService.add({
-                        userId: me.userId,
+                        userId: me._id,
                         title: 'Step1 Done',
                         type: 'Milestone',  
                         notes: me.businessName + ' finished building Step1.',

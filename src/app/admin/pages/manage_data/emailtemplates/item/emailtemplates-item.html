@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!--<h1>Create Products</h1>-->
+                    <form name="emailTemplateForm" novalidate>
+                        <div class="col-xs-12">
+                            <div class="text-right col-xs-12">
+                                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+                                <!--<button type="submit" class="btn btn-default" ng-click="apply()" ng-show="productID">Apply</button>-->
+                                <a class="btn btn-danger" ui-sref="emailtemplates.list">Cancel</a>
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <hr>
+                        <md-input-container class="md-block">
+                            <label>Title</label>
+                            <input required type="text" name="subject" ng-model="emailTemplate.subject"/>
+                        </md-input-container>
+                        <br/>
+                        <br/>
+                        <md-input-container class="md-block">
+                            <label>Html Version</label>
+                            <textarea ng-model="emailTemplate.html"></textarea>
+                        </md-input-container>
+                        <br/>
+                        <br/>
+                        
+                        <md-input-container class="md-block">
+                            <label>Text Version</label>
+                            <textarea ng-model="emailTemplate.text"></textarea>
+                        </md-input-container>
+                        <br/>
+                        <br/>
+
+                        <md-input-container class="md-block">
+                            <label>SCSS</label>
+                            <textarea ng-model="emailTemplate.scss"></textarea>
+                        
+                        </md-input-container>
+                        <!--<md-input-container class="md-block">
+                            <label>Html Version</label>
+                            <text-angular ng-model="emailTemplate.html"></textatext-angularrea>
+                            </text-angular>
+                        <md-input-container class="md-block">
+                            <label>Text Version</label>
+                            <text-angular ng-model="emailTemplate.text"></text-angular>
+                            </text-angular>
+                        <md-input-container class="md-block">
+                            <label>SCSS</label>
+                            <text-angular ng-model="emailTemplate.scss"></text-angular>
+                            </text-angular>
+                        </md-input-container>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

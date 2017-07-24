@@ -107,31 +107,31 @@
 
         $timeout(activate);
         function activate() {
-            reloadData();
+            reloadData()
+            .then(function(){
+                activatePayments();
 
-            activatePayments();
+                initializeIdealJourney();
 
-            initializeIdealJourney();
+                buildActivityGridData();
 
-            buildActivityGridData();
+                var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
+                $scope.startDate = startDate;
+                if(!startDate)
+                    return;
+                angular.extend($scope.quaters[0], _.merge(actionplanService.getNthQuater(startDate, 1), $scope.buildData.actionPlan.whatsHappening[0]));
+                angular.extend($scope.quaters[1], _.merge(actionplanService.getNthQuater(startDate, 2), $scope.buildData.actionPlan.whatsHappening[1]));
+                angular.extend($scope.quaters[2], _.merge(actionplanService.getNthQuater(startDate, 3), $scope.buildData.actionPlan.whatsHappening[2]));
+                angular.extend($scope.quaters[3], _.merge(actionplanService.getNthQuater(startDate, 4), $scope.buildData.actionPlan.whatsHappening[3]));
 
-            var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
-            $scope.startDate = startDate;
-            if(!startDate)
-                return;
+                $scope.startDate = $scope.quaters[0].start.toDate();
+                $scope.endDate = $scope.quaters[3].end.toDate();
+                $scope.today = moment.max(moment($scope.startDate), moment()).toDate(); //If the user haven't started the tracking yet.
 
-            doCalculation();
+                $scope.revenues = ($scope.buildData && $scope.buildData.yearGoal && $scope.buildData.yearGoal.revenueStreams && $scope.buildData.yearGoal.revenueStreams.revenues) ? $scope.buildData.yearGoal.revenueStreams.revenues : null;
 
-            $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 1), $scope.buildData.actionPlan.whatsHappening[0]));
-            $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 2), $scope.buildData.actionPlan.whatsHappening[1]));
-            $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 3), $scope.buildData.actionPlan.whatsHappening[2]));
-            $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 4), $scope.buildData.actionPlan.whatsHappening[3]));
-
-            $scope.startDate = $scope.quaters[0].start.toDate();
-            $scope.endDate = $scope.quaters[3].end.toDate();
-            $scope.today = moment.max(moment($scope.startDate), moment()).toDate(); //If the user haven't started the tracking yet.
-
-            $scope.revenues = ($scope.buildData && $scope.buildData.yearGoal && $scope.buildData.yearGoal.revenueStreams && $scope.buildData.yearGoal.revenueStreams.revenues) ? $scope.buildData.yearGoal.revenueStreams.revenues : null;
+                doCalculation();
+            });
         }
 
         function initializeIdealJourney() {
@@ -233,7 +233,7 @@
 
         function reloadData() {
             $scope.dataloaded = false;
-            adminUserService.list()
+            return adminUserService.list()
             .then(function (response) {
                 $scope.userData = response.data;
                 $scope.accounts = [];
@@ -252,15 +252,10 @@
 
                 
                 $scope.dataloaded = true;
-                buildActivityGridData(); //Call after user data loaded
+                return response;
             });
         }
 
-        adminUserService.get($scope.userID).then(function (response) {
-            $scope.user = response.data;
-            
-        });
-        
 
         function createOrSave(event) {
             update().then(function(){
@@ -273,11 +268,8 @@
         }
 
         function update() {
-            if($scope.userID){
-                return adminUserService.update(Restangular.stripRestangular($scope.user));
-            } else {
-                return adminUserService.add(Restangular.stripRestangular($scope.user));
-            }
+            // return adminUserService.update(Restangular.stripRestangular($scope.user));
+            return $scope.user.save();
         }
 
         function deleteItem(event) {
@@ -296,8 +288,8 @@
         }
 
         function changeUser(user_id) {
-            $state.go('slapsters.item', {bizname: '', user_id:user_id, mode:'view'});
-
+            $state.go('slapsters.list');
+            $state.go('slapsters.item', {user_id:user_id});
         }
 
         function isJouneyItemDone(section, name){
@@ -355,7 +347,7 @@
             paymentsService.chargeUser(product, $scope.userID)
                 .then(function(resp){
                     toaster.pop({type: 'success', body: 'Success'});
-                    loadPayments();
+                    activatePayments();
                 }).catch(function(err){
                     toaster.pop({type: 'error', body: 'Payment Failed.'});
                 });
@@ -381,6 +373,10 @@
             $scope.activityGridReady = false;
             $timeout(function(){
 
+                var types = $scope.activityTypes
+                .filter(function(type){ return type.show == true; })
+                .map(function(type){return type.name});
+
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
                     if ($scope.activitySearchKeyword.trim() != ''){
@@ -389,9 +385,16 @@
                         if (activity.notes.toLowerCase().indexOf($scope.activitySearchKeyword) != -1)
                             valid = true;
                     } else { valid = true; }
+
+                    if(types.indexOf(activity.type) == -1)
+                        valid &= false;
+                    else
+                        valid &= true;
+                    
                     return valid;
                 })
 
+                
                 data.data = filtered.map(function(act){
                     // var role = _.find($scope.ROLES, {id: user.role});
                     // user.displayRole = role ? role.name : '';

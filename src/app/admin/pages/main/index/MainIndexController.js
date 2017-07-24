@@ -7,7 +7,7 @@
 
     AdminMainIndexController.$inject = ['pageService'];
 
-    function AdminMainIndexController(pageService) {
+    function AdminMainIndexController(pageService, allUsers) {
         pageService
             .reset()
             .setShowBC(true)

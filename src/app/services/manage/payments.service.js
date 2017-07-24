@@ -34,7 +34,7 @@
                 row.discount = row.costProduct - item.amountCharges;
                 row.amountCharges = item.amountCharges;
                 row.status = item.status;
-                
+                row.couponId = item.couponId;
                 dataTable.push(row);
             });
 

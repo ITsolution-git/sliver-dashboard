@@ -26,6 +26,8 @@
             valueChanged: false
         });
 
+        var beforeSave = moment({year: $scope.data.year, month: +$scope.data.month - 1, day:1});
+        
         if ($scope.data.year === null) {
             $scope.data.year = currentYear
         }
@@ -34,7 +36,6 @@
             $scope.data.month = currentMonth
         }
 
-        var beforeSave = moment({year: $scope.data.year, month: +$scope.data.month - 1, day:1});
 
         $scope.$watch('data.month', function (value) {
             if (value !== undefined) {

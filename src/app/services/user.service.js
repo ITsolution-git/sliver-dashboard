@@ -105,7 +105,15 @@
         };
 
         me.updateMe = function(userData) {
-            return apiService.rest.one('me').put(userData).then(function(user){
+            return apiService.rest.all('me').post(userData).then(function(user){
+                console.log(user.data);
+                return me.user = user.data;
+            });
+        }
+
+        me.changeCreditCard = function(card) {
+
+            return apiService.rest.all('me').all('change-card').post(card).then(function(user){
                 console.log(user.data);
                 return me.user = user.data;
             });
@@ -115,5 +123,12 @@
             //TODO ;;change password;
         }
 
+        me.getCreditCard = function() {
+            
+            return apiService.rest.all('me').one('current-card').get().then(function(last4){
+                me.user.last4 = last4.data.last4;
+                return me.user;
+            });
+        }
     }
 })();

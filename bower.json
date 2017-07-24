@@ -48,7 +48,10 @@
     "angular-svg-round-progressbar": "0.4.8",
     "angular-filter": "^0.5.16",
     "angular-ui-select": "^0.19.6",
-    "angular-data-grid": "*"
+    "angular-data-grid": "*",
+    "bower": "*",
+    "install": "^1.0.4",
+    "textAngular": "^1.5.16"
   },
   "resolutions": {
     "angular": "1.6.5",

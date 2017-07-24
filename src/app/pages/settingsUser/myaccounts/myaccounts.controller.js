@@ -11,6 +11,11 @@
         $scope.user = {};
         $scope.saveBasic = saveBasic;
         $scope.changePassword = changePassword;
+        $scope.changeCreditCard = changeCreditCard;
+        $scope.getCreditCard = getCreditCard;
+        $scope.stateData = $state.current.data;
+
+
         pageService
             .reset()
             .setShowBC(false)
@@ -29,7 +34,7 @@
                 $scope.user = user;
                 toaster.pop({type: 'success', body: 'Basic info saved.'});
             }).catch(function(err){
-                toaster.pop({type: 'success', body: 'Error.'});
+                toaster.pop({type: 'error', body: 'Error.'});
             });     
         }
 
@@ -43,6 +48,24 @@
             });     
         }
 
+        function getCreditCard() {
+            userService.getCreditCard().then(function(user){
+                $scope.user = user;
+            }).catch(function(err){
+                toaster.pop({type: 'success', body: 'Error.'});
+            });     
+        }
+        function changeCreditCard() {
+            userService.changeCreditCard($scope.user).then(function(user){
+                $scope.user = user;
+                $scope.user.card = null;
+                
+                $scope.creditform.$setPristine();
+                toaster.pop({type: 'success', body: 'Credit Card Changed to ****-****-****-.' + $scope.user.last4});
+            }).catch(function(err){
+                toaster.pop({type: 'success', body: 'Error.'});
+            });     
+        }
 
         function renewAccount() {
             productStorage.resetStorage();
@@ -50,15 +73,15 @@
             
             
             var renewuser = {
-                businessName: user.businessName,
-                email: user.email,
-                lastName: user.lastName,
-                name: user.name,
-                phone: user.phone,
+                businessName: $scope.user.businessName,
+                email: $scope.user.email,
+                lastName: $scope.user.lastName,
+                name: $scope.user.name,
+                phone: $scope.user.phone,
                 role: 4,
                 status: 'active'
             };
-            productStorage.setRenewFrom(user._id);
+            productStorage.setRenewFrom($scope.user._id);
             productStorage.setUser(renewuser);
             $auth.logout();
             $state.go('step1');
