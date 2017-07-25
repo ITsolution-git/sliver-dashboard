@@ -60,6 +60,7 @@
             if($scope.userID){
                 return $scope.user.save();
             } else {
+                $scope.user.password="igotaslap!";
                 return adminUserService.add($scope.user);
             }
         }
