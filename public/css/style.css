@@ -8253,7 +8253,6 @@ h3.logo {
   background-color: #fff;
 }
 .btn-custom {
-  width: 200px;
   height: 50px;
   font-size: 18px;
   background: #0e7cb5;
@@ -17420,7 +17419,6 @@ a.text-black:focus {
   justify-content: center;
 }
 .step3-summary .summary4 .btn-custom {
-  width: 200px;
   height: 50px;
   font-size: 18px;
   background: #fff;
