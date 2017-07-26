@@ -8263,6 +8263,14 @@ h3.logo {
 .btn-custom:focus {
   outline: none !important;
 }
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: none;
+}
 .video-container {
   position: relative;
   min-height: 106px;

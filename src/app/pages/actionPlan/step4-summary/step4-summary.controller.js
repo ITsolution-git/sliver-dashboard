@@ -63,7 +63,7 @@
                 });
             var nextprevStep = stepService.getNextAndPrevStep();
 
-            if(direction == 'forward')  
+            if(direction == 'forward')
 				$state.go(nextprevStep.nextStep.sref); 
             else if(direction == 'backward')
 				$state.go(nextprevStep.prevStep.sref);

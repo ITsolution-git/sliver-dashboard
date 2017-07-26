@@ -224,7 +224,7 @@
         function sendData(direction) {
             //Validations Before sending Data
 
-            if ((($scope.pageName == 'quarterlyGoals') || ($scope.pageName == ' commitToYourActionPlan')) && !checkQuaterUnitsValid()) { //quater units sum should same as quaterly goal.
+            if ((($scope.pageName == 'quarterlyGoals') || ($scope.pageName == 'commitToYourActionPlan')) && !checkQuaterUnitsValid()) { //quater units sum should same as quaterly goal.
                 $('body').animate({
                     scrollTop: $("slap-notifications").offset().top
                 }, 400);
@@ -360,7 +360,7 @@
         function autoExpand(e) {
             var elements = typeof e === 'object' ? [e.target] : [].slice.call(document.getElementsByClassName(e));
             elements.forEach(function(element){
-                var scrollHeight = element.scrollHeight + 30; // replace 60 by the sum of padding-top and padding-bottom
+                var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
                 if (scrollHeight != 0) 
                     element.style.height =  scrollHeight + "px";    
             });

@@ -15,9 +15,15 @@
             monthNames: actionplanService.getMonthLongNames(),
             currentQut: 1,
             saved: false,
-            showEventsBox: true
+            showEventsBox: true,
+            autoExpand: autoExpand,
         });
 
+        $timeout(function(){
+            $scope.autoExpand('impact-business');
+            $scope.autoExpand('impact-client');
+        },0);
+        
         pageService
             .reset()
             .setShowBC(false)
@@ -58,6 +64,11 @@
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 2));
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 3));
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 4));
+
+                        $timeout(function(){
+                            $scope.autoExpand('impact-business');
+                            $scope.autoExpand('impact-client');
+                        },0);
                     }
                 });
 
@@ -97,5 +108,15 @@
                 sendData();
             }
         });
+
+
+        function autoExpand(e) {
+            var elements = typeof e === 'object' ? [e.target] : [].slice.call(document.getElementsByClassName(e));
+            elements.forEach(function(element){
+                var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
+                if (scrollHeight != 0) 
+                    element.style.height =  scrollHeight + "px";    
+            });
+        }
     }
 }());

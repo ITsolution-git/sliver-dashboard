@@ -100,7 +100,7 @@
                                     <div ng-repeat="action in filterActionItemsByMonth(monthID)">
 
                                         <div class="textarea-box" 
-                                            style="width: calc(100% - 20px); display: inline-block">
+                                            style="width: calc(100% - 25px); display: inline-block">
                                             <textarea ng-model="action.title" type="text"
                                                     class="monthly-cost outline-0 strategy-description" 
                                                     ng-blur="checkActionCompleted(action, monthID, $event)"
@@ -110,7 +110,7 @@
 
                                         </div>
 
-                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID)" style="padding-top: 10px">
+                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID)">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </span>
                                     </div>
@@ -127,4 +127,4 @@
     </div>
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

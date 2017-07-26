@@ -111,7 +111,7 @@
             if(moment().isBefore(moment($scope.startDate), 'day')) { //If startdate is after today
                 //Add default 3 actions
                 //Check if prior action exists
-                var isExist = _.find($scope.excuteItems, {isPriorItem: 1});
+                var isExist = _.find($scope.excuteItems, {isPriorItem: 2});
                 if( _.isUndefined(isExist)) {
 
                     //ADD 3 action ITEMS
@@ -123,7 +123,7 @@
                             notes: '',
                             dueDate: moment().format('YYYY-MM-DD'),
                             progress: 0,
-                            isPriorItem: 1
+                            isPriorItem: 2
                         });
 
                     })).then(function(responses){
@@ -131,10 +131,12 @@
                         showToast('Added Default Action(s).');
                     });
 
+                }
+                isExist = _.find($scope.excuteItems, {isPriorItem: 3});
+                if( _.isUndefined(isExist)) {
                     //ADD ALL
                     addAllReflextion();
                 }
-
             } 
 
             ///========For now all reflections are added when the user enter excute first time =====//////
@@ -785,7 +787,8 @@
                     dueDate: moment(date).format($rootScope.dateFormat),
                     progress: 0,
                     feeling: {},
-                    reflextWhat: 'week'
+                    reflextWhat: 'week',
+                    isPriorItem: 3
                 };
 
             });
@@ -802,7 +805,8 @@
                     dueDate: current.clone().format($rootScope.dateFormat),
                     progress: 0,
                     feeling: {},
-                    reflextWhat: type
+                    reflextWhat: type,
+                    isPriorItem: 3
                 })
                 current.startOf('month').add(1, 'months').endOf('month');
             }

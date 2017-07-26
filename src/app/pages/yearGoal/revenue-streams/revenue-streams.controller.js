@@ -78,10 +78,15 @@
             if ($scope.data.revenues.length > 0) {
                 
                 var lastItem = $scope.data.revenues[$scope.data.revenues.length - 1];
-                if (lastItem.id != $scope.data.revenues.length + 1) {  //If no empty item is added
+                // if (lastItem.id == $scope.data.revenues.length) {  //If no empty item is added
+                //     force = true;
+                if(lastItem.name != '') {
                     force = true;
+                } else {
+
                 }
             }
+
             if ($scope.data.revenues.length === 0 || $scope.data.revenues.length === index + 1 || force) {
                 var revenueModel = _.cloneDeep($scope.emptyRevenue);
                 revenueModel.id = $scope.data.revenues.length + 1;

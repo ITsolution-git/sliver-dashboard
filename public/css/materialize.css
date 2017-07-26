@@ -3161,7 +3161,9 @@ table {
   width: 100%;
   display: table;
 }
-
+md-calendar table {
+  width: auto;
+}
 table.bordered > thead > tr,
 table.bordered > tbody > tr {
   border-bottom: 1px solid #d0d0d0;

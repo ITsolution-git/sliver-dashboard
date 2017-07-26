@@ -71,12 +71,12 @@
                             <slap-work-moment-icon visible="showImpactClient"  type="'work'" title="'How do Impact Client?'"></slap-work-moment-icon>
                             <div class="textarea-box" ng-show="showImpactClient" class="sample-show-hide">
                                 <textarea ng-model="data[nthQut-1].impactClient" type="text"
-                                        class="monthly-cost outline-0" 
+                                        class="monthly-cost outline-0 impact-client" 
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}" 
                                         placeholder="How do these world events in this quarter impact our Client?" 
                                         style="width: 100%"
-                                        rows="5" required></textarea>
+                                        rows="5" required ng-keyup="autoExpand($event)"></textarea>
 
                             </div>
                         </div>
@@ -85,12 +85,12 @@
                             <slap-work-moment-icon visible="showImpactBusiness"  type="'work'" title="'How do Impact Business?'"></slap-work-moment-icon>
                             <div class="textarea-box" ng-show="showImpactBusiness" class="sample-show-hide">
                                 <textarea ng-model="data[nthQut-1].impactBusiness" type="text"
-                                        class="monthly-cost outline-0" 
+                                        class="monthly-cost outline-0 impact-business" 
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}" 
                                         placeholder="How do these world events in this quarter impact our Business?" 
                                         style="width: 100%"
-                                        rows="5" required></textarea>
+                                        rows="5" required ng-keyup="autoExpand($event)"></textarea>
 
                             </div>
                         </div>
@@ -104,4 +104,4 @@
     </div>
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>
