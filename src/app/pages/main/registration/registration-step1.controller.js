@@ -6,12 +6,13 @@
         .controller('RegistrationStep1Controller', RegistrationStep1Controller);
 
     /* @ngInject */
-    function RegistrationStep1Controller(productsService,productStorage,toaster) {
+    function RegistrationStep1Controller(productsService,productStorage,toaster, pageService) {
         var vm = this;
         // TODO set pageservice for registration page1 2, 3
         vm.active = null;
         vm.plan= productStorage.getPlan();
         
+        pageService.reset().setPageTitle(' Step1').addCrumb({name: 'Step1', path: 'signup/step1'});
         productsService.getPlans().then(function(response) {
             vm.plans = response.data;
         });

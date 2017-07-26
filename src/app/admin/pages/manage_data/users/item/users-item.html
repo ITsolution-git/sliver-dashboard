@@ -89,13 +89,13 @@
         </md-input-container>
 
         <section layout="row" layout-align="end center" flex="100" >
-            <md-button ng-click="showSetPasswordDialog($event)" class="md-primary" >
+            <md-button ng-click="showSetPasswordDialog($event)" class="md-primary" ng-if="userID">
                 SET Password
             </md-button>
             <md-button ng-click="createOrSave($event)" class="md-primary" >
-                Save
+                {{userID ? 'Save' : 'Create'}}
             </md-button>
-            <md-button ng-click="deleteItem($event)" class="md-warn">
+            <md-button ng-click="deleteItem($event)" class="md-warn" ng-if="userID">
                 Delete
             </md-button>
         </section>

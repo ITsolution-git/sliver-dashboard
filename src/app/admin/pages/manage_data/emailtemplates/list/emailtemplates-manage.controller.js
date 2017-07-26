@@ -22,7 +22,7 @@
                 title: "",
                 format: 'compile',
                 getValue: function (row) {
-                    return '<a class="btn btn-primary btn-sm" ui-sref="' + $state.href('emailtemplates.item', {emailtemplate_name: row['name']}) + '"><span class="glyphicon glyphicon-edit"></span></a>';
+                    return '<a class="btn btn-primary btn-sm" href="' + $state.href('emailtemplates.item', {emailtemplate_name: row['name']}) + '"><span class="glyphicon glyphicon-edit"></span></a>';
                     // return '<button class="btn btn-danger btn-sm" ng-click="delete(row)"><span class="glyphicon glyphicon-trash"></span></button>';
                 }
             }
