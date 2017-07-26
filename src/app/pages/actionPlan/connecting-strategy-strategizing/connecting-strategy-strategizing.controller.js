@@ -249,7 +249,7 @@
                 
                 //Delete all actions iteas and reload again
                 $q.all($scope.actionItems.filter(function(item){
-                    if (item.type=='action' && item.isPriorItem){
+                    if (item.type=='action' && item.isPriorItem == 1){
                         return item.remove();
                     }
                 })).then(function(responses){
