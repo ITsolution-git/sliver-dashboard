@@ -6,7 +6,7 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService) {
+    function AdminSlapstersItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
@@ -272,13 +272,15 @@
                 $scope.userData = response.data;
                 $scope.accounts = [];
                 $scope.user = _.find(response.data, {_id: $scope.userID});
+
                 if (!$scope.user)
                     $state.go('slapsters.list');
 
                 $scope.selectedUserID = $scope.user._id;
                 $scope.accounts = response.data.filter(function(user){
-                    return user.businessName == $scope.user.businessName;
+                    return user.role == 4 && user.businessName == $scope.user.businessName;
                 });
+                $scope.accounts = permissionService.filterSlapstersByPermission($scope.accounts);
 
                 pageService
                     .addCrumb({name: $scope.user.businessName + ' / ' + ' Created on ' + moment($scope.user.createdAt).format('YYYY-MM-DD'), path: 'users.list'})

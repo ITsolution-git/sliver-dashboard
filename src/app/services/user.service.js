@@ -6,7 +6,7 @@
         .service('userService', userService);
 
     /* @ngInject */
-    function userService($q, apiService, $rootScope, adminUserService) {
+    function userService($q, apiService, $rootScope, adminUserService, $window) {
         var me = this;
 
         // --- vars ---
@@ -22,6 +22,15 @@
             return me.userPromise;
         };
         
+        me.getStoredUser = function() {
+            var user = $window.localStorage.getItem('slapuser');
+            if(user) {
+                return JSON.parse(user);
+            } else {
+                $state.go('login');
+            }
+        }
+
         me.selectSLAPyear = function(userId) {
             return apiService.rest.all('auth').all('selectslapyear').one(userId).post();
         };
@@ -35,7 +44,7 @@
                 me.rest().get().then(function (resp) {
                     // $rootScope.$broadcast('userEvent');
                     me.user = resp.data;
-
+                    $window.localStorage.setItem('slapuser', JSON.stringify(me.user));
                     // For security
 
                     // me.user = {
@@ -94,10 +103,6 @@
 
         me.getUserByEmail = function (request) {
             return apiService.rest.all('auth').one('email').get(request);
-        };
-
-        me.isAdmin = function () {
-            return (me.user && ((me.user.role == 1) || (me.user.role == 3) || (me.user.role == 2) || (me.user.role == 5)));
         };
 
         me.rest = function () {

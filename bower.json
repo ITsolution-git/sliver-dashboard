@@ -51,7 +51,8 @@
     "angular-data-grid": "*",
     "bower": "*",
     "install": "^1.0.4",
-    "textAngular": "^1.5.16"
+    "textAngular": "^1.5.16",
+    "angular-permission": "^5.3.2"
   },
   "resolutions": {
     "angular": "1.6.5",

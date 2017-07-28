@@ -6,7 +6,7 @@
         .controller('MyaccountsController', MyaccountsController);
 
     /* @ngInject */
-    function MyaccountsController($scope, pageService, productStorage, $state, userService, $auth, toaster) {
+    function MyaccountsController($scope, pageService, productStorage, $state, userService, $auth, toaster, permissionService) {
         $scope.renewAccount = renewAccount;
         $scope.user = {};
         $scope.saveBasic = saveBasic;
@@ -14,7 +14,6 @@
         $scope.changeCreditCard = changeCreditCard;
         $scope.getCreditCard = getCreditCard;
         $scope.stateData = $state.current.data;
-
 
         pageService
             .reset()
@@ -26,6 +25,10 @@
         function activate() {
             userService.loadUser().then(function(user){    
                 $scope.user = user;
+                return permissionService.isAdmin();
+            })
+            .then(function(isAdmin){
+                $scope.isAdmin = isAdmin;
             });
         }
 

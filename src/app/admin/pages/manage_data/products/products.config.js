@@ -10,10 +10,15 @@
     function moduleConfig($stateProvider) {
         $stateProvider
             .state('plans', {
+                
                 abstract: true,
                 data: {
                     access: 'admin',
-                    isAdminPage: true
+                    isAdminPage: true,
+                    permissions: {
+                        only: 'canPlans',
+                        redirectTo: 'admin.home'
+                    }
                 },
                 url: '/plans',
                 parent: 'admin',

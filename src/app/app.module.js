@@ -5,9 +5,12 @@
         .module(
             'app',
             [
+                //SLAP modules
                 'adminapp',
+                'slapperm',
+                //Templates
                 'templates',
-
+                //3th party
                 'ngRoute',
                 'ngAnimate',
                 'ngSanitize',
@@ -35,7 +38,7 @@
                 'dataGrid', 
                 'pagination',
 
-
+                //Sub modules
                 'app.services',
                 'app.filters',
                 'app.components',

@@ -21,6 +21,12 @@
 
             // app default layout
             .state('default', {
+                data: {
+                    permissions: {
+                        only: 'canBuild',
+                        redirectTo: 'admin.home'
+                    }
+                },
                 abstract: true,
                 parent: 'blank',
                 views: {
@@ -32,6 +38,12 @@
 
             })
             .state('one', {
+                data: {
+                    permissions: {
+                        only: 'canBuild',
+                        redirectTo: 'admin.home'
+                    }
+                },
                 abstract:true,
                 parent:'blank',
                 views: {
@@ -42,6 +54,12 @@
                 }
             })
             .state('withNavbar', {
+                data: {
+                    permissions: {
+                        only: 'canBuild',
+                        redirectTo: 'home'
+                    }
+                },
                 abstract:true,
                 parent:'blank',
                 views: {
@@ -53,7 +71,11 @@
             })
             .state('admin', {
                 data: {
-                    access: 'admin'
+                    access: 'admin',
+                    permissions: {
+                        only: 'canAdmin',
+                        redirectTo: 'home'
+                    }
                 },
                 abstract:true,
                 url : '/admin',
@@ -72,7 +94,13 @@
 
         // always goto 404 if route not found
         //$urlRouterProvider.otherwise('/');
-        $urlRouterProvider.otherwise('/404');
+
+        $urlRouterProvider.otherwise( function($injector) {
+            var $state = $injector.get("$state");
+            $state.go('/404');
+        });
+
+        // $urlRouterProvider.otherwise('/404');
 
         $compileProvider.debugInfoEnabled(true);  // in production false
 

@@ -4,7 +4,7 @@
     var adminSlapNavbar = {
         bindings : {
         },
-        controller : function($auth,$state,userService,$scope, $window) {
+        controller : function($auth,$state,userService,$scope, $window, permissionService) {
             var vm = this;
             vm.logout = function() {
                 $auth.logout();
@@ -13,7 +13,11 @@
 
             vm.userService = userService;
             vm.isAuthenticated = false;
+            vm.menus = [];
 
+            permissionService.getMyAdminMenu().then(function (menus){
+                vm.menus = menus;
+            })
             userService.getUser().then(function (user) {
                  vm.user = user;
             });

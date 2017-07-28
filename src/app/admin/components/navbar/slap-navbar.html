@@ -29,6 +29,7 @@
                 </ul>
 
             </div>
+            
             <ul class="nav navbar-nav navbar-right hidden-xs">
 
                 <li><a ui-sref="admin.home">Home</a></li>
@@ -36,29 +37,19 @@
                     <a ui-sref="slapsters.list">SLAPsters</a>
                 </li>
 
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports<span class="caret"></span></a>
+                <li class="dropdown" ng-repeat="menu in $ctrl.menus">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        {{menu.menuName}}
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu">
-                        <!--<li><a ui-sref="financial_tracker.list">Financila tracker</a></li>-->
-                        <li><a ui-sref="reports.list">Report Builder</a></li>
                         
-                        <!--<li><a href="#">SLAP Reviews</a></li>-->
+                        <li ng-repeat="child in menu.children"><a ui-sref="{{child.sref}}">
+                            {{child.menuName}}
+                        </a></li>
+                        
                     </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a ui-sref="plans.list">Plans</a></li>
-                        <li><a ui-sref="coupon.list">Promocode</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a ui-sref="emailtemplates.list">Email Templates</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a ui-sref="users.list">Users</a></li>
-                    </ul>
-                </li>
-                
-
+                </li>                
 
                 <li class='dropdown pull-right profile-dropdown'>
                     

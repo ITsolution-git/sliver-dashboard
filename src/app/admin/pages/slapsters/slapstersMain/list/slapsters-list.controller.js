@@ -5,7 +5,7 @@
         .module('manage.users.module')
         .controller('AdminSlapstersListController', AdminSlapstersListController);
 
-    function AdminSlapstersListController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService) {
+    function AdminSlapstersListController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, permissionService) {
         angular.extend($scope,  {
             gridData: {
                 gridOptions: {data:[]},
@@ -41,6 +41,8 @@
                 var slapsters = response.data.filter(function(user) {
                     return user.role == 4;
                 });
+                slapsters = permissionService.filterSlapstersByPermission(slapsters);
+
                 var accounts = _.groupBy(slapsters, function(user) { return user.businessName; });
                 $scope.slpasters = [];
                 _.each(accounts, function(account){
