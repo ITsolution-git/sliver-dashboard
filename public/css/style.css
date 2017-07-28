@@ -19274,3 +19274,11 @@ md-dialog.activity-dialog md-checkbox.md-checked .md-ink-ripple .md-icon {
 md-dialog.activity-dialog md-datepicker input {
   min-width: 200px;
 }
+.reports-item-container span.subtitle {
+  text-decoration: underline;
+  font-size: 20px;
+}
+.reports-item-container md-input-container,
+.reports-item-container md-select {
+  margin: 0px;
+}

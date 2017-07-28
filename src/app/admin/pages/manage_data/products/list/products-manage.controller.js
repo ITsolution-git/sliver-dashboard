@@ -53,7 +53,9 @@
                 field: "createdAt",
                 title: "Date Created",
                 show: true,
-                getValue: getValue
+                getValue: function (row) {
+                    return moment(row['createdAt']).format('llll');
+                }
             }, {
                 field: "action",
                 title: "",

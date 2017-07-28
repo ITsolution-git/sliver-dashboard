@@ -3,8 +3,12 @@
 
     var slapHeader = {
         binding: {},
-        controller: function ($auth, $state, userService, $window) {
+        controller: function ($auth, $state, userService, $window, $rootScope) {
             var vm = this;
+
+            $rootScope.$on('SlapAccounUpdated', function (event, user) {
+                vm.user = user;
+            });
 
             userService.getUser().then(function (user) {
                  vm.user = user;

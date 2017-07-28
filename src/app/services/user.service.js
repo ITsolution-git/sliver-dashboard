@@ -107,8 +107,11 @@
         me.updateMe = function(userData) {
             return apiService.rest.all('me').post(userData).then(function(user){
                 console.log(user.data);
+                $rootScope.$emit('SlapAccounUpdated', user.data);
                 return me.user = user.data;
+
             });
+
         }
 
         me.changeCreditCard = function(card) {

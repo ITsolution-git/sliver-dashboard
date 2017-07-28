@@ -75,6 +75,10 @@
                     title: "Q3 Hustle Call Set",
                     journey: {section: 'q3', name: 'Q3 Hustle Call Set'}
                 },
+                {
+                    title: "Renewal Confirmed",
+                    journey: {section: 'q4', name: 'Renewal Confirmed'}
+                },
             ],
             toggleSMmilestone: toggleSMmilestone,
             //Activity Grid
@@ -84,7 +88,11 @@
                 gridActions: {}
             },
             activityGridReady: false,
-            activitySearchKeyword: '',
+            actFilter: {
+                searchKeyword: '',
+                startDate: '',
+                endDate: ''  
+            },
             buildActivityGridData: buildActivityGridData,
             activityTypes: activityService.activityTypes,
             activityFilter: {Milestone:true},
@@ -117,8 +125,13 @@
 
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
+
+                $scope.actFilter.startDate = new Date();
+                $scope.actFilter.endDate = new Date();
+                
                 if(!startDate)
                     return;
+                    
                 angular.extend($scope.quaters[0], _.merge(actionplanService.getNthQuater(startDate, 1), $scope.buildData.actionPlan.whatsHappening[0]));
                 angular.extend($scope.quaters[1], _.merge(actionplanService.getNthQuater(startDate, 2), $scope.buildData.actionPlan.whatsHappening[1]));
                 angular.extend($scope.quaters[2], _.merge(actionplanService.getNthQuater(startDate, 3), $scope.buildData.actionPlan.whatsHappening[2]));
@@ -126,6 +139,10 @@
 
                 $scope.startDate = $scope.quaters[0].start.toDate();
                 $scope.endDate = $scope.quaters[3].end.toDate();
+
+                $scope.actFilter.startDate = moment($scope.user.createdAt).format("MM/DD/YYYY");
+                $scope.actFilter.endDate = $scope.quaters[3].end.format("MM/DD/YYYY");
+                
                 $scope.today = moment.max(moment($scope.startDate), moment()).toDate(); //If the user haven't started the tracking yet.
 
                 $scope.revenues = ($scope.buildData && $scope.buildData.yearGoal && $scope.buildData.yearGoal.revenueStreams && $scope.buildData.yearGoal.revenueStreams.revenues) ? $scope.buildData.yearGoal.revenueStreams.revenues : null;
@@ -153,6 +170,14 @@
         function doCalculation() {
 
             _.each($scope.quaters, function(quater, QID){
+                quater.quaterTotal['action'] = 0;
+                quater.quaterClosed['action'] = 0;
+                quater.quaterTotal['sales'] = 0;
+                quater.quaterClosed['sales'] = 0;
+                quater.quaterTotal['reflextion'] = 0;
+                quater.quaterClosed['reflextion'] = 0;
+            });
+            _.each($scope.quaters, function(quater, QID){
                 _.each($scope.excuteItems, function(item){ //Count Actions
                     
                     if (!(moment(item.dueDate).isBetween(quater.start, quater.end, 'day', '[]')))  
@@ -166,8 +191,10 @@
 
                 quater.quaterProgress['action'] = quater.quaterTotal['action'] ? quater.quaterClosed['action'] / quater.quaterTotal['action'] * 100 : 0;
                 quater.quaterProgress['action'] = quater.quaterProgress['action'].toFixed(2);
+
                 quater.quaterProgress['sales'] = quater.quaterTotal['sales'] ? quater.quaterClosed['sales'] / quater.quaterTotal['sales'] * 100 : 0;
                 quater.quaterProgress['sales'] = quater.quaterProgress['sales'].toFixed(2);
+
                 quater.quaterProgress['reflextion'] = quater.quaterTotal['reflextion'] ? quater.quaterClosed['reflextion'] / quater.quaterTotal['reflextion'] * 100 : 0;
                 quater.quaterProgress['reflextion'] = quater.quaterProgress['reflextion'].toFixed(2);
             });
@@ -176,14 +203,15 @@
 
             _.each($scope.revenues, function(revenue, revenueID){
                 revenue.actualUnit = 0;
-
+                revenue.unit = 0;
+                revenue.progress = 0;
                 revenue.quaterSale = [];
                 for(var i = 0; i < 4; i ++)
                     revenue.quaterSale.push({
                         targetUnit: 0,
-                        actualUnit: 0
+                        actualUnit: 0,
+                        progress: 0
                     });
-
                 _.each($scope.quaters, function(quater, QID){
 
                     revenue.quaterSale[QID].targetUnit = +quater.units[revenue.name]; 
@@ -200,33 +228,39 @@
                     });
 
                     revenue.actualUnit += revenue.quaterSale[QID].actualUnit;
+                    revenue.unit += revenue.quaterSale[QID].targetUnit;
                 });    
             });
             
-            $scope.anualInfo.unit = 0;
-            $scope.anualInfo.actualUnit = 0;
+            
+            // $scope.anualInfo.unit = 0;
+            // $scope.anualInfo.actualUnit = 0;
+            $scope.anualInfo.actualRevenueSum = 0;
+            $scope.anualInfo.targetRevenueSum = 0;
             $scope.anualInfo.progress = 0;
             $scope.anualInfo.quaterSale = []
             for(var i = 0; i < 4; i ++)
                 $scope.anualInfo.quaterSale.push({
-                    targetUnit: 0,
-                    actualUnit: 0,
-                    progress: 0
+                    // targetUnit: 0,
+                    // actualUnit: 0,
+                    progress: 0,
+                    actualRevenueSum: 0,
+                    targetRevenueSum: 0
                 })
-
+            
             _.each($scope.revenues, function(revenue, revenueID){
-                $scope.anualInfo.unit += revenue.unit;  
-                $scope.anualInfo.actualUnit += revenue.actualUnit;  
+                $scope.anualInfo.actualRevenueSum += revenue.actualUnit * +revenue.sellingPrice;  
+                $scope.anualInfo.targetRevenueSum += revenue.unit * +revenue.sellingPrice;  
 
                 _.each($scope.quaters, function(quater, QID){
-                    $scope.anualInfo.quaterSale[QID].targetUnit += revenue.quaterSale[QID].targetUnit;
-                    $scope.anualInfo.quaterSale[QID].actualUnit += revenue.quaterSale[QID].actualUnit;
+                    $scope.anualInfo.quaterSale[QID].targetRevenueSum += revenue.quaterSale[QID].targetUnit * +revenue.sellingPrice; ;
+                    $scope.anualInfo.quaterSale[QID].actualRevenueSum += revenue.quaterSale[QID].actualUnit * +revenue.sellingPrice;  
                 });
             });
 
-            $scope.anualInfo.progress = $scope.anualInfo.unit ? $scope.anualInfo.actualUnit / $scope.anualInfo.unit * 100 : 0;
+            $scope.anualInfo.progress = $scope.anualInfo.targetRevenueSum ? $scope.anualInfo.actualRevenueSum / $scope.anualInfo.targetRevenueSum * 100 : 0;
             _.each($scope.quaters, function(quater, QID){
-                $scope.anualInfo.quaterSale[QID].progress = $scope.anualInfo.quaterSale[QID].unit ? $scope.anualInfo.quaterSale[QID].actualUnit / $scope.anualInfo.quaterSale[QID].targetUnit * 100 : 0;
+                $scope.anualInfo.quaterSale[QID].progress = $scope.anualInfo.quaterSale[QID].targetRevenueSum ? $scope.anualInfo.quaterSale[QID].actualRevenueSum / $scope.anualInfo.quaterSale[QID].targetRevenueSum * 100 : 0;
             });
 
         }
@@ -295,8 +329,8 @@
         function isJouneyItemDone(section, name){
             var isEx = _.find($scope.activityData, {journey : {section:section, name: name}});
             if (isEx)
-                return true;
-            return false;
+                return isEx;
+            return null;
         }
 
 
@@ -331,7 +365,8 @@
         }
 
         function charge (type) {
-            
+            if($scope.user.pausingPayment)
+                return toaster.pop({type: 'error', body: 'This user was paused payment.'});
             var productName = ''
             if( type == 0 ) {// 1:! meeting
                 productName = 'Missing 1:1 Meeting';
@@ -354,17 +389,27 @@
         }
         
         function toggleSMmilestone(item) {
-            var activity = {
-                userId: $scope.userID,
-                title: item.title,
-                type: 'SLAPmanager',  
-                notes: item.title,
-                journey: item.journey
-            };
-            activityService.add(activity)
+            var existingItem = isJouneyItemDone(item.journey.section, item.journey.name);
+            if(!existingItem) {
+                var activity = {
+                    userId: $scope.userID,
+                    title: item.title,
+                    type: 'SLAPmanager',  
+                    notes: item.title,
+                    journey: item.journey
+                };
+                activityService.add(activity)
                 .then(function(resp){
                     $scope.activityData.push(resp.data);
                 });    
+            } else {
+                existingItem.remove()
+                .then(function(resp){
+                    var index = $scope.activityData.map(function(i){return i._id}).indexOf(existingItem._id);
+                    $scope.activityData.splice(index, 1);
+                });
+            }
+            
         }
 
         function buildActivityGridData() {
@@ -379,12 +424,19 @@
 
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
-                    if ($scope.activitySearchKeyword.trim() != ''){
-                        if (activity.title.toLowerCase().indexOf($scope.activitySearchKeyword) != -1)
+                    if ($scope.actFilter.searchKeyword.trim() != ''){
+                        if (activity.title.toLowerCase().indexOf($scope.actFilter.searchKeyword.toLowerCase()) != -1)
                             valid = true;
-                        if (activity.notes.toLowerCase().indexOf($scope.activitySearchKeyword) != -1)
+                        if (activity.notes.toLowerCase().indexOf($scope.actFilter.searchKeyword.toLowerCase()) != -1)
                             valid = true;
                     } else { valid = true; }
+
+
+                    if (moment(activity.createdAt).isBetween($scope.actFilter.startDate, $scope.actFilter.endDate, 'day', '[]'))
+                        valid &= true;
+                    else
+                        valid &= false;
+                    
 
                     if(types.indexOf(activity.type) == -1)
                         valid &= false;
@@ -400,7 +452,7 @@
                     // user.displayRole = role ? role.name : '';
                     var updateBy = _.find($scope.userData, {_id: act.updatedBy});
                     act.updatedByUserName = updateBy ? updateBy.name + ' ' + updateBy.lastName : 'Admin';
-                    act.createdAtStr = moment(act.createdAt).format('ll');
+                    act.createdAtStr = moment(act.createdAt).format('llll');
                     return act;
                 });
 

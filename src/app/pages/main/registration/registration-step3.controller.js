@@ -18,6 +18,10 @@
         
         vm.plan = productStorage.getPlan();
         vm.build = productStorage.getBuild();
+        
+        // For TEST Purpose
+        // vm.plan = JSON.parse('{"_id":"58f4edb72fbe2a27060c8d9b","billingFrequency":12,"typeProduct":1,"buildType":1,"status":1,"productName":"seriousSLAP","productDescription":"seriousSLAP description","costProduct":400,"__v":0,"createdAt":"2017-04-17T16:17:21.556Z","amountFirstPayment":0,"expertHours":100,"reqParams":null,"restangularized":true,"fromServer":true,"parentResource":{"route":"plans","parentResource":{"route":"products","parentResource":null}},"restangularCollection":false,"$$hashKey":"object:11"}');
+        // vm.build = JSON.parse('"{"_id":"58f4ee3c2fbe2a27060c8d9f","billingFrequency":12,"typeProduct":2,"buildType":1,"status":1,"productName":"Installments","productDescription":"installments description","costProduct":200,"__v":0,"createdAt":"2017-04-17T16:17:21.556Z","amountFirstPayment":500,"expertHours":200,"reqParams":null,"restangularized":true,"fromServer":true,"parentResource":{"route":"builds","parentResource":{"route":"products","parentResource":null}},"restangularCollection":false,"$$hashKey":"object:33"}"');
         if (productStorage.isRenew()){
             vm.isRenew = true;
             vm.user = productStorage.getUser();

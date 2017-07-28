@@ -44,7 +44,8 @@
                 $scope.user = user;
                 toaster.pop({type: 'success', body: 'Password Changed.'});
             }).catch(function(err){
-                toaster.pop({type: 'success', body: 'Error.'});
+                
+                toaster.pop({type: 'success', body: err.data.message ? err.data.message : 'Error.'});
             });     
         }
 
@@ -52,7 +53,7 @@
             userService.getCreditCard().then(function(user){
                 $scope.user = user;
             }).catch(function(err){
-                toaster.pop({type: 'success', body: 'Error.'});
+                toaster.pop({type: 'success', body: err.data.message ? err.data.message : 'Error.'});
             });     
         }
         function changeCreditCard() {
@@ -60,10 +61,10 @@
                 $scope.user = user;
                 $scope.user.card = null;
                 
-                $scope.creditform.$setPristine();
+                // $scope.creditform.$setPristine();
                 toaster.pop({type: 'success', body: 'Credit Card Changed to ****-****-****-.' + $scope.user.last4});
             }).catch(function(err){
-                toaster.pop({type: 'success', body: 'Error.'});
+                toaster.pop({type: 'success', body: err.data.message ? err.data.message : 'Error.'});
             });     
         }
 

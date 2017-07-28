@@ -51,8 +51,9 @@
             
             update().then(function(){
                 toaster.pop({type: 'success', body: 'User saved.'});
+                $state.go('users.list');
             }).catch(function(err){
-                console.log(err);
+                toaster.pop({type: 'error', body: err.data.message});
             });
         }
 

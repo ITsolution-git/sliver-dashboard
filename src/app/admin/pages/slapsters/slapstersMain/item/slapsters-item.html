@@ -44,7 +44,7 @@
 
                 <md-input-container >
                     <label>Partner/Affiliate</label>
-                    <md-select ng-model="partnerId"  aria-label="partner-select">
+                    <md-select ng-model="user.partnerId"  aria-label="partner-select">
                         <md-option ng-repeat="user in userData | filter: {role: 5}" ng-value="user._id">{{user.name + ' ' + user.lastName}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
@@ -111,12 +111,12 @@
             <section layout="column" flex="50">
 
                 <md-input-container >
-                    <label>SLAP Start Date</label>
+                    <label>Account Created</label>
                     <input type="text" disabled ng-value="user.createdAt | date: 'yyyy-MM-dd'">
                 </md-input-container>
 
                 <md-input-container >
-                    <label>Original Date</label>
+                    <label>Q1 Start Date</label>
                     <input type="text" disabled ng-value="buildData.slapMindset.slapStartDate ? (buildData.slapMindset.slapStartDate.year + '-' +   buildData.slapMindset.slapStartDate.month) + '-01' : 'Not Set'">
                     
                 </md-input-container>
@@ -128,18 +128,23 @@
                     </md-select>    
 					<div class="md-errors-spacer"></div>
                 </md-input-container>
-        
-                <md-input-container >
-                    <label>Promo Code</label>
-                    <md-select ng-model="user.couponId"  aria-label="coupon-select">
-                        <md-option ng-repeat="promocode in promocodeData" ng-value="promocode._id">{{promocode.name}}</md-option>
-                    </md-select>
-					<div class="md-errors-spacer"></div>
-                </md-input-container>
+                
+                <section flex="100" layout="row">
+                    <md-input-container flex="70">
+                        <label>Promo Code</label>
+                        <md-select ng-model="user.couponId"  aria-label="coupon-select">
+                            <md-option ng-repeat="promocode in promocodeData" ng-value="promocode._id">{{promocode.name}}</md-option>
+                        </md-select>
+                        <div class="md-errors-spacer"></div>
+                    </md-input-container>
+                    <md-button class="md-primary" ng-click="user.couponId = null"  flex="30" style="margin-bottom: 30px">
+                        Delete
+                    </md-button>
+                </section>
 
                 <md-input-container >
                     <label>SLAPBuild</label>
-                    <input type="text" disabled value="YES or NO">
+                    <input type="text" disabled ng-value="user.finishedSteps.length == 53 ? 'YES' : 'NO'">
                     <div ng-messages="form.businessName.$error">
                         <!--<ng-message when="required">Business Name is required.</ng-message>-->
                     </div>
@@ -227,8 +232,11 @@
                         {{isJouneyItemDone('excute', 'Execute Call Set') ? '✔' : ''}}Call Happened<br/>
                     </td>
                     <td>
+                        {{quaters[0].quaterProgress['action'] >= 100 ? '✔' : ''}}
                         {{quaters[0].quaterProgress['action']}}% of AI <br/>
-                        {{quaters[0].quaterProgress['sales']}}% of Sales <br/>
+                        {{anualInfo.quaterSale[0].progress.toFixed(2) >= 100 ? '✔' : ''}}
+                        {{anualInfo.quaterSale[0].progress.toFixed(2)}}% of Sales <br/>
+                        {{quaters[0].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[0].quaterProgress['reflextion']}}% of P&R <br/>
 
                         {{isJouneyItemDone('q1', 'SLAPstuff Sent') ? '✔' : ''}}SLAPstuff Out<br/>
@@ -236,18 +244,22 @@
                         x/3 Paid 
                     </td>
                     <td>
-
+                        {{quaters[1].quaterProgress['action'] >= 100 ? '✔' : ''}}
                         {{quaters[1].quaterProgress['action']}}% of AI <br/>
-                        {{quaters[1].quaterProgress['sales']}}% of Sales <br/>
+                        {{anualInfo.quaterSale[1].progress.toFixed(2) >= 100 ? '✔' : ''}}
+                        {{anualInfo.quaterSale[1].progress.toFixed(2)}}% of Sales <br/>
+                        {{quaters[1].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[1].quaterProgress['reflextion']}}% of P&R <br/>
-                        {{isJouneyItemDone('q2', 'SLAPmatch') ? '✔' : ''}}SLAPmatch<br/>
                         {{isJouneyItemDone('q2', 'SLAPbuddy Connected') ? '✔' : ''}}SLAPbuddy Connected<br/>
                         {{isJouneyItemDone('q2', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary<br/>
                         x/3 Paid 
                     </td>
                     <td>
+                        {{quaters[2].quaterProgress['action'] >= 100 ? '✔' : ''}}
                         {{quaters[2].quaterProgress['action']}}% of AI <br/>
-                        {{quaters[2].quaterProgress['sales']}}% of Sales <br/>
+                        {{anualInfo.quaterSale[2].progress.toFixed(2) >= 100 ? '✔' : ''}}
+                        {{anualInfo.quaterSale[2].progress.toFixed(2)}}% of Sales <br/>
+                        {{quaters[2].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[2].quaterProgress['reflextion']}}% of P&R <br/>
 
                         {{isJouneyItemDone('q3', 'Q3 Hustle Call Set') ? '✔' : ''}}Q3 Hustle Call Set<br/>
@@ -255,8 +267,11 @@
                         x/3 Paid 
                     </td>
                     <td>
+                        {{quaters[3].quaterProgress['action'] >= 100 ? '✔' : ''}}
                         {{quaters[3].quaterProgress['action']}}% of AI <br/>
-                        {{quaters[3].quaterProgress['sales']}}% of Sales <br/>
+                        {{anualInfo.quaterSale[3].progress.toFixed(2) >= 100 ? '✔' : ''}}
+                        {{anualInfo.quaterSale[3].progress.toFixed(2)}}% of Sales <br/>
+                        {{quaters[3].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[3].quaterProgress['reflextion']}}% of P&R <br/>
                         {{isJouneyItemDone('q4', 'Renewal Confirmed') ? '✔' : ''}}Renewal Confirmed<br/>
                         x/3 Paid 
@@ -289,7 +304,8 @@
         <table class="table table-responsive table-bordered table-striped table-hover" ng-if="revenues"  >
             <thead  class="thead-default"> 
                 <tr>
-                    <th></th>
+                    <th rowspan="3" >Name</th>
+                    <th rowspan="3" >Price</th>
                     <th rowspan="2" colspan="2">Anual</th>
                     <th colspan="2">Q1</th>
                     <th colspan="2">Q2</th>
@@ -297,14 +313,12 @@
                     <th colspan="2">Q4</th>
                 </tr>
                 <tr>
-                    <th></th>
                     <th colspan="2">{{quaters[0].monthsString}}</th>
                     <th colspan="2">{{quaters[1].monthsString}}</th>
                     <th colspan="2">{{quaters[2].monthsString}}</th>
                     <th colspan="2">{{quaters[3].monthsString}}</th>
                 </tr>
                 <tr>
-                    <th></th>
                     <th>Goal</th>
                     <th>Actual</th>
                     <th>Goal</th>
@@ -321,6 +335,7 @@
             <tbody class="table-striped">
                 <tr ng-repeat="revenue in revenues">
                     <td>{{revenue.name}}</td>
+                    <td>{{revenue.sellingPrice}}</td>
                     <td>{{revenue.unit}}</td>
                     <td>{{revenue.actualUnit}}</td>
                     <td>{{revenue.quaterSale[0].targetUnit}}</td>
@@ -335,6 +350,7 @@
 
                 <tr>
                     <td>%</td>
+                    <td></td>
                     <td></td>
                     <td>{{anualInfo.progress.toFixed(2)}}</td>
                     <td></td>
@@ -441,7 +457,7 @@
     </section>
     <section class="  sample-show-hide"  ng-show="showActivity">
 
-        <section>
+        <section layout="row" flex="100">
             <md-button class="md-primary pull-right" ng-click="openItemDialog($event, 'add')">
                 Create Activity
             </md-button>
@@ -452,12 +468,31 @@
                 <md-icon >
                     <i class="material-icons">search</i>
                 </md-icon>
-                <input ng-model="activitySearchKeyword" ng-keydown="buildActivityGridData()" type="text" placeholder="Search">
+                <input ng-model="actFilter.searchKeyword" ng-keydown="buildActivityGridData()" type="text" placeholder="Search">
             </md-input-container>
         </div>
         
         <section layout="row">
-            <section flex="50"></section>
+            <section flex="50">
+                <form name="activitySearchForm" layout="row">
+                    <md-input-container flex="50" style="margin: 0px">
+                        <label>Start Date</label>
+                        <md-datepicker ng-model="actFilter.startDate" name="startDate" ng-change="buildActivityGridData()"></md-datepicker>
+                        <div ng-messages="activitySearchForm.startDate.$error">
+                            <div ng-message="valid">The entered value is not a date!</div>
+                            <div ng-message="required">This date is required!</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex="50" style="margin: 0px">
+                        <label>End Date</label>
+                        <md-datepicker ng-model="actFilter.endDate" name="endDate" ng-change="buildActivityGridData()"></md-datepicker>
+                        <div ng-messages="activitySearchForm.endDate.$error">
+                            <div ng-message="valid">The entered value is not a date!</div>
+                            <div ng-message="required">This date is required!</div>
+                        </div>
+                    </md-input-container>
+                </form>
+            </section>
 
             <section layout="row" flex="50" layout-wrap> 
                 <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>

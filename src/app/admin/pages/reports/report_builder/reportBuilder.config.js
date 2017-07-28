@@ -8,24 +8,74 @@
     /* @ngInject */
     function moduleConfig($stateProvider) {
         $stateProvider
-            .state('report-builder',{
+            .state('reports', {
                 abstract: true,
                 data: {
                     access: 'admin',
                     isAdminPage: true
                 },
-                url: '/report-builder',
+                url: '/reports',
                 parent: 'admin',
                 views: {
                     content: {
                         template: '<ui-view/>'
                     }
                 }
+
             })
-            .state('report-builder.index',{
+            .state('reports.list', {
+                data: {
+                    access: 'admin',
+                    isAdminPage: true
+                },
                 url: '',
-                controller: 'ReportBuilderIndex',
-                templateUrl: 'admin/pages/reports/report_builder/index/index.html'
+                controller: 'AdminReportsManageController',
+                templateUrl: 'admin/pages/reports/report_builder/list/reports-manage.html'
             })
+            .state('reports.add', {
+                data: {
+                    access: 'admin',
+                    isAdminPage: true
+                },
+                resolve: {
+
+                    allProducts: function (productsService, $state) {
+                        return productsService.getAllProducts().then(function(response) {
+                            return  response.data;
+                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    },
+                    allCoupons: function (couponService, $state) {
+                        return couponService.list()
+                        .then(function (response) {
+                            return response.data;
+                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    },
+                },
+                url: '/add',
+                controller: 'AdminReportsItemController',
+                templateUrl: 'admin/pages/reports/report_builder/item/reports-item.html'
+            })
+            .state('reports.item', {
+                data: {
+                    access: 'admin',
+                    isAdminPage: true
+                },
+                resolve: {
+                    allProducts: function (productsService, $state) {
+                        return productsService.getAllProducts().then(function(response) {
+                            return  response.data;
+                        }).catch(function(err) { console.log(err); $state.go('reports.list'); });
+                    },
+                    allCoupons: function (couponService, $state) {
+                        return couponService.list()
+                        .then(function (response) {
+                            return response.data;
+                        }).catch(function(err) { console.log(err); $state.go('reports.list'); });
+                    },
+                },
+                url: '/{report_id}',
+                controller: 'AdminReportsItemController',
+                templateUrl: 'admin/pages/reports/report_builder/item/reports-item.html'
+            });
     }
 }());

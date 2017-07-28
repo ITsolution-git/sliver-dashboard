@@ -43,6 +43,9 @@
         $scope.save = function () {
             $scope.apply().then(function () {
                 $state.go('plans.list');
+            })
+            .catch(function(err){
+               console.log(err); 
             });
         };
         $scope.apply = function () {
@@ -54,6 +57,7 @@
                     err.data.forEach(function (item) {
                         $scope.errors[item.param] = item.msg;
                     });
+                    throw err;
                 })
         };
 

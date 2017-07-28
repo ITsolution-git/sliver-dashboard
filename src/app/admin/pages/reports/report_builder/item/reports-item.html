@@ -1,0 +1,256 @@
+
+<div layout="column" style="width: 100%;" class="reports-item-container">
+<md-card flex="100" class="p-es-30 m-w-es-40">
+    <form layout="row" layout-wrap layout-align="center center" name="form">
+        <md-input-container  flex="100">
+            <label>Name</label>
+            <input ng-model="report.name" required name="name">
+            <div ng-messages="form.name.$error">
+                <ng-message when="required">Name is required.</ng-message>
+            </div>
+        </md-input-container>
+
+
+
+        <md-input-container flex="25">
+            <label>Start Date</label>
+            <md-datepicker ng-model="report.filter.startDate" md-max-date="report.filter.endDate" name="startDate"></md-datepicker>
+            <div ng-messages="form.startDate.$error">
+                <div ng-message="valid">The entered value is not a date!</div>
+                <div ng-message="required">This date is required!</div>
+                <div ng-message="mindate">Date is too early!</div>
+                <div ng-message="maxdate">Date is too late!</div>
+            </div>
+        </md-input-container>
+        <md-input-container flex="25">
+            <label>End Date</label>
+            <md-datepicker ng-model="report.filter.endDate" md-min-date="report.filter.startDate" name="endDate"></md-datepicker>
+            <div ng-messages="form.endDate.$error">
+                <div ng-message="valid">The entered value is not a date!</div>
+                <div ng-message="required">This date is required!</div>
+                <div ng-message="mindate">Date is too early!</div>
+                <div ng-message="maxdate">Date is too late!</div>
+            </div>
+        </md-input-container>
+        <section flex>
+        </section>
+
+
+        <span flex="100"  class="subtitle">Based in</span>
+        <md-input-container flex="50">
+            <md-select ng-model="report.filter.country">
+                <md-option ng-repeat="country in COUNTRIES" ng-value="country.id">{{country.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        <section flex>
+        </section>
+
+
+        <span flex="100"  class="subtitle">Whose Status Is</span>
+        <md-input-container flex="50">
+            <md-select ng-model="report.filter.status">
+                <md-option ng-repeat="status in STATUSES" ng-value="status.id">{{status.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        <section flex>
+        </section>
+
+        <span flex="100"  class="subtitle">Accociated With</span>
+        <md-chips ng-model="report.filter.products" md-autocomplete-snap
+            md-transform-chip="transformProductChip($chip)"            
+            md-require-match="true" flex="100">
+            <md-autocomplete
+                md-selected-item="selectedProduct"
+                md-search-text="searchProductText"
+                md-min-length="0"
+                md-items="item in queryProductSearch(searchProductText)"
+                md-item-text="item.productName"
+                placeholder="Search for a Product">
+                <span md-highlight-text="searchProductText">{{item.productName}}</span>
+            </md-autocomplete>
+        
+            <md-chip-template>
+                <span>
+                    <strong>{{$chip.productName}}</strong>
+                </span>
+            </md-chip-template>
+        </md-chips>
+        
+
+        <md-chips ng-model="report.filter.coupons" md-autocomplete-snap
+            md-transform-chip="transformCouponChip($chip)"            
+            md-require-match="true" flex="100">
+            <md-autocomplete
+                md-selected-item="selectedCoupon"
+                md-search-text="searchCouponText"
+                md-min-length="0"
+                md-items="item in queryCouponSearch(searchCouponText)"
+                md-item-text="item.name"
+                placeholder="Search for a Coupon">
+                <span md-highlight-text="searchCouponText">{{item.name}}</span>
+            </md-autocomplete>
+        
+            <md-chip-template>
+                <span>
+                    <strong>{{$chip.name}}</strong>
+                </span>
+            </md-chip-template>
+        </md-chips>
+        <section flex>
+        </section>
+
+
+
+        <span flex="100"  class="subtitle">Did these activities</span>
+        <md-chips ng-model="report.filter.activities" md-autocomplete-snap
+            md-transform-chip="transformActivityChip($chip)"            
+            md-require-match="true" flex="100">
+            <md-autocomplete
+                md-selected-item="selectedActivity"
+                md-search-text="searchActivityText"
+                md-min-length="0"
+                md-items="item in queryActivitySearch(searchActivityText)"
+                md-item-text="item.name"
+                placeholder="Search for a Activity">
+                <span md-highlight-text="searchActivityText">{{item.name}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                <span>
+                    <strong>{{$chip.name}}</strong>
+                </span>
+            </md-chip-template>
+        </md-chips>
+        
+
+        <section flex>
+        </section>
+
+
+        <span flex="100"  class="subtitle">They are</span>
+        <section flex="100" layout="row">
+            <md-chips ng-model="report.filter.quaters" md-autocomplete-snap
+                md-transform-chip="transformQuaterChip($chip)"            
+                md-require-match="true" flex="100">
+                <md-autocomplete
+                    md-selected-item="selectedQuater"
+                    md-search-text="searchQuaterText"
+                    md-min-length="0"
+                    md-items="item in queryQuaterSearch(searchQuaterText)"
+                    md-item-text="item.name"
+                    placeholder="Search for a Quater">
+                    <span md-highlight-text="searchQuaterText">{{item.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>
+                        <strong>{{$chip.name}}</strong>
+                    </span>
+                </md-chip-template>
+            </md-chips>
+        </section>
+        
+        <md-chips ng-model="report.filter.strategies" md-autocomplete-snap
+            md-transform-chip="transformStrategyChip($chip)"            
+            md-require-match="true" flex="100">
+            <md-autocomplete
+                md-selected-item="selectedStrategy"
+                md-search-text="searchStrategyText"
+                md-min-length="0"
+                md-items="item in queryStrategySearch(searchStrategyText)"
+                md-item-text="item.name"
+                placeholder="Search for a Strategy">
+                <span md-highlight-text="searchStrategyText">{{item.name}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                <span>
+                    <strong>{{$chip.name}}</strong>
+                </span>
+            </md-chip-template>
+        </md-chips>
+        
+        <md-chips ng-model="report.filter.scores" md-autocomplete-snap
+            md-transform-chip="transformScoreChip($chip)"            
+            md-require-match="true" flex="100">
+            <md-autocomplete
+                md-selected-item="selectedScore"
+                md-search-text="searchScoreText"
+                md-min-length="0"
+                md-items="item in queryScoreSearch(searchScoreText)"
+                md-item-text="item.name"
+                placeholder="Search for a Score">
+                <span md-highlight-text="searchScoreText">{{item.name}}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                <span>
+                    <strong>{{$chip.name}}</strong>
+                </span>
+            </md-chip-template>
+        </md-chips>
+        
+        <section flex>
+        </section>
+
+
+        <span flex="100"  class="subtitle">Goal Progress</span>
+        <section flex="100" layout="row" layout="row" >
+            
+            <span>From</span>
+            <md-input-container>
+                <input ng-model="report.filter.goalProgress.from" />
+            </md-input-container>
+            <span>% To</span>
+            <md-input-container>
+                <input ng-model="report.filter.goalProgress.from" />
+            </md-input-container>
+            <span>% Of</span>
+
+            <md-input-container>
+                <md-select ng-model="report.filter.goalProgress.type">
+                    <md-option value="annual">Annual</md-option>
+                    <md-option value="quaterly">Quaterly</md-option>
+                </md-select>
+                <div class="md-errors-spacer"></div>
+            </md-input-container>
+        </section>
+        <section flex>
+        </section>
+<!--        
+
+        
+        <md-input-container flex="50">
+            <md-select ng-model="user.status">
+                <md-option ng-repeat="status in STATUSES" ng-value="status.id">{{status.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        
+
+        <md-input-container class="md-block" flex="50"  ng-if="!userID">
+            <label for="password">Password</label>
+            <input required type="password" name="password" ng-model="user.password"
+                    minlength="6" md-maxlength="30" id="password"/>
+
+            <div ng-messages="form.password.$error" role="alert" ng-hide="form.password.$valid">
+                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                    Password should be at least 6 until 30 characters
+                </div>
+            </div>
+        </md-input-container>-->
+
+        <section layout="row" layout-align="end center" flex="100" >
+
+            <md-button class="md-primary" ng-disabled="form.$invalid">
+                Run
+            </md-button>
+            <md-button ng-click="createOrSave($event)" class="md-primary" ng-disabled="form.$invalid">
+                {{reportID ? 'Save' : 'Create'}}
+            </md-button>
+            <md-button ng-click="deleteItem($event)" class="md-warn" ng-if="reportID">
+                Delete
+            </md-button>
+        </section>
+    </form>
+
+</md-card>
+</div>

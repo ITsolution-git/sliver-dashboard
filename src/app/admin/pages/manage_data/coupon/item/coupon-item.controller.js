@@ -38,6 +38,10 @@
             }
 
             $scope.apply().then(function () {
+                if(!$scope.couponForm.$valid) {
+                    toaster.pop({type: 'error', body: 'Please fill all fields required.'});
+                    return;
+                }
                 $state.go('coupon.list');
             });
         };
