@@ -155,7 +155,7 @@
                 }
 
                 if ($scope.data.fourth === value.label) {
-                    $scope.data.result = 'helping the economy';
+                    $scope.data.result = 'help the economy';
                     $scope.data.resultId = '3';
                     return true;
                 }

@@ -33,24 +33,22 @@
                 <div class="col-md-12">
                     <button-switch visible="showFormBlock"></button-switch>
 
-                    <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+                    <p class="logo panel-title">ACTION</p>
                 </div>
             </div>
 
             <div class="row sample-show-hide" ng-hide="showFormBlock">
                 <div class="col-xs-12 padding-l-r-30 margin-b-24">
-                    <p class="heading2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra
-                        elit, a
-                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                    <p class="heading2"></p>
                 </div>
                 <div class="col-xs-12" id="strategy-container">
                     <svg ng-if="!showResponsiveView">
                         <line ng-attr-x1="{{center.x}}" ng-attr-y1="{{center.y}}" ng-attr-x2="{{pos.x}}" ng-attr-y2="{{pos.y}}" ng-repeat="pos in positions" style="stroke:#50cfe3;stroke-width:2" ng-if="data[$index].rating != 0"/>
                     </svg>
                     <div id="empty-client"  ng-if="!showResponsiveView">
-                        <img src="/images/empty-avatar.png" />
-                        <p>
-                            What is the best connecting strategy to your ideal client?
+                        <img src="/images/person-avatar.png" />
+                        <p class="text-center">
+                            {{clientName}}
                         </p>
                     </div>
                     <div  ng-if="!showResponsiveView">

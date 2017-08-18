@@ -17532,7 +17532,7 @@ md-toast {
 }
 @media (min-width: 768px) {
   .slap-page .panel .panel-title {
-    margin-top: 40px;
+    margin-top: 35px;
   }
 }
 @media (max-width: 410px) {
@@ -18296,7 +18296,8 @@ md-toast {
 }
 .rate-connect-strategy #strategy-container #empty-client p {
   position: absolute;
-  top: 90px;
+  top: 110px;
+  right: 55px;
   font-size: 14px;
   padding: 20px;
   text-align: center;
@@ -18517,7 +18518,6 @@ table.table-vertical-align tbody tr td {
   height: 50px;
 }
 .slap-footer {
-  position: absolute;
   bottom: 0;
 }
 div.grid_item:hover {

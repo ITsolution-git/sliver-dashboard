@@ -32,15 +32,13 @@
                 <div class="col-md-12">
                     <button-switch visible="showFormBlock"></button-switch>
 
-                    <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+                    <p class="logo panel-title">ACTION</p>
                 </div>
             </div>
 
             <div class="row sample-show-hide" ng-hide="showFormBlock">
                 <div class="col-xs-12 padding-l-r-30 margin-b-24">
-                    <p class="heading2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra
-                        elit, a
-                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                    <p class="heading2"></p>
                 </div>
                 
                 <ul class="nav nav-tabs quater-letter-container p-w-es-10 m-w-es-20">
@@ -74,7 +72,7 @@
                                         class="monthly-cost outline-0 impact-client" 
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}" 
-                                        placeholder="How do these world events in this quarter impact our Client?" 
+                                        placeholder="How do the events happening in the world around us in this Quarter impact {{data.fourth}}?" 
                                         style="width: 100%"
                                         rows="5" required ng-keyup="autoExpand($event)"></textarea>
 
@@ -88,7 +86,7 @@
                                         class="monthly-cost outline-0 impact-business" 
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}" 
-                                        placeholder="How do these world events in this quarter impact our Business?" 
+                                        placeholder="How do the events happening in the world around us in this Quarter impact {{businessName}}?" 
                                         style="width: 100%"
                                         rows="5" required ng-keyup="autoExpand($event)"></textarea>
 

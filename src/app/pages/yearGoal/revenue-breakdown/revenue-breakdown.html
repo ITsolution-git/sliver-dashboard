@@ -34,7 +34,7 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+            <p class="logo panel-title">ACTION</p>
 
             <div class="sample-show-hide" ng-hide="showContent">
                 
@@ -101,16 +101,17 @@
                         </div>
                     </div>
                     <div class="revenue-margin-container text-center">
-                        <span class="info-text">%{{revenue.margin}}</span>
+                        <span class="info-text">{{revenue.margin}}</span>
                     </div>
                     <div class="revenue-breakdown-container text-center show-border" ng-class=" 'row-' + calcHeight(revenue, $index) + 'th'">
                         <div class="input-box">
-                            <span class="currency">%</span>
+                            
                             <input ng-model="revenue.breakdown" type="text"
                                     class="incidentals outline-0"
                                     ng-blur="doCalculation()"
                                     ng-keydown="checkValidity(revenue.breakdown, $event)"
                                     ng-class="{'active': revenue.breakdown}" required>
+                            <span class="currency" ng-class="{'text-danger': data.totalBreakdown != 100}">%</span>
                         </div>
                     </div>
 
@@ -133,7 +134,8 @@
                         <div class="item-circle item-circle-check pull-right" ng-if="data.totalBreakdown == 100">
                             <i class="fa fa-check fa-lg text-white" aria-hidden="true"></i>
                         </div><br/>
-                        <span>%{{ data.totalBreakdown }}</span>
+                        <span>{{ data.totalBreakdown }}</span>
+                        <span ng-class="{'text-danger': data.totalBreakdown != 100}">%</span>
                     </div>  
                     <!--<div class="revenue-unit-container">
                     </div>-->

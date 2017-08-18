@@ -30,11 +30,10 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+            <p class="logo panel-title">ACTION</p>
 
             <div class="col-md-9">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a dapibus ex. In
-                    venenatis tempor odio, non ultrices lectus</p>
+                <p></p>
             </div>
 
             <div class="form-box sample-show-hide col-xs-12" ng-hide="showContent">
@@ -97,14 +96,14 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row row-flex incidentals-wrap m-t-es-30">
+                <hr>
+                <div class="row row-flex incidentals-wrap m-t-es-10" >
                     <div class="col-md-5">
                         <div class="input-box">
-                            <span>Incidentals for</span>
+                            <span></span>
                             <span class="currency">%</span>
                             <input ng-model="data.incidentals" type="text" id="incidentals"
-                                   class="incidentals outline-0" ng-blur="checkNumberValid(data.incidentals, $event)" required>
+                               placeholder="Incidentals for"  class="incidentals outline-0" ng-blur="checkNumberValid(data.incidentals, $event)" required>
                         </div>
                     </div>
                     <div class="result col-md-3">
@@ -115,12 +114,12 @@
                     </div>
                 </div>
 
-                <div class="row row-flex incidentals-wrap  m-t-es-30">
+                <div class="row row-flex incidentals-wrap  m-t-es-10">
                     <div class="col-md-5">
                         <div class="input-box">
                             <input  type="text" 
                                 class="expense outline-0"
-                                disabled value="Expected Profit"
+                                disabled value="Profit Goal"
                                 ng-class="{'active': data.expenses[0].expense}" required>
                         </div>
                     </div>

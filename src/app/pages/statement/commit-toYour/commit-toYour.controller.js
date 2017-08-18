@@ -12,7 +12,7 @@
             third: ['for', 'to'],
             fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             privilegesData: {
-                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'helping the economy'],
+                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'helpes the economy'],
                 second: ['providing', 'creating', 'giving', 'helping']
             },
             showWhatInput: false,

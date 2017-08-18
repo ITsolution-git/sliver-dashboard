@@ -32,7 +32,7 @@
 
             <button-switch visible="showDropdownBlock"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+            <p class="logo panel-title">ACTION</p>
 
             <div class="sample-show-hide row" ng-hide="showDropdownBlock">
 
@@ -90,11 +90,11 @@
                         <label for="fourth" class="heading3 control-label">Growing my business means I am helping the economy</label>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth, 'helping the economy', 'fourth')"
+                        <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth, 'helpes the economy', 'fourth')"
                                 ng-class="{'active': data.fourth}" ng-if="data.fourth=='My primary driver' || !showInfoBlock">
                             <option ng-repeat="item in options">{{item.label}}</option>
                         </select>
-                        <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth, 'helping the economy')"
+                        <select id="fourth" ng-model="data.fourth" class="dropdown-box outline-0" ng-change="checkDropdownModels(data.fourth, 'helpes the economy')"
                                 ng-class="{'active': data.fourth}"  ng-if="data.fourth!='My primary driver' && showInfoBlock">
                             <option ng-repeat="item in availableOptions">{{item.label}}</option>
                         </select>

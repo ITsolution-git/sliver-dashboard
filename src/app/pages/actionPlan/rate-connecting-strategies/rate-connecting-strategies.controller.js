@@ -5,7 +5,7 @@
         .module('app.pages.actionPlan')
         .controller('RateConnectingStrategiesController', RateConnectingStrategiesController);
 
-    function RateConnectingStrategiesController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService, $uibModal, $window) {
+    function RateConnectingStrategiesController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService, $uibModal, $window, idealclientService) {
 
         angular.extend($scope, activeStep.model, {
             forward: true,
@@ -13,6 +13,7 @@
             saved: false,
             positions: [],
             center: {},
+            idealClientSelects: idealclientService.getClientSliders(),
             openVideoBox: openVideoBox,
             showResponsiveView: false,
             notifications: []
@@ -20,6 +21,17 @@
 
         if ($scope.data.length == 0) {
             $scope.data = actionplanService.getDefaultConnectingStrategies();
+        }
+       getData();
+
+        function getData() {
+                stepService.getApiData('yourStatement') //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+                        $scope.clientName = _.get(response, 'data.yourStatement.fourth', []);
+                        var originalData = _.clone($scope.data);
+                    }
+                });
         }
         $timeout(setPosition);
 

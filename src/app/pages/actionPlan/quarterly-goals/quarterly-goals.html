@@ -32,15 +32,13 @@
                 <div class="col-md-12">
                     <button-switch visible="showFormBlock"></button-switch>
 
-                    <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+                    <p class="logo panel-title">ACTION</p>
                 </div>
             </div>
 
             <div class="row sample-show-hide" ng-hide="showFormBlock">
                 <div class="col-xs-12 padding-l-r-30 margin-b-24">
-                    <p class="heading2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra
-                        elit, a
-                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                    <p class="heading2"></p>
                 </div>
                 
                 <ul class="nav nav-tabs quater-letter-container p-w-es-10 m-w-es-20">
@@ -86,11 +84,10 @@
                                             placeholder="" 
                                             style="width: 100%"
                                             ng-keyup="autoExpand($event)" required disabled></textarea>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="slap-work-box m-t-es-40 col-xs-12" ng-init="showActionItemsBox=true">
+                        <div class="slap-work-box m-t-es-40 col-xs-12" ng-init="showActionItemsBox=false">
                             <slap-work-moment-icon visible="showActionItemsBox"  type="'moment'" title="'ActionItems'"></slap-work-moment-icon>
                             <div ng-show="showActionItemsBox" class="sample-show-hide">
                                 <div ng-repeat="monthID in QMonths[nthQut - 1]"  class="col-xs-12 col-sm-12">

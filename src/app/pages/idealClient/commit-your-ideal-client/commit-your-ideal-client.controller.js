@@ -6,13 +6,13 @@
         .controller('CommitYourIdealClientController', CommitYourIdealClientController);
 
     function CommitYourIdealClientController($scope, activeStep, pageService,stepService, $state, userService) {
-
+        
         angular.extend($scope, activeStep.model, {
             first: ['does', 'provides', 'sells'],
             third: ['for', 'to'],
             fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             privilegesData: {
-                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'helping the economy'],
+                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'help the economy'],
                 second: ['providing', 'creating', 'giving', 'helping']
             },
             showWhatInput: false,

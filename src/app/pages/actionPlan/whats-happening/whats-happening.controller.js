@@ -5,7 +5,7 @@
         .module('app.pages.actionPlan')
         .controller('WhatsHappeningController', WhatsHappeningController);
 
-    function WhatsHappeningController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService) {
+    function WhatsHappeningController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService, userService) {
 
         angular.extend($scope, activeStep.model, {
             forward: true,
@@ -82,6 +82,16 @@
                         $scope.eventsByMonth = response.data.worldAroundYou.eventsByMonth;
                     }
                 });
+            stepService.getApiData('yourStatement') //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+                        $scope.data = _.get(response, 'data.yourStatement', []);
+                        var originalData = _.clone($scope.data);
+                    }
+                });
+            userService.getUser().then(function (user) {
+                $scope.businessName = user.businessName;
+            });
         }
 
         function sendData(direction) {
