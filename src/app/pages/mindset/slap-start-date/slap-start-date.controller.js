@@ -12,7 +12,6 @@
         $scope.changed = false;
 
         var date = new Date();
-        // change currentMonth date.getMonth() + 1 + 1) % 12
         var currentMonth = ((date.getMonth() + 1) % 12).toString();
         var currentYear = date.getFullYear();
         var excuteItems = excuteItems;
