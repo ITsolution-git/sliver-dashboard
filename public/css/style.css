@@ -7955,7 +7955,7 @@ body[sidebar-navigation-type="horizontal"] #sidebar-container[sidebar-lpanel-eff
 }
 .left-panel .left-panel-item {
   background-color: #576875;
-  font-size: 1em;
+  font-size: 0.9em;
   color: #ffffff;
   text-transform: uppercase;
   border-color: rgba(55, 60, 55, 0.15);
@@ -8194,12 +8194,12 @@ input:checked + .slider:before {
   line-height: 0.8;
   color: #373c37;
   text-transform: capitalize;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .custom-rzslider span {
   position: absolute;
   font-family: .HelveticaNeueDeskInterface;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1;
   color: #33444d;
 }
@@ -8254,7 +8254,7 @@ h3.logo {
 }
 .btn-custom {
   height: 50px;
-  font-size: 18px;
+  font-size: 16px;
   background: #0e7cb5;
   color: #fff;
   border-radius: 40px;
@@ -17388,7 +17388,7 @@ a.text-black:focus {
   border-radius: 50%;
 }
 .step3-summary .content-box p {
-  font-size: 1em;
+  font-size: 0.9em;
   margin-left: 70px;
 }
 .step3-summary .summary-step {
@@ -17463,26 +17463,26 @@ body {
   min-height: 100%;
   font-family: 'MuseoSansCyrl';
   font-weight: 300;
-  font-size: 24px;
+  font-size: 22px;
 }
 @media (max-width: 1200px) {
   body {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 @media (max-width: 768px) {
   body {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
 @media (max-width: 992px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 @media (max-width: 480px) {
   body {
-    font-size: 16px !important;
+    font-size: 15px !important;
   }
 }
 body p,
@@ -17521,7 +17521,7 @@ md-toast {
 }
 .slap-page .panel .panel-title {
   display: block;
-  font-size: 32px;
+  font-size: 29px;
   line-height: 0.59;
   letter-spacing: -0.6px;
   color: #373c37;
@@ -17558,10 +17558,10 @@ md-toast {
   margin-bottom: 140px;
 }
 .slap-page .line-text {
-  font-size: 1em;
+  font-size: 0.9em;
 }
 .slap-page p {
-  font-size: 1em;
+  font-size: 0.9em;
   line-height: 1.78em;
   color: #576875;
 }
@@ -17575,7 +17575,7 @@ md-toast {
   font-weight: 300;
 }
 .slap-page .heading3 {
-  font-size: 20px;
+  font-size: 18px;
   color: #373c37;
 }
 @media (max-width: 768px) {
@@ -17762,7 +17762,7 @@ md-toast {
   text-align: center;
 }
 .slap-page .quater-letter-container .quater-letter a {
-  font-size: 2.5em;
+  font-size: 2.3em;
   color: #99a2a6;
   cursor: pointer;
 }
@@ -17859,7 +17859,7 @@ md-toast {
 .who-ideal-client h4 {
   color: #373c37;
   font-size: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 .who-ideal-client input {
@@ -18051,7 +18051,7 @@ md-toast {
 .personal-expanses .form-box .input-box input {
   width: 100%;
   height: 60px;
-  font-size: 24px;
+  font-size: 20px;
   color: #33444d;
   background-color: #fff;
 }
@@ -18101,19 +18101,19 @@ md-toast {
   width: 100%;
 }
 .personal-expanses .form-box .total-expense-wrap .result span + span {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 2;
   letter-spacing: -0.5px;
 }
 .personal-expanses .result {
-  font-size: 24px;
+  font-size: 20px;
   padding-top: 18px;
   color: #33444d;
   line-height: 36px;
 }
 .revenue-page .slap-work-panel > div {
   color: #33444d;
-  font-size: 17px;
+  font-size: 16px;
 }
 .revenue-page .slap-work-panel > div .input-box {
   font-size: 1em;
@@ -19130,7 +19130,7 @@ a:hover {
   background: #0e7cb5 url('../images/icon-arrow-right.svg') no-repeat center;
 }
 .footer-column span {
-  font-size: 20px;
+  font-size: 19px;
   line-height: 0.8;
   color: #373c37;
   text-transform: capitalize;
