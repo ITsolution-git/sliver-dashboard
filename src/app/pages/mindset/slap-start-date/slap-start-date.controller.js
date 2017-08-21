@@ -12,7 +12,8 @@
         $scope.changed = false;
 
         var date = new Date();
-        var currentMonth = ((date.getMonth() + 1 + 1) % 12).toString();
+        // change currentMonth date.getMonth() + 1 + 1) % 12
+        var currentMonth = ((date.getMonth() + 1) % 12).toString();
         var currentYear = date.getFullYear();
         var excuteItems = excuteItems;
 
@@ -35,7 +36,6 @@
         if ($scope.data.month === null) {
             $scope.data.month = currentMonth;
         }
-
 
         $scope.$watch('data.month', function (value) {
             if (value !== undefined) {
