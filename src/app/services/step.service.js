@@ -5,7 +5,7 @@
         .module('app.services')
         .service('stepService', stepService);
 
-    function stepService(apiService, $q) {
+    function stepService(apiService, $q, toaster) {
         var steps = [
             {
                 name: 'Our Commitment To You',
@@ -633,6 +633,7 @@
                     return resolve({sref: "slapExcute.main"});
                 } else {
                     var lastSteps = finishedSteps[finishedSteps.length - 1];
+                    toaster.pop({ type: 'error', body: "You must build your SLAP in order! Once you have completed a page you can go back, but you cannot jump ahead"})
                     return resolve(steps[lastSteps]);
                 }
             });
