@@ -103,10 +103,10 @@
             var resBusiness = $scope.impactBusinessChanged.every(function (quaterBusinessChanges) {
                 return quaterBusinessChanges;
             });
-            if (!resClient && !resBusiness) {
-                toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
-                return false;
-            }
+            // if (!resClient && !resBusiness) {
+            //     toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+            //     return false;
+            // }
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 

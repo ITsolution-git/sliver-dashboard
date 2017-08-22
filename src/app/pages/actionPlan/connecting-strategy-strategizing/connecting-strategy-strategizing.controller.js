@@ -234,10 +234,10 @@
                 var res = $scope.quaterActionsChanged.every(function (quater) {
                     return quater;
                 });
-                if (!res) {
-                    toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
-                    return false;
-                }
+                // if (!res) {
+                //     toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+                //     return false;
+                // }
             }
             if ((($scope.pageName == 'connectingStrategyStrategizing')) && !checkQuaterStrategiesValid()) { //quater units sum should same as quaterly goal.
                 $('body').animate({
