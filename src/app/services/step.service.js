@@ -856,14 +856,9 @@
                 return item.sref === stepsGroup[stepsGroup.length - 1].sref; //TODO:bottleneck
             });
 
-           var test =  finishedSteps.find(function (item) {
+            return finishedSteps.find(function (item) {
                 return item === lastStepGroupIndex;
             })
-            console.log('8888888888888')
-            console.log(test);
-            console.log('8888888888888')
-            
-            return test;
         }
 
         function setRequestApiFlag(){
