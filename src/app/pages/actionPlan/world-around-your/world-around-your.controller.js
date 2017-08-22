@@ -79,7 +79,7 @@
             var res = $scope.quaterChanged.every(function (quater) {
                 return quater;
             });
-            if (!res && direction) {
+            if (!res && direction == 'forward' ) {
                 toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
                 return false;
             }
