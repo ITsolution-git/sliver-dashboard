@@ -5,7 +5,7 @@
         .module('app.pages.actionPlan')
         .controller('ConnectingStrategyStrategizingController', ConnectingStrategyStrategizingController);
 
-    function ConnectingStrategyStrategizingController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService, actionItems, excuteItemService, $q) {
+    function ConnectingStrategyStrategizingController($scope, activeStep, pageService, stepService, $state, $timeout, actionplanService, actionItems, excuteItemService, $q, toaster) {
 
         angular.extend($scope, activeStep.model, {
             forward: true,
@@ -28,9 +28,10 @@
 
             filterActionItemsByMonth: filterActionItemsByMonth,
             defaultActionItemsAdded: false,
-
+            quaterActionsChanged :[false, false, false, false],
             qStgChanged: [false,false,false,false]  //Quater Strategy changed
         });
+
 
         pageService
             .reset()
@@ -223,14 +224,21 @@
         
         function sendData(direction) {
             //Validations Before sending Data
-
             if ((($scope.pageName == 'quarterlyGoals') || ($scope.pageName == 'commitToYourActionPlan')) && !checkQuaterUnitsValid()) { //quater units sum should same as quaterly goal.
                 $('body').animate({
                     scrollTop: $("slap-notifications").offset().top
                 }, 400);
                 return false;
             }
-
+            if ($scope.pageName == 'actionItems') {
+                var res = $scope.quaterActionsChanged.every(function (quater) {
+                    return quater;
+                });
+                // if (!res) {
+                //     toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+                //     return false;
+                // }
+            }
             if ((($scope.pageName == 'connectingStrategyStrategizing')) && !checkQuaterStrategiesValid()) { //quater units sum should same as quaterly goal.
                 $('body').animate({
                     scrollTop: $("slap-notifications").offset().top
@@ -327,22 +335,30 @@
 
         function checkQuaterStrategiesValid() {
             var valid = true;
+            for (var i = 0; i < 4; i++) {
+                if (!$scope.data[i]) {
+                    valid = false
+                    break;};
+            }
             _.each($scope.data, function(quater, index) {
                 if ((!quater.strategy) || (!quater.strategy.id)) {
                     valid = false;
                 }
             });
+            
 
             if (!valid) {
-                addNotification($scope.notifications, {name: 'Invalid Strategy', type: 'error', message:'Please choose strategies for each Quater ', show: true});
+                addNotification($scope.notifications, { name: 'Invalid Strategy', type: 'error', message:'You must make adjustments to the information in all 4 Quarters before you can go to the next step ', show: true});
             } else {
                 removeNotificaton($scope.notifications, 'Invalid Strategy');
             }
             return valid;
         }
 
-        function deleteAction(action, month) {
+        function deleteAction(action, month, nthQut) {
+            
             if ($scope.actionItems.length > 1) {
+                $scope.quaterActionsChanged[nthQut] = true;
                 if (!_.isUndefined(action._id)) {
                     action.remove().then(function(response){
                         _.remove($scope.actionItems, function (n) {
@@ -377,5 +393,9 @@
                 sendData();
             }
         });
+
+        $scope.checkChanges = function (nthQut ){
+            $scope.quaterActionsChanged[nthQut] = true;
+        }
     }
 }());

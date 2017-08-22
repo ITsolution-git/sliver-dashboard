@@ -74,8 +74,8 @@
                                         ng-class="{'active': data[nthQut-1].impactClient}" 
                                         placeholder="How do the events happening in the world around us in this Quarter impact {{data.fourth}}?" 
                                         style="width: 100%"
+                                        ng-change="checkChanges(nthQut-1,impactClientChanged)"
                                         rows="5" required ng-keyup="autoExpand($event)"></textarea>
-
                             </div>
                         </div>
                         <div class="slap-work-box col-xs-12 m-t-es-40" ng-init="
@@ -88,8 +88,8 @@
                                         ng-class="{'active': data[nthQut-1].impactClient}" 
                                         placeholder="How do the events happening in the world around us in this Quarter impact {{businessName}}?" 
                                         style="width: 100%"
+                                        ng-change="checkChanges(nthQut-1, impactBusinessChanged)"
                                         rows="5" required ng-keyup="autoExpand($event)"></textarea>
-
                             </div>
                         </div>
 
