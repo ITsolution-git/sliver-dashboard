@@ -52,7 +52,7 @@
                                 if (active) {
                                     return active;
                                 }
-                                return stepService.getLastFinished()
+                                return stepService.getLastFinished(true)
                                 .then(function (finishedStep) {
                                     if (finishedStep.sref == 'welcome')
                                         return true;
@@ -137,7 +137,7 @@
                                 if (active) {
                                     return active;
                                 }
-                                return stepService.getLastFinished()
+                                return stepService.getLastFinished(true)
                                 .then(function (finishedStep) {
                                     if (finishedStep.sref == 'welcome')
                                         return true;
