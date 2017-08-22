@@ -5,7 +5,7 @@
         .module('app.pages.actionPlan')
         .controller('WhatsHappeningController', WhatsHappeningController);
 
-    function WhatsHappeningController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService, userService) {
+    function WhatsHappeningController($scope, activeStep, pageService, stepService, $state, $timeout, actionplanService, userService, toaster) {
 
         angular.extend($scope, activeStep.model, {
             forward: true,
@@ -16,6 +16,8 @@
             currentQut: 1,
             saved: false,
             showEventsBox: true,
+            impactClientChanged: [false, false, false, false],
+            impactBusinessChanged: [false, false, false, false],
             autoExpand: autoExpand,
         });
 
@@ -94,7 +96,17 @@
             });
         }
 
-        function sendData(direction) {
+        function sendData(direction) {  
+            var resClient = $scope.impactClientChanged.every(function (quaterClientChanges, index) {
+                return quaterClientChanges;
+            });
+            var resBusiness = $scope.impactBusinessChanged.every(function (quaterBusinessChanges) {
+                return quaterBusinessChanges;
+            });
+            if (!resClient && !resBusiness) {
+                toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+                return false;
+            }
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
@@ -128,5 +140,11 @@
                     element.style.height =  scrollHeight + "px";    
             });
         }
+
+        $scope.checkChanges = function (nthQut, arr) {
+            arr[nthQut] = true;
+        };
+
+        
     }
 }());

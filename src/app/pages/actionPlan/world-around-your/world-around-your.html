@@ -47,7 +47,7 @@
                     <li class="quater-letter"><a data-toggle="tab" data-target="#quater3">Q3</a></li>
                     <li class="quater-letter"><a data-toggle="tab" data-target="#quater4">Q4</a></li>
                 </ul>
-
+                <slap-notifications notifications="notifications"></slap-notifications>
                 <div class="tab-content quater-tab-container">
                     What is going on in the world around your business?
                     <div ng-repeat="nthQut in [1, 2, 3, 4]" id="{{'quater'+nthQut}}" class="tab-pane fade in quater-container row" ng-class="currentQut == nthQut ? 
@@ -61,11 +61,12 @@
                                             class="monthly-cost outline-0" 
                                             ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                             ng-class="{'active': event.name != ''}" 
-                                            placeholder="Add Event" 
+                                            placeholder="Add Event"
+                                            ng-change= "checkChanges(nthQut)" 
                                             style="width: 100%" required>
 
                                 </div>
-                                <span class="delete-btn outline-0 pull-right" ng-click="deleteEvent(event, data.eventsByMonth[monthID])" style="padding-top: 10px">
+                                <span class="delete-btn outline-0 pull-right" ng-click="deleteEvent(event, data.eventsByMonth[monthID], nthQut)" style="padding-top: 10px">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </span>
                             </div>

@@ -104,11 +104,12 @@
                                                     ng-blur="checkActionCompleted(action, monthID, $event)"
                                                     placeholder="Add ActionItem" 
                                                     style="width: 100%; min-height: 40px"
+                                                    ng-change = "checkChanges(nthQut-1)"
                                                     ng-keyup="autoExpand($event)" required ></textarea>
 
                                         </div>
 
-                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID)">
+                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID, nthQut-1)">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </span>
                                     </div>

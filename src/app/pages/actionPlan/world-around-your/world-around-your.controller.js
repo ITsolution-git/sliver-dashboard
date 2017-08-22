@@ -5,7 +5,7 @@
         .module('app.pages.actionPlan')
         .controller('WorldAroundYouController', WorldAroundYouController);
 
-    function WorldAroundYouController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService) {
+    function WorldAroundYouController($scope, activeStep, pageService, stepService, $state, $timeout, actionplanService, toaster) {
 
         angular.extend($scope, activeStep.model, {
             forward: true,
@@ -18,9 +18,10 @@
             currentQut: 1,
             checkEventCompleted: checkEventCompleted,
             deleteEvent: deleteEvent,
+            quaterChanged: [false, false, false, false],
             saved: false
         });
-
+        
         pageService
             .reset()
             .setShowBC(false)
@@ -46,7 +47,6 @@
             return stepService.getApiData(url) //TODO: Think over the dynamics url
                 .then(function (response) {
                     if (response && response.status === 200) {
-
                         $scope.startDate = response.data.slapStartDate;
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths ($scope.startDate.month, 1));
                         $scope.QMonths.push( actionplanService.getNthQuaterMonths($scope.startDate.month, 2));
@@ -76,9 +76,17 @@
         }
 
         function sendData(direction) {
+            var res = $scope.quaterChanged.every(function (quater) {
+                return quater;
+            });
+            if (!res) {
+                toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+                return false;
+            }
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-
+            
+            
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
@@ -110,11 +118,13 @@
             }
         }
         
-        function deleteEvent(event, month) {
+        function deleteEvent(event, month, nthQut) {
             if (month.events.length > 1) {
+                if (event.name) $scope.quaterChanged[nthQut - 1] = true;
                 _.remove(month.events, function (n) {
                     return n === event;
                 });
+
             }
         }
 
@@ -123,6 +133,9 @@
                 sendData();
             }
         });
+        $scope.checkChanges = function (nthQut){
+            $scope.quaterChanged[nthQut-1] = true;
+        }
 
     }
 }());
