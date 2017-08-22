@@ -8,6 +8,7 @@
     function Step1SummaryController($scope, $state, pageService, userService, stepService, activeStep, activityService) {
 
         angular.extend($scope, activeStep.model, {
+            listFirst: ['does', 'provides', 'sells'],
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']
             },
