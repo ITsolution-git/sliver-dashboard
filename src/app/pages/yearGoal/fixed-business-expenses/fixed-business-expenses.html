@@ -91,7 +91,7 @@
                     <div class="result col-md-4">
                         <div ng-show="item.monthlyCost">&#215;12 = ${{item.monthlyCost ? (item.monthlyCost * 12) : '' | number:2}}</div>
 
-                        <div class="delete-btn outline-0" ng-click="deleteItem(item)">
+                        <div class="delete-btn outline-0" tabIndex="-1" ng-click="deleteItem(item)">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </div>
                     </div>

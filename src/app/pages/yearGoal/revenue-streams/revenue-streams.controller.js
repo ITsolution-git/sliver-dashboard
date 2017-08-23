@@ -67,7 +67,7 @@
                 });
         }
 
-        function addNewRevenue(model) {
+        function addNewRevenue(model, currentIndex) {
             var index;
 
             if (model) {
@@ -91,6 +91,10 @@
                 var revenueModel = _.cloneDeep($scope.emptyRevenue);
                 revenueModel.id = $scope.data.revenues.length + 1;
                 $scope.data.revenues.push(revenueModel);
+                $timeout(function () {
+                    var nextElemIndex = currentIndex +1;
+                    var elem = $('#revenue-' + nextElemIndex).focus();
+                });
             }
         }
 
@@ -117,14 +121,12 @@
             
         }
 
-        function checkRevenueCompleted(revenue, evt) {
+        function checkRevenueCompleted(revenue, evt, index) {
             if ($scope.pageName == 'revenueStreams') {
                 if (!_.isEmpty(revenue.name)) {
                     $scope.forward = true;
-                    addNewRevenue(revenue);
+                    addNewRevenue(revenue, index);
                     doCalculation();
-                } else {
-                    $scope.forward = false;
                 }
             } else {
                 if (!_.isEmpty(revenue.name) && !(+revenue.sellingPrice == 0) && !(+revenue.breakdown == 0)) {
@@ -134,7 +136,7 @@
                         (revenue.breakdown.match(/^\d+(\.)*\d*$/))) {
                         $scope.forward = true;
                         
-                        addNewRevenue(revenue);
+                        addNewRevenue(revenue, index);
                         doCalculation();
                     } else {
                         $scope.forward = false;
