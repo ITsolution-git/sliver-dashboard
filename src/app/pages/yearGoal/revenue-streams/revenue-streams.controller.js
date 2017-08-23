@@ -336,7 +336,7 @@
         }
         
         function sendData(direction) {
-            if (!($scope.pageName == 'profitMargin')) {
+            if (!($scope.pageName == 'profitMargin') && direction == 'forward') {
                 if (!isExpensesValid()){
                     $('body').animate({
                         scrollTop: $("slap-notifications").offset().top
