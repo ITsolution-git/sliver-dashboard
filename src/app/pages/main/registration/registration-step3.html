@@ -36,9 +36,11 @@
                             <h3 class="text-center">promo code</h3>
                         </div>
                         <div class="registration-sidebar-content">
-                            <div class="text-center">
-                                <input ng-model="vm.user.code" placeholder="Promo Code">
-                                <md-button md-no-ink class="md-primary" ng-click="vm.apply()" ng-disabled="!vm.user.code">apply</md-button>
+                            <div class="promo-content">
+                                <div class="text-center">
+                                    <input ng-model="vm.user.code" placeholder="Promo Code">
+                                    <md-button md-no-ink class="md-primary" ng-click="vm.apply()" ng-disabled="!vm.user.code">apply</md-button>
+                                </div>
                             </div>
                         </div>
                     </div>
