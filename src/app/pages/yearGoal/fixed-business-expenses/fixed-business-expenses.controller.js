@@ -17,7 +17,7 @@
             saved: false
 
         });
-        $scope.data.procentFound = 30;
+        
         $scope.notifications = [];
         $scope.checkFormElements = checkFormElements;
         $scope.deleteItem = deleteItem;
@@ -41,6 +41,9 @@
                 .then(function (response) {
                     if (response && response.status === 200) {
                         // data.personalExpenses.sum hold totla president salary
+                        if (!$scope.data.procentFound){
+                            $scope.data.procentFound = 30;
+                        }
                         var presidentSalary = (response.data.personalExpenses.incidentals * 0.01) * response.data.personalExpenses.expensesSum + response.data.personalExpenses.expensesSum;
                         if ($scope.data.expenses[0].expense != "President Salary") {
                             $scope.data.expenses.unshift({expense: "President Salary", monthlyCost: presidentSalary});
