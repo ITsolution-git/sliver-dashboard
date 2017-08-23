@@ -628,7 +628,7 @@
         function getLastFinished(hidePopUp) {
             return $q(function (resolve) {
                 if (finishedSteps.length == 0) {
-                    return resolve({sref: "welcome"});
+                    return resolve({sref: "mindset.ourCommitment"});
                 } else if (finishedSteps.length >= 52) {
                     return resolve({sref: "slapExcute.main"});
                 } else {

@@ -29,7 +29,7 @@
                             if(user.role == adminUserService.ROLE_ADMIN)
                                 $state.go('admin.home');
                             else
-                                $state.go('welcome');
+                                $state.go('home');
                         });
 
                     }

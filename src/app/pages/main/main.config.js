@@ -121,39 +121,39 @@
                 controller: 'RegistrationStep3Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step3.html'
             })
-            .state('welcome', {
-                data: {
-                    access: '@'
-                },
-                params: {
-                    param1: 'welcome'
-                },
-                parent: 'one',
-                url: '/welcome',
-                resolve: {
-                    activeStep: function (stepService, $state) {
-                        return stepService.resolveActiveStep(this)
-                            .then(function (active) {
-                                if (active) {
-                                    return active;
-                                }
-                                return stepService.getLastFinished(true)
-                                .then(function (finishedStep) {
-                                    if (finishedStep.sref == 'welcome')
-                                        return true;
-                                    else
-                                        $state.go(finishedStep.sref);
-                                });
-                            });
-                    }
-                },
-                views: {
-                    content: {
-                        controller: 'WelcomeController',
-                        templateUrl: 'pages/main/welcome/welcome-index.html'
-                    }
-                }
-            })
+            // .state('welcome', {
+            //     data: {
+            //         access: '@'
+            //     },
+            //     params: {
+            //         param1: 'welcome'
+            //     },
+            //     parent: 'one',
+            //     url: '/welcome',
+            //     resolve: {
+            //         activeStep: function (stepService, $state) {
+            //             return stepService.resolveActiveStep(this)
+            //                 .then(function (active) {
+            //                     if (active) {
+            //                         return active;
+            //                     }
+            //                     return stepService.getLastFinished(true)
+            //                     .then(function (finishedStep) {
+            //                         if (finishedStep.sref == 'welcome')
+            //                             return true;
+            //                         else
+            //                             $state.go(finishedStep.sref);
+            //                     });
+            //                 });
+            //         }
+            //     },
+            //     views: {
+            //         content: {
+            //             controller: 'WelcomeController',
+            //             templateUrl: 'pages/main/welcome/welcome-index.html'
+            //         }
+            //     }
+            // })
             .state('confirm', {
                 data: {
                     access: '?'
