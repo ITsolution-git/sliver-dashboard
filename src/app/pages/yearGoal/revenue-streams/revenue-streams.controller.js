@@ -69,24 +69,26 @@
 
         function addNewRevenue(model, currentIndex) {
             var index;
-
             if (model) {
                 index = _.findIndex($scope.data.revenues, model);
             }
 
             var force = false;
             if ($scope.data.revenues.length > 0) {
-                
-                var lastItem = $scope.data.revenues[$scope.data.revenues.length - 1];
+                var nonDeleted = [];
+                _.each($scope.data.revenues, function (revenue) {
+                    if (revenue.deleted == false)
+                        nonDeleted.push(revenue);
+                });
+                var lastItem = nonDeleted[nonDeleted.length - 1];
+
                 // if (lastItem.id == $scope.data.revenues.length) {  //If no empty item is added
                 //     force = true;
                 if(lastItem.name != '') {
                     force = true;
                 } else {
-
                 }
             }
-
             if ($scope.data.revenues.length === 0 || $scope.data.revenues.length === index + 1 || force) {
                 var revenueModel = _.cloneDeep($scope.emptyRevenue);
                 revenueModel.id = $scope.data.revenues.length + 1;
@@ -313,6 +315,18 @@
         }
 
         function deleteRevenue(revenue) {
+            var nonDeleted = [];
+            _.each($scope.data.revenues, function (revenue) {
+                if (revenue.deleted == false)
+                    nonDeleted.push(revenue);
+            });
+            if(nonDeleted.length == 1){
+                addNotification($scope.notifications, { name: 'Revenue count Invalid', type: 'error', message:'You need to stay at least 1 Revenue', show: true});
+                return false;
+            }
+            else {
+                removeNotificaton($scope.notifications, 'Revenue count Invalid');
+            }
             revenue.deleted = true;
             doCalculation();
         }
