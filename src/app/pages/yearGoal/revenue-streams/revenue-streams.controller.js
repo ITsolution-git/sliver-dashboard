@@ -98,7 +98,7 @@
             }
         }
 
-        function addNewVariableExpense(revenue, variableExpense) {
+        function addNewVariableExpense(revenue, variableExpense, currentIndex) {
 
             var index;
 
@@ -117,6 +117,10 @@
 
                 var variableExpense = _.cloneDeep($scope.emptyVariableExpense);
                 revenue.variableExpenses.push(variableExpense);
+                $timeout(function () {
+                    var nextElemIndex = currentIndex + 1;
+                    var elem = $('#expense-name-' + nextElemIndex).focus();
+                });
             }
             
         }
@@ -146,11 +150,11 @@
         }
         
 
-        function checkVariableExpenseCompleted(variableExpense, revenue, evt) {
+        function checkVariableExpenseCompleted(variableExpense, revenue, evt, index) {
             if (!_.isEmpty(variableExpense.expense) && !(+variableExpense.cost == 0)) { 
                 if ((variableExpense.cost != '') &&
                     (variableExpense.cost.match(/^\d+(\.)*\d*$/))) {
-                    addNewVariableExpense(revenue, variableExpense);
+                    addNewVariableExpense(revenue, variableExpense, index);
                     doCalculation();
                     $scope.forward = true;
                 }
@@ -159,7 +163,7 @@
             }
         }
 
-        function checkValidity(value, evt) {
+        function checkValidity(value, evt, currentIndex) {
             if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
                 addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'Please provide valid Price.', show: true});
@@ -168,6 +172,9 @@
             } else {
                 removeNotificaton($scope.notifications, 'Invalid Price');
                 $(evt.target).removeClass('invalid');
+                if (event.keyCode === 13){
+                    var elem = $('#expense-cost-' + currentIndex).blur();
+                }
                 $scope.forward = true;
             }
             return value.match(/^\d+(\.)*\d*$/);
