@@ -196,10 +196,10 @@
             }, {
                 name: 'Step 4 SLAPsummary',
                 sref: 'actionPlan.step4Summary'
-            }, {
-                name: 'Second SLAPexpert Review',
-                sref: 'actionPlan.secondExpertReview'
-            }
+            }//, {
+            //     name: 'Second SLAPexpert Review',
+            //     sref: 'actionPlan.secondExpertReview'
+            // }
         ];
 
         var execute = [

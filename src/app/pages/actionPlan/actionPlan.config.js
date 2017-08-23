@@ -292,31 +292,31 @@
                 },
                 controller: 'Step4SummaryController',
                 templateUrl: 'pages/actionPlan/step4-summary/step4-summary.html'
-            })
-            .state('actionPlan.secondExpertReview', {
-                url: '/secondSLAPexpertReview',
-                resolve: {
-                    activeStep: function (stepService, $state) {
-                        return stepService.resolveActiveStep(this)
-                            .then(function (active) {
-                                if (active) {
-                                    return active;
-                                }
-
-                                return stepService.getLastFinished()
-                                    .then(function (finishedStep) {
-                                        $state.go(finishedStep.sref);
-                                    });
-                            })
-                    },
-                    actionItems: function (excuteItemService) {
-                        return excuteItemService.loadExcuteItems().then(function(excuteItems){
-                            return excuteItems.filter(function(item){ return item.type == 'action';});
-                        });
-                    },
-                },
-                controller: 'Step4SummaryController',
-                templateUrl: 'pages/actionPlan/second-expert-review/second-expert-review.html'
             });
+            // .state('actionPlan.secondExpertReview', {
+            //     url: '/secondSLAPexpertReview',
+            //     resolve: {
+            //         activeStep: function (stepService, $state) {
+            //             return stepService.resolveActiveStep(this)
+            //                 .then(function (active) {
+            //                     if (active) {
+            //                         return active;
+            //                     }
+
+            //                     return stepService.getLastFinished()
+            //                         .then(function (finishedStep) {
+            //                             $state.go(finishedStep.sref);
+            //                         });
+            //                 })
+            //         },
+            //         actionItems: function (excuteItemService) {
+            //             return excuteItemService.loadExcuteItems().then(function(excuteItems){
+            //                 return excuteItems.filter(function(item){ return item.type == 'action';});
+            //             });
+            //         },
+            //     },
+            //     controller: 'Step4SummaryController',
+            //     templateUrl: 'pages/actionPlan/second-expert-review/second-expert-review.html'
+            // });
     }
 }());

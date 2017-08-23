@@ -536,15 +536,15 @@
                     showStaticTextBlock: false,
                     showContent: false
                 }
-            }, {
-                name: 'Second SLAPexpert Review',
-                sref: 'actionPlan.secondExpertReview',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
-                }
-            },
+            }, //{
+            //     name: 'Second SLAPexpert Review',
+            //     sref: 'actionPlan.secondExpertReview',
+            //     model: {
+            //         showVideoBlock: false,
+            //         showStaticTextBlock: false,
+            //         showContent: false
+            //     }
+            // },
 
             // Execute
 
