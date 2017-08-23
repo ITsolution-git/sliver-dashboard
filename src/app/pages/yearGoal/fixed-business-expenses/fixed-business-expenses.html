@@ -138,17 +138,23 @@
                     </div>
                 </div>
                 <div class="row row-flex incidentals-wrap  m-t-es-10">
-                    <div class="col-md-5">
+                    <div class="result col-md-5">
                         <div class="input-box">
-                            <input type="text" class="expense outline-0" disabled value="30% Taxes" ng-class="{'active': data.expenses[0].expense}"
+                            <input type="text" class="expense outline-0" disabled value="Amount for the emergency fund" ng-class="{'active': data.expenses[0].expense}"
                                 required>
                         </div>
                     </div>
-                    <div class="result col-md-3">
-                        
+                    <div class="col-md-3">
+                        <div class="input-box">
+                            <span class="currency">%</span>
+                            <input type="text" class="expense outline-0" ng-model="data.procentFound" placeholder="% taxes" value="30" ng-class="{'active': data.expenses[0].expense}"
+                                required>
+                            <span></span>
+                        </div>
                     </div>
+                    
                     <div class="result col-md-3" ng-show="data.profit > 0">
-                         {{data.profit}} + {{data.profit}} &#215; %30 = ${{data.profit * 0.3 + (+data.profit) | number:2}}
+                         = ${{data.profit * 0.01* (+data.procentFound) | number:2}}
                     </div>
                 </div>
 

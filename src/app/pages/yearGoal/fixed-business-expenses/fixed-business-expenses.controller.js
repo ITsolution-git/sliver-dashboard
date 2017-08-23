@@ -17,12 +17,12 @@
             saved: false
 
         });
-
+        $scope.data.procentFound = 30;
         $scope.notifications = [];
         $scope.checkFormElements = checkFormElements;
         $scope.deleteItem = deleteItem;
         $scope.checkNumberValid = checkNumberValid;
-
+        
         $timeout(addNewExpense);
         getData();
 
