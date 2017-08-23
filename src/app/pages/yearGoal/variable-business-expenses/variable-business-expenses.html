@@ -73,9 +73,10 @@
                                     <input ng-model="variableExpense.expense" type="text"
                                             class="monthly-cost outline-0"
                                             ng-blur="checkVariableExpenseCompleted(variableExpense, revenue, $event)"
-                                            ng-class="{'active': variableExpense.expense}" required>
-
-                                    <label class="label expense-label" >Expense</label>
+                                            ng-class="{'active': variableExpense.expense}"
+                                            id="expense-name-{{$index}}"
+                                            placeholder="Expense"
+                                            required>                                    
                                 </div>
                             </div>
                             <div class="variable-price ">
@@ -83,13 +84,14 @@
                                     <span class="currency">-$</span>
                                     <input ng-model="variableExpense.cost" type="text"
                                             class="monthly-cost outline-0"
-                                            ng-blur="checkVariableExpenseCompleted(variableExpense, revenue, $event)"
-                                            ng-keydown="checkValidity(variableExpense.cost, $event)"
+                                            ng-blur="checkVariableExpenseCompleted(variableExpense, revenue, $event, $index)"
+                                            id="expense-cost-{{$index}}"
+                                            ng-keydown="checkValidity(variableExpense.cost, $event, $index)"                                             
                                             ng-class="{'active': variableExpense.cost}" required>
                                 </div>
                             </div>
 
-                            <span class="delete-btn outline-0 pull-right" ng-click="deleteVariableExpense(revenue, variableExpense)">
+                            <span class="delete-btn outline-0 pull-right" tabindex="-1" ng-click="deleteVariableExpense(revenue, variableExpense)">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </span>
                         </div>
