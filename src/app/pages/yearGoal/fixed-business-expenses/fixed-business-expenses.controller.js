@@ -17,12 +17,12 @@
             saved: false
 
         });
-
+        
         $scope.notifications = [];
         $scope.checkFormElements = checkFormElements;
         $scope.deleteItem = deleteItem;
         $scope.checkNumberValid = checkNumberValid;
-
+        
         $timeout(addNewExpense);
         getData();
 
@@ -41,6 +41,9 @@
                 .then(function (response) {
                     if (response && response.status === 200) {
                         // data.personalExpenses.sum hold totla president salary
+                        if (!$scope.data.procentFound){
+                            $scope.data.procentFound = 30;
+                        }
                         var presidentSalary = (response.data.personalExpenses.incidentals * 0.01) * response.data.personalExpenses.expensesSum + response.data.personalExpenses.expensesSum;
                         if ($scope.data.expenses[0].expense != "President Salary") {
                             $scope.data.expenses.unshift({expense: "President Salary", monthlyCost: presidentSalary});
@@ -70,6 +73,10 @@
             if ($scope.data.expenses.length === 0 || $scope.data.expenses.length === index + 1 || force) {
                 var expenseModel = _.cloneDeep($scope.emptyExpense);
                 $scope.data.expenses.push(expenseModel);
+                $timeout(function () {
+                    var index = $scope.data.expenses.length - 2;
+                    var elem = $('#expense-' + index).focus();
+                });
             }
         }
 

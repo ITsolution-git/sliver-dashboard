@@ -49,13 +49,15 @@
                         
                         <div class="input-box" style="width: calc(100% - 20px); display: inline-block">
                             <input ng-model="revenue.name" type="text"
-                                   class="monthly-cost outline-0"
-                                   ng-blur="checkRevenueCompleted(revenue, $event)"
-                                   ng-class="{'active': revenue.name}" required>
+                                    class="monthly-cost outline-0"
+                                    ng-keydown="$event.keyCode === 13 && checkRevenueCompleted(revenue, $event, $index)"
+                                    ng-blur="checkRevenueCompleted(revenue, $event, $index)"
+                                    id="revenue-{{$index}}"
+                                    ng-class="{'active': revenue.name}" required>
                             <label class="label expense-label" >Add  Revenue</label>
                         </div>
-                        <span class="delete-btn outline-0 pull-right" ng-click="deleteRevenue(revenue)" style="padding-top: 20px">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        <span tabIndex="-1" class="delete-btn outline-0 pull-right" ng-click="deleteRevenue(revenue)" style="padding-top: 20px">
+                            <i class="fa fa-trash" aria-hidden="true" ></i>
                         </span>
                     </div>
                 </div>

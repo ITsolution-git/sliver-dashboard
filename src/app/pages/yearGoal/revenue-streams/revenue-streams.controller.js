@@ -67,7 +67,7 @@
                 });
         }
 
-        function addNewRevenue(model) {
+        function addNewRevenue(model, currentIndex) {
             var index;
 
             if (model) {
@@ -91,6 +91,10 @@
                 var revenueModel = _.cloneDeep($scope.emptyRevenue);
                 revenueModel.id = $scope.data.revenues.length + 1;
                 $scope.data.revenues.push(revenueModel);
+                $timeout(function () {
+                    var nextElemIndex = currentIndex +1;
+                    var elem = $('#revenue-' + nextElemIndex).focus();
+                });
             }
         }
 
@@ -117,14 +121,12 @@
             
         }
 
-        function checkRevenueCompleted(revenue, evt) {
+        function checkRevenueCompleted(revenue, evt, index) {
             if ($scope.pageName == 'revenueStreams') {
                 if (!_.isEmpty(revenue.name)) {
                     $scope.forward = true;
-                    addNewRevenue(revenue);
+                    addNewRevenue(revenue, index);
                     doCalculation();
-                } else {
-                    $scope.forward = false;
                 }
             } else {
                 if (!_.isEmpty(revenue.name) && !(+revenue.sellingPrice == 0) && !(+revenue.breakdown == 0)) {
@@ -134,7 +136,7 @@
                         (revenue.breakdown.match(/^\d+(\.)*\d*$/))) {
                         $scope.forward = true;
                         
-                        addNewRevenue(revenue);
+                        addNewRevenue(revenue, index);
                         doCalculation();
                     } else {
                         $scope.forward = false;
@@ -202,7 +204,6 @@
                     revenue.totalVExp = totalVariableExpenses;
                     if (+revenue.sellingPrice != 0) {
                         if (+revenue.sellingPrice <= totalVariableExpenses) {
-                            $scope.forward = false;
                             addNotification($scope.notifications, {name: 'Variable Expenses Invalid', type: 'error', message:'Total sum of Variable Expenses should be smaller than Selling Price.', show: true});
                             valid = false;
                         } else {
@@ -334,9 +335,24 @@
                 return notification.name == name;
             });
         }
-        
         function sendData(direction) {
-            if (!($scope.pageName == 'profitMargin')) {
+            if ($scope.pageName == "revenueStreams" && direction == 'forward'){
+                
+                var notDeleted = $scope.data.revenues.filter(function(revenue){
+                    return !revenue.deleted;
+                })
+                if (notDeleted.length !=1){
+                    notDeleted.splice(-1);
+                } 
+                var res = notDeleted.some(function(elem){
+                    return elem.name;
+                })
+                if (!res || !notDeleted.length){
+                    addNotification($scope.notifications, { name: 'Revenue Length Invalid', type: 'error', message: 'Please Fill at least 1 Revenue.', show: true });
+                    return false;
+                };
+            }
+            if (!($scope.pageName == 'profitMargin') && direction == 'forward') {
                 if (!isExpensesValid()){
                     $('body').animate({
                         scrollTop: $("slap-notifications").offset().top
@@ -356,7 +372,7 @@
             var revenues = [];
             _.forEach($scope.data.revenues, function (value) {
 
-                if (value.name.trim() != '') {
+                if (value.name && value.name.trim() != '') {
                     revenues.push(value);
                 }
 
