@@ -196,7 +196,6 @@
 				<md-option ng-value="'month'">This Month</md-option>
 				<md-option ng-repeat="quaterID in [0,1,2,3]" ng-value="'quater'+quaterID">{{quaterID + 1 == currentQuater.nth ? 'This Quarter' : 'Q' + (quaterID+1)}}</md-option>
 			</md-select>
-			<span>{{filter.periodStr}}</span>
 		</md-toolbar>
 		<md-toolbar>
 			<div class="md-toolbar-tools" layout="row">
