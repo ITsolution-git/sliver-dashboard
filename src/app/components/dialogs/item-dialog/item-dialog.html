@@ -205,12 +205,11 @@
 	<md-dialog-actions ng-if="(!(formData.type=='reflextion' && (formData.title == '' || formData.reflextWhat == '')))">
 		
 		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="(curMode == 'edit')" ng-disabled="form.$invalid">
-			Edit
+			Save
 		</md-button>
 		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="curMode == 'add'" ng-disabled="form.$invalid">
 			Add
 		</md-button>
-		<md-button ng-click="closeDialog()" class="md-primary">Close Dialog</md-button>
-
+		
 	</md-dialog-actions>
 </md-dialog>
