@@ -1,5 +1,5 @@
 
-<div class="md-list-item-text" layout="row" flex layout-align="space-between center">
+<div class="md-list-item-text" layout="row" flex layout-align="space-between center" ng-click="$ctrl.openItemDialog()($event, 'edit', $ctrl.item.type, $ctrl.item)">
     <span flex style="overflow: hidden; text-overflow: ellipsis;">{{$ctrl.title}}</span>
     <span flex="10" ng-if="$ctrl.item.type == 'sales'" class="text-center">
         <small>
@@ -20,10 +20,7 @@
         <small class="text-center" style="font-size: 12px">{{$ctrl.item.progress}}%</small>
     </span>
 </div>
-<div  flex="5">
-    <a class="icon-btn"  ng-click="$ctrl.openItemDialog()($event, 'edit', $ctrl.item.type, $ctrl.item)">
-        <i class="material-icons">mode_edit</i>
-    </a>
+<div  flex="3">
     <a class="icon-btn" ng-click="$ctrl.openDeleteItemDialog()($event, $ctrl.item)">
         <i class="material-icons">delete_forever</i>
     </a>
