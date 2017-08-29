@@ -71,7 +71,7 @@
                     <input required type="password" name="password" ng-model="user.password"
                             minlength="6" md-maxlength="30" id="password"/>
 
-                    <div ng-messages="passwordform.password.$error" role="alert" ng-hide="passwordform.password.$valid">
+                    <div ng-messages="passwordform.password.$error" role="alert" ng-hide="passwordform.password.$valid || passwordform.password.$untouched">
                         <div ng-message-exp="['required', 'minlength', 'maxlength']">
                             Password should be at least 6 until 30 characters
                         </div>
@@ -82,8 +82,8 @@
                     <label for="confirm">Confirm Password</label>
                     <input required type="password" name="confirm" ng-model="user.confirm_password"
                             minlength="6" md-maxlength="30" pass-compare="user.password" id="confirm"/>
-
-                    <div ng-messages="passwordform.confirm.$error" role="alert" ng-hide="passwordform.confirm.$valid">
+                            
+                    <div ng-messages="passwordform.confirm.$error" role="alert" ng-hide="passwordform.confirm.$valid || passwordform.confirm.$untouched">
                         <div ng-message-exp="['required', 'minlength', 'maxlength']">
                             Passwords are not the same
                         </div>
