@@ -84,10 +84,10 @@
                         $scope.eventsByMonth = response.data.worldAroundYou.eventsByMonth;
                     }
                 });
-            stepService.getApiData('yourStatement') //TODO: Think over the dynamics url
+            stepService.getApiData('whatsHappening') //TODO: Think over the dynamics url
                 .then(function (response) {
                     if (response && response.status === 200) {
-                        $scope.data = _.get(response, 'data.yourStatement', []);
+                        $scope.data = _.get(response, 'data.whatsHappening.0', []);                      
                         var originalData = _.clone($scope.data);
                     }
                 });
