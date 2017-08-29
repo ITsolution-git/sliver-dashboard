@@ -1,7 +1,6 @@
 <div class="slap-excute" layout="column" ng-if="!resultPage">
 	
 	
-	<h2 class="text-color-strong">SLAP<small class="text-aqua">excute</small></h2>
 	<md-card flex="100" layout="row">
 		<md-card-content flex="100" layout="row" layout-align="space-around center">
 			<span flex="15"  class="text-color-strong"> Revenue Status&nbsp;&nbsp;&nbsp; </span>
@@ -46,11 +45,8 @@
 				</section>
 				<section flex=50 layout="column" layout-align="center center">
 					<p>
-						<span  class="md-headline text-color-middle">You're rockin it! Keep that way.</span>
+						<span  class="md-headline text-color-middle">Take Action</span>
 						<br/>
-						<small>
-							You have done {{dashData.quaterClosedActions}} out of {{dashData.quaterTotalActions}} action items this quater.
-						</small>
 					</p>
 
 					<md-button class="md-primary" ng-click="openItemDialog($event, 'add', 'action')">add action</md-button>
@@ -88,7 +84,7 @@
 				</section>
 				<section flex=50 layout="column" layout-align="center center">
 					<p>
-						<span  class="md-headline text-color-middle">It's time to make deals!</span>
+						<span  class="md-headline text-color-middle">Close Sales</span>
 						<br/>
 						<small>
 							You have {{dashData.daysLeft}} days to reach you Q{{currentQuater.nth}} revenue goal.
@@ -129,11 +125,8 @@
 				</section>
 				<section flex=50 layout="column" layout-align="center center">
 					<p>
-						<span  class="md-headline text-color-middle">Let reflect today?</span>
+						<span  class="md-headline text-color-middle">Pause & Reflect</span>
 						<br/>
-						<small>
-							Pausing daily is important to check what's working or not.
-						</small>
 					</p>
 
 					<md-button class="md-primary" ng-click="openItemDialog($event, 'add', 'reflextion')">reflect now</md-button>
@@ -198,12 +191,11 @@
 
 	<section layout="column" layout="column" ng-if="mainView=='list'" class="m-t-es-50">
 		<md-toolbar layout="row" layout-align="start center ">		
-			<md-select ng-model="filter.period" flex="50">
+			<md-select ng-model="filter.period" flex="50" class="select-menu">
 				<md-option ng-value="'week'">This Week</md-option>
 				<md-option ng-value="'month'">This Month</md-option>
-				<md-option ng-repeat="quaterID in [0,1,2,3]" ng-value="'quater'+quaterID">{{quaterID + 1 == currentQuater.nth ? 'This Quater' : 'Q' + (quaterID+1)}}</md-option>
+				<md-option ng-repeat="quaterID in [0,1,2,3]" ng-value="'quater'+quaterID">{{quaterID + 1 == currentQuater.nth ? 'This Quarter' : 'Q' + (quaterID+1)}}</md-option>
 			</md-select>
-			<span>{{filter.periodStr}}</span>
 		</md-toolbar>
 		<md-toolbar>
 			<div class="md-toolbar-tools" layout="row">
@@ -256,7 +248,6 @@
 <div class="slap-excute" layout="column" ng-if="resultPage">
     <section layout="row" layout-align="start center">
         <md-button ng-click="changeView()"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Back</md-button>
-        <h2 class="text-color-strong">SLAP<small class="text-aqua">excute</small><span style="font-weight:300; font-size: 0.9em">/Results</span></h2>
     </section>
 
 	<section flex=100 layout="row">

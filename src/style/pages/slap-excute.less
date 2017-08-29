@@ -9,7 +9,6 @@
 		font-size: 0.8em;
 	}
 
-
 	md-card {
 		color: @color-text-main;
 	}
@@ -31,7 +30,9 @@
 		}	
 
 	}
-	
+.progress {
+	z-index: 1;
+}
 	.one-line-bar.progress {
 		margin-bottom: 0px;
 		border-radius: 20px;
@@ -50,12 +51,15 @@
 		border-radius: 10px;
 
 		.progress-bar {
+			left: -2px;
 			border-radius: 10px;
 			&.actual {
 				background-color: @color-sales;
 			}	
 			&.projected {
-				background-color: @color-action;
+				position: relative;
+				z-index: -1;
+				background-color: @color-prospected-sales;
 				span {
 					text-transform: uppercase;
 					position: absolute;
@@ -87,7 +91,14 @@
 
 	md-toolbar {
 		background-color: rgba(0, 0, 0, 0);
+		padding: 0px 8px 0px;
 	}
+
+	.select-menu {
+		max-width: 160px;
+		margin-right: 10px;
+		margin-left: 14px;
+	}	
 
 	a.icon-btn {
 		color: @color-dark-gray;
@@ -175,4 +186,16 @@ md-content.tab-content {
 
 a {
   cursor: pointer;
+}
+
+.md-list-item-text {
+	outline: none;
+}
+
+md-select-menu md-content {
+	min-height: 300px;
+}
+
+md-select-menu {
+	min-height: 300px;
 }

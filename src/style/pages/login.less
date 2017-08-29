@@ -393,6 +393,8 @@ a:hover {
       line-height: 3;
       color: @main-black-color;
       margin-top: 25px;
+      margin-left: 35px;
+
 
       > li {
         list-style-type: none;
@@ -400,10 +402,10 @@ a:hover {
         &::before {
           font-family: FontAwesome;
           content: '\f00c';
-          width: 11.7px;
-          height: 8.9px;
+          width: 11.5px;
+          height: 12px;
           color: @main-black-color;
-          font-size: 0.5em;
+          font-size: 0.719em;
           margin-right: 20px;
         }
       }
@@ -454,7 +456,7 @@ a:hover {
     font-size: 2.5em;
     position: absolute;
     top: -7px;
-    right: 45%;
+    right: ~"calc(50% - 17px)";
     z-index: 1;
     color: #50cfe3;
     display: flex;
@@ -462,6 +464,7 @@ a:hover {
     background-color: white;
     border-radius: 80%;
     height: 30px;
+    width: 34px;
     line-height: 20px;
   }
 
@@ -524,7 +527,10 @@ a:hover {
       }
 
       .registration-sidebar-content {
-
+        .promo-content {
+          margin: 40px 25px;
+        }
+        
         .payment-content {
           margin: 40px 25px;
 
