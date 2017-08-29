@@ -124,6 +124,9 @@ div.grid_wrapper:hover div.hover_item {
   margin-left: 0;
 }
 
+.panel-body span a {
+  font-size: 13px;
+}
 /////////////////////////////////////////////////
 @main-blue-color: #0e7cb5;
 @main-black-color: #373c37;
@@ -522,9 +525,12 @@ a:hover {
       //margin: 25px 0;
 
       .registration-sidebar-header {
+        background-color: rgba(87, 104, 117, 0.15);
         border-bottom: 1px solid #EFEFEF;
         height: 60px;
       }
+
+
 
       .registration-sidebar-content {
         .promo-content {
@@ -533,8 +539,14 @@ a:hover {
         
         .payment-content {
           margin: 40px 25px;
+          
+          .attention {
+            background-color: @color-dark-blue;
+            color: #fff;
+          }
 
           > p {
+            text-align: center;
             font-size: 18px;
             line-height: 1.78;
             color: @main-black-color;

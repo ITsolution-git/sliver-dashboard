@@ -54,12 +54,12 @@
                                 <hr>
                                 <!--<div>-->
                                     <p class="leftstr">monthlySLAP</p>
-                                    <p class="rightstr">{{ vm.plan.costProduct }}</p>
+                                    <p class="rightstr">${{ vm.plan.costProduct }}</p>
                                     <p class="leftstr">SLAPbuild</p>
-                                    <p class="rightstr" ng-show="vm.build">{{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment }}</p>
+                                    <p class="rightstr" ng-show="vm.build">${{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment }}</p>
                                     <p class="rightstr" ng-hide="vm.build">-</p>
                                     <div style="clear: left"></div>
-                                    <p class="text-center">today's total {{ vm.calculateTodayPayment }}</p>
+                                    <p class="text-center attention">today's total ${{ vm.calculateTodayPayment }}</p>
                                 <!--</div>-->
                             </div>
                             <div class="payment-content">
@@ -67,11 +67,11 @@
                                 <hr>
                                 <!--<div>-->
                                 <p class="leftstr">monthlySLAP</p>
-                                <p class="rightstr">{{ vm.plan.costProduct }}</p>
+                                <p class="rightstr">${{ vm.plan.costProduct }}</p>
                                 <p class="leftstr">SLAPbuild</p>
-                                <p class="rightstr">{{vm.build.buildType == 1 ? vm.build.costProduct : '-' }}</p>
+                                <p class="rightstr">{{vm.build.buildType == 1 ? ('$'+ vm.build.costProduct) : '-' }}</p>
                                 <div style="clear: left"></div>
-                                <p class="text-center">monthly total {{ vm.calculateMonthlyPayment }}</p>
+                                <p class="text-center attention">monthly total ${{ vm.calculateMonthlyPayment }}</p>
                                 <!--</div>-->
                             </div>
                         </div>
@@ -122,7 +122,7 @@
 
                                 <div ng-messages="registerForm.email.$error" ng-hide="registerForm.email.$valid">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                        Only letters and numbers are allowed (a-z,A-Z)
+                                        Enter your email address
                                     </div>
                                 </div>
                             </md-input-container>
