@@ -181,7 +181,7 @@
                         <span ng-show="client.location.length === 1" ng-model="data.idealClient.location">{{idealClientSelects.location[+client.location]}}</span>
 
                         <select ng-show="client.location.length > 1" ng-model="data.idealClient.location" 
-                                ng-class="{'active': item.location !== '0'}"
+                                ng-class="{'active': data.idealClient.location !== '0'}"
                                 class="location dropdown-box outline-0">
                             <option value="{{location}}" ng-repeat="location in client.location">{{idealClientSelects.location[+location]}}</option>
                         </select>
