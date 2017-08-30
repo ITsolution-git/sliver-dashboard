@@ -97,19 +97,21 @@
                                     
                                     <div ng-repeat="action in filterActionItemsByMonth(monthID)">
 
-                                        <div class="textarea-box" 
+                                        <div class="input-box" 
                                             style="width: calc(100% - 25px); display: inline-block">
-                                            <textarea ng-model="action.title" type="text"
+                                            <input ng-model="action.title" type="text"
                                                     class="monthly-cost outline-0 strategy-description" 
-                                                    ng-blur="checkActionCompleted(action, monthID, $event)"
+                                                    ng-blur="checkActionCompleted(action, monthID, $event, $index)"
                                                     placeholder="Add ActionItem" 
                                                     style="width: 100%; min-height: 40px"
                                                     ng-change = "checkChanges(nthQut-1)"
-                                                    ng-keyup="autoExpand($event)" required ></textarea>
-
+                                                    ng-keydown="$event.keyCode === 13 && checkActionCompleted(action, monthID, $event, $index)"
+                                                    ng-keyup="autoExpand($event)" required 
+                                                    id="action-{{monthID}}-{{$index}}"></input>
+                                            
                                         </div>
 
-                                        <span class="delete-btn outline-0 pull-right" ng-click="deleteAction(action, monthID, nthQut-1)">
+                                        <span class="delete-btn outline-0 pull-right" tabindex="-1" ng-click="deleteAction(action, monthID, nthQut-1)">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </span>
                                     </div>

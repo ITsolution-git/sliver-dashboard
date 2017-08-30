@@ -134,7 +134,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="revenue in revenues">
+                            <tr ng-repeat="revenue in revenues | filter:{deleted: false}">
                                 <td>{{revenue.name}}</td>
                                 <td ng-repeat="nthQut in [1,2,3,4]">
                                     <div class="input-box" >
@@ -148,7 +148,7 @@
                                     {{+data[0].units[revenue.name] + +data[1].units[revenue.name] + +data[2].units[revenue.name] + +data[3].units[revenue.name]}}
                                 </td>
                                 <td>
-                                    {{revenue.unit}}
+                                   {{revenue.unit}}
                                 </td>
                             </tr>
                         </tbody>
