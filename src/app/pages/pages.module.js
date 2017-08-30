@@ -11,7 +11,8 @@
             'app.pages.idealClient',
             'app.pages.actionPlan',
             'app.pages.execute',
-            'app.pages.slapExcute'
+            'app.pages.slapExcute',
+            'app.pages.slapSchool'
             // 'app.pages.cart',
             // 'app.pages.media',
             // 'app.pages.clients'
