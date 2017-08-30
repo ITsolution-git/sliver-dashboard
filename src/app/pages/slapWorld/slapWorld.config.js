@@ -8,6 +8,9 @@
     function moduleConfig($stateProvider) {
         $stateProvider
             .state('slapWorld', {
+                data: {
+                    access: '@'
+                },
                 parent: 'withNavbar',
                 url: '/world',
                 views: {

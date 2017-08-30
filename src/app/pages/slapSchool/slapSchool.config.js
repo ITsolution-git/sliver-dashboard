@@ -8,6 +8,9 @@
     function moduleConfig($stateProvider) {
         $stateProvider
             .state('slapSchool', {
+                data: {
+                    access: '@'
+                },
                 parent: 'withNavbar',
                 url: '/school',
                 views: {
