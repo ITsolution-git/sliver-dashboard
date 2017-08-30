@@ -6,7 +6,7 @@
         .controller('RegistrationStep3Controller', RegistrationStep3Controller);
 
     /* @ngInject */
-    function RegistrationStep3Controller($state,productStorage,toaster,$auth,couponService, pageService) {
+    function RegistrationStep3Controller($state,productStorage,toaster,$auth,couponService, pageService, userService) {
         pageService.reset().setPageTitle(' Step3').addCrumb({name: 'Step3', path: 'signup/step3'});
         if(!productStorage.getPlan()) {
             $state.go('step1');
@@ -59,14 +59,25 @@
             vm.user.isRenew = vm.isRenew;
             vm.user.renewFrom = productStorage.getRenewFrom();
             $auth.signup(vm.user)
-                .then(
-                    function (response) {
+            .then(
+                function (response) {
                         if (response.data._id) {
                             vm.user.auth_key = response.data._id;
                             // toaster.pop({type: 'success', body: "Confirmation email was sent! Run to your inbox to check it out"});
-                            toaster.pop({type: 'success', body: "Registered. Enter your login and password to enter the site"});
+                            toaster.pop({type: 'success', body: "Registration completed successfully, Welcome!"});
                             productStorage.resetStorage();
-                            $state.go('login');
+                            $auth.login({
+                                email: vm.user.email,
+                                password: vm.user.password
+                            })
+                            .then(
+                                function (response) {            
+                                    userService.loadUser(true).then(function (user) {
+                                            $state.go('home');
+                                    });
+            
+                                }
+                            )
                         }
                         // $scope.errors = response.data.errors;
                     }
