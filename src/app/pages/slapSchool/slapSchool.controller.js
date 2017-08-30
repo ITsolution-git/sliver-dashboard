@@ -6,7 +6,7 @@
         .controller('SlapSchoolController', SlapSchoolController);
 
     /* @ngInject */
-    function SlapSchoolController($scope, activeStep, pageService,stepService, $state) {
+    function SlapSchoolController($scope, $state) {
 
 
     }
