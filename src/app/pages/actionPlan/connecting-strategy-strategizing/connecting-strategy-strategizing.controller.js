@@ -105,6 +105,10 @@
                 .then(function (response) {
                     if (response && response.status === 200) {
                         $scope.revenues = _.get(response, 'data.revenueStreams.revenues', []);
+                        $scope.revenues = $scope.revenues.filter(function(item){
+                            return !item.deleted;
+                        });
+                        
                         initiateUnits();
                     }
                 });
@@ -142,24 +146,20 @@
         }
 
         function initiateUnits() {
-            
-            _.each($scope.data, function(quater) {
-                if (!quater) 
-                    quater = {}; 
-                if (_.isUndefined( quater.units )) 
-                    quater.units = {};
+            var countQuaters = 4;
+            for (var nthQut = 0; nthQut < countQuaters; nthQut++){
                 for (var i = 0; i < $scope.revenues.length; i++) {
-                    if (_.isUndefined(quater.units[$scope.revenues[i].name] )) {
-                        quater.units[$scope.revenues[i].name] = 0;
-                    }
+                    if (!$scope.data[nthQut]) $scope.data[nthQut] ={};
+                    if (!$scope.data[nthQut].units) $scope.data[nthQut].units = {};
+                    if (!$scope.data[nthQut].units[$scope.revenues[i].name])
+                        $scope.data[nthQut].units[$scope.revenues[i].name] = 0;
                 }
-
-            });
+            }
         }
 
 
-        function addNewActions(monthID, event) {
-
+        function addNewActions(monthID, event, currentIndex) {
+            
             var force = false;
 
             var monthActions = filterActionItemsByMonth(monthID);
@@ -181,13 +181,17 @@
                     feeling: null, 
                     notes: '', 
                     title:''});
+                $timeout(function () {
+                    var newElemIndex = currentIndex+1;
+                    var elem = $('#action-' + monthID + '-' + newElemIndex).focus();
+                });    
             }
         }
         
 
-        function checkActionCompleted(action, monthID, evt) {
+        function checkActionCompleted(action, monthID, evt, currentIndex) {
             if (action.title.trim() != '') {
-                addNewActions(monthID, event);
+                addNewActions(monthID, evt, currentIndex);
             } else {
             }
         }

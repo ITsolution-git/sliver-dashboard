@@ -40,12 +40,17 @@
                 toaster.pop({type: 'error', body: 'Error.'});
             });     
         }
-
-
+    
+       
+        
         function changePassword() {
             userService.updateMe($scope.user).then(function(user){
                 $scope.user = user;
                 toaster.pop({type: 'success', body: 'Password Changed.'});
+                $scope.passwordform.$setPristine();
+                $scope.passwordform.$setUntouched();
+                $scope.passwordform.password.$setUntouched()
+                $scope.passwordform.confirm.$setUntouched()
             }).catch(function(err){
                 
                 toaster.pop({type: 'success', body: err.data.message ? err.data.message : 'Error.'});
