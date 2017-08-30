@@ -132,29 +132,36 @@
                 <div class="input-group-item row m-w-es-10 m-w-md-30 sample-show-hide" ng-hide="showIdealClientTextBlock" id="idealclient-box"  ng-if="shouldSelctIdeal">
                     <span>My Ideal Client is </span> a 
                     <span>
+                        <span ng-show="client.age.length === 1" ng-model="data.idealClient.age">{{idealClientSelects.age[+client.age]}}</span>
 
-                        <select ng-model="data.idealClient.age" 
+                        <select ng-show="client.age.length > 1" ng-model="data.idealClient.age" 
                                 ng-class="{'active': data.idealClient.age !== '0'}"
                                 class="age dropdown-box outline-0">
                             <option value="{{age}}" ng-repeat="age in client.age">{{idealClientSelects.age[+age]}}</option>
                         </select>
                     </span> years old 
                     <span>
-                        <select ng-model="data.idealClient.gender" 
+                        <span ng-show="client.gender.length === 1" ng-model="data.idealClient.gender">{{idealClientSelects.gender[+client.gender]}}</span>
+
+                        <select ng-show="client.gender.length > 1" ng-model="data.idealClient.gender" 
                                 ng-class="{'active': data.idealClient.gender !== '0'}"
                                 class="gender dropdown-box outline-0">
                             <option value="{{gender}}" ng-repeat="gender in client.gender">{{idealClientSelects.gender[+gender]}}</option>
                         </select>
                     </span>,
                     <span>
-                        <select ng-model="data.idealClient.maritalStatus" 
+                        <span ng-show="client.maritalStatus.length === 1" ng-model="data.idealClient.maritalStatus">{{idealClientSelects.maritalStatus[+client.maritalStatus]}}</span>
+
+                        <select ng-show="client.maritalStatus.length > 1" ng-model="data.idealClient.maritalStatus" 
                                 ng-class="{'active': data.idealClient.maritalStatus !== '0'}"
                                 class="marital-status dropdown-box outline-0">
                             <option value="{{maritalStatus}}" ng-repeat="maritalStatus in client.maritalStatus">{{idealClientSelects.maritalStatus[+maritalStatus]}}</option>
                         </select>
                     </span>, father of 
                     <span>
-                        <select ng-model="data.idealClient.kids" 
+                        <span ng-show="client.kids.length === 1" ng-model="data.idealClient.kids">{{idealClientSelects.kids[+client.kids]}}</span>
+
+                        <select ng-show="client.kids.length > 1" ng-model="data.idealClient.kids" 
                                 ng-class="{'active': data.idealClient.kids !== '0'}"
                                 class="kids dropdown-box outline-0">
                             <option value="{{kids}}" ng-repeat="kids in client.kids">{{idealClientSelects.kids[+kids]}}</option>
@@ -162,29 +169,37 @@
                     </span>,
                     work as an 
                     <span>
-                        <select ng-model="data.idealClient.employment" 
+                        <span ng-show="client.employment.length === 1" ng-model="data.idealClient.employment">{{idealClientSelects.employment[+client.employment]}}</span>
+
+                        <select ng-show="client.employment.length > 1" ng-model="data.idealClient.employment" 
                                 ng-class="{'active': data.idealClient.employment !== '0'}"
                                 class="employment dropdown-box outline-0">
                             <option value="{{employment}}" ng-repeat="employment in client.employment">{{idealClientSelects.employment[+employment]}}</option>
                         </select>
                     </span>, lives in
                     <span>
-                        <select ng-model="data.idealClient.location" 
-                                ng-class="{'active': item.location !== '0'}"
+                        <span ng-show="client.location.length === 1" ng-model="data.idealClient.location">{{idealClientSelects.location[+client.location]}}</span>
+
+                        <select ng-show="client.location.length > 1" ng-model="data.idealClient.location" 
+                                ng-class="{'active': data.idealClient.location !== '0'}"
                                 class="location dropdown-box outline-0">
                             <option value="{{location}}" ng-repeat="location in client.location">{{idealClientSelects.location[+location]}}</option>
                         </select>
                     </span>,
                     generally on transit by 
                     <span>
-                        <select ng-model="data.idealClient.transit" 
+                        <span ng-show="client.transit.length === 1" ng-model="data.idealClient.transit">{{idealClientSelects.transit[+client.transit]}}</span>
+
+                        <select ng-show="client.transit.length > 1" ng-model="data.idealClient.transit" 
                                 ng-class="{'active': data.idealClient.transit !== '0'}"
                                 class="transit dropdown-box outline-0">
                             <option value="{{transit}}" ng-repeat="transit in client.transit">{{idealClientSelects.transit[+transit]}}</option>
                         </select>
                     </span>, likes to 
                     <span>
-                        <select ng-model="data.idealClient.hobbies" 
+                        <span ng-show="client.hobbies.length === 1" ng-model="data.idealClient.hobbies">{{idealClientSelects.hobbies[+client.hobbies]}}</span>
+
+                        <select ng-show="client.hobbies.length > 1" ng-model="data.idealClient.hobbies" 
                                 ng-class="{'active': data.idealClient.hobbies !== '0'}"
                                 class="hobbies dropdown-box outline-0">
                             <option value="{{hobbies}}" ng-repeat="hobbies in client.hobbies">{{idealClientSelects.hobbies[+hobbies]}}</option>
@@ -192,7 +207,9 @@
                     </span>
                     and read 
                     <span>
-                        <select ng-model="data.idealClient.reads" 
+                        <span ng-show="client.reads.length === 1" ng-model="data.idealClient.reads">{{idealClientSelects.reads[+client.reads]}}</span>
+
+                        <select ng-show="client.reads.length > 1" ng-model="data.idealClient.reads" 
                                 ng-class="{'active': data.idealClient.reads !== '0'}"
                                 class="reads dropdown-box outline-0">
                             <option value="{{reads}}" ng-repeat="reads in client.reads">{{idealClientSelects.reads[+reads]}}</option>
