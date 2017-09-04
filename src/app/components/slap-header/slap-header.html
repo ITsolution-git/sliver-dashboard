@@ -29,25 +29,7 @@
             <ul class="nav navbar-nav navbar-right hidden-xs">
                 <li><a ui-sref="get-help">get help</a></li>
                 <li><a ui-sref="slapSchool">slapschool</a></li>
-                <li><a ui-sref="mindset.ourCommitment">slapworld</a></li>
-                
-                <li class='dropdown'>
-                    
-                    <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        SLAP YEARS
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ng-repeat="user in $ctrl.user.accounts">
-                            <a ng-click="$ctrl.selectSLAPyear(user)">
-                                <span style="font-size: 16px; color:blue">{{'YEAR ' + ($index+1) + ' '}}</span>
-                                {{ user.createdAt | date: 'yyyy-MM-dd'}}
-                                <span class="label label-primary" ng-if="user._id == $ctrl.user._id">current</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                </li>
-                
+                <li><a ui-sref="slapWorld">slapworld</a></li>                
                 <li class='dropdown pull-right profile-dropdown'>
                     
                     <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -57,11 +39,12 @@
                     </a>
                     <ul class="dropdown-menu">
 
-                        <li><a ui-sref="slapExcute.main">My SLAP</a></li>
+                        <li><a ui-sref="slapExcute.main">Go Excute</a></li>
                         <li><a ui-sref="mindset.ourCommitment">Go Build</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a ui-sref="payments">Payment History</a></li>
                         <li><a ui-sref="myaccounts">Account</a></li>
+                        <li><a ui-sref="mySlap">My SLAP</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a ng-click="$ctrl.logout()">Logout</a></li>
                     </ul>

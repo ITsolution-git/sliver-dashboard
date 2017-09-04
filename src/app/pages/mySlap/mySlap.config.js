@@ -2,23 +2,24 @@
     'use strict';
 
     angular
-        .module('app.pages.slapSchool')
+        .module('app.pages.mySlap')
         .config(moduleConfig);
 
     function moduleConfig($stateProvider) {
         $stateProvider
-            .state('slapSchool', {
+            .state('mySlap', {
                 data: {
                     access: '@'
                 },
                 parent: 'withNavbar',
-                url: '/school',
+                url: '/myslap',
                 views: {
                     content: {
-                        controller: 'SlapSchoolController',
-                        templateUrl: 'pages/slapSchool/slapSchool.html'
+                        controller: 'mySlapController',
+                        templateUrl: 'pages/mySlap/mySlap.html'
                     }
-                }
+                },
+                
             })
     }
 }());

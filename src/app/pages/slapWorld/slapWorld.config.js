@@ -2,21 +2,21 @@
     'use strict';
 
     angular
-        .module('app.pages.slapSchool')
+        .module('app.pages.slapWorld')
         .config(moduleConfig);
 
     function moduleConfig($stateProvider) {
         $stateProvider
-            .state('slapSchool', {
+            .state('slapWorld', {
                 data: {
                     access: '@'
                 },
                 parent: 'withNavbar',
-                url: '/school',
+                url: '/world',
                 views: {
                     content: {
-                        controller: 'SlapSchoolController',
-                        templateUrl: 'pages/slapSchool/slapSchool.html'
+                        controller: 'SlapWorldController',
+                        templateUrl: 'pages/slapWorld/slapWorld.html'
                     }
                 }
             })
