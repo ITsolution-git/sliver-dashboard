@@ -27,7 +27,7 @@
         });
 
         var beforeSave = moment({year: $scope.data.year, month: +$scope.data.month - 1, day:1});
-        
+
         if ($scope.data.year === null) {
             $scope.data.year = currentYear
         }
@@ -59,17 +59,16 @@
 
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
-            //If user changed the date and have excute items.
+            //If user changed the date and have excute items.            
             if ($scope.data.month != (beforeSave.month() + 1))  {
                 //As a matter of fact, the new startdate cannot be a past of now because of $scope.$watch('data.month', function (value) { line codes
-                var newStartDate = moment({year: $scope.data.year, month: +$scope.data.month, day:1});
-                if (newStartDate.isBefore(moment(), 'day')) {
+                var newStartDate = moment({year: $scope.data.year, month: +$scope.data.month -1, day:1});
+                if (newStartDate.isBefore(moment(), 'month')) {
                     $scope.notifications = [{name: 'Wrong Start Date', type: 'error', message: 'You cannot set SLAP Start Date to past.', show: true}];
                 } else {
                     $scope.notifications = [];
-
                     /// Now move all excute items according to its start date
-                    var deltaMonths = Math.ceil(moment.duration(newStartDate - beforeSave).asMonths());
+                    var deltaMonths = moment.duration(newStartDate - beforeSave).asMonths().toFixed(0);
 
                     _.each(excuteItems, function(item){
                         item.dueDate = moment(item.dueDate).add(deltaMonths, 'months').format('YYYY-MM-DD');
@@ -94,7 +93,7 @@
                 }
             } else {
 
-                if(direction == 'forward')  
+                if(direction == 'forward')
                     $state.go(nextprevStep.nextStep.sref); 
                 else if(direction == 'backward')
                     $state.go(nextprevStep.prevStep.sref);

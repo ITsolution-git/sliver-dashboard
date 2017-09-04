@@ -174,9 +174,12 @@
             }
 
             if (force) {
+                var year = $scope.startDate.year;
+                if (monthID < $scope.startDate.month-1)
+                    year++;
                 $scope.actionItems.push({
                     type: 'action', 
-                    dueDate: moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + monthID)/12)), month: monthID, day: 1 }).endOf('month').format('YYYY-MM-DD'),
+                    dueDate: moment({ year: year, month: monthID, day: 1 }).endOf('month').format('YYYY-MM-DD'),
                     progress: 0, 
                     feeling: null, 
                     notes: '', 
@@ -251,7 +254,7 @@
             }
 
             var nextprevStep = stepService.getNextAndPrevStep();
-            
+
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
             //loadDefaultActionItems
