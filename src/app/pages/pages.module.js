@@ -13,9 +13,9 @@
             'app.pages.execute',
             'app.pages.slapExcute',
             'app.pages.slapSchool',
-            'app.pages.getHelp'
-            'app.pages.mySlap'
-            'app.pages.slapWorld',
+            'app.pages.getHelp',
+            'app.pages.mySlap',
+            'app.pages.slapWorld'
             // 'app.pages.cart',
             // 'app.pages.media',
             // 'app.pages.clients'
