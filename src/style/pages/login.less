@@ -8,6 +8,10 @@ table.table-vertical-align {
   }
 }
 
+.container-login {
+  margin-top: 0px !important;
+  padding-top: 100px; 
+}
 //.m-t-50 {
 //  margin-top: 50px;
 //}
@@ -179,7 +183,16 @@ a:hover {
     line-height: 1.17;
     text-transform: uppercase;
     color: @main-blue-color;
+    i {
+      font-size: 22px;
+      padding-right: 3px;
+      color: #000;
+    }
+
   }
+
+
+
 }
 
 .header-contents {
@@ -619,7 +632,7 @@ a:hover {
   display: flex;
   justify-content: center;
 
-  > div {
+  > button {
     width: 336px;
     border: 1px solid grey;
     border-radius: 35px;
@@ -627,10 +640,12 @@ a:hover {
     height: 64px;
     justify-content: center;
     align-items: center;
+    background: none;
   }
 
-  a {
+  span {
     margin-right: 7px;
+    
 
     //width: 42px;
     //height: 14px;
@@ -640,6 +655,12 @@ a:hover {
     text-align: right;
     text-transform: uppercase;
     color: @main-blue-color;
+    i { 
+      padding-left: 6px;
+      color: #000;
+      font-size: 22px;
+    }
+
 
     &:hover {
       text-decoration: none;
@@ -649,7 +670,7 @@ a:hover {
   .finish {
     background-color: @main-blue-color;
 
-    a {
+    span {
       color: #ffffff;
 
       &:hover {

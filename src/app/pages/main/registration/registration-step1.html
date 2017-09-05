@@ -67,8 +67,10 @@
     <div class="row">
         <header class="container signup">
             <div class="col-md-12 leave">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                <a ui-sref="login">leave</a>
+                <a ui-sref="login">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    leave
+                </a>
             </div>
             <div class="header-contents">
                 <div class="col-md-3 header-logo">
@@ -123,10 +125,12 @@
 
         </article>
         <div class="container signup next-bottom">
-            <div class="col-md-12">
-                <a ui-sref="step2" ng-click="vm.nextStep($event)">Next</a>
-                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </div>
+            <button class="col-md-12" ui-sref="step2" ng-click="vm.nextStep($event)">
+                <span>
+                    Next
+                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </span>
+            </button>
         </div>
     </div>
 </div>
