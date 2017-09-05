@@ -1,0 +1,29 @@
+<div class="container m-t-xs-50">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+
+            <form name="getHelpForm" id="message-form">
+                <div class="panel panel-default animated fadeInDown">
+                    <div class="panel-body">
+                        <h3 class="text-center">How can we help you?</h3>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="form-group" ng-class="{ 'has-error': getHelpForm.message.$invalid && getHelpForm.message.$touched}">
+                            <textarea style="resize: none" rows="15" ng-model="message" class="form-control" name="message" placeholder="What is happen?"
+                                ng-required="true">
+                            </div>
+                        <hr>
+
+                        <div class="text-center">
+                            <button ng-disabled="getHelpForm.$invalid" type="submit" ng-click="sendMessage()" class="btn btn-primary btn-fullwidth">Send Message</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

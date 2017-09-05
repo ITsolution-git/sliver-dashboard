@@ -127,6 +127,11 @@
             });
         }
 
+        me.getHelp = function (messageObject) {
+            return apiService.rest.all('get-help').post(messageObject).then(function(res){
+                return res;
+            })
+        }
         me.changeMyPassword = function(password) {
             //TODO ;;change password;
         }
