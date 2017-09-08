@@ -40,9 +40,9 @@
             QMonths: [],
             getStrategyName: getStrategyName
         });
-
+        
         getData();
-
+        
         pageService
             .reset()
             .setShowBC(false)
@@ -155,6 +155,15 @@
             sendData();
         });
 
+        $scope.$on('$stateChangeSuccess', 
+        function(event, toState, toParams, fromState, fromParams){ 
+            if(fromState.name === "slapExcute.main"){
+                $scope.goTo = 'Go Build';
+            }else {
+                $scope.goTo = 'Go Excute';
+            }
+         });
+
         function getStrategyName(id) {
             var obj = _.find($scope.defaultStrategies, {id: id});
             if (obj) return obj.name;
@@ -163,7 +172,7 @@
         
         $scope.printSlap = function () {
             window.print();
-        }
+        };
 
         var vm = this;
         

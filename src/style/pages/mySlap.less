@@ -7,7 +7,9 @@
     font-size: 12px;
     padding: 3px 10px;
     border: none;
+    text-align: center;
     border-radius: 100px;
+    padding: 0 10px;
     cursor: pointer;
     &:hover {
         background-color: #1694D7;
@@ -16,13 +18,23 @@
     &:focus {
         background-color: @color-dark-blue;
     }
+    a {
+        color: #fff;
+    }
+}
+
+.slapBtn {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    margin-left: -43%;
 }
 
 .years {
     position: relative;
-    margin: 50px auto 70px;
     text-align: center;
     width: 150px;
+    height: 31px;
     border-radius: 20px;
     background:  @color-dark-blue;
     &:hover {
@@ -35,9 +47,29 @@
 
 }
 
+.go-to {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    // top: -101px;
+    margin-right: 0;
+    margin-top: 0;
+    left: 30%;
+    text-align: center;
+    width: 150px;
+    height: 31px;
+    
+    a {
+        font-size: 22px;
+        line-height: 27px;
+    }
+}
+
+
 .dropdown-menu {
     top: ~"calc(50%  + 11px)";
     left: ~"calc(50% - 109px)";
+    // right: 30%;
     margin-top: 10px; 
 }
 
