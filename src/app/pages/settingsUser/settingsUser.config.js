@@ -12,7 +12,7 @@
                 data: {
                     access: '@'
                 },
-                parent: 'default',
+                parent: 'withNavbar',
                 url: '/payments',
                 views: {
                     content: {
