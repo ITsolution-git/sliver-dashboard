@@ -1,26 +1,31 @@
 <div class="container m-t-xs-50">
     <div class="row">
         <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-body text-center">
-                        <h1 class="text-center">Upcoming Events</h1>
-                        <div ng-if="data.meetings" class="row" style="margin-bottom:15px">
-                            <div class="col-xs-3 col-sm-3 col-md-3">Topic</div>
-                            <div class="col-xs-2 col-sm-2 col-md-2">Duration</div>
-                            <div class="col-xs-4 col-sm-4 col-md-4">Start time</div>
-                            <div class="col-xs-3 col-sm-3 col-md-3">Join Us</div>
-                        </div>
-                        <hr>
-                        <div ng-repeat="meeting in data.meetings">
-                            <div class="row" style="margin-bottom:15px">
-                                <div class="col-xs-3 col-sm-3 col-md-3">{{meeting.topic}}</div>
-                                <div class="col-xs-2 col-sm-2 col-md-2">{{meeting.duration}} minutes</div>
-                                <div class="col-xs-4 col-sm-4 col-md-4">{{meeting.start_time | date:'medium'}}</div>
-                                <div class="col-md-3">
-                                    <a ng-href="{{meeting.join_url}}" target="_blank" class="btn btn-primary">Join</a ng-href="{{}}"> 
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <h1 class="text-center">Upcoming Events</h1>
+                    <div ng-if="data.meetings.lenght" class="row" style="margin-bottom:15px">
+                        <div class="col-xs-3 col-sm-3 col-md-3">Topic</div>
+                        <div class="col-xs-2 col-sm-2 col-md-2">Duration</div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">Start time</div>
+                        <div class="col-xs-3 col-sm-3 col-md-3">Join Us</div>
+                    </div>
+                    <hr>
+                    <div ng-if="!data.meetings.lenght" class="row" style="margin-bottom:15px">
+                        <h3>Coming SOON</h3>
+                    </div>
+                    <div ng-repeat="meeting in data.meetings">
+                        <div class="row" style="margin-bottom:15px">
+                            <div class="col-xs-3 col-sm-3 col-md-3">{{meeting.topic}}</div>
+                            <div class="col-xs-2 col-sm-2 col-md-2">{{meeting.duration}} minutes</div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">{{meeting.start_time | date:'medium'}}</div>
+                            <div class="col-md-3">
+                                <a ng-href="{{meeting.join_url}}" target="_blank" class="btn btn-primary">Join</a ng-href="{{}}"> 
                             </div> 
                         </div> 
                     </div>
                 </div> 
             </div> 
         </div>
+    </div>
+</div>
