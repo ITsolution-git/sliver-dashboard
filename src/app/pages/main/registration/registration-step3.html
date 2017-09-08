@@ -236,7 +236,7 @@
 
                         <md-input-container class="md-block">
                             <md-checkbox name="tos" ng-model="vm.user.check" required>
-                                I agree with <span class="text-main-color">Terms and Conditions</span>
+                                I agree with <span class="text-main-color"><a target='_blank' ng-click="vm.openTOS($event)">Terms and Conditions</a></span>
                             </md-checkbox>
                             <div ng-messages="registerForm.tos.$error" ng-hide="registerForm.tos.$modelValue">
                                 <div ng-message="required">
