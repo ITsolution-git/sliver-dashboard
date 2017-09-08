@@ -6,8 +6,8 @@
         .controller('SlapSchoolController', SlapSchoolController);
 
     /* @ngInject */
-    function SlapSchoolController($scope, $state) {
+    function SlapSchoolController($scope, $state, data) {
 
-
+        $scope.data = data; 
     }
 }());

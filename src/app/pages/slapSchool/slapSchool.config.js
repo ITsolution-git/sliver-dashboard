@@ -18,6 +18,11 @@
                         controller: 'SlapSchoolController',
                         templateUrl: 'pages/slapSchool/slapSchool.html'
                     }
+                },
+                resolve: {
+                    data: function (zoomService) {
+                        return zoomService.meetingsList();
+                    } 
                 }
             })
     }
