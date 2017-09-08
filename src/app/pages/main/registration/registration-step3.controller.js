@@ -15,10 +15,10 @@
 
         var vm = this;
         vm.isRenew = false;
-        
+
         vm.plan = productStorage.getPlan();
         vm.build = productStorage.getBuild();
-        
+
         // For TEST Purpose
         // vm.plan = JSON.parse('{"_id":"58f4edb72fbe2a27060c8d9b","billingFrequency":12,"typeProduct":1,"buildType":1,"status":1,"productName":"seriousSLAP","productDescription":"seriousSLAP description","costProduct":400,"__v":0,"createdAt":"2017-04-17T16:17:21.556Z","amountFirstPayment":0,"expertHours":100,"reqParams":null,"restangularized":true,"fromServer":true,"parentResource":{"route":"plans","parentResource":{"route":"products","parentResource":null}},"restangularCollection":false,"$$hashKey":"object:11"}');
         // vm.build = JSON.parse('"{"_id":"58f4ee3c2fbe2a27060c8d9f","billingFrequency":12,"typeProduct":2,"buildType":1,"status":1,"productName":"Installments","productDescription":"installments description","costProduct":200,"__v":0,"createdAt":"2017-04-17T16:17:21.556Z","amountFirstPayment":500,"expertHours":200,"reqParams":null,"restangularized":true,"fromServer":true,"parentResource":{"route":"builds","parentResource":{"route":"products","parentResource":null}},"restangularCollection":false,"$$hashKey":"object:33"}"');
@@ -38,7 +38,7 @@
                 build_date: vm.build ? new Date() : null,
                 code: null
             };
-        
+
         vm.useCoupon = false;
 
         vm.calculateTodayPayment = productStorage.calculateTodayPayment();
@@ -51,7 +51,7 @@
 
         function signup(event,form) {
             event.preventDefault();
-            
+
             if(!vm.isRenew && form.$invalid) {
                 toaster.pop({type: 'error', body: "Please check your details" });
                 return;
@@ -71,11 +71,11 @@
                                 password: vm.user.password
                             })
                             .then(
-                                function (response) {            
+                                function (response) {
                                     userService.loadUser(true).then(function (user) {
                                             $state.go('home');
                                     });
-            
+
                                 }
                             )
                         }
@@ -103,6 +103,12 @@
                 .catch(function(err) {
                     toaster.pop({type:'error',body: err.data.message});
                 });
+        }
+
+        vm.openTOS = function (e) {
+          e.preventDefault();
+          var url = $state.href('tos')
+          window.open(url, '_blank');
         }
     }
 }());
