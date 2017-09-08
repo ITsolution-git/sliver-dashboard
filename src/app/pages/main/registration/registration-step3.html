@@ -2,8 +2,9 @@
     <div class="row">
         <header class="container signup">
             <div class="col-md-12 leave">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                <a ui-sref="step2">leave</a>
+                    <a ui-sref="login">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>leave
+                    </a>
             </div>
             <div class="header-contents">
                 <div class="col-md-3 header-logo">
@@ -250,10 +251,11 @@
         </article>
         <div class="row">
             <div class="next-bottom">
-                <div class="col-md-12 finish">
-                    <a href="#" ng-click="vm.signup($event, registerForm)">Finish</a>
-                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </div>
+                <button class="col-md-12 finish" ng-click="vm.signup($event, registerForm)">
+                    <span>Finish
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </button>
             </div>
         </div>
     </div>
