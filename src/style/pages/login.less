@@ -175,7 +175,7 @@ a:hover {
 }
 
 .leave {
-  margin-top: 40px;
+  margin-top: 30px;
 
   a {
     //font-family: .HelveticaNeueDeskInterface;
@@ -196,7 +196,7 @@ a:hover {
 }
 
 .header-contents {
-  margin-top: 105px;
+  margin-top: 80px;
 
   .header-logo img, > div {
     height: 100px;
@@ -267,7 +267,7 @@ a:hover {
 }
 
 .plan {
-  margin-top: 104px;
+  margin-top: 50px;
 }
 
 .outline-0:focus {
@@ -277,15 +277,17 @@ a:hover {
 .rectangle {
 
   //border: 1px solid grey;
-  height: 496px;
+  max-height: 520px;
+  padding-bottom: 10px;
   background-color: #ffffff;
+  // padding: 0 10px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
 
   .rectangle-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 15px;
     border-bottom: 1px solid #EFEFEF;
     //box-shadow: 0 1px 0 0 #000000;
     //opacity: 0.08;
@@ -309,7 +311,11 @@ a:hover {
   }
 
   .rectangle-content {
-    height: 215px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    // height: 215px;
     &.step2 {
       height: 280px;
     }
@@ -321,30 +327,30 @@ a:hover {
       span {
         position: relative;
         //margin-top: 24px;
-        width: 123px;
-        height: 68px;
-        font-size: 50px;
+        // width: 123px;
+        // height: 68px;
+        font-size: 3vw;
         letter-spacing: -1.6px;
         color: #33444d;
-
         &::before {
           content: '$';
           width: 13px;
           height: 29px;
-          font-size: 24px;
+          font-size: 1.5vw;
           letter-spacing: -0.7px;
           color: @main-black-color;
-          position: absolute;
-          top: 10px;
-          left: -10px;
+          position: relative;
+          top: -20px;
+          left: 2%;
         }
 
         &::after {
           content: 'USD';
+          position: relative;
           width: 33px;
           height: 24px;
           //font-family: .HelveticaNeueDeskInterface;
-          font-size: 16px;
+          font-size: 1vw;
           line-height: 1.5;
           color: #576875;
         }
@@ -378,38 +384,33 @@ a:hover {
       display: flex;
       justify-content: center;
       align-content: center;
-      margin-bottom: 20px;
 
       > p {
-        width: 147px;
-        //height: 48px;
+        // width: 147px;
         //font-family: .HelveticaNeueDeskInterface;
         //display: inline-block;
-        font-size: 15px;
+        font-size: 0.8vw;
         line-height: 1.5;
         color: @main-black-color;
         margin-bottom: 0;
       }
-      &::before {
-        font-family: FontAwesome;
-        content: '\f055';
-        color: @main-blue-color;
-        font-size: 1.5em;
-        position: absolute;
-        top: 0;
-        left: 10px;
+
+      .fa-plus {
+        position: relative;
+        top: -20px;
+        left: ~"calc(50% - 0.4vw)";
       }
     }
 
     .plan-list {
-      width: 101px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
       //height: 192px;
       //font-family: .HelveticaNeueDeskInterface;
-      font-size: 15px;
-      line-height: 3;
+      font-size: 0.8vw;
+      line-height: 2.5;
       color: @main-black-color;
-      margin-top: 25px;
-      margin-left: 35px;
 
 
       > li {
@@ -422,7 +423,7 @@ a:hover {
           height: 12px;
           color: @main-black-color;
           font-size: 0.719em;
-          margin-right: 20px;
+          margin-right: 7%;
         }
       }
     }
@@ -522,6 +523,28 @@ a:hover {
   }
 
 }
+
+.fa {
+  font-size: 0.9vw;
+  margin-bottom: 5px;
+}
+
+.per {
+  font-size: 1.3vw;
+}
+
+.expert {
+  &::before {
+      font-family: FontAwesome;
+      content: '\f00c';
+      width: 11.5px;
+      height: 12px;
+      color: @main-black-color;
+      font-size: 0.719em;
+      margin-right: 7%;
+    }
+}
+
 
 .registration {
 
@@ -626,7 +649,7 @@ a:hover {
 }
 
 .next-bottom {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 50px;
   //width: 300px;
   display: flex;

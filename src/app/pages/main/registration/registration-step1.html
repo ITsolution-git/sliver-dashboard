@@ -107,16 +107,23 @@
                             <div class="amount-plan">
                                 <span>{{ plan.costProduct }}</span>
                             </div>
-                            <p class="text-center">per month</p>
+                            <p class="text-center per">per month</p>
                             <ul class="plan-list" ng-if="plan._id == vm.plans[0]._id">
                                 <li>SLAPcenter</li>
-                                <li>SLAPassistant</li>
+                                <li>SLAPmanager</li>
                                 <li>SLAPschool</li>
                                 <li>SLAPworld</li>
                             </ul>
-                            <p class="plan-self text-center" ng-if="plan._id != vm.plans[0]._id">selfSLAP</p>
+                            <!-- <p class="plan-self text-center" ng-if="plan._id != vm.plans[0]._id">SLAPexpert</p> -->
+                            <ul class="plan-list text-center" ng-if="plan._id != vm.plans[0]._id">
+                                <li>SLAPcenter</li>
+                                <li>SLAPmanager</li>
+                                <li>SLAPschool</li>
+                                <li>SLAPworld</li>
+                            </ul>
+                            <i class="fa fa-plus" ng-if="plan._id != vm.plans[0]._id" aria-hidden="true"></i>
                             <div class="plan-group" ng-if="plan._id != vm.plans[0]._id">
-                                <p class="text-center">1 Group Call Per Month</p>
+                                <p class="expert text-center">SLAPexpert</p>
                             </div>
                         </div>
                     </div>
