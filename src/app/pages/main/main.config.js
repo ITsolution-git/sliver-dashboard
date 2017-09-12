@@ -172,7 +172,7 @@
                     access: '?'
                 },
                 url: '/reset',
-                parent: 'blank',
+                parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {
                         controller: 'MainResetController',
