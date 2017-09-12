@@ -3,15 +3,27 @@
         <div class="col-xs-12 col-md-12">
 
             <form name="getHelpForm" id="message-form">
-                <div class="panel panel-default animated fadeInDown">
+                <div class="panel panel-default animated fadeInDown help-form">
                     <div class="panel-body">
                         <h3 class="text-center">How can we help you?</h3>
                         <div class="clearfix"></div>
-                        <hr>
+                        <md-toolbar name="textarea" class="form-group" layout="row" layout-align="start center ">
+                            <p class="kind-help">What kind of help do you need?</p>	
+                            <md-select ng-model="option" flex="40" class="select-menu help" ng-required="true">
+                                <md-option ng-repeat="option in options" ng-value="option" >{{option}}</md-option>
+                            </md-select>
+                        </md-toolbar>
                         <div class="form-group" ng-class="{ 'has-error': getHelpForm.message.$invalid && getHelpForm.message.$touched}">
+                            <span>Please give us as much detail as possible so we can help you quickly!</span>
                             <textarea style="resize: none" rows="15" ng-model="message" class="form-control" name="message" placeholder="What is happen?"
                                 ng-required="true">
-                            </div>
+                        </div>
+                        <md-toolbar class="form-group"  layout="row" layout-align="start center " ng-class="{ 'has-error': getHelpForm.message.$invalid && getHelpForm.message.$touched}">
+                                <p class="kind-help">Do you prefer we call you or email you about this?</p>	
+                                <md-select data-md-container-class="prefer" ng-model="prefer" flex="20" class="select-menu help" ng-required="true">
+                                    <md-option ng-repeat="prefer in optionPrefer" ng-value="prefer" >{{prefer}}</md-option>
+                                </md-select>
+                            </md-toolbar>
                         <hr>
 
                         <div class="text-center">
