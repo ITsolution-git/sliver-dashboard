@@ -359,7 +359,15 @@
 								<uib-bar class="projected" style="margin-left: -11px" value="revenueGrid.projectedSalesItemCount" ng-if="revenueGrid.projectedSalesItemCount != 0" >
 								</uib-bar>
 							</uib-progress>
-							<span  style="width: revenueGrid.actualSalesItemCount">{{revenueGrid.projectedSalesItemCount}} projected sales unit</span>
+							<span style="					
+										font-family: MuseoSansCyrl;
+  										font-size: 10px;
+  										font-weight: bold;
+  										line-height: 2.4;
+  										text-align: left;
+										color: #373c37;
+										padding-top: 10px;">
+					{{revenueGrid.projectedSalesItemCount}} projected sales unit</span>
 						</section>
 						<span style="text-transform: lowercase;" flex="20">
 							{{revenueGrid.actualSalesItemCount}}/{{revenueGrid.totalSalesItemCount}} SALES UNITS
