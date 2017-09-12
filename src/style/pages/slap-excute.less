@@ -1,7 +1,13 @@
 .slap-excute {
 	margin: 20px;	
 	font-size: 18px;
-	color: @color-text-main;
+	// color: @color-text-main;
+	font-family: MuseoSansCyrl;
+  	font-size: 18px;
+  	font-weight: 200;
+  	line-height: 1.78;
+  	text-align: left;
+  	color: #373c37;
 	p, span {
 		font-size: 1em;
 	}
@@ -12,15 +18,28 @@
 	md-card {
 		color: @color-text-main;
 	}
+	.layout-row>.flex-20 {
+	  	font-family: MuseoSansCyrl;
+  		font-size: 18px;
+  		font-weight: 900;
+  		line-height: 1.78;
+  		text-align: left;
+		color: #373c37;
+	}
 
 	.md-button {
-  	font-weight: 300;
+  		font-weight: 200;
 		color: @color-main-blue;
 		&.md-primary {
     	border-radius: 30px;
     	padding-left: 10px;
-    	padding-right: 10px;
-			border: 1px solid @color-dark-gray;
+		padding-right: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		// padding: 10px;
+		// font-size: 15px;
+		
+	border: 1px solid @color-dark-gray;
 	  	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 		}
 
@@ -54,19 +73,24 @@
 			left: -2px;
 			border-radius: 10px;
 			&.actual {
-				background-color: @color-sales;
+				height: 16px;
+  				border-radius: 100px;
+  				background-color: #00837f;
 			}	
 			&.projected {
 				position: relative;
 				z-index: -1;
-				background-color: @color-prospected-sales;
+				height: 16px;
+				border-radius: 100px;
+				background-color: @color-sales;
 				span {
-					text-transform: uppercase;
-					position: absolute;
-					color: @color-text-main;
-					margin-right: 10px;
-					top: 20px;
-					width: 160px;
+					font-family: MuseoSansCyrl;
+  					font-size: 10px;
+  					font-weight: bold;
+  					line-height: 2.4;
+  					text-align: left;
+					color: #373c37;
+					padding-top: 10px;
 				}
 			}
 		}
@@ -79,7 +103,7 @@
 			padding: 15px;
 			p {
 				font-size: 1.3em;
-				font-weight: 400;
+				font-weight: 200;
 			}
 			small {
 				text-transform: uppercase;
@@ -108,9 +132,11 @@
 		}
 	}
 
+
 	md-list-item:hover {
 			background-color: rgb(244, 244, 244);
 			transition: 1 ease-in-out 0.5s;
+			
 	}
 	
 	md-list-item.list-item-action {
@@ -204,4 +230,9 @@ md-select-menu md-content {
 
 md-select-menu {
 	min-height: 300px;
+}
+
+
+md-select span {
+	color: #373c37 !important;
 }
