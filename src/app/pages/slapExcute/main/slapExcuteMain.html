@@ -1,6 +1,6 @@
 <div class="slap-excute" layout="column" ng-if="!resultPage">
-	
-	
+
+
 	<md-card flex="100" layout="row">
 		<md-card-content flex="100" layout="row" layout-align="space-around center">
 			<span flex="15"  class="text-color-strong"> Revenue Status&nbsp;&nbsp;&nbsp; </span>
@@ -8,12 +8,11 @@
 				<uib-progressbar class="one-line-bar" max="100" value="dashData.TRevenueGoalPercent"><span style="color:white; white-space:nowrap;">{{dashData.TRevenueGoalPercent}}%</span></uib-progressbar>
 			</section>
 			<md-button flex="15" ng-click="changeView()">Review Results&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></md-button>
-
 		</md-card-content>
 	</md-card>
 
 
-	<section flex=100 layout="row">
+	<section  flex=100 layout="row">
 		<!-- ACTION CARD -->
 		<md-card flex=33>
 			<md-card-content layout="row">
@@ -166,20 +165,20 @@
 							<md-subheader class="text-color-strong">Today</md-subheader>
 							<md-list class="text-color-main">
 								<md-list-item ng-repeat-start="item in filteredForTabView('today',  'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
-									
+
 									<slap-list-item item="item" title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
 								</md-list-item>
 								<md-divider ng-if="!$last" ng-repeat-end></md-divider>
 							</md-list>
 						</section>-->
 						<!--filtered('week',  'upcoming') quater year...-->
-						
+
 					</md-content>
 				</md-card>
 			</div>
 
-			<div role="tabpanel" id="tab-done" aria-labelledby="tab-done-id" ng-switch-when="1" md-swipe-left="tabs.next()" md-swipe-right="tabs.previous()">        
-				
+			<div role="tabpanel" id="tab-done" aria-labelledby="tab-done-id" ng-switch-when="1" md-swipe-left="tabs.next()" md-swipe-right="tabs.previous()">
+
 				<md-card layout="column"  flex layout-fill ng-cloak>
 
 				</md-card>
@@ -190,7 +189,7 @@
 
 
 	<section layout="column" layout="column" ng-if="mainView=='list'" class="m-t-es-50">
-		<md-toolbar layout="row" layout-align="start center ">		
+		<md-toolbar layout="row" layout-align="start center ">
 			<md-select ng-model="filter.period" flex="50" class="select-menu">
 				<md-option ng-value="'week'">This Week</md-option>
 				<md-option ng-value="'month'">This Month</md-option>
@@ -225,24 +224,14 @@
 							<md-divider ng-if="!$last" ng-repeat-end></md-divider>
 						</md-list>
 					</section>
-					
-					
+
+
 				</md-content>
 			</md-card>
-			
+
 		</md-content>
 	</section>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="slap-excute" layout="column" ng-if="resultPage">
@@ -343,7 +332,7 @@
         <div flex="100" layout="row" layout-align="space-between center" class="md-body-1 m-b-es-20">
             <h4  class="text-color-strong">Results By Revenue Streams</h4>
 			<section layout="row" layout-align="end center">
-				<span>Filter By Quater&nbsp&nbsp</span>
+				<span style="  font-family: Arial;font-size: 16px;font-weight: 500;line-height: 1;text-align: right;color: #33444d;">Filter By Quater&nbsp&nbsp</span>
 				<slap-color-switch color="{{colorSales}}" name="Q1" value="filter.showQ" ng-click="filterSales()" static="false" quater="1"></slap-color-switch>&nbsp&nbsp
 				<slap-color-switch color="{{colorSales}}" name="Q2" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="2" ></slap-color-switch>&nbsp&nbsp
 				<slap-color-switch color="{{colorSales}}" name="Q3" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="3"  ></slap-color-switch>&nbsp&nbsp
@@ -351,51 +340,45 @@
 				<slap-color-switch color="{{colorSales}}" name="Year" value="filter.showQ "  ng-click="filterSales()"  static="false" quater="5" ></slap-color-switch>
 			</section>
         </div>
-		<md-card layout="column"  flex layout-fill ng-cloak>
+		<md-card style="font-family: Arial, sans-serif !important; font-style: normal; font-size: 18px;" layout="column"  flex layout-fill ng-cloak>
 
-			<md-list class="text-color-main">
+			<md-list style="color:black;" class="text-color-main">
 				<md-list-item ng-repeat-start="revenueGrid in gridData" layout="column" layout-align="center stretch">
 					<section layout="row" layout-align="space-between center">
 						<a ng-if="!revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="5"><i class="material-icons">add_circle</i></a>
 						<a ng-if="revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail"  flex="5"><i class="material-icons">remove_circle</i></a>
 
 						<section ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="20">{{revenueGrid.revenue.name}}</section>
-					
-						<section flex class="m-w-es-10" style="position:relative">
+
+						<section flex class="m-w-es-20" style="position:relative">
 							<uib-progress class="two-line-bar" 	max="revenueGrid.totalSalesItemCount">
-								<uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="(revenueGrid.actualSalesItemCount !=0 && revenueGrid.projectedSalesItemCount != 0)" style="border-top-right-radius: 0px;
-										border-bottom-right-radius: 0px;">
+								<uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="(revenueGrid.actualSalesItemCount !=0 && revenueGrid.projectedSalesItemCount != 0)">
 								</uib-bar>
 								<uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="!(revenueGrid.actualSalesItemCount !=0 && revenueGrid.projectedSalesItemCount != 0)">
 								</uib-bar>
-
-				
-				
-								<uib-bar class="projected" style="margin-left: -5px" value="revenueGrid.projectedSalesItemCount" ng-if="revenueGrid.projectedSalesItemCount != 0" >
-									<span>
-										{{revenueGrid.projectedSalesItemCount}} projected sales unit
-									</span>
+								<uib-bar class="projected" style="margin-left: -11px" value="revenueGrid.projectedSalesItemCount" ng-if="revenueGrid.projectedSalesItemCount != 0" >
 								</uib-bar>
 							</uib-progress>
+							<span  style="width: revenueGrid.actualSalesItemCount">{{revenueGrid.projectedSalesItemCount}} projected sales unit</span>
 						</section>
-						<span flex="20">
+						<span style="text-transform: lowercase;" flex="20">
 							{{revenueGrid.actualSalesItemCount}}/{{revenueGrid.totalSalesItemCount}} SALES UNITS
 						</span>
 						<md-button flex="10" class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
-						
+
 					</section>
 					<md-divider style="position: relative"></md-divider>
-					<section ng-if="revenueGrid.showDetail && revenueGrid.gridOptions.data.length == 0">
+					<section  ng-if="revenueGrid.showDetail && revenueGrid.gridOptions.data.length == 0">
 						<span class="text-center">No Sales Items</span>
 					</section>
-					
-					<section ng-if="revenueGrid.showDetail && revenueGrid.gridOptions.data.length >=1">
-						
-						
+
+					<section  ng-if="revenueGrid.showDetail && revenueGrid.gridOptions.data.length >=1">
+
+
 						<div grid-data class='slap-grid' grid-options="revenueGrid.gridOptions" grid-actions="revenueGrid.gridActions">
-							<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
-								<thead>
-									<tr>
+							<table  class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
+								<thead style="background-color: rgb(244, 244, 244);">
+									<tr style="font-family: Arial, sans-serif !important; font-style: normal; font-weight: normal; font-size: 10px; color: black;">
 										<!--<th sortable="code" class="sortable mdl-data-table__cell--non-numeric">
 											<span>Order #</span>
 										</th>-->
@@ -403,7 +386,8 @@
 											<span>DATE</span>
 										</th>
 										<th class="st-sort-disable th-dropdown">
-											<md-select filter-by="typeStr"
+											<md-select 
+														filter-by="typeStr"
 														filter-type="select"
 														ng-model="selectedTypeStr"
 														placeholder="Filter By Type"
@@ -433,22 +417,22 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr grid-item >
-										<td ng-bind="item.dueDate | date:'MM/dd/yyyy'"></td>
+									<tr style="font-family: Arial, sans-serif !important; font-style: normal; font-weight: normal; font-size: 15px; color: black;" grid-item >
+										<td style="padding-top: 20px;" ng-bind="item.dueDate | date:'MM/dd/yyyy'"></td>
 										<!--<td class="mdl-data-table__cell--non-numeric">
 											<span ng-bind="item.code"></span>
 										</td>-->
-										<td ng-bind="item.typeStr"></td>
-										<td ng-bind="item.saleUnit + ' Units'"></td>
-										
-										<td >{{item.amount | currency}}</td>
-										<td>{{item.salesGoalShare}}%</td>
-										<td><span flex style="overflow: hidden; text-overflow: ellipsis;">{{item.notes}}</span></td>
-										<td>
+										<td style="padding-top: 20px;" ng-bind="item.typeStr"></td>
+										<td style="padding-top: 20px;" ng-bind="item.saleUnit + ' Units'"></td>
+
+										<td style="padding-top: 20px;">{{item.amount | currency}}</td>
+										<td style="padding-top: 20px;">{{item.salesGoalShare}}%</td>
+										<td style="padding-top: 20px;"><span flex style="overflow: hidden; text-overflow: ellipsis;">{{item.notes}}</span></td>
+										<td style="padding-top: 20px;">
 											<md-button ng-click="openItemDialog($event, 'edit', item.type, item)" style="margin:0px">
 												Edit &nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>
 											</md-button>
-												
+
 										</td>
 									</tr>
 								</tbody>

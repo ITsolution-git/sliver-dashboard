@@ -11,7 +11,7 @@
                 data: {
                     access: '#'
                 },
-                parent: 'blank',
+                parent: 'withNavbarWithoutLinks',
                 url: '/tos',
                 views: {
                     content: {

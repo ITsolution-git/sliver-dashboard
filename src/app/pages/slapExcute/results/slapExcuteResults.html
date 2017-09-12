@@ -6,7 +6,7 @@
 
 	<section flex=100 layout="row">
 		<!-- ACTION CARD -->
-		<md-card flex=50>
+		<md-card style="font-family: Arial, sans-serif !important; font-style: normal; font-weight: normal; font-size: 5px" flex=50>
 			<md-card-content layout="row">
 				<section flex=30 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
@@ -48,7 +48,7 @@
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
-		<md-card flex=50>
+		<md-card style="font-family: Arial, sans-serif !important; font-style: normal; font-weight: normal; font-size: 5px;" flex=50>
 			<md-card-content layout="row">
 				<section flex=30 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
@@ -113,13 +113,13 @@
                         <md-subheader class="text-color-strong">Today</md-subheader>
                         <md-list class="text-color-main">
                             <md-list-item ng-repeat-start="item in filtered('today',  'upcoming')" ng-class="{'list-item-action': item.type=='action','list-item-sales': item.type=='sales','list-item-reflextion': item.type=='reflextion'} " layout="row">
-                                
+
                                 <slap-list-item item="item" title="{{item.type=='sales' ? revenues[item.title-1].name : item.title}}" open-item-dialog="openItemDialog" open-delete-item-dialog="openDeleteItemDialog" layout="row" flex="100"></slap-list-item>
                             </md-list-item>
                             <md-divider ng-if="!$last" ng-repeat-end></md-divider>
                         </md-list>
                     </section>
-                    
+
             </md-card>
 		</md-content>
 	</section>
