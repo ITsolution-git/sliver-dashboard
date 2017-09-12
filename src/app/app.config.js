@@ -69,6 +69,15 @@
                     }
                 }
             })
+            .state('withNavbarWithoutLinks', {
+                parent:'blank',
+                views: {
+                    content: {
+                        controller: 'LayoutNavbarWithoutLinksController',
+                        template: '<slap-header-without-links></slap-header-without-links><div class="slap-container" ui-view="content"></div>'
+                    }
+                }
+            })
             .state('admin', {
                 data: {
                     access: 'admin',

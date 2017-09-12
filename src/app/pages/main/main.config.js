@@ -74,7 +74,7 @@
                     access: '?'
                 },
                 url: '/login?email',
-                parent: 'blank',
+                parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {
                         controller: 'MainLoginController',
@@ -185,7 +185,7 @@
                     access: '?'
                 },
                 url: '/reset/{token}',
-                parent: 'blank',
+                parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {
                         controller: 'MainResetPasswordController',
