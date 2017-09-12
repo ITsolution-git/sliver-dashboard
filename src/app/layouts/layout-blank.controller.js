@@ -7,5 +7,6 @@
 
     /* @ngInject */
     function LayoutBlankController($scope) {
+
     }
 })();
