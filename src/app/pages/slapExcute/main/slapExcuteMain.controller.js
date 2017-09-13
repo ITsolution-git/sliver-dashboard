@@ -383,6 +383,8 @@
 
         }
 
+        stepService.goState = false;
+
         function closeDialog() {
             $mdDialog.hide();
         }

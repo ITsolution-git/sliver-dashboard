@@ -155,14 +155,8 @@
             sendData();
         });
 
-        $scope.$on('$stateChangeSuccess', 
-        function(event, toState, toParams, fromState, fromParams){ 
-            if(fromState.name === "slapExcute.main"){
-                $scope.goTo = 'Go Build';
-            }else {
-                $scope.goTo = 'Go Excute';
-            }
-         });
+
+        $scope.state = stepService.goState;
 
         function getStrategyName(id) {
             var obj = _.find($scope.defaultStrategies, {id: id});

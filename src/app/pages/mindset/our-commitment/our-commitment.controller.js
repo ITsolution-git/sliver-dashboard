@@ -38,5 +38,7 @@
             }
         });
 
+        stepService.goState = true;
+
     }
 }());
