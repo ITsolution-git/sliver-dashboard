@@ -295,7 +295,7 @@
 					    radius="{{progress.radius}}"
 					    stroke="{{progress.stroke}}"
 					    semi="false"
-					    rounded="true"
+					    rounded="false"
 					    clockwise="true"
 					    responsive="true"
 					    duration="{{progress.duration}}"
@@ -311,7 +311,7 @@
 				</section>
 				<section flex=70 layout="column" layout-align="center center">
 					<p>
-						<span  class="md-headline text-color-middle">Your Annual Goal Progress</span>
+						<span class="md-headline text-color-middle">Your Annual Goal Progress</span>
 						<br/>
 						<small>
 							You need to sell {{ dashData.totalYearRevenue | currency }} to reach your annual revenue goal.
@@ -332,15 +332,15 @@
         <div flex="100" layout="row" layout-align="space-between center" class="md-body-1 m-b-es-20">
             <h4  class="text-color-strong">Results By Revenue Streams</h4>
 			<section layout="row" layout-align="end center">
-				<span style="  font-family: Arial;font-size: 16px;font-weight: 500;line-height: 1;text-align: right;color: #33444d;">Filter By Quater&nbsp&nbsp</span>
-				<slap-color-switch color="{{colorSales}}" name="Q1" value="filter.showQ" ng-click="filterSales()" static="false" quater="1"></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Q2" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="2" ></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Q3" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="3"  ></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Q4" value="filter.showQ "  ng-click="filterSales()"  static="false" quater="4" ></slap-color-switch>&nbsp&nbsp
-				<slap-color-switch color="{{colorSales}}" name="Year" value="filter.showQ "  ng-click="filterSales()"  static="false" quater="5" ></slap-color-switch>
+				<span style="font-size: 16px;font-weight: 500;line-height: 1;text-align: right;color: #33444d;">Filter By Quater&nbsp&nbsp</span>
+				<slap-color-switch color="{{colorProgress}}" name="Q1" value="filter.showQ" ng-click="filterSales()" static="false" quater="1"></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorProgress}}" name="Q2" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="2" ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorProgress}}" name="Q3" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="3"  ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorProgress}}" name="Q4" value="filter.showQ "  ng-click="filterSales()"  static="false" quater="4" ></slap-color-switch>&nbsp&nbsp
+				<slap-color-switch color="{{colorProgress}}" name="Year" value="filter.showQ "  ng-click="filterSales()"  static="false" quater="5" ></slap-color-switch>
 			</section>
         </div>
-		<md-card style="font-family: Arial, sans-serif !important; font-style: normal; font-size: 18px;" layout="column"  flex layout-fill ng-cloak>
+		<md-card style="font-style: normal; font-size: 18px;" layout="column"  flex layout-fill ng-cloak>
 
 			<md-list style="color:black;" class="text-color-main">
 				<md-list-item ng-repeat-start="revenueGrid in gridData" layout="column" layout-align="center stretch">
@@ -367,14 +367,7 @@
 								<uib-bar class="projected" style="margin-left: -11px" value="revenueGrid.projectedSalesItemCount" ng-if="revenueGrid.projectedSalesItemCount != 0">
 								</uib-bar>
 							</uib-progress>
-							<span id="progress-span" style="
-										font-family: MuseoSansCyrl;
-  										font-size: 10px;
-  										font-weight: bold;
-  										line-height: 2.4;
-  										text-align: left;
-										color: #373c37;
-										padding-top: 10px;">
+							<span class="progress-span">
 					{{revenueGrid.projectedSalesItemCount}} projected sales unit</span>
 						</section>
 						<span style="text-transform: lowercase;" flex="20">
@@ -394,7 +387,7 @@
 						<div grid-data class='slap-grid' grid-options="revenueGrid.gridOptions" grid-actions="revenueGrid.gridActions">
 							<table  class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
 								<thead style="background-color: rgb(244, 244, 244);">
-									<tr style="font-family: Arial, sans-serif !important; font-style: normal; font-weight: normal; font-size: 10px; color: black;">
+									<tr style="font-style: normal; font-weight: normal; font-size: 10px; color: black;">
 										<!--<th sortable="code" class="sortable mdl-data-table__cell--non-numeric">
 											<span>Order #</span>
 										</th>-->

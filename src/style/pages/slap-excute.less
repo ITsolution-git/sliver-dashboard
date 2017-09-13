@@ -9,10 +9,28 @@
   	text-align: left;
   	color: #373c37;
 	p, span {
-		font-size: 1em;
+		// font-size: 24px;
+		// font-weight: 300;
+		// line-height: 1.17;
+		// letter-spacing: -0.5px;
+		// color: #33444d;
 	}
 	small {
-		font-size: 0.8em;
+		font-size: 18px;
+		font-weight: 100;
+		line-height: 1.56;
+		text-align: left;
+		color: #576875;
+		display: flex;
+	}
+
+	.progress-span {
+		font-size: 10px;
+		font-weight: bold;
+		line-height: 2.4;
+		text-align: left;
+  		color: #373c37;
+  		padding-top: 10px;
 	}
 
 	md-card {
@@ -21,7 +39,7 @@
 	.layout-row>.flex-20 {
 	  	font-family: MuseoSansCyrl;
   		font-size: 18px;
-  		font-weight: 900;
+  		font-weight: 200;
   		line-height: 1.78;
   		text-align: left;
 		color: #373c37;
@@ -51,6 +69,7 @@
 	}
 .progress {
 	z-index: 1;
+	font-family: MuseoSansCyrl;
 }
 	.one-line-bar.progress {
 		margin-bottom: 0px;
@@ -75,7 +94,7 @@
 			&.actual {
 				height: 16px;
   				border-radius: 100px;
-  				background-color: #00837f;
+  				background-color: @color-progress;
 			}	
 			&.projected {
 				position: relative;
@@ -99,6 +118,8 @@
 			small {
 				text-transform: uppercase;
 				font-size: 0.6em;
+				display: flex;
+				text-align: center;
 			}
 		}
 
@@ -226,4 +247,22 @@ md-select-menu {
 
 md-select span {
 	color: #373c37 !important;
+}
+
+
+md-headline {
+	font-size: 24px;
+	font-weight: 900;
+	line-height: 1.17;
+	letter-spacing: -0.5px;
+	text-align: left;
+	color: #33444d;
+}
+
+.text-color-strong {
+	font-family: MuseoSansCyrl;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1;
+	color: #33444d;
 }
