@@ -38,7 +38,7 @@
             }
         });
 
-        stepService.goState = true;
+        stepService.mySlapStateForButton = 'Excute';
 
     }
 }());

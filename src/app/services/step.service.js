@@ -609,6 +609,7 @@
 
         this.sendApiData = sendApiData;
         this.getApiData = getApiData;
+        this.mySlapStateForButton = 'Excute';
 
         ///////////////////////////////
 
@@ -871,5 +872,8 @@
         function getAllStepDataByUser(user_id) {
             return apiService.rest.all('getFinishedUserStep').one(user_id).get();
         }
+
+
+
     }
 }());

@@ -383,7 +383,7 @@
 
         }
 
-        stepService.goState = false;
+        stepService.mySlapStateForButton = 'Build';
 
         function closeDialog() {
             $mdDialog.hide();

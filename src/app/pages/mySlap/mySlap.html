@@ -164,9 +164,8 @@
                             </div>
                             <div class="slapBtn">
                                 <button class="print go-to">
-                                    <a ng-if="state" ui-sref="slapExcute.main" href="#!/slapExcute/main"> {{'go excute' | uppercase}}</a>
-                                    <a ng-if="!state" ui-sref="mindset.ourCommitment" href="#!/mindset/ourCommitment"> {{'go build' | uppercase}}</a>
-                                    <!-- <a ng-if="state"> {{goTo | uppercase}}</a> -->
+                                    <a ng-if="state === 'Excute'" ui-sref="slapExcute.main" href="#!/slapExcute/main"> {{'go excute' | uppercase}}</a>
+                                    <a ng-if="state === 'Build'" ui-sref="mindset.ourCommitment" href="#!/mindset/ourCommitment"> {{'go build' | uppercase}}</a>
                                 </button>
                                 <div class='dropdown years'>
                                         

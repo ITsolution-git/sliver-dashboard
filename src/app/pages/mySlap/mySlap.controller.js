@@ -156,7 +156,7 @@
         });
 
 
-        $scope.state = stepService.goState;
+        $scope.state = stepService.mySlapStateForButton;
 
         function getStrategyName(id) {
             var obj = _.find($scope.defaultStrategies, {id: id});
