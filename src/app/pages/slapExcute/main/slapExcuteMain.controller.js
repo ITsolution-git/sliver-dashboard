@@ -65,8 +65,9 @@
             filteredForListView: filteredForListView,
             filterSales: filterSales,
             colorAction: '#2778f5',
-            colorSales: '#38b636',
+            colorSales: '#00837f',
             colorReflextion: '#f8d144',
+            colorProgress: '#38b636',
             
             curMode: '',
             openItemDialog: openItemDialog,
