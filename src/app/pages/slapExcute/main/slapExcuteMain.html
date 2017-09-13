@@ -351,15 +351,23 @@
 						<section ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="20">{{revenueGrid.revenue.name}}</section>
 
 						<section flex class="m-w-es-20" style="position:relative">
-							<uib-progress class="two-line-bar" 	max="revenueGrid.totalSalesItemCount">
-								<uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="(revenueGrid.actualSalesItemCount !=0 && revenueGrid.projectedSalesItemCount != 0)">
+							<uib-progress style="display: flex;" class="two-line-bar" 	max="revenueGrid.totalSalesItemCount" ng-if="revenueGrid.totalSalesItemCount != 0">
+								<uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="((revenueGrid.actualSalesItemCount !=0) && (revenueGrid.projectedSalesItemCount != 0))">
 								</uib-bar>
-								<uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="!(revenueGrid.actualSalesItemCount !=0 && revenueGrid.projectedSalesItemCount != 0)">
-								</uib-bar>
-								<uib-bar class="projected" style="margin-left: -11px" value="revenueGrid.projectedSalesItemCount" ng-if="revenueGrid.projectedSalesItemCount != 0" >
+								  <uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="!((revenueGrid.actualSalesItemCount !=0) && (revenueGrid.projectedSalesItemCount != 0))">
+								</uib-bar>  
+								<uib-bar class="projected" style="margin-left: -11px" value="revenueGrid.projectedSalesItemCount" ng-if="revenueGrid.projectedSalesItemCount != 0">
 								</uib-bar>
 							</uib-progress>
-							<span style="					
+							<uib-progress style="display: flex;" class="two-line-bar" 	max="100" ng-if="!(revenueGrid.totalSalesItemCount != 0)">
+								<uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="((revenueGrid.actualSalesItemCount !=0) && (revenueGrid.projectedSalesItemCount != 0))">
+								</uib-bar>
+								  <uib-bar class="actual" value="revenueGrid.actualSalesItemCount" ng-if="!((revenueGrid.actualSalesItemCount !=0) && (revenueGrid.projectedSalesItemCount != 0))">
+								</uib-bar>  
+								<uib-bar class="projected" style="margin-left: -11px" value="revenueGrid.projectedSalesItemCount" ng-if="revenueGrid.projectedSalesItemCount != 0">
+								</uib-bar>
+							</uib-progress>
+							<span id="progress-span" style="
 										font-family: MuseoSansCyrl;
   										font-size: 10px;
   										font-weight: bold;
@@ -394,7 +402,7 @@
 											<span>DATE</span>
 										</th>
 										<th class="st-sort-disable th-dropdown">
-											<md-select 
+											<md-select
 														filter-by="typeStr"
 														filter-type="select"
 														ng-model="selectedTypeStr"
