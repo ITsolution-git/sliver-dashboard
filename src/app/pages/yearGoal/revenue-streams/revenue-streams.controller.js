@@ -4,7 +4,7 @@
     angular
         .module('app.pages.yearGoal')
         .controller('RevenueStreamsController', RevenueStreamsController);
-    
+
     function RevenueStreamsController($scope, pageService,activeStep,stepService,$state, $timeout) {
 
         angular.extend($scope, activeStep.model,{
@@ -37,9 +37,9 @@
             doCalculation: doCalculation,
             saved: false
         });
-        
+
         getData();
-        
+
         var nextprevStep = stepService.getNextAndPrevStep();
         var urls = activeStep.sref.split('.');
         $scope.pageName = urls[urls.length - 1];
@@ -124,7 +124,7 @@
                     var elem = $('#expense-name-' + nextElemIndex).focus();
                 });
             }
-            
+
         }
 
         function checkRevenueCompleted(revenue, evt, index) {
@@ -141,7 +141,7 @@
                         (revenue.sellingPrice.match(/^\d+(\.)*\d*$/)) &&
                         (revenue.breakdown.match(/^\d+(\.)*\d*$/))) {
                         $scope.forward = true;
-                        
+
                         addNewRevenue(revenue, index);
                         doCalculation();
                     } else {
@@ -150,10 +150,10 @@
                 }
             }
         }
-        
+
 
         function checkVariableExpenseCompleted(variableExpense, revenue, evt, index) {
-            if (!_.isEmpty(variableExpense.expense) && !(+variableExpense.cost == 0)) { 
+            if (!_.isEmpty(variableExpense.expense) && !(+variableExpense.cost == 0)) {
                 if ((variableExpense.cost != '') &&
                     (variableExpense.cost.match(/^\d+(\.)*\d*$/))) {
                     addNewVariableExpense(revenue, variableExpense, index);
@@ -169,7 +169,7 @@
             if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
                 addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'Please provide valid Price.', show: true});
-                
+
                 $scope.forward = false;
             } else {
                 removeNotificaton($scope.notifications, 'Invalid Price');
@@ -185,7 +185,7 @@
         function isExpensesValid() {
             var nonDeleted  = [];
             _.each($scope.data.revenues, function(revenue) {
-                if (revenue.deleted == false) 
+                if (revenue.deleted == false)
                     nonDeleted.push(revenue);
             });
             if ($scope.pageName == 'revenueStreams') {
@@ -218,9 +218,9 @@
                         } else {
                             removeNotificaton($scope.notifications, 'Variable Expnses Invalid');
                         }
-                    }   
+                    }
                 });
-                
+
                 return valid;
 
             } else {
@@ -242,7 +242,7 @@
                         } else {
                             removeNotificaton($scope.notifications, 'Variable Expnses Invalid');
                         }
-                    }   
+                    }
 
                     // if (+revenue.sellingPrice == totalVariableExpenses) {
                     //     $scope.forward = false;
@@ -252,7 +252,7 @@
                     //     removeNotificaton($scope.notifications, 'Profit None Invalid');
                     // }
                 });
-                
+
 
                 // revenue breakdown should sum 100
                 var totalBreakdown = 0;
@@ -278,7 +278,7 @@
             //Profit margin
             var nonDeleted  = [];
             _.each($scope.data.revenues, function(revenue) {
-                if (revenue.deleted == false) 
+                if (revenue.deleted == false)
                     nonDeleted.push(revenue);
             });
             _.each(nonDeleted, function(revenue) {
@@ -310,7 +310,7 @@
                     revenue.unit = Math.ceil(C / A);
                 }
             });
-            
+
 
         }
 
@@ -321,7 +321,7 @@
                     nonDeleted.push(revenue);
             });
             if(nonDeleted.length == 1){
-                addNotification($scope.notifications, { name: 'Revenue count Invalid', type: 'error', message:'You need to stay at least 1 Revenue', show: true});
+                addNotification($scope.notifications, { name: 'Revenue count Invalid', type: 'error', message:'You need to keep at least one Revenue Stream. If you would like to further change your Revenue Streams go back to the Revenue Stream page and make additional adjustments.', show: true});
                 return false;
             }
             else {
@@ -348,7 +348,7 @@
             } else {
                 existing.show = true;
             }
-            
+
         }
 
         function removeNotificaton(notifications, name) {
@@ -358,13 +358,13 @@
         }
         function sendData(direction) {
             if ($scope.pageName == "revenueStreams" && direction == 'forward'){
-                
+
                 var notDeleted = $scope.data.revenues.filter(function(revenue){
                     return !revenue.deleted;
                 })
                 if (notDeleted.length !=1){
                     notDeleted.splice(-1);
-                } 
+                }
                 var res = notDeleted.some(function(elem){
                     return elem.name;
                 })
@@ -381,7 +381,7 @@
                     return false;
                 }
             }
-            
+
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
@@ -405,8 +405,8 @@
                 .then(function () {
                     $scope.saved = true;
                     stepService.setRequestApiFlag();
-                    if(direction == 'forward')  
-                        $state.go(nextprevStep.nextStep.sref); 
+                    if(direction == 'forward')
+                        $state.go(nextprevStep.nextStep.sref);
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
                 });
@@ -418,7 +418,7 @@
             } else {
                 return $scope.data.revenues[$index].variableExpenses.length;
             }
-            
+
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             if ($scope.saved != true) {

@@ -25,7 +25,7 @@
             $scope.autoExpand('impact-business');
             $scope.autoExpand('impact-client');
         },0);
-        
+
         pageService
             .reset()
             .setShowBC(false)
@@ -87,7 +87,7 @@
             stepService.getApiData('whatsHappening') //TODO: Think over the dynamics url
                 .then(function (response) {
                     if (response && response.status === 200) {
-                        $scope.data = _.get(response, 'data.whatsHappening.0', []);                      
+                        $scope.data = _.get(response, 'data.whatsHappening.0', []);
                         var originalData = _.clone($scope.data);
                     }
                 });
@@ -96,7 +96,7 @@
             });
         }
 
-        function sendData(direction) {  
+        function sendData(direction) {
             var resClient = $scope.impactClientChanged.every(function (quaterClientChanges, index) {
                 return quaterClientChanges;
             });
@@ -104,7 +104,7 @@
                 return quaterBusinessChanges;
             });
             if (!resClient && !resBusiness && direction == 'forward') {
-                toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+                toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step', timeout: 0});
                 return false;
             }
             stepService.updateActiveModel($scope);
@@ -117,8 +117,8 @@
                 .then(function () {
                     $scope.saved = true;
                     stepService.setRequestApiFlag();
-                    if(direction == 'forward')  
-                        $state.go(nextprevStep.nextStep.sref); 
+                    if(direction == 'forward')
+                        $state.go(nextprevStep.nextStep.sref);
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
                 });
@@ -136,8 +136,8 @@
             var elements = typeof e === 'object' ? [e.target] : [].slice.call(document.getElementsByClassName(e));
             elements.forEach(function(element){
                 var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
-                if (scrollHeight != 0) 
-                    element.style.height =  scrollHeight + "px";    
+                if (scrollHeight != 0)
+                    element.style.height =  scrollHeight + "px";
             });
         }
 
@@ -145,6 +145,6 @@
             arr[nthQut] = true;
         };
 
-        
+
     }
 }());

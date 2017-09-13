@@ -36,7 +36,7 @@
                     access: '?',
                     isAdminPage: true
                 },
-                parent : 'blank',
+                parent : 'withNavbarWithoutLinks',
                 url : '/admin/login',
                 views : {
                     content : {
