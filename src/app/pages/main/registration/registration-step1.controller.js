@@ -13,7 +13,7 @@
         vm.active = null;
         vm.plan= productStorage.getPlan();
         
-        vm.timeList = ['1 group and 1 private sessions per month', '1 private session per month' ,'4 private session per month', '2 group  and 1 private session per month','teamSLAP - custom experience'];
+        vm.timeList = ['1 group session per month', '1 private session per month' ,'4 private sessions per month', '2 group  and 1 private sessions per month','custom experience'];
         pageService.reset().setPageTitle(' Step1').addCrumb({name: 'Step1', path: 'signup/step1'});
         productsService.getPlans().then(function(response) {
             vm.plans = response.data;
@@ -38,6 +38,6 @@
             }
 
             return;
-        }
+        };
     }
 }());
