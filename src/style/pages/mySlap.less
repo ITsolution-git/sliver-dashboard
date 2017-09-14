@@ -1,4 +1,37 @@
 .print {
+    width: 72px;
+    height: 24px;
+    margin-left: 50px;
+    margin-right: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+    background-image: linear-gradient(to top, #919191 0%, #eaeaea 100%);
+    color:#fff;
+    font-size: 14px;
+    padding: 0px 10px;
+    border: none;
+    text-align: center;
+    border-radius: 100px;
+    cursor: pointer;
+    &:hover {
+        background-color: #1694D7;
+        transition: ease-in-out 0.2s;
+    }
+    &:focus {
+        background-color: @color-dark-blue;
+    }
+    a {
+        color: #fff;
+        &:focus {
+            text-decoration: none;
+        }
+    }
+}
+
+
+.to-state {
     width: 130px;
     margin-left: 50px;
     margin-right: 10px;
@@ -27,6 +60,7 @@
         }
     }
 }
+
 
 .slapBtn {
     display: flex;
