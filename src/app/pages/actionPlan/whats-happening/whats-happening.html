@@ -68,28 +68,33 @@
                         showImpactClient=true">
                             <slap-work-moment-icon visible="showImpactClient"  type="'work'" title="'How do Impact Client?'"></slap-work-moment-icon>
                             <div class="textarea-box" ng-show="showImpactClient" class="sample-show-hide">
+                              <md-input-container class="md-block outline-0" style="margin: 0; padding: 0; top: 10px">
                                 <textarea ng-model="data[nthQut-1].impactClient" type="text"
-                                        class="monthly-cost outline-0 impact-client"
+                                        class="monthly-cost impact-client"
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}"
                                         placeholder="How will you use this Connecting Strategy to reach your Ideal Client?"
                                         style="width: 100%"
                                         ng-change="checkChanges(nthQut-1,impactClientChanged)"
-                                        rows="5" required ng-keyup="autoExpand($event)"></textarea>
+                                        rows="1" required ng-keyup="autoExpand($event)"></textarea>
+                                </md-input-container>
                             </div>
                         </div>
+
                         <div class="slap-work-box col-xs-12 m-t-es-40" ng-init="
                         showImpactBusiness=true">
                             <slap-work-moment-icon visible="showImpactBusiness"  type="'work'" title="'How do Impact Business?'"></slap-work-moment-icon>
                             <div class="textarea-box" ng-show="showImpactBusiness" class="sample-show-hide">
+                              <md-input-container class="md-block outline-0" style="margin: 0; padding: 0; top: 10px">
                                 <textarea ng-model="data[nthQut-1].impactBusiness" type="text"
-                                        class="monthly-cost outline-0 impact-business"
+                                        class="monthly-cost impact-business"
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}"
                                         placeholder="Why did you choose it and what do you want to accomplish this quarter?"
                                         style="width: 100%"
                                         ng-change="checkChanges(nthQut-1, impactBusinessChanged)"
-                                        rows="5" required ng-keyup="autoExpand($event)"></textarea>
+                                        rows="1" required ng-keyup="autoExpand($event)"></textarea>
+                              </md-input-container>
                             </div>
                         </div>
 
