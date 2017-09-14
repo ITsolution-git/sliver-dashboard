@@ -147,6 +147,13 @@ body {
 }
 
 
+@media (min-width: 1150px) {
+  .rectangle {
+      min-height: 400px;
+  }
+}
+
+
 .slap-container {
   padding-left: 0;
   padding-right: 0;
@@ -267,22 +274,24 @@ a:hover {
 }
 
 .plan {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .outline-0:focus {
   outline: none;
 }
 
+// .row :first-child > .rectangle {
+//  min-height: 400px;
+// }
+
 .rectangle {
 
   //border: 1px solid grey;
-  max-height: 520px;
+  min-height: 470px;
   padding-bottom: 10px;
   background-color: #ffffff;
-  // padding: 0 10px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
-
   .rectangle-header {
     display: flex;
     align-items: center;
@@ -905,5 +914,17 @@ a:hover {
 
   .fa-arrow-left, .fa-arrow-right {
     color: #FFFFFF;
+  }
+}
+
+@media (max-width: 1450px) {
+  .rectangle {
+      min-height: 400px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .rectangle {
+      min-height: 370px;
   }
 }

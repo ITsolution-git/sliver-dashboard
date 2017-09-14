@@ -98,7 +98,7 @@
         <article class="container signup plan">
 
             <div class="row">
-                <div class="col-md-2 outline-0" ng-repeat="plan in vm.plans" ng-click="vm.choosePlan(plan,$event)">
+                <div class="col-md-2 outline-0" ng-repeat="plan in vm.plans"  ng-click="vm.choosePlan(plan,$event)">
                     <div class="rectangle" ng-class="{'rectangle-active': plan._id == vm.plan._id}">
                         <div class="rectangle-header">
                             <h3>{{ plan.productName }}</h3>
@@ -115,15 +115,15 @@
                                 <li>SLAPworld</li>
                             </ul>
                             <!-- <p class="plan-self text-center" ng-if="plan._id != vm.plans[0]._id">SLAPexpert</p> -->
-                            <ul class="plan-list text-center" ng-if="plan._id != vm.plans[0]._id">
+                            <ul class="plan-list text-center" ng-if="plan._id != vm.plans[0]._id" >
                                 <li>SLAPcenter</li>
                                 <li>SLAPmanager</li>
                                 <li>SLAPschool</li>
                                 <li>SLAPworld</li>
                             </ul>
                             <i class="fa fa-plus slap-fa" ng-if="plan._id != vm.plans[0]._id" aria-hidden="true"></i>
-                            <div class="plan-group" ng-if="plan._id != vm.plans[0]._id">
-                                <p class="expert text-center">SLAPexpert</p>
+                            <div class="plan-group" ng-if="plan._id != vm.plans[0]._id" >
+                                <p class="expert text-center">SLAPexpert<br>({{vm.timeList[$index - 1]}})</p>
                             </div>
                         </div>
                     </div>
