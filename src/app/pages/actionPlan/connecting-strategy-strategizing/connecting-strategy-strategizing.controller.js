@@ -242,7 +242,7 @@
                     return quater;
                 });
                 if (!res && direction == 'forward') {
-                    toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+                    toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step', timeout: 0 });
                     return false;
                 }
             }
@@ -401,7 +401,7 @@
             }
         });
 
-        $scope.checkChanges = function (nthQut ){
+        $scope.checkChanges = function (nthQut){
             $scope.quaterActionsChanged[nthQut] = true;
         }
     }
