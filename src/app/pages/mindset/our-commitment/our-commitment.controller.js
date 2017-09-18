@@ -13,7 +13,8 @@
             sendData: sendData,
             saved: false
         });
-
+        $scope.videoUrl = "https://drive.google.com/file/d/0B6EwZW2lqEwtM05XMkxlbTFPZHc/preview";
+        
         pageService
             .reset()
             .setShowBC(false)
@@ -31,7 +32,6 @@
             $scope.saved = true;
             
         }
-
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             if ($scope.saved != true) {
                 sendData();

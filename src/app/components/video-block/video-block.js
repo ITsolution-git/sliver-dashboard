@@ -2,16 +2,18 @@
     'use strict';
 
     var videoBlock = {
+        templateUrl: 'components/video-block/video-block.html',
+        controller: videoController,
         bindings: {
             visible: '=',
-            videoSrc: '='
-        },
-        templateUrl: 'components/video-block/video-block.html',
-        controller: function($scope, $state, stepService) {
-            var $ctrl = this;
-            $scope.title = stepService.getActiveStep().name;
-            // console.log(stepService.getActiveStep());
-
+            video: '='
+        }
+    };
+    function videoController($scope, $sce) {
+        var vm = this;
+        var defaulVideo = 'http://media.w3.org/2016/01/Emmy-Award.mp4';
+        $scope.trustUrl = function(url){
+            return url ? $sce.trustAsResourceUrl(url) : $sce.trustAsResourceUrl(defaulVideo);
         }
 
     };

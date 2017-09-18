@@ -56,7 +56,7 @@
                 });
         }
 
-        function addNewEvents(month, model) {
+        function addNewEvents(month, model, currentIndex, monthID) {
             var index;
 
             if (model) {
@@ -72,17 +72,21 @@
             }
             if (month.events.length === 0 || month.events.length === index + 1 || force) {
                 month.events.push({name: ''});
+                $timeout(function () {
+                    var newElemIndex = currentIndex + 1;
+                    var elem = $('#action-' + monthID + '-' + newElemIndex).focus();
+                });  
             }
         }
 
         function sendData(direction) {
-            var res = $scope.quaterChanged.every(function (quater) {
-                return quater;
-            });
-            if (!res && direction == 'forward' ) {
-                toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
-                return false;
-            }
+            // var res = $scope.quaterChanged.every(function (quater) {
+            //     return quater;
+            // });
+            // if (!res && direction == 'forward' ) {
+            //     toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step' });
+            //     return false;
+            // }
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
             
@@ -111,9 +115,9 @@
 
 
 
-        function checkEventCompleted(event, month, evt) {
+        function checkEventCompleted(event, month, evt, currentIndex, monthID) {
             if (event.name.trim() != '') {
-                addNewEvents(month, event);
+                addNewEvents(month, event, currentIndex, monthID);
             } else {
             }
         }
