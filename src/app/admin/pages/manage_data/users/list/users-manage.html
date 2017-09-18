@@ -1,6 +1,5 @@
 <div layout="column" style="width: 100%;">
 <md-card flex="100" class="p-es-30 m-w-es-40">
-    
     <section>
         <md-button class="md-primary pull-right" ui-sref="users.add">
             New User
@@ -28,7 +27,6 @@
                     <grid-pagination max-size="5"
                         boundary-links="true"
                         class="pagination mdl-shadow--2dp"
-                        ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                         total-items="paginationOptions.totalItems"
                         ng-model="paginationOptions.currentPage"
                         ng-change="reloadGrid()"
