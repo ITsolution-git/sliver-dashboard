@@ -100,7 +100,7 @@
             }
         }
 
-        function addNewVariableExpense(revenue, variableExpense, currentIndex) {
+        function addNewVariableExpense(revenue, variableExpense, currentIndex, revenueIndex) {
 
             var index;
 
@@ -121,7 +121,7 @@
                 revenue.variableExpenses.push(variableExpense);
                 $timeout(function () {
                     var nextElemIndex = currentIndex + 1;
-                    var elem = $('#expense-name-' + nextElemIndex).focus();
+                    var elem = $('#expense-' + revenueIndex + '-name-' + nextElemIndex).focus();
                 });
             }
 
@@ -152,11 +152,11 @@
         }
 
 
-        function checkVariableExpenseCompleted(variableExpense, revenue, evt, index) {
+        function checkVariableExpenseCompleted(variableExpense, revenue, evt, index, revenueIndex) {
             if (!_.isEmpty(variableExpense.expense) && !(+variableExpense.cost == 0)) {
                 if ((variableExpense.cost != '') &&
                     (variableExpense.cost.match(/^\d+(\.)*\d*$/))) {
-                    addNewVariableExpense(revenue, variableExpense, index);
+                    addNewVariableExpense(revenue, variableExpense, index, revenueIndex);
                     doCalculation();
                     $scope.forward = true;
                 }
@@ -165,7 +165,7 @@
             }
         }
 
-        function checkValidity(value, evt, currentIndex) {
+        function checkValidity(value, evt, currentIndex, revenueIndex) {
             if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
                 addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'Please provide valid Price.', show: true});
@@ -175,7 +175,7 @@
                 removeNotificaton($scope.notifications, 'Invalid Price');
                 $(evt.target).removeClass('invalid');
                 if (event.keyCode === 13){
-                    var elem = $('#expense-cost-' + currentIndex).blur();
+                    var elem = $('#expense-' + revenueIndex + '-cost-' + currentIndex).blur();
                 }
                 $scope.forward = true;
             }
