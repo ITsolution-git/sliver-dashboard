@@ -423,9 +423,13 @@
                 });
             } else if (type == 'sales') {
                 if ($scope.curMode == 'add') {
+                    var nonDeleted = $scope.gridData.filter(function(elem){
+                        return !elem.revenue.deleted;
+                    })
+                    var id = item ? item.id : nonDeleted[0].revenue.id;
                     var newForm = {
                         type: 'sales',
-                        title: 1,
+                        title: id,
                         notes: '',
                         dueDate: moment($scope.today).format($rootScope.dateFormat),
                         progress: 0,

@@ -343,7 +343,7 @@
 		<md-card style="font-style: normal; font-size: 18px;" layout="column"  flex layout-fill ng-cloak>
 
 			<md-list style="color:black;" class="text-color-main">
-				<md-list-item ng-repeat-start="revenueGrid in gridData" layout="column" layout-align="center stretch">
+				<md-list-item ng-repeat-start="revenueGrid in gridData | filter: { revenue: { deleted: false } }" layout="column" layout-align="center stretch">
 					<section layout="row" layout-align="space-between center">
 						<a ng-if="!revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="5"><i class="material-icons">add_circle</i></a>
 						<a ng-if="revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail"  flex="5"><i class="material-icons">remove_circle</i></a>
@@ -375,7 +375,7 @@
 						<span style="text-transform: lowercase;" flex="20">
 							{{revenueGrid.actualSalesItemCount}}/{{revenueGrid.totalSalesItemCount}} SALES UNITS
 						</span>
-						<md-button flex="10" class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
+						<md-button flex="10" class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales',revenueGrid.revenue)">add salesЭЫ</md-button>
 
 					</section>
 					<md-divider style="position: relative"></md-divider>
