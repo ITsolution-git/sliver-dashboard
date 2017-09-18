@@ -59,7 +59,7 @@
                         <div class="">
                             <div class="input-box">
                                 <span class="currency">$</span>
-                                <input ng-model="revenue.sellingPrice" type="text"
+                                <input ng-init="(revenue.sellingPri == '0.00')? revenue.sellingPri = '' : revenue.sellingPri" ng-model="revenue.sellingPri"  type="text"
                                         class="monthly-cost outline-0"
                                         ng-keydown="checkValidity(revenue.sellingPrice, $event)"
                                         ng-class="{'active': revenue.sellingPrice}" required>
