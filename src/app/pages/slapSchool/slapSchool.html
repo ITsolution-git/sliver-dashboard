@@ -27,7 +27,8 @@
                                     <a ng-click="isStart(webinar.start_time, webinar.duration, $event, webinar.join_url)" class="btn btn-primary">Join</a>
                                 </div>
                             </div>
-                            <div class="row webinar-item col-md-12" style="margin-bottom:15px"  ng-show="description">{{webinar.agenda}}</div>
+                            <div class="row webinar-item col-md-12" style="margin-bottom:15px"  ng-show="description" ng-if="webinar.agenda==''">No description for this webinar</div>
+                            <div class="row webinar-item col-md-12" style="margin-bottom:15px"  ng-show="description" ng-if="webinar.agenda!=''">{{webinar.agenda}}</div>
                         </div>
                     </div>
                 </div> 

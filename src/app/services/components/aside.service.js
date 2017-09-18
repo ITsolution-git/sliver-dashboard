@@ -79,7 +79,7 @@
                 name: 'Fixed Business Expenses',
                 sref: 'yearGoal.fixedBusinessExpenses'
             }, {
-                name: 'Total Fixed Expenses Revenue',
+                name: 'Total Fixed Expenses',
                 sref: 'yearGoal.totalFixedExpensesRevenue'
             }, {
                 name: 'Selling Price',
