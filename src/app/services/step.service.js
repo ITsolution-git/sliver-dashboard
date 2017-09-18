@@ -286,7 +286,7 @@
                     }
                 }
             }, {
-                name: 'Total Fixed Expenses Revenue',
+                name: 'Total Fixed Expenses',
                 sref: 'yearGoal.totalFixedExpensesRevenue',
                 model: {
                     showVideoBlock: false,

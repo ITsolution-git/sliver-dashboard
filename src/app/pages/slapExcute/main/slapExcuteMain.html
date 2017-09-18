@@ -36,7 +36,7 @@
 					    <section class="progress-text">
 
 							<p class="text-color-strong">{{dashData.quaterClosedActions}}/{{dashData.quaterTotalActions}}</p>
-					    	<small>Q{{currentQuater.nth}} Action Items</small>
+					    	<small>Q{{currentQuater.nth}} ACTION ITEMS COMPLETED</small>
 					    </section>
 					</section>
 
@@ -76,7 +76,7 @@
 					    <section class="progress-text">
 
 					    	<p class="text-color-strong">{{dashData.cQRevenueGoalPercent}}%</p>
-					    	<small>From you Q{{currentQuater.nth}} revenue goals</small>
+					    	<small>Of you Q{{currentQuater.nth}} goal complete</small>
 					    </section>
 					</section>
 
@@ -86,7 +86,7 @@
 						<span  class="md-headline text-color-middle">Close Sales</span>
 						<br/>
 						<small>
-							You have {{dashData.daysLeft}} days to reach you Q{{currentQuater.nth}} revenue goal.
+							You have {{dashData.daysLeft}} days to reach you Q{{currentQuater.nth}} goal.
 						</small>
 					</p>
 
@@ -117,7 +117,7 @@
 					    </round-progress>
 					    <section class="progress-text">
 					    	<p class="text-color-strong">{{dashData.daysReflected}}/{{dashData.daysPassed}}</p>
-					    	<small>Days you passed and reflected</small>
+					    	<small>TIMES YOU HAVE PAUSED & REFLECTED IN Q{{currentQuater.nth}}.</small>
 					    </section>
 					</section>
 
@@ -343,7 +343,7 @@
 		<md-card style="font-style: normal; font-size: 18px;" layout="column"  flex layout-fill ng-cloak>
 
 			<md-list style="color:black;" class="text-color-main">
-				<md-list-item ng-repeat-start="revenueGrid in gridData" layout="column" layout-align="center stretch">
+				<md-list-item ng-repeat-start="revenueGrid in gridData | filter: { revenue: { deleted: false } }" layout="column" layout-align="center stretch">
 					<section layout="row" layout-align="space-between center">
 						<a ng-if="!revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="5"><i class="material-icons">add_circle</i></a>
 						<a ng-if="revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail"  flex="5"><i class="material-icons">remove_circle</i></a>
@@ -375,7 +375,7 @@
 						<span style="text-transform: lowercase;" flex="20">
 							{{revenueGrid.actualSalesItemCount}}/{{revenueGrid.totalSalesItemCount}} SALES UNITS
 						</span>
-						<md-button flex="10" class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
+						<md-button flex="10" class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales',revenueGrid.revenue)">add salesЭЫ</md-button>
 
 					</section>
 					<md-divider style="position: relative"></md-divider>

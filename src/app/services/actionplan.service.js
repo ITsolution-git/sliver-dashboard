@@ -143,19 +143,19 @@
                 strategyId: 7,
                 actions: [
                     [
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-1'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-2'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-3'}
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-3'}
                     ],
                     [
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-1'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-2'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-3'}
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-3'}
                     ],
                     [
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-1'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-2'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Sepcial Deals Month1-3'}
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Special Deals Month1-3'}
                     ],
 
                 ] 
@@ -187,19 +187,19 @@
                 strategyId: 9,
                 actions: [
                     [
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-1'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-2'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-3'}
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-3'}
                     ],
                     [
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-1'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-2'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-3'}
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-3'}
                     ],
                     [
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-1'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-2'},
-                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyality Month1-3'}
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-1'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-2'},
+                        {type: 'action', dueDate: new Date(), progress: 0, feeling: null, notes: '', title:'Loyalty Month1-3'}
                     ],
 
                 ] 
@@ -330,9 +330,9 @@
             {id: 4, name: 'Hit List', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
             {id: 5, name: 'Events', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
             {id: 6, name: 'Media', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 7, name: 'Sepcial Deals', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
+            {id: 7, name: 'Special Deals', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
             {id: 8, name: 'Online Connecting', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 9, name: 'Loyality', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
+            {id: 9, name: 'Loyalty', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
             {id: 10, name: 'SLAPnap', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
         ];
 
