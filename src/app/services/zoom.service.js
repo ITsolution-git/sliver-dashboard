@@ -10,7 +10,7 @@
         var me = this;
 
         me.meetingsList = function () {
-            return apiService.rest.all('zoom').one('meetings').get().then(function (meetings) {
+            return apiService.rest.all('zoom').one('webinars').get().then(function (meetings) {
                 return meetings.data;
             });
         };

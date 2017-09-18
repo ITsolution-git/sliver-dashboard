@@ -73,7 +73,7 @@
                                         class="monthly-cost impact-client"
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}"
-                                        placeholder="How will you use this Connecting Strategy to reach your Ideal Client?"
+                                        placeholder="How does everything happening in this Quarter impact you?"
                                         style="width: 100%"
                                         ng-change="checkChanges(nthQut-1,impactClientChanged)"
                                         rows="1" required ng-keyup="autoExpand($event)"></textarea>
@@ -90,7 +90,7 @@
                                         class="monthly-cost impact-business"
                                         ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event)"
                                         ng-class="{'active': data[nthQut-1].impactClient}"
-                                        placeholder="Why did you choose it and what do you want to accomplish this quarter?"
+                                        placeholder="How does everything happening in this Quarter impact your Ideal Client?"
                                         style="width: 100%"
                                         ng-change="checkChanges(nthQut-1, impactBusinessChanged)"
                                         rows="1" required ng-keyup="autoExpand($event)"></textarea>

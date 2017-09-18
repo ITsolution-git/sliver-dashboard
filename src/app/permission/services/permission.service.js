@@ -6,7 +6,7 @@
         .service('permissionService', permissionService);
 
     /* @ngInject */
-    function permissionService($q, apiService, $rootScope, adminUserService, userService, $timeout) {
+    function permissionService($q, apiService, $rootScope, adminUserService, userService, $timeout, $auth) {
         var me = this;
 
         me.user = null;
@@ -50,10 +50,11 @@
         ]
 
         $timeout(function(){
-            return userService.loadUser().then(function (user) {
-                me.user = user;
-                
-            });
+            if ($auth.isAuthenticated()) {
+                userService.loadUser().then(function (user) {
+                    me.user = user;
+                });
+            }
         });
 
 
