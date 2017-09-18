@@ -56,7 +56,7 @@
                 });
         }
 
-        function addNewEvents(month, model) {
+        function addNewEvents(month, model, currentIndex, monthID) {
             var index;
 
             if (model) {
@@ -72,6 +72,10 @@
             }
             if (month.events.length === 0 || month.events.length === index + 1 || force) {
                 month.events.push({name: ''});
+                $timeout(function () {
+                    var newElemIndex = currentIndex + 1;
+                    var elem = $('#action-' + monthID + '-' + newElemIndex).focus();
+                });  
             }
         }
 
@@ -111,9 +115,9 @@
 
 
 
-        function checkEventCompleted(event, month, evt) {
+        function checkEventCompleted(event, month, evt, currentIndex, monthID) {
             if (event.name.trim() != '') {
-                addNewEvents(month, event);
+                addNewEvents(month, event, currentIndex, monthID);
             } else {
             }
         }
