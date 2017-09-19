@@ -267,7 +267,7 @@
                     showContent: false,
                     data: {
                         expenses: [],
-                        incidentals: '1.00',
+                        incidentals: '10.00',
                         expensesSum: 0
                     }
                 }
@@ -280,7 +280,7 @@
                     showContent: false,
                     data: {
                         expenses: [],
-                        incidentals: '1.00',
+                        incidentals: '10.00',
                         expensesSum: 0,
                         profit: '0.00'
                     }
