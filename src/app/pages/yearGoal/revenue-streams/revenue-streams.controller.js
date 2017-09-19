@@ -413,7 +413,7 @@
         }
 
         function calcHeight(revenue, $index) {
-            if (($scope.pageName == 'profitMargin') || ($scope.pageName == 'revenueBreakdown')){
+            if ((($scope.pageName == 'profitMargin') || ($scope.pageName == 'revenueBreakdown')) && ($scope.data.revenues[$index].variableExpenses.length <= 1)){
                 return $scope.data.revenues[$index].variableExpenses.length - 1;
             } else {
                 return $scope.data.revenues[$index].variableExpenses.length;
