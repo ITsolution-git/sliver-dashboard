@@ -237,15 +237,15 @@
                 }, 400);
                 return false;
             }
-            if ($scope.pageName == 'actionItems') {
-                var res = $scope.quaterActionsChanged.every(function (quater) {
-                    return quater;
-                });
-                if (!res && direction == 'forward') {
-                    toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step', timeout: 0 });
-                    return false;
-                }
-            }
+            // if ($scope.pageName == 'actionItems') {
+            //     var res = $scope.quaterActionsChanged.every(function (quater) {
+            //         return quater;
+            //     });
+            //     if (!res && direction == 'forward') {
+            //         toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step', timeout: 0 });
+            //         return false;
+            //     }
+            // }
             if ((($scope.pageName == 'connectingStrategyStrategizing')) && !checkQuaterStrategiesValid()) { //quater units sum should same as quaterly goal.
                 $('body').animate({
                     scrollTop: $("slap-notifications").offset().top
