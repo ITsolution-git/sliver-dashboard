@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="variable-row" ng-repeat="variableExpense in revenue.variableExpenses" ng-if="variableExpense.expense != '' && variableExpense.cost != '0.00'">
-                            <div class="variable-name ">
+                            <div class="variable-name " style="width: 70%">
                                 <div class="input-box">
                                     <input ng-model="variableExpense.expense" type="text"
                                             class="monthly-cost outline-0" disabled
@@ -88,7 +88,7 @@
 
                                 </div>
                             </div>
-                            <div class="variable-price ">
+                            <div class="variable-price " style="width: 30%">
                                 <div class="input-box">
                                     <span class="currency">-$</span>
                                     <input ng-model="variableExpense.cost" type="text"
@@ -103,7 +103,7 @@
                     <div class="revenue-margin-container text-center">
                         <span class="info-text">{{revenue.margin}}</span>
                     </div>
-                    <div class="revenue-breakdown-container text-center show-border" ng-class=" 'row-' + calcHeight(revenue, $index) + 'th'">
+                    <div class="revenue-breakdown-container text-center show-border" ng-class=" 'row-' + calcHeight(revenue, $index + 1) + 'th'">
                         <div class="input-box">
                             
                             <input ng-model="revenue.breakdown" type="text"
