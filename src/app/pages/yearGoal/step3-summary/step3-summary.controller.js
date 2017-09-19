@@ -11,6 +11,8 @@
             model: {
                 clients: []
             },
+            first: ['does', 'provides', 'sells'],
+            third: ['for', 'to'],
             data: {},
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']
@@ -35,6 +37,7 @@
             totalFixedExpenses: '0.00',
             totalTarget: '0.00'
         });
+        var originalData, originalPrivilagesData;
 
         getData();
 
@@ -78,7 +81,8 @@
                         });
                         
                         userService.getUser().then(function (user) {
-                            $scope.data.businessName = user.businessName;
+                            $scope.data = _.get(response, 'data.yourStatement', []);
+                            originalData = _.clone($scope.data);
                         });
                     }
                 });

@@ -37,11 +37,11 @@
 
                     <span class="aqua-green">{{businessName}}</span>
 
-                    <span editable-select model-value="data.first" values-list="first"></span>
+                    <span>{{first[data.first]}}</span>
 
                     <span editable-text model-value="data.second"></span>
 
-                    <span editable-select model-value="data.third" values-list="third"></span>
+                    <span>{{third[data.third]}}</span>
 
                     <span editable-text model-value="data.fourth"></span>
 
@@ -50,7 +50,7 @@
                     <span class="aqua-green" editable-select model-value="privilegeInfo.resultId" values-list="privilegesData.resultList"></span>
                     and I
                     am committed to
-                    <span class="aqua-green" editable-select model-value="privilegeInfo.text" values-list="privilegesData.second"></span>
+                    <span>{{privilegesData.second[privilegeInfo.text]}}</span>
                     <span class="aqua-green" editable-text model-value="privilegeInfo.additionalText"></span>.
 
                 </p>
