@@ -25,7 +25,7 @@
             },
             emptyVariableExpense: {
                 expense: '',
-                cost: '0.00'
+                cost: ''
             },
             notifications: [],
             checkRevenueCompleted: checkRevenueCompleted,

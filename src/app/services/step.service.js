@@ -24,7 +24,7 @@
                     showStaticTextBlock: false,
                     data: null
                 }
-            }, {
+            }, /*{
                 name: 'Get the SLAPmindset',
                 sref: 'mindset.slapMindset',
                 model: {
@@ -32,7 +32,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            },*/ {
                 name: 'Privilege and Responsibility',
                 sref: 'mindset.privilegeAndResponsibility',
                 model: {
@@ -84,7 +84,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            }, /*{
                 name: 'Start SLAP\'n!',
                 sref: 'mindset.startSlapn',
                 model: {
@@ -92,8 +92,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
-                name: 'Your SLAP Start Date',
+            },*/ {
+                name: 'Get SLAPn!',
                 sref: 'mindset.slapStartDate',
                 model: {
                     data: {
@@ -549,20 +549,20 @@
             // Execute
 
             {
-                name: 'Living SLAP Day-to-Day',
+                name: 'The 3 SLAPhabits',
                 sref: 'execute.livingDayToDay',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            },/* {
                 name: 'Commit to Yourself',
                 sref: 'execute.commitYourSelf',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            },*/ {
                 name: 'Set Yourself Up For Success',
                 sref: 'execute.setYourselfUpForSuccess',
                 model: {
@@ -570,14 +570,14 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'Tour of SLAPcenter - Execute',
+                name: 'Time to Execute',
                 sref: 'execute.tourExecute',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
             }];
-
+        console.log(steps.length);
         var finishedSteps = [];
 
 
@@ -630,7 +630,7 @@
             return $q(function (resolve) {
                 if (finishedSteps.length == 0) {
                     return resolve({sref: "mindset.ourCommitment"});
-                } else if (finishedSteps.length >= 52) {
+                } else if (finishedSteps.length >= steps.length) {
                     return resolve({sref: "slapExcute.main"});
                 } else {
                     var lastSteps = finishedSteps[finishedSteps.length - 1];
