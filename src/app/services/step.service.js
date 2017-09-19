@@ -76,7 +76,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            },/* {
                 name: 'Top Down, Bottom Up',
                 sref: 'mindset.topDownBottomUp',
                 model: {
@@ -84,7 +84,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, /*{
+            }, *//*{
                 name: 'Start SLAP\'n!',
                 sref: 'mindset.startSlapn',
                 model: {
@@ -577,7 +577,7 @@
                     showStaticTextBlock: false
                 }
             }];
-            
+
         var finishedSteps = [];
 
 
