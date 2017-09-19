@@ -562,14 +562,14 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            },*/ {
+            },*//* {
                 name: 'Set Yourself Up For Success',
                 sref: 'execute.setYourselfUpForSuccess',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            },*/ {
                 name: 'Time to Execute',
                 sref: 'execute.tourExecute',
                 model: {
