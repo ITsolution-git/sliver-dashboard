@@ -60,7 +60,8 @@
                                 <i class="fa fa-play-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i>
                                 <br/>
                                 <span class="title"  ng-click="openVideoBox(strategy)">
-                                    {{strategy.name}}
+                                    {{getStrategyName(strategy.id)}}
+                                    <!--{{strategy.name}}-->
                                 </span>
                                 <br/>
                                 <span class="desc">How Relevant?</span>
@@ -78,7 +79,8 @@
                                 <i class="fa fa-play-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i>
                                 <br/>
                                 <span class="title"  ng-click="openVideoBox(strategy)">
-                                    {{strategy.name}}
+                                    <!--{{strategy.name}}-->
+                                     {{getStrategyName(strategy.id)}}
                                 </span>
                                 <br/>
                                 <span class="desc">How Relevant?</span>

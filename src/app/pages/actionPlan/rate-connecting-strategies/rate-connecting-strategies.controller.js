@@ -14,9 +14,11 @@
             positions: [],
             center: {},
             idealClientSelects: idealclientService.getClientSliders(),
+            defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
             openVideoBox: openVideoBox,
             showResponsiveView: false,
-            notifications: []
+            notifications: [],
+            getStrategyName: getStrategyName
         });
 
         if ($scope.data.length == 0) {
@@ -153,6 +155,11 @@
                 sendData();
             }
         });
+        function getStrategyName(id) {
+            var obj = _.find($scope.defaultStrategies, { id: id });
+            if (obj) return obj.name;
+            else return ''
+        }
 
 
     }
