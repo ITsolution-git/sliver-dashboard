@@ -12,6 +12,8 @@
                 clients: []
             },
             data: {},
+            first: ['does', 'provides', 'sells'],
+            third: ['for', 'to'],
             defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']
@@ -40,7 +42,8 @@
             QMonths: [],
             getStrategyName: getStrategyName
         });
-        
+
+        var originalData;
         getData();
         
         pageService
@@ -81,7 +84,8 @@
                         });
                         
                         userService.getUser().then(function (user) {
-                            $scope.data.businessName = user.businessName;
+                            $scope.data = _.get(response, 'data.yourStatement', []);
+                            originalData = _.clone($scope.data);
                         });
                     }
                 });

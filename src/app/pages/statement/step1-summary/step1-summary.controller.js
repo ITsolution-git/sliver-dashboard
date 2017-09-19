@@ -9,6 +9,8 @@
 
         angular.extend($scope, activeStep.model, {
             listFirst: ['does', 'provides', 'sells'],
+            third: ['for', 'to'],
+            fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']
             },
