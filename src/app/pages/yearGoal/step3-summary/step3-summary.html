@@ -22,14 +22,17 @@
 
 
                         <p>
-
-                            <span class="aqua-green">{{data.businessName}}</span> does <span
-                                class="aqua-green">{{data.second}}</span> for
+                            <span class="aqua-green">{{data.businessName}}</span>
+                            <span>{{first[data.first]}}</span>
+                            <span class="aqua-green">{{data.second}}</span>
+                            <span>{{third[data.third]}}</span>
                             <span class="aqua-green">{{data.fourth}}</span> on a
-                            <span class="aqua-green">{{fifth[+data.fifth]}}</span> scale because <span
-                                class="aqua-green">I will grow my business this year I will be able to
+                            <span class="aqua-green">{{fifth[+data.fifth]}}</span> scale.
+                            <span>By growing my business I am able to</span>
+                            <span class="aqua-green">
                             {{data.privilegeInfo.result}}</span> and I am committed to
-                            <span class="aqua-green">{{privilegesData.second[+data.privilegeInfo.text]}} {{data.privilegeInfo.additionalText}}</span>.
+                            <span> {{privilegesData.second[+data.privilegeInfo.text]}} </span>
+                            <span class="aqua-green">{{data.privilegeInfo.additionalText}}</span>.
 
                         </p>
                     </div>
@@ -80,7 +83,7 @@
                         </ul>
 
                         <p>To generate a total of <span class="aqua-green">${{totalTarget | number:2}}</span> revenue and <span
-                                class="aqua-green">${{profit | number:2}}</span> profit this SLAPyear!</p>
+                                class="aqua-green">${{profit | number:1}}</span> profit this SLAPyear!</p>
                     </div>
                 </div>
             </div>

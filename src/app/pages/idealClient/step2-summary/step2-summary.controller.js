@@ -11,11 +11,13 @@
             model: {
                 clients: []
             },
+            first: ['does', 'provides', 'sells'],
+            third: ['for', 'to'],
+            fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             data: {},
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']
             },
-            fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             gender: ['Empty', 'Male', 'Female'],
             maritalStatus: ['Empty', 'Single', 'Married', 'Divorced', 'Widowed'],
             kids: ['Empty', 'None', 'Young', 'Teens',' Adults'],
@@ -30,6 +32,8 @@
             sendData: sendData,
             saved: false
         });
+
+        var originalData, originalPrivilagesData;
 
         getData();
 
@@ -62,19 +66,6 @@
 
         function getData() {
 
-            stepService.getApiData('yourStatement')  //TODO: request api? data service
-                .then(function (response) {
-                    if (response && response.status === 200) {
-
-                        angular.extend($scope.model, {
-                            stepOneSummary: _.get(response, 'data.yourStatement', {})
-                        });
-                        userService.getUser().then(function (user) {
-                            $scope.data.businessName = user.businessName;
-                        });
-                    }
-                });
-
             stepService.getApiData('allMindsetUser') //TODO: Think over the dynamics url
                 .then(function (response) {
                     if (response && response.status === 200) {
@@ -84,18 +75,33 @@
                     }
                 });
 
+            stepService.getApiData('yourStatement')  //TODO: request api? data service
+                .then(function (response) {
+                    if (response && response.status === 200) {
+
+                        angular.extend($scope.model, {
+                            stepOneSummary: _.get(response, 'data.yourStatement', {})
+                        });
+                        userService.getUser().then(function (user) {
+                            $scope.data = _.get(response, 'data.yourStatement', []);
+                            originalData = _.clone($scope.data);
+                        });
+                    }
+                });
+
             stepService.getApiData('whoAreYouIdealClient')  //TODO: request api? data service
                 .then(function (response) {
                     if (response && response.status === 200) {
                         $scope.model.clients = _.get(response, 'data.whoAreYouIdealClient', []);
                         $scope.client = idealclientService.calcIdealClient($scope.model.clients);
+
                     }
                 });
-                
         }
         
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             sendData();
         });
+
     }
 }());
