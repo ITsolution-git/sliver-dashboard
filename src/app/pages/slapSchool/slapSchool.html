@@ -22,7 +22,7 @@
                                 <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.topic}}</div>
                                 <div class="col-xs-2 col-sm-2 col-md-2">{{webinar.duration}} minutes</div>
                                 <div class="col-xs-2 col-sm-2 col-md-2">{{webinar.agenda}}</div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.start_time | date:'short'}} {{webinar.timezone}}</div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.start_time | date:'short'}} {{webinar.timezone | timezone}}</div>
                                 <div class="col-xs-1 col-sm-1 col-md-1">
                                     <a ng-click="isStart(webinar.start_time, webinar.duration, $event, webinar.join_url)" class="btn btn-primary">Join</a>
                                 </div>
