@@ -40,7 +40,7 @@
 
                 <div class="row">
                     <div class="col-md-5"><h4>What is the name of the expense?</h4></div>
-                    <div class="col-md-3"><h4>Monthly Expense</h4></div>
+                    <div class="col-md-2"><h4>Monthly Expense</h4></div>
                     <div class="col-md-4"><h4>Yearly Expense</h4></div>
                 </div>
 
@@ -50,11 +50,11 @@
                             <input ng-model="item.expense" type="text" id="expense-{{$index}}"
                                    class="expense outline-0"
                                    ng-keydown="$event.keyCode === 13 "
+                                   placeholder="Add Another Expense"
                                    ng-class="{'active': item.expense}" required>
-                            <label class="label expense-label" for="expense-{{$index}}">Add Another Expense</label>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="input-box">
                             <span class="currency">$</span>
                             <input ng-model="item.monthlyCost" type="text"
@@ -74,14 +74,15 @@
                 </div>
                 <hr>
                 <div class="row row-flex incidentals-wrap  m-t-es-10">
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <div class="input-box">
                             <span class="currency">%</span>
                             <input ng-model="data.incidentals" type="text" id="incidentals"
                               placeholder="Incidentals for" class="incidentals outline-0" ng-blur="checkNumberValid(data.incidentals, $event)" required>
                         </div>
                     </div>
-                    <div class="result col-md-3">
+                    <div class="col-md-2"> </div>
+                    <div class="result col-md-2">
                         <span>${{data.incidentals * 0.01 * data.expensesSum | number:2}}</span>
                     </div>
                     <div class="result col-md-4">

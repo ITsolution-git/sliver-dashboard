@@ -17,7 +17,7 @@
                     </div>
                     <div ng-repeat="user in data">
                         <div ng-repeat="webinar in user.webinars">
-                            <div class="row webinar-item" style="margin-bottom:15px" ng-click="description = !description">
+                            <div class="row webinar-item" style="margin-bottom:15px; outline: none" ng-click="description = !description">
                                 <div class="col-xs-3 col-sm-3 col-md-3">{{user.name}}</div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.topic}}</div>
                                 <div class="col-xs-2 col-sm-2 col-md-2">{{webinar.duration}} minutes</div>
