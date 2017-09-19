@@ -52,7 +52,11 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <span class="year">{{data.year}}</span>
+                    <select ng-model="data.year" ng-model="data.year" class="outline-0 dropdown-box active">
+                        <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
+                    </select>
+                    <!--{{data.year}}-->
+                    <!--<span class="year">{{data.year}}</span>-->
                 </p>
             </div>
 

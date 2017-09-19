@@ -577,7 +577,7 @@
                     showStaticTextBlock: false
                 }
             }];
-        console.log(steps.length);
+            
         var finishedSteps = [];
 
 
