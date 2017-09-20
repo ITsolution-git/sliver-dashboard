@@ -64,7 +64,7 @@
                                    ng-class="{'active': item.monthlyCost}" required>
                         </div>
                     </div>
-                    <div class="result col-md-4">
+                    <div class="result result-height col-md-4">
                         <div ng-show="item.monthlyCost">&#215;12 = ${{item.monthlyCost ? (item.monthlyCost * 12) : '' | number:2}}</div>
 
                         <div class="delete-btn outline-0" tabIndex="-1" ng-click="deleteItem(item)">
@@ -74,7 +74,7 @@
                 </div>
                 <hr>
                 <div class="row row-flex incidentals-wrap  m-t-es-10">
-                    <div class="col-md-3">
+                    <div class="col-md-3 padd">
                         <div class="input-box">
                             <span class="currency">%</span>
                             <input ng-model="data.incidentals" type="text" id="incidentals"

@@ -13,16 +13,22 @@
     .delete-btn {
       position: absolute;
       width: 20px;
-      height: 30px;
       text-align: center;
       font-size: 18px;
       right: 40px;
-      bottom: 5px;
       display: none;
     }
-
+    .item {
+      display: flex;
+      align-items: center;
+    }
     .item:hover {
       background-color: #f8f8f8;
+      .input-box {
+        input {
+          background-color: #f8f8f8;
+        }
+      }
 
       .delete-btn {
         display: block;
@@ -103,9 +109,15 @@
 
   .result {
     font-size: 20px;
-    padding-top: 18px;
     color: #33444d;
     line-height: 36px;
   }
-
+  .result-height {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+  }
+  .padd {
+    padding-right: 0;
+  }
 }
