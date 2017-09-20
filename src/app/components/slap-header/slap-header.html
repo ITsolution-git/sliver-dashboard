@@ -16,7 +16,9 @@
             <div class='dropdown pull-right profile-dropdown visible-xs'>
                 
                 <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img ng-if="$ctrl.user.avatarId" ng-src="{{ $ctrl.avatarUrl || 'images/default.jpg'}}" class="profile-image img-circle">
+                    <img ng-if="!$ctrl.user.avatarId" ng-src="{{'images/default.jpg'}}" class="profile-image img-circle">
+                    <img ng-if="$ctrl.user.avatarId" ng-src="{{ $ctrl.avatarUrl}}" class="profile-image img-circle">
+                     
                     {{ $ctrl.user.name }}
                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
                 </a>
@@ -34,7 +36,8 @@
                 <li class='dropdown pull-right profile-dropdown'>
                     
                     <a class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img ng-if="$ctrl.user.avatarId" ng-src="{{ $ctrl.avatarUrl || 'images/default.jpg' }}" class="profile-image img-circle">
+                        <img ng-if="!$ctrl.user.avatarId" ng-src="{{'images/default.jpg'}}" class="profile-image img-circle">
+                        <img ng-if="$ctrl.user.avatarId" ng-src="{{ $ctrl.avatarUrl}}" class="profile-image img-circle">
                         {{ $ctrl.user.name }}
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </a>

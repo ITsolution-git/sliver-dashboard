@@ -27,6 +27,7 @@
                 data: { avatar: file }
             }).then(function (resp) {
                 $scope.avatarUrl = CONFIG.api + "/v1/user/avatar/" + resp.data;
+                $scope.user.avatarId = resp.data;
                 $rootScope.$emit('avatarUpdated', resp.data);
             });
         };

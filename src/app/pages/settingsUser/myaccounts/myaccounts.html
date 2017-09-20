@@ -7,7 +7,9 @@
         <h3> Basic </h3>
         <div style="display:flex; justify-content: middle; flex-direction: column; align-items: center;">
             <div style="margin:20px">
-                <img ng-src="{{avatarUrl || 'images/default.jpg'}}" class="img-circle" style="width:200px; height:200px;" alt="">
+                <img ng-if="!user.avatarId" ng-src="{{'images/default.jpg'}}" class="img-circle" style="width:200px; height:200px;" alt="">
+                <img ng-if="user.avatarId" ng-src="{{avatarUrl}}" class="img-circle" style="width:200px; height:200px;" alt="">
+
             </div>
             <div style="margin:20px">
                 <span class="btn btn-primary" ngf-select="onFileSelect($file)" 
