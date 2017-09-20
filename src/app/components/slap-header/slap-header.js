@@ -3,15 +3,19 @@
 
     var slapHeader = {
         binding: {},
-        controller: function ($auth, $state, userService, $window, $rootScope) {
+        controller: function ($auth, $state, userService, $window, $rootScope, CONFIG) {
             var vm = this;
-
+            
             $rootScope.$on('SlapAccounUpdated', function (event, user) {
                 vm.user = user;
+                vm.avatarUrl = CONFIG.api + "/v1/user/avatar/" + user.avatarId;
             });
-
+            $rootScope.$on('avatarUpdated', function (event, id) {
+                vm.avatarUrl = CONFIG.api + "/v1/user/avatar/" + id;
+            });
             userService.getUser().then(function (user) {
                  vm.user = user;
+                 vm.avatarUrl = CONFIG.api+"/v1/user/avatar/"+user.avatarId;
             });
 
             this.logout = function () {

@@ -19,7 +19,7 @@
                 'ngMessages',
 
                 'ngTable',
-
+                
                 'angular-loading-bar',
                 'restangular',
                 'satellizer',
@@ -37,13 +37,13 @@
                 'angular.filter',
                 'dataGrid', 
                 'pagination',
-
                 //Sub modules
                 'app.services',
                 'app.filters',
                 'app.components',
                 'app.directives',
-                'app.pages'
+                'app.pages',
+                'ngFileUpload'
             ]
         )
 })();

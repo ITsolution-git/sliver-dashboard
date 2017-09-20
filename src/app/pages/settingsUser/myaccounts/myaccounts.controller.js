@@ -6,7 +6,7 @@
         .controller('MyaccountsController', MyaccountsController);
 
     /* @ngInject */
-    function MyaccountsController($scope, pageService, productStorage, $state, userService, $auth, toaster, permissionService) {
+    function MyaccountsController($scope, $rootScope, pageService, productStorage, $state, userService, $auth, toaster, permissionService, Upload, CONFIG) {
         $scope.renewAccount = renewAccount;
         $scope.user = {};
         $scope.saveBasic = saveBasic;
@@ -14,7 +14,6 @@
         $scope.changeCreditCard = changeCreditCard;
         $scope.getCreditCard = getCreditCard;
         $scope.stateData = $state.current.data;
-
         pageService
             .reset()
             .setShowBC(false)
@@ -22,9 +21,19 @@
             .setPageTitle('My accounts');
 
         activate();
+        $scope.onFileSelect = function (file) {
+            Upload.upload({
+                url: CONFIG.api + '/v1/me/avatar',
+                data: { avatar: file }
+            }).then(function (resp) {
+                $scope.avatarUrl = CONFIG.api + "/v1/user/avatar/" + resp.data;
+                $rootScope.$emit('avatarUpdated', resp.data);
+            });
+        };
         function activate() {
             userService.loadUser().then(function(user){    
                 $scope.user = user;
+                $scope.avatarUrl = CONFIG.api + "/v1/user/avatar/" + user.avatarId;
                 return permissionService.isAdmin();
             })
             .then(function(isAdmin){
