@@ -14,25 +14,34 @@
     border-color: @main-blue-color;
 
     .navbar-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 80px;
+      width: 16.66666667%;
       overflow: hidden;
       position: relative;
       float: left;
+      @media(max-width: @screen-sm) {
+        width: 50%;
+      }
       > a > .logo-img {
+        width: 70px;
         position: relative;
-        top: -50px;
-        margin-left: 60px;
+        //padding-top: 5px;
+        margin-left: ~"calc(50% - 55px)";
         @media(max-width: @screen-sm) {
-          top: -10px;
-          height: 100px;
-          margin-left: 30px;
+          //top: 10px;
+          width: 60px;
+          margin-left: 40px;
+          //padding-top: 10px;
         }
         @media(max-width: 410px) {
           margin-left: 10px;
         }
       }
       .navbar-toggle {
-        margin-top: 20px;
+        //margin-top: 20px;
         margin-left: 10px;
       }
 
