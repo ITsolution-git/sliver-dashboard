@@ -25,10 +25,11 @@
 
             checkValidity: checkValidity,
             notifications: [],
-
+            defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
             filterActionItemsByMonth: filterActionItemsByMonth,
             defaultActionItemsAdded: false,
             quaterActionsChanged :[false, false, false, false],
+            getStrategyName: getStrategyName,
             qStgChanged: [false,false,false,false]  //Quater Strategy changed
         });
 
@@ -403,6 +404,11 @@
 
         $scope.checkChanges = function (nthQut){
             $scope.quaterActionsChanged[nthQut] = true;
+        }
+        function getStrategyName(id) {
+            var obj = _.find($scope.defaultStrategies, { id: id });
+            if (obj) return obj.name;
+            else return ''
         }
     }
 }());
