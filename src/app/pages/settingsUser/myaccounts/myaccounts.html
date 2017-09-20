@@ -5,6 +5,17 @@
 
     <div class="panel panel-default p-es-10">
         <h3> Basic </h3>
+        <div style="display:flex; justify-content: middle; flex-direction: column; align-items: center;">
+            <div style="margin:20px">
+                <img ng-if="!user.avatarId" ng-src="{{'images/default.jpg'}}" class="img-circle" style="width:200px; height:200px;" alt="">
+                <img ng-if="user.avatarId" ng-src="{{avatarUrl}}" class="img-circle" style="width:200px; height:200px;" alt="">
+
+            </div>
+            <div style="margin:20px">
+                <span class="btn btn-primary" ngf-select="onFileSelect($file)" 
+                ngf-pattern="'image/*'" ngf-max-size="5MB" ngf-accept="'image/*'">Upload</span>
+            </div>
+        </div>
         <div>
             <form layout="row" layout-wrap layout-align="center center" name="form">
                 <md-input-container  flex="100">
