@@ -16,7 +16,7 @@
 		<!-- ACTION CARD -->
 		<md-card flex=33>
 			<md-card-content layout="row">
-				<section flex=50 layout-margin  class="inline-flx" >
+				<section flex=50 layout-margin  class="m-r-es-20 inline-flx" >
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
 					    max="dashData.quaterTotalActions"
@@ -56,7 +56,7 @@
 		<!-- ACTION CARD -->
 		<md-card flex=33>
 			<md-card-content layout="row" >
-				<section flex=50 layout-margin   class="inline-flx" >
+				<section flex=50 layout-margin   class="m-r-es-20 inline-flx" >
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
 					    max="100"
@@ -82,10 +82,13 @@
 
 				</section>
 				<section flex=50 layout="column" layout-align="center center">
+					<p>
 						<span  class="md-headline text-color-middle">Close Sales</span>
-						<span class="gra-text">
+						<br/>
+						<small>
 							You have {{dashData.daysLeft}} days to reach your Q{{currentQuater.nth}} goal.
-						</span>
+						</small>
+					</p>
 
 					<md-button class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
 				</section>
@@ -95,7 +98,7 @@
 		<!-- ACTION CARD -->
 		<md-card flex=33>
 			<md-card-content layout="row">
-				<section flex=50 layout-margin  class="inline-flx">
+				<section flex=50 layout-margin  class="m-r-es-20 inline-flx">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
 					    max="dashData.daysPassed"
