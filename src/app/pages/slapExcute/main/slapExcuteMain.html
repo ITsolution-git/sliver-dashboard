@@ -14,9 +14,9 @@
 
 	<section  flex=100 layout="row">
 		<!-- ACTION CARD -->
-		<md-card flex=33>
+		<md-card layout="row" flex=33>
 			<md-card-content layout="row">
-				<section flex=50 layout-margin  class="m-r-es-20 inline-flx" >
+				<section flex=50 layout-margin  class="m-r-es-20" >
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
 					    max="dashData.quaterTotalActions"
@@ -54,9 +54,9 @@
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
-		<md-card flex=33>
+		<md-card layout="row" flex=33>
 			<md-card-content layout="row" >
-				<section flex=50 layout-margin   class="m-r-es-20 inline-flx" >
+				<section flex=50 layout-margin   class="m-r-es-20" >
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
 					    max="100"
@@ -96,9 +96,9 @@
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
-		<md-card flex=33>
+		<md-card layout="row" flex=33>
 			<md-card-content layout="row">
-				<section flex=50 layout-margin  class="m-r-es-20 inline-flx">
+				<section flex=50 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress
 					    max="dashData.daysPassed"
@@ -241,11 +241,11 @@
 
 	<section flex=100 layout="row">
 		<!-- ACTION CARD -->
-		<md-card flex=50>
+		<md-card layout="row" flex=50>
 			<md-card-content layout="row">
-				<section flex=30 layout-margin  class="m-r-es-20">
-					<section class="progress-container" layout="row" layout-align="center center">
-						<round-progress
+				<section flex=30 layout-margin class="m-r-es-20">
+					<section  class="progress-container" layout="row" layout-align="center center">
+						<round-progress 
 					    max="dashData.totalQuaterRevenue"
 					    current="dashData.closedQuaterRevenue"
 					    color="{{colorSales}}"
@@ -283,7 +283,7 @@
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
-		<md-card flex=50>
+		<md-card layout="row" flex=50>
 			<md-card-content layout="row">
 				<section flex=30 layout-margin  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
