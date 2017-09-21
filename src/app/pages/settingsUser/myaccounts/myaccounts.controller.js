@@ -8,12 +8,14 @@
     /* @ngInject */
     function MyaccountsController($scope, $rootScope, pageService, productStorage, $state, userService, $auth, toaster, permissionService, Upload, CONFIG) {
         $scope.renewAccount = renewAccount;
+        $scope.Upload = Upload;
         $scope.user = {};
         $scope.saveBasic = saveBasic;
         $scope.changePassword = changePassword;
         $scope.changeCreditCard = changeCreditCard;
         $scope.getCreditCard = getCreditCard;
         $scope.stateData = $state.current.data;
+        $scope.downloadFinished = true;
         pageService
             .reset()
             .setShowBC(false)
@@ -22,14 +24,21 @@
 
         activate();
         $scope.onFileSelect = function (file) {
-            Upload.upload({
+            $scope.downloadFinished = false;
+            $scope.Upload.upload({
                 url: CONFIG.api + '/v1/me/avatar',
                 data: { avatar: file }
             }).then(function (resp) {
                 $scope.avatarUrl = CONFIG.api + "/v1/user/avatar/" + resp.data;
                 $scope.user.avatarId = resp.data;
                 $rootScope.$emit('avatarUpdated', resp.data);
-            });
+                $scope.downloadFinished = true;
+                },  function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                });
         };
         function activate() {
             userService.loadUser().then(function(user){    
