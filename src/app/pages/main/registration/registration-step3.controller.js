@@ -6,7 +6,7 @@
         .controller('RegistrationStep3Controller', RegistrationStep3Controller);
 
     /* @ngInject */
-    function RegistrationStep3Controller($state,productStorage,toaster,$auth,couponService, pageService, userService) {
+    function RegistrationStep3Controller($state, $window ,productStorage,toaster,$auth,couponService, pageService, userService) {
         pageService.reset().setPageTitle(' Step3').addCrumb({name: 'Step3', path: 'signup/step3'});
         if(!productStorage.getPlan()) {
             $state.go('step1');
@@ -26,6 +26,7 @@
             vm.isRenew = true;
             vm.user = productStorage.getUser();
             vm.user.planId = vm.plan._id;
+            vm.user.check = true;
             vm.user.planDate = new Date();
             vm.user.buildId = vm.build ? vm.build._id : null;
             vm.user.build_date = vm.build ? new Date() : null;
@@ -60,12 +61,12 @@
             vm.user.renewFrom = productStorage.getRenewFrom();
             $auth.signup(vm.user)
             .then(
-                function (response) {
+                function (response) {                        
                         if (response.data._id) {
                             vm.user.auth_key = response.data._id;
                             // toaster.pop({type: 'success', body: "Confirmation email was sent! Run to your inbox to check it out"});
                             toaster.pop({type: 'success', body: "Registration completed successfully, Welcome!"});
-                            productStorage.resetStorage();
+                            //productStorage.resetStorage();
                             $auth.login({
                                 email: vm.user.email,
                                 password: vm.user.password
@@ -78,6 +79,14 @@
 
                                 }
                             )
+                            
+                        }
+                        
+                        if (response.data.token) {
+                            $auth.setToken(response.data.token);
+                            $state.go('mindset.privilegeAndResponsibility');
+                            document.location.reload(true);
+                            return;
                         }
                         // $scope.errors = response.data.errors;
                     }
