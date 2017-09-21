@@ -13,7 +13,7 @@
             sendData: sendData,
             saved: false
         });
-        $scope.videoUrl = "https://drive.google.com/file/d/0B2xNIgL_YUO9VzZudXR4R05BeWs/view";
+        $scope.videoUrl = "https://drive.google.com/file/d/0B2xNIgL_YUO9VzZudXR4R05BeWs/preview";
         
         pageService
             .reset()
