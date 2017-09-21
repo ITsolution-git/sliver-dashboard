@@ -26,6 +26,7 @@
             vm.isRenew = true;
             vm.user = productStorage.getUser();
             vm.user.planId = vm.plan._id;
+            vm.user.check = true;
             vm.user.planDate = new Date();
             vm.user.buildId = vm.build ? vm.build._id : null;
             vm.user.build_date = vm.build ? new Date() : null;
