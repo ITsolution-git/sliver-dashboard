@@ -1,7 +1,3 @@
-
-
-
-
 <div class="slap-page revenue-page personal-expanses" scroll-top>
 
     <div class="panel panel-default">
@@ -47,18 +43,15 @@
                 <div class="revenue-row" ng-repeat="revenue in data.revenues | filter:{deleted: false}">
                     <div class="revenue-name-container" >
                         
-                        <div class="input-box revenue-st" style="width: calc(100% - 20px); display: inline-block">
+                        <div class="input-box" style="width: calc(100% - 20px); display: inline-block">
 
-                            <md-input-container class="md-block revenue-st" flex-gt-sm>
-                                <label>Add  Revenue</label>
-                                <input name="name" ng-model="revenue.name"
-                                       type="text"
-                                       class="monthly-cost outline-0"
-                                       ng-keydown="$event.keyCode === 13 && checkRevenueCompleted(revenue, $event, $index)"
-                                       ng-blur="checkRevenueCompleted(revenue, $event, $index)"
-                                       id="revenue-{{$index}}"
-                                       ng-class="{'active': revenue.name}" required>
-                            </md-input-container>
+                            <input ng-model="revenue.name" type="text"
+                            class="monthly-cost outline-0"
+                            ng-keydown="$event.keyCode === 13 && checkRevenueCompleted(revenue, $event, $index)"
+                            ng-blur="checkRevenueCompleted(revenue, $event, $index)"
+                            id="revenue-{{$index}}"
+                            ng-class="{'active': revenue.name}" required
+                            placeholder="Add  Revenue">
 
                         <span tabIndex="-1" class="delete-btn outline-0 pull-right" ng-click="deleteRevenue(revenue)" style="padding-top: 20px">
                             <i class="fa fa-trash" aria-hidden="true" ></i>
