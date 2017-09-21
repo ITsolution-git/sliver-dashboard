@@ -83,7 +83,7 @@
                         
                         if (response.data.token) {
                             $auth.setToken(response.data.token);
-                            $state.go('home');
+                            $state.go('mindset.privilegeAndResponsibility');
                             document.location.reload(true);
                             return;
                         }
