@@ -94,9 +94,9 @@
                 toaster.pop({type: 'success', body: err.data.message ? err.data.message : 'Error.'});
             });     
         }
-
+        
         function renewAccount() {
-            productStorage.resetStorage();
+            //productStorage.resetStorage();
             productStorage.setRenew();
             
             
@@ -107,6 +107,7 @@
                 name: $scope.user.name,
                 phone: $scope.user.phone,
                 role: 4,
+                planId: $scope.user.planId,
                 status: 'active'
             };
             productStorage.setRenewFrom($scope.user._id);

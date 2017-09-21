@@ -5,7 +5,7 @@
         .module('app.pages.mySlap')
         .controller('mySlapController', mySlapController);
 
-    function mySlapController($scope, $rootScope, pageService,stepService, $state, userService, idealclientService, actionplanService, activityService) {
+    function mySlapController($scope, $auth, $window ,$rootScope, pageService,stepService, $state, userService, idealclientService, actionplanService, activityService) {
 
         angular.extend($scope,{
             model: {
@@ -172,32 +172,31 @@
             window.print();
         };
 
-        var vm = this;
+        //var vm = this;
         
             $rootScope.$on('SlapAccounUpdated', function (event, user) {
-                vm.user = user;
+                $scope.user = user;
             });
 
             userService.getUser().then(function (user) {
-                    vm.user = user;
+                    $scope.user = user;
             });
 
-            this.logout = function () {
+            $scope.logout = function () {
                 $auth.logout();
                 $window.location.reload();
                 $state.go('login');
             }
             
-            this.selectSLAPyear = function(user) {
-                if(user._id == vm.user._id)
+            $scope.selectSLAPyear = function(user) {
+                if(user._id == $scope.user._id)
                     return;
-
+                    
                 userService.selectSLAPyear(user._id)
                 .then(function(req){
                     $auth.setToken(req.data.token);
                     $window.location.reload();
                     $state.go('home');
-
                 })
 
             }
