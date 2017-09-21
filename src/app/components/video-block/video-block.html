@@ -16,7 +16,7 @@
         
         <!--<iframe ng-if="$ctrl.video" class="col-xs-8 col-xs-offset-2 video-panel-small" ng-src={{trustUrl($ctrl.video)}} width="640" height="480" frameBorder="0"></iframe>-->
 
-        <video ng-if="!$ctrl.video" controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="../images/carr.png">
+        <video ng-if="$ctrl.video" controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="../images/carr.png">
             <source ng-src="{{trustUrl($ctrl.video)}}" type="video/mp4">
         </video>
         
