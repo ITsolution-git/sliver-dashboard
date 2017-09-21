@@ -14,7 +14,11 @@
             <source ng-src="{{$ctrl.videoSrc ?  $ctrl.videoSrc: 'http://media.w3.org/2016/01/Emmy-Award.mp4'}}" type="video/mp4">
         </video>
         
-        <iframe ng-if="$ctrl.video" class="col-xs-8 col-xs-offset-2 video-panel-small" ng-src={{trustUrl($ctrl.video)}} width="640" height="480" frameBorder="0"></iframe>
+        <!--<iframe ng-if="$ctrl.video" class="col-xs-8 col-xs-offset-2 video-panel-small" ng-src={{trustUrl($ctrl.video)}} width="640" height="480" frameBorder="0"></iframe>-->
+
+        <video ng-if="$ctrl.video" controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="../images/carr.png">
+            <source ng-src="{{trustUrl($ctrl.video)}}" type="video/mp4">
+        </video>
         
     </div>
 </div>
