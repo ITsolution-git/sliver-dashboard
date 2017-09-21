@@ -20,7 +20,7 @@
                 message: $scope.message
             };
             userService.getHelp(sendObject).then(function (res) {
-                toaster.pop({ type: 'success', body: "Email Sent successful!" });
+                toaster.pop({ type: 'success', body: 'Email Sent!  You will hear from a SLAPmanager shortly!', timeout: 2000});
             });
         }
     }

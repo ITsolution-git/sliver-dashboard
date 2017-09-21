@@ -50,7 +50,7 @@
         function createOrSave(event) {
             
             update().then(function(){
-                toaster.pop({type: 'success', body: 'User saved.'});
+                toaster.pop({type: 'success', body: 'User Saved!', timeout: 1000});
                 $state.go('users.list');
             }).catch(function(err){
                 toaster.pop({type: 'error', body: err.data.message});

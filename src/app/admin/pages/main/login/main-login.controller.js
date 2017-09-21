@@ -20,7 +20,7 @@
             $auth.login(vm.login)
                 .then(
                     function(response) {
-                        toaster.pop({type: 'success', body: 'Welcome!'});
+                        toaster.pop({type: 'success', body: 'Welcome!', timeout: 1000});
 
                         // update user data
                         userService.loadUser(true)
