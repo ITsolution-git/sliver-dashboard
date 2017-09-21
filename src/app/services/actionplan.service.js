@@ -233,6 +233,8 @@
                 events: [
                     {name:'New Year\'s Day'},
                     {name:'King Day'},
+                    {name:'Martin Luther King Day (US)'},
+                    {name:'International Party at Work Day'},
                 ],
                 actionItems: [
 
@@ -242,6 +244,7 @@
                 events: [
                     {name:'Valentine\'s Day'},
                     {name:'Family Day in Canada'},
+                    {name:'Black History Month'},
                 ],
                 actionItems: [
                     
@@ -249,7 +252,8 @@
             },
             {
                 events: [
-                    {name:'Spring Break'}
+                    {name:'International Women\'s Day'},
+                    {name:'Earth Hour'},
                 ],
                 actionItems: [
                     
@@ -257,12 +261,16 @@
             },
             {
                 events: [
-                    {name:'US tax deadline'}
+                    {name:'April Fool\'s!'},
+                    {name:'Season\'s Change'},
+                    {name:'Tax Day  (US)'},
+                    {name:'Easter & Passover'},
                 ]
             },
             {
                 events: [
-                    {name:'May long weekend'},
+                    {name:'Mother\'s Day'},
+                    {name:'Ramadan'},
                 ],
                 actionItems: [
                     
@@ -270,8 +278,7 @@
             },
             {
                 events: [
-                    {name:'Father\'s day'},
-                    {name:'School Break'},
+                    {name:'Father\'s day'}
                 ],
                 actionItems: [
                     
@@ -279,7 +286,9 @@
             },
             {
                 events: [
-                    {name:'4th of July in US'}
+                    {name:'International Day of Friendship'},
+                    {name:'Independence Day (US)'}, 
+                    {name:'Canada Day (Canada)'},
                 ],
                 actionItems: [
                     
@@ -287,7 +296,7 @@
             },
             {
                 events: [
-                    {name:'School Starts'}
+                    {name:'Vacation season'}
                 ],
                 actionItems: [
                     
@@ -295,7 +304,9 @@
             },
             {
                 events: [
-                    {name:'Holidays'}
+                    {name:'Season\'s Change'},
+                    {name:'Back to School'},
+                    {name:'Rosh Hashanah and Yom Kippur'},
                 ],
                 actionItems: [
                     
@@ -303,12 +314,17 @@
             },
             {
                 events: [
-                    {name:'Halloween'}
+                    {name:'Breast Cancer Awareness Month'},
+                    {name:'Thanksgiving (Canada)'},
+                    {name:'Diwali'},
+                    {name:'Halloween'},
+                    {name:'Sukkot'},
                 ]
             },
             {
                 events: [
-                    {name:'US thanksgiving'}
+                    {name:'Thanksgiving (US)'},
+                    {name:'Remembrance Day (Canada)'},
                 ],
                 actionItems: [
                     
@@ -316,7 +332,9 @@
             },
             {
                 events: [
-                    {name:'Christmas'}
+                    {name:'Christmas'},
+                    {name:'Hanukkah'},
+                    {name:'Kwanzaa'},
                 ],
                 actionItems: [
                     
