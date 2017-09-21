@@ -110,8 +110,9 @@
 		position: relative;
 		.progress-text {
 			text-align: center;
-			position: absolute;
-			padding: 15px;
+			position: relative;
+			//padding: 15px;
+			margin-right: ~"calc(50% - 33px)";
 			p {
 				font-size: 1.3em;
 				font-weight: 200;
@@ -266,4 +267,11 @@ md-headline {
 	font-weight: 300;
 	line-height: 1;
 	color: #33444d;
+}
+
+.round-progress-wrapper {
+	position: static !important;
+}
+.inline-flx {
+	display: inline-flex;
 }
