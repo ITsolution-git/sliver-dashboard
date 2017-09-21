@@ -23,7 +23,7 @@
             .setPageTitle('My accounts');
 
         activate();
-        $scope.onFileSelect = function (file) {
+        $scope.onFileSelect = function (file) {     
             $scope.downloadFinished = false;
             $scope.Upload.upload({
                 url: CONFIG.api + '/v1/me/avatar',
@@ -33,9 +33,9 @@
                 $scope.user.avatarId = resp.data;
                 $rootScope.$emit('avatarUpdated', resp.data);
                 $scope.downloadFinished = true;
-                },  function (response) {
-                    if (response.status > 0)
-                        $scope.errorMsg = response.status + ': ' + response.data;
+            },  function (response) {
+                $scope.downloadFinished = true;
+                toaster.pop({ type: 'error', body: 'Size of the picture cannot exceed 5M.' });
                 }, function (evt) {
                     file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
                 });
