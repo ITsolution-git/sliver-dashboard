@@ -69,7 +69,7 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'Your Business With / Without A SLAP',
+                name: 'Plan and Action',
                 sref: 'mindset.yourBusiness',
                 model: {
                     showInfoBlock: false,
@@ -141,7 +141,7 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'Commit To Your SLAPStatement',
+                name: 'Review SLAPstatement',
                 sref: 'statement.commitToYour',
                 model: {
                     showVideoBlock: false,
@@ -179,7 +179,7 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'Who Are Your Ideal Clients?',
+                name: 'Client Survey',
                 sref: 'idealClient.whoAreYouIdealClient',
                 model: {
                     showVideoBlock: false,
@@ -191,7 +191,7 @@
                     }
                 }
             }, {
-                name: 'Define Your Ideal Client',
+                name: 'Your Ideal Client',
                 sref: 'idealClient.defineYourIdealClient',
                 model: {
                     showVideoBlock: false,
@@ -231,7 +231,7 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'SLAPstatement Re-Commitment',
+                name: 'Review SLAPstatement',
                 sref: 'idealClient.commitYourIdealClient',
                 model: {
                     showVideoBlock: false,
@@ -286,7 +286,7 @@
                     }
                 }
             }, {
-                name: 'Total Fixed Expenses',
+                name: 'Your Breakeven Number',
                 sref: 'yearGoal.totalFixedExpensesRevenue',
                 model: {
                     showVideoBlock: false,
@@ -318,7 +318,7 @@
                     }
                 }
             }, {
-                name: 'Variable Business Expenses',
+                name: 'Variable Expenses',
                 sref: 'yearGoal.variableBusinessExpenses',
                 model: {
                     showVideoBlock: false,
@@ -330,7 +330,7 @@
                     }
                 }
             }, {
-                name: 'Profit Margin',
+                name: 'Your Profit Margin',
                 sref: 'yearGoal.profitMargin',
                 model: {
                     showVideoBlock: false,
@@ -366,7 +366,7 @@
                     }
                 }
             }, {
-                name: 'Adjust your 1 Year Goal',
+                name: 'Review 1 Year Goal"',
                 sref: 'yearGoal.adjustYourYearGoal',
                 model: {
                     showVideoBlock: false,
@@ -385,7 +385,7 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'Commit To Your 1 Year Goal',
+                name: 'Your 1 Year Goal',
                 sref: 'yearGoal.commitYourYearGoal',
                 model: {
                     showVideoBlock: false,
@@ -427,7 +427,7 @@
                     } 
                 }
             }, {
-                name: 'Double Check Start Date',
+                name: 'Review Start Date',
                 sref: 'actionPlan.doubleCheckStartDate',
                 model: {
                     showVideoBlock: false,
@@ -436,7 +436,7 @@
                     data: {}
                 }
             }, {
-                name: 'What\'s Happening in Q1-Q4',
+                name: 'You and Your Ideal Client',
                 sref: 'actionPlan.whatsHappening',
                 model: {
                     showVideoBlock: false,
@@ -462,7 +462,7 @@
                     ]
                 }
             }, {
-                name: 'Rate the 10 Connecting Strategies',
+                name: 'Connecting Strategies',
                 sref: 'actionPlan.rateConnectingStrategies',
                 model: {
                     showVideoBlock: false,
@@ -471,7 +471,7 @@
                     data: []
                 }
             }, {
-                name: 'Connecting Strategy Strategizing',
+                name: 'Quarterly Strategy',
                 sref: 'actionPlan.connectingStrategyStrategizing',
                 model: {
                     showVideoBlock: false,
@@ -504,7 +504,7 @@
                     ]
                 }
             }, {
-                name: 'Double Check 1 Year Goal',
+                name: 'Your 1 Year Goal',
                 sref: 'actionPlan.doubleCheckYearGoal',
                 model: {
                     showVideoBlock: false,
@@ -520,7 +520,7 @@
                     showStaticTextBlock: false
                 }
             }, {
-                name: 'Commit To Your Action Plan',
+                name: 'Review Action Plan',
                 sref: 'actionPlan.commitToYourActionPlan',
                 model: {
                     showVideoBlock: false,

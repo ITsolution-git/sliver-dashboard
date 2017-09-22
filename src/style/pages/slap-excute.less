@@ -110,11 +110,28 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
+		.progress-text-result {
+			text-align: center;
+			position: relative;
+			//padding: 15px;
+			margin-right: ~"calc(50% - 55px)";
+			p {
+				font-size: 1.3em;
+				font-weight: 200;
+			}
+			small {
+				text-transform: uppercase;
+				font-size: 0.6em;
+				display: flex;
+				text-align: center;
+			}
+		}
+
 		.progress-text {
 			text-align: center;
 			position: relative;
 			//padding: 15px;
-			margin-right: ~"calc(50% - 33px)";
+			margin-right: ~"calc(50% - 40px)";
 			p {
 				font-size: 1.3em;
 				font-weight: 200;
@@ -244,10 +261,6 @@ md-select-menu md-content {
 	min-height: 300px;
 }
 
-md-select-menu {
-	min-height: 300px;
-}
-
 
 md-select span {
 	color: #373c37 !important;
@@ -276,4 +289,12 @@ md-headline {
 }
 .inline-flx {
 	display: inline-flex;
+}
+
+.quarter-menu{
+	min-height: 300px;
+}
+
+.quarter-menu > md-select-menu{
+	min-height: 300px;
 }

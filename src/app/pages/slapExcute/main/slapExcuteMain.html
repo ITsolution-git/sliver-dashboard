@@ -190,7 +190,7 @@
 
 	<section layout="column" layout="column" ng-if="mainView=='list'" class="m-t-es-50">
 		<md-toolbar layout="row" layout-align="start center ">
-			<md-select ng-model="filter.period" flex="50" class="select-menu">
+			<md-select md-container-class="quarter-menu" ng-model="filter.period" flex="50" class="select-menu">
 				<md-option ng-value="'week'">This Week</md-option>
 				<md-option ng-value="'month'">This Month</md-option>
 				<md-option ng-repeat="quaterID in [0,1,2,3]" ng-value="'quater'+quaterID" ng-selected="$first">{{quaterID + 1 == currentQuater.nth ? 'This Quarter' : 'Q' + (quaterID+1)}}</md-option>
@@ -249,7 +249,7 @@
 					    max="dashData.totalQuaterRevenue"
 					    current="dashData.closedQuaterRevenue"
 					    color="{{colorSales}}"
-					    bgcolor="{{progress.bgcolor}}"
+					    bgcolor="{{progress.bgcolor}}" 
 					    radius="{{progress.radius}}"
 					    stroke="{{progress.stroke}}"
 					    semi="false"
@@ -260,7 +260,7 @@
 					    animation="{{progress.animation}}"
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
-					    <section class="progress-text">
+					    <section class="progress-text-result">
 					    	<p class="text-color-strong">{{ dashData.closedQuaterRevenue | currency}}</p>
 					    	<small>Out of {{dashData.totalQuaterRevenue | currency}} Q{{currentQuater.nth}} Revenue goal</small>
 					    </section>
@@ -302,7 +302,7 @@
 					    animation="{{progress.animation}}"
 						animation-delay="{{progress.delay}}">
 					    </round-progress>
-						<section class="progress-text">
+						<section class="progress-text-result">
 					    	<p class="text-color-strong">{{ dashData.closedYearRevenue | currency}}</p>
                             <small>Out of {{ dashData.totalYearRevenue | currency }} annual revenue goal</small>
 					    </section>

@@ -24,7 +24,7 @@
             userService.reset($scope.email)
                 .then(
                     function (response) {
-                        toaster.pop({type: 'success', body: response.data.message ? response.data.message : "Confirm email was sent!"});
+                        toaster.pop({type: 'success', body: response.data.message ? response.data.message : "Check your email to set up your new Password.", timeout: 3000});
                         $state.go('login');
                     }
                 )
