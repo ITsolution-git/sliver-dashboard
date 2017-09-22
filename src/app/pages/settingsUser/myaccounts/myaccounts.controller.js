@@ -32,7 +32,9 @@
                 $scope.avatarUrl = CONFIG.api + "/v1/user/avatar/" + resp.data;
                 $scope.user.avatarId = resp.data;
                 $rootScope.$emit('avatarUpdated', resp.data);
-                $scope.downloadFinished = true;
+                $('#avatar').on('load', function(){
+                    $scope.downloadFinished = true;
+                });
             },  function (response) {
                 $scope.downloadFinished = true;
                 toaster.pop({ type: 'error', body: 'Size of the picture cannot exceed 5M.' });
