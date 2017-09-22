@@ -190,7 +190,7 @@
 
 	<section layout="column" layout="column" ng-if="mainView=='list'" class="m-t-es-50">
 		<md-toolbar layout="row" layout-align="start center ">
-			<md-select ng-model="filter.period" flex="50" class="select-menu">
+			<md-select md-container-class="quarter-menu" ng-model="filter.period" flex="50" class="select-menu">
 				<md-option ng-value="'week'">This Week</md-option>
 				<md-option ng-value="'month'">This Month</md-option>
 				<md-option ng-repeat="quaterID in [0,1,2,3]" ng-value="'quater'+quaterID" ng-selected="$first">{{quaterID + 1 == currentQuater.nth ? 'This Quarter' : 'Q' + (quaterID+1)}}</md-option>
