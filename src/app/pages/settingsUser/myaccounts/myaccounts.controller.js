@@ -33,7 +33,10 @@
                 $scope.user.avatarId = resp.data;
                 $rootScope.$emit('avatarUpdated', resp.data);
                 $('#avatar').on('load', function(){
+                    console.log('finish');
+                    console.log($scope.downloadFinished);
                     $scope.downloadFinished = true;
+                    console.log($scope.downloadFinished);
                 });
             },  function (response) {
                 $scope.downloadFinished = true;
