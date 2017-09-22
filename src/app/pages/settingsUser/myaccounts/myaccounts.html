@@ -4,25 +4,7 @@
     <h1> My Accounts </h1>
 
     <div class="panel panel-default p-es-10">
-        <h3> Basic </h3>
-        <div style="display:flex; justify-content: middle; flex-direction: column; align-items: center;">
-            <div style="margin:20px">
-                <img ng-if="!user.avatarId" ng-src="{{'images/default.jpg'}}" class="img-circle" style="width:200px; height:200px;" alt="">
-                <img ng-if="user.avatarId" ng-src="{{avatarUrl}}" class="img-circle" style="width:200px; height:200px;" alt="">
-            </div>
-            <div ng-if="downloadFinished" style="margin:20px">
-                <span class="btn btn-primary" ngf-select="onFileSelect($file)" 
-                ngf-pattern="'image/*'" ngf-max-size="5MB"  ng-model="picFile" ngf-accept="'image/*'">Upload</span>
-            </div>
-            <div ng-if="downloadFinished">
-                 Size of the picture cannot exceed 5M.
-            </div>
-            <div style="width:30%"  ng-if="!downloadFinished" class="progress">
-                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
-                    style="width: 100%">
-                </div>
-            </div>
-        </div>
+        <h3> Basic </h3>       
         <div>
             <form layout="row" layout-wrap layout-align="center center" name="form">
                 <md-input-container  flex="100">
@@ -68,7 +50,28 @@
                         <ng-message when="required">Phone Number is required.</ng-message>
                     </div>
                 </md-input-container>
+    
+                <section layout="column" layout-align="start" flex="100">
+                    <div class="img-block">
+                        <img class="profile-pic" ng-if="!user.avatarId" ng-src="{{'images/default.jpg'}}"  alt="">
+                        <img class="profile-pic" ng-if="user.avatarId" ng-src="{{avatarUrl}}"  alt="">
+                        <div ng-if="downloadFinished" class="btn-block">
+                            <span class="btn btn-primary change-picture-btn" ngf-select="onFileSelect($file)" ngf-pattern="'image/*'" ngf-max-size="5MB" ng-model="picFile"
+                                ngf-accept="'image/*'">Change Image</span>
+                        </div>
+                        <div ng-if="!downloadFinished" class="progress width-150">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+                                style="width: 100%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-text-warning" ng-if="downloadFinished">
+                        Size of the picture cannot exceed 5M.
+                    </div>
+                   
+                    
 
+                </section>
                 <section layout="row" layout-align="end center" flex="100" >
                     
                     <button class="btn btn-primary pull-right" ng-click="saveBasic()"  ng-disabled="form.$invalid">
