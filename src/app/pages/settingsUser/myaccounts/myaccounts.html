@@ -54,7 +54,7 @@
                 <section layout="column" layout-align="start" flex="100">
                     <div class="img-block">
                         <img class="profile-pic" ng-if="!user.avatarId" ng-src="{{'images/default.jpg'}}"  alt="">
-                        <img class="profile-pic" ng-if="user.avatarId" ng-src="{{avatarUrl}}"  alt="">
+                        <img class="profile-pic" id="avatar" ng-if="user.avatarId" ng-src="{{avatarUrl}}"  alt="">
                         <div ng-if="downloadFinished" class="btn-block">
                             <span class="btn btn-primary change-picture-btn" ngf-select="onFileSelect($file)" ngf-pattern="'image/*'" ngf-max-size="5MB" ng-model="picFile"
                                 ngf-accept="'image/*'">Change Image</span>
