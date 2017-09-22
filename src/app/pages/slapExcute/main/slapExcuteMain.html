@@ -16,7 +16,7 @@
 		<!-- ACTION CARD -->
 		<md-card flex=33>
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=50 layout-margin  class="m-r-es-20" >
+				<section flex=50  class="m-r-es-20" >
 					<section  class="progress-container" layout="row" layout-align="center center">
 						<round-progress 
 					    max="dashData.quaterTotalActions"
@@ -56,7 +56,7 @@
 		<!-- ACTION CARD -->
 		<md-card flex=33>
 			<md-card-content style="width: 100%; height: 100%;" layout="row" >
-				<section flex=50 layout-margin   class="m-r-es-20" >
+				<section flex=50 class="m-r-es-20" >
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress style="width: 100%; height: 100%;"
 					    max="100"
@@ -82,23 +82,20 @@
 
 				</section>
 				<section flex=50 layout="column" layout-align="center center">
-					<p>
 						<span  class="md-headline text-color-middle">Close Sales</span>
-						<br/>
 						<small>
 							You have {{dashData.daysLeft}} days to reach your Q{{currentQuater.nth}} goal.
 						</small>
-					</p>
 
 					<md-button class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
 				</section>
-			</md-card-content style="width: 100%; height: 100%;">
+			</md-card-content>
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
 		<md-card flex=33>
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=50 layout-margin  class="m-r-es-20">
+				<section flex=50  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress style="width: 100%; height: 100%;"
 					    max="dashData.daysPassed"
@@ -243,7 +240,7 @@
 		<!-- ACTION CARD -->
 		<md-card flex=50>
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=30 layout-margin class="m-r-es-20">
+				<section flex=30 class="m-r-es-20">
 					<section  class="progress-container" layout="row" layout-align="center center">
 						<round-progress  style="width: 100%; height: 100%;"
 					    max="dashData.totalQuaterRevenue"
@@ -269,13 +266,11 @@
 
 				</section>
 				<section flex=70 layout="column" layout-align="center center">
-					<p>
 						<span  class="md-headline text-color-middle">Your Q{{currentQuater.nth}} Goal Progress</span>
 						<br/>
 						<small>
 							You need to sell {{ dashData.totalQuaterRevenue | currency}} to reach your Q{{currentQuater.nth}} revenue goal.
 						</small>
-					</p>
 
 					<md-button class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
 				</section>
@@ -285,7 +280,7 @@
 		<!-- ACTION CARD -->
 		<md-card flex=50>
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=30 layout-margin  class="m-r-es-20">
+				<section flex=30  class="m-r-es-20">
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress style="width: 100%; height: 100%;"
 					    max="dashData.totalYearRevenue"
@@ -310,13 +305,11 @@
 
 				</section>
 				<section flex=70 layout="column" layout-align="center center">
-					<p>
 						<span class="md-headline text-color-middle">Your Annual Goal Progress</span>
 						<br/>
 						<small>
 							You need to sell {{ dashData.totalYearRevenue | currency }} to reach your annual revenue goal.
 						</small>
-					</p>
 
 					<md-button class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales')">add sales</md-button>
 				</section>
