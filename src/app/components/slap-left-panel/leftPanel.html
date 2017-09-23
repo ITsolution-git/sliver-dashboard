@@ -8,14 +8,13 @@
                 ui-sref-active="{'left-panel-item-active' : 'mindset.*' }" data-toggle="collapse"
                 data-target="#asideMindset" check-aside-section="subList.slapMindset" check-section="checkMindset">
 
-                <div class="item-circle" ui-sref-active="{'item-circle-active' : 'mindset.*' }"
-                     ng-hide="checkMindset">
-                    <span></span>
+                <div class="item-circle-stub" ng-hide="checkMindset">
+                <!--<span>1</span>-->
                 </div>
 
                 <div class="item-circle item-circle-check" ng-show="checkMindset"
                      ui-sref-active="{'item-circle-active' : 'mindset.*' }">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
                 </div>
 
                 <span>SLAPmindset</span>
@@ -47,7 +46,7 @@
 
                 <div class="item-circle item-circle-check" ng-show="checkStatement"
                      ui-sref-active="{'item-circle-active' : 'statement.*' }">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
                 </div>
 
                 <span>SLAPStatement</span>
@@ -77,7 +76,7 @@
 
                 <div class="item-circle item-circle-check" ng-show="checkIdealClient"
                      ui-sref-active="{'item-circle-active' : 'idealClient.*' }">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
                 </div>
 
                 <span>ideal client</span>
@@ -107,10 +106,10 @@
 
                 <div class="item-circle item-circle-check" ng-show="checkYearGoal"
                      ui-sref-active="{'item-circle-active' : 'yearGoal.*' }">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
                 </div>
 
-                <span>Year goal</span>
+                <span>1 year goal</span>
             </li>
 
             <div class="enclosed-list collapse" id="asideYearGoal" ui-sref-active="{'in' : 'yearGoal.*' }">
@@ -137,7 +136,7 @@
 
                 <div class="item-circle item-circle-check" ng-show="checkActionPlan"
                      ui-sref-active="{'item-circle-active' : 'actionPlan.*' }">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
                 </div>
 
                 <span>action plan</span>
@@ -167,7 +166,7 @@
 
                 <div class="item-circle item-circle-check" ng-show="checkExecute"
                      ui-sref-active="{'item-circle-active' : 'execute.*' }">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-check fa-lg" aria-hidden="true"></i>
                 </div>
 
                 <span>execute</span>
