@@ -32,6 +32,10 @@
                 $scope.avatarUrl = CONFIG.api + "/v1/user/avatar/" + resp.data;
                 $scope.user.avatarId = resp.data;
                 $rootScope.$emit('avatarUpdated', resp.data);
+                $('#avatar').on('load', function () {
+                    $scope.downloadFinished = true;
+                    $scope.$applyAsync();
+                });
             },  function (response) {
                 $scope.downloadFinished = true;
                 toaster.pop({ type: 'error', body: 'Size of the picture cannot exceed 5M.' });
@@ -39,12 +43,7 @@
                     file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
                 });
         };
-        $('#avatar').on('load', function () {
-            console.log('finish');
-            console.log($scope.downloadFinished);
-            $scope.downloadFinished = true;
-            console.log($scope.downloadFinished);
-        });
+       
         function activate() {
             userService.loadUser().then(function(user){    
                 $scope.user = user;
