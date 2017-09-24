@@ -9,7 +9,7 @@
     function MainResetPasswordController($scope, $stateParams, $auth, $state, toaster, pageService, userService) {
 
         // --- vars ---
-
+        $scope.notifications = [];
         $scope.reset = {
             new_password: ''
         };
@@ -21,6 +21,16 @@
 
         // --- methods ---
 
+        function addNotification(notifications, newNotification) {
+            var existing = _.find(notifications, {name: newNotification.name});
+            if (_.isUndefined(existing)) {
+                notifications.push(newNotification);
+            } else {
+                existing.show = true;
+            }
+            
+        }
+
         $scope.submit = function () {
             if($scope.reset.new_password == ''){
                 $scope.errors = {'new_password':['New Password are empty!']};
@@ -30,7 +40,8 @@
                         $state.go('login');
                         toaster.pop({type: 'success', body: "Password has been saved!"});
                     }else{
-                        toaster.pop({type: 'error', body: "Server error!"});
+                        AddNotification($scope.notifications, {name: 'Server error!', type: 'error', message:'This is not working. Please email support@smallbizsilverlining.com for VIP support.', show: true});
+                        
                         $scope.errors = {};
                     }
                     $scope.errors.password = [response.data[0].error];
