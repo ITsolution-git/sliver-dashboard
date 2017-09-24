@@ -45,7 +45,7 @@
 
         vm.nextStep = function(e) {
             if(!productStorage.getPlan()) {
-                toaster.pop({type: 'error', body: 'Please select SLAP plan'});
+                toaster.pop({type: 'error', body: 'You cannot move forward until you select your monthly plan.', timeout: 2000});
                 e.preventDefault();
             }
 

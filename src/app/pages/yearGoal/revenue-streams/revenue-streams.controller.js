@@ -168,7 +168,7 @@
         function checkValidity(value, evt, currentIndex, revenueIndex) {
             if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
-                addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'Please provide valid Price.', show: true});
+                addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'You can only enter numbers less than 100 into this field.', show: true});
 
                 $scope.forward = false;
             } else {
@@ -191,7 +191,7 @@
             if ($scope.pageName == 'revenueStreams') {
                 if ($scope.data.revenues.length == 1) {
 
-                    addNotification($scope.notifications, {name: 'Revenue Length Invalid', type: 'error', message:'Please Fill at least 1 Revenue.', show: true});
+                    addNotification($scope.notifications, {name: 'Revenue Length Invalid', type: 'error', message:'You must create at least one Revenue Stream - but we recommend three to five!', show: true});
                     return false;
                 } else {
                     removeNotificaton($scope.notifications, 'Revenue Length Invalid');
@@ -260,7 +260,7 @@
                     totalBreakdown += +revenue.breakdown;
                 });
                 if (totalBreakdown != 100) {
-                    addNotification($scope.notifications, {name: 'Breakdown Invalid', type: 'error', message:'Total Breakdown should be exactly 100.', show: true});
+                    addNotification($scope.notifications, {name: 'Breakdown Invalid', type: 'error', message:'The total Revenue Breakdown of all of your Revenue Streams must equal exactly 100%.', show: true});
                     valid = false;
                 } else {
                     removeNotificaton($scope.notifications, 'Breakdown Invalid');
@@ -369,7 +369,7 @@
                     return elem.name;
                 })
                 if (!res || !notDeleted.length){
-                    addNotification($scope.notifications, { name: 'Revenue Length Invalid', type: 'error', message: 'Please Fill at least 1 Revenue.', show: true });
+                    addNotification($scope.notifications, { name: 'Revenue Length Invalid', type: 'error', message: 'You must create at least one Revenue Stream - but we recommend three to five!', show: true });
                     return false;
                 };
             }

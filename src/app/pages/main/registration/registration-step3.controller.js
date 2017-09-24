@@ -54,7 +54,7 @@
             event.preventDefault();
 
             if(!vm.isRenew && form.$invalid) {
-                toaster.pop({type: 'error', body: "Please check your details" });
+                toaster.pop({type: 'error', body: "You cannot finalize this process until all fields are completed.", timeout: 2000});
                 return;
             }
             vm.user.isRenew = vm.isRenew;
@@ -65,7 +65,7 @@
                         if (response.data._id) {
                             vm.user.auth_key = response.data._id;
                             // toaster.pop({type: 'success', body: "Confirmation email was sent! Run to your inbox to check it out"});
-                            toaster.pop({type: 'success', body: "Registration completed successfully, Welcome!"});
+                            toaster.pop({type: 'success', body: "Registration completed successfully, Welcome!", timeout: 1000});
                             //productStorage.resetStorage();
                             $auth.login({
                                 email: vm.user.email,

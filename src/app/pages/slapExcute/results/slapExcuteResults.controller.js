@@ -187,7 +187,7 @@
                             progress: $scope.formData.progress
                         }).then(function(item){
                             $scope.excuteItems.push(item.data);
-                            showToast('Added Successfully');
+                            showToast('Added!');
                         });
                     } else {
 
@@ -241,7 +241,7 @@
                 } else if ($scope.formData.type == 'sales') {
                     $scope.excuteItems.post($scope.formData).then(function(item){
                         $scope.excuteItems.push(item.data);
-                        showToast('Added Successfully');
+                        showToast('Added!');
                     });
                 }
             } else if($scope.curMode == 'edit') {
@@ -263,7 +263,7 @@
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                 .title('Confirm Delete')
-                .textContent('Would you like to delete ' + capitalize(item.type) + ' ' + item.title +'?')
+                .textContent('Are you sure you want to delete this ' + capitalize(item.type) + ' ' + item.title +'?')
                 .ariaLabel('Delete')
                 .targetEvent($event)
                 .ok('Delete')

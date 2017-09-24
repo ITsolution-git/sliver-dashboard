@@ -12,6 +12,7 @@
             sendData: sendData,
             startDate: {},
             QMonths: [],
+            notifications: [],
             monthNames: actionplanService.getMonthLongNames(),
             currentQut: 1,
             saved: false,
@@ -104,7 +105,7 @@
                 return quaterBusinessChanges;
             });
             if (!resClient && !resBusiness && direction == 'forward') {
-                toaster.pop({ type: 'info', body: 'You must make adjustments to the information in all 4 Quarters before you can go to the next step', timeout: 0});
+                addNotification($scope.notifications, { name: 'Happenings empty', type: 'error', message: 'You must build your plan for all 4 Quarters before you can go to the next step.', show: true });
                 return false;
             }
             stepService.updateActiveModel($scope);
@@ -140,6 +141,17 @@
                     element.style.height =  scrollHeight + "px";
             });
         }
+
+        function addNotification(notifications, newNotification) {
+            var existing = _.find(notifications, {name: newNotification.name});
+            if (_.isUndefined(existing)) {
+                notifications.push(newNotification);
+            } else {
+                existing.show = true;
+            }
+
+        }
+
 
         $scope.checkChanges = function (nthQut, arr) {
             arr[nthQut] = true;

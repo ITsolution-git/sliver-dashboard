@@ -58,18 +58,18 @@
         function saveBasic() {
             userService.updateMe($scope.user).then(function(user){
                 $scope.user = user;
-                toaster.pop({type: 'success', body: 'Basic info saved.'});
+                toaster.pop({type: 'success', body: 'Info Saved!', timeout: 1000});
             }).catch(function(err){
                 toaster.pop({type: 'error', body: 'Error.'});
             });     
         }
     
-       
+
         
         function changePassword() {
             userService.updateMe($scope.user).then(function(user){
                 $scope.user = user;
-                toaster.pop({type: 'success', body: 'Password Changed.'});
+                toaster.pop({type: 'success', body: 'Password Changed.', timeout: 1000});
                 $scope.passwordform.$setPristine();
                 $scope.passwordform.$setUntouched();
                 $scope.passwordform.password.$setUntouched()
@@ -93,7 +93,7 @@
                 $scope.user.card = null;
                 
                 // $scope.creditform.$setPristine();
-                toaster.pop({type: 'success', body: 'Credit Card Changed to ****-****-****-.' + $scope.user.last4});
+                toaster.pop({type: 'success', body: 'Credit Card Changed to ****-****-****-.' + $scope.user.last4, timeout: 2000});
             }).catch(function(err){
                 toaster.pop({type: 'success', body: err.data.message ? err.data.message : 'Error.'});
             });     

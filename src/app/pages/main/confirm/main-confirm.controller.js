@@ -9,7 +9,7 @@
     function MainConfirmController($scope, $stateParams, $auth, $state, toaster, pageService, userService) {
 
         // --- vars ---
-
+        $scope.notifications = [];
         $scope.confirm = {
             password: '',
             repeat_passw: ''
@@ -24,6 +24,16 @@
 
         // --- methods ---
 
+        function addNotification(notifications, newNotification) {
+            var existing = _.find(notifications, {name: newNotification.name});
+            if (_.isUndefined(existing)) {
+                notifications.push(newNotification);
+            } else {
+                existing.show = true;
+            }
+            
+        }
+
         $scope.submit = function () {
             if($scope.confirm.password == $scope.confirm.repeat_passw){
                 if($scope.confirm.repeat_passw == '' || $scope.confirm.password == ''){
@@ -34,7 +44,7 @@
                             $state.go('login');
                             toaster.pop({type: 'success', body: "Successfully registered!"});
                         }else{
-                            toaster.pop({type: 'error', body: "Server error!"});
+                            addNotification($scope.notifications, {name: 'Server Error!', type: 'error', message:'So sorry - something has gone wrong on our end.  Email support@smallbizsilverlining.com to finalize your Sign Up!', show: true});
                         }
                     });
                 }

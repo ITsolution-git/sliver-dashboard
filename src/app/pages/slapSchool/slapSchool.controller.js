@@ -21,7 +21,7 @@
             if ((now._d >= start_._d) && (now._d <= start_._d))
                 window.open(url, '_blank');
             else {
-                toaster.pop({type: 'error', body: "Please come back and join this webinar when it starts!", timeout: 0})
+                toaster.pop({type: 'success', body: "This webinar is not live right now.  Please come back and join us when it starts!  It will be good!", timeout: 3000})
             }
         }   
     }

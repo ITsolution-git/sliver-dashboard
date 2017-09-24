@@ -35,7 +35,7 @@
                     }
                 )
                 .catch(function(err) {
-                    toaster.pop({type: 'error', body: err.data.message ? err.data.message : 'Whoops, your password or email are incorrect'});
+                    toaster.pop({type: 'error', body: err.data.message ? err.data.message : 'Your Email or Password are incorrect. Please try again!', timeout: 2000});
                 });
         };
 

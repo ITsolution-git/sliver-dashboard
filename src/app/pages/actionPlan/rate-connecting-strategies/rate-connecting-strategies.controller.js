@@ -52,7 +52,7 @@
                 }
             });
             if (!hasViewedAllVideos) {
-                addNotification($scope.notifications, {name: 'Valid Video', type: 'error', message:'You must watch and rate all 10 Connecting Strategy videos before moving on to the next page.', show: true});
+                addNotification($scope.notifications, {name: 'Valid Video', type: 'error', message:'You must watch all videos and rate each Connecting Strategy before you can go to the next step.', show: true});
 
                 $('body').animate({
                     scrollTop: $("slap-notifications").offset().top

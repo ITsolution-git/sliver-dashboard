@@ -73,7 +73,7 @@
         function checkShowBlockStatus(){
             if (!_.isEmpty($scope.data.first) && !_.isEmpty($scope.data.second) && !_.isEmpty($scope.data.third) && !_.isEmpty($scope.data.fourth)) 
             {
-                $scope.showInfoBlock = true;
+                $scope.showInfoBlock = true; 
                 $scope.notifications = [];
                 findPrimaryLabel();
                 $scope.forward = true;
@@ -87,7 +87,9 @@
                 $scope.forward = true;
             }
             else{
-                $scope.notifications = [{name: 'Missing Primary Driver', type: 'error', message: 'Please select at least one Primary Driver', show: true}];
+                $scope.notifications = [{name: 'Missing Primary Driver', type: 'error',
+                message: 'You must select at least one, and only one, Primary Driver.',
+                show: true}];
                 $scope.showInfoBlock = false;
                 $scope.forward = false;
             }
