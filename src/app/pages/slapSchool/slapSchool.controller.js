@@ -7,9 +7,24 @@
 
     /* @ngInject */
     function SlapSchoolController($scope, $state, data, toaster) {
+        
+        var arr = [];
+        var webinars = data[0].webinars;
 
-        $scope.data = data; 
+        data[0].forEach(function(item){
+            arr.push(item.name);
+        });
+        var result = [];
+        data[0].forEach(function(item){
+            result = item.webinars;
+        });
+
+        for (var i = 0; i < result.length; i++) {
+            result[i].name = arr[i];
+        }
+        $scope.data = result;
         $scope.duration_ = 0;
+
 
         $scope.isStart = function(start, duration, e, url) {
             

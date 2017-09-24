@@ -15,10 +15,14 @@
                     <div ng-if="!data.length" class="row" style="margin-bottom:15px">
                         <h3>Coming SOON</h3>
                     </div>
-                    <div ng-repeat="user in data">
-                        <div ng-repeat="webinar in user.webinars">
+                    <!-- <div ng-repeat="webinar in data">
+                        <div ng-repeat="name in webinar.name">
+                                <div class="col-xs-3 col-sm-3 col-md-3">{{name.name}}</div>
+                        </div>
+                    </div> -->
+                    <div ng-repeat="webinar in data">
                             <div class="row webinar-item" style="margin-bottom:15px; outline: none" ng-click="description = !description">
-                                <div class="col-xs-3 col-sm-3 col-md-3">{{user.name}}</div>
+                                <div class="col-xs-3 col-sm-3 col-md-3"><div ng-repeat="name in webinar.name" class="row-xs-3 row-sm-3 row-md-3">{{name.name}}</div></div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.topic}}</div>
                                 <div class="col-xs-2 col-sm-2 col-md-2">{{webinar.duration}} minutes</div>
                                 <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.start_time | date:'short'}} {{webinar.timezone | timezone}}</div>
