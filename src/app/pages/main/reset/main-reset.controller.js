@@ -9,7 +9,7 @@
     function MainResetController($scope, $window, $auth, $state, toaster, pageService, userService) {
 
         // --- vars ---
-
+        $scope.notifications = [];
         $scope.email = '';
 
         $scope.errors = {};
@@ -20,6 +20,16 @@
             $window.history.back();
         };
 
+        function addNotification(notifications, newNotification) {
+            var existing = _.find(notifications, {name: newNotification.name});
+            if (_.isUndefined(existing)) {
+                notifications.push(newNotification);
+            } else {
+                existing.show = true;
+            }
+            
+        }
+
         $scope.submit = function () {
             userService.reset($scope.email)
                 .then(
@@ -29,7 +39,7 @@
                     }
                 )
                 .catch(function(err) {
-                    toaster.pop({type: 'error', body: "User is not found or Failed to send email!"});
+                    addNotification($scope.notifications, {name: 'Server error!', type: 'error', message:'This is not working. Please email support@smallbizsilverlining.com for VIP support.', show: true});
                 });
         };
 

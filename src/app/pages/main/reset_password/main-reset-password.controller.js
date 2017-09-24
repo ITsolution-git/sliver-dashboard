@@ -40,7 +40,7 @@
                         $state.go('login');
                         toaster.pop({type: 'success', body: "Password has been saved!"});
                     }else{
-                        AddNotification($scope.notifications, {name: 'Server error!', type: 'error', message:'This is not working. Please email support@smallbizsilverlining.com for VIP support.', show: true});
+                        addNotification($scope.notifications, {name: 'Server error!', type: 'error', message:'This is not working. Please email support@smallbizsilverlining.com for VIP support.', show: true});
                         
                         $scope.errors = {};
                     }
