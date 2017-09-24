@@ -411,8 +411,8 @@
             months.push((+startDate.month + 3 * (indexQut - 1)) % 12);
             months.push((+startDate.month + 3 * (indexQut - 1) + 1) % 12);
 
-            var startQuater = moment({year: startDate.year + ((+startDate.month + 3 * (indexQut - 1) - 1) / 12), month:months[0], day: 1 });
-            var endQuater = moment({year: startDate.year + ((+startDate.month + 3 * (indexQut - 1) + 1) / 12), month:months[2], day: 1 }).endOf('month');
+            var startQuater = moment({year: +startDate.year + ((+startDate.month + 3 * (indexQut - 1) - 1) / 12), month:months[0], day: 1 });
+            var endQuater = moment({year: +startDate.year + ((+startDate.month + 3 * (indexQut - 1) + 1) / 12), month:months[2], day: 1 }).endOf('month');
             return {
                 months: months,
                 start: startQuater,

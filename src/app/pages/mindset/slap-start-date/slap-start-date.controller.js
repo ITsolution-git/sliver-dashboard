@@ -66,7 +66,7 @@
             //If user changed the date and have excute items.            
             //if ($scope.data.month != (beforeSave.month() + 1))  {
                 //As a matter of fact, the new startdate cannot be a past of now because of $scope.$watch('data.month', function (value) { line codes
-                var newStartDate = moment({year: $scope.data.year, month: +$scope.data.month -1, day:1});
+                var newStartDate = moment({year: +$scope.data.year, month: +$scope.data.month -1, day:1});
                 // if (newStartDate.isBefore(moment(), 'month')) {
                 //     $scope.notifications = [{name: 'Wrong Start Date', type: 'error', message: 'You cannot set SLAP Start Date to past.', show: true}];
                 // } else {
