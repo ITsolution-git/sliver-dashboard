@@ -93,7 +93,7 @@
                     }
                 )
                 .catch( function(err) {
-                    if (err.data.message) 
+                    if (err.data.message != "Failed create customer") 
                     toaster.pop({type: 'error', body: err.data.message ? err.data.message : err.data.errmsg });
                     else addNotification(vm.notifications, {name: 'Server Error', type: 'error', message:"So sorry - something has gone wrong on our end.  Try again and if it still doesn't work email support@smallbizsilverlining.com", show: true});
                 });
