@@ -51,7 +51,7 @@
                     hasViewedAllVideos = false;
                 }
             });
-            if (!hasViewedAllVideos) {
+            if (!hasViewedAllVideos && direction == 'forward') {
                 addNotification($scope.notifications, {name: 'Valid Video', type: 'error', message:'You must watch all videos and rate each Connecting Strategy before you can go to the next step.', show: true});
 
                 $('body').animate({
