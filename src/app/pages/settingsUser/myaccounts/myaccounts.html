@@ -5,7 +5,8 @@
 
     <div class="panel panel-default p-es-10">
         <h3> Basic </h3>       
-        <div>
+        <div>  
+            <slap-notifications notifications="notifications"></slap-notifications>
             <form layout="row" layout-wrap layout-align="center center" name="form">
                 <md-input-container  flex="100">
                     <label>Business Name</label>
@@ -121,8 +122,9 @@
         <div class="clearfix"></div>
 
     </div>
-
+    <slap-notifications notifications="notifications_card"></slap-notifications>
     <div class="panel panel-default p-es-10" ng-if="!isAdmin">
+        
         <h3>Credit Card</h3>
         <!--TODO should show the credit card he's using-->
         <div>
