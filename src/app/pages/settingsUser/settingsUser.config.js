@@ -25,7 +25,7 @@
                 data: {
                     access: '@'
                 },
-                parent: 'default',
+                parent: 'withNavbar',
                 url: '/account',
                 views: {
                     content: {
