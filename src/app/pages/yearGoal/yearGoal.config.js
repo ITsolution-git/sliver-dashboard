@@ -261,7 +261,7 @@
                 templateUrl: 'pages/yearGoal/year-goal-qa/year-goal-qa.html'
             })
             .state('yearGoal.commitYourYearGoal', {
-                url: '/yourYearGoal',
+                url: '/commitYourYearGoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

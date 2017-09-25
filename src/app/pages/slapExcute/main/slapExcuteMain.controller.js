@@ -661,7 +661,7 @@
             var tempClosedQuaterRevenue = 0;
             var tempTotalYearRevenue = 0;
             var tempClosedYearRevenue = 0;
-            $scope.dashData.daysLeft  = Math.round(moment.duration($scope.quaters[$scope.filter.showQ - 1].end.diff(moment($scope.today))).asDays());
+            $scope.dashData.daysLeft = Math.round(moment.duration($scope.quaters[$scope.currentQuater.nth - 1].end.diff(moment($scope.today))).asDays());
 
             _.each($scope.excuteItems, function(item){ //Count Actions
                 if(item.type != 'sales')
