@@ -145,7 +145,7 @@
                 templateUrl: 'pages/mindset/cashflow/cashflow.html'
             })
             .state('mindset.yourBusiness', {
-                url: '/yourBusiness',
+                url: '/planAndAction',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -205,7 +205,7 @@
                 templateUrl: 'pages/mindset/start-slapn/start-slapn.html'
             })
             .state('mindset.slapStartDate', {
-                url: '/slapStartDate',
+                url: '/GetSlapn',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

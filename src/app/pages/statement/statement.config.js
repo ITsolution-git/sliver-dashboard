@@ -81,7 +81,7 @@
                 templateUrl: 'pages/statement/your-statement/your-statement.html'
             })
             .state('statement.commitToYour', {
-                url: '/commitToYour',
+                url: '/reviewStatement',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

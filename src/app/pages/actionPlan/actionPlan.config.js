@@ -61,7 +61,7 @@
                 templateUrl: 'pages/actionPlan/world-around-your/world-around-your.html'
             })
             .state('actionPlan.doubleCheckStartDate', {
-                url: '/doubleCheckStartDate',
+                url: '/reviewStartDate',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -84,7 +84,7 @@
                 templateUrl: 'pages/actionPlan/double-check-start-date/double-check-start-date.html'
             })
             .state('actionPlan.whatsHappening', {
-                url: '/whatsHappeningInQ1-Q4',
+                url: '/youAndYourIdealClient',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -124,7 +124,7 @@
                 templateUrl: 'pages/actionPlan/rate-connecting-strategies/rate-connecting-strategies.html'
             })
             .state('actionPlan.connectingStrategyStrategizing', {
-                url: '/connectingStrategyStrategizing',
+                url: '/quarterlyStrategy',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -199,7 +199,7 @@
                 templateUrl: 'pages/actionPlan/quarterly-goals/quarterly-goals.html'
             })
             .state('actionPlan.doubleCheckYearGoal', {
-                url: '/doubleCheckYearGoal',
+                url: '/yourYearGoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -244,7 +244,7 @@
                 templateUrl: 'pages/actionPlan/action-plan-qa/action-plan-qa.html'
             })
             .state('actionPlan.commitToYourActionPlan', {
-                url: '/commitToYourActionPlan',
+                url: '/reviewYourActionPlan',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

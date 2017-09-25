@@ -107,7 +107,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/step2',
+                url: '/buy',
                 parent: 'signup',
                 controller: 'RegistrationStep2Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step2.html'
@@ -116,7 +116,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/step3',
+                url: '/confirm',
                 parent: 'signup',
                 controller: 'RegistrationStep3Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step3.html'
@@ -171,7 +171,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/reset',
+                url: '/password',
                 parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {

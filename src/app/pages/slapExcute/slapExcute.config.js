@@ -21,7 +21,7 @@
                 }
             })
             .state('slapExcute.main', {
-                url: '/main',
+                url: '/actions',
                 resolve: {
                     excuteItems: function (excuteItemService) {
                         return excuteItemService.loadExcuteItems();

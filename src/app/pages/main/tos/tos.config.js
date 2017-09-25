@@ -12,7 +12,7 @@
                     access: '#'
                 },
                 parent: 'withNavbarWithoutLinks',
-                url: '/tos',
+                url: '/tc',
                 views: {
                     content: {
                         controller: 'tosController',

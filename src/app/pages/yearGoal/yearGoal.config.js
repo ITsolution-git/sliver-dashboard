@@ -81,7 +81,7 @@
                 templateUrl: 'pages/yearGoal/fixed-business-expenses/fixed-business-expenses.html'
             })
             .state('yearGoal.totalFixedExpensesRevenue', {
-                url: '/totalFixedExpensesRevenue',
+                url: '/yourBreakevenNumber',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -221,7 +221,7 @@
                 templateUrl: 'pages/yearGoal/your-year-goal/your-year-goal.html'
             })
             .state('yearGoal.adjustYourYearGoal', {
-                url: '/adjustYourYearGoal',
+                url: '/reviewYourYearGoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -261,7 +261,7 @@
                 templateUrl: 'pages/yearGoal/year-goal-qa/year-goal-qa.html'
             })
             .state('yearGoal.commitYourYearGoal', {
-                url: '/commitYourYearGoal',
+                url: '/yourYearGoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

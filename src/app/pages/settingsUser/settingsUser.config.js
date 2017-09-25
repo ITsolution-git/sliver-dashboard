@@ -26,7 +26,7 @@
                     access: '@'
                 },
                 parent: 'default',
-                url: '/myaccounts',
+                url: '/account',
                 views: {
                     content: {
                         controller: 'MyaccountsController',

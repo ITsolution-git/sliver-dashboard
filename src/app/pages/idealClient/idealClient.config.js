@@ -41,7 +41,7 @@
                 templateUrl: 'pages/idealClient/ideal-client-overview/ideal-client-overview.html'
             })
             .state('idealClient.whoAreYouIdealClient', {
-                url: '/whoAreYouIdealClient',
+                url: '/clientSurvey',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -61,7 +61,7 @@
                 templateUrl: 'pages/idealClient/who-are-you-ideal-client/who-are-you-ideal-client.html'
             })
             .state('idealClient.defineYourIdealClient', {
-                url: '/defineYourIdealClient',
+                url: '/yourIdealClient',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -121,7 +121,7 @@
                 templateUrl: 'pages/idealClient/ideal-client-qa/ideal-client-qa.html'
             })
             .state('idealClient.commitYourIdealClient', {
-                url: '/commitToYourIdealClient',
+                url: '/reviewStatement',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
