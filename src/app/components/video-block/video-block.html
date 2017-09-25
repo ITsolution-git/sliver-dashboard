@@ -7,13 +7,12 @@
     <div class="video-content sample-show-hide row sample-show-hide" ng-hide="$ctrl.visible">
         
         <video ng-if="!$ctrl.video" controls preload="none" class="col-sm-12 hidden-xs" poster="../images/carr.png">
-            <source ng-src="{{$ctrl.videoSrc ?  $ctrl.videoSrc: 'http://media.w3.org/2016/01/Emmy-Award.mp4'}}" type="video/mp4">
+            <source ng-src="{{$ctrl.videoSrc ?  $ctrl.videoSrc: $ctrl.videoUrl}}" type="video/mp4">
         </video>
         
         <video ng-if="!$ctrl.video" controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="../images/carr.png">
-            <source ng-src="{{$ctrl.videoSrc ?  $ctrl.videoSrc: 'http://media.w3.org/2016/01/Emmy-Award.mp4'}}" type="video/mp4">
+            <source ng-src="{{$ctrl.videoSrc ?  $ctrl.videoSrc: $ctrl.videoUrl}}" type="video/mp4">
         </video>
-        
         <iframe ng-if="$ctrl.video" class="col-xs-12  video-panel-small" ng-src={{trustUrl($ctrl.video)}} width="640" height="87.5%" frameBorder="0"></iframe>
 
         <!--<video ng-if="$ctrl.video" controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="../images/carr.png">-->
