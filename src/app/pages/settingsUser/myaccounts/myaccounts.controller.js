@@ -10,6 +10,8 @@
         $scope.renewAccount = renewAccount;
         $scope.Upload = Upload;
         $scope.user = {};
+        $scope.notifications = [];
+        $scope.notifications_card = [];
         $scope.saveBasic = saveBasic;
         $scope.changePassword = changePassword;
         $scope.changeCreditCard = changeCreditCard;
@@ -55,12 +57,23 @@
             });
         }
 
+        function addNotification(notifications, newNotification) {
+            var existing = _.find(notifications, {name: newNotification.name});
+            if (_.isUndefined(existing)) {
+                notifications.push(newNotification);
+            } else {
+                existing.show = true;
+            }
+            
+        }
+
         function saveBasic() {
             userService.updateMe($scope.user).then(function(user){
                 $scope.user = user;
                 toaster.pop({type: 'success', body: 'Info Saved!', timeout: 1000});
             }).catch(function(err){
-                toaster.pop({type: 'error', body: 'Error.'});
+                addNotification($scope.notifications, {name: 'Server Error', type: 'error', message:"So sorry - something has gone wrong on our end.  Try again and if it still doesn't work email support@smallbizsilverlining.com", show: true});
+                
             });     
         }
     
@@ -95,7 +108,7 @@
                 // $scope.creditform.$setPristine();
                 toaster.pop({type: 'success', body: 'Credit Card Changed to ****-****-****-.' + $scope.user.last4, timeout: 2000});
             }).catch(function(err){
-                toaster.pop({type: 'success', body: err.data.message ? err.data.message : 'Error.'});
+                addNotification($scope.notifications_card, {name: 'Server Error', type: 'error', message:"We were unable to process your credit card. Please try again or use a new card.", show: true});
             });     
         }
         

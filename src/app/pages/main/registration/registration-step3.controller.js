@@ -18,6 +18,7 @@
 
         vm.plan = productStorage.getPlan();
         vm.build = productStorage.getBuild();
+        vm.notifications = [];
 
         // For TEST Purpose
         // vm.plan = JSON.parse('{"_id":"58f4edb72fbe2a27060c8d9b","billingFrequency":12,"typeProduct":1,"buildType":1,"status":1,"productName":"seriousSLAP","productDescription":"seriousSLAP description","costProduct":400,"__v":0,"createdAt":"2017-04-17T16:17:21.556Z","amountFirstPayment":0,"expertHours":100,"reqParams":null,"restangularized":true,"fromServer":true,"parentResource":{"route":"plans","parentResource":{"route":"products","parentResource":null}},"restangularCollection":false,"$$hashKey":"object:11"}');
@@ -92,7 +93,9 @@
                     }
                 )
                 .catch( function(err) {
+                    if (err.data.message != "Failed create customer") 
                     toaster.pop({type: 'error', body: err.data.message ? err.data.message : err.data.errmsg });
+                    else addNotification(vm.notifications, {name: 'Server Error', type: 'error', message:"So sorry - something has gone wrong on our end.  Try again and if it still doesn't work email support@smallbizsilverlining.com", show: true});
                 });
         }
 
@@ -118,6 +121,16 @@
           e.preventDefault();
           var url = $state.href('tos')
           window.open(url, '_blank');
+        }
+
+        function addNotification(notifications, newNotification) {
+            var existing = _.find(notifications, {name: newNotification.name});
+            if (_.isUndefined(existing)) {
+                notifications.push(newNotification);
+            } else {
+                existing.show = true;
+            }
+            
         }
     }
 }());
