@@ -96,7 +96,8 @@
 
 				<md-input-container flex="50">
 					<label>Due Date</label>
-					<md-datepicker ng-model="formData.dueDate" md-min-date="today" md-max-date="endDate" name="dueDate"></md-datepicker>
+					<!--md-min-date="today"-->
+					<md-datepicker ng-model="formData.dueDate"  md-max-date="endDate" name="dueDate"></md-datepicker>
 					<div ng-messages="form.dueDate.$error">
 						<div ng-message="valid">The entered value is not a date!</div>
 						<div ng-message="required">This date is required!</div>
