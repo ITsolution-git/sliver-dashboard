@@ -111,7 +111,7 @@
                                     ng-blur="doCalculation()"
                                     ng-keydown="checkValidity(revenue.breakdown, $event)"
                                     ng-class="{'active': revenue.breakdown}" required>
-                            <span class="currency" ng-class="{'text-danger': data.totalBreakdown != 100}">%</span>
+                            <span class="currency">%</span>
                         </div>
                     </div>
 
@@ -135,7 +135,7 @@
                             <i class="fa fa-check fa-lg text-white" aria-hidden="true"></i>
                         </div><br/>
                         <span>{{ data.totalBreakdown }}</span>
-                        <span ng-class="{'text-danger': data.totalBreakdown != 100}">%</span>
+                        <span>%</span>
                     </div>  
                     <!--<div class="revenue-unit-container">
                     </div>-->
