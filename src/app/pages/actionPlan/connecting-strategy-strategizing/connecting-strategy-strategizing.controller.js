@@ -247,7 +247,7 @@
             //         return false;
             //     }
             // }
-            if ((($scope.pageName == 'connectingStrategyStrategizing')) && !checkQuaterStrategiesValid()) { //quater units sum should same as quaterly goal.
+            if ((($scope.pageName == 'connectingStrategyStrategizing')) && !checkQuaterStrategiesValid(direction)) { //quater units sum should same as quaterly goal.
                 $('body').animate({
                     scrollTop: $("slap-notifications").offset().top
                 }, 400);
@@ -341,7 +341,7 @@
             return valid;
         }
 
-        function checkQuaterStrategiesValid() {
+        function checkQuaterStrategiesValid(direction) {
             var valid = true;
             for (var i = 0; i < 4; i++) {
                 if (!$scope.data[i]) {
@@ -355,12 +355,12 @@
             });
             
 
-            if (!valid) {
+            if (!valid && direction != 'backward') {
                 addNotification($scope.notifications, { name: 'Invalid Strategy', type: 'error', message:'You must make adjustments to the information in all 4 Quarters before you can go to the next step ', show: true});
             } else {
                 removeNotificaton($scope.notifications, 'Invalid Strategy');
             }
-            return valid;
+            return valid || direction == 'backward';
         }
 
         function deleteAction(action, month, nthQut) {
