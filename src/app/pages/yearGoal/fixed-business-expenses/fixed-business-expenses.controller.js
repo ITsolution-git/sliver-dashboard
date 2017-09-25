@@ -39,13 +39,15 @@
             // return stepService.getApiData(urls[urls.length - 1])
             return stepService.getApiData(url) //TODO: Think over the dynamics url
                 .then(function (response) {
+                    $scope.data.expenses = response.data.personalExpenses.expenses;
+                    $scope.data.expensesSum = response.data.personalExpenses.expensesSum;
                     if (response && response.status === 200) {
                         // data.personalExpenses.sum hold totla president salary
                         if (!$scope.data.procentFound){
                             $scope.data.procentFound = 30;
                         }
                         var presidentSalary = (response.data.personalExpenses.incidentals * 0.01) * response.data.personalExpenses.expensesSum + response.data.personalExpenses.expensesSum;
-                        if ($scope.data.expenses[0].expense != "President Salary") {
+                        if ($scope.data.expenses[0].expense != "President Salary") {                            
                             $scope.data.expenses.unshift({expense: "President Salary", monthlyCost: presidentSalary});
                         } else {
                             $scope.data.expenses[0].monthlyCost = presidentSalary;
