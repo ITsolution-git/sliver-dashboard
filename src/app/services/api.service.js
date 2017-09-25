@@ -30,7 +30,7 @@
                             break;
 
                         default:
-                            toaster.pop({type: 'error', body: response.statusText || 'Server error'});
+                            console.log(response.statusText);
                     }
                 })
                 .addFullRequestInterceptor(function (element, operation, what, url, headers, params) {

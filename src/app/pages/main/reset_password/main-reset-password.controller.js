@@ -38,7 +38,7 @@
                 userService.setPassword($scope.reset,$scope.token).then(function (response) {
                     if(response.data._id){
                         $state.go('login');
-                        toaster.pop({type: 'success', body: "Password has been saved!"});
+                        toaster.pop({type: 'success', body: "Password has been saved!", timeout: 3000});
                     }else{
                         addNotification($scope.notifications, {name: 'Server error!', type: 'error', message:'This is not working. Please email support@smallbizsilverlining.com for VIP support.', show: true});
                         
