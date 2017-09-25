@@ -39,8 +39,8 @@
             // return stepService.getApiData(urls[urls.length - 1])
             return stepService.getApiData(url) //TODO: Think over the dynamics url
                 .then(function (response) {
-                    $scope.data.expenses = response.data.personalExpenses.expenses;
-                    $scope.data.expensesSum = response.data.personalExpenses.expensesSum;
+                    // $scope.data.expenses = response.data.personalExpenses.expenses;
+                    // $scope.data.expensesSum = response.data.personalExpenses.expensesSum;
                     if (response && response.status === 200) {
                         // data.personalExpenses.sum hold totla president salary
                         if (!$scope.data.procentFound){
