@@ -129,7 +129,12 @@
 
                 var itemsByMonth = actionplanService.getDefaultActionsByStrategy(quater.strategy.id);
                 _.each(itemsByMonth.actions, function(itemsMonths, monthID) {
-                    var dueDate = moment({year: Math.floor($scope.startDate.year + ((+$scope.startDate.month + 3 * QID - 1 + monthID)/12)), month: $scope.QMonths[QID][monthID], day: 1 }).endOf('month').format('YYYY-MM-DD');
+                    var dueDate = moment({
+                        year: Math.floor(+$scope.startDate.year + ((+$scope.startDate.month + 3 * QID - 1 + monthID) / 12)),
+                        month: $scope.QMonths[QID][monthID],
+                        day: 1
+                    }).endOf('month').format('YYYY-MM-DD');
+
                     console.log(dueDate);
                     _.each(itemsMonths, function(item){
                         //Set Due date to end of that month

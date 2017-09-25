@@ -57,7 +57,7 @@
                 showQ: 1,
 
                 period: 'week',
-                status: 'upcoming',
+                status: 'overdue',
 
                 periodStr: ''
             },
@@ -97,11 +97,12 @@
 
             $scope.currentQuater = $scope.quaters[0];
             _.each($scope.quaters, function (qut){
-                if(!$scope.currentQuater && moment().isBetween(qut.start, qut.end, 'day', '[]')) {
+                if(/*!$scope.currentQuater && */moment().isBetween(qut.start, qut.end, 'day', '[]')) {
                     $scope.currentQuater = qut;
                     
                 }
             });
+            $scope.availableQuaters = [0,1,2,3].filter(function (qId) { return qId + 1 >= $scope.currentQuater.nth;} );
 
             $scope.filter.showQ = $scope.currentQuater.nth;   //set by current quater
 
