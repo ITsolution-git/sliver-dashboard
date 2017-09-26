@@ -103,7 +103,7 @@
                 }
             });
             $scope.availableQuaters = [0,1,2,3].filter(function (qId) { return qId + 1 >= $scope.currentQuater.nth;} );
-
+            $scope.pastQuaters = [0, 1, 2, 3].filter(function (qId) { return qId + 1 < $scope.currentQuater.nth; });
             $scope.filter.showQ = $scope.currentQuater.nth;   //set by current quater
 
             $scope.startDate = $scope.quaters[0].start.toDate();

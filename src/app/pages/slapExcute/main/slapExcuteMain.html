@@ -188,6 +188,9 @@
 	<section layout="column" layout="column" ng-if="mainView=='list'" class="m-t-es-50">
 		<md-toolbar layout="row" layout-align="start center ">
 			<md-select md-container-class="quarter-menu" ng-model="filter.period" flex="50" class="select-menu">
+				<md-option ng-repeat="quaterID in pastQuaters" ng-value="'quater'+quaterID" ng-selected="$first">
+					{{'Q' + (quaterID+1)}}
+				</md-option>
 				<md-option ng-value="'week'">This Week</md-option>
 				<md-option ng-value="'month'">This Month</md-option>
 				<md-option ng-repeat="quaterID in availableQuaters" ng-value="'quater'+quaterID" ng-selected="$first">
