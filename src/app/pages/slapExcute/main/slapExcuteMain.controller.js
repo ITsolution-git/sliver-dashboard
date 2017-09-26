@@ -426,7 +426,7 @@
                 if ($scope.curMode == 'add') {
                     var nonDeleted = $scope.gridData.filter(function(elem){
                         return !elem.revenue.deleted;
-                    })
+                    });
                     var id = item ? item.id : nonDeleted[0].revenue.id;
                     var newForm = {
                         type: 'sales',
@@ -682,7 +682,7 @@
                 for(var key in quater.units) {
                     var revenue = _.find($scope.revenues, {name: key});
                     if(revenue  && revenue.deleted == false) {
-                        tempTotalYearRevenue += +revenue.sellingPrice * +$scope.currentQuater.units[key];
+                        tempTotalYearRevenue += +revenue.sellingPrice * + quater.units[key];
                     }
                 }  
             })
