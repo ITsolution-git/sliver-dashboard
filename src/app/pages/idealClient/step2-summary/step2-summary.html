@@ -74,7 +74,10 @@
                         <p>
                             My Ideal Client is a <span class="aqua-green">{{age[+client.age]}}</span>
                             years old <span class="aqua-green">{{gender[+client.gender]}}</span>,
-                            <span class="aqua-green">{{maritalStatus[+client.maritalStatus]}}</span>, father of <span
+                            <span class="aqua-green">{{maritalStatus[+client.maritalStatus]}}</span>, 
+                            <span ng-if="client.gender == 1">father</span>
+                            <span ng-if="client.gender == 2">mother</span>
+                             of <span
                                 class="aqua-green">{{kids[+client.kids]}}</span>,
                             work as an <span class="aqua-green">{{employment[+client.employment]}}</span>, lives in
                             <span class="aqua-green">{{location[+client.location]}}</span>,

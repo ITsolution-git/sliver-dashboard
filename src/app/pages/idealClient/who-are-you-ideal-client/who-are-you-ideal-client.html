@@ -157,7 +157,16 @@
                                 class="marital-status dropdown-box outline-0">
                             <option value="{{maritalStatus}}" ng-repeat="maritalStatus in client.maritalStatus">{{idealClientSelects.maritalStatus[+maritalStatus]}}</option>
                         </select>
-                    </span>, father of 
+                    </span>,
+                    <span ng-show="client.gender.length === 1" ng-model="data.idealClient.gender">
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Female'">mother</span>
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Male'">father</span>
+                    </span>
+                    <span ng-show="client.gender.length > 1" ng-model="data.idealClient.gender">
+                        <span ng-if="data.idealClient.gender ==1">father</span>
+                        <span ng-if="data.idealClient.gender ==2">mother</span>
+                    </span>
+                    of 
                     <span>
                         <span ng-show="client.kids.length === 1" ng-model="data.idealClient.kids">{{idealClientSelects.kids[+client.kids]}}</span>
 
