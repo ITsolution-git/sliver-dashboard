@@ -366,7 +366,7 @@
                     }
                 }
             }, {
-                name: 'Review 1 Year Goal"',
+                name: 'Review 1 Year Goal',
                 sref: 'yearGoal.adjustYourYearGoal',
                 model: {
                     showVideoBlock: false,

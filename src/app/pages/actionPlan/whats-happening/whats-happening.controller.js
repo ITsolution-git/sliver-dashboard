@@ -88,7 +88,7 @@
             stepService.getApiData('whatsHappening') //TODO: Think over the dynamics url
                 .then(function (response) {
                     if (response && response.status === 200) {
-                        $scope.data = _.get(response, 'data.whatsHappening.0', []);
+                        $scope.data = _.get(response, 'data.whatsHappening', []);
                         var originalData = _.clone($scope.data);
                     }
                 });
