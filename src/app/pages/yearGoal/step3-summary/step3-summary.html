@@ -71,7 +71,7 @@
                             <div class="grey-circle">3</div>
                         </div>
 
-                        <p>By <span class="aqua-green">{{months[+slapStartDate.month]}} 31, {{slapStartDate.year}}</span>, I will sell</p>
+                        <p>By <span class="aqua-green">{{months[+slapStartDate.month -1]}} 31, {{slapStartDate.year + 1}}</span>, I will sell</p>
 
                         <ul class="revenue-summary row">
                             <li class="col-xs-4 col-sm-3 col-md-2" ng-repeat="revenue in model.revenues | filter: {deleted: false}" >
