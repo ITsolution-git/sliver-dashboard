@@ -103,7 +103,7 @@
                 }
             });
             $scope.availableQuaters = [0,1,2,3].filter(function (qId) { return qId + 1 >= $scope.currentQuater.nth;} );
-
+            $scope.pastQuaters = [0, 1, 2, 3].filter(function (qId) { return qId + 1 < $scope.currentQuater.nth; });
             $scope.filter.showQ = $scope.currentQuater.nth;   //set by current quater
 
             $scope.startDate = $scope.quaters[0].start.toDate();
@@ -614,7 +614,7 @@
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                 .title('Confirm Delete')
-                .textContent('Are you sure you want to delete this ' + capitalize(item.type) +'?')
+                .textContent('Are you sure you want to delete this ' + capitalize(item.type) +' Item' +'?')
                 .ariaLabel('Delete')
                 .targetEvent($event)
                 .ok('Delete')
