@@ -426,7 +426,7 @@
                 if ($scope.curMode == 'add') {
                     var nonDeleted = $scope.gridData.filter(function(elem){
                         return !elem.revenue.deleted;
-                    })
+                    });
                     var id = item ? item.id : nonDeleted[0].revenue.id;
                     var newForm = {
                         type: 'sales',
@@ -666,14 +666,14 @@
             _.each($scope.excuteItems, function(item){ //Count Actions
                 if(item.type != 'sales')
                     return;
-                if (item.progress == 100)
+                if (item.progress == 100 && !$scope.revenues[+item.title - 1].deleted )
                     tempClosedYearRevenue += item.saleUnit * +$scope.revenues[+item.title - 1].sellingPrice;
                 
                 if (!(moment(item.dueDate).isBetween($scope.quaters[$scope.filter.showQ - 1].start, $scope.quaters[$scope.filter.showQ - 1].end, 'day', '[]')))  
                     return;
                 
                 // /tempTotalQuaterRevenue += item.saleUnit * +$scope.revenues[+item.title - 1].sellingPrice;
-                if (item.progress == 100)
+                if (item.progress == 100 && !$scope.revenues[+item.title - 1].deleted )
                     tempClosedQuaterRevenue += item.saleUnit * +$scope.revenues[+item.title - 1].sellingPrice;
             });
 
@@ -682,7 +682,7 @@
                 for(var key in quater.units) {
                     var revenue = _.find($scope.revenues, {name: key});
                     if(revenue  && revenue.deleted == false) {
-                        tempTotalYearRevenue += +revenue.sellingPrice * +$scope.currentQuater.units[key];
+                        tempTotalYearRevenue += +revenue.sellingPrice * + quater.units[key];
                     }
                 }  
             })
