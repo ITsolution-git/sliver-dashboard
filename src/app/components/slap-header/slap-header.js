@@ -15,8 +15,8 @@
                 vm.avatarUrl = CONFIG.api + "/v1/user/avatar/" + id;
             });
             userService.getUser().then(function (user) {
-                 vm.user = user;
-                 vm.avatarUrl = CONFIG.api+"/v1/user/avatar/"+user.avatarId;
+                vm.user = angular.copy(userService.user, {});
+                vm.avatarUrl = CONFIG.api+"/v1/user/avatar/"+user.avatarId;
             });
 
             this.logout = function () {

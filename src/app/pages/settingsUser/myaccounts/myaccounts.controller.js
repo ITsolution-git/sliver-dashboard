@@ -48,7 +48,7 @@
        
         function activate() {
             userService.loadUser().then(function(user){    
-                $scope.user = user;
+                $scope.user = angular.copy(user, {});
                 $scope.avatarUrl = CONFIG.api + "/v1/user/avatar/" + user.avatarId;
                 return permissionService.isAdmin();
             })
