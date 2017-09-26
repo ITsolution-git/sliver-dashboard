@@ -666,14 +666,14 @@
             _.each($scope.excuteItems, function(item){ //Count Actions
                 if(item.type != 'sales')
                     return;
-                if (item.progress == 100)
+                if (item.progress == 100 && !$scope.revenues[+item.title - 1].deleted )
                     tempClosedYearRevenue += item.saleUnit * +$scope.revenues[+item.title - 1].sellingPrice;
                 
                 if (!(moment(item.dueDate).isBetween($scope.quaters[$scope.filter.showQ - 1].start, $scope.quaters[$scope.filter.showQ - 1].end, 'day', '[]')))  
                     return;
                 
                 // /tempTotalQuaterRevenue += item.saleUnit * +$scope.revenues[+item.title - 1].sellingPrice;
-                if (item.progress == 100)
+                if (item.progress == 100 && !$scope.revenues[+item.title - 1].deleted )
                     tempClosedQuaterRevenue += item.saleUnit * +$scope.revenues[+item.title - 1].sellingPrice;
             });
 
