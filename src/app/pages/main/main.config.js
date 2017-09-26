@@ -85,7 +85,7 @@
             .state('signup', {
                 abstract: true,
                 url: '/signup',
-                parent: 'blank',
+                parent: 'registration',
                 views: {
                     content: {
                         // controller: 'MainRegistrationController',

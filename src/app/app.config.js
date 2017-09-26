@@ -18,6 +18,11 @@
                 controller: 'LayoutBlankController',
                 templateUrl: 'layouts/layout-blank.html'
             })
+            .state('registration', {
+                abstract: true,
+                controller: 'LayoutRegistrationController',
+                templateUrl: 'layouts/layout-registration.html'
+            })
 
             // app default layout
             .state('default', {
