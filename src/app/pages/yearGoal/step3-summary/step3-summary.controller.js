@@ -21,7 +21,7 @@
             gender: ['Empty', 'Male', 'Female'],
             maritalStatus: ['Empty', 'Single', 'Married', 'Divorced', 'Widowed'],
             kids: ['Empty', 'None', 'Young', 'Teens',' Adults'],
-            employment: ['Empty', 'Doesn’t Work Established Entrepreneur', 'Small Entrepreneur', 'Senior Employed', 'Mid Level Employed', 'Junior Employed'],
+            employment: ['Empty', 'Doesn’t Work', 'Established Entrepreneur', 'Small Entrepreneur', 'Senior Employed', 'Mid Level Employed', 'Junior Employed'],
             location: ['Empty', 'City', 'Suburbs', 'Rural', 'Other'],
             home: ['Empty', 'Condo', 'Apartment', 'House', 'Farm', 'Other'],
             transit: ['Empty', 'Car', 'Bike', 'Train', 'Walking', 'Planes', 'Other'],

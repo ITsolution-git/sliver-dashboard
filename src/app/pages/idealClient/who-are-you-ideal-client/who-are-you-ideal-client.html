@@ -132,7 +132,7 @@
                 <div class="input-group-item row m-w-es-10 m-w-md-30 sample-show-hide" ng-hide="showIdealClientTextBlock" id="idealclient-box"  ng-if="shouldSelctIdeal">
                     <span>My Ideal Client is </span> a 
                     <span>
-                        <span ng-show="client.age.length === 1" ng-model="data.idealClient.age">{{idealClientSelects.age[+client.age]}}</span>
+                        <span ng-show="client.age.length === 1"  ng-init="data.idealClient.age = client.age">{{idealClientSelects.age[+client.age]}}</span>
 
                         <select ng-show="client.age.length > 1" ng-model="data.idealClient.age" 
                                 ng-class="{'active': data.idealClient.age !== '0'}"
@@ -141,7 +141,7 @@
                         </select>
                     </span> years old 
                     <span>
-                        <span ng-show="client.gender.length === 1" ng-model="data.idealClient.gender">{{idealClientSelects.gender[+client.gender]}}</span>
+                        <span ng-show="client.gender.length === 1" ng-init="data.idealClient.gender = client.gender">{{idealClientSelects.gender[+client.gender]}}</span>
 
                         <select ng-show="client.gender.length > 1" ng-model="data.idealClient.gender" 
                                 ng-class="{'active': data.idealClient.gender !== '0'}"
@@ -150,7 +150,7 @@
                         </select>
                     </span>,
                     <span>
-                        <span ng-show="client.maritalStatus.length === 1" ng-model="data.idealClient.maritalStatus">{{idealClientSelects.maritalStatus[+client.maritalStatus]}}</span>
+                        <span ng-show="client.maritalStatus.length === 1" ng-init="data.idealClient.maritalStatus = client.maritalStatus">{{idealClientSelects.maritalStatus[+client.maritalStatus]}}</span>
 
                         <select ng-show="client.maritalStatus.length > 1" ng-model="data.idealClient.maritalStatus" 
                                 ng-class="{'active': data.idealClient.maritalStatus !== '0'}"
@@ -168,7 +168,7 @@
                     </span>
                     of 
                     <span>
-                        <span ng-show="client.kids.length === 1" ng-model="data.idealClient.kids">{{idealClientSelects.kids[+client.kids]}}</span>
+                        <span ng-show="client.kids.length === 1" ng-init="data.idealClient.kids = client.kids">{{idealClientSelects.kids[+client.kids]}}</span>
 
                         <select ng-show="client.kids.length > 1" ng-model="data.idealClient.kids" 
                                 ng-class="{'active': data.idealClient.kids !== '0'}"
@@ -178,7 +178,7 @@
                     </span>,
                     work as an 
                     <span>
-                        <span ng-show="client.employment.length === 1" ng-model="data.idealClient.employment">{{idealClientSelects.employment[+client.employment]}}</span>
+                        <span ng-show="client.employment.length === 1" ng-init="data.idealClient.employment = client.employment">{{idealClientSelects.employment[+client.employment]}}</span>
 
                         <select ng-show="client.employment.length > 1" ng-model="data.idealClient.employment" 
                                 ng-class="{'active': data.idealClient.employment !== '0'}"
@@ -187,7 +187,7 @@
                         </select>
                     </span>, lives in
                     <span>
-                        <span ng-show="client.location.length === 1" ng-model="data.idealClient.location">{{idealClientSelects.location[+client.location]}}</span>
+                        <span ng-show="client.location.length === 1" ng-init="data.idealClient.location = client.location">{{idealClientSelects.location[+client.location]}}</span>
 
                         <select ng-show="client.location.length > 1" ng-model="data.idealClient.location" 
                                 ng-class="{'active': data.idealClient.location !== '0'}"
@@ -197,7 +197,7 @@
                     </span>,
                     generally on transit by 
                     <span>
-                        <span ng-show="client.transit.length === 1" ng-model="data.idealClient.transit">{{idealClientSelects.transit[+client.transit]}}</span>
+                        <span ng-show="client.transit.length === 1" ng-init="data.idealClient.transit = client.transit">{{idealClientSelects.transit[+client.transit]}}</span>
 
                         <select ng-show="client.transit.length > 1" ng-model="data.idealClient.transit" 
                                 ng-class="{'active': data.idealClient.transit !== '0'}"
@@ -206,7 +206,7 @@
                         </select>
                     </span>, likes to 
                     <span>
-                        <span ng-show="client.hobbies.length === 1" ng-model="data.idealClient.hobbies">{{idealClientSelects.hobbies[+client.hobbies]}}</span>
+                        <span ng-show="client.hobbies.length === 1" ng-init="data.idealClient.hobbies = client.hobbies">{{idealClientSelects.hobbies[+client.hobbies]}}</span>
 
                         <select ng-show="client.hobbies.length > 1" ng-model="data.idealClient.hobbies" 
                                 ng-class="{'active': data.idealClient.hobbies !== '0'}"
