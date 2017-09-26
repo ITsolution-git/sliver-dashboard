@@ -373,7 +373,7 @@
 							{{revenueGrid.actualSalesItemCount}}/{{revenueGrid.totalSalesItemCount}} SALES UNITS
 						</span>
 						<md-button flex="10" class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales',revenueGrid.revenue)">add sales</md-button>
-
+						
 					</section>
 					<md-divider style="position: relative"></md-divider>
 					<section  ng-if="revenueGrid.showDetail && revenueGrid.gridOptions.data.length == 0">
@@ -437,10 +437,16 @@
 										<td style="padding-top: 20px;">{{item.salesGoalShare}}%</td>
 										<td style="padding-top: 20px;"><span flex style="overflow: hidden; text-overflow: ellipsis;">{{item.notes}}</span></td>
 										<td style="padding-top: 20px;">
-											<md-button ng-click="openItemDialog($event, 'edit', item.type, item)" style="margin:0px">
-												Edit &nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>
-											</md-button>
-
+											<div style="display: flex;flex-direction: row;flex-wrap: wrap;align-content: center;justify-content: center;">
+												<md-button ng-click="openItemDialog($event, 'edit', item.type, item)" style="margin:0px">
+													Edit &nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>
+												</md-button>
+												<div style="padding-top: 5px;">
+													<a class="icon-btn" ng-click="openDeleteItemDialog($event, item)">
+														<i class="material-icons" style="font-size: 23px">delete_forever</i>
+													</a>
+												</div>
+											</div>
 										</td>
 									</tr>
 								</tbody>

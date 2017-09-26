@@ -614,7 +614,7 @@
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                 .title('Confirm Delete')
-                .textContent('Are you sure you want to delete this ' + capitalize(item.type) +'?')
+                .textContent('Are you sure you want to delete this ' + capitalize(item.type) +' Item' +'?')
                 .ariaLabel('Delete')
                 .targetEvent($event)
                 .ok('Delete')
