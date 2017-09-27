@@ -43,6 +43,8 @@
                 toaster.pop({ type: 'error', body: 'Size of the picture cannot exceed 5M.' });
                 }, function (evt) {
                     file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                }).then(function(){
+                    userService.loadUser(true).then(function () { });
                 });
         };
        
@@ -70,7 +72,10 @@
         function saveBasic() {
             userService.updateMe($scope.user).then(function(user){
                 $scope.user = user;
-                toaster.pop({type: 'success', body: 'Info Saved!', timeout: 1000});
+                // toaster.pop({type: 'success', body: 'Info Saved!', timeout: 1000});
+                userService.loadUser(true).then(function(){
+                    toaster.pop({type: 'success', body: 'Info Saved!', timeout: 1000});
+                })
             }).catch(function(err){
                 addNotification($scope.notifications, {name: 'Server Error', type: 'error', message:"So sorry - something has gone wrong on our end.  Try again and if it still doesn't work email support@smallbizsilverlining.com", show: true});
                 
