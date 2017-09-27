@@ -240,12 +240,16 @@
 
 
         function deleteVariableExpense(revenue, variableExpense) {
-            if (revenue.variableExpenses.length >= 1) {
+            var exp = [{
+                expense: '',
+                cost: '0.00'
+            }];
                 _.remove(revenue.variableExpenses, function (n) {
+                    if (revenue.variableExpenses.length > 1)
                     return n === variableExpense;
+                    else {revenue.variableExpenses.push(exp); return n === variableExpense;}
                 });
                 doCalculation();
-            }
         }
 
         function addNotification(notifications, newNotification) {
