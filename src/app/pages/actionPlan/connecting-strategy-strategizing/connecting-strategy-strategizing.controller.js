@@ -21,6 +21,7 @@
             checkActionCompleted: checkActionCompleted,
             deleteAction: deleteAction,
             autoExpand: autoExpand,
+            init: init,
             revenues: [],
 
             checkValidity: checkValidity,
@@ -48,8 +49,13 @@
         
         $timeout(function(){
             $scope.autoExpand('strategy-description');
-            
         },0);
+
+        function init() {
+            $timeout(function(){
+            $scope.autoExpand('strategy-description');
+            },500);
+        }
         
 
         function getData() {
@@ -124,6 +130,7 @@
             // if(!confirm("You changed the strategy for Q" + (QID+1))+ '. Do you want reload default action items. Reloading will delete origial default action items.') {
             //     return;
             // }
+
             var quater = $scope.data[QID];
             if(quater.strategy && quater.strategy.id) {
 
@@ -134,7 +141,6 @@
                         month: $scope.QMonths[QID][monthID],
                         day: 1
                     }).endOf('month').format('YYYY-MM-DD');
-
                     console.log(dueDate);
                     _.each(itemsMonths, function(item){
                         //Set Due date to end of that month
@@ -282,7 +288,7 @@
 
                 // qStgChanged.forEach(function(item, ind){
                 //     if(item)
-                //         loadDefaultActionItems(ind);
+                   
                 // });
             }
 
@@ -384,7 +390,7 @@
                         });
                 }
             }
-        }
+        }           
 
         function autoExpand(e) {
             var elements = typeof e === 'object' ? [e.target] : [].slice.call(document.getElementsByClassName(e));

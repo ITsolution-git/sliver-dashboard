@@ -39,8 +39,8 @@
             <div class="row sample-show-hide" ng-hide="showFormBlock">
                 <div class="col-xs-12 padding-l-r-30 margin-b-24">
                     <p class="heading2"></p>
-                </div>
-                
+                </div>   
+                 
                 <ul class="nav nav-tabs quater-letter-container p-w-es-10 m-w-es-20">
                     <li class="active quater-letter"><a data-toggle="tab" data-target="#quater1">Q1</a></li>
                     <li class="quater-letter"><a data-toggle="tab" data-target="#quater2">Q2</a></li>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <div class="slap-work-box col-xs-12 m-t-es-40" ng-init="showStrategyBox=false">
-                            <slap-work-moment-icon visible="showStrategyBox"  type="'moment'" title="'Connecting Strategy'"></slap-work-moment-icon>
+                            <slap-work-moment-icon ng-click="init()" visible="showStrategyBox"  type="'moment'" title="'Connecting Strategy'"></slap-work-moment-icon>
                             <div ng-show="showStrategyBox" class="sample-show-hide">
                                 <div>
                                     I will use 
@@ -87,9 +87,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slap-work-box m-t-es-40 col-xs-12" ng-init="showActionItemsBox=false">
+                        <div class="slap-work-box m-t-es-40 col-xs-12"  ng-init="showActionItemsBox=false">
                             <slap-work-moment-icon visible="showActionItemsBox"  type="'moment'" title="'Action Items'"></slap-work-moment-icon>
-                            <div ng-show="showActionItemsBox" class="sample-show-hide">
+                            <div  ng-show="showActionItemsBox" class="sample-show-hide">
                                 <div ng-repeat="monthID in QMonths[nthQut - 1]"  class="col-xs-12 col-sm-12">
                                     <p class="m-t-es-40">{{monthNames[monthID]}}</p>
                                     
