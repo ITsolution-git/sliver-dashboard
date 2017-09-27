@@ -98,11 +98,11 @@
                                 <label>Last Name</label>
                                 <input md-maxlength="30" required name="lastName" ng-model="vm.user.lastName"  ng-disabled="vm.isRenew"/>
 
-                                <!--<div ng-messages="registerForm.lastName.$error" ng-hide="registerForm.lastName.$valid">-->
+                                <!-- <div ng-messages="registerForm.lastName.$error" ng-hide="registerForm.lastName.$valid">-->
                                     <!--<div ng-message-exp="['required', 'maxlength']">-->
 
                                     <!--</div>-->
-                                <!--</div>-->
+                                <!--</div> -->
                             </md-input-container>
                         </div>
 
@@ -132,12 +132,11 @@
 
                             <md-input-container class="md-block" flex="50">
                                 <label for="phone">Phone Number</label>
-                                <input name="phone" required ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
-
-
+                                <input ng-pattern="/^[0-9]{1,7}$/" name="phone" required maxlength="9" minlength="9"
+                                ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
                                 <div ng-messages="registerForm.phone.$error" ng-hide="registerForm.phone.$valid">
-                                    <div ng-message-exp="['required']">
-                                        Your phone number
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                       Please enter your phone number with no other symbols or spaces.  Just the 9 numbers!
                                     </div>
                                 </div>
                             </md-input-container>
