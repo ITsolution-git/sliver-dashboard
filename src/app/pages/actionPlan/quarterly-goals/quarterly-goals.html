@@ -141,7 +141,8 @@
                                         <input ng-model="data[nthQut-1].units[revenue.name]" type="text"
                                             class="outline-0"
                                             ng-keydown="checkValidity(data[nthQut-1].units[revenue.name], $event)"
-                                            ng-class="{'active': revenue.name}" required>
+                                            ng-class="{'active': revenue.name}" ng-blur="checkRevenue(data[nthQut-1].units[revenue.name],nthQut-1, revenue.name)"
+                                               required >
                                     </div>
                                 </td>
                                 <td>
