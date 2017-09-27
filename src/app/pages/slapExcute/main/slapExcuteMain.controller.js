@@ -313,7 +313,7 @@
                 if(isValid)
                     results.push(item);
             });
-            return _.sortBy(results, ['type', 'dueDate']);
+            return _.sortBy(results, ['dueDate']);
              
             
         }

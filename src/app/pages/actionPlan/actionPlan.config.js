@@ -12,7 +12,7 @@
                     access: '@'
                 },
                 abstract: true,
-                url: '/actionPlan',
+                url: '/actionplan',
                 parent: 'default',
                 views: {
                     content: {
@@ -21,7 +21,7 @@
                 }
             })
             .state('actionPlan.overview', {
-                url: '/overview',
+                url: '/actionplanoverview',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -41,7 +41,7 @@
                 templateUrl: 'pages/actionPlan/action-plan-overview/action-plan-overview.html'
             })
             .state('actionPlan.worldAroundYou', {
-                url: '/worldAroundYou',
+                url: '/theworldaroundyou',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -61,7 +61,7 @@
                 templateUrl: 'pages/actionPlan/world-around-your/world-around-your.html'
             })
             .state('actionPlan.doubleCheckStartDate', {
-                url: '/reviewStartDate',
+                url: '/reviewstartdate',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -84,7 +84,7 @@
                 templateUrl: 'pages/actionPlan/double-check-start-date/double-check-start-date.html'
             })
             .state('actionPlan.whatsHappening', {
-                url: '/youAndYourIdealClient',
+                url: '/youandyouridealclient',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -104,7 +104,7 @@
                 templateUrl: 'pages/actionPlan/whats-happening/whats-happening.html'
             })
             .state('actionPlan.rateConnectingStrategies', {
-                url: '/rateThe10ConnectingStrategies',
+                url: '/connectingstrategies',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -124,7 +124,7 @@
                 templateUrl: 'pages/actionPlan/rate-connecting-strategies/rate-connecting-strategies.html'
             })
             .state('actionPlan.connectingStrategyStrategizing', {
-                url: '/quarterlyStrategy',
+                url: '/quarterlystrategy',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -149,7 +149,7 @@
                 templateUrl: 'pages/actionPlan/connecting-strategy-strategizing/connecting-strategy-strategizing.html'
             })
             .state('actionPlan.actionItems', {
-                url: '/actionItems',
+                url: '/actionitems',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -174,7 +174,7 @@
                 templateUrl: 'pages/actionPlan/action-items/action-items.html'
             })
             .state('actionPlan.quarterlyGoals', {
-                url: '/quarterlyGoals',
+                url: '/quarterlygoals',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -199,7 +199,7 @@
                 templateUrl: 'pages/actionPlan/quarterly-goals/quarterly-goals.html'
             })
             .state('actionPlan.doubleCheckYearGoal', {
-                url: '/yourYearGoal',
+                url: '/your1yeargoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -224,7 +224,7 @@
                 templateUrl: 'pages/actionPlan/double-check-year-goal/double-check-year-goal.html'
             })
             .state('actionPlan.qa', {
-                url: '/Q&A',
+                url: '/actionplanq&a',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -244,7 +244,7 @@
                 templateUrl: 'pages/actionPlan/action-plan-qa/action-plan-qa.html'
             })
             .state('actionPlan.commitToYourActionPlan', {
-                url: '/reviewYourActionPlan',
+                url: '/reviewactionplan',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -269,7 +269,7 @@
                 templateUrl: 'pages/actionPlan/commit-your-action-plan/commit-your-action-plan.html'
             })
             .state('actionPlan.step4Summary', {
-                url: '/step4SLAPsummary',
+                url: '/step4slapsummary',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

@@ -12,7 +12,7 @@
                     access: '@'
                 },
                 abstract: true,
-                url: '/mindset',
+                url: '/slapmindset',
                 parent: 'default',
                 views: {
                     content: {
@@ -21,7 +21,7 @@
                 }
             })
             .state('mindset.ourCommitment', {
-                url: '/ourCommitment',
+                url: '/ourcommitmenttoyou',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -41,7 +41,7 @@
                 templateUrl: 'pages/mindset/our-commitment/our-commitment.html'
             })
             .state('mindset.yourCommitment', {
-                url: '/yourCommitment',
+                url: '/yourcommitmenttous',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -85,7 +85,7 @@
                 templateUrl: 'pages/mindset/get-slap-mindset/get-slap-mindset.html'
             })
             .state('mindset.privilegeAndResponsibility', {
-                url: '/privilageAndResponsibility',
+                url: '/privilegeandresponsibility',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -105,7 +105,7 @@
                 templateUrl: 'pages/mindset/privilege_and_responsibility/privilege-and-responsibility.html'
             })
             .state('mindset.areYourStuck', {
-                url: '/areYourStuck',
+                url: '/areyoustuck',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -125,7 +125,7 @@
                 templateUrl: 'pages/mindset/are-your-stuck/are-your-stuck.html'
             })
             .state('mindset.cashFlow', {
-                url: '/cashFlow',
+                url: '/cashflowcapacitycatch22',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -145,7 +145,7 @@
                 templateUrl: 'pages/mindset/cashflow/cashflow.html'
             })
             .state('mindset.yourBusiness', {
-                url: '/planAndAction',
+                url: '/planandaction',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -205,7 +205,7 @@
                 templateUrl: 'pages/mindset/start-slapn/start-slapn.html'
             })
             .state('mindset.slapStartDate', {
-                url: '/GetSlapn',
+                url: '/getslapn',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
