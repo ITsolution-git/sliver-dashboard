@@ -116,7 +116,9 @@
                         $scope.model.revenues = _.get(response, 'data.revenueStreams.revenues', []);
                         $scope.totalTarget = 0;
                         _.each($scope.model.revenues, function(revenue){
-                             $scope.totalTarget += (+revenue.sellingPrice * +revenue.unit);
+                            if (!revenue.deleted) {
+                                $scope.totalTarget += (+revenue.sellingPrice * +revenue.unit);
+                            }
                         })
 
                     }
