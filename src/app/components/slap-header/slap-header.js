@@ -14,11 +14,12 @@
                 vm.user.avatarId = id;
                 vm.avatarUrl = CONFIG.api + "/v1/user/avatar/" + id;
             });
-            userService.getUser().then(function (user) {
-                vm.user = angular.copy(userService.user, {});
-                vm.avatarUrl = CONFIG.api+"/v1/user/avatar/"+user.avatarId;
-            });
-
+            // userService.getUser().then(function (user) {
+            //     vm.user = angular.copy(userService.user, {});
+            //     vm.avatarUrl = CONFIG.api+"/v1/user/avatar/"+user.avatarId;
+            // });
+            vm.user = userService.getStoredUser();
+            vm.avatarUrl = CONFIG.api + "/v1/user/avatar/" + vm.user.avatarId;
             this.logout = function () {
                 $auth.logout();
                 $window.location.reload();

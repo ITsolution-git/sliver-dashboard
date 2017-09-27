@@ -9,7 +9,7 @@
         $stateProvider
             .state('get-help', {
                 parent: 'withNavbar',
-                url: '/get-help',
+                url: '/help',
                 data: {
                     access: '@'
                 },

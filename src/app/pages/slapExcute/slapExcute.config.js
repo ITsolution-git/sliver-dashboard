@@ -12,7 +12,7 @@
                     access: '@'
                 },
                 abstract: true,
-                url: '/actions',
+                url: '/execute',
                 parent: 'withNavbar',
                 views: {
                     content: {
