@@ -12,7 +12,7 @@
                     access: '@'
                 },
                 abstract: true,
-                url: '/slapExcute',
+                url: '/actions',
                 parent: 'withNavbar',
                 views: {
                     content: {
@@ -21,7 +21,7 @@
                 }
             })
             .state('slapExcute.main', {
-                url: '/actions',
+                url: '',
                 resolve: {
                     excuteItems: function (excuteItemService) {
                         return excuteItemService.loadExcuteItems();

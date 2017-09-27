@@ -12,7 +12,7 @@
                     access: '@'
                 },
                 abstract: true,
-                url: '/yearGoal',
+                url: '/1yeargoal',
                 parent: 'default',
                 views: {
                     content: {
@@ -21,7 +21,7 @@
                 }
             })
             .state('yearGoal.overview', {
-                url: '/overview',
+                url: '/1yeargoaloverview',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -41,7 +41,7 @@
                 templateUrl: 'pages/yearGoal/year-goal-overview/year-goal-overview.html'
             })
             .state('yearGoal.personalExpenses', {
-                url: '/personalExpenses',
+                url: '/personalexpenses',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -61,7 +61,7 @@
                 templateUrl: 'pages/yearGoal/personal-expenses/personal-expenses.html'
             })
             .state('yearGoal.fixedBusinessExpenses', {
-                url: '/fixedBusinessExpenses',
+                url: '/fixedbusinessexpenses',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -81,7 +81,7 @@
                 templateUrl: 'pages/yearGoal/fixed-business-expenses/fixed-business-expenses.html'
             })
             .state('yearGoal.totalFixedExpensesRevenue', {
-                url: '/yourBreakevenNumber',
+                url: '/yourbreakevennumber',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -101,7 +101,7 @@
                 templateUrl: 'pages/yearGoal/total-fixed-expenses-revenue/total-fixed-expenses-revenue.html'
             })
             .state('yearGoal.revenueStreams', {
-                url: '/revenueStreams',
+                url: '/revenuestreams',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -121,7 +121,7 @@
                 templateUrl: 'pages/yearGoal/revenue-streams/revenue-streams.html'
             })
             .state('yearGoal.sellingPrice', {
-                url: '/sellingPrice',
+                url: '/sellingprice',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -141,7 +141,7 @@
                 templateUrl: 'pages/yearGoal/selling-price/selling-price.html'
             })
             .state('yearGoal.variableBusinessExpenses', {
-                url: '/variableBusinessExpenses',
+                url: '/variableexpenses',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -161,7 +161,7 @@
                 templateUrl: 'pages/yearGoal/variable-business-expenses/variable-business-expenses.html'
             })
             .state('yearGoal.profitMargin', {
-                url: '/profitMargin',
+                url: '/yourprofitmargin',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -181,7 +181,7 @@
                 templateUrl: 'pages/yearGoal/profit-margin/profit-margin.html'
             })
             .state('yearGoal.revenueBreakdown', {
-                url: '/revenueBreakdown',
+                url: '/revenuebreakdown',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -201,7 +201,7 @@
                 templateUrl: 'pages/yearGoal/revenue-breakdown/revenue-breakdown.html'
             })
             .state('yearGoal.yourYearGoal', {
-                url: '/yourYearGoal',
+                url: '/your1yeargoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -221,7 +221,7 @@
                 templateUrl: 'pages/yearGoal/your-year-goal/your-year-goal.html'
             })
             .state('yearGoal.adjustYourYearGoal', {
-                url: '/reviewYourYearGoal',
+                url: '/review1yeargoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -241,7 +241,7 @@
                 templateUrl: 'pages/yearGoal/adjust-your-year-goal/adjust-your-year-goal.html'
             })
             .state('yearGoal.qa', {
-                url: '/Q&A',
+                url: '1yeargoalq&a',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -261,7 +261,7 @@
                 templateUrl: 'pages/yearGoal/year-goal-qa/year-goal-qa.html'
             })
             .state('yearGoal.commitYourYearGoal', {
-                url: '/commitYourYearGoal',
+                url: '/youryeargoal',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -281,7 +281,7 @@
                 templateUrl: 'pages/yearGoal/commit-your-year-goal/commit-your-year-goal.html'
             })
             .state('yearGoal.step3Summary', {
-                url: '/step3Summary',
+                url: '/step3slapsummary',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

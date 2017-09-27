@@ -84,7 +84,7 @@
             })
             .state('signup', {
                 abstract: true,
-                url: '/signup',
+                url: '/',
                 parent: 'registration',
                 views: {
                     content: {
@@ -107,7 +107,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/buy',
+                url: 'buy',
                 parent: 'signup',
                 controller: 'RegistrationStep2Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step2.html'
@@ -116,7 +116,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/confirm',
+                url: 'confirm',
                 parent: 'signup',
                 controller: 'RegistrationStep3Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step3.html'
