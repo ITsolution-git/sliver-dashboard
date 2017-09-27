@@ -330,10 +330,10 @@
             revenue.deleted = true;
             doCalculation();
         }
-
+ 
 
         function deleteVariableExpense(revenue, variableExpense) {
-            if (revenue.variableExpenses.length > 1) {
+            if (revenue.variableExpenses.length >= 1) {
                 _.remove(revenue.variableExpenses, function (n) {
                     return n === variableExpense;
                 });
