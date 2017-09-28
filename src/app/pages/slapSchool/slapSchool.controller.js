@@ -9,13 +9,13 @@
     function SlapSchoolController($scope, $state, data, toaster) {
         
         var arr = [];
-        var webinars = data[0].webinars;
+        var webinars = data.webinars;
 
-        data[0].forEach(function(item){
+        data.forEach(function(item){
             arr.push(item.name);
         });
         var result = [];
-        data[0].forEach(function(item){
+        data.forEach(function(item){
             result = item.webinars;
         });
 
