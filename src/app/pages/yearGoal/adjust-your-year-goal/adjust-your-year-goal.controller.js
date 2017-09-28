@@ -6,7 +6,7 @@
         .controller('AdjustYourYearGoalController', AdjustYourYearGoalController);
 
     function AdjustYourYearGoalController($scope, pageService, activeStep, stepService, $state, $timeout) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model,{
             forward:true,
             sendData: sendData,

@@ -129,6 +129,9 @@
         }
 
         function openVideoBox(strategy) {
+            strategy.video = actionplanService.getDefaultConnectingStrategies()[strategy.id + 1].video;
+
+
             var modalInstance = $uibModal.open({
                 component: 'strategyVideoBox',
                 size: 'lg',
