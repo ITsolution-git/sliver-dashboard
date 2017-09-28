@@ -48,18 +48,26 @@
                         </div>
 
                         <p>
-                            My Ideal Client is a <span class="aqua-green">{{age[+client.age]}}</span>
-                            years old <span class="aqua-green">{{gender[+client.gender]}}</span>,
-                            <span class="aqua-green">{{maritalStatus[+client.maritalStatus]}}</span>, 
-                            <span ng-if="client.gender == 1">father</span>
-                            <span ng-if="client.gender == 2">mother</span>
-                             of <span
-                                class="aqua-green">{{kids[+client.kids]}}</span>,
-                            work as an <span class="aqua-green">{{employment[+client.employment]}}</span>, lives in
-                            <span class="aqua-green">{{location[+client.location]}}</span>,
-                            generally on transit by <span class="aqua-green">{{transit[+client.transit]}}</span>, likes
-                            to <span class="aqua-green">{{hobbies[client.hobbies]}}</span>
-                            and read <span class="aqua-green">{{reads[client.reads]}}</span>.
+                            <span class="aqua-green">{{data.fourth || 'My Ideal Client' }}</span> is a
+                            <span class="aqua-green">{{age[+client.age]}}</span> year old
+                            <span class="aqua-green">{{gender[+client.gender]}}</span> who is
+                            <span class="aqua-green">{{maritalStatus[+client.maritalStatus]}}</span> and is the
+                            <span ng-if="+client.gender == 1">Father</span>
+                            <span ng-if="+client.gender == 2">Mother</span> of
+                            <span class="aqua-green">{{kids[+client.kids]}}</span>. For work,
+                            <span ng-if="+client.gender == 1">he </span>
+                            <span ng-if="+client.gender == 2">she </span>
+                            <span class="aqua-green">{{employment[+client.employment]}}</span>.
+                            <span ng-if="+client.gender == 1">He</span>
+                            <span ng-if="+client.gender == 2">She</span> lives in
+                            <span class="aqua-green">{{location[+client.location]}}</span>.
+                            <span ng-if="+client.gender == 1">He</span>
+                            <span ng-if="+client.gender == 2">She</span> usually gets around by
+                            <span class="aqua-green">{{transit[+client.transit]}}</span> and in
+                            <span ng-if="+client.gender == 1">his</span>
+                            <span ng-if="+client.gender == 2">her</span> spare time likes to
+                            <span class="aqua-green">{{hobbies[client.hobbies]}}</span> and read
+                            <span class="aqua-green">{{reads[client.reads]}}</span>.
                         </p>
 
                     </div>
