@@ -6,6 +6,7 @@
         .controller('LivingDayToDayController', LivingDayToDayController);
 
     function LivingDayToDayController($scope, activeStep, pageService, stepService, $state) {
+        $scope.videoUrl = activeStep.videoUrl;
 
         angular.extend($scope, activeStep.model, {
             forward: true,

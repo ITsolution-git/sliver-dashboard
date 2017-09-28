@@ -405,7 +405,7 @@
                         totalBreakdown: 0,
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/eD3sbZ21-CZ1S4g0I.mp4'
             }, {
                 name: '1 Year Goal Q&A',
                 sref: 'yearGoal.qa',
@@ -495,7 +495,7 @@
                         },
                     ]
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/Lrif6we8-CZ1S4g0I.mp4'
             }, {
                 name: 'Connecting Strategies',
                 sref: 'actionPlan.rateConnectingStrategies',
@@ -505,7 +505,7 @@
                     showContent: false,
                     data: []
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/umhp2XDb-CZ1S4g0I.mp4'
             }, {
                 name: 'Quarterly Strategy',
                 sref: 'actionPlan.connectingStrategyStrategizing',
@@ -517,7 +517,7 @@
                         {}, {}, {}, {}
                     ]
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/KSCYJtkl-CZ1S4g0I.mp4'
             }, {
                 name: 'Action Items',   
                 sref: 'actionPlan.actionItems',
@@ -529,7 +529,7 @@
                         {}, {}, {}, {}
                     ]
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/fcc9gCgr-CZ1S4g0I.mp4'
             }, {
                 name: 'Quarterly Goals',
                 sref: 'actionPlan.quarterlyGoals',
@@ -541,7 +541,7 @@
                         {}, {}, {}, {}
                     ]
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/BqI3YV3P-CZ1S4g0I.mp4'
             }, {
                 name: 'Your 1 Year Goal',
                 sref: 'actionPlan.doubleCheckYearGoal',
@@ -551,7 +551,7 @@
                     showContent: false,
                     data: []
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/UzlDZdPs-CZ1S4g0I.mp4'
             }, {
                 name: 'Action Plan Q&A',
                 sref: 'actionPlan.qa',
@@ -598,7 +598,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/9ta9DJT7-CZ1S4g0I.mp4'
             },/* {
                 name: 'Commit to Yourself',
                 sref: 'execute.commitYourSelf',
@@ -620,7 +620,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/qdS3FcAu-CZ1S4g0I.mp4'
             }];
 
         var finishedSteps = [];

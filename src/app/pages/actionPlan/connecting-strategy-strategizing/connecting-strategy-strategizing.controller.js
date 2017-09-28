@@ -6,6 +6,7 @@
         .controller('ConnectingStrategyStrategizingController', ConnectingStrategyStrategizingController);
 
     function ConnectingStrategyStrategizingController($scope, activeStep, pageService, stepService, $state, $timeout, actionplanService, actionItems, excuteItemService, $q, toaster) {
+        $scope.videoUrl = activeStep.videoUrl;
 
         angular.extend($scope, activeStep.model, {
             forward: true,
