@@ -61,22 +61,22 @@
                     </div>
                     <div class="revenue-price-container">
                         <div class="">
-                            <div class="input-box">
-                                <span class="currency">$</span>
+                            <div class="input-box mar-box">
+                                <span class="currency curren">$</span>
                                 <input ng-model="revenue.sellingPrice" type="text"
-                                        class="monthly-cost outline-0" disabled
+                                        class="monthly-cost outline-0 spn" disabled
                                         ng-blur="checkRevenueCompleted(revenue, $event)"
                                         ng-keydown="checkValidity(revenue.sellingPrice, $event)"
                                         ng-class="{'active': revenue.sellingPrice}" required>
                             </div>
                         </div>
 
-                        <div class="variable-row" ng-repeat="variableExpense in revenue.variableExpenses" ng-if="variableExpense.expense != '' && variableExpense.cost != '0.00'">
-                            <div class="variable-name ">
-                                <div class="input-box">
-                                    <input ng-model="variableExpense.expense" type="text"
-                                            class="monthly-cost outline-0" disabled
-                                            ng-class="{'active': variableExpense.expense}" required>
+                        <div class="variable-row var-flex" ng-repeat="variableExpense in revenue.variableExpenses" ng-if="variableExpense.expense != '' && variableExpense.cost != '0.00'">
+                            <div class="variable-name">
+                                <div class="input-box box-flex">
+                                    <span ng-bind="variableExpense.expense"
+                                            class="monthly-cost outline-0 span-border"
+                                            ng-class="{'active': variableExpense.expense}"><span>
 
                                 </div>
                             </div>

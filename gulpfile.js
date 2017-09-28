@@ -146,7 +146,16 @@ gulp.task('serve', function () {
             port:8001,
             livereload: true,
             // directoryListing: true,
-            middleware: [ historyApiFallback() ],
+            middleware: [ historyApiFallback({
+                rewrites: [
+                  {
+                    from: /^\/*$\/.*$/,
+                    to: function(context) {
+                      return context.parsedUrl.path;
+                    }
+                  }
+                ]
+              }) ],
             open: true,
         }));
 });
