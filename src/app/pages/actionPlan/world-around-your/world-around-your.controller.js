@@ -6,7 +6,7 @@
         .controller('WorldAroundYouController', WorldAroundYouController);
 
     function WorldAroundYouController($scope, activeStep, pageService, stepService, $state, $timeout, actionplanService, toaster) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,

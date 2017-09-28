@@ -314,7 +314,7 @@
                     showStaticTextBlock: false,
                     showContent: false
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/FsFRuOh7-CZ1S4g0I.mp4'
             }, {
                 name: 'Revenue Streams',
                 sref: 'yearGoal.revenueStreams',
@@ -327,7 +327,7 @@
                         totalBreakdown: 0,
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/yb345sel-CZ1S4g0I.mp4'
             }, {
                 name: 'Selling Price',
                 sref: 'yearGoal.sellingPrice',
@@ -340,7 +340,7 @@
                         totalBreakdown: 0,
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/h2bPHtf6-CZ1S4g0I.mp4'
             }, {
                 name: 'Variable Expenses',
                 sref: 'yearGoal.variableBusinessExpenses',
@@ -353,7 +353,7 @@
                         totalBreakdown: 0,
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/eyL9wraJ-CZ1S4g0I.mp4'
             }, {
                 name: 'Your Profit Margin',
                 sref: 'yearGoal.profitMargin',
@@ -366,7 +366,7 @@
                         totalBreakdown: 0,
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/KpFjzbaD-CZ1S4g0I.mp4'
             }, {
                 name: 'Revenue Breakdown',
                 sref: 'yearGoal.revenueBreakdown',
@@ -379,7 +379,7 @@
                         totalBreakdown: 0,
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/IXxhFFP6-CZ1S4g0I.mp4'
             }, {
                 name: 'Your 1 Year Goal',
                 sref: 'yearGoal.yourYearGoal',
@@ -392,7 +392,7 @@
                         totalBreakdown: 0,
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/KSSOKs53-CZ1S4g0I.mp4'
             }, {
                 name: 'Review 1 Year Goal',
                 sref: 'yearGoal.adjustYourYearGoal',
@@ -435,8 +435,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                },
-                videoUrl: ''
+                }
             }, 
             // Action plan
 
@@ -447,7 +446,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/rf1M1deM-CZ1S4g0I.mp4'
             }, {
                 name: 'The World Around You',
                 sref: 'actionPlan.worldAroundYou',
@@ -459,7 +458,7 @@
                         eventsByMonth: []
                     } 
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/klwkQrRp-CZ1S4g0I.mp4'
             }, {
                 name: 'Review Start Date',
                 sref: 'actionPlan.doubleCheckStartDate',
@@ -469,7 +468,7 @@
                     showContent: false,
                     data: {}
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/C3RkptA5-CZ1S4g0I.mp4'
             }, {
                 name: 'You and Your Ideal Client',
                 sref: 'actionPlan.whatsHappening',
