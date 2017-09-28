@@ -199,6 +199,7 @@
             _.each($scope.data.revenues, function(revenue) {
                 var totalVariableExpenses = 0;
                 _.each(revenue.variableExpenses, function(variableExpense) {
+                    if (variableExpense.cost != 0 || '') 
                     totalVariableExpenses += +variableExpense.cost;
                 });
                 if (+revenue.sellingPrice != 0) {
@@ -240,17 +241,14 @@
 
 
         function deleteVariableExpense(revenue, variableExpense) {
-            var exp = [{
-                expense: '',
-                cost: '0.00'
-            }];
-                _.remove(revenue.variableExpenses, function (n) {
-                    if (revenue.variableExpenses.length > 1)
-                    return n === variableExpense;
-                    else {revenue.variableExpenses.push(exp); return n === variableExpense;}
-                });
-                doCalculation();
-        }
+            _.remove(revenue.variableExpenses, function (n) {
+                if (revenue.variableExpenses.length > 1)
+                return n === variableExpense;
+            });
+            if (revenue.variableExpenses.length == 1)
+            addNewVariableExpense(revenue);
+            doCalculation();
+    }
 
         function addNotification(notifications, newNotification) {
             var existing = _.find(notifications, {name: newNotification.name});
