@@ -6,11 +6,11 @@
 
     <div class="video-content sample-show-hide row sample-show-hide" ng-hide="$ctrl.visible">
         {{videoUrl}}
-        <video  controls preload="none" class="col-sm-12 hidden-xs" poster="../images/slap-logo.jpg">
+        <video  controls preload="none" class="col-sm-12 hidden-xs" poster="/images/movie-logo.png">
             <source ng-src="{{$ctrl.video}}" type="video/mp4">
         </video>
         
-        <video controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="../images/slap-logo.jpg">
+        <video controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="/images/movie-logo.png">
             <source ng-src="{{video}}" type="video/mp4">
         </video>
 
