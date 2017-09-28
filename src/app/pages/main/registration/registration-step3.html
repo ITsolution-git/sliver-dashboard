@@ -132,7 +132,7 @@
 
                             <md-input-container class="md-block" flex="50">
                                 <label for="phone">Phone Number</label>
-                                <input ng-pattern="/^[0-9]{1,7}$/" name="phone" required maxlength="9" minlength="9"
+                                <input ng-pattern="/^[0-9]{1,9}$/" name="phone" required maxlength="9" minlength="9"
                                 ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
                                 <div ng-messages="registerForm.phone.$error" ng-hide="registerForm.phone.$valid">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
