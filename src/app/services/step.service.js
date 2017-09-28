@@ -110,7 +110,7 @@
                     showStaticTextBlock: false,
                     showStartDate: false
                 },
-                videoUrl: 'http://content.jwplatform.com/videos/sG2Jy0bq-CZ1S4g0I.mp4'
+                videoUrl: 'http://content.jwplatform.com/videos/LIoeUB7Y-CZ1S4g0I.mp4'
             },
 
             // Slapstatement
@@ -529,7 +529,7 @@
                         {}, {}, {}, {}
                     ]
                 },
-                videoUrl: 'http://content.jwplatform.com/videos/fcc9gCgr-CZ1S4g0I.mp4'
+                videoUrl: ''
             }, {
                 name: 'Quarterly Goals',
                 sref: 'actionPlan.quarterlyGoals',
@@ -569,7 +569,7 @@
                     showContent: false,
                     data: []
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/fcc9gCgr-CZ1S4g0I.mp4'
             }, {
                 name: 'Step 4 SLAPsummary',
                 sref: 'actionPlan.step4Summary',
