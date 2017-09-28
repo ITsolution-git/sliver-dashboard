@@ -20,22 +20,27 @@
             fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             gender: ['Empty', 'Male', 'Female'],
             maritalStatus: ['Empty', 'Single', 'Married', 'Divorced', 'Widowed'],
-            kids: ['Empty', 'None', 'Young', 'Teens',' Adults'],
-            employment: ['Empty', 'Doesn’t Work', 'Established Entrepreneur', 'Small Entrepreneur', 'Senior Employed', 'Mid Level Employed', 'Junior Employed'],
-            location: ['Empty', 'City', 'Suburbs', 'Rural', 'Other'],
+            // kids: ['Empty', 'None', 'Young', 'Teens',' Adults'],
+            kids: ['Empty', 'No Children', 'Young Kids', 'Teen Kids', ' Grown Children'],
+            //employment: ['Empty', 'Doesn’t Work', 'Established Entrepreneur', 'Small Entrepreneur', 'Senior Employed', 'Mid Level Employed', 'Junior Employed'],
+            employment: ['Empty', 'Doesn’t Work', 'owns a big business', 'owns a small business', 'works a senior level job', 'works a mid level job', 'works a junior level job'],
+            // location: ['Empty', 'City', 'Suburbs', 'Rural', 'Other'],
+            location: ['Empty', ' a City', ' the suburbs', 'somewhere Rural'],
             home: ['Empty', 'Condo', 'Apartment', 'House', 'Farm', 'Other'],
-            transit: ['Empty', 'Car', 'Bike', 'Train', 'Walking', 'Planes', 'Other'],
+            // transit: ['Empty', 'Car', 'Bike', 'Train', 'Walking', 'Planes', 'Other'],
+            transit: ['Empty', 'Car', 'Biking', 'Train', 'Walking', 'Flying', 'Subway'],
             forward: true,
             sendData: sendData,
 
-            age: ['Age','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90'],
-            hobbies: ['Hobbies', 'Volunteering',  'Working Out', 'Shopping',  'Traveling',   'Sports',  'Reading',  'Arts & Culture'],
-            reads: ['Reads', 'Business Book', 'Self Help Book', 'Magazine', 'Novel', 'Blog Posts',  'Newspaper'],
-            
-            months: ['','January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+            age: ['Age', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90'],
+            //hobbies: ['Hobbies', 'Volunteering',  'Working Out', 'Shopping',  'Traveling',   'Sports',  'Reading',  'Arts & Culture'],
+            //reads: ['Reads', 'Business Book', 'Self Help Book', 'Magazine', 'Novel', 'Blog Posts',  'Newspaper'],
+            hobbies: ['Hobbies', 'Volunteer', 'Work Out', 'Shop', 'Travel', 'Play Sports', 'Read', 'See Film/Theater/Art', 'Watch Sports'],
+            reads: ['Reads', 'Business Books', 'Self Help Books', ' Magazines', 'Novels', 'Blogs', 'the News'],
+            months: ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             totalFixedExpenses: '0.00',
-            totalTarget: '0.00'
+            totalTarget: '0.00',
         });
         var originalData, originalPrivilagesData;
 

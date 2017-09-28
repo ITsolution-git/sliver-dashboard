@@ -51,18 +51,29 @@
 
                             <div class="blue-circle"><span>!</span></div>
                             <p>
-                                <span>My Ideal Client is </span> is a <span>{{idealClientSelects.age[+model.idealClient.age]}}</span> year old <span>{{idealClientSelects.gender[+model.idealClient.gender]}}</span>,
-                                <span>{{idealClientSelects.maritalStatus[+model.idealClient.maritalStatus]}}</span>,
-                                 <span ng-if="model.idealClient.gender == 1">father</span>
-                                 <span ng-if="model.idealClient.gender == 2">mother</span> of 
-                                 <span>{{idealClientSelects.kids[+model.idealClient.kids]}}</span> kids who
-                                work as a <span>{{idealClientSelects.employment[+model.idealClient.employment]}}</span>, lives in
-                                <span>{{idealClientSelects.location[+model.idealClient.location]}}</span>,
-                                and gets around by <span>{{idealClientSelects.transit[+model.idealClient.transit]}}</span>. 
+                                <span class="aqua-green">My Ideal Client</span> is a 
+                                <span class="aqua-green">{{idealClientSelects.age[+model.idealClient.age]}}</span> 
+                                year old <span class="aqua-green">{{idealClientSelects.gender[+model.idealClient.gender]}}</span>
+                                who is <span class="aqua-green">{{idealClientSelects.maritalStatus[+model.idealClient.maritalStatus]}}</span>
+                                 and is the <span ng-if="model.idealClient.gender == 1">Father</span>
+                                 <span ng-if="model.idealClient.gender == 2">Mother</span> 
+                                 of <span class="aqua-green">{{idealClientSelects.kids[+model.idealClient.kids]}}</span>.
+                                 For work, 
+                                <span ng-if="model.idealClient.gender == 1">he </span>
+                                <span ng-if="model.idealClient.gender == 2">she </span>
+                                <span class="aqua-green">{{idealClientSelects.employment[+model.idealClient.employment]}}</span>.
                                 <span ng-if="model.idealClient.gender == 1">He</span>
-                                <span ng-if="model.idealClient.gender == 2">She</span> likes 
-                                <span>{{idealClientSelects.hobbies[+model.idealClient.hobbies]}}</span>
-                                and last read a <span>{{idealClientSelects.reads[+model.idealClient.reads]}}</span>.
+                                <span ng-if="model.idealClient.gender == 2">She</span> lives in
+                                <span class="aqua-green">{{idealClientSelects.location[+model.idealClient.location]}}</span>.
+                                <span ng-if="model.idealClient.gender == 1">He</span>
+                                <span ng-if="model.idealClient.gender == 2">She</span>
+                                usually gets around by <span class="aqua-green">{{idealClientSelects.transit[+model.idealClient.transit]}}</span>
+                                 and in
+                                <span ng-if="model.idealClient.gender == 1">his</span>
+                                <span ng-if="model.idealClient.gender == 2">her</span>
+                                  spare time likes to
+                                <span class="aqua-green">{{idealClientSelects.hobbies[+model.idealClient.hobbies]}}</span>
+                                 and read <span class="aqua-green">{{idealClientSelects.reads[+model.idealClient.reads]}}</span>.
                             </p>
 
                         </div>
