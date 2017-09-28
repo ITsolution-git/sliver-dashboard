@@ -18,7 +18,10 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="For each Revenue Stream, consider the time of year, World Events, and the Connecting Strategy you are using, and divide the Annual Goal into a specific goal for each quarter."
+            t2="Don't simply divide each Annual Goal by 4.  This is a growth plan!  Unlkely you will achieve the same sales in each of 4 quarters.  What is the seasonality of each revenue stream?  When will sales likely occur?"
+            t3="Ask yourself if you can sell and deliver this many sales each quarter.  A quarter goes quickly!  It is only 12 weeks.  Are your goals feeling just right or too daunting?"
+            t4="The sum of your four Quarterly Goals for each Revenue Stream must equal the Total Sales Goal for the year." visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -141,7 +144,8 @@
                                         <input ng-model="data[nthQut-1].units[revenue.name]" type="text"
                                             class="outline-0"
                                             ng-keydown="checkValidity(data[nthQut-1].units[revenue.name], $event)"
-                                            ng-class="{'active': revenue.name}" required>
+                                            ng-class="{'active': revenue.name}" ng-blur="checkRevenue(data[nthQut-1].units[revenue.name],nthQut-1, revenue.name)"
+                                               required >
                                     </div>
                                 </td>
                                 <td>

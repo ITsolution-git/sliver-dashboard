@@ -169,6 +169,13 @@
             }
         }
 
+        function checkRevenue(revenue){
+            if(revenue === ''){
+                console.log(revenue);
+                return revenue = 0;
+            }
+        }
+
 
         function addNewActions(monthID, event, currentIndex) {
             
@@ -224,6 +231,12 @@
                 
             }
         }
+
+        $scope.checkRevenue = function (revenue, nth, name) {
+            if(!revenue){
+                $scope.data[nth].units[name] = 0;
+            }
+        };
         
         function addNotification(notifications, newNotification) {
             var existing = _.find(notifications, {name: newNotification.name});

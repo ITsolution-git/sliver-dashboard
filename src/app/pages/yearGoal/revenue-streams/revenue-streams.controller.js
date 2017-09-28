@@ -330,16 +330,17 @@
             revenue.deleted = true;
             doCalculation();
         }
-
+ 
 
         function deleteVariableExpense(revenue, variableExpense) {
-            if (revenue.variableExpenses.length > 1) {
-                _.remove(revenue.variableExpenses, function (n) {
-                    return n === variableExpense;
-                });
-                doCalculation();
-            }
-        }
+            _.remove(revenue.variableExpenses, function (n) {
+                if (revenue.variableExpenses.length > 1)
+                return n === variableExpense;
+            });
+            if (revenue.variableExpenses.length == 1)
+            addNewVariableExpense(revenue);
+            doCalculation();
+    }
 
         function addNotification(notifications, newNotification) {
             var existing = _.find(notifications, {name: newNotification.name});
