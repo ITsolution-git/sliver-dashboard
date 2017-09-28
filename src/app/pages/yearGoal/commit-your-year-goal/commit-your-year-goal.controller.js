@@ -6,7 +6,7 @@
         .controller('CommitYourYearGoalController', CommitYourYearGoalController);
 
     function CommitYourYearGoalController($scope, pageService, activeStep, stepService, $state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,

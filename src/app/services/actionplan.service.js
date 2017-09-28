@@ -544,16 +544,16 @@
             }
         ];
         var _defaultConnectingStrategies = [
-            {id: 1, name: 'Connect Prep', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 2, name: 'Referrals', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 3, name: 'Partnerships', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 4, name: 'Hit List', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 5, name: 'Events', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 6, name: 'Media', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 7, name: 'Special Deals', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 8, name: 'Online Connecting', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 9, name: 'Loyalty', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
-            {id: 10, name: 'SLAPnap', video:'http://media.w3.org/2016/01/Emmy-Award.mp4', rating: 0, reason:''},
+            {id: 1, name: 'Connect Prep', video:'', rating: 0, reason:''},
+            {id: 2, name: 'Referrals', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 3, name: 'Partnerships', video:'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 4, name: 'Hit List', video:'http://content.jwplatform.com/videos/NX9P49PE-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 5, name: 'Events', video:'http://content.jwplatform.com/videos/NOM9ntVR-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 6, name: 'Media', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 7, name: 'Special Deals', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 8, name: 'Online Connecting', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 9, name: 'Loyalty', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 10, name: 'SLAPnap', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
         ];
 
         var _monthLongNames = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October","November", "December"];

@@ -427,7 +427,7 @@
                         expensesSum: 0
                     }
                 },
-                videoUrl: ''
+                videoUrl: 'http://content.jwplatform.com/videos/KSSOKs53-CZ1S4g0I.mp4'
             }, {
                 name: 'Step 3 SLAPsummary',
                 sref: 'yearGoal.step3Summary',
