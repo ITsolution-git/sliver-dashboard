@@ -6,6 +6,7 @@
         .controller('WhatsHappeningController', WhatsHappeningController);
 
     function WhatsHappeningController($scope, activeStep, pageService, stepService, $state, $timeout, actionplanService, userService, toaster) {
+        $scope.videoUrl = activeStep.videoUrl;
 
         angular.extend($scope, activeStep.model, {
             forward: true,

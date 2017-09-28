@@ -6,6 +6,7 @@
         .controller('RateConnectingStrategiesController', RateConnectingStrategiesController);
 
     function RateConnectingStrategiesController($scope, activeStep, pageService,stepService, $state, $timeout, actionplanService, $uibModal, $window, idealclientService) {
+        $scope.videoUrl = activeStep.videoUrl;
 
         angular.extend($scope, activeStep.model, {
             forward: true,

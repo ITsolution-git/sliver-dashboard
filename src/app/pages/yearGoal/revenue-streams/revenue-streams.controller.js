@@ -6,6 +6,7 @@
         .controller('RevenueStreamsController', RevenueStreamsController);
 
     function RevenueStreamsController($scope, pageService,activeStep,stepService,$state, $timeout) {
+        $scope.videoUrl = activeStep.videoUrl;
 
         angular.extend($scope, activeStep.model,{
             forward:true,
