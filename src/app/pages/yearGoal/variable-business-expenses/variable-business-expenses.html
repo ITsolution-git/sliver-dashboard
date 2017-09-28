@@ -21,7 +21,10 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="List each cost you incur when you sell one unit of each Revenue Stream.  Do you pay a sales commission?  A delivery service?  A contractor or employee paid hourly to a client you charge hourly?  Think of all of the labour and material costs that you have to pay out every time you sell each of your Revenue Streams."
+            t2="Variable expenses include labor and materials to produce your product/service, selling expenses (including revenue sharing arrangements, credit card processing and sales commissions!), and delivery costs that you absorb yourself, that aren't passed onto and paid for by your customer."
+            t3="As you enter your Variable Expenses - let it be a strategic moment for you.  Are these expenses reasonable? Are there any effective ways to cut these costs or manage them so you can increase your profit?"
+            t4="If you want to add or delete a Revenue Stream or adjust the Sales Price for one of your Revenue Streams you need to go back to the previous pages to do that." visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -79,7 +82,7 @@
                                             required>                                    
                                 </div>
                             </div>
-                            <div class="variable-price ">
+                            <div class="variable-price">
                                 <div class="input-box">
                                     <span class="currency">-$</span>
                                     <input ng-model="variableExpense.cost" type="text"
@@ -93,6 +96,7 @@
 
                             <span class="delete-btn outline-0 pull-right" tabindex="-1" ng-click="deleteVariableExpense(revenue, variableExpense)">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
+                            
                             </span>
                         </div>
                     </div>
