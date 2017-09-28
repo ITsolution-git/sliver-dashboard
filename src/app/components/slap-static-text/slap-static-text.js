@@ -3,7 +3,11 @@
 
     var slapStaticText = {
         bindings: {
-            visible: '='
+            visible: '=',
+            t1: '@',
+            t2: '@',
+            t3: '@',
+            t4: '@',
         },
         templateUrl: 'components/slap-static-text/slap-static-text.html',
         controller: function() {
