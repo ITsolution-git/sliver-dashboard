@@ -6,11 +6,7 @@
         .config(config);
 
     /* @ngInject */
-<<<<<<< HEAD
-    function config($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider, $mdThemingProvider, RestangularProvider) {
-=======
     function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider, $mdThemingProvider, RestangularProvider, $locationProvider) {
->>>>>>> a5f42d7cf5df11498a8b88c19168f07bc1fc346d
         RestangularProvider.setRestangularFields({
             id: "_id"
         });
