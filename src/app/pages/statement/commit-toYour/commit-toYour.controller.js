@@ -6,7 +6,7 @@
         .controller('CommitToYourController', CommitToYourController);
 
     function CommitToYourController($scope, $state, pageService, stepService, userService, activeStep) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             first: ['does', 'provides', 'sells'],
             third: ['for', 'to'],

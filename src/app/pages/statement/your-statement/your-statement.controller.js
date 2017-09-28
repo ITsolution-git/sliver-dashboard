@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function YourStatementController($scope, activeStep, $state, pageService, userService, stepService) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']

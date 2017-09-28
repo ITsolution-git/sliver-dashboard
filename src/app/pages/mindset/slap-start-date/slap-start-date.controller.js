@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function SlapStartDateController($scope, $state, pageService, stepService, activeStep, excuteItemService, excuteItems, $q) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         $scope.visible = true;
         $scope.changed = false;
 

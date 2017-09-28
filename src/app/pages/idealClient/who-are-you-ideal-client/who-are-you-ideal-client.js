@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function WhoAreYouIdealClientController($scope, $q, $timeout, $state, pageService, stepService, activeStep, idealclientService) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             emptyClient: {
                 name: '',

@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function YourCommitmentController($scope, activeStep, pageService, stepService, mindsetService, $state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,
@@ -17,12 +17,14 @@
         if($scope.data === null) {
             $scope.data = mindsetService.getSliders();
         }
-
+        console.log(activeStep.videoUrl);
         pageService
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Your Commitment To Us');
+
+
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);

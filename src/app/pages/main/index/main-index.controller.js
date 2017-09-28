@@ -6,8 +6,7 @@
         .controller('MainIndexController', MainIndexController);
 
     /* @ngInject */
-    function MainIndexController($scope, pageService) {
-
+    function MainIndexController($scope, pageService, activeStep) {
 
         // --- vars ---
 

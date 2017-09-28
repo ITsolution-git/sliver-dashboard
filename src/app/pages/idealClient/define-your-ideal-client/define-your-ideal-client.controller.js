@@ -6,7 +6,7 @@
         .controller('DefineYourIdealClientController', DefineYourIdealClientController);
 
     function DefineYourIdealClientController($scope, $state, pageService, stepService,activeStep, idealclientService) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep,{
             forward: true,
             sendData: sendData,

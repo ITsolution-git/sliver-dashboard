@@ -6,7 +6,7 @@
         .controller('PersonalExpensesController', PersonalExpensesController);
 
     function PersonalExpensesController($scope,$timeout, pageService, activeStep,stepService, $state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,

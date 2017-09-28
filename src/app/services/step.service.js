@@ -14,7 +14,8 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/UNz3tfmI-CZ1S4g0I.mp4'
             }, {
                 name: 'Your Commitment to Us',
                 sref: 'mindset.yourCommitment',
@@ -23,7 +24,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     data: null
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/plhYBAOo-CZ1S4g0I.mp4'
             }, /*{
                 name: 'Get the SLAPmindset',
                 sref: 'mindset.slapMindset',
@@ -50,7 +52,8 @@
                         businessName: null,
                         result: null
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/mChzDpt3-CZ1S4g0I.mp4'
             }, {
                 name: 'Are You Stuck?',
                 sref: 'mindset.areYourStuck',
@@ -59,7 +62,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     data: null
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/6NN6zFhp-CZ1S4g0I.mp4'
             }, {
                 name: 'Cashflow Capacity Catch 22',
                 sref: 'mindset.cashFlow',
@@ -67,7 +71,8 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/piNY7QMa-CZ1S4g0I.mp4'
             }, {
                 name: 'Plan and Action',
                 sref: 'mindset.yourBusiness',
@@ -75,7 +80,8 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/l24Ipj3e-CZ1S4g0I.mp4'
             },/* {
                 name: 'Top Down, Bottom Up',
                 sref: 'mindset.topDownBottomUp',
@@ -103,7 +109,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showStartDate: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/sG2Jy0bq-CZ1S4g0I.mp4'
             },
 
             // Slapstatement
@@ -115,7 +122,8 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/rhBpA6WX-CZ1S4g0I.mp4'
             }, {
                 name: 'Your SLAPstatement',
                 sref: 'statement.yourStatement',
@@ -131,7 +139,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showFormBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/8cL3Av2t-CZ1S4g0I.mp4'
             }, {
                 name: 'SLAPstatement Q&A',
                 sref: 'statement.qa',
@@ -139,7 +148,8 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Review SLAPstatement',
                 sref: 'statement.commitToYour',
@@ -149,7 +159,8 @@
                     showContent: false,
                     data: {},
                     businessName: null
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/5XhZZYt0-CZ1S4g0I.mp4'
             }, {
                 name: 'Step 1 SLAPsummary',
                 sref: 'statement.step1Summary',
@@ -177,7 +188,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/CygD9gob-CZ1S4g0I.mp4'
             }, {
                 name: 'Client Survey',
                 sref: 'idealClient.whoAreYouIdealClient',
@@ -189,7 +201,9 @@
                         clients: [],
                         idealClient: {}
                     }
-                }
+
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/qwXWMsMb-CZ1S4g0I.mp4'
             }, {
                 name: 'Your Ideal Client',
                 sref: 'idealClient.defineYourIdealClient',
@@ -214,7 +228,8 @@
                             number: 0
                         }
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/O77KJaT0-CZ1S4g0I.mp4'
             }, {
                 name: 'Name Your Ideal Client',
                 sref: 'idealClient.nameYourIdealClient',
@@ -222,14 +237,16 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showIdealClientNameBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/zQJXgx3h-CZ1S4g0I.mp4'
             }, {
                 name: 'Ideal Client Q&A',
                 sref: 'idealClient.qa',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Review SLAPstatement',
                 sref: 'idealClient.commitYourIdealClient',
@@ -237,7 +254,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/HCUmRD4q-CZ1S4g0I.mp4'
             },
             {
                 name: 'Step 2 SLAPsummary',
@@ -257,7 +275,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/ISCjjlVS-CZ1S4g0I.mp4'
             }, {
                 name: 'Personal Expenses',
                 sref: 'yearGoal.personalExpenses',
@@ -270,7 +289,8 @@
                         incidentals: '10.00',
                         expensesSum: 0
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/5sTBE6zf-CZ1S4g0I.mp4'
             }, {
                 name: 'Fixed Business Expenses',
                 sref: 'yearGoal.fixedBusinessExpenses',
@@ -284,7 +304,8 @@
                         expensesSum: 0,
                         profit: '0.00'
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/8xbUkKYq-CZ1S4g0I.mp4'
             }, {
                 name: 'Your Breakeven Number',
                 sref: 'yearGoal.totalFixedExpensesRevenue',
@@ -292,7 +313,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Revenue Streams',
                 sref: 'yearGoal.revenueStreams',
@@ -304,7 +326,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Selling Price',
                 sref: 'yearGoal.sellingPrice',
@@ -316,7 +339,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Variable Expenses',
                 sref: 'yearGoal.variableBusinessExpenses',
@@ -328,7 +352,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Your Profit Margin',
                 sref: 'yearGoal.profitMargin',
@@ -340,7 +365,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Revenue Breakdown',
                 sref: 'yearGoal.revenueBreakdown',
@@ -352,7 +378,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Your 1 Year Goal',
                 sref: 'yearGoal.yourYearGoal',
@@ -364,7 +391,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Review 1 Year Goal',
                 sref: 'yearGoal.adjustYourYearGoal',
@@ -376,14 +404,16 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: '1 Year Goal Q&A',
                 sref: 'yearGoal.qa',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Your 1 Year Goal',
                 sref: 'yearGoal.commitYourYearGoal',
@@ -396,7 +426,8 @@
                         incidentals: '1.00',
                         expensesSum: 0
                     }
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Step 3 SLAPsummary',
                 sref: 'yearGoal.step3Summary',
@@ -404,7 +435,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                }
+                },
+                videoUrl: ''
             }, 
             // Action plan
 
@@ -414,7 +446,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'The World Around You',
                 sref: 'actionPlan.worldAroundYou',
@@ -425,7 +458,8 @@
                     data: {
                         eventsByMonth: []
                     } 
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Review Start Date',
                 sref: 'actionPlan.doubleCheckStartDate',
@@ -434,7 +468,8 @@
                     showStaticTextBlock: false,
                     showContent: false,
                     data: {}
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'You and Your Ideal Client',
                 sref: 'actionPlan.whatsHappening',
@@ -460,7 +495,8 @@
                             "impactBusiness" : ""
                         },
                     ]
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Connecting Strategies',
                 sref: 'actionPlan.rateConnectingStrategies',
@@ -469,7 +505,8 @@
                     showStaticTextBlock: false,
                     showContent: false,
                     data: []
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Quarterly Strategy',
                 sref: 'actionPlan.connectingStrategyStrategizing',
@@ -480,7 +517,8 @@
                     data: [
                         {}, {}, {}, {}
                     ]
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Action Items',   
                 sref: 'actionPlan.actionItems',
@@ -491,7 +529,8 @@
                     data: [
                         {}, {}, {}, {}
                     ]
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Quarterly Goals',
                 sref: 'actionPlan.quarterlyGoals',
@@ -502,7 +541,8 @@
                     data: [
                         {}, {}, {}, {}
                     ]
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Your 1 Year Goal',
                 sref: 'actionPlan.doubleCheckYearGoal',
@@ -511,14 +551,16 @@
                     showStaticTextBlock: false,
                     showContent: false,
                     data: []
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Action Plan Q&A',
                 sref: 'actionPlan.qa',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Review Action Plan',
                 sref: 'actionPlan.commitToYourActionPlan',
@@ -527,7 +569,8 @@
                     showStaticTextBlock: false,
                     showContent: false,
                     data: []
-                }
+                },
+                videoUrl: ''
             }, {
                 name: 'Step 4 SLAPsummary',
                 sref: 'actionPlan.step4Summary',
@@ -535,7 +578,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                }
+                },
+                videoUrl: ''
             }, //{
             //     name: 'Second SLAPexpert Review',
             //     sref: 'actionPlan.secondExpertReview',
@@ -554,7 +598,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             },/* {
                 name: 'Commit to Yourself',
                 sref: 'execute.commitYourSelf',
@@ -575,7 +620,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }];
 
         var finishedSteps = [];

@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function PrivilegeAndResponsibilityController($scope, $state, $timeout, pageService, userService, stepService, activeStep) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         var answersList = [];
 
         angular.extend($scope, activeStep.model, {

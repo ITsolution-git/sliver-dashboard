@@ -6,7 +6,7 @@
         .controller('CommitYourIdealClientController', CommitYourIdealClientController);
 
     function CommitYourIdealClientController($scope, activeStep, pageService,stepService, $state, userService) {
-        
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             first: ['does', 'provides', 'sells'],
             third: ['for', 'to'],

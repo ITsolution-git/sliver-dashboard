@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function OurCommitmentController($scope, pageService, activeStep, stepService,$state, $rootScope) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,
