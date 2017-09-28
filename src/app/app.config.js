@@ -6,7 +6,7 @@
         .config(config);
 
     /* @ngInject */
-    function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider, $mdThemingProvider, RestangularProvider) {
+    function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider, $mdThemingProvider, RestangularProvider, $locationProvider) {
         RestangularProvider.setRestangularFields({
             id: "_id"
         });
@@ -150,6 +150,9 @@
         // Use that theme for the primary intentions
         $mdThemingProvider.theme('default')
         .primaryPalette('slapTheme');
+
+$locationProvider.hashPrefix('');
+        $locationProvider.html5Mode({ enabled: true, requireBase: false });
 
     }
 })();
