@@ -6,7 +6,7 @@
         .config(config);
 
     /* @ngInject */
-    function config($stateProvider, $urlRouterProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider, $mdThemingProvider, RestangularProvider) {
+    function config($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, cfpLoadingBarProvider, CONFIG,$compileProvider, $mdThemingProvider, RestangularProvider) {
         RestangularProvider.setRestangularFields({
             id: "_id"
         });
@@ -114,6 +114,8 @@
             $state.go('/404');
         });
 
+        
+
         // $urlRouterProvider.otherwise('/404');
 
         $compileProvider.debugInfoEnabled(true);  // in production false
@@ -150,6 +152,9 @@
         // Use that theme for the primary intentions
         $mdThemingProvider.theme('default')
         .primaryPalette('slapTheme');
+
+        $locationProvider.hashPrefix('');
+        $locationProvider.html5Mode({ enabled: true, requireBase: false });
 
     }
 })();

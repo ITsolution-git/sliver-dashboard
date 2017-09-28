@@ -28,6 +28,7 @@ var gulp = require('gulp'),
     mainBowerFiles = require('main-bower-files'),
     eslint = require('gulp-eslint'),
     webserver = require('gulp-webserver');
+    historyApiFallback = require('connect-history-api-fallback');
 
 var path = {
     tmp: 'tmp',
@@ -145,7 +146,8 @@ gulp.task('serve', function () {
             port:8001,
             livereload: true,
             // directoryListing: true,
-            open: true
+            middleware: [ historyApiFallback() ],
+            open: true,
         }));
 });
 

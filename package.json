@@ -22,5 +22,8 @@
     "gulp-webserver": "*",
     "main-bower-files": "*",
     "rimraf": "*"
+  },
+  "devDependencies": {
+    "connect-history-api-fallback": "^1.3.0"
   }
 }
