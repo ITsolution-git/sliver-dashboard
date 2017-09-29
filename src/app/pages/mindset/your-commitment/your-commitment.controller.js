@@ -17,7 +17,6 @@
         if($scope.data === null) {
             $scope.data = mindsetService.getSliders();
         }
-        console.log(activeStep.videoUrl);
         pageService
             .reset()
             .setShowBC(false)
