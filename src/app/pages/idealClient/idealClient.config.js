@@ -126,7 +126,6 @@
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
                             .then(function (active) {
-                                console.log(active);
                                 if (active) {
                                     return active;
                                 }

@@ -89,7 +89,6 @@
                             stepOneSummary: _.get(response, 'data.yourStatement', {})
                             
                         });
-                        console.log(_.get(response, 'data.yourStatement'));
                         userService.getUser().then(function (user) {
                             $scope.data = _.get(response, 'data.yourStatement', []);
                             // $scope.idealClientName  =
