@@ -69,7 +69,6 @@
                     // });
                     // me.user.accounts = accounts;
                     
-                    console.log(me.user);
                     me.resolveUser(me.user);
                     deferred.resolve(me.user);
                 });

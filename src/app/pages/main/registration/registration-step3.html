@@ -132,11 +132,11 @@
 
                             <md-input-container class="md-block" flex="50">
                                 <label for="phone">Phone Number</label>
-                                <input ng-pattern="/^[0-9]{1,14}$/" name="phone" required maxlength="14" minlength="6"
+                                <input ng-pattern="/^[0-9]{1,12}$/" name="phone" required maxlength="12" minlength="9"
                                 ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
                                 <div ng-messages="registerForm.phone.$error" ng-hide="registerForm.phone.$valid">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                       Please enter your phone number with no other symbols or spaces.
+                                        Please enter your phone number with no other symbols or spaces.  Just the 9-12 numbers!
                                     </div>
                                 </div>
                             </md-input-container>
