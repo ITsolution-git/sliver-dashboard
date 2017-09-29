@@ -529,7 +529,7 @@
                         {}, {}, {}, {}
                     ]
                 },
-                videoUrl: ''
+                videoUrl: undefined
             }, {
                 name: 'Quarterly Goals',
                 sref: 'actionPlan.quarterlyGoals',

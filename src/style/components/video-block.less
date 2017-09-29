@@ -67,8 +67,19 @@
 }
 
 .video-coming-soon {
-  display:none;
-  margin-top: 91px;
+  display: flex;
+  justify-content: center;
+  margin: 91px auto;
   height: 100px;
-  margin-left: 26vw;
+}
+
+.z-in {
+  height: 40px;
+  z-index: 999999;
+  width: 30px;
+  bottom: 2%;
+  position: absolute;
+  &:hover {
+    cursor: pointer;
+  }
 }
