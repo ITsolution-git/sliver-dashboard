@@ -7,7 +7,7 @@
 			<section flex="70">
 				<uib-progressbar class="one-line-bar" max="100" value="dashData.TRevenueGoalPercent"><span style="color:white; white-space:nowrap;">{{dashData.TRevenueGoalPercent}}%</span></uib-progressbar>
 			</section>
-			<md-button flex="15" ng-click="changeView()">Review Results&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></md-button>
+			<md-button class="review-res" ng-click="changeView()">Review Results&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></md-button>
 		</md-card-content style="width: 100%; height: 100%;">
 	</md-card>
 
@@ -187,7 +187,7 @@
 
 	<section layout="column" layout="column" ng-if="mainView=='list'" class="m-t-es-50">
 		<md-toolbar layout="row" layout-align="start center ">
-			<md-select md-container-class="quarter-menu" ng-model="filter.period" flex="50" class="select-menu">
+			<md-select md-container-class="quarter-menu" ng-model="filter.period" flex="50" class="select-menu" aria-label=".d">
 				<md-option ng-repeat="quaterID in pastQuaters" ng-value="'quater'+quaterID" ng-selected="$first">
 					{{'Q' + (quaterID+1)}}
 				</md-option>
@@ -375,7 +375,7 @@
 						<span style="text-transform: lowercase;" flex="20">
 							{{revenueGrid.actualSalesItemCount}}/{{revenueGrid.totalSalesItemCount}} SALES UNITS
 						</span>
-						<md-button flex="10" class="md-primary"  ng-click="openItemDialog($event, 'add', 'sales',revenueGrid.revenue)">add sales</md-button>
+						<md-button class="md-primary btn-sal"  ng-click="openItemDialog($event, 'add', 'sales',revenueGrid.revenue)">add sales</md-button>
 						
 					</section>
 					<md-divider style="position: relative"></md-divider>

@@ -17,7 +17,7 @@
 				</md-input-container>
 				
 				<md-input-container flex="50" ng-if="curMode == 'add'">
-					<md-select ng-model="formData.recurrency">
+					<md-select ng-model="formData.recurrency" aria-label=".re">
 						<md-option ng-value="'No Recurrency'">No Recurrency</md-option>
 						<md-option ng-value="'Daily'">Daily</md-option>
 						<md-option ng-value="'Weekly'">Weekly</md-option>
@@ -78,7 +78,7 @@
 			<form layout="row" layout-wrap layout-align="center center" name="form">
 				
 				<md-input-container flex="100">
-					<md-select ng-model="formData.title">
+					<md-select ng-model="formData.title" aria-label="ti">
 						<md-option ng-value="revenue.id" ng-repeat="revenue in revenues | filter : {deleted:false}">{{revenue.name}}</md-option>
 					</md-select>
 					<div class="md-errors-spacer"></div>
@@ -127,7 +127,7 @@
 				<h4 flex="100"> Reflect
 				</h4>
 				<md-input-container flex="100" class="md-block">
-					<md-select ng-model="tempReflextWhat">
+					<md-select ng-model="tempReflextWhat" aria-label="temp.">
 						<md-option ng-value="'week'">Week</md-option>
 						<md-option ng-value="'month'">Month</md-option>
 						<md-option ng-value="'quater'">Quater</md-option>
