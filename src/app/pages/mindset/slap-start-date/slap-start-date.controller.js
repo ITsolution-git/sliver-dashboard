@@ -15,10 +15,10 @@
         var currentMonth = ((date.getMonth() + 1) % 12).toString();
         var currentYear = date.getFullYear();
         var excuteItems = excuteItems;
-        $scope.years = [];
-        for(var i = 0; i<19; i++){
-            $scope.years.push(i+2000);
-        }
+        // $scope.years = [];
+        // for(var i = 0; i<19; i++){
+        //     $scope.years.push(i+2000);
+        // }
         $scope.notifications = [];
 
         angular.extend($scope, activeStep.model, {
@@ -32,24 +32,24 @@
         var beforeSave = moment({year: $scope.data.year, month: +$scope.data.month - 1, day:1});
 
         if ($scope.data.year === null) {
-            //$scope.data.year = currentYear
-            $scope.data.year = 2017;            
+            $scope.data.year = currentYear
+            // $scope.data.year = 2017;            
         }
 
         if ($scope.data.month === null) {
             $scope.data.month = currentMonth;
         }
 
-        // $scope.$watch('data.month', function (value) {
-        //     if (value !== undefined) {
-        //         if (+value < +currentMonth) {
-        //             $scope.data.year = currentYear + 1;
-        //         } else {
-        //             $scope.data.year = currentYear;
-        //         }
-        //         $scope.changed = true;
-        //     }
-        // });
+        $scope.$watch('data.month', function (value) {
+            if (value !== undefined) {
+                if (+value < +currentMonth) {
+                    $scope.data.year = currentYear + 1;
+                } else {
+                    $scope.data.year = currentYear;
+                }
+                $scope.changed = true;
+            }
+        });
 
         pageService
             .reset()
@@ -66,12 +66,12 @@
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
             //If user changed the date and have excute items.            
-            //if ($scope.data.month != (beforeSave.month() + 1))  {
+            if ($scope.data.month != (beforeSave.month() + 1))  {
                 //As a matter of fact, the new startdate cannot be a past of now because of $scope.$watch('data.month', function (value) { line codes
                 var newStartDate = moment({year: $scope.data.year, month: +$scope.data.month -1, day:1});
-                // if (newStartDate.isBefore(moment(), 'month')) {
-                //     $scope.notifications = [{name: 'Wrong Start Date', type: 'error', message: 'You cannot set SLAP Start Date to past.', show: true}];
-                // } else {
+                if (newStartDate.isBefore(moment(), 'month')) {
+                    $scope.notifications = [{name: 'Wrong Start Date', type: 'error', message: 'You cannot set SLAP Start Date to past.', show: true}];
+                } else {
                     $scope.notifications = [];
                     /// Now move all excute items according to its start date
                     var deltaMonths = moment.duration(newStartDate - beforeSave).asMonths().toFixed(0);
@@ -96,14 +96,14 @@
                                 $state.go(nextprevStep.prevStep.sref);
                         });
                     });
-                // }
-            // } else {
+                }
+            } else {
 
-            //     if(direction == 'forward')
-            //         $state.go(nextprevStep.nextStep.sref); 
-            //     else if(direction == 'backward')
-            //         $state.go(nextprevStep.prevStep.sref);
-            // }
+                if(direction == 'forward')
+                    $state.go(nextprevStep.nextStep.sref); 
+                else if(direction == 'backward')
+                    $state.go(nextprevStep.prevStep.sref);
+            }
             
         }
 
