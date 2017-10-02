@@ -142,7 +142,6 @@
                         month: $scope.QMonths[QID][monthID],
                         day: 1
                     }).endOf('month').format('YYYY-MM-DD');
-                    console.log(dueDate);
                     _.each(itemsMonths, function(item){
                         //Set Due date to end of that month
                         var copied = angular.copy(item);
