@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-3 col-md-6 col-xs-12">
+        <div class="col-md-offset-3 col-md-6 col-xs-12 container-login">
             <form ng-disabled="" id="login-form" name="loginForm" novalidate>
                 <div class="panel panel-default animated fadeInDown">
                     <div class="panel-body">
@@ -9,7 +9,7 @@
 
                         <div class="form-group" ng-class="{'has-error':vm.errors.email}">
                             <input type="email" ng-model="vm.login.email" class="form-control" name="email"
-                                   placeholder="E-mail" required>
+                                   placeholder="E-mail" required autofocus>
                             <div class="help-block help-block-error" ng-show="vm.errors.email"
                                  ng-bind-html="vm.errors.email | joinBr"></div>
                             <!--<span class="help-block has-error span-error">-->

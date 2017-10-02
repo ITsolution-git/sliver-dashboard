@@ -15,7 +15,7 @@
 
                         <div class="form-group" ng-class="{'has-error':errors.email}">
                             <input type="text" ng-model="login.email" class="form-control" name="email"
-                                   placeholder="E-mail">
+                                   placeholder="E-mail" autofocus>
                             <div class="help-block help-block-error" ng-show="errors.email"
                                  ng-bind-html="errors.email | joinBr"></div>
                         </div>

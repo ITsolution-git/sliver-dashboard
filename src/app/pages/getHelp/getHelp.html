@@ -9,7 +9,7 @@
                         <div class="clearfix"></div>
                         <md-toolbar name="textarea" class="form-group" layout="row" layout-align="start center ">
                             <p class="kind-help">What kind of help do you need?</p>	
-                            <md-select ng-model="option" flex="40" class="select-menu help" ng-required="true">
+                            <md-select ng-model="option" flex="40" class="select-menu help" ng-required="true" aria-label="opt">
                                 <md-option ng-repeat="option in options" ng-value="option" >{{option}}</md-option>
                             </md-select>
                         </md-toolbar>
@@ -20,7 +20,7 @@
                         </div>
                         <md-toolbar class="form-group"  layout="row" layout-align="start center " ng-class="{ 'has-error': getHelpForm.message.$invalid && getHelpForm.message.$touched}">
                                 <p class="kind-help">Do you prefer we call you or email you about this?</p>	
-                                <md-select data-md-container-class="prefer" ng-model="prefer" flex="20" class="select-menu help" ng-required="true">
+                                <md-select data-md-container-class="prefer" ng-model="prefer" flex="20" class="select-menu help" ng-required="true" aria-label="pre">
                                     <md-option ng-repeat="prefer in optionPrefer" ng-value="prefer" >{{prefer}}</md-option>
                                 </md-select>
                             </md-toolbar>
