@@ -13,12 +13,15 @@
             },
             slpasters: [],
             searchKeyword: '',
+            column: '',
             dataloaded: false,
             dataReady: false,
             ROLES: adminUserService.ROLES,
             STATUSES: adminUserService.STATUSES,
+            itemPerPage: 5,
 
             buildGridData: buildGridData,
+            getItemPerPage: getItemPerPage,
             deleteItem: deleteItem
         });
 
@@ -33,7 +36,9 @@
             reloadData();
             
         }
-
+        function getItemPerPage(value) {
+            $scope.itemPerPage = value;
+        }
         function reloadData() {
             $scope.dataloaded = false;
             adminUserService.list()
@@ -68,12 +73,22 @@
                     var valid = false;
                     var user = slapster.current;
                     if ($scope.searchKeyword.trim() != ''){
-                        if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                        switch($scope.column) {
+                            case "1": {if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                        if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            break;}
+                            case "2": {if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                        if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            break;}
+                            case "3": {if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
+                            break;}
+                            case "4": {if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            valid = true;
+                            break;}
+                            default: {valid = true; break;}
+                        }
+                        
                     } else { valid = true; }
                     return valid;
                 })

@@ -1,9 +1,14 @@
 <div layout="column" style="width: 100%;">
 <md-card flex="100" class="p-es-30 m-w-es-40">
     
-    <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
-        
-        <md-input-container class="md-icon-float md-block" flex="50" style="margin: 0px">
+    <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center"> 
+        <md-select md-container-class="columns" flex="15" ng-model="column" aria-label="search-column" style="margin: 0px; height:30px;">
+                <md-option value="1">Business Name</md-option>
+                <md-option value="2">First Name</md-option>
+                <md-option value="3">Last Name</md-option>
+                <md-option value="4">Email</md-option>    
+        </md-select>
+        <md-input-container class="md-icon-float md-block" flex="25" style="margin: 0px">
             <md-icon >
                 <i class="material-icons">search</i>
             </md-icon>
@@ -25,11 +30,10 @@
                         ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                         total-items="paginationOptions.totalItems"
                         ng-model="paginationOptions.currentPage"
-                        ng-change="reloadGrid()"
+
                         items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                     <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                        <md-select ng-init="paginationOptions.itemsPerPage = '5'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
-                            
+                        <md-select md-container-class="items-per-page" ng-change=getItemPerPage(paginationOptions.itemsPerPage) ng-init="paginationOptions.itemsPerPage = itemPerPage" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">             
                             <md-option value="5">5</md-option>
                             <md-option value="10">10</md-option>
                             <md-option value="20">20</md-option>
@@ -85,11 +89,10 @@
                             </md-select>
                         </th>-->
 
-                        <th></th>
-                    </tr>
+
                 </thead>
                 <tbody>
-                    <tr grid-item >
+                    <tr grid-item>
                         <td>
                             {{item.businessName}}
                         </td>
