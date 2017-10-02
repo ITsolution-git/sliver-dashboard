@@ -6,18 +6,21 @@
     border-radius: 50%;
     width: 15px;
     height: 15px;
+    line-height: 16px;
     margin-left: 5px;
     display: inline;
-    background: #373c37;
-    opacity: 0.7;
+    background: #fff;
+    opacity: 0.5;
     color: #000;
     
     &.active {
       background-color: #50cfe3;
+      outline: 0;
     }
 
     &:hover ~ .rate-item{
-      background-color: #373c37;
+      background-color: #fff;
+      opacity: 0.5;
     }
   }
 }
@@ -32,6 +35,7 @@ strategy-video-box .slap-rating {
     border-radius: 50%;
     width: 25px;
     height: 25px;
+    line-height: 25px;
     margin-left: 5px;
     background: #373c37;
     opacity: 0.7;
@@ -39,8 +43,19 @@ strategy-video-box .slap-rating {
     &.active {
       background-color: #50cfe3;
     }
-    &:hover {
-      background-color: #50cfe3;
+    &:hover ~ .rate-item {
+      background-color: #373c37;
+      opacity: 0.5;
     }
   }
+}
+
+.modal {
+  top: ~"calc(50% - 250px)" !important;
+  bottom: inherit;
+}
+
+.modal-lg .modal-content .modal-body .next-strategy, .modal-lg .modal-content .modal-body .prev-strategy {
+  position: absolute;
+  outline: 0;
 }

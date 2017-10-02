@@ -37,20 +37,22 @@
       position: absolute;
       width: 150px;
       height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       background: transparent;
       img {
+        position: relative;
         width: 150px;
-        height: 150px;  
+        height: 150px;
         border-radius: 50%;
-
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
       }
       .overlap {
         position: absolute;
         top: 0px;
         background-color: #000;
-        opacity: 0.9;
+        opacity: 0.7;
         width: 150px;
         height: 150px;
         border-radius: 50%;
@@ -83,4 +85,9 @@
       position: relative;
     }
   }
+}
+.modal-open .modal {
+  background: transparent;
+  box-shadow: none;
+  padding: 20px;
 }
