@@ -14,7 +14,6 @@
             users: [],
             searchKeyword: '',
             dataloaded: false,
-            column: '',
             dataReady: false,
             ROLES: adminUserService.ROLES,
             STATUSES: adminUserService.STATUSES,
@@ -34,7 +33,6 @@
         $timeout(activate);
         function activate() {
             reloadData();
-            
         }
 
         function getItemPerPage(value) {
@@ -61,23 +59,15 @@
                 var filtered = $scope.users.filter(function(user){
                     var valid = false;
                     if ($scope.searchKeyword.trim() != ''){
-                        switch($scope.column) {
-                            case "1": {if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            case "2": {if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            case "3": {if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            case "4": {if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            default: {valid = true; break;}
-                        }
-                        
-                    } else { valid = true; }
+                        }else { valid = true; }
                     return valid;
                 })
 
