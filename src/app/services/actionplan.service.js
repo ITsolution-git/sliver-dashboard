@@ -549,11 +549,11 @@
             {id: 3, name: 'Partnerships', video:'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4', rating: 0, reason:''},
             {id: 4, name: 'Hit List', video:'http://content.jwplatform.com/videos/NX9P49PE-CZ1S4g0I.mp4', rating: 0, reason:''},
             {id: 5, name: 'Events', video:'http://content.jwplatform.com/videos/NOM9ntVR-CZ1S4g0I.mp4', rating: 0, reason:''},
-            {id: 6, name: 'Media', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
-            {id: 7, name: 'Special Deals', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
-            {id: 8, name: 'Online Connecting', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
-            {id: 9, name: 'Loyalty', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
-            {id: 10, name: 'SLAPnap', video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 6, name: 'Media', video:'http://content.jwplatform.com/videos/1LDN7hzb-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 7, name: 'Special Deals', video:'http://content.jwplatform.com/videos/uVYTE4Kq-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 8, name: 'Online Connecting', video:'http://content.jwplatform.com/videos/891qCjsf-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 9, name: 'Loyalty', video:'http://content.jwplatform.com/videos/mwVZPB6K-CZ1S4g0I.mp4', rating: 0, reason:''},
+            {id: 10, name: 'SLAPnap', video:'http://content.jwplatform.com/videos/sG2Jy0bq-CZ1S4g0I.mp4', rating: 0, reason:''},
         ];
 
         var _monthLongNames = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October","November", "December"];
