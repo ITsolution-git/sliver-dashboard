@@ -13,7 +13,6 @@
             },
             slpasters: [],
             searchKeyword: '',
-            column: '',
             dataloaded: false,
             dataReady: false,
             ROLES: adminUserService.ROLES,
@@ -73,22 +72,14 @@
                     var valid = false;
                     var user = slapster.current;
                     if ($scope.searchKeyword.trim() != ''){
-                        switch($scope.column) {
-                            case "1": {if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            case "2": {if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            case "3": {if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            case "4": {if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                            break;}
-                            default: {valid = true; break;}
-                        }
-                        
                     } else { valid = true; }
                     return valid;
                 })
