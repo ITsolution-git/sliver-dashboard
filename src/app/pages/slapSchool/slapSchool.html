@@ -5,11 +5,11 @@
                 <div class="panel-body text-center">
                     <h1 class="text-center">Upcoming Events</h1>
                     <div ng-if="data.length" class="row" style="margin-bottom:15px">
-                        <div class="col-xs-3 col-sm-3 col-md-3 font">Presenter</div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 font">Topic</div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 font">Duration</div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 font">Start time</div>
-                        <div class="col-xs-1 col-sm-1 col-md-1 font">Join Us</div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 font pad">Presenter</div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 font pad">Topic</div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 font pad ">Duration</div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 font pad">Start time</div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 font pad">Join Us</div>
                     </div>
                     <hr>
                     <div ng-if="!data.length" class="row" style="margin-bottom:15px">
@@ -25,10 +25,10 @@
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <div ng-repeat="name in webinar.name" class="row-xs-3 row-sm-3 row-md-3"><span>{{name.name}}</span></div>
                                 </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3"><span>{{webinar.topic}}</span></div>
-                                <div class="col-xs-2 col-sm-2 col-md-2"><span>{{webinar.duration}} minutes</span></div>
-                                <div class="col-xs-3 col-sm-3 col-md-3"><span>{{webinar.start_time | date:'short'}} {{webinar.timezone | timezone}}</span></div>
-                                <div class="col-xs-1 col-sm-1 col-md-1">
+                                <div class="col-xs-3 col-sm-3 col-md-3 pad"><span>{{webinar.topic}}</span></div>
+                                <div class="col-xs-2 col-sm-2 col-md-2 pad"><span>{{webinar.duration}} minutes</span></div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 pad"><span>{{webinar.start_time | date:'short'}} {{webinar.timezone | timezone}}</span></div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 pad">
                                     <a ng-click="isStart(webinar.start_time, webinar.duration, $event, webinar.join_url)" class="btn btn-primary btn-join">Join</a>
                                 </div>
                             </div>
