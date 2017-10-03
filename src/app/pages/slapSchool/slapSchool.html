@@ -1,7 +1,7 @@
 <div class="upcoming-events-container container m-t-xs-50">
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
+        <div >
+            <div class="panel panel-school panel-default">
                 <div class="panel-body text-center">
                     <h1 class="text-center">Upcoming Events</h1>
                     <div ng-if="data.length" class="row" style="margin-bottom:15px">
@@ -22,12 +22,14 @@
                     </div> -->
                     <div ng-repeat="webinar in data">
                             <div class="row webinar-item" style="margin-bottom:15px; outline: none" ng-click="description = !description">
-                                <div class="col-xs-3 col-sm-3 col-md-3"><div ng-repeat="name in webinar.name" class="row-xs-3 row-sm-3 row-md-3">{{name.name}}</div></div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.topic}}</div>
-                                <div class="col-xs-2 col-sm-2 col-md-2">{{webinar.duration}} minutes</div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">{{webinar.start_time | date:'short'}} {{webinar.timezone | timezone}}</div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div ng-repeat="name in webinar.name" class="row-xs-3 row-sm-3 row-md-3"><span>{{name.name}}</span></div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3"><span>{{webinar.topic}}</span></div>
+                                <div class="col-xs-2 col-sm-2 col-md-2"><span>{{webinar.duration}} minutes</span></div>
+                                <div class="col-xs-3 col-sm-3 col-md-3"><span>{{webinar.start_time | date:'short'}} {{webinar.timezone | timezone}}</span></div>
                                 <div class="col-xs-1 col-sm-1 col-md-1">
-                                    <a ng-click="isStart(webinar.start_time, webinar.duration, $event, webinar.join_url)" class="btn btn-primary">Join</a>
+                                    <a ng-click="isStart(webinar.start_time, webinar.duration, $event, webinar.join_url)" class="btn btn-primary btn-join">Join</a>
                                 </div>
                             </div>
                             <div class="row webinar-item col-md-12" style="margin-bottom:15px"  ng-show="description" ng-if="webinar.agenda==''">No description for this webinar</div>
