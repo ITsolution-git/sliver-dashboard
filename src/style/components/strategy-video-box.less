@@ -2,6 +2,7 @@
 .modal-lg {
   width: 90%;
   .modal-content {
+    padding: 0;
     .modal-body {
       .next-strategy, .prev-strategy{
         position: absolute;
@@ -15,23 +16,44 @@
         justify-content: center; 
         
       }
+      video {
+        padding: 0;
+      }
+      .padd {
+        padding: 0;
+      }
       .prev-strategy {
-        left: -75px;
+        left: -51px;
         &:hover {
-         left: -80px;
+         left: -56px;
         }
       }
       .next-strategy {
-        right: -75px;
+        right: -51px;
         &:hover {
-         right: -80px;
+         right: -56px;
         }
       }
     }
   }
 }
 
+.mdl-header {
+  border: none;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0 0;
+}
+
+.left-br {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid @modal-header-border-color;
+}
+
 .close {
+  align-self: flex-end;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,4 +69,19 @@
     border: 1px solid #0e7cb5 !important;
     opacity: 0.8;
   }
+
+}
+.btn-video-box {
+  align-self: center;
+  height: 50px;
+  width: 200px;
+  margin: 10px 0;
+}
+
+.textarea-box {
+  textarea {
+    resize: none;
+    line-height: 22px;
+  }
+  margin-bottom: 20px;
 }
