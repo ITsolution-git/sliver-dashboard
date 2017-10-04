@@ -39,15 +39,18 @@
         if ($scope.data.month === null) {
             $scope.data.month = currentMonth;
         }
+        else var startMonth = $scope.data.month;
 
         $scope.$watch('data.month', function (value) {
-            if (value !== undefined) {
-                if (+value < +currentMonth) {
-                    $scope.data.year = currentYear + 1;
-                } else {
-                    $scope.data.year = currentYear;
+            if (value != startMonth) {
+                if (value !== undefined) {
+                    if (+value < +currentMonth) {
+                        $scope.data.year = currentYear + 1;
+                    } else {
+                        $scope.data.year = currentYear;
+                    }
+                    $scope.changed = true;
                 }
-                $scope.changed = true;
             }
         });
 
