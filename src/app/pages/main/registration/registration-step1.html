@@ -67,9 +67,8 @@
 <div class="container signup">
     <div class="row">
         <header class="container signup">
-            <div class="col-md-11 leave">
-            </div>
-            <div class="col-md-1 leave" style="text-align: right;" >
+            <!--<div class="col-md-11 leave"></div>-->
+            <div class="col-md-1 step-login" style="text-align: right;" >
                     <a ui-sref="login">
                             Login
                         </a>
@@ -99,8 +98,7 @@
         </header>
         <article class="container signup plan">
 
-            <div class="row">
-                <div class="col-md-2 outline-0" ng-repeat="plan in vm.plans"  ng-click="vm.choosePlan(plan,$event)">
+                <div class="col-xs-12 col-sm-8 col-md-2 outline-0 plan-item" ng-repeat="plan in vm.plans"  ng-click="vm.choosePlan(plan,$event)">
                     <div class="rectangle" ng-class="{'rectangle-active': plan._id == vm.plan._id}">
                         <div class="rectangle-header">
                             <h3>{{ plan.productName }}</h3>
@@ -130,7 +128,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
         </article>
         <div class="container signup next-bottom">
