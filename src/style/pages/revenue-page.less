@@ -1,7 +1,7 @@
 
 .revenue-page .slap-work-panel > div{
   color: #33444d;
-  font-size: 17px;
+  font-size: 16px;
   .input-box {
     input {
       width: ~"calc(100% - 30px)";
@@ -26,6 +26,8 @@
     padding: 10px;
   }
   .revenue-row {
+    display: flex;
+    flex-wrap: wrap;  
     clear: both;
     padding: 0 0 0;
     overflow: auto;
@@ -72,27 +74,29 @@
     padding-top: 10px;
   }
   .revenue-name-container {
-    width: 30%;
+    width: 25%;
     float: left;
   }
   .revenue-price-container {
     width: 30%;
     float: left;
 
+
     .variable-row {
       clear: both;
 
       .variable-name {
         float: left;
-        width: 50%;
+        width: 65%;
       }
 
       .variable-price {
         float: left;
-        width: ~"calc(50% - 20px)";
+        width: ~"calc(35% - 20px)";
       }
     }
   }
+
   .revenue-margin-container {
     width: 10%;
     float: left;
@@ -115,4 +119,16 @@
       font-size: 1em;
     }
   }
+}
+.revenue-selling-price{
+  width: 30%;
+}
+.expense{
+   width: 60% !important;
+   float: left !important;
+ }
+
+.revenue-st {
+  display: flex !important;
+  align-items: center;
 }

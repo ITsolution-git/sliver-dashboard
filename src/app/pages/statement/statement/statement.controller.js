@@ -21,8 +21,5 @@
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Statement');
-        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
-        });
     }
 }());

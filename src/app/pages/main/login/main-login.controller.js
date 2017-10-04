@@ -6,7 +6,7 @@
         .controller('MainLoginController', MainLoginController);
 
     /* @ngInject */
-    function MainLoginController($scope, $auth, $state, toaster, pageService, userService) {
+    function MainLoginController($scope, $auth, $state, toaster, pageService, userService, adminUserService) {
 
         // --- vars ---
         $scope.login = {
@@ -22,16 +22,20 @@
             $auth.login($scope.login)
                 .then(
                     function (response) {
-                        toaster.pop({type: 'success', body: "Welcome!"});
+                        toaster.pop({type: 'success', body: "Welcome!", timeout: 1000});
 
                         // update user data
-                        // userService.loadUser(true).then(function () {
-                        $state.go('welcome');
-                        // });
+                        userService.loadUser(true).then(function (user) {
+                            if(user.role == adminUserService.ROLE_ADMIN)
+                                $state.go('admin.home');
+                            else
+                                $state.go('home');
+                        });
+
                     }
                 )
                 .catch(function(err) {
-                    toaster.pop({type: 'error', body: err.data.message ? err.data.message : 'Whoops, your password or email are incorrect'});
+                    toaster.pop({type: 'error', body: err.data.message ? err.data.message : 'Your Email or Password are incorrect. Please try again!', timeout: 2000});
                 });
         };
 

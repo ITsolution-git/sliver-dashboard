@@ -1,11 +1,14 @@
 
 .video-container {
+  width: 100%;
+  display: flex;
   position: relative;
-  min-height: 106px;
+  justify-content: center;
+  flex-direction: column;
 
   .video-panel {
-    height: 106px;
-    position: absolute;
+    width: 50%;
+    margin-top: -30px;
     z-index: 5;
 
   }
@@ -16,7 +19,15 @@
   }
 
   .video-content {
-    //position: absolute;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    left: 20px;
+
+    video {
+      object-position: -11px 0px;
+      padding-left: 0;
+    }
   }
 
   .video-block-600 {
@@ -24,7 +35,6 @@
     .video-container {
 
       .video-content {
-
         video {
           height: 600px;
         }
@@ -39,10 +49,37 @@
     }
   }
   .video-panel-small{
-    margin-top: 40px;
+    margin-top: 15px;
     @media (max-width: @screen-sm) {
-      margin-top: 80px;
+      margin-top: 20px;
     }
   }
 
+}
+
+.video-content {
+  min-height: 32vw;
+}
+
+.video-title {
+  display: inline-block !important;
+  margin-top: 0 !important;
+}
+
+.video-coming-soon {
+  display: flex;
+  justify-content: center;
+  margin: 91px auto;
+  height: 100px;
+}
+
+.z-in {
+  height: 40px;
+  z-index: 999999;
+  width: 30px;
+  bottom: 2%;
+  position: absolute;
+  &:hover {
+    cursor: pointer;
+  }
 }

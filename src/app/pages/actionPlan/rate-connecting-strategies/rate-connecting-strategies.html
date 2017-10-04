@@ -1,55 +1,102 @@
-<div class="slap-page container" scroll-top>
+<div class="slap-page rate-connect-strategy" scroll-top>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
         <div class="panel-body">
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40">
+    <div class="panel panel-default">
 
         <div class="panel-body static-text-panel">
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="Listen to the video for each of the Connecting Strategies, and rate their relevance/likelihood of success for you."
+            t2="Don't be afraid to try something new!  We'll be providing all the tips, tricks and resources you need to implement each strategy."
+            t3="The Connecting Strategies are not about what you most want to do - but rather what your Ideal Client will best respond to.  Think about these from your Ideal Client's perspective."
+            t4="Make sure you watch all 10 videos and rate each so that our algorithm can help you identify the best Connecting Strategies for you" visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <slap-notifications notifications="notifications" ></slap-notifications>
+    <div class="panel panel-default">
 
-        <div class="panel-body">
+        <div class="panel-body slap-work-panel">
 
-            <button-switch visible="showContent"></button-switch>
+            <div class="row">
+                <div class="col-md-12">
+                    <button-switch visible="showFormBlock"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+                    <p class="logo panel-title">ACTION</p>
+                </div>
+            </div>
 
-            <div class="sample-show-hide" ng-hide="showContent">
-
-                <div class=" form-group">
-                    <div class="col-md-3">
-                        <label for="first" class="label-text control-label">Lorem ipsum dolor sit armet</label>
+            <div class="row sample-show-hide" ng-hide="showFormBlock">
+                <div class="col-xs-12 padding-l-r-30 margin-b-24">
+                    <p class="heading2"></p>
+                </div>
+                <div class="col-xs-12" id="strategy-container">
+                    <svg ng-if="!showResponsiveView">
+                        <line ng-attr-x1="{{center.x}}" ng-attr-y1="{{center.y}}" ng-attr-x2="{{pos.x}}" ng-attr-y2="{{pos.y}}" ng-repeat="pos in positions" style="stroke:#50cfe3;stroke-width:2" ng-if="data[$index].rating != 0"/>
+                    </svg>
+                    <div id="empty-client"  ng-if="!showResponsiveView">
+                        <img src="/images/person-avatar.png" />
+                        <p class="text-center">
+                            {{clientName}}
+                        </p>
                     </div>
-                    <div class="col-md-4">
-                        <select id="first" ng-model="model.first" class="dropdown-box outline-0">
-                            <option>Dropdown Label</option>
-                        </select>
+                    <div  ng-if="!showResponsiveView">
+                        <div class="strategy-box" ng-repeat="strategy in data">
+                            <img src="/images/logo.jpg" />
+                            <div class="overlap">
+                            </div>
+                            <div class="content">
+                                <i class="fa fa-play-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i>
+                                <br/>
+                                <span class="title"  ng-click="openVideoBox(strategy)">
+                                    {{getStrategyName(strategy.id)}}
+                                    <!--{{strategy.name}}-->
+                                </span>
+                                <br/>
+                                <span class="desc">How Relevant?</span>
+                                <slap-rating rate="strategy.rating">
+                                </slap-rating>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="showResponsiveView" class="row">
+                        <div class="strategy-box resp-strategy-box col-xs-6" ng-repeat="strategy in data">
+                            <img src="/images/logo.jpg" />
+                            <div class="overlap">
+                            </div>
+                            <div class="content">
+                                <i class="fa fa-play-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i>
+                                <br/>
+                                <span class="title"  ng-click="openVideoBox(strategy)">
+                                    <!--{{strategy.name}}-->
+                                     {{getStrategyName(strategy.id)}}
+                                </span>
+                                <br/>
+                                <span class="desc">How Relevant?</span>
+                                <slap-rating rate="strategy.rating">
+                                </slap-rating>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
     </div>
-
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

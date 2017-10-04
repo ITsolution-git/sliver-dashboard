@@ -4,8 +4,9 @@
     angular
         .module('app.pages.yearGoal')
         .controller('RevenueStreamsController', RevenueStreamsController);
-    
+
     function RevenueStreamsController($scope, pageService,activeStep,stepService,$state, $timeout) {
+        $scope.videoUrl = activeStep.videoUrl;
 
         angular.extend($scope, activeStep.model,{
             forward:true,
@@ -20,11 +21,12 @@
                 margin: '0.00',
                 breakdown: '0.00',
                 unit: 0,
-                totalVExp: 0
+                totalVExp: 0,
+                deleted: false,
             },
             emptyVariableExpense: {
                 expense: '',
-                cost: '0.00'
+                cost: ''
             },
             notifications: [],
             checkRevenueCompleted: checkRevenueCompleted,
@@ -33,11 +35,12 @@
             deleteRevenue: deleteRevenue,
             deleteVariableExpense: deleteVariableExpense,
             calcHeight: calcHeight,
-            doCalculation: doCalculation
+            doCalculation: doCalculation,
+            saved: false
         });
-        
+
         getData();
-        
+
         var nextprevStep = stepService.getNextAndPrevStep();
         var urls = activeStep.sref.split('.');
         $scope.pageName = urls[urls.length - 1];
@@ -59,33 +62,46 @@
                 .then(function (response) {
                     if (response && response.status === 200) {
 
-                        $scope.totalFixedExpenses = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum + (+response.data.fixedBusinessExpenses.profit)) * 12
+                        $scope.totalFixedExpenses = (response.data.fixedBusinessExpenses.expensesSum + response.data.fixedBusinessExpenses.incidentals * 0.01 * response.data.fixedBusinessExpenses.expensesSum) * 12  + (+response.data.fixedBusinessExpenses.profit);
                         doCalculation();
                     }
                 });
         }
 
-        function addNewRevenue(model) {
+        function addNewRevenue(model, currentIndex) {
             var index;
-
             if (model) {
                 index = _.findIndex($scope.data.revenues, model);
             }
 
             var force = false;
             if ($scope.data.revenues.length > 0) {
-                var lastItem = $scope.data.revenues[$scope.data.revenues.length - 1];
-                if (!angular.equals(lastItem, $scope.emptyRevenue)) {
+                var nonDeleted = [];
+                _.each($scope.data.revenues, function (revenue) {
+                    if (revenue.deleted == false)
+                        nonDeleted.push(revenue);
+                });
+                var lastItem = nonDeleted[nonDeleted.length - 1];
+
+                // if (lastItem.id == $scope.data.revenues.length) {  //If no empty item is added
+                //     force = true;
+                if(lastItem.name != '') {
                     force = true;
+                } else {
                 }
             }
             if ($scope.data.revenues.length === 0 || $scope.data.revenues.length === index + 1 || force) {
                 var revenueModel = _.cloneDeep($scope.emptyRevenue);
+                revenueModel.id = $scope.data.revenues.length + 1;
                 $scope.data.revenues.push(revenueModel);
+                $timeout(function () {
+                    var nextElemIndex = currentIndex +1;
+                    var elem = $('#revenue-' + nextElemIndex).focus();
+                });
             }
         }
 
-        function addNewVariableExpense(revenue, variableExpense) {
+        function addNewVariableExpense(revenue, variableExpense, currentIndex, revenueIndex) {
 
             var index;
 
@@ -104,18 +120,20 @@
 
                 var variableExpense = _.cloneDeep($scope.emptyVariableExpense);
                 revenue.variableExpenses.push(variableExpense);
+                $timeout(function () {
+                    var nextElemIndex = currentIndex + 1;
+                    var elem = $('#expense-' + revenueIndex + '-name-' + nextElemIndex).focus();
+                });
             }
-            
+
         }
 
-        function checkRevenueCompleted(revenue, evt) {
+        function checkRevenueCompleted(revenue, evt, index) {
             if ($scope.pageName == 'revenueStreams') {
                 if (!_.isEmpty(revenue.name)) {
                     $scope.forward = true;
-                    addNewRevenue(revenue);
+                    addNewRevenue(revenue, index);
                     doCalculation();
-                } else {
-                    $scope.forward = false;
                 }
             } else {
                 if (!_.isEmpty(revenue.name) && !(+revenue.sellingPrice == 0) && !(+revenue.breakdown == 0)) {
@@ -124,8 +142,8 @@
                         (revenue.sellingPrice.match(/^\d+(\.)*\d*$/)) &&
                         (revenue.breakdown.match(/^\d+(\.)*\d*$/))) {
                         $scope.forward = true;
-                        
-                        addNewRevenue(revenue);
+
+                        addNewRevenue(revenue, index);
                         doCalculation();
                     } else {
                         $scope.forward = false;
@@ -133,13 +151,13 @@
                 }
             }
         }
-        
 
-        function checkVariableExpenseCompleted(variableExpense, revenue, evt) {
-            if (!_.isEmpty(variableExpense.expense) && !(+variableExpense.cost == 0)) { 
+
+        function checkVariableExpenseCompleted(variableExpense, revenue, evt, index, revenueIndex) {
+            if (!_.isEmpty(variableExpense.expense) && !(+variableExpense.cost == 0)) {
                 if ((variableExpense.cost != '') &&
                     (variableExpense.cost.match(/^\d+(\.)*\d*$/))) {
-                    addNewVariableExpense(revenue, variableExpense);
+                    addNewVariableExpense(revenue, variableExpense, index, revenueIndex);
                     doCalculation();
                     $scope.forward = true;
                 }
@@ -148,29 +166,46 @@
             }
         }
 
-        function checkValidity(value, evt) {
+        function checkValidity(value, evt, currentIndex, revenueIndex) {
             if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
-                addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'Please provide valid Price.', show: true});
-                
+                addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'You can only enter numbers less than 100 into this field.', show: true});
+
                 $scope.forward = false;
             } else {
                 removeNotificaton($scope.notifications, 'Invalid Price');
                 $(evt.target).removeClass('invalid');
+                if (event.keyCode === 13){
+                    var elem = $('#expense-' + revenueIndex + '-cost-' + currentIndex).blur();
+                }
                 $scope.forward = true;
             }
             return value.match(/^\d+(\.)*\d*$/);
         }
 
         function isExpensesValid() {
-            
+            var nonDeleted  = [];
+            _.each($scope.data.revenues, function(revenue) {
+                if (revenue.deleted == false)
+                    nonDeleted.push(revenue);
+            });
+            if ($scope.pageName == 'revenueStreams') {
+                if ($scope.data.revenues.length == 1) {
+
+                    addNotification($scope.notifications, {name: 'Revenue Length Invalid', type: 'error', message:'You must create at least one Revenue Stream - but we recommend three to five!', show: true});
+                    return false;
+                } else {
+                    removeNotificaton($scope.notifications, 'Revenue Length Invalid');
+                    return true;
+                }
+            }
             if (($scope.pageName == 'revenueStreams') || ($scope.pageName == 'sellingPrice') ) {
                 return true;
             } else if ($scope.pageName == 'variableBusinessExpenses') {
                 var valid = true;
 
                 // Validable Expenses valid
-                _.each($scope.data.revenues, function(revenue) {
+                _.each(nonDeleted, function(revenue) {
                     var totalVariableExpenses = 0;
                     _.each(revenue.variableExpenses, function(variableExpense) {
                         totalVariableExpenses += +variableExpense.cost;
@@ -179,22 +214,21 @@
                     revenue.totalVExp = totalVariableExpenses;
                     if (+revenue.sellingPrice != 0) {
                         if (+revenue.sellingPrice <= totalVariableExpenses) {
-                            $scope.forward = false;
                             addNotification($scope.notifications, {name: 'Variable Expenses Invalid', type: 'error', message:'Total sum of Variable Expenses should be smaller than Selling Price.', show: true});
                             valid = false;
                         } else {
                             removeNotificaton($scope.notifications, 'Variable Expnses Invalid');
                         }
-                    }   
+                    }
                 });
-                
+
                 return valid;
 
             } else {
                 var valid = true;
 
                 // Validable Expenses valid
-                _.each($scope.data.revenues, function(revenue) {
+                _.each(nonDeleted, function(revenue) {
                     var totalVariableExpenses = 0;
                     _.each(revenue.variableExpenses, function(variableExpense) {
                         totalVariableExpenses += +variableExpense.cost;
@@ -209,7 +243,7 @@
                         } else {
                             removeNotificaton($scope.notifications, 'Variable Expnses Invalid');
                         }
-                    }   
+                    }
 
                     // if (+revenue.sellingPrice == totalVariableExpenses) {
                     //     $scope.forward = false;
@@ -219,15 +253,15 @@
                     //     removeNotificaton($scope.notifications, 'Profit None Invalid');
                     // }
                 });
-                
+
 
                 // revenue breakdown should sum 100
                 var totalBreakdown = 0;
-                _.each($scope.data.revenues, function(revenue) {
+                _.each(nonDeleted, function(revenue) {
                     totalBreakdown += +revenue.breakdown;
                 });
                 if (totalBreakdown != 100) {
-                    addNotification($scope.notifications, {name: 'Breakdown Invalid', type: 'error', message:'Total Breakdown should be exactly 100.', show: true});
+                    addNotification($scope.notifications, {name: 'Breakdown Invalid', type: 'error', message:'The total Revenue Breakdown of all of your Revenue Streams must equal exactly 100%.', show: true});
                     valid = false;
                 } else {
                     removeNotificaton($scope.notifications, 'Breakdown Invalid');
@@ -243,7 +277,12 @@
 
         function doCalculation() {
             //Profit margin
+            var nonDeleted  = [];
             _.each($scope.data.revenues, function(revenue) {
+                if (revenue.deleted == false)
+                    nonDeleted.push(revenue);
+            });
+            _.each(nonDeleted, function(revenue) {
                 var totalVariableExpenses = 0;
                 _.each(revenue.variableExpenses, function(variableExpense) {
                     totalVariableExpenses += +variableExpense.cost;
@@ -258,42 +297,51 @@
             // Breakdown
 
             var totalBreakdown = 0;
-            _.each($scope.data.revenues, function(revenue) {
+            _.each(nonDeleted, function(revenue) {
                 totalBreakdown += +revenue.breakdown;
             });
             $scope.data.totalBreakdown = totalBreakdown.toFixed(2);
 
             // Unit of Sales
 
-            _.each($scope.data.revenues, function(revenue) {
+            _.each(nonDeleted, function(revenue) {
                 var C = $scope.totalFixedExpenses * +revenue.breakdown * 0.01;
                 var A = +revenue.sellingPrice - +revenue.totalVExp;
                 if (A != 0){
                     revenue.unit = Math.ceil(C / A);
                 }
             });
-            
+
 
         }
 
         function deleteRevenue(revenue) {
-            if ($scope.data.revenues.length > 1) {
-                _.remove($scope.data.revenues, function (n) {
-                    return n === revenue;
-                });
-                doCalculation();
+            var nonDeleted = [];
+            _.each($scope.data.revenues, function (revenue) {
+                if (revenue.deleted == false)
+                    nonDeleted.push(revenue);
+            });
+            if(nonDeleted.length == 1){
+                addNotification($scope.notifications, { name: 'Revenue count Invalid', type: 'error', message:'You need to keep at least one Revenue Stream. If you would like to further change your Revenue Streams go back to the Revenue Stream page and make additional adjustments.', show: true});
+                return false;
             }
+            else {
+                removeNotificaton($scope.notifications, 'Revenue count Invalid');
+            }
+            revenue.deleted = true;
+            doCalculation();
         }
-
+ 
 
         function deleteVariableExpense(revenue, variableExpense) {
-            if (revenue.variableExpenses.length > 1) {
-                _.remove(revenue.variableExpenses, function (n) {
-                    return n === variableExpense;
-                });
-                doCalculation();
-            }
-        }
+            _.remove(revenue.variableExpenses, function (n) {
+                if (revenue.variableExpenses.length > 1)
+                return n === variableExpense;
+            });
+            if (revenue.variableExpenses.length == 1)
+            addNewVariableExpense(revenue);
+            doCalculation();
+    }
 
         function addNotification(notifications, newNotification) {
             var existing = _.find(notifications, {name: newNotification.name});
@@ -302,7 +350,7 @@
             } else {
                 existing.show = true;
             }
-            
+
         }
 
         function removeNotificaton(notifications, name) {
@@ -310,9 +358,24 @@
                 return notification.name == name;
             });
         }
-        
         function sendData(direction) {
-            if (!($scope.pageName == 'profitMargin')) {
+            if ($scope.pageName == "revenueStreams" && direction == 'forward'){
+
+                var notDeleted = $scope.data.revenues.filter(function(revenue){
+                    return !revenue.deleted;
+                })
+                if (notDeleted.length !=1){
+                    notDeleted.splice(-1);
+                }
+                var res = notDeleted.some(function(elem){
+                    return elem.name;
+                })
+                if (!res || !notDeleted.length){
+                    addNotification($scope.notifications, { name: 'Revenue Length Invalid', type: 'error', message: 'You must create at least one Revenue Stream - but we recommend three to five!', show: true });
+                    return false;
+                };
+            }
+            if (!($scope.pageName == 'profitMargin') && direction == 'forward') {
                 if (!isExpensesValid()){
                     $('body').animate({
                         scrollTop: $("slap-notifications").offset().top
@@ -320,47 +383,49 @@
                     return false;
                 }
             }
-            
+
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-            stepService.setRequestApiFlag();
+
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
             var data = {};
 
-            if ($scope.data.revenues.length > 1) {
-                var revenues = [];
-                _.forEach($scope.data.revenues, function (value) {
+            var revenues = [];
+            _.forEach($scope.data.revenues, function (value) {
 
-                    if (!angular.equals(value, $scope.emptyRevenue)) {
-                        revenues.push(value);
-                    }
+                if (value.name && value.name.trim() != '') {
+                    revenues.push(value);
+                }
 
-                });
-                data.revenues = revenues;
-            }
+            });
+            data.revenues = revenues;
 
 
             return stepService.sendApiData('revenueStreams', data)
                 .then(function () {
-                    if(direction == 'forward')  
-                        $state.go(nextprevStep.nextStep.sref); 
+                    $scope.saved = true;
+                    stepService.setRequestApiFlag();
+                    if(direction == 'forward')
+                        $state.go(nextprevStep.nextStep.sref);
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
                 });
         }
 
         function calcHeight(revenue, $index) {
-            if (($scope.pageName == 'profitMargin') || ($scope.pageName == 'revenueBreakdown')){
+            if ((($scope.pageName == 'profitMargin') || ($scope.pageName == 'revenueBreakdown')) && ($scope.data.revenues[$index].variableExpenses.length <= 1)){
                 return $scope.data.revenues[$index].variableExpenses.length - 1;
             } else {
                 return $scope.data.revenues[$index].variableExpenses.length;
             }
-            
+
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

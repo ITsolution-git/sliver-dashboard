@@ -6,22 +6,23 @@
         .controller('FixedBusinessExpensesController', FixedBusinessExpensesController);
     
     function FixedBusinessExpensesController($scope,$timeout, pageService,activeStep,stepService,$state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,
             emptyExpense: {
                 expense: '',
                 monthlyCost: ''
-            }
+            },
+            saved: false
 
         });
-
+        
         $scope.notifications = [];
         $scope.checkFormElements = checkFormElements;
         $scope.deleteItem = deleteItem;
         $scope.checkNumberValid = checkNumberValid;
-
+        
         $timeout(addNewExpense);
         getData();
 
@@ -38,10 +39,15 @@
             // return stepService.getApiData(urls[urls.length - 1])
             return stepService.getApiData(url) //TODO: Think over the dynamics url
                 .then(function (response) {
+                    // $scope.data.expenses = response.data.personalExpenses.expenses;
+                    // $scope.data.expensesSum = response.data.personalExpenses.expensesSum;
                     if (response && response.status === 200) {
                         // data.personalExpenses.sum hold totla president salary
+                        if (!$scope.data.procentFound){
+                            $scope.data.procentFound = 30;
+                        }
                         var presidentSalary = (response.data.personalExpenses.incidentals * 0.01) * response.data.personalExpenses.expensesSum + response.data.personalExpenses.expensesSum;
-                        if ($scope.data.expenses[0].expense != "President Salary") {
+                        if ($scope.data.expenses[0].expense != "President Salary") {                            
                             $scope.data.expenses.unshift({expense: "President Salary", monthlyCost: presidentSalary});
                         } else {
                             $scope.data.expenses[0].monthlyCost = presidentSalary;
@@ -69,6 +75,10 @@
             if ($scope.data.expenses.length === 0 || $scope.data.expenses.length === index + 1 || force) {
                 var expenseModel = _.cloneDeep($scope.emptyExpense);
                 $scope.data.expenses.push(expenseModel);
+                $timeout(function () {
+                    var index = $scope.data.expenses.length - 2;
+                    var elem = $('#expense-' + index).focus();
+                });
             }
         }
 
@@ -138,6 +148,7 @@
 
             return stepService.sendApiData(urls[urls.length - 1], data)
                 .then(function () {
+                    $scope.saved = true;
                     if(direction == 'forward')  
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
@@ -145,7 +156,9 @@
                 });
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

@@ -50,3 +50,50 @@ h3.logo {
 .content-margin {
   margin: 48px 0;
 }
+
+
+
+.textarea-box {
+  border: none;
+  border-bottom: 1px solid @color-dark-blue;
+  textarea {
+    border:none; 
+    background-color: #fff;
+  }
+}
+
+.btn-custom{
+  height:50px;
+  font-size: 18px;
+  background: @color-dark-blue;
+  color: #fff;
+  border-radius: 40px;
+  &:hover, &:focus {
+    outline: none !important;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+  outline: none;
+}
+
+.notice-box {
+  height: 80px;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 100px;
+  background-color: #fb6767;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
+  border: solid 5px #ffffff;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 20px;
+
+  .close-btn {
+    height: 30px;
+    width: 30px;
+    background: #fb6767 url("../images/close-icon.svg") no-repeat center;
+  }
+}

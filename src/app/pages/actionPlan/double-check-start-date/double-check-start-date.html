@@ -1,55 +1,61 @@
-<div class="slap-page container" scroll-top>
+<div class="slap-page slap-start-date " scroll-top>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
         <div class="panel-body">
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40">
+    <div class="panel panel-default">
 
         <div class="panel-body static-text-panel">
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text-once t="This is a chance to review your Start Date.   Now that you are further along in the process of building your SLAP - is this still the right Start Date?   If you see adjustments you would like to make, this page is editable and you can make updates to your Start Date now." visible="showStaticTextBlock"></slap-static-text-once>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
-        <div class="panel-body">
+        <div class="panel-body slap-work-panel">
 
-            <button-switch visible="showContent"></button-switch>
+            <button-switch visible="showStartDate"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+            <p class="logo panel-title">REVIEW</p>
 
-            <div class="sample-show-hide" ng-hide="showContent">
+            <div class="col-md-12 sample-show-hide" ng-hide="showStartDate">
+                <p class="heading2">Choose Your Start Date</p>
 
-                <div class=" form-group">
-                    <div class="col-md-3">
-                        <label for="first" class="label-text control-label">Lorem ipsum dolor sit armet</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select id="first" ng-model="model.first" class="dropdown-box outline-0">
-                            <option>Dropdown Label</option>
-                        </select>
-                    </div>
-                </div>
-
+                <p class="heading3">I will start to put my SLAP into Action no later than the first day of <br>
+                    <select ng-model="data.month" class="outline-0 dropdown-box active">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <span class="year">{{data.year}}</span>
+                </p>
             </div>
 
         </div>
     </div>
-
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

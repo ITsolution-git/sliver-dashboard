@@ -8,7 +8,7 @@
     function mindsetService() {
         var _sliders = [
             {
-                name: 'I Know I Am In Charge Of My Bussiness Success',
+                name: 'I Know I Am In Charge Of My Business Success',
                 left: 'I am a victim of circumstance',
                 right: 'I am SO IN CHARGE!!',
                 value: 0,
@@ -21,7 +21,7 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'every day i evaluate my Actions to see if they are gettin my results',
+                name: 'every day i evaluate my Actions to see if they are getting my results',
                 left: 'What/My actions = my results?',
                 right: 'I know exactly what to do',
                 value: 0,
@@ -47,7 +47,7 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'I say no more then I say yes.',
+                name: 'I say no more than I say yes.',
                 left: 'What does no mean?',
                 right: 'No is my favorite word!',
                 value: 0,
@@ -62,7 +62,7 @@
             },{
                 name: 'I spend my time and money well',
                 left: 'I don\'t even know how I spend my time and money',
-                right: 'Go it!',
+                right: 'Got it!',
                 value: 0,
                 options: {
                     floor: -5,
@@ -77,7 +77,7 @@
 
         var _stuckSliders = [
             {
-                name: 'I Know I Am In Charge Of My Bussiness Success',
+                name: 'I Know I Am In Charge Of My Business Success',
                 left: 'i am a victim of circumstance',
                 right: 'i am SO IN CHARGE!!',
                 value: 0,
@@ -90,7 +90,7 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'every day i evaluate my Actions to see if they are gettin my results',
+                name: 'every day i evaluate my Actions to see if they are getting my results',
                 left: 'What/My actions = my results?',
                 right: 'I know exactly what to do',
                 value: 0,
@@ -116,7 +116,7 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'I say no more then I say yes.',
+                name: 'I say no more than I say yes.',
                 left: 'What does no mean?',
                 right: 'No is my favorite word!',
                 value: 0,

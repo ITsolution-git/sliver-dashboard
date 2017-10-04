@@ -28,6 +28,7 @@ var gulp = require('gulp'),
     mainBowerFiles = require('main-bower-files'),
     eslint = require('gulp-eslint'),
     webserver = require('gulp-webserver');
+    historyApiFallback = require('connect-history-api-fallback');
 
 var path = {
     tmp: 'tmp',
@@ -60,7 +61,9 @@ gulp.task('vendor:js', function () {
             bowerDirectory: path.src.vendor
         }
     });
-
+    //For angular-data-grid pagination
+    vendors.push('vendor/angular-data-grid/dist/pagination.js');
+    
     return gulp.src(vendors)
         .pipe(filter('**/*.js'))
         .pipe(concat('vendor.js'))
@@ -143,7 +146,17 @@ gulp.task('serve', function () {
             port:8001,
             livereload: true,
             // directoryListing: true,
-            open: true
+            middleware: [ historyApiFallback({
+                rewrites: [
+                  {
+                    from: /^\/*$\/.*$/,
+                    to: function(context) {
+                      return context.parsedUrl.path;
+                    }
+                  }
+                ]
+              }) ],
+            open: true,
         }));
 });
 

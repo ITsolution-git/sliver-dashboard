@@ -1,7 +1,17 @@
-<div class="container-fluid">
+<div class="slapBtn">
+        <button class="to-state go-to">
+            <a ui-sref="mindset.ourCommitment" href="#!/mindset/ourCommitment">Go To Build</a>
+        </button>
+        <button class="to-state go-to">
+            <a ui-sref="slapExcute.main" href="#!/slapExcute/main">Go To Execute</a>
+        </button>
+    </div>
+
+<div class="container-fluid m-t-xs-50">
+ 
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
+        <div class="col-md-offset-1 col-md-10 ">
+            <div class="panel panel-default animated fadeInDown">
 
                 <div class="panel-body">
                     <!--<div class="row">-->
@@ -12,12 +22,12 @@
                     <!--</div>-->
                     <!--<hr>-->
 
-                    <table ng-table-dynamic="list with cols" class="table table-hover table-vertical-align ng-cloak col-md-12">
+                    <table ng-table-dynamic="list with cols" class="table table-hover table-vertical-align ng-cloak  payment">
                         <tr ng-repeat="row in $data">
                             <td ng-repeat="col in $columns" ng-switch="col.format" ng-class="col.style">
-                                <div ng-switch-when="raw" ng-bind-html="col.getValue(row)"></div>
-                                <div ng-switch-when="compile" compile="col.getValue(row)"></div>
-                                <div ng-switch-default ng-bind-html="col.getValue(row)"></div>
+                                <div class="item" ng-switch-when="raw" ng-bind-html="col.getValue(row)"></div>
+                                <div class="item" ng-switch-when="compile" compile="col.getValue(row)"></div>
+                                <div class="item" ng-switch-default ng-bind-html="col.getValue(row)"></div>
                             </td>
                         </tr>
                         <tr ng-if="!list.data.length">

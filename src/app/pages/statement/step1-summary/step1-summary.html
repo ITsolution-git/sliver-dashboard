@@ -10,9 +10,7 @@
 
             <div class="row sample-show-hide" ng-hide="showFormBlock">
                 <div class="col-md-11 padding-l-r-30 margin-b-24">
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra
-                        elit, a
-                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                    <p class="description"></p>
                 </div>
             </div>
 
@@ -27,13 +25,16 @@
 
                         <p style="padding-top: 10px;">
 
-                            <span class="aqua-green">{{data.businessName}}</span> does <span
-                                class="aqua-green">{{data.second}}</span> for
+                            <span class="aqua-green">{{data.businessName}}</span> {{listFirst[data.first]}}
+                            <span class="aqua-green">{{data.second}}</span>
+                            <span>{{third[data.third]}}</span>
                             <span class="aqua-green">{{data.fourth}}</span> on a
-                            <span class="aqua-green">{{fifth[+data.fifth]}}</span> scale because <span
-                                class="aqua-green">I will grow my business this year I will be able to
+                            <span class="aqua-green">{{fifth[+data.fifth]}}</span> scale.
+                            By growing my business I am able to
+                            <span class="aqua-green">
                             {{data.privilegeInfo.result}}</span> and I am committed to
-                            <span class="aqua-green">{{privilegesData.second[+data.privilegeInfo.text]}} {{data.privilegeInfo.additionalText}}</span>.
+                            <span>{{privilegesData.second[+data.privilegeInfo.text]}} </span>
+                            <span class="aqua-green">{{data.privilegeInfo.additionalText}}</span>.
                         </p>
 
                     </div>
@@ -47,4 +48,4 @@
 
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

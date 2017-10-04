@@ -1,0 +1,50 @@
+slap-main-footer, slap-registration-footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: #243039;
+    .main-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    span {
+        font-size: 0.6em;
+        color: #fff;
+        a {
+            padding-left: 10px; 
+        }
+
+    }
+}
+
+slap-registration-footer {
+    justify-content: left;
+}
+
+slap-registration-footer .main-footer>div {
+    width: 75vw;
+    font-size: 0.6em;
+    color: #fff;
+    text-align: center;
+}
+
+.wrap {
+    position: relative;
+}
+
+.main-container {
+    min-height: 100vh;
+}
+
+div .ui-view {
+    height: ~"calc(100vh - 50px)";
+}
+
+div[ui-view] {
+    min-height: ~"calc(100vh - 50px) ";
+}

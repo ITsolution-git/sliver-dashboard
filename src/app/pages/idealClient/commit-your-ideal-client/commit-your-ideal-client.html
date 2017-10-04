@@ -6,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -19,7 +19,7 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text-once t="This is one more chance to review your SLAPstatement. Each choice that you make and all of the information that you enter on each page is being used in the background to build you a great plan to grow your business. This is your chance to review your work to date - including the addition of your Ideal Client's name to your SLAPstatement!   If it all looks good to you, proceed to the next page. If you see adjustments you would like to make, this page is editable and you can make updates to your SLAPstatement now." visible="showStaticTextBlock"></slap-static-text-once>
 
         </div>
 
@@ -31,7 +31,7 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">moment</span></p>
+            <p class="logo panel-title">REVIEW</p>
 
             <div class="col-xs-12 sample-show-hide" ng-hide="showContent">
 
@@ -39,20 +39,20 @@
 
                     <span class="aqua-green">{{businessName}}</span>
 
-                    <span editable-select model-value="data.first" values-list="first"></span>
+                    <span>{{first[data.first]}}</span>
 
                     <span editable-text model-value="data.second"></span>
 
-                    <span editable-select model-value="data.third" values-list="third"></span>
+                    <span>{{third[data.third]}}</span>
 
                     <span editable-text model-value="data.fourth"></span>
 
                     on a <span class="aqua-green" editable-select model-value="data.fifth" values-list="fifth"></span>
-                    scale because I will grow my business this year I will be able to
+                    scale. By growing my business I am able to
                     <span class="aqua-green" editable-select model-value="privilegeInfo.resultId" values-list="privilegesData.resultList"></span>
                     and I
                     am committed to
-                    <span class="aqua-green" editable-select model-value="privilegeInfo.text" values-list="privilegesData.second"></span>
+                    <span>{{privilegesData.second[privilegeInfo.text]}}</span>
                     <span class="aqua-green" editable-text model-value="privilegeInfo.additionalText"></span>.
 
                 </p>
@@ -63,4 +63,4 @@
 
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

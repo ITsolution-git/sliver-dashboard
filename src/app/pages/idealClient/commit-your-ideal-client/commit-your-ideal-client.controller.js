@@ -6,18 +6,19 @@
         .controller('CommitYourIdealClientController', CommitYourIdealClientController);
 
     function CommitYourIdealClientController($scope, activeStep, pageService,stepService, $state, userService) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             first: ['does', 'provides', 'sells'],
             third: ['for', 'to'],
             fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             privilegesData: {
-                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'helping the economy'],
+                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'help the economy'],
                 second: ['providing', 'creating', 'giving', 'helping']
             },
             showWhatInput: false,
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         var originalData, originalPrivilagesData;
@@ -65,7 +66,7 @@
             if (angular.equals($scope.data, originalData) && angular.equals($scope.privilegeInfo, originalPrivilagesData)) {
                 if(direction == 'forward')
                     $state.go(nextprevStep.nextStep.sref);
-                else
+                else if(direction == 'backward')
                     $state.go(nextprevStep.prevStep.sref);
             } else {
                 stepService.setRequestApiFlag();
@@ -102,7 +103,6 @@
                 }
 
                 if (!angular.equals($scope.privilegeInfo, originalPrivilagesData)) {
-
                     privilegesResolve = false;
 
                     if ($scope.privilegeInfo.resultId !== originalPrivilagesData.resultId) {

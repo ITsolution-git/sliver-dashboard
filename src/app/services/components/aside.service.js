@@ -79,7 +79,7 @@
                 name: 'Fixed Business Expenses',
                 sref: 'yearGoal.fixedBusinessExpenses'
             }, {
-                name: 'Total Fixed Expenses Revenue',
+                name: 'Total Fixed Expenses',
                 sref: 'yearGoal.totalFixedExpensesRevenue'
             }, {
                 name: 'Selling Price',
@@ -196,10 +196,10 @@
             }, {
                 name: 'Step 4 SLAPsummary',
                 sref: 'actionPlan.step4Summary'
-            }, {
-                name: 'Second SLAPexpert Review',
-                sref: 'actionPlan.secondExpertReview'
-            }
+            }//, {
+            //     name: 'Second SLAPexpert Review',
+            //     sref: 'actionPlan.secondExpertReview'
+            // }
         ];
 
         var execute = [

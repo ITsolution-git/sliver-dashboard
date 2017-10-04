@@ -9,7 +9,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -21,7 +21,10 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="List the average price your Ideal Client pays you when they buy one unit.  Enter the amount you actually charge, reflecting realities like typical discounts you might offer or other realities that impact the amount you actually charge for your products or services."
+            t2="If your products/services have a range of prices, use the average price. If the range is very wide, consider setting up two revenue streams to narrow the range. For example, you might have one revenue stream for Small Consulting Projects and one for Large Consulting Projects."
+            t3="Most often a business owner under charges.  As you enter your Sales Prices - ask yourself if the market can handle you doing a small increase.   Don't be afraid to increase your prices if you think your Ideal Client can afford it!"
+            t4="If you want to add or delete a Revenue Stream you need to go back to the Revenue Stream page to do that!" visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -34,7 +37,7 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+            <p class="logo panel-title">ACTION</p>
 
             <div class="sample-show-hide" ng-hide="showContent">
                 
@@ -47,7 +50,7 @@
                         Selling Price
                     </div>
                 </div>
-                <div class="revenue-row" ng-repeat="revenue in data.revenues">
+                <div class="revenue-row" ng-repeat="revenue in data.revenues | filter:{deleted: false}">
                     <div class="revenue-name-container">
                         <div class="input-box">
                             <input ng-model="revenue.name" type="text"
@@ -59,7 +62,7 @@
                         <div class="">
                             <div class="input-box">
                                 <span class="currency">$</span>
-                                <input ng-model="revenue.sellingPrice" type="text"
+                                <input ng-init="(revenue.sellingPrice == '0.00')? revenue.sellingPrice = '' : revenue.sellingPrice" ng-model="revenue.sellingPrice"  type="text"
                                         class="monthly-cost outline-0"
                                         ng-keydown="checkValidity(revenue.sellingPrice, $event)"
                                         ng-class="{'active': revenue.sellingPrice}" required>
@@ -75,4 +78,4 @@
 
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

@@ -1,13 +1,15 @@
+<slap-registration-header></slap-registration-header>
 <div class="container-fluid ">
     <div class="row">
         <header class="container signup">
             <div class="col-md-12 leave">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                <a ui-sref="step1">leave</a>
+                    <a ui-sref="login">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>leave
+                    </a>
             </div>
             <div class="header-contents">
                 <div class="col-md-3 header-logo">
-                    <a ui-sref="login"><img src="../images/logo.png" alt="logo"></a>
+                    <img src="/images/logo.png" alt="logo">
                 </div>
                 <div class="col-md-6 header-caption">
                     <h1>build with an expert</h1>
@@ -101,11 +103,14 @@
             </div>
         </article>
         <div class="container signup next-bottom">
-            <div class="col-md-12">
-                <a ui-sref="step3" ng-show="!vm.active">No, thanks, next</a>
-                <a ui-sref="step3" ng-hide="!vm.active">Next</a>
-                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </div>
+            <button class="col-md-12" ui-sref="step3">
+                <span  ng-show="!vm.active">No, thanks, next
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </span>
+                <span  ng-hide="!vm.active">Next
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </span>
+            </button>
         </div>
     </div>
 </div>

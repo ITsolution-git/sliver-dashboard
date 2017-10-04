@@ -1,5 +1,5 @@
 
-slap-header {
+.slap-header, .slap-header-without-links {
   position: absolute;
   width: 100%;
   z-index: 100;
@@ -14,25 +14,41 @@ slap-header {
     border-color: @main-blue-color;
 
     .navbar-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 80px;
+      width: 16.66666667%;
       overflow: hidden;
       position: relative;
       float: left;
+      @media(max-width: @screen-sm) {
+        width: 50%;
+      }
+      @media(max-width: 321px) {
+        width: 40%;
+        .container-fluid {
+          padding-right: 0;
+        }
+
+      }
       > a > .logo-img {
+        width: 70px;
         position: relative;
-        top: -50px;
-        margin-left: 60px;
+        //padding-top: 5px;
+        margin-left: ~"calc(50% - 55px)";
         @media(max-width: @screen-sm) {
-          top: -10px;
-          height: 100px;
-          margin-left: 30px;
+          //top: 10px;
+          width: 60px;
+          margin-left: 40px;
+          //padding-top: 10px;
         }
         @media(max-width: 410px) {
           margin-left: 10px;
         }
       }
       .navbar-toggle {
-        margin-top: 20px;
+        //margin-top: 20px;
         margin-left: 10px;
       }
 
@@ -85,4 +101,21 @@ slap-header {
     }
   }
 
-}   
+}
+
+@media(max-width: 768px) {
+  .slap-header .navbar-default .navbar-header, .slap-header-without-links .navbar-default .navbar-header {
+    width: 40%;
+  }
+}
+
+@media(max-width: 321px) {
+  .container-fluid {
+    padding-right: 0;
+  }
+  .slap-header .navbar-default .profile-dropdown, .slap-header-without-links .navbar-default .profile-dropdown {
+    margin-right: 10px;
+  }
+
+}
+

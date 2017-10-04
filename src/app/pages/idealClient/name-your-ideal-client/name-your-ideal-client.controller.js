@@ -6,7 +6,7 @@
         .controller('NameYourIdealClientController', NameYourIdealClientController);
 
     function NameYourIdealClientController($scope, pageService, activeStep,stepService,$state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,
@@ -15,7 +15,8 @@
             },
             showVideoBlock: false,
             showStaticTextBlock: false,
-            showIdealClientNameBlock: false
+            showIdealClientNameBlock: false,
+            saved: false
         });
 
         getData();  // TODO: request api? data service no reload

@@ -63,16 +63,20 @@
 <!--</div>-->
 <!--</div>-->
 
+<slap-registration-header></slap-registration-header>
 <div class="container signup">
     <div class="row">
         <header class="container signup">
-            <div class="col-md-12 leave">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                <a ui-sref="login">leave</a>
+            <div class="col-md-11 leave">
             </div>
+            <div class="col-md-1 leave" style="text-align: right;" >
+                    <a ui-sref="login">
+                            Login
+                        </a>
+                </div>
             <div class="header-contents">
                 <div class="col-md-3 header-logo">
-                    <a ui-sref="login"><img src="../images/logo.png" alt="logo"></a>
+                    <img src="/images/logo.png" alt="logo">
                 </div>
                 <div class="col-md-6 header-caption">
                     <h1>choose your program</h1>
@@ -96,7 +100,7 @@
         <article class="container signup plan">
 
             <div class="row">
-                <div class="col-md-2 outline-0" ng-repeat="plan in vm.plans" ng-click="vm.choosePlan(plan,$event)">
+                <div class="col-md-2 outline-0" ng-repeat="plan in vm.plans"  ng-click="vm.choosePlan(plan,$event)">
                     <div class="rectangle" ng-class="{'rectangle-active': plan._id == vm.plan._id}">
                         <div class="rectangle-header">
                             <h3>{{ plan.productName }}</h3>
@@ -105,16 +109,23 @@
                             <div class="amount-plan">
                                 <span>{{ plan.costProduct }}</span>
                             </div>
-                            <p class="text-center">per month</p>
+                            <p class="text-center per">per month</p>
                             <ul class="plan-list" ng-if="plan._id == vm.plans[0]._id">
                                 <li>SLAPcenter</li>
-                                <li>SLAPassistant</li>
+                                <li>SLAPmanager</li>
                                 <li>SLAPschool</li>
                                 <li>SLAPworld</li>
                             </ul>
-                            <p class="plan-self text-center" ng-if="plan._id != vm.plans[0]._id">selfSLAP</p>
-                            <div class="plan-group" ng-if="plan._id != vm.plans[0]._id">
-                                <p class="text-center">1 Group Call Per Month</p>
+                            <!-- <p class="plan-self text-center" ng-if="plan._id != vm.plans[0]._id">SLAPexpert</p> -->
+                            <ul class="plan-list text-center" ng-if="plan._id != vm.plans[0]._id" >
+                                <li>SLAPcenter</li>
+                                <li>SLAPmanager</li>
+                                <li>SLAPschool</li>
+                                <li>SLAPworld</li>
+                            </ul>
+                            <i class="fa fa-plus slap-fa" ng-if="plan._id != vm.plans[0]._id" aria-hidden="true"></i>
+                            <div class="plan-group" ng-if="plan._id != vm.plans[0]._id" >
+                                <p class="expert text-center">SLAPexpert<br>({{vm.timeList[$index - 1]}})</p>
                             </div>
                         </div>
                     </div>
@@ -123,10 +134,12 @@
 
         </article>
         <div class="container signup next-bottom">
-            <div class="col-md-12">
-                <a ui-sref="step2" ng-click="vm.nextStep($event)">Next</a>
-                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </div>
+            <button class="col-md-12" ui-sref="step2" ng-click="vm.nextStep($event)">
+                <span>
+                    Next
+                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </span>
+            </button>
         </div>
     </div>
 </div>

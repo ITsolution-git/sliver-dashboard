@@ -6,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -18,7 +18,7 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text-once t="Based on understanding how much money you need to make to cover all of your expenses and hit your profit goals and calculating that against what you sell and how much money you make when you sell it, this is your 1 Year Goal.    These are the number of sales you have to make of each your Revenue Streams in order to hit your goals." visible="showStaticTextBlock"></slap-static-text-once>
 
         </div>
 
@@ -30,14 +30,13 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">moment</span></p>
+            <p class="logo panel-title">REFLECT</p>
 
             <div class="col-md-12">
                 <div class="row sample-show-hide" ng-hide="showIdealClientTextBlock">
                     <div class="row">
                         <div class="col-xs-12">
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a
-                                dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                            <p class="description"></p>
                         </div>
                     </div>
                 </div>
@@ -45,15 +44,15 @@
 
             <div class="col-md-12 row-flex sample-show-hide padding-t-45" ng-hide="showContent">
 
-                <div class="col-md-12 col-lg-8">
+                <div class="col-xs-12 col-lg-8 col-lg-offset-2">
                     <div class="row m-t-es-15 m-b-es-50">
 
                         <div class="ideal-clients-list col-md-12">
 
                             <div class="blue-circle"><span>!</span></div>
 
-                            <p ng-repeat="revenue in data.revenues" class="text-center">
-                                Selling <span>{{revenue.unit}} Units</span> of <span>{{revenue.name}} </span> for <span>${{revenue.sellingPrice}}</span>.
+                            <p ng-repeat="revenue in data.revenues | filter:{deleted: false}" class="text-center">
+                                I will sell <span>{{revenue.unit}} Units</span> of <span>{{revenue.name}} </span> at <span>${{revenue.sellingPrice}} each</span>.
                             </p>
 
                         </div>
@@ -68,4 +67,4 @@
 
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

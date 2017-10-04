@@ -1,14 +1,14 @@
-<div class="slap-footer col-md-12 col-xs-12">
+<div class="slap-footer col-md-12 col-xs-12 card">
     <div class="row">
         <div class="col-xs-6 footer-column footer-column-left">
             <div ng-show="$ctrl.state.prevStep.sref">
-                <button class="button-oval button-back pull-left outline-0" ng-click="$ctrl.prev()"></button>
+                <button class="btn btn-primary button-oval button-back pull-left outline-0" ng-click="$ctrl.prev()"></button>
                 <span class="pull-left hidden-xs">{{ $ctrl.state.prevStep.name }}</span>
             </div>
         </div>
         <div class="col-xs-6 footer-column footer-column-right">
             <div ng-show="$ctrl.state.nextStep.sref">
-                <button class="button-oval button-forward pull-right outline-0"  ng-click="$ctrl.next()"></button>
+                <button class="btn btn-primary button-oval button-forward pull-right outline-0"  ng-click="$ctrl.next()"></button>
                 <span class="pull-right hidden-xs">{{ $ctrl.state.nextStep.name }}</span>
             </div>
         </div>

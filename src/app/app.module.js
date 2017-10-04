@@ -5,14 +5,21 @@
         .module(
             'app',
             [
+                //SLAP modules
+                'adminapp',
+                'slapperm',
+                //Templates
                 'templates',
-
+                //3th party
                 'ngRoute',
                 'ngAnimate',
                 'ngSanitize',
                 'ngMaterial',
                 'ngAria',
+                'ngMessages',
 
+                'ngTable',
+                
                 'angular-loading-bar',
                 'restangular',
                 'satellizer',
@@ -21,17 +28,22 @@
                 'ui.bootstrap',
                 'ui.mask',
                 'frapontillo.bootstrap-switch',
+                'ui.select',
                 'mgcrea.ngStrap',
-                'ngTable',
                 'ngCsv',
                 'daterangepicker',
                 'rzModule',
-
+                'angular-svg-round-progressbar',
+                'angular.filter',
+                'dataGrid', 
+                'pagination',
+                //Sub modules
                 'app.services',
                 'app.filters',
                 'app.components',
                 'app.directives',
-                'app.pages'
+                'app.pages',
+                'ngFileUpload'
             ]
         )
 })();

@@ -9,6 +9,16 @@
     function moduleConfig($stateProvider) {
 
         $stateProvider
+            .state('unauthorized', {
+                parent: 'blank',
+                url: '/unauthorized',
+                views: {
+                    content: {
+                        controller: 'MainUnauthorizedController',
+                        templateUrl: 'pages/main/unauthorized/main-unauthorized.html'
+                    }
+                }
+            })
             .state('404', {
                 parent: 'blank',
                 url: '/404',
@@ -35,6 +45,23 @@
                 },
                 parent: 'default',
                 url: '/?refer',
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.resolveActiveStep(this)
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+                                return stepService.getLastFinished(true)
+                                .then(function (finishedStep) {
+                                    if (finishedStep.sref == 'welcome')
+                                        return true;
+                                    else
+                                        $state.go(finishedStep.sref);
+                                });
+                            });
+                    }
+                },
                 views: {
                     content: {
                         controller: 'MainIndexController',
@@ -47,7 +74,7 @@
                     access: '?'
                 },
                 url: '/login?email',
-                parent: 'blank',
+                parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {
                         controller: 'MainLoginController',
@@ -57,8 +84,8 @@
             })
             .state('signup', {
                 abstract: true,
-                url: '/signup',
-                parent: 'blank',
+                url: '/',
+                parent: 'registration',
                 views: {
                     content: {
                         // controller: 'MainRegistrationController',
@@ -80,7 +107,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/step2',
+                url: 'buy',
                 parent: 'signup',
                 controller: 'RegistrationStep2Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step2.html'
@@ -89,27 +116,44 @@
                 data: {
                     access: '?'
                 },
-                url: '/step3',
+                url: 'confirm',
                 parent: 'signup',
                 controller: 'RegistrationStep3Controller as vm',
                 templateUrl: 'pages/main/registration/registration-step3.html'
             })
-            .state('welcome', {
-                data: {
-                    access: '@'
-                },
-                params: {
-                    param1: 'welcome'
-                },
-                parent: 'one',
-                url: '/welcome',
-                views: {
-                    content: {
-                        controller: 'WelcomeController',
-                        templateUrl: 'pages/main/welcome/welcome-index.html'
-                    }
-                }
-            })
+            // .state('welcome', {
+            //     data: {
+            //         access: '@'
+            //     },
+            //     params: {
+            //         param1: 'welcome'
+            //     },
+            //     parent: 'one',
+            //     url: '/welcome',
+            //     resolve: {
+            //         activeStep: function (stepService, $state) {
+            //             return stepService.resolveActiveStep(this)
+            //                 .then(function (active) {
+            //                     if (active) {
+            //                         return active;
+            //                     }
+            //                     return stepService.getLastFinished(true)
+            //                     .then(function (finishedStep) {
+            //                         if (finishedStep.sref == 'welcome')
+            //                             return true;
+            //                         else
+            //                             $state.go(finishedStep.sref);
+            //                     });
+            //                 });
+            //         }
+            //     },
+            //     views: {
+            //         content: {
+            //             controller: 'WelcomeController',
+            //             templateUrl: 'pages/main/welcome/welcome-index.html'
+            //         }
+            //     }
+            // })
             .state('confirm', {
                 data: {
                     access: '?'
@@ -127,8 +171,8 @@
                 data: {
                     access: '?'
                 },
-                url: '/reset',
-                parent: 'blank',
+                url: '/password',
+                parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {
                         controller: 'MainResetController',
@@ -141,7 +185,7 @@
                     access: '?'
                 },
                 url: '/reset/{token}',
-                parent: 'blank',
+                parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {
                         controller: 'MainResetPasswordController',

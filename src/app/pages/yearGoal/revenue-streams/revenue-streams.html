@@ -1,7 +1,3 @@
-
-
-
-
 <div class="slap-page revenue-page personal-expanses" scroll-top>
 
     <div class="panel panel-default">
@@ -10,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -22,7 +18,10 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="Make a list of all of the things that you sell.  Only enter those Revenue Streams you plan to offer in the next 12 months; don't be afraid to eliminate an old Revenue stream that is no longer serving you well, or to add a new one that you think is promising."
+            t2="Having 3 to 5 Revenue Streams is ideal.  SLAP is all about setting your intentions; if you have too many revenue streams, it is hard to put your intention into all of them.  If you have too few revenue streams, you may not have enough to offer your Ideal Client."
+            t3="If you have a lot more than 3 to 5 products or services that you sell, consider itemizing the ones that you really want to prioritize in the next 12 months, and lumping the rest of them together as Other Revenue."
+            t4="Also think about how they can be grouped together - are there a few things that are always purchased together? Or that are similar?  You can create categories rather than itemize every single thing you sell." visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -35,7 +34,7 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+            <p class="logo panel-title">ACTION</p>
 
             <div class="sample-show-hide" ng-hide="showContent">
                 
@@ -44,18 +43,21 @@
                         Revenue Streams
                     </div>
                 </div>
-                <div class="revenue-row" ng-repeat="revenue in data.revenues">
+                <div class="revenue-row" ng-repeat="revenue in data.revenues | filter:{deleted: false}">
                     <div class="revenue-name-container" >
                         
                         <div class="input-box" style="width: calc(100% - 20px); display: inline-block">
+
                             <input ng-model="revenue.name" type="text"
-                                   class="monthly-cost outline-0"
-                                   ng-blur="checkRevenueCompleted(revenue, $event)"
-                                   ng-class="{'active': revenue.name}" required>
-                            <label class="label expense-label" >Add  Revenue</label>
-                        </div>
-                        <span class="delete-btn outline-0 pull-right" ng-click="deleteRevenue(revenue)" style="padding-top: 20px">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            class="monthly-cost outline-0"
+                            ng-keydown="$event.keyCode === 13 && checkRevenueCompleted(revenue, $event, $index)"
+                            ng-blur="checkRevenueCompleted(revenue, $event, $index)"
+                            id="revenue-{{$index}}"
+                            ng-class="{'active': revenue.name}" required
+                            placeholder="Add  Revenue">
+
+                        <span tabIndex="-1" class="delete-btn outline-0 pull-right" ng-click="deleteRevenue(revenue)" style="padding-top: 20px">
+                            <i class="fa fa-trash" aria-hidden="true" ></i>
                         </span>
                     </div>
                 </div>
@@ -67,5 +69,5 @@
 
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>
 

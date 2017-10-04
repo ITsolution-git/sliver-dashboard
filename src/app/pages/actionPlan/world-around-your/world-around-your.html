@@ -1,48 +1,81 @@
-<div class="slap-page container" scroll-top>
+<div class="slap-page world-around-you" scroll-top>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
         <div class="panel-body">
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
     </div>
 
-
-    <div class="panel panel-default margin-t-40">
+    <div class="panel panel-default">
 
         <div class="panel-body static-text-panel">
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="Make a comprehensive list of all world events that impact you and your ideal client.  We have started the list for you but please edit, delete and add to it!"
+            t2="Think about everything that happens in your typical business cycle and create events for those things.  Think about everything that happens in your Ideal Clients world and create World Events for those too."
+            t3="You cannot properly connect with your Ideal Client until you understand their context.  World Events should give you the context for what is going on in your world and their world so that you can figure out the best way to connect with them."
+            t4="You will not be able to proceed to the next page until you have updated all 4 Quarters by adding relevant world events to each" visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
-        <div class="panel-body">
+        <div class="panel-body slap-work-panel">
 
-            <button-switch visible="showContent"></button-switch>
+            <div class="row">
+                <div class="col-md-12">
+                    <button-switch visible="showFormBlock"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+                    <p class="logo panel-title">ACTION</p>
+                </div>
+            </div>
 
-            <div class="sample-show-hide" ng-hide="showContent">
+            <div class="row sample-show-hide" ng-hide="showFormBlock">
+                <div class="col-xs-12 padding-l-r-30 margin-b-24">
+                    <p class="heading2"></p>
+                </div>
+                
+                <ul class="nav nav-tabs quater-letter-container p-w-es-10 m-w-es-20">
+                    <li class="active quater-letter"><a data-toggle="tab" data-target="#quater1">Q1</a></li>
+                    <li class="quater-letter"><a data-toggle="tab" data-target="#quater2">Q2</a></li>
+                    <li class="quater-letter"><a data-toggle="tab" data-target="#quater3">Q3</a></li>
+                    <li class="quater-letter"><a data-toggle="tab" data-target="#quater4">Q4</a></li>
+                </ul>
+                <slap-notifications notifications="notifications"></slap-notifications>
+                <div class="tab-content quater-tab-container">
+                    What is going on in the world around your business?
+                    <div ng-repeat="nthQut in [1, 2, 3, 4]" id="{{'quater'+nthQut}}" class="tab-pane fade in quater-container row" ng-class="currentQut == nthQut ? 
+                    'active' : ''">
+                        <div ng-repeat="monthID in QMonths[nthQut - 1]" class="col-xs-12 col-sm-4">
+                            <p>{{monthNames[monthID]}}</p>
 
-                <div class=" form-group">
-                    <div class="col-md-3">
-                        <label for="first" class="label-text control-label">Lorem ipsum dolor sit armet</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select id="first" ng-model="model.first" class="dropdown-box outline-0">
-                            <option>Dropdown Label</option>
-                        </select>
+                            <div ng-repeat="event in data.eventsByMonth[monthID].events">
+                                <div class="input-box" style="width: calc(100% - 20px); display: inline-block">
+                                    <input ng-model="event.name" type="text"
+                                            class="monthly-cost outline-0" 
+                                            ng-blur="checkEventCompleted(event, data.eventsByMonth[monthID], $event, $index, monthID)"
+                                            ng-class="{'active': event.name != ''}" 
+                                            placeholder="Add Event"
+                                            ng-change= "checkChanges(nthQut)"
+                                            ng-keydown="$event.keyCode === 13 && checkEventCompleted(event, data.eventsByMonth[monthID], $event, $index, monthID)"
+                                            style="width: 100%" required
+                                            id="action-{{monthID}}-{{$index}}">
+
+                                </div>
+                                <span class="delete-btn outline-0 pull-right" tabindex="-1" ng-click="deleteEvent(event, data.eventsByMonth[monthID], nthQut)" style="padding-top: 10px">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -50,7 +83,6 @@
 
         </div>
     </div>
-
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

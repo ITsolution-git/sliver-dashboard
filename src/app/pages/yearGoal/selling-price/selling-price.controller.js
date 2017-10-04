@@ -6,7 +6,7 @@
         .controller('SellingPriceController', SellingPriceController);
     
     function SellingPriceController($scope, pageService,activeStep,stepService,$state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model,{
             forward:true,
             sendData: sendData,

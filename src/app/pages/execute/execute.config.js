@@ -21,7 +21,7 @@
                 }
             })
             .state('execute.livingDayToDay', {
-                url: '/livingSlapDayToDay',
+                url: '/the3slaphabits',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -81,7 +81,7 @@
                 templateUrl: 'pages/execute/set-yourself-up-for-success/set-yourself-up-for-success.html'
             })
             .state('execute.tourExecute', {
-                url: '/tourOfSLAPcenterExecute',
+                url: '/timetoexecute',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)

@@ -6,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -18,7 +18,11 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="List all your personal expenses.  Don't forget to include a vacation (business owners NEED to take vacations occasionally), and money to set aside for savings.  A good way to be sure you have included everything is to go through your checkbook and recent credit card statements."
+            t2="If someone else contributes to your personal expenses, only list the amounts you need to/want to, cover yourself.  If you already take a salary from your business, and you are happy with that amount, you can simply enter that as your total Personal Expenses."
+            t3="You must know how much money you need, to live the life you want.  Until your business can pay you that amaount in a salary, it is not profitable and sustainable"
+            t4="Remember to tell the truth because these numbers are the foundation of your entire 1 Year Goal.  We need to know what your true expenses are so that we can build you the right financial goals!"
+            visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -30,18 +34,17 @@
 
             <button-switch visible="showContent"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+            <p class="logo panel-title">ACTION</p>
 
-            <div class="col-xs-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a dapibus ex. In
-                    venenatis tempor odio, non ultrices lectus</p>
-            </div>
+            <!--<div class="col-xs-12">
+                <p></p>
+            </div>-->
 
             <div class="form-box sample-show-hide col-xs-12" ng-hide="showContent">
 
                 <div class="row">
                     <div class="col-md-5"><h4>What is the name of the expense?</h4></div>
-                    <div class="col-md-3"><h4>Monthly Expense</h4></div>
+                    <div class="col-md-2"><h4>Monthly Expense</h4></div>
                     <div class="col-md-4"><h4>Yearly Expense</h4></div>
                 </div>
 
@@ -51,11 +54,11 @@
                             <input ng-model="item.expense" type="text" id="expense-{{$index}}"
                                    class="expense outline-0"
                                    ng-keydown="$event.keyCode === 13 "
+                                   placeholder="Add Another Expense"
                                    ng-class="{'active': item.expense}" required>
-                            <label class="label expense-label" for="expense-{{$index}}">Add Another Expense</label>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="input-box">
                             <span class="currency">$</span>
                             <input ng-model="item.monthlyCost" type="text"
@@ -65,25 +68,25 @@
                                    ng-class="{'active': item.monthlyCost}" required>
                         </div>
                     </div>
-                    <div class="result col-md-4">
+                    <div class="result result-height col-md-4">
                         <div ng-show="item.monthlyCost">&#215;12 = ${{item.monthlyCost ? (item.monthlyCost * 12) : '' | number:2}}</div>
 
-                        <div class="delete-btn outline-0" ng-click="deleteItem(item)">
+                        <div class="delete-btn outline-0" tabIndex="-1" ng-click="deleteItem(item)">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
-
-                <div class="row row-flex incidentals-wrap  m-t-es-30">
-                    <div class="col-md-5">
+                <hr>
+                <div class="row row-flex incidentals-wrap  m-t-es-10">
+                    <div class="col-md-3 padd">
                         <div class="input-box">
-                            <span>Incidentals for</span>
                             <span class="currency">%</span>
                             <input ng-model="data.incidentals" type="text" id="incidentals"
-                                   class="incidentals outline-0" ng-blur="checkNumberValid(data.incidentals, $event)" required>
+                              placeholder="Incidentals for" class="incidentals outline-0" ng-blur="checkNumberValid(data.incidentals, $event)" required>
                         </div>
                     </div>
-                    <div class="result col-md-3">
+                    <div class="col-md-2"> </div>
+                    <div class="result col-md-2">
                         <span>${{data.incidentals * 0.01 * data.expensesSum | number:2}}</span>
                     </div>
                     <div class="result col-md-4">
@@ -92,7 +95,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12  m-t-es-50">
+                    <div class="col-md-12  m-t-es-40">
                         <div class="col-md-12 row-flex total-expense-wrap">
                             <div class="col-md-5 padding-l-30">
                                 Total Expenses
@@ -116,4 +119,4 @@
 
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

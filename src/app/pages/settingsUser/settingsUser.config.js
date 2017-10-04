@@ -12,12 +12,25 @@
                 data: {
                     access: '@'
                 },
-                parent: 'default',
-                url: '/paymetns',
+                parent: 'withNavbar',
+                url: '/payments',
                 views: {
                     content: {
                         controller: 'PaymentsController',
                         templateUrl: 'pages/settingsUser/payments/payments.html'
+                    }
+                }
+            })
+            .state('myaccounts', {
+                data: {
+                    access: '@'
+                },
+                parent: 'withNavbar',
+                url: '/account',
+                views: {
+                    content: {
+                        controller: 'MyaccountsController',
+                        templateUrl: 'pages/settingsUser/myaccounts/myaccounts.html'
                     }
                 }
             })

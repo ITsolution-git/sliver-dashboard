@@ -31,5 +31,6 @@
             else
                 $state.go(nextprevStep.prevStep.sref);
         }
+        
     }
 }());

@@ -1,0 +1,105 @@
+<div layout="column" style="width: 100%;">
+<md-card flex="100" class="p-es-30 m-w-es-40">
+    <form layout="row" layout-wrap layout-align="center center" name="form">
+        <md-input-container  flex="100">
+            <label>Business Name</label>
+            <input ng-model="user.businessName" required name="businessName">
+            <div ng-messages="form.businessName.$error">
+                <ng-message when="required">Business Name is required.</ng-message>
+            </div>
+        </md-input-container>
+        <md-input-container  flex="50">
+            <label>First Name</label>
+            <input ng-model="user.name" required name="name">
+            <div ng-messages="form.name.$error">
+                <ng-message when="required">First Name is required.</ng-message>
+            </div>
+        </md-input-container>
+        
+        <md-input-container  flex="50">
+            <label>Last Name</label>
+            <input ng-model="user.lastName" required name="lastName">
+            <div ng-messages="form.lastName.$error">
+                <ng-message when="required">Last Name is required.</ng-message>
+            </div>
+        </md-input-container>
+        
+        <md-input-container flex="50">
+            <md-select ng-model="user.status">
+                <md-option ng-repeat="status in STATUSES" ng-value="status.id">{{status.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        
+
+        <md-input-container flex="50">
+            <md-select ng-model="user.role" ng-disabled="user.role == 4">
+                <md-option ng-value="role.id" ng-repeat="role in ROLES" ng-disabled="role.id == 4">
+                    {{role.name}}
+                </md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+
+
+        <md-input-container class="md-block" flex="50">
+            <label for="email">Email</label>
+            <input name="email" ng-model="user.email" id="email"
+                    required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+            <div ng-messages="form.email.$error" ng-hide="form.email.$valid">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Only letters and numbers are allowed (a-z,A-Z)
+                </div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex="50">
+            <label for="phone">Phone Number</label>
+            <input name="phone" required ng-model="user.phone"  id="phone"/>
+
+            <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid">
+                <ng-message when="required">Phone Number is required.</ng-message>
+            </div>
+        </md-input-container>
+
+
+        <md-input-container class="md-block" flex="50"  ng-if="!userID">
+            <label for="password">Password</label>
+            <input required type="password" name="password" ng-model="user.password"
+                    minlength="6" md-maxlength="30" id="password"/>
+
+            <div ng-messages="form.password.$error" role="alert" ng-hide="form.password.$valid">
+                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                    Password should be at least 6 until 30 characters
+                </div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex="50" ng-if="!userID">
+            <label for="confirm">Confirm Password</label>
+            <input required type="password" name="confirm" ng-model="password.confirm_password"
+                    minlength="6" md-maxlength="30" pass-compare="user.password" id="confirm"/>
+
+            <div ng-messages="form.confirm.$error" role="alert" ng-hide="form.confirm.$valid">
+                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                    Passwords are not the same
+                </div>
+            </div>
+        </md-input-container>
+
+        <section layout="row" layout-align="end center" flex="100" >
+            <md-button ng-click="showSetPasswordDialog($event)" class="md-primary" ng-if="userID">
+                SET Password
+            </md-button>
+            <md-button ng-click="createOrSave($event)" class="md-primary" >
+                {{userID ? 'Save' : 'Create'}}
+            </md-button>
+            <md-button ng-click="deleteItem($event)" class="md-warn" ng-if="userID">
+                Delete
+            </md-button>
+        </section>
+    </form>
+
+</md-card>
+</div>

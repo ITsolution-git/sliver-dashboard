@@ -1,0 +1,211 @@
+
+<div class="step3-summary slap-page" scroll-top>
+    
+        <div class="panel panel-default">
+    
+            <div class="panel-body content-box slap-work-panel">
+                <div class="slapBtn">
+                    <div class='dropdown years'>
+                            
+                        <a class="dropdown-toggle text-white font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Previous SLAPs
+                        </a> 
+                        <ul class="dropdown-menu">
+                                <li ng-repeat="user in user.accounts">
+                                    <a ng-click="selectSLAPyear(user)">
+                                        <span style="font-size: 16px; color:blue">{{'YEAR ' + ($index+1) + ' '}}</span>
+                                        {{ user.createdAt | date: 'yyyy-MM-dd'}}
+                                        <span class="label label-primary" ng-if="user._id == user._id">current</span>
+                                    </a>
+                                </li>
+                        </ul>
+                    
+                
+                    </div>
+                    <button class="to-state go-to">
+                        <a ng-if="state === 'Excute'" ui-sref="slapExcute.main" href="#!/slapExcute/main">Go To Execute</a>
+                        <a ng-if="state === 'Build'" ui-sref="mindset.ourCommitment" href="#!/mindset/ourCommitment">Go To Build</a>
+                    </button>
+                    
+                </div>
+                <div class="pull-right">
+                    <button class="print" ng-click="printSlap()">
+                        <i class="fa fa-print" aria-hidden="true"></i>
+                        Print
+                    </button>
+
+                </div>
+
+
+                <p class="logo panel-title">SLAP<span class="aqua-green">summary</span></p>
+    
+                <div class="col-xs-12 col-lg-12 sample-show-hide" ng-hide="showContent">
+    
+                    <div class="row summary-step">
+    
+                        <div class="line-to">
+                        </div>
+                        <div class="col-xs-12 col-xs-12 m-b-sm-40">
+                            <div class="grey-circle-box">
+                                <div class="grey-circle">1</div>
+                            </div>
+
+
+                            <p>
+
+                                <span class="aqua-green">{{data.businessName}}</span>
+                                <span>{{first[data.first]}}</span>
+                                <span class="aqua-green">{{data.second}}</span>
+                                <span>{{third[data.third]}}</span>
+                                <span class="aqua-green">{{data.fourth}}</span> on a
+                                <span class="aqua-green">{{fifth[+data.fifth]}}</span> scale.
+                                <span>By growing my business I am able to</span>
+                                <span class="aqua-green">
+                            {{data.privilegeInfo.result}}</span> and I am committed to
+                                <span> {{privilegesData.second[+data.privilegeInfo.text]}} </span>
+                                <span class="aqua-green">{{data.privilegeInfo.additionalText}}</span>.
+
+                            </p>
+                        </div>
+    
+                    </div>
+    
+                    <div class="row summary-step">
+                        <div class="line-to">
+                        </div>
+                        <div class="col-xs-12 m-b-sm-40">
+                            <div class="grey-circle-box">
+                                <div class="grey-circle">2</div>
+                            </div>
+    
+                            <p>
+                                <span class="aqua-green">{{data.fourth || 'My Ideal Client' }}</span> is a
+                                <span class="aqua-green">{{age[+client.age]}}</span> year old
+                                <span class="aqua-green">{{gender[+client.gender]}}</span> who is
+                                <span class="aqua-green">{{maritalStatus[+client.maritalStatus]}}</span> and is the
+                                <span ng-if="+client.gender == 1">Father</span>
+                                <span ng-if="+client.gender == 2">Mother</span> of
+                                <span class="aqua-green">{{kids[+client.kids]}}</span>. For work,
+                                <span ng-if="+client.gender == 1">he </span>
+                                <span ng-if="+client.gender == 2">she </span>
+                                <span class="aqua-green">{{employment[+client.employment]}}</span>.
+                                <span ng-if="+client.gender == 1">He</span>
+                                <span ng-if="+client.gender == 2">She</span> lives in
+                                <span class="aqua-green">{{location[+client.location]}}</span>.
+                                <span ng-if="+client.gender == 1">He</span>
+                                <span ng-if="+client.gender == 2">She</span> usually gets around by
+                                <span class="aqua-green">{{transit[+client.transit]}}</span> and in
+                                <span ng-if="+client.gender == 1">his</span>
+                                <span ng-if="+client.gender == 2">her</span> spare time likes to
+                                <span class="aqua-green">{{hobbies[client.hobbies]}}</span> and read
+                                <span class="aqua-green">{{reads[client.reads]}}</span>.
+                            </p>
+    
+                        </div>
+                    </div>
+    
+    
+                    <div class="row summary-step">
+                        <div class="line-to">
+                        </div>
+                        <div class="col-md-12 margin-b-50 padding-l-100 padding-r-30">
+                            <div class="grey-circle-box">
+                                <div class="grey-circle">3</div>
+                            </div>
+    
+    
+                            <p>By <span ng-if="slapStartDate.month > 1;" class="aqua-green">{{months[slapStartDate.month - 1]}} 31, {{slapStartDate.year + 1}}</span>
+                                <span ng-if="slapStartDate.month <= 1;" class="aqua-green">{{months[12]}} 31, {{slapStartDate.year + 1}}</span>, I will sell</p>
+                                
+                            <ul class="revenue-summary row">
+                                <li class="col-xs-4 col-sm-3 col-md-2" ng-repeat="revenue in model.revenues | filter: {deleted: false}">
+                                    <p>
+                                        <span class="aqua-green">{{revenue.unit}} Units</span> of <span class="aqua-green">{{revenue.name}} </span> for avg. price <span  class="aqua-green">${{revenue.sellingPrice}}</span>.
+                                    </p>
+                                </li>
+                            </ul>
+    
+                            <p>To generate a total of <span class="aqua-green">${{totalTarget | number:2}}</span> revenue and <span
+                                    class="aqua-green">${{profit | number:2}}</span> profit this SLAPyear!</p>
+                        </div>
+                    </div>
+    
+                    <div class="row summary4 summary-step">
+                        <div class="col-md-12 margin-b-50 padding-l-100 padding-r-30">
+                            <div class="grey-circle-box">
+                                <div class="grey-circle">4</div>
+                            </div>
+    
+                            <p class="m-l-es-70">In order to do this, I will take action and find new leads by:</p>
+    
+                            <div class="row p-w-xs-70">
+                                <div class="col-md-4">
+                                    <div class="quater-box row show-border-bottom">
+                                        <div class="col-xs-4 quater-letter">
+                                            Q1
+                                            <p>{{monthsShort[QMonths[0][0]]}}-{{monthsShort[QMonths[0][2]]}}</p>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <p style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[0].strategy.id)}}
+                                            </span> to connect with my ideal client.</p>
+                                        </div>
+                                    </div>
+                                    <div class="quater-box row">
+                                        <div class="col-xs-4 quater-letter">
+                                            Q2
+                                            <p>{{monthsShort[QMonths[1][0]]}}-{{monthsShort[QMonths[1][2]]}}</p>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <p style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[1].strategy.id)}}</span> to connect with my ideal client.</p>
+                                        </div>
+                                    </div>
+                                    <div class="quater-box row">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 empty-avatar-div visible-md visible-lg text-center">
+                                    <a><img src="/images/empty-avatar.png" class="img img-circle"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="quater-box row show-border-bottom">
+                                        <div class="col-xs-4 quater-letter">
+                                            Q3
+                                            <p>{{monthsShort[QMonths[2][0]]}}-{{monthsShort[QMonths[2][2]]}}</p>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <p  style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[2].strategy.id)}}</span> to connect with my ideal client.</p>
+                                        </div>
+                                    </div>
+                                    <div class="quater-box row">
+                                        <div class="col-xs-4 quater-letter">
+                                            Q4
+                                            <p>{{monthsShort[QMonths[3][0]]}}-{{monthsShort[QMonths[3][2]]}}</p>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <p style="font-size: 14px;">Using <span class="text-aqua">{{getStrategyName(quaters[3].strategy.id)}}</span> to connect with my ideal client.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="show-summary" ng-init="showSummary4Detail = false" style="position: relative">
+                                <hr/>
+                                <button class="btn btn-custom" ng-click="showSummary4Detail = !showSummary4Detail" >
+                                    {{showSummary4Detail ? 'Close' : 'Show'}} Detailed View
+                                </button>
+                            </div>
+    
+                            <div class="sample-show-hide list-quater  p-w-xs-70" ng-show="showSummary4Detail">
+                                <div ng-repeat="QID in [0, 1, 2, 3]" class="m-b-es-20">
+                                    <p style="font-size: 1.3em">Q{{QID+1}} - {{getStrategyName(quaters[QID].strategy.id)}}</p>
+                                    <p style="word-wrap: break-word">
+                                        {{quaters[QID].strategy.description}}
+                                    </p>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>

@@ -6,14 +6,15 @@
         .controller('PersonalExpensesController', PersonalExpensesController);
 
     function PersonalExpensesController($scope,$timeout, pageService, activeStep,stepService, $state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData,
             emptyExpense: {
                 expense: '',
                 monthlyCost: ''
-            }
+            },
+            saved: false
 
         });
         $scope.notifications = [];
@@ -47,6 +48,11 @@
             if ($scope.data.expenses.length === 0 || $scope.data.expenses.length === index + 1 || force) {
                 var expenseModel = _.cloneDeep($scope.emptyExpense);
                 $scope.data.expenses.push(expenseModel);
+                $timeout(function(){         
+                    var index = $scope.data.expenses.length-1;
+                    var elem = $('#expense-' + index).focus();
+                });
+                
             }
         }
 
@@ -120,10 +126,14 @@
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
+                    
+                    $scope.saved = true;
                 });
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

@@ -9,36 +9,42 @@
     function MainResetController($scope, $window, $auth, $state, toaster, pageService, userService) {
 
         // --- vars ---
-
+        $scope.notifications = [];
         $scope.email = '';
 
         $scope.errors = {};
 
         // --- methods ---
-
+        pageService.reset().setPageTitle(' Request Password Reset Confirmation').addCrumb({name: 'Request Password Reset Confirmation', path: 'reset-password'});
         $scope.back = function () {
             $window.history.back();
         };
+
+        function addNotification(notifications, newNotification) {
+            var existing = _.find(notifications, {name: newNotification.name});
+            if (_.isUndefined(existing)) {
+                notifications.push(newNotification);
+            } else {
+                existing.show = true;
+            }
+            
+        }
 
         $scope.submit = function () {
             userService.reset($scope.email)
                 .then(
                     function (response) {
-                        if (response.data.message) {
-                            toaster.pop({type: 'success', body: response.data.message ? response.data.message : "Confirm email was sent!"});
-                        }
-                        // $scope.errors = response.data[0].errors;
-                        // console.log('empty errors => ' + $scope.errors);
+                        toaster.pop({type: 'success', body: response.data.message ? response.data.message : "Check your email to set up your new Password.", timeout: 3000});
+                        $state.go('login');
                     }
                 )
                 .catch(function(err) {
-                    toaster.pop({type: 'error', body: "User is not found!"});
+                    addNotification($scope.notifications, {name: 'Server error!', type: 'error', message:'This is not working. Please email support@smallbizsilverlining.com for VIP support.', show: true});
                 });
         };
 
         // --- init ---
 
-        pageService.reset().addCrumb({name: 'Reset', path: 'reset'});
 
     }
 })();

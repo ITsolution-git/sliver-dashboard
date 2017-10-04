@@ -12,7 +12,7 @@
                     access: '@'
                 },
                 abstract: true,
-                url: '/statement',
+                url: '/slapstatement',
                 parent: 'default',
                 views: {
                     content: {
@@ -21,7 +21,7 @@
                 }
             })
             .state('statement.overview', {
-                url: '/overview',
+                url: '/slapstatementoverview',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -41,7 +41,7 @@
                 templateUrl: 'pages/statement/statement-overview/statement-overview.html'
             })
             .state('statement.qa', {
-                url: '/Q&A',
+                url: '/slapstatementq&a',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -61,7 +61,7 @@
                 templateUrl: 'pages/statement/statement-qa/statement-qa.html'
             })
             .state('statement.yourStatement', {
-                url: '/yourStatement',
+                url: '/yourslapstatement',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -81,7 +81,7 @@
                 templateUrl: 'pages/statement/your-statement/your-statement.html'
             })
             .state('statement.commitToYour', {
-                url: '/commitToYour',
+                url: '/reviewslapstatement',
                 resolve: {
                     activeStep: function (stepService, $state) {
                         return stepService.resolveActiveStep(this)
@@ -120,7 +120,7 @@
                 controller: 'StatementController',
                 templateUrl: 'pages/statement/statement/statement.html'
             }).state('statement.step1Summary', {
-                url: '/step1SLAPsummary',
+                url: '/step1slapsummary',
             resolve: {
                 activeStep: function (stepService, $state) {
                     return stepService.resolveActiveStep(this)

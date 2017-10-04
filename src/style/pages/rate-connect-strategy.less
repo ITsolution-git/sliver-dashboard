@@ -1,0 +1,93 @@
+.rate-connect-strategy {
+  #strategy-container {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 700px;
+      top: 0px;
+    }
+    #empty-client {
+      position: absolute;
+      p {
+        position: absolute;
+        top: 110px;
+        right: 55px;
+        font-size: 14px;
+        padding: 20px;
+        text-align: center;
+      }
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      }
+    }
+    .strategy-box {
+      &:focus, &:active, &:hover {
+        outline: none;
+      }
+      cursor: pointer;
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: transparent;
+      img {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      .overlap {
+        position: absolute;
+        top: 0px;
+        background-color: #000;
+        opacity: 0.7;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      .content {
+        &:focus, &:active, &:hover {
+          outline: none;
+        }
+        position: absolute;
+        top: 0px;
+        text-align: center;
+        width: 150px;
+        height: 150px;
+        color: #fff;
+        margin-top: 10px;
+        margin-top: 20px;
+        line-height: 18px;
+        .title {
+          font-size: 16.5px;
+        }
+        i {
+          font-size: 45px;
+        }
+        .desc {
+          font-size: 12px;
+        }
+      }
+    }
+    .resp-strategy-box {
+      position: relative;
+    }
+  }
+}
+.modal-open .modal {
+  background: transparent;
+  box-shadow: none;
+  padding: 0 20px;
+}

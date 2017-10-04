@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function ActionPlanOverviewController($scope, activeStep, pageService,stepService, $state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData

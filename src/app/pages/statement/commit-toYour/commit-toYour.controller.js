@@ -6,18 +6,19 @@
         .controller('CommitToYourController', CommitToYourController);
 
     function CommitToYourController($scope, $state, pageService, stepService, userService, activeStep) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             first: ['does', 'provides', 'sells'],
             third: ['for', 'to'],
             fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             privilegesData: {
-                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'helping the economy'],
+                resultList: ['provide for my family', 'create jobs', 'give more to my community', 'helpes the economy'],
                 second: ['providing', 'creating', 'giving', 'helping']
             },
             showWhatInput: false,
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         var originalData, originalPrivilagesData;
@@ -59,7 +60,6 @@
         function sendData(direction) {
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-            stepService.setRequestApiFlag();
 
             var nextprevStep = stepService.getNextAndPrevStep();
 
@@ -70,6 +70,7 @@
                     $state.go(nextprevStep.prevStep.sref);
             } else {
                 updateData().then(function () {
+                    stepService.setRequestApiFlag();
                     if(direction == 'forward')
                         $state.go(nextprevStep.nextStep.sref);
                     else if(direction == 'backward')
@@ -159,7 +160,9 @@
             return res;
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

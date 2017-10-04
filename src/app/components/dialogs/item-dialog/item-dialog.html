@@ -1,0 +1,216 @@
+<md-dialog aria-label="List dialog" class="excute-dialog" ng-class="{'excute-dialog-actions': formData.type == 'action','excute-dialog-sales': formData.type == 'sales','excute-dialog-reflextion': formData.type == 'reflextion'}">
+	<section>
+		<section class="slap-excute-dialog-header m-b-es-20" layout="row" layout-align="space-between center">
+			<slap-color-switch color="{{colorAction}}" name="Actions" value="filter.showActions"  static="true" ng-if="formData.type=='action'"></slap-color-switch>
+			<slap-color-switch color="{{colorSales}}" name="Sales" value="filter.showActions"  static="true" ng-if="formData.type=='sales'"></slap-color-switch>
+			<slap-color-switch color="{{colorReflextion}}" name="Pause & Reflect" value="filter.showActions"  static="true" ng-if="formData.type=='reflextion'"></slap-color-switch>
+			<a ng-click="closeDialog()"><i class="material-icons">highlight_off</i></a>
+		</section>
+		<section layout="column" ng-if="formData.type == 'action'">
+			<form layout="row" layout-wrap layout-align="center center" name="form">
+				<md-input-container  flex="100">
+					<label>Action Title</label>
+					<input ng-model="formData.title" required name="title">
+					<div ng-messages="form.title.$error">
+						<ng-message when="required">Action Title is required.</div>
+					</div>
+				</md-input-container>
+				
+				<md-input-container flex="50" ng-if="curMode == 'add'">
+					<md-select ng-model="formData.recurrency" aria-label=".re">
+						<md-option ng-value="'No Recurrency'">No Recurrency</md-option>
+						<md-option ng-value="'Daily'">Daily</md-option>
+						<md-option ng-value="'Weekly'">Weekly</md-option>
+						<md-option ng-value="'Monthly'">Monthly</md-option>
+						<md-option ng-value="'Quaterly'">Quaterly</md-option>
+					</md-select>
+					<div class="md-errors-spacer"></div>
+				</md-input-container>
+				
+				<md-input-container flex="50" ng-if="formData.recurrency == 'No Recurrency' || curMode == 'edit'">
+					<label>Due Date</label>
+					<md-datepicker ng-model="formData.dueDate" md-min-date="today" md-max-date="endDate" name="dueDate"></md-datepicker>
+					<div ng-messages="form.dueDate.$error">
+						<div ng-message="valid">The entered value is not a date!</div>
+						<div ng-message="required">This date is required!</div>
+						<div ng-message="mindate">Date is too early!</div>
+						<div ng-message="maxdate">Date is too late!</div>
+					</div>
+				</md-input-container>
+
+
+
+				<md-checkbox ng-model="formData.setRecurDeadline" aria-label="Set DeadLine?" flex="20"  ng-if="formData.recurrency != 'No Recurrency' && curMode == 'add'">
+					Set Deadline?
+				</md-checkbox>
+
+				<md-input-container flex="30"  ng-if="formData.recurrency != 'No Recurrency' && curMode == 'add'" >
+					<label>Recurrency Deadline</label>
+					<md-datepicker ng-model="formData.recurDeadline" md-min-date="today" md-max-date="endDate"
+					ng-disabled="formData.setRecurDeadline == false"
+					name="recurDeadline"></md-datepicker>
+
+					<div ng-messages="form.recurDeadline.$error">
+						<div ng-message="valid">The entered value is not a date!</div>
+						<div ng-message="required">This date is required!</div>
+						<div ng-message="mindate">Date is too early!</div>
+						<div ng-message="maxdate">Date is too late!</div>
+					</div>
+				</md-input-container>
+				<section flex></section>
+
+				<md-input-container flex="100">
+					<label>Notes</label>
+					<input ng-model="formData.notes">
+				</md-input-container>
+
+				<md-slider-container layout flex="100">
+					<div flex="20">
+						<span>Set Your progress</span>
+					</div>	
+					<md-slider flex class="md-primary" md-discrete ng-model="formData.progress" step="1" min="1" max="100" aria-label="progress">
+					</md-slider>
+				</md-slider-container>
+			</form>
+		</section>
+
+		<section layout="column" ng-if="formData.type == 'sales'">
+			<form layout="row" layout-wrap layout-align="center center" name="form">
+				
+				<md-input-container flex="100">
+					<md-select ng-model="formData.title" aria-label="ti">
+						<md-option ng-value="revenue.id" ng-repeat="revenue in revenues | filter : {deleted:false}">{{revenue.name}}</md-option>
+					</md-select>
+					<div class="md-errors-spacer"></div>
+				</md-input-container>
+				
+				<md-input-container  flex="50">
+					<label>Sales Unit</label>
+					<input ng-model="formData.saleUnit" type="number" required name="saleUnit" step="any" min="1" >
+					<div ng-messages="form.saleUnit.$error">
+						<ng-message when="required">Sales Unit is required.</ng-message>
+						<!--<ng-message when="pattern">Sales Unit is not valid number.</div>-->
+						<!--<ng-message when="min">Sales Unit is not valid number.</div>-->
+					</div>
+				</md-input-container>
+
+				<md-input-container flex="50">
+					<label>Due Date</label>
+					<!--md-min-date="today md-max-date="endDate""-->
+					<md-datepicker ng-model="formData.dueDate" name="dueDate"></md-datepicker>
+					<div ng-messages="form.dueDate.$error">
+						<div ng-message="valid">The entered value is not a date!</div>
+						<div ng-message="required">This date is required!</div>
+						<div ng-message="mindate">Date is too early!</div>
+						<div ng-message="maxdate">Date is too late!</div>
+					</div>
+				</md-input-container>
+				<section flex></section>
+				<md-input-container flex="100">
+					<label>Notes</label>
+					<input ng-model="formData.notes">
+				</md-input-container>
+
+				<md-slider-container layout flex="100">
+					<div flex="20">
+						<span>Set Your progress</span>
+					</div>	
+					<md-slider flex class="md-primary" md-discrete ng-model="formData.progress" step="1" min="1" max="100" aria-label="progress">
+					</md-slider>
+				</md-slider-container>
+			</form>
+		</section>
+
+		<section layout="column" ng-if="formData.type == 'reflextion'">
+			<!-- //Step1 -->
+			<section ng-if="formData.reflextWhat == ''" layout="row" layout-wrap layout-align="center center" style="width:350px;">
+				<h4 flex="100"> Reflect
+				</h4>
+				<md-input-container flex="100" class="md-block">
+					<md-select ng-model="tempReflextWhat" aria-label="temp.">
+						<md-option ng-value="'week'">Week</md-option>
+						<md-option ng-value="'month'">Month</md-option>
+						<md-option ng-value="'quater'">Quater</md-option>
+					</md-select>
+				</md-input-container>{{tempReflextWhat}}
+				<md-button ng-click="selectReflextWhat(tempReflextWhat)" class="md-primary" >
+					Next
+				</md-button>
+			</section>
+
+			<!-- Step2 -->
+			<section ng-if="formData.reflextWhat != '' && formData.title == ''" layout="row" layout-wrap layout-align="center center">
+				<section flex="100">
+					<h3>{{capitalize(formData.reflextWhat) + 'ly Reflection'}} </h3>
+				</section>
+				<section flex="{{emotion.id <= 4 ? 25 : 33}}" ng-repeat="emotion in reflextionData">
+					<md-card layout="column" layout-align='center center' class="emotion-card" ng-click="selectEmotion(emotion)">
+						<section style="font-size: 40px">{{emotion.icon}}</section>
+
+						<section>{{emotion.emotion}}</section>
+					</md-card>
+				</section>
+				<md-button ng-click="formData.reflextWhat = ''" class="md-primary" >
+					Back
+				</md-button>
+			</section>
+
+			<!-- Step3 -->
+			<section ng-if="formData.reflextWhat != '' && formData.title != ''" layout="row" layout-wrap layout-align="center center">
+				<section class="text-color-strong">
+					<section layout="column">
+						<section layout="row" layout-align="space-between center">
+							<h3 flex> 
+								How do you feel today? {{formData.feeling.icon}} {{formData.feeling.emotion}}
+								
+							</h3>
+							<md-button flex="15" class="md-primary" ng-click="formData.title = ''">Edit Feeling</md-button>
+						</section>
+						
+						<p style="font-size: 1.1em">
+							{{formData.feeling.description1}}
+						</p>
+					</section>
+
+					<section class=" m-w-es-30">
+						<section ng-repeat="qa in formData.feeling.qas">
+							<p>{{qa.question}}</p>
+							<md-input-container class="md-block">
+								<label></label>
+								<textarea ng-model="qa.answer" 	rows="2" md-select-on-focus></textarea>
+						    </md-input-container>
+						</section>
+
+						<p style="font-size: 1.1em">{{formData.feeling.description2}}</p>
+					</section>
+
+
+					<section class=" m-w-es-30">
+						<h3>Recommended Actions</h3>
+						<p style="font-size: 1.1em">{{formData.feeling.description3}}</p>
+						<section ng-repeat="action in formData.feeling.actions">
+							<section layout="row" layout-align="space-between center">
+								<h4>Action{{$index+1}}</h4>
+								<md-button flex="15" class="md-primary" ng-if="action.added==false" ng-click="action.added=true">ADD ACTION</md-button>
+								<md-button flex="15" class="md-primary" ng-if="action.added==true" disabled>ACTION ADDED</md-button>
+							</section>
+							<span>{{action.title}}</span>
+						</section>
+					</section>
+				</section>
+			</section>
+		</section>
+	</section>
+
+	<!--hide edit & add button in feeling selecting screen-->
+	<md-dialog-actions ng-if="(!(formData.type=='reflextion' && (formData.title == '' || formData.reflextWhat == '')))">
+		
+		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="(curMode == 'edit')" ng-disabled="form.$invalid">
+			Save
+		</md-button>
+		<md-button ng-click="updateItem($event)" class="md-primary" ng-if="curMode == 'add'" ng-disabled="form.$invalid">
+			Add
+		</md-button>
+		
+	</md-dialog-actions>
+</md-dialog>

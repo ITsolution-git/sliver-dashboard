@@ -5,15 +5,19 @@
         .module('app.pages.statement')
         .controller('Step1SummaryController', Step1SummaryController);
 
-    function Step1SummaryController($scope, $state, pageService, userService, stepService, activeStep) {
+    function Step1SummaryController($scope, $state, pageService, userService, stepService, activeStep, activityService) {
 
         angular.extend($scope, activeStep.model, {
+            listFirst: ['does', 'provides', 'sells'],
+            third: ['for', 'to'],
+            fifth: ['Market size', 'Local', 'Regional', 'National', 'Global'],
             privilegesData: {
                 second: ['providing', 'creating', 'giving', 'helping']
             },
             data: {},
             forward: true,
-            sendData: sendData
+            sendData: sendData,
+            saved: false
         });
 
         getData();
@@ -28,8 +32,18 @@
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);
-            stepService.setFinishActiveStep();
+            if(stepService.setFinishActiveStep())
 
+                userService.loadUser().then(function(me){
+                    activityService.add({
+                        userId: me._id,
+                        title: 'Step1 Done',
+                        type: 'Milestone',  
+                        notes: me.businessName + ' finished building Step1.',
+                        journey: {section: 'build', name: 'Step1 Done'}})
+                        .then(function(){});    
+                });
+            
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 
@@ -39,6 +53,7 @@
                         $state.go(nextprevStep.nextStep.sref); 
                     else if(direction == 'backward')
                         $state.go(nextprevStep.prevStep.sref);
+                    $scope.saved = true;
                 });
         }
 
@@ -66,7 +81,9 @@
 
         }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
+            if ($scope.saved != true) {
+                sendData();
+            }
         });
     }
 }());

@@ -5,7 +5,7 @@
         .module('app.services')
         .service('stepService', stepService);
 
-    function stepService(apiService, $q) {
+    function stepService(apiService, $q, toaster) {
         var steps = [
             {
                 name: 'Our Commitment To You',
@@ -14,7 +14,8 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/UNz3tfmI-CZ1S4g0I.mp4'
             }, {
                 name: 'Your Commitment to Us',
                 sref: 'mindset.yourCommitment',
@@ -23,8 +24,9 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     data: null
-                }
-            }, {
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/plhYBAOo-CZ1S4g0I.mp4'
+            }, /*{
                 name: 'Get the SLAPmindset',
                 sref: 'mindset.slapMindset',
                 model: {
@@ -32,7 +34,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            },*/ {
                 name: 'Privilege and Responsibility',
                 sref: 'mindset.privilegeAndResponsibility',
                 model: {
@@ -50,7 +52,8 @@
                         businessName: null,
                         result: null
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/mChzDpt3-CZ1S4g0I.mp4'
             }, {
                 name: 'Are You Stuck?',
                 sref: 'mindset.areYourStuck',
@@ -59,7 +62,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     data: null
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/6NN6zFhp-CZ1S4g0I.mp4'
             }, {
                 name: 'Cashflow Capacity Catch 22',
                 sref: 'mindset.cashFlow',
@@ -67,16 +71,18 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/piNY7QMa-CZ1S4g0I.mp4'
             }, {
-                name: 'Your Business With / Without A SLAP',
+                name: 'Plan and Action',
                 sref: 'mindset.yourBusiness',
                 model: {
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
-            }, {
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/l24Ipj3e-CZ1S4g0I.mp4'
+            },/* {
                 name: 'Top Down, Bottom Up',
                 sref: 'mindset.topDownBottomUp',
                 model: {
@@ -84,7 +90,7 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            }, *//*{
                 name: 'Start SLAP\'n!',
                 sref: 'mindset.startSlapn',
                 model: {
@@ -92,8 +98,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
-                name: 'Your SLAP Start Date',
+            },*/ {
+                name: 'Get SLAPn!',
                 sref: 'mindset.slapStartDate',
                 model: {
                     data: {
@@ -103,7 +109,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showStartDate: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/LIoeUB7Y-CZ1S4g0I.mp4'
             },
 
             // Slapstatement
@@ -115,7 +122,8 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/rhBpA6WX-CZ1S4g0I.mp4'
             }, {
                 name: 'Your SLAPstatement',
                 sref: 'statement.yourStatement',
@@ -131,7 +139,8 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showFormBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/8cL3Av2t-CZ1S4g0I.mp4'
             }, {
                 name: 'SLAPstatement Q&A',
                 sref: 'statement.qa',
@@ -139,9 +148,10 @@
                     showInfoBlock: false,
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
-                name: 'Commit To Your SLAPStatement',
+                name: 'Review SLAPstatement',
                 sref: 'statement.commitToYour',
                 model: {
                     showVideoBlock: false,
@@ -149,7 +159,8 @@
                     showContent: false,
                     data: {},
                     businessName: null
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/5XhZZYt0-CZ1S4g0I.mp4'
             }, {
                 name: 'Step 1 SLAPsummary',
                 sref: 'statement.step1Summary',
@@ -177,18 +188,24 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/CygD9gob-CZ1S4g0I.mp4'
             }, {
-                name: 'Who Are Your Ideal Clients?',
+                name: 'Client Survey',
                 sref: 'idealClient.whoAreYouIdealClient',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showIdealClientTextBlock: false,
-                    data: []
-                }
+                    data: {
+                        clients: [],
+                        idealClient: {}
+                    }
+
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/qwXWMsMb-CZ1S4g0I.mp4'
             }, {
-                name: 'Define Your Ideal Client',
+                name: 'Your Ideal Client',
                 sref: 'idealClient.defineYourIdealClient',
                 model: {
                     showVideoBlock: false,
@@ -211,7 +228,8 @@
                             number: 0
                         }
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/O77KJaT0-CZ1S4g0I.mp4'
             }, {
                 name: 'Name Your Ideal Client',
                 sref: 'idealClient.nameYourIdealClient',
@@ -219,31 +237,26 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showIdealClientNameBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/zQJXgx3h-CZ1S4g0I.mp4'
             }, {
                 name: 'Ideal Client Q&A',
                 sref: 'idealClient.qa',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
-                name: 'SLAPstatement Re-Commitment',
+                name: 'Review SLAPstatement',
                 sref: 'idealClient.commitYourIdealClient',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/HCUmRD4q-CZ1S4g0I.mp4'
             },
-            // {
-            //     name: 'Double Check',
-            //     sref: 'idealClient.doubleCheck'
-            // },
-            // {
-            //     name: 'SLAPstatement',
-            //     sref: 'idealClient.slapStatement'
-            // },
             {
                 name: 'Step 2 SLAPsummary',
                 sref: 'idealClient.step2Summary',
@@ -262,7 +275,8 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/ISCjjlVS-CZ1S4g0I.mp4'
             }, {
                 name: 'Personal Expenses',
                 sref: 'yearGoal.personalExpenses',
@@ -272,10 +286,11 @@
                     showContent: false,
                     data: {
                         expenses: [],
-                        incidentals: '1.00',
+                        incidentals: '10.00',
                         expensesSum: 0
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/5sTBE6zf-CZ1S4g0I.mp4'
             }, {
                 name: 'Fixed Business Expenses',
                 sref: 'yearGoal.fixedBusinessExpenses',
@@ -285,19 +300,21 @@
                     showContent: false,
                     data: {
                         expenses: [],
-                        incidentals: '1.00',
+                        incidentals: '10.00',
                         expensesSum: 0,
                         profit: '0.00'
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/8xbUkKYq-CZ1S4g0I.mp4'
             }, {
-                name: 'Total Fixed Expenses Revenue',
+                name: 'Your Breakeven Number',
                 sref: 'yearGoal.totalFixedExpensesRevenue',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/FsFRuOh7-CZ1S4g0I.mp4'
             }, {
                 name: 'Revenue Streams',
                 sref: 'yearGoal.revenueStreams',
@@ -309,7 +326,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/yb345sel-CZ1S4g0I.mp4'
             }, {
                 name: 'Selling Price',
                 sref: 'yearGoal.sellingPrice',
@@ -321,9 +339,10 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/h2bPHtf6-CZ1S4g0I.mp4'
             }, {
-                name: 'Variable Business Expenses',
+                name: 'Variable Expenses',
                 sref: 'yearGoal.variableBusinessExpenses',
                 model: {
                     showVideoBlock: false,
@@ -333,9 +352,10 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/eyL9wraJ-CZ1S4g0I.mp4'
             }, {
-                name: 'Profit Margin',
+                name: 'Your Profit Margin',
                 sref: 'yearGoal.profitMargin',
                 model: {
                     showVideoBlock: false,
@@ -345,7 +365,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/KpFjzbaD-CZ1S4g0I.mp4'
             }, {
                 name: 'Revenue Breakdown',
                 sref: 'yearGoal.revenueBreakdown',
@@ -357,7 +378,8 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/IXxhFFP6-CZ1S4g0I.mp4'
             }, {
                 name: 'Your 1 Year Goal',
                 sref: 'yearGoal.yourYearGoal',
@@ -369,9 +391,10 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/KSSOKs53-CZ1S4g0I.mp4'
             }, {
-                name: 'Adjust your 1 Year Goal',
+                name: 'Review 1 Year Goal',
                 sref: 'yearGoal.adjustYourYearGoal',
                 model: {
                     showVideoBlock: false,
@@ -381,16 +404,18 @@
                         revenues: [],
                         totalBreakdown: 0,
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/eD3sbZ21-CZ1S4g0I.mp4'
             }, {
                 name: '1 Year Goal Q&A',
                 sref: 'yearGoal.qa',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
-                name: 'Commit To Your 1 Year Goal',
+                name: 'Your 1 Year Goal',
                 sref: 'yearGoal.commitYourYearGoal',
                 model: {
                     showVideoBlock: false,
@@ -401,7 +426,8 @@
                         incidentals: '1.00',
                         expensesSum: 0
                     }
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/KSSOKs53-CZ1S4g0I.mp4'
             }, {
                 name: 'Step 3 SLAPsummary',
                 sref: 'yearGoal.step3Summary',
@@ -419,101 +445,131 @@
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/rf1M1deM-CZ1S4g0I.mp4'
             }, {
                 name: 'The World Around You',
                 sref: 'actionPlan.worldAroundYou',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: {
+                        eventsByMonth: []
+                    } 
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/klwkQrRp-CZ1S4g0I.mp4'
             }, {
-                name: 'Double Check Start Date',
+                name: 'Review Start Date',
                 sref: 'actionPlan.doubleCheckStartDate',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: {}
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/C3RkptA5-CZ1S4g0I.mp4'
             }, {
-                name: 'What\'s Happening in Q1-Q4',
+                name: 'You and Your Ideal Client',
                 sref: 'actionPlan.whatsHappening',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: [
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                        {
+                            "impactClient" : "",
+                            "impactBusiness" : ""
+                        },
+                    ]
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/Lrif6we8-CZ1S4g0I.mp4'
             }, {
-                name: 'Rate the 10 Connecting Strategies',
+                name: 'Connecting Strategies',
                 sref: 'actionPlan.rateConnectingStrategies',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: []
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/umhp2XDb-CZ1S4g0I.mp4'
             }, {
-                name: 'Choose Your Connecting Strategies',
-                sref: 'actionPlan.chooseYourConnectingStrategies',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
-                }
-            }, {
-                name: 'Connecting Strategy Strategizing',
+                name: 'Quarterly Strategy',
                 sref: 'actionPlan.connectingStrategyStrategizing',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: [
+                        {}, {}, {}, {}
+                    ]
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/KSCYJtkl-CZ1S4g0I.mp4'
             }, {
-                name: 'Action Items',
+                name: 'Action Items',   
                 sref: 'actionPlan.actionItems',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
-            }, {
-                name: 'Action Plan Review',
-                sref: 'actionPlan.actionPlanReview',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false
-                }
+                    showContent: false,
+                    data: [
+                        {}, {}, {}, {}
+                    ]
+                },
+                videoUrl: undefined
             }, {
                 name: 'Quarterly Goals',
                 sref: 'actionPlan.quarterlyGoals',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: [
+                        {}, {}, {}, {}
+                    ]
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/BqI3YV3P-CZ1S4g0I.mp4'
             }, {
-                name: 'Double Check 1 Year Goal',
+                name: 'Your 1 Year Goal',
                 sref: 'actionPlan.doubleCheckYearGoal',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: []
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/UzlDZdPs-CZ1S4g0I.mp4'
             }, {
                 name: 'Action Plan Q&A',
                 sref: 'actionPlan.qa',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: ''
             }, {
-                name: 'Commit To Your Action Plan',
-                sref: 'actionPlan.commitYourActionPlan',
+                name: 'Review Action Plan',
+                sref: 'actionPlan.commitToYourActionPlan',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false,
-                    showContent: false
-                }
+                    showContent: false,
+                    data: []
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/fcc9gCgr-CZ1S4g0I.mp4'
             }, {
                 name: 'Step 4 SLAPsummary',
                 sref: 'actionPlan.step4Summary',
@@ -521,47 +577,50 @@
                     showVideoBlock: false,
                     showStaticTextBlock: false,
                     showContent: false
-                }
-            }, {
-                name: 'Second SLAPexpert Review',
-                sref: 'actionPlan.secondExpertReview',
-                model: {
-                    showVideoBlock: false,
-                    showStaticTextBlock: false,
-                    showContent: false
-                }
-            },
+                },
+                videoUrl: ''
+            }, //{
+            //     name: 'Second SLAPexpert Review',
+            //     sref: 'actionPlan.secondExpertReview',
+            //     model: {
+            //         showVideoBlock: false,
+            //         showStaticTextBlock: false,
+            //         showContent: false
+            //     }
+            // },
 
             // Execute
 
             {
-                name: 'Living SLAP Day-to-Day',
+                name: 'The 3 SLAPhabits',
                 sref: 'execute.livingDayToDay',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
-            }, {
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/9ta9DJT7-CZ1S4g0I.mp4'
+            },/* {
                 name: 'Commit to Yourself',
                 sref: 'execute.commitYourSelf',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
+            },*//* {
                 name: 'Set Yourself Up For Success',
                 sref: 'execute.setYourselfUpForSuccess',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
                 }
-            }, {
-                name: 'Tour of SLAPcenter - Execute',
+            },*/ {
+                name: 'Time to Execute',
                 sref: 'execute.tourExecute',
                 model: {
                     showVideoBlock: false,
                     showStaticTextBlock: false
-                }
+                },
+                videoUrl: 'http://content.jwplatform.com/videos/qdS3FcAu-CZ1S4g0I.mp4'
             }];
 
         var finishedSteps = [];
@@ -588,11 +647,14 @@
         this.resolveActiveStep = resolveActiveStep;
         this.getLastFinished = getLastFinished;
         this.setRequestApiFlag = setRequestApiFlag;
-
+        this.getAllUserData = getAllUserData
+        this.getAllStepDataByUser = getAllStepDataByUser;
+        
         this.checkStepsIsFinishedSection = checkStepsIsFinishedSection;
 
         this.sendApiData = sendApiData;
         this.getApiData = getApiData;
+        this.mySlapStateForButton = 'Excute';
 
         ///////////////////////////////
 
@@ -609,14 +671,26 @@
                 .get();
         }
 
-        function getLastFinished() {
+        function getLastFinished(hidePopUp) {
             return $q(function (resolve) {
-                if (finishedSteps.length <= 0) {
-                    return resolve(steps[0]);
+                if (finishedSteps.length == 0) {
+                    return resolve({sref: "mindset.ourCommitment"});
+                } else if (finishedSteps.length >= steps.length) {
+                    return resolve({sref: "slapExcute.main"});
                 } else {
                     var lastSteps = finishedSteps[finishedSteps.length - 1];
+                    if (!hidePopUp){
+                        toaster.pop({ type: 'error', body: "You must build your SLAP in order! Once you have completed a page you can go back, but you cannot jump ahead" });
+                    }   
                     return resolve(steps[lastSteps]);
                 }
+            });
+        }
+        
+        function getAllUserData() {
+           return getFinishedStepsAPI()
+            .then(function (response) {
+                return response.data;
             });
         }
 
@@ -671,7 +745,7 @@
                 return getFinishedStepsAPI()
                     .then(function (response) {
                         if (response.data) {
-                            finishedSteps = response.data.steps.finishedSteps;
+                            finishedSteps = response.data.steps.finishedSteps.map(function(step){ return parseInt(step); });
                             _setDataStepModel(response.data);
                         }
                     })
@@ -751,6 +825,23 @@
                     }
                 }
             }
+
+
+            if(data.actionPlan) {
+                for (var key in data.actionPlan) {
+                    var sref = 'actionPlan.' + key;
+                    var step = steps.find(function (item) {
+                        return item.sref === sref;
+                    });
+
+                    if(step) {
+                        if (Array.isArray(data.actionPlan[key]) && data.actionPlan[key].length === 0) {
+                            step.model.data = null;
+                        }
+                        step.model.data = data.actionPlan[key];
+                    }
+                }
+            }
         }
 
         function isFinished(index) {
@@ -779,7 +870,9 @@
         function setFinishActiveStep() {
             if (finishedSteps.indexOf(activeStepIndex) === -1) {
                 finishedSteps.push(activeStepIndex);
-            }
+                return true; // This means that the activeStep is new and should make activity
+            } 
+            return false;
         }
 
         function getAllSteps() {
@@ -820,5 +913,12 @@
         function setRequestApiFlag(){
             requestApi = false;
         }
+
+        function getAllStepDataByUser(user_id) {
+            return apiService.rest.all('getFinishedUserStep').one(user_id).get();
+        }
+
+
+
     }
 }());

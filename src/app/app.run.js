@@ -5,46 +5,21 @@
         .module('app')
         .run(runApp);
 
-    function runApp($rootScope, $timeout, $window, $state, $auth, pageService, CONFIG, userService) {
+    function runApp($rootScope, $timeout, $window, $state, $auth, pageService, CONFIG, userService, adminUserService) {
         $rootScope.isReady = false;
-
-        $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            // запоминаем, куда пытаемся перейти и с какими параметрами
-            $rootScope.toState = toState;
-            $rootScope.toStateParams = toStateParams;
-
-            if (!$rootScope.isReady) {
-                event.preventDefault();
-                return false;
-            }
-
-            if (toState.data && toState.data.access) {
-                /*Cancel going to the authenticated state and go back to landing*/
-                if (toState.data.access == '@' && !$auth.isAuthenticated()) {
-                    event.preventDefault();
-                    return $state.go('login');
-                }
-
-                if (toState.data.access == '?' && $auth.isAuthenticated()) {
-                    event.preventDefault();
-                    return $state.go('home');
-                }
-
-                if (toState.data.access == 'admin' && !userService.isAdmin()) {
-                    event.preventDefault();
-                    return $state.go('home');
-                }
-            }
-        });
+        $rootScope.dateFormat = "MM/DD/YYYY";
 
         $rootScope.setDocumentTitle = function (title) {
-            $window.document.title = CONFIG.title + ' | ' + title;
+            $window.document.title = title;
         };
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toStateParams) {
             // set title page
             $timeout(function () {
-                $rootScope.setDocumentTitle(pageService.h1);
+                var portion = 'SLAPcenter | ';
+                if(toState.data && toState.data.isAdminPage)
+                    portion = 'SLAPadmin | ';
+                $rootScope.setDocumentTitle(portion + pageService.h1);
             });
         });
 
@@ -63,10 +38,11 @@
         $rootScope.$on('authForbidden', function () {
             $state.go('home');
         });
-        if ($auth.isAuthenticated()) {
 
+        if ($auth.isAuthenticated()) {
             userService.loadUser().then(function (data) {
                 $rootScope.isReady = true;
+                $rootScope.user = data;
                 $state.go(
                     _.get($rootScope, 'toState.name', 'home'),
                     _.get($rootScope, 'toStateParams')

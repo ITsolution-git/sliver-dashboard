@@ -1,55 +1,167 @@
-<div class="slap-page container" scroll-top>
+<div class="slap-page world-around-you" scroll-top>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
         <div class="panel-body">
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40">
+    <div class="panel panel-default">
 
         <div class="panel-body static-text-panel">
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="For each Revenue Stream, consider the time of year, World Events, and the Connecting Strategy you are using, and divide the Annual Goal into a specific goal for each quarter."
+            t2="Don't simply divide each Annual Goal by 4.  This is a growth plan!  Unlkely you will achieve the same sales in each of 4 quarters.  What is the seasonality of each revenue stream?  When will sales likely occur?"
+            t3="Ask yourself if you can sell and deliver this many sales each quarter.  A quarter goes quickly!  It is only 12 weeks.  Are your goals feeling just right or too daunting?"
+            t4="The sum of your four Quarterly Goals for each Revenue Stream must equal the Total Sales Goal for the year." visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default">
 
-        <div class="panel-body">
+        <div class="panel-body slap-work-panel">
 
-            <button-switch visible="showContent"></button-switch>
+            <div class="row">
+                <div class="col-md-12">
+                    <button-switch visible="showFormBlock"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+                    <p class="logo panel-title">ACTION</p>
+                </div>
+            </div>
 
-            <div class="sample-show-hide" ng-hide="showContent">
+            <div class="row sample-show-hide" ng-hide="showFormBlock">
+                <div class="col-xs-12 padding-l-r-30 margin-b-24">
+                    <p class="heading2"></p>
+                </div>   
+                 
+                <ul class="nav nav-tabs quater-letter-container p-w-es-10 m-w-es-20">
+                    <li class="active quater-letter"><a data-toggle="tab" data-target="#quater1">Q1</a></li>
+                    <li class="quater-letter"><a data-toggle="tab" data-target="#quater2">Q2</a></li>
+                    <li class="quater-letter"><a data-toggle="tab" data-target="#quater3">Q3</a></li>
+                    <li class="quater-letter"><a data-toggle="tab" data-target="#quater4">Q4</a></li>
+                </ul>
 
-                <div class=" form-group">
-                    <div class="col-md-3">
-                        <label for="first" class="label-text control-label">Lorem ipsum dolor sit armet</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select id="first" ng-model="model.first" class="dropdown-box outline-0">
-                            <option>Dropdown Label</option>
-                        </select>
+                <div class="tab-content quater-tab-container">
+                    <div ng-repeat="nthQut in [1, 2, 3, 4]" id="{{'quater'+nthQut}}" class="tab-pane fade in quater-container row" ng-class="currentQut == nthQut ? 
+                    'active' : ''">
+                        
+                        <div class="slap-work-box col-md-12 m-t-es-40" ng-init="showEventsBox=false">
+                            <slap-work-moment-icon visible="showEventsBox"  type="'moment'" title="'World Events'"></slap-work-moment-icon>
+                            <div ng-show="showEventsBox" class="sample-show-hide">
+                                <div ng-repeat="monthID in QMonths[nthQut - 1]" class="col-xs-4 col-md-4 col-sm-4 text-center">
+                                    <p>{{monthNames[monthID]}}</p>
+
+                                    <div ng-repeat="event in eventsByMonth[monthID].events">
+                                        {{event.name}}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="slap-work-box col-xs-12 m-t-es-40" ng-init="showStrategyBox=false">
+                            <slap-work-moment-icon ng-click="init()" visible="showStrategyBox"  type="'moment'" title="'Connecting Strategy'"></slap-work-moment-icon>
+                            <div ng-show="showStrategyBox" class="sample-show-hide">
+                                <div>
+                                    I will use 
+                                    <select ng-model="data[nthQut-1].strategy.id" 
+                                        class="dropdown-box outline-0 active m-w-es-30" 
+                                        style="width: 200px"> 
+                                        <option ng-value="strategy.id" ng-repeat="strategy in topRatingStrategies">{{getStrategyName(strategy.id)}}</option>
+                                    </select>
+                                    to find my Ideal Client by
+                                </div>
+                                <div class="textarea-box">
+                                    <textarea ng-model="data[nthQut-1].strategy.description" type="text"
+                                            class="monthly-cost outline-0 strategy-description"
+                                            placeholder="" 
+                                            style="width: 100%"
+                                            ng-keyup="autoExpand($event)" required disabled></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slap-work-box m-t-es-40 col-xs-12"  ng-init="showActionItemsBox=false">
+                            <slap-work-moment-icon visible="showActionItemsBox"  type="'moment'" title="'Action Items'"></slap-work-moment-icon>
+                            <div  ng-show="showActionItemsBox" class="sample-show-hide">
+                                <div ng-repeat="monthID in QMonths[nthQut - 1]"  class="col-xs-12 col-sm-12">
+                                    <p class="m-t-es-40">{{monthNames[monthID]}}</p>
+                                    
+                                    <div ng-repeat="action in filterActionItemsByMonth(monthID)">
+
+                                        <div class="textarea-box" ng-if="action.title!=''" >
+                                            <textarea ng-model="action.title" type="text"
+                                                    class="monthly-cost outline-0 strategy-description action-item"
+                                                    placeholder="Add Action Item" 
+                                                    style="width: 100%; min-height: 40px"
+                                                    ng-keyup="autoExpand($event)" required   disabled></textarea>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
+
+                <hr/>
+                <div class="m-b-es-40"></div>
+                <slap-notifications notifications="notifications" ></slap-notifications>
+
+                <!--// Quaterly Goal-->
+                <div class="slap-work-box m-t-es-40 m-w-es-30" ng-init="showQuaterGoal=true">
+                    <slap-work-moment-icon visible="showQuaterGoal"  type="'work'" title="'Quarterly Goals'"></slap-work-moment-icon>
+
+                    <table class="table table-responsive sample-show-hide" id="quaterly-goal-table" ng-show="showQuaterGoal">
+                        <thead>
+                            <tr>
+                                <td>Revenue Stream</td>
+                                <td>Q1 Units</td>
+                                <td>Q2 Units</td>
+                                <td>Q3 Units</td>
+                                <td>Q4 Units</td>
+                                <td>Yearly Total</td>
+                                <td>Yearly Target</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="revenue in revenues | filter:{deleted: false}">
+                                <td>{{revenue.name}}</td>
+                                <td ng-repeat="nthQut in [1,2,3,4]">
+                                    <div class="input-box" >
+                                        <input ng-model="data[nthQut-1].units[revenue.name]" type="text"
+                                            class="outline-0"
+                                            ng-keydown="checkValidity(data[nthQut-1].units[revenue.name], $event)"
+                                            ng-class="{'active': revenue.name}" ng-blur="checkRevenue(data[nthQut-1].units[revenue.name],nthQut-1, revenue.name)"
+                                               required >
+                                    </div>
+                                </td>
+                                <td>
+                                    {{+data[0].units[revenue.name] + +data[1].units[revenue.name] + +data[2].units[revenue.name] + +data[3].units[revenue.name]}}
+                                </td>
+                                <td>
+                                   {{revenue.unit}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>  
             </div>
 
         </div>
     </div>
-
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

@@ -30,12 +30,7 @@
                             break;
 
                         default:
-                            toaster.pop({type: 'error', body: response.statusText || 'Server error'});
-                    }
-                    if (response.status === 401) {
-                        $rootScope.$broadcast('authUnauthorized');
-                    } else {
-                        toaster.pop({type: 'error', body: 'Saving error!'});
+                            console.log(response.statusText);
                     }
                 })
                 .addFullRequestInterceptor(function (element, operation, what, url, headers, params) {

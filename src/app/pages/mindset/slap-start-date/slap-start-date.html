@@ -6,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -18,11 +18,16 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="Choose the date that you want to start executing your SLAP."
+            t2="Your SLAP start date does not have to align with the calendar year or your fiscal year."
+            t3="Action is more important than Plan!  Get to ACTION ASAP and set your Start Date ideally for the month you are in or the next month coming up."
+            t4="Remember - you want to choose a date as soon as possible so you have a deadline to finish building your plan and get into Action!" visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
     </div>
+    
+    <slap-notifications notifications="notifications" ></slap-notifications>
 
     <div class="panel panel-default">
 
@@ -30,7 +35,7 @@
 
             <button-switch visible="showStartDate"></button-switch>
 
-            <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+            <p class="logo panel-title">ACTION</p>
 
             <div class="col-md-12 sample-show-hide" ng-hide="showStartDate">
                 <p class="heading2">Choose Your Start Date</p>
@@ -50,6 +55,10 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
+                    <!-- <select style="width: 10%" ng-model="data.year" ng-model="data.year" class="outline-0 dropdown-box active">
+                        <option ng-repeat="year in years" ng-value="year">{{year}}</option>
+                    </select> -->
+                    <!--{{data.year}}-->
                     <span class="year">{{data.year}}</span>
                 </p>
             </div>
@@ -58,4 +67,4 @@
     </div>
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

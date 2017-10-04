@@ -6,16 +6,31 @@
         .controller('RegistrationStep1Controller', RegistrationStep1Controller);
 
     /* @ngInject */
-    function RegistrationStep1Controller(productsService,productStorage,toaster) {
+    function RegistrationStep1Controller(productsService,productStorage,toaster, pageService) {
+
         var vm = this;
-
+        // TODO set pageservice for registration page1 2, 3
         vm.active = null;
-        vm.plan= productStorage.getPlan();
-
+        
+        vm.timeList = ['1 group session per month', '1 private session per month' ,'4 private sessions per month', '2 group  and 1 private sessions per month','custom experience'];
+        pageService.reset().setPageTitle(' Step1').addCrumb({name: 'Step1', path: 'signup/step1'});
         productsService.getPlans().then(function(response) {
             vm.plans = response.data;
-        });
+            
+            if (productStorage.isRenew()) {
+                vm.isRenew = true;
 
+                vm.user = productStorage.getUser();
+                vm.plan = vm.plans.filter(function (o) {
+                    return o._id === vm.user.planId;
+                })[0];
+                productStorage.setPlan(vm.plan);
+                vm.user.planDate = new Date();
+
+            }
+            
+        });   
+        
         vm.choosePlan = function(plan,event) {
             vm.plan = null;
             productStorage.setPlan(plan);
@@ -30,11 +45,11 @@
 
         vm.nextStep = function(e) {
             if(!productStorage.getPlan()) {
-                toaster.pop({type: 'error', body: 'Please select SLAP plan'});
+                toaster.pop({type: 'error', body: 'You cannot move forward until you select your monthly plan.', timeout: 2000});
                 e.preventDefault();
             }
 
             return;
-        }
+        };
     }
 }());

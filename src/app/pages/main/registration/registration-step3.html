@@ -1,16 +1,18 @@
-<div class="container signup">
+<slap-registration-header></slap-registration-header>
+<div class="container signup" scroll-top>
     <div class="row">
         <header class="container signup">
             <div class="col-md-12 leave">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                <a ui-sref="step2">leave</a>
+                    <a ui-sref="login">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>leave
+                    </a>
             </div>
             <div class="header-contents">
                 <div class="col-md-3 header-logo">
-                    <a href=""><img src="../images/logo.png" alt="logo"></a>
+                    <img src="/images/logo.png" alt="logo">
                 </div>
                 <div class="col-md-6 header-caption">
-                    <h1>set up your account</h1>
+                    <h1>{{vm.isRenew ? 'renew your account' : 'set up your account'}}</h1>
                 </div>
                 <div class="col-md-3 header-step">
                     <div>
@@ -29,19 +31,19 @@
             </div>
         </header>
         <article class="container signup">
-            <div class="row registration">
-                <div class="col-md-offset-1 col-md-3 registration-sidebar">
+                <slap-notifications notifications="vm.notifications"></slap-notifications>
+            <div class=" registration" layout="row">
+                <div class=" registration-sidebar" flex="30">
                     <div class="promo-sidebar">
                         <div class="registration-sidebar-header">
                             <h3 class="text-center">promo code</h3>
                         </div>
                         <div class="registration-sidebar-content">
-                            <div class="text-center">
-                                <md-input-container >
-                                    <label>Enter Promo Code</label>
-                                    <input ng-model="vm.user.code">
-                                </md-input-container>
-                                <md-button md-no-ink class="md-primary" ng-click="vm.apply()" ng-disabled="!vm.user.code">apply</md-button>
+                            <div class="promo-content">
+                                <div class="text-center">
+                                    <input ng-model="vm.user.code" placeholder="Promo Code">
+                                    <md-button md-no-ink class="md-primary" ng-click="vm.apply()" ng-disabled="!vm.user.code">apply</md-button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -55,12 +57,12 @@
                                 <hr>
                                 <!--<div>-->
                                     <p class="leftstr">monthlySLAP</p>
-                                    <p class="rightstr">{{ vm.plan.costProduct }}</p>
+                                    <p class="rightstr">${{ vm.plan.costProduct }}</p>
                                     <p class="leftstr">SLAPbuild</p>
-                                    <p class="rightstr" ng-show="vm.build">{{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment }}</p>
+                                    <p class="rightstr" ng-show="vm.build">${{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment }}</p>
                                     <p class="rightstr" ng-hide="vm.build">-</p>
                                     <div style="clear: left"></div>
-                                    <p class="text-center">today's total {{ vm.calculateTodayPayment }}</p>
+                                    <p class="text-center attention">today's total ${{ vm.calculateTodayPayment }}</p>
                                 <!--</div>-->
                             </div>
                             <div class="payment-content">
@@ -68,22 +70,22 @@
                                 <hr>
                                 <!--<div>-->
                                 <p class="leftstr">monthlySLAP</p>
-                                <p class="rightstr">{{ vm.plan.costProduct }}</p>
+                                <p class="rightstr">${{ vm.plan.costProduct }}</p>
                                 <p class="leftstr">SLAPbuild</p>
-                                <p class="rightstr">{{vm.build.buildType == 1 ? vm.build.costProduct : '-' }}</p>
+                                <p class="rightstr">{{vm.build.buildType == 1 ? ('$'+ vm.build.costProduct) : '-' }}</p>
                                 <div style="clear: left"></div>
-                                <p class="text-center">monthly total {{ vm.calculateMonthlyPayment }}</p>
+                                <p class="text-center attention">monthly total ${{ vm.calculateMonthlyPayment }}</p>
                                 <!--</div>-->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-7 registration-content">
+                <div class=" registration-content" flex="70">
                     <form name="registerForm">
                         <div layout="row">
                             <md-input-container class="md-block" flex="50">
                                 <label>Name</label>
-                                <input md-maxlength="30" required name="name" ng-model="vm.user.name" />
+                                <input md-maxlength="30" required name="name" ng-model="vm.user.name" ng-disabled="vm.isRenew"/>
 
                                 <!--<div ng-messages="registerForm.name.$error" ng-hide="registerForm.name.$valid">-->
                                     <!--<div ng-message-exp="['required', 'maxlength']">-->
@@ -92,21 +94,21 @@
                                 <!--</div>-->
                             </md-input-container>
 
-                            <md-input-container class="md-block" flex="50">
+                            <md-input-container class="md-block" flex="50"  >
                                 <label>Last Name</label>
-                                <input md-maxlength="30" required name="lastName" ng-model="vm.user.lastName" />
+                                <input md-maxlength="30" required name="lastName" ng-model="vm.user.lastName"  ng-disabled="vm.isRenew"/>
 
-                                <!--<div ng-messages="registerForm.lastName.$error" ng-hide="registerForm.lastName.$valid">-->
+                                <!-- <div ng-messages="registerForm.lastName.$error" ng-hide="registerForm.lastName.$valid">-->
                                     <!--<div ng-message-exp="['required', 'maxlength']">-->
 
                                     <!--</div>-->
-                                <!--</div>-->
+                                <!--</div> -->
                             </md-input-container>
                         </div>
 
-                        <md-input-container class="md-block">
+                        <md-input-container class="md-block" >
                             <label for="businessName">Business Name</label>
-                            <input required name="businessName" ng-model="vm.user.businessName" id="businessName"/>
+                            <input required name="businessName" ng-model="vm.user.businessName" id="businessName"  ng-disabled="vm.isRenew"/>
 
                             <div ng-messages="registerForm.businessName.$error" ng-hide="registerForm.businessName.$valid">
                                 <div ng-message-exp="['required', 'maxlength']">
@@ -119,29 +121,28 @@
                             <md-input-container class="md-block" flex="50">
                                 <label for="email">Email</label>
                                 <input name="email" ng-model="vm.user.email" id="email"
-                                       required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                                       required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"   ng-disabled="vm.isRenew"/>
 
                                 <div ng-messages="registerForm.email.$error" ng-hide="registerForm.email.$valid">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                        Only letters and numbers are allowed (a-z,A-Z)
+                                        Enter your email address
                                     </div>
                                 </div>
                             </md-input-container>
 
                             <md-input-container class="md-block" flex="50">
                                 <label for="phone">Phone Number</label>
-                                <input name="phone" required ng-model="vm.user.phone"  id="phone"/>
-
-
+                                <input ng-pattern="/^[0-9]{1,12}$/" name="phone" required maxlength="12" minlength="9"
+                                ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
                                 <div ng-messages="registerForm.phone.$error" ng-hide="registerForm.phone.$valid">
-                                    <div ng-message-exp="['required']">
-                                        Your phone number
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                        Please enter your phone number with no other symbols or spaces.  Just the 9-12 numbers!
                                     </div>
                                 </div>
                             </md-input-container>
                         </div>
 
-                        <div layout="row">
+                        <div layout="row" ng-if="!vm.isRenew">
                             <md-input-container class="md-block" flex="50">
                                 <label for="password">Password</label>
                                 <input required type="password" name="password" ng-model="vm.user.password"
@@ -167,72 +168,77 @@
                             </md-input-container>
                         </div>
                         <h3>payment info</h3>
-                        <div layout="row">
+                        <section ng-if="vm.isRenew">
+                            You will use same Payment information as previous account.
+                        </section>
+                        <section ng-if="!vm.isRenew">
+                            <div layout="row">
 
-                            <md-input-container class="md-block" flex="50">
-                                <label for="creditCard">Credit Card Number</label>
-                                <input
-                                    name="creditCard"
-                                    required
-                                    ng-model="vm.user.card.number"
-                                    ui-mask="9999-9999-9999-9999"
-                                    id="creditCard"
-                                    />
+                                <md-input-container class="md-block" flex="50">
+                                    <label for="creditCard">Credit Card Number</label>
+                                    <input
+                                        name="creditCard"
+                                        required
+                                        ng-model="vm.user.card.number"
+                                        ui-mask="9999-9999-9999-9999"
+                                        id="creditCard"
+                                        />
 
-                                <div ng-messages="registerForm.creditCard.$error" ng-hide="registerForm.creditCard.$valid">
-                                    <div ng-message-exp="['required', 'pattern']">
-                                        Enter a valid credit card number
+                                    <div ng-messages="registerForm.creditCard.$error" ng-hide="registerForm.creditCard.$valid">
+                                        <div ng-message-exp="['required', 'pattern']">
+                                            Enter a valid credit card number
+                                        </div>
                                     </div>
-                                </div>
-                            </md-input-container>
+                                </md-input-container>
 
-                            <md-input-container class="md-block" flex="50">
-                                <label for="exp_date">Expiration Date</label>
-                                <input
-                                    name="expDate"
-                                    required
-                                    ng-model="vm.user.card.date"
-                                    ui-mask="99/9999"
-                                    id="exp_date"
-                                     />
+                                <md-input-container class="md-block" flex="50">
+                                    <label for="exp_date">Expiration Date</label>
+                                    <input
+                                        name="expDate"
+                                        required
+                                        ng-model="vm.user.card.date"
+                                        ui-mask="99/9999"
+                                        id="exp_date"
+                                        />
 
-                                <div ng-messages="registerForm.expDate.$error" ng-hide="registerForm.expDate.$valid">
-                                    <div ng-message-exp="['required', 'pattern']">
-                                        Enter a valid expiration date
+                                    <div ng-messages="registerForm.expDate.$error" ng-hide="registerForm.expDate.$valid">
+                                        <div ng-message-exp="['required', 'pattern']">
+                                            Enter a valid expiration date
+                                        </div>
                                     </div>
-                                </div>
-                            </md-input-container>
-                        </div>
+                                </md-input-container>
+                            </div>
 
-                        <div layout="row">
-                            <md-input-container class="md-block" flex="50">
-                                <label for="code">Security Code</label>
-                                <input name="cvc" required ng-model="vm.user.card.cvc" type="password"
-                                       ng-maxlength="4" ng-minlength="3" id="code"/>
+                            <div layout="row">
+                                <md-input-container class="md-block" flex="50">
+                                    <label for="code">Security Code</label>
+                                    <input name="cvc" required ng-model="vm.user.card.cvc" type="password"
+                                        ng-maxlength="4" ng-minlength="3" id="code"/>
 
-                                <div ng-messages="registerForm.cvc.$error" ng-hide="registerForm.cvc.$valid">
-                                    <div ng-message-exp="['required', 'pattern']">
-                                        Enter a valid security code (CVV)
+                                    <div ng-messages="registerForm.cvc.$error" ng-hide="registerForm.cvc.$valid">
+                                        <div ng-message-exp="['required', 'pattern']">
+                                            Enter a valid security code (CVV)
+                                        </div>
                                     </div>
-                                </div>
-                            </md-input-container>
+                                </md-input-container>
 
-                            <md-input-container class="md-block" flex="50">
-                                <label for="billing">Billing Address</label>
-                                <input name="address" required ng-model="vm.user.billingAddress"
-                                       id="billing"/>
+                                <md-input-container class="md-block" flex="50">
+                                    <label for="billing">Billing Address</label>
+                                    <input name="address" required ng-model="vm.user.billingAddress"
+                                        id="billing"/>
 
-                                <div ng-messages="registerForm.address.$error" ng-hide="registerForm.address.$valid">
-                                    <div ng-message-exp="['required', 'pattern']">
-                                        Enter a valid billing address (ZIP code)
+                                    <div ng-messages="registerForm.address.$error" ng-hide="registerForm.address.$valid">
+                                        <div ng-message-exp="['required', 'pattern']">
+                                            Enter a valid billing address (ZIP code)
+                                        </div>
                                     </div>
-                                </div>
-                            </md-input-container>
-                        </div>
+                                </md-input-container>
+                            </div>
+                        </section>
 
                         <md-input-container class="md-block">
                             <md-checkbox name="tos" ng-model="vm.user.check" required>
-                                I agree with <span class="text-main-color">Terms and Conditions</span>
+                                I agree with <span class="text-main-color"><a target='_blank' ng-click="vm.openTOS($event)"><i class="fa fa-external-link" aria-hidden="true"></i> Terms & Conditions</a></span>
                             </md-checkbox>
                             <div ng-messages="registerForm.tos.$error" ng-hide="registerForm.tos.$modelValue">
                                 <div ng-message="required">
@@ -246,10 +252,11 @@
         </article>
         <div class="row">
             <div class="next-bottom">
-                <div class="col-md-12 finish">
-                    <a href="#" ng-click="vm.signup($event, registerForm)">Finish</a>
-                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </div>
+                <button class="col-md-12 finish" ng-click="vm.signup($event, registerForm)">
+                    <span>Finish
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </span>
+                </button>
             </div>
         </div>
     </div>

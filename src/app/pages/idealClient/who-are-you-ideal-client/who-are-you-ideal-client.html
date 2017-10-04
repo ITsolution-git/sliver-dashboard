@@ -6,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -18,7 +18,10 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="Make a list of at least 10 of your best past and current customers, who are your Ideal Clients, and then answer the demographic questions about each of them."
+            t2="Our algorithm will define your Ideal Client based on what you put here so try to create as many entries as possible and give us accurate data on each."
+            t3="SLAP!  Your Ideal client pays you willingly, values what you do, sends you referrals, and you enjoy working with him/her. Why would you want to do business with anyone else?"
+            t4="If, based on the data you enter, you have a "tie" in one of the categories you will see a sentence pop up at the bottom of this page asking you to choose from a dropdown of your highest rated entries for each demographic detail." visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -32,16 +35,15 @@
                 <div class="col-md-12">
                     <button-switch visible="showIdealClientTextBlock"></button-switch>
 
-                    <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+                    <p class="logo panel-title">ACTION</p>
                 </div>
             </div>
 
-            <div class="row sample-show-hide" ng-hide="showIdealClientTextBlock">
+            <!--<div class="row sample-show-hide" ng-hide="showIdealClientTextBlock">
                 <div class="col-md-11 p-w-es-30">
-                    <p class="heading2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a
-                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                    <p class="heading2"></p>
                 </div>
-            </div>
+            </div>-->
 
             <div class="row sample-show-hide" ng-hide="showIdealClientTextBlock">
                 <div class="col-md-12 p-w-es-30">
@@ -133,67 +135,127 @@
                 <div class="input-group-item row m-w-es-10 m-w-md-30 sample-show-hide" ng-hide="showIdealClientTextBlock" id="idealclient-box"  ng-if="shouldSelctIdeal">
                     <span>My Ideal Client is </span> a 
                     <span>
-
-                        <select ng-model="data.idealClient.age" 
+                        <span ng-if="client.age.length === 1"  ng-init="data.idealClient.age = +client.age">{{idealClientSelects.age[+client.age]}}</span>
+                        <select ng-if="client.age.length > 1" ng-model="data.idealClient.age" 
                                 ng-class="{'active': data.idealClient.age !== '0'}"
                                 class="age dropdown-box outline-0">
                             <option value="{{age}}" ng-repeat="age in client.age">{{idealClientSelects.age[+age]}}</option>
                         </select>
                     </span> years old 
                     <span>
-                        <select ng-model="data.idealClient.gender" 
+                        <span ng-if="client.gender.length === 1" ng-init="data.idealClient.gender = client.gender">{{idealClientSelects.gender[+client.gender]}}</span>
+
+                        <select ng-if="client.gender.length > 1" ng-model="data.idealClient.gender" 
                                 ng-class="{'active': data.idealClient.gender !== '0'}"
                                 class="gender dropdown-box outline-0">
                             <option value="{{gender}}" ng-repeat="gender in client.gender">{{idealClientSelects.gender[+gender]}}</option>
                         </select>
-                    </span>,
+                    </span>, who is
                     <span>
-                        <select ng-model="data.idealClient.maritalStatus" 
+                        <span ng-if="client.maritalStatus.length === 1" ng-init="data.idealClient.maritalStatus = client.maritalStatus">{{idealClientSelects.maritalStatus[+client.maritalStatus]}}</span>
+
+                        <select ng-if="client.maritalStatus.length > 1" ng-model="data.idealClient.maritalStatus" 
                                 ng-class="{'active': data.idealClient.maritalStatus !== '0'}"
                                 class="marital-status dropdown-box outline-0">
                             <option value="{{maritalStatus}}" ng-repeat="maritalStatus in client.maritalStatus">{{idealClientSelects.maritalStatus[+maritalStatus]}}</option>
                         </select>
-                    </span>, father of 
+                    </span> and is the 
+                    <span ng-if="client.gender.length === 1" ng-model="data.idealClient.gender">
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Female'">mother</span>
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Male'">father</span>
+                    </span>
+                    <span ng-if="client.gender.length > 1" ng-model="data.idealClient.gender">
+                        <span ng-if="data.idealClient.gender ==1">father</span>
+                        <span ng-if="data.idealClient.gender ==2">mother</span>
+                    </span>
+                    of 
                     <span>
-                        <select ng-model="data.idealClient.kids" 
+                        <span ng-if="client.kids.length === 1" ng-init="data.idealClient.kids = client.kids">{{idealClientSelects.kids[+client.kids]}}</span>
+
+                        <select ng-if="client.kids.length > 1" ng-model="data.idealClient.kids" 
                                 ng-class="{'active': data.idealClient.kids !== '0'}"
                                 class="kids dropdown-box outline-0">
                             <option value="{{kids}}" ng-repeat="kids in client.kids">{{idealClientSelects.kids[+kids]}}</option>
                         </select>
-                    </span>,
-                    work as an 
+                    </span>.
+                    For work, 
+                    <span ng-if="client.gender.length === 1" ng-model="data.idealClient.gender">
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Female'">she</span>
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Male'">he</span>
+                    </span>
+                    <span ng-if="client.gender.length > 1" ng-model="data.idealClient.gender">
+                        <span ng-if="data.idealClient.gender ==1">he</span>
+                        <span ng-if="data.idealClient.gender ==2">she</span>
+                    </span> 
                     <span>
-                        <select ng-model="data.idealClient.employment" 
+                        <span ng-if="client.employment.length === 1" ng-init="data.idealClient.employment = client.employment">{{idealClientSelects.employment[+client.employment]}}</span>
+
+                        <select ng-if="client.employment.length > 1" ng-model="data.idealClient.employment" 
                                 ng-class="{'active': data.idealClient.employment !== '0'}"
                                 class="employment dropdown-box outline-0">
                             <option value="{{employment}}" ng-repeat="employment in client.employment">{{idealClientSelects.employment[+employment]}}</option>
                         </select>
-                    </span>, lives in
+                    </span>. 
+                    <span ng-if="client.gender.length === 1" ng-model="data.idealClient.gender">
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Female'">She</span>
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Male'">He</span>
+                    </span>
+                    <span ng-if="client.gender.length > 1" ng-model="data.idealClient.gender">
+                        <span ng-if="data.idealClient.gender ==1">He</span>
+                        <span ng-if="data.idealClient.gender ==2">She</span>
+                    </span> 
+                     lives in
                     <span>
-                        <select ng-model="data.idealClient.location" 
-                                ng-class="{'active': item.location !== '0'}"
+                        <span ng-if="client.location.length === 1" ng-init="data.idealClient.location = client.location">{{idealClientSelects.location[+client.location]}}</span>
+
+                        <select ng-if="client.location.length > 1" ng-model="data.idealClient.location" 
+                                ng-class="{'active': data.idealClient.location !== '0'}"
                                 class="location dropdown-box outline-0">
                             <option value="{{location}}" ng-repeat="location in client.location">{{idealClientSelects.location[+location]}}</option>
                         </select>
-                    </span>,
-                    generally on transit by 
+                    </span>.
+                    <span ng-if="client.gender.length === 1" ng-model="data.idealClient.gender">
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Female'">She</span>
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Male'">He</span>
+                    </span>
+                    <span ng-if="client.gender.length > 1" ng-model="data.idealClient.gender">
+                        <span ng-if="data.idealClient.gender ==1">He</span>
+                        <span ng-if="data.idealClient.gender ==2">She</span>
+                    </span> 
+                     usually gets  around by 
                     <span>
-                        <select ng-model="data.idealClient.transit" 
+                        <span ng-if="client.transit.length === 1" ng-init="data.idealClient.transit = client.transit">{{idealClientSelects.transit[+client.transit]}}</span>
+
+                        <select ng-if="client.transit.length > 1" ng-model="data.idealClient.transit" 
                                 ng-class="{'active': data.idealClient.transit !== '0'}"
                                 class="transit dropdown-box outline-0">
                             <option value="{{transit}}" ng-repeat="transit in client.transit">{{idealClientSelects.transit[+transit]}}</option>
                         </select>
-                    </span>, likes to 
+                    </span>
+                     and in
+                     <span ng-if="client.gender.length === 1" ng-model="data.idealClient.gender">
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Female'">her</span>
+                        <span ng-if="idealClientSelects.gender[+client.gender] =='Male'">his</span>
+                    </span>
+                    <span ng-if="client.gender.length > 1" ng-model="data.idealClient.gender">
+                        <span ng-if="data.idealClient.gender ==1">his</span>
+                        <span ng-if="data.idealClient.gender ==2">her</span>
+                    </span>  
                     <span>
-                        <select ng-model="data.idealClient.hobbies" 
+                        spare time likes to 
+                        <span ng-if="client.hobbies.length === 1" ng-init="data.idealClient.hobbies = client.hobbies">{{idealClientSelects.hobbies[+client.hobbies]}}</span>
+
+                        <select ng-if="client.hobbies.length > 1" ng-model="data.idealClient.hobbies" 
                                 ng-class="{'active': data.idealClient.hobbies !== '0'}"
                                 class="hobbies dropdown-box outline-0">
                             <option value="{{hobbies}}" ng-repeat="hobbies in client.hobbies">{{idealClientSelects.hobbies[+hobbies]}}</option>
                         </select>
-                    </span>
+                    </span> 
                     and read 
                     <span>
-                        <select ng-model="data.idealClient.reads" 
+                        <span ng-if="client.reads.length === 1" ng-model="data.idealClient.reads">{{idealClientSelects.reads[+client.reads]}}</span>
+
+                        <select ng-if="client.reads.length > 1" ng-model="data.idealClient.reads" 
                                 ng-class="{'active': data.idealClient.reads !== '0'}"
                                 class="reads dropdown-box outline-0">
                             <option value="{{reads}}" ng-repeat="reads in client.reads">{{idealClientSelects.reads[+reads]}}</option>
@@ -205,4 +267,4 @@
     </div>
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

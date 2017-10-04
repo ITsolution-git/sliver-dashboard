@@ -6,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -18,7 +18,10 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="Write the name you want to use for your Ideal Client moving forward into the blank below."
+            t2="Don't choose the name of someone you know.  Your Ideal Client 'avatar' needs to feel like a real person to you, but also be distinct from the real people you actually already know, love, and do business with."
+            t3="Knowing exactly who you need to reach will save you time and money you might otherwise spend trying to reach the wrong people.  We want you to get to YES as easily and quickly and frequently as possible, by speaking to a narrow audience filled with Ideal Clients."
+            t4="The name of your Ideal Client will be used throughout the rest of SLAPcenter, to help you connect with him/her!" visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -32,16 +35,15 @@
                 <div class="col-md-12">
                     <button-switch visible="showIdealClientNameBlock"></button-switch>
 
-                    <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+                    <p class="logo panel-title">ACTION</p>
                 </div>
             </div>
 
-            <div class="row sample-show-hide" ng-hide="showIdealClientNameBlock">
+            <!--<div class="row sample-show-hide" ng-hide="showIdealClientNameBlock">
                 <div class="col-md-11 padding-l-r-30">
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra elit, a
-                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                    <p class="description"></p>
                 </div>
-            </div>
+            </div>-->
 
             <div class="row sample-show-hide" ng-hide="showIdealClientNameBlock">
 
@@ -66,4 +68,4 @@
     </div>
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

@@ -6,7 +6,7 @@
         .service('userService', userService);
 
     /* @ngInject */
-    function userService($q, apiService, $rootScope) {
+    function userService($q, apiService, $rootScope, adminUserService, $window) {
         var me = this;
 
         // --- vars ---
@@ -21,6 +21,19 @@
         me.getUser = function () {
             return me.userPromise;
         };
+        
+        me.getStoredUser = function() {
+            var user = $window.localStorage.getItem('slapuser');
+            if(user) {
+                return JSON.parse(user);
+            } else {
+                $state.go('login');
+            }
+        }
+
+        me.selectSLAPyear = function(userId) {
+            return apiService.rest.all('auth').all('selectslapyear').one(userId).post();
+        };
 
         me.loadUser = function (refresh) {
             var deferred = $q.defer();
@@ -30,14 +43,32 @@
             } else {
                 me.rest().get().then(function (resp) {
                     // $rootScope.$broadcast('userEvent');
-                    me.user = {
-                        name: resp.data.name,
-                        lastName: resp.data.lastName,
-                        email: resp.data.email,
-                        id: resp.data._id,
-                        businessName: resp.data.businessName
-                    };
-                    console.log(me.user);
+                    me.user = resp.data;
+                    $window.localStorage.setItem('slapuser', JSON.stringify(me.user));
+                    // For security
+
+                    // me.user = {
+                    //     name: resp.data.name,
+                    //     lastName: resp.data.lastName,
+                    //     email: resp.data.email,
+                    //     id: resp.data._id,
+                    //     businessName: resp.data.businessName,
+                    //     role: resp.data.role,
+                    //     status: resp.data.status
+                    // };
+                    // var accounts = resp.data.accounts.map(function(acc){
+                    //     return {
+                    //         name: acc.name,
+                    //         lastName: acc.lastName,
+                    //         email: acc.email,
+                    //         id: acc._id,
+                    //         businessName: acc.businessName,
+                    //         role: acc.role,
+                    //         status: acc.status
+                    //     };
+                    // });
+                    // me.user.accounts = accounts;
+                    
                     me.resolveUser(me.user);
                     deferred.resolve(me.user);
                 });
@@ -73,13 +104,43 @@
             return apiService.rest.all('auth').one('email').get(request);
         };
 
-        me.isAdmin = function () {
-            return (me.user && me.user.admin);
-        };
-
         me.rest = function () {
-            return apiService.rest.one('auth')
+            return apiService.rest.one('auth');
         };
 
+        me.updateMe = function(userData) {
+            return apiService.rest.all('me').post(userData).then(function(user){
+                console.log(user.data);
+                $rootScope.$emit('SlapAccounUpdated', user.data);
+                return me.user = user.data;
+
+            });
+
+        }
+
+        me.changeCreditCard = function(card) {
+
+            return apiService.rest.all('me').all('change-card').post(card).then(function(user){
+                console.log(user.data);
+                return me.user = user.data;
+            });
+        }
+
+        me.getHelp = function (messageObject) {
+            return apiService.rest.all('get-help').post(messageObject).then(function(res){
+                return res;
+            })
+        }
+        me.changeMyPassword = function(password) {
+            //TODO ;;change password;
+        }
+
+        me.getCreditCard = function() {
+            
+            return apiService.rest.all('me').one('current-card').get().then(function(last4){
+                me.user.last4 = last4.data.last4;
+                return me.user;
+            });
+        }
     }
 })();

@@ -1,47 +1,62 @@
-<div class="slap-page container" scroll-top>
+<div class="define-client slap-page">
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default ">
 
         <div class="panel-body">
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40">
+    <div class="panel panel-default ">
 
         <div class="panel-body static-text-panel">
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text-once t="Now that you have had the chance to take your 1 Year Goal and break it down into Quarterly Goals there is a chance that it will expose new issues or insights into your 1 Year Goal.   This is one more moment to Pause & Reflect and look again at this 1 Year Goal you have set.   This is your last chance to do a deep review and to fully to commit to it.   If this the goal you want to be supported around and held accountable to hitting then please proceed.  If you think you might need to do some more work on this before finalizing your SLAP go all the way back to the Review 1 Year Goal page and do just a bit more work!" visible="showStaticTextBlock"></slap-static-text-once>
 
         </div>
 
     </div>
 
-    <div class="panel panel-default margin-t-40 margin-b-140">
+    <div class="panel panel-default ">
 
-        <div class="panel-body">
+        <div class="panel-body slap-work-panel">
 
             <button-switch visible="showContent"></button-switch>
 
-            <h3 class="logo padding-l-15">SLAP<span class="aqua-green">work</span></h3>
+            <p class="logo panel-title">REFLECT</p>
 
-            <div class="sample-show-hide" ng-hide="showContent">
-
-                <div class=" form-group">
-                    <div class="col-md-3">
-                        <label for="first" class="label-text control-label">Lorem ipsum dolor sit armet</label>
+            <div class="col-md-12">
+                <div class="row sample-show-hide" ng-hide="showIdealClientTextBlock">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="description"></p>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <select id="first" ng-model="model.first" class="dropdown-box outline-0">
-                            <option>Dropdown Label</option>
-                        </select>
+                </div>
+            </div>
+
+            <div class="col-md-12 row-flex sample-show-hide padding-t-45" ng-hide="showContent">
+
+                <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+                    <div class="row m-t-es-15 m-b-es-50">
+
+                        <div class="ideal-clients-list col-md-12">
+
+                            <div class="blue-circle"><span>!</span></div>
+
+                            <p ng-repeat="revenue in revenues | filter:{deleted: false}" class="text-center">
+                                I will sell <span>{{revenue.unit}} Units</span> of <span>{{revenue.name}} </span> at <span>${{revenue.sellingPrice}} each</span>.
+                            </p>
+
+                        </div>
+
                     </div>
                 </div>
 
@@ -52,4 +67,4 @@
 
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

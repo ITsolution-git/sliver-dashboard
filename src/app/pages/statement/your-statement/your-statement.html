@@ -6,7 +6,7 @@
 
             <button-switch visible="showVideoBlock"></button-switch>
 
-            <video-block visible="showVideoBlock"></video-block>
+            <video-block visible="showVideoBlock" video="videoUrl"></video-block>
 
         </div>
 
@@ -18,7 +18,10 @@
 
             <button-switch visible="showStaticTextBlock"></button-switch>
 
-            <slap-static-text visible="showStaticTextBlock"></slap-static-text>
+            <slap-static-text t1="Thoughtfully choose your Who, What and Scale by filling in the blanks."
+            t2="This may seem like a super simple excercise - but don't be fooled by the simplicity of it.  This is really important foundational work."
+            t3="There is no right or wrong answer to this excercise.  This is about you putting a stake in the ground and really owning and committing to your What, Who and Scale."
+            t4="Your Who, What and Scale become your filter for making quick decisions about when to say Yes and when to say No.   Make sure that you really believe in the answers you enter here." visible="showStaticTextBlock"></slap-static-text>
 
         </div>
 
@@ -32,17 +35,15 @@
                 <div class="col-md-12">
                     <button-switch visible="showFormBlock"></button-switch>
 
-                    <p class="logo panel-title">SLAP<span class="aqua-green">work</span></p>
+                    <p class="logo panel-title">ACTION</p>
                 </div>
             </div>
 
-            <div class="row sample-show-hide" ng-hide="showFormBlock">
+            <!--<div class="row sample-show-hide" ng-hide="showFormBlock">
                 <div class="col-md-11 padding-l-r-30 margin-b-24">
-                    <p class="heading2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu pharetra
-                        elit, a
-                        dapibus ex. In venenatis tempor odio, non ultrices lectus</p>
+                    <p class="heading2"></p>
                 </div>
-            </div>
+            </div>-->
 
             <div class="row sample-show-hide" ng-hide="showFormBlock">
 
@@ -96,11 +97,12 @@
 
                 </div>
 
-                <div class="col-md-9 col-xs-12 margin-b-38 padding-l-r-30">
+                <!--<div class="col-md-9 col-xs-12 margin-b-38 padding-l-r-30">
                     <p class="line-text">because I will grow my business this year I will be able to
                         <span class="aqua-green">{{data.privilegeInfo.result}}</span> and I am committed to
-                        <span class="aqua-green">{{privilegesData.second[+data.privilegeInfo.text]}} {{data.privilegeInfo.additionalText}}</span></p>
-                </div>
+                        <span class="aqua-green">{{privilegesData.second[+data.privilegeInfo.text]}} {{data.privilegeInfo.additionalText}}</span>
+                    </p>
+                </div>-->
 
             </div>
 
@@ -109,4 +111,4 @@
     </div>
 </div>
 
-<slap-footer send="sendData"" forward="forward"></slap-footer>
+<slap-footer send="sendData" forward="forward"></slap-footer>

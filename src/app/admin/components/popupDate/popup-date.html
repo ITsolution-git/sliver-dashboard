@@ -1,0 +1,22 @@
+<div class="form-group">
+    <label for="dt">{{ $ctrl.label}}</label>
+    <p class="input-group">
+        <input
+            id="dt"
+            type="text"
+            class="form-control"
+            uib-datepicker-popup
+            popup-placement="bottom-left"
+            ng-model="$ctrl.dt"
+            is-open="$ctrl.popup.opened"
+            datepicker-options="$ctrl.options"
+            close-text="Close"
+            alt-input-formats="altInputFormats"
+        />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="$ctrl.open()">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </button>
+        </span>
+    </p>
+</div>

@@ -8,6 +8,10 @@ table.table-vertical-align {
   }
 }
 
+.container-login {
+  margin-top: 0px !important;
+  padding-top: 100px; 
+}
 //.m-t-50 {
 //  margin-top: 50px;
 //}
@@ -25,7 +29,7 @@ table.table-vertical-align {
 //}
 
 .slap-footer {
-  position: absolute;
+  // position: absolute;
   bottom: 0;
 }
 
@@ -124,6 +128,9 @@ div.grid_wrapper:hover div.hover_item {
   margin-left: 0;
 }
 
+.panel-body span a {
+  font-size: 13px;
+}
 /////////////////////////////////////////////////
 @main-blue-color: #0e7cb5;
 @main-black-color: #373c37;
@@ -140,13 +147,20 @@ body {
 }
 
 
+@media (min-width: 1150px) {
+  .rectangle {
+      min-height: 400px;
+  }
+}
+
+
 .slap-container {
   padding-left: 0;
   padding-right: 0;
   
-  @media (min-width: @screen-md) {
+  // @media (min-width: @screen-md) {
     padding-top: 82px;
-  }
+  // }
   
   .active {
     .opacity(1);
@@ -156,7 +170,7 @@ body {
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 2;
   letter-spacing: -0.5px;
   color: #33444d;
@@ -168,7 +182,7 @@ a:hover {
 }
 
 .leave {
-  margin-top: 40px;
+  margin-top: 30px;
 
   a {
     //font-family: .HelveticaNeueDeskInterface;
@@ -176,11 +190,20 @@ a:hover {
     line-height: 1.17;
     text-transform: uppercase;
     color: @main-blue-color;
+    i {
+      font-size: 22px;
+      padding-right: 3px;
+      color: #000;
+    }
+
   }
+
+
+
 }
 
 .header-contents {
-  margin-top: 105px;
+  margin-top: 80px;
 
   .header-logo img, > div {
     height: 100px;
@@ -195,7 +218,7 @@ a:hover {
       //width: 565px;
       //height: 68px;
       //font-family: .HelveticaNeueDeskInterface;
-      font-size: 56px;
+      font-size: 50px;
       letter-spacing: -1.6px;
       text-align: center;
       text-transform: capitalize;
@@ -251,25 +274,29 @@ a:hover {
 }
 
 .plan {
-  margin-top: 104px;
+  margin-top: 30px;
 }
 
 .outline-0:focus {
   outline: none;
 }
 
+// .row :first-child > .rectangle {
+//  min-height: 400px;
+// }
+
 .rectangle {
 
   //border: 1px solid grey;
-  height: 496px;
+  min-height: 470px;
+  padding-bottom: 10px;
   background-color: #ffffff;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
-
   .rectangle-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 15px;
     border-bottom: 1px solid #EFEFEF;
     //box-shadow: 0 1px 0 0 #000000;
     //opacity: 0.08;
@@ -293,7 +320,11 @@ a:hover {
   }
 
   .rectangle-content {
-    height: 215px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    // height: 215px;
     &.step2 {
       height: 280px;
     }
@@ -305,30 +336,30 @@ a:hover {
       span {
         position: relative;
         //margin-top: 24px;
-        width: 123px;
-        height: 68px;
-        font-size: 56px;
+        // width: 123px;
+        // height: 68px;
+        font-size: 3vw;
         letter-spacing: -1.6px;
         color: #33444d;
-
         &::before {
           content: '$';
           width: 13px;
           height: 29px;
-          font-size: 24px;
+          font-size: 1.5vw;
           letter-spacing: -0.7px;
           color: @main-black-color;
-          position: absolute;
-          top: 10px;
-          left: -10px;
+          position: relative;
+          top: -20px;
+          left: 2%;
         }
 
         &::after {
           content: 'USD';
+          position: relative;
           width: 33px;
           height: 24px;
           //font-family: .HelveticaNeueDeskInterface;
-          font-size: 16px;
+          font-size: 1vw;
           line-height: 1.5;
           color: #576875;
         }
@@ -339,7 +370,7 @@ a:hover {
       //width: 97px;
       //height: 48px;
       //font-family: .HelveticaNeueDeskInterface;
-      font-size: 24px;
+      font-size: 20px;
       line-height: 2;
       letter-spacing: -0.5px;
       color: #33444d;
@@ -362,37 +393,34 @@ a:hover {
       display: flex;
       justify-content: center;
       align-content: center;
-      margin-bottom: 20px;
 
       > p {
-        width: 147px;
-        //height: 48px;
+        // width: 147px;
         //font-family: .HelveticaNeueDeskInterface;
         //display: inline-block;
-        font-size: 16px;
+        font-size: 0.8vw;
         line-height: 1.5;
         color: @main-black-color;
         margin-bottom: 0;
       }
-      &::before {
-        font-family: FontAwesome;
-        content: '\f055';
-        color: @main-blue-color;
-        font-size: 1.5em;
-        position: absolute;
-        top: 0;
-        left: 10px;
+
+      .fa-plus {
+        position: relative;
+        top: -20px;
+        left: ~"calc(50% - 0.4vw)";
       }
     }
 
     .plan-list {
-      width: 101px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
       //height: 192px;
       //font-family: .HelveticaNeueDeskInterface;
-      font-size: 16px;
-      line-height: 3;
+      font-size: 0.8vw;
+      line-height: 2.5;
       color: @main-black-color;
-      margin-top: 25px;
+
 
       > li {
         list-style-type: none;
@@ -400,11 +428,11 @@ a:hover {
         &::before {
           font-family: FontAwesome;
           content: '\f00c';
-          width: 11.7px;
-          height: 8.9px;
+          width: 11.5px;
+          height: 12px;
           color: @main-black-color;
-          font-size: 0.5em;
-          margin-right: 20px;
+          font-size: 0.719em;
+          margin-right: 7%;
         }
       }
     }
@@ -454,7 +482,7 @@ a:hover {
     font-size: 2.5em;
     position: absolute;
     top: -7px;
-    right: 45%;
+    right: ~"calc(50% - 17px)";
     z-index: 1;
     color: #50cfe3;
     display: flex;
@@ -462,6 +490,7 @@ a:hover {
     background-color: white;
     border-radius: 80%;
     height: 30px;
+    width: 34px;
     line-height: 20px;
   }
 
@@ -504,6 +533,28 @@ a:hover {
 
 }
 
+.slap-fa {
+  font-size: 0.9vw;
+  margin-bottom: 5px;
+}
+
+.per {
+  font-size: 1.3vw;
+}
+
+.expert {
+  &::before {
+      font-family: FontAwesome;
+      content: '\f00c';
+      width: 11.5px;
+      height: 12px;
+      color: @main-black-color;
+      font-size: 0.719em;
+      margin-right: 7%;
+    }
+}
+
+
 .registration {
 
   margin-top: 45px;
@@ -519,16 +570,28 @@ a:hover {
       //margin: 25px 0;
 
       .registration-sidebar-header {
+        background-color: rgba(87, 104, 117, 0.15);
         border-bottom: 1px solid #EFEFEF;
         height: 60px;
       }
 
-      .registration-sidebar-content {
 
+
+      .registration-sidebar-content {
+        .promo-content {
+          margin: 40px 25px;
+        }
+        
         .payment-content {
           margin: 40px 25px;
+          
+          .attention {
+            background-color: @color-dark-blue;
+            color: #fff;
+          }
 
           > p {
+            text-align: center;
             font-size: 18px;
             line-height: 1.78;
             color: @main-black-color;
@@ -595,13 +658,13 @@ a:hover {
 }
 
 .next-bottom {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 50px;
   //width: 300px;
   display: flex;
   justify-content: center;
 
-  > div {
+  > button {
     width: 336px;
     border: 1px solid grey;
     border-radius: 35px;
@@ -609,10 +672,12 @@ a:hover {
     height: 64px;
     justify-content: center;
     align-items: center;
+    background: none;
   }
 
-  a {
+  span {
     margin-right: 7px;
+    
 
     //width: 42px;
     //height: 14px;
@@ -622,6 +687,12 @@ a:hover {
     text-align: right;
     text-transform: uppercase;
     color: @main-blue-color;
+    i { 
+      padding-left: 6px;
+      color: #000;
+      font-size: 22px;
+    }
+
 
     &:hover {
       text-decoration: none;
@@ -631,7 +702,7 @@ a:hover {
   .finish {
     background-color: @main-blue-color;
 
-    a {
+    span {
       color: #ffffff;
 
       &:hover {
@@ -821,7 +892,7 @@ a:hover {
 
   span {
     //font-family: .HelveticaNeueDeskInterface;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 0.8;
     color: #373c37;
     text-transform: capitalize;
@@ -843,5 +914,17 @@ a:hover {
 
   .fa-arrow-left, .fa-arrow-right {
     color: #FFFFFF;
+  }
+}
+
+@media (max-width: 1450px) {
+  .rectangle {
+      min-height: 400px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .rectangle {
+      min-height: 370px;
   }
 }

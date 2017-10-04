@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function StatementOverviewController($scope, activeStep, pageService, stepService, $state) {
-
+        $scope.videoUrl = activeStep.videoUrl;
         angular.extend($scope, activeStep.model, {
             forward: true,
             sendData: sendData
@@ -30,8 +30,5 @@
             else if(direction == 'backward')
 				$state.go(nextprevStep.prevStep.sref);
         }
-        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-            sendData();
-        });
     }
 }());

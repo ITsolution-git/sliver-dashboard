@@ -1,16 +1,21 @@
-<div class="container m-t-xs-50">
+<header class="slap-header-without-links">
+</header>
+<div class="container m-t-xs-50 container-login">
     <div class="row">
         <div class="col-xs-12 col-md-4 col-md-offset-4">
 
             <form ng-disabled="lock.state" id="login-form">
                 <div class="panel panel-default animated fadeInDown">
                     <div class="panel-body">
-                        <h3>Login</h3>
+                        <h3 class="pull-left">Login</h3>
+
+                        <span><a ui-sref="admin-login" class="pull-right">Admin?</a></span>
+                        <div class="clearfix"></div>
                         <hr>
 
                         <div class="form-group" ng-class="{'has-error':errors.email}">
                             <input type="text" ng-model="login.email" class="form-control" name="email"
-                                   placeholder="E-mail">
+                                   placeholder="E-mail" autofocus>
                             <div class="help-block help-block-error" ng-show="errors.email"
                                  ng-bind-html="errors.email | joinBr"></div>
                         </div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <!--<div class="row">-->
+                    <!--<h2 class="col-md-8">Manage Products</h2>-->
+                    <div class="text-right">
+                        <a class="btn btn-primary" ui-sref="plans.add"><i class="fa fa-plus"></i> Add</a>
+                    </div>
+                    <!--</div>-->
+                    <hr>
+
+                    <table ng-table-dynamic="list with cols" class="table table-hover table-vertical-align ng-cloak">
+                        <tr ng-repeat="row in $data">
+                            <td ng-repeat="col in $columns" ng-switch="col.format" ng-class="col.style">
+                                <div ng-switch-when="raw" ng-bind-html="col.getValue(row)"></div>
+                                <div ng-switch-when="compile" compile="col.getValue(row)"></div>
+                                <div ng-switch-default ng-bind-html="col.getValue(row)"></div>
+                            </td>
+                        </tr>
+                        <tr ng-if="!list.data.length">
+                            <td colspan="{{cols.length}}" class="text-center">You do not have records for display</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
