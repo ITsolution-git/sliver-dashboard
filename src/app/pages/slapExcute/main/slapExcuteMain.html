@@ -1,22 +1,22 @@
 <div class="slap-excute" layout="column" ng-if="!resultPage">
 
 
-	<md-card flex="100" layout="row">
-		<md-card-content style="width: 100%; height: 100%;" flex="100" layout="row" layout-align="space-around center">
-			<span flex="15"  class="text-color-strong"> Revenue Status&nbsp;&nbsp;&nbsp; </span>
-			<section flex="70">
+	<md-card layout="row">
+		<md-card-content class="prog" style="width: 100%; height: 100%;"  layout="row" layout-align="space-around center">
+			<span class="text-color-strong"> Revenue Status&nbsp;&nbsp;&nbsp; </span>
+			<section>
 				<uib-progressbar class="one-line-bar" max="100" value="dashData.TRevenueGoalPercent"><span style="color:white; white-space:nowrap;">{{dashData.TRevenueGoalPercent}}%</span></uib-progressbar>
 			</section>
-			<md-button class="review-res" ng-click="changeView()">Review Results&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></md-button>
+			<md-button class="" ng-click="changeView()">Review Results&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></md-button>
 		</md-card-content style="width: 100%; height: 100%;">
 	</md-card>
 
 
-	<section  flex=100 layout="row">
+	<section  layout="row" class="flex-section">
 		<!-- ACTION CARD -->
-		<md-card flex=33>
+		<md-card class="flex-card">
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=50  class="m-r-es-20" >
+				<section>
 					<section  class="progress-container" layout="row" layout-align="center center">
 						<round-progress 
 					    max="dashData.quaterTotalActions"
@@ -33,7 +33,7 @@
 					    animation="{{progress.animation}}"
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
-					    <section class="progress-text">
+					    <section class="progress-text cycl-text">
 
 							<p class="text-color-strong">{{dashData.quaterClosedActions}}/{{dashData.quaterTotalActions}}</p>
 					    	<small>Q{{currentQuater.nth}} ACTION ITEMS COMPLETED</small>
@@ -42,7 +42,7 @@
 
 
 				</section>
-				<section flex=50 layout="column" layout-align="center center">
+				<section layout="column" layout-align="center center" class="card-text">
 					<p>
 						<span  class="md-headline text-color-middle">Take Action</span>
 						<br/>
@@ -54,9 +54,9 @@
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
-		<md-card flex=33>
-			<md-card-content style="width: 100%; height: 100%;" layout="row" >
-				<section flex=50 class="m-r-es-20" >
+		<md-card class="flex-card">
+			<md-card-content class="card-in" style="width: 100%; height: 100%; display: flex; justify-content: space-around;" layout="row" >
+				<section>
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress style="width: 100%; height: 100%;"
 					    max="100"
@@ -73,7 +73,7 @@
 					    animation="{{progress.animation}}"
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
-					    <section class="progress-text">
+					    <section class="progress-text cycl-text">
 
 					    	<p class="text-color-strong">{{dashData.cQRevenueGoalPercent}}%</p>
 					    	<small>Of your Q{{currentQuater.nth}} goal complete</small>
@@ -81,7 +81,7 @@
 					</section>
 
 				</section>
-				<section flex=50 layout="column" layout-align="center center">
+				<section layout="column" layout-align="center center" class="card-text">
 						<span  class="md-headline text-color-middle">Close Sales</span>
 						<small>
 							You have {{dashData.daysLeft}} days to reach your Q{{currentQuater.nth}} goal.
@@ -93,9 +93,9 @@
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
-		<md-card flex=33>
+		<md-card class="flex-card">
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=50  class="m-r-es-20">
+				<section>
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress style="width: 100%; height: 100%;"
 					    max="dashData.daysPassed"
@@ -112,14 +112,14 @@
 					    animation="{{progress.animation}}"
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
-					    <section class="progress-text">
+					    <section class="progress-text cycl-text">
 					    	<p class="text-color-strong">{{dashData.daysReflected}}/{{dashData.daysPassed}}</p>
 					    	<small>TIMES YOU HAVE PAUSED & REFLECTED IN Q{{currentQuater.nth}}.</small>
 					    </section>
 					</section>
 
 				</section>
-				<section flex=50 layout="column" layout-align="center center">
+				<section layout="column" layout-align="center center" class="card-text">
 					<p>
 						<span  class="md-headline text-color-middle">Pause & Reflect</span>
 						<br/>
@@ -199,13 +199,13 @@
 			</md-select>
 		</md-toolbar>
 		<md-toolbar>
-			<div class="md-toolbar-tools" layout="row">
-				<md-tabs md-selected="tabs.selectedIndex" flex="50">
+			<div class="md-toolbar-tools flex-tool" layout="row">
+				<md-tabs md-selected="tabs.selectedIndex">
 					<md-tab id="tab-overdue-id" aria-controls="tab-overdue" ng-click="filter.status='overdue'">OVERDUE</md-tab>
 					<md-tab id="tab-upcoming-id" aria-controls="tab-upcoming" ng-click="filter.status='upcoming'">UPCOMING</md-tab>
 					<md-tab id="tab-done-id" aria-controls="tab-done" ng-click="filter.status='done'">DONE</md-tab>
 				</md-tabs>
-				<div flex="50" layout="row" layout-align="end center" class="md-body-1">
+				<div layout="row" layout-align="end center" class="md-body-1 type-flex">
 					<span>Filter By Type&nbsp&nbsp</span>
 					<slap-color-switch color="{{colorAction}}" name="Actions" value="filter.showActions" static="false"></slap-color-switch>&nbsp&nbsp
 					<slap-color-switch color="{{colorSales}}" name="Sales" value="filter.showSales"  static="false"></slap-color-switch>&nbsp&nbsp
@@ -241,11 +241,11 @@
         <md-button ng-click="changeView()"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Back</md-button>
     </section>
 
-	<section flex=100 layout="row">
+	<section layout="row" class="flex-section">
 		<!-- ACTION CARD -->
-		<md-card flex=50>
+		<md-card class="flex-card">
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=30 class="m-r-es-20">
+				<section>
 					<section  class="progress-container" layout="row" layout-align="center center">
 						<round-progress  style="width: 100%; height: 100%;"
 					    max="dashData.totalQuaterRevenue"
@@ -262,7 +262,7 @@
 					    animation="{{progress.animation}}"
 					    animation-delay="{{progress.delay}}">
 					    </round-progress>
-					    <section class="progress-text-result">
+					    <section class="progress-text-result cycl-text">
 					    	<p class="text-color-strong">{{ dashData.closedQuaterRevenue | currency}}</p>
 					    	<small>Out of {{dashData.totalQuaterRevenue | currency}} Q{{currentQuater.nth}} Revenue goal</small>
 					    </section>
@@ -270,9 +270,11 @@
 
 
 				</section>
-				<section flex=70 layout="column" layout-align="center center">
+				<section layout="column" layout-align="center center" class="card-text">
+					<p>
 						<span  class="md-headline text-color-middle">Your Q{{currentQuater.nth}} Goal Progress</span>
 						<br/>
+					</p>
 						<small>
 							You need to sell {{ dashData.totalQuaterRevenue | currency}} to reach your Q{{currentQuater.nth}} revenue goal.
 						</small>
@@ -283,9 +285,9 @@
 		</md-card>
 		<!-- ACTION CARD ENDS-->
 		<!-- ACTION CARD -->
-		<md-card flex=50>
+		<md-card class="flex-card">
 			<md-card-content style="width: 100%; height: 100%;" layout="row">
-				<section flex=30  class="m-r-es-20">
+				<section>
 					<section class="progress-container" layout="row" layout-align="center center">
 						<round-progress style="width: 100%; height: 100%;"
 					    max="dashData.totalYearRevenue"
@@ -302,14 +304,14 @@
 					    animation="{{progress.animation}}"
 						animation-delay="{{progress.delay}}">
 					    </round-progress>
-						<section class="progress-text-result">
+						<section class="progress-text-result cycl-text">
 					    	<p class="text-color-strong">{{ dashData.closedYearRevenue | currency}}</p>
                             <small>Out of {{ dashData.totalYearRevenue | currency }} annual revenue goal</small>
 					    </section>
 					</section>
 
 				</section>
-				<section flex=70 layout="column" layout-align="center center">
+				<section layout="column" layout-align="center center" class="card-text">
 						<span class="md-headline text-color-middle">Your Annual Goal Progress</span>
 						<br/>
 						<small>
@@ -325,12 +327,12 @@
 
 
 
-	<section layout="column" layout="column" class="m-t-es-50 m-w-es-10">
+	<section layout="column" class="flex-filt">
 
-        <div flex="100" layout="row" layout-align="space-between center" class="md-body-1 m-b-es-20">
+        <div layout="row" layout-align="space-between center" class="md-body-1 flex-tool">
             <h4  class="text-color-strong">Results By Revenue Streams</h4>
-			<section layout="row" layout-align="end center">
-				<span style="font-size: 16px;font-weight: 500;line-height: 1;text-align: right;color: #33444d;">Filter By Quater&nbsp&nbsp</span>
+			<section layout="row" layout-align="end center" class="slap-color">
+				<span class="filter-type">Filter By Quater&nbsp&nbsp</span>
 				<slap-color-switch color="{{colorProgress}}" name="Q1" value="filter.showQ" ng-click="filterSales()" static="false" quater="1"></slap-color-switch>&nbsp&nbsp
 				<slap-color-switch color="{{colorProgress}}" name="Q2" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="2" ></slap-color-switch>&nbsp&nbsp
 				<slap-color-switch color="{{colorProgress}}" name="Q3" value="filter.showQ"  ng-click="filterSales()"  static="false" quater="3"  ></slap-color-switch>&nbsp&nbsp
@@ -339,7 +341,7 @@
 			</section>
 		</div>
 	</section>
-	<section layout="column" layout="column" class="m-t-es-50 m-w-es-10">
+	<section layout="column" layout="column" class="m-w-es-10 tesult-item">
 		<md-card style="font-style: normal; font-size: 18px;" layout="column"  flex layout-fill ng-cloak>
 
 			<md-list style="color:black;" class="text-color-main">
@@ -348,7 +350,7 @@
 						<a ng-if="!revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="5"><i class="material-icons">add_circle</i></a>
 						<a ng-if="revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail"  flex="5"><i class="material-icons">remove_circle</i></a>
 
-						<section ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="20">{{revenueGrid.revenue.name}}</section>
+						<section ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" flex="20" class="sect-name">{{revenueGrid.revenue.name}}</section>
 
 						<section flex class="m-w-es-20" style="position:relative">
 							<uib-progress style="display: flex;" class="two-line-bar" 	max="revenueGrid.totalSalesItemCount" ng-if="revenueGrid.totalSalesItemCount != 0">

@@ -314,3 +314,331 @@ md-headline {
 .btn-sal {
 	width: 10%;
 }
+
+
+.prog {
+	display: flex;
+	& .text-color-strong {
+		flex-grow: 1;
+		width: 20%;
+		text-align: center;
+	}
+
+	& section {
+		flex-grow: 10;
+		width: 100%;
+	}
+
+	& button {
+		flex-grow: 1;
+		width: 20%;
+	}
+}
+
+.flex-section{
+	display: flex;
+	justify-content: center;
+	//flex-wrap: wrap;
+}
+.flex-card {
+	max-width: 32%;
+	flex-grow: 1;
+	margin: 10px;
+	& md-card-content {
+		display: flex;
+		justify-content: space-around;
+	}
+}
+
+.card-text {
+	& span {
+		font-size: 1vw;
+	}
+	& small {
+		font-size: 1vw;
+	}
+	& p span {
+		font-size: 1vw;
+	}
+
+	& button {
+		font-size: 1vw;
+	}
+}
+
+
+.flex-tool {
+	display: flex;
+	flex-wrap: wrap;
+	& md-tabs {
+		flex-grow: 1;
+	}
+}
+
+
+@media (min-width: 901px) and (max-width: 1250px) {
+	.flex-card {
+		& md-card-content {
+			& section {
+				min-width: 50%;
+			}
+		}
+	}
+
+	.cycl-text {
+		width: 50% !important;
+		padding: 0 10px;
+		margin-left: -25%;
+		margin-right: 0 !important;
+		font-size: 1.2vw;
+	}
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+	.flex-section{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+	}
+	.flex-card {
+		max-width: 100%;
+		& md-card-content {
+			& section {
+				min-width: 50%;
+			}
+		}
+	}
+
+	.cycl-text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 50% !important;
+		padding: 0 10px;
+		//font-size: 1.2vw;
+	}
+
+	.card-text {
+		& span {
+			font-size: 2vw;
+		}
+		& small {
+			font-size: 2vw;
+		}
+		& p span {
+			font-size: 2vw;
+		}
+
+		& button {
+			font-size: 2vw;
+		}
+	}
+
+	.flex-tool {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: 60px;
+		& md-tabs {
+			flex-basis: 100%;
+			flex-grow: 1;
+			margin-bottom: 20px;
+		}
+	}
+
+}
+
+.filter-type {
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1;
+	text-align: right;
+	color: #33444d;
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+	.flex-section{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+	}
+	.flex-card {
+		max-width: 100%;
+		& md-card-content {
+			& section {
+				min-width: 50%;
+			}
+		}
+	}
+
+	.cycl-text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 50% !important;
+		padding: 0 10px;
+		font-size: 4vw;
+	}
+
+	.card-text {
+		& span {
+			font-size: 2vw;
+		}
+		& small {
+			font-size: 2vw;
+		}
+		& p span {
+			font-size: 2vw;
+		}
+
+		& button {
+			font-size: 2.5vw;
+		}
+	}
+
+	.slap-excute .select-menu {
+		max-width: 100%;
+	}
+
+	.flex-tool {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: 80px;
+		& md-tabs {
+			flex-basis: 40%;
+			margin-bottom: 20px;
+		}
+
+		& h4 {
+			flex-grow: 1;
+			flex-basis: 40%;
+			margin-bottom: 20px;
+		}
+
+		& md-tab {
+			font-size: 2vw;
+		}
+
+		.filter-type {
+			font-size: 3vw;
+			text-align: inherit;
+		}
+
+		& slap-color {
+
+			& span {
+				font-size: 2vw !important;
+			}
+			& slap-color-switch {
+				margin-bottom: 5px;
+			}
+
+		}
+	}
+
+	.slap-color {
+		display: flex;
+		flex-grow: 1;
+		flex-wrap: wrap;
+	}
+
+	.type-flex {
+		display: flex;
+		& span {
+			font-size: 2vw;
+		}
+		& slap-color-switch span{
+			font-size: 2vw;
+		}
+
+	}
+
+	slap-list-item {
+		& span {
+			font-size: 4vw !important;
+			max-width: 40% !important;
+			& small{
+				font-size: 3vw !important;
+			}
+		}
+	}
+
+	.text-center {
+		padding: 0 !important;
+	}
+
+	.flex-filt {
+		margin: 10px;
+	}
+
+	.slap-color slap-color-switch {
+		margin-bottom: 5px;
+	}
+
+	.tesult-item section{
+		font-size: 1vw;
+	}
+	.sect-name {
+		font-size: 2vw;
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 601px) and (max-width: 1130px) {
+	.prog {
+		& .text-color-strong {
+			flex-grow: 1;
+			width: 70%;
+			text-align: center;
+		}
+
+		& section {
+			flex-grow: 1;
+			width: 100%;
+		}
+
+		& button {
+			flex-grow: 1;
+			width: 70%;
+		}
+	}
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+	.slap-excute {
+		margin: 10px;
+	}
+
+	md-card {
+		margin: 5px;
+	}
+
+	.prog {
+		flex-direction: column;
+		align-self: center;
+
+		& .text-color-strong {
+			width: 90%;
+			text-align: center;
+		}
+
+		& section {
+			flex-grow: 1;
+			width: 100%;
+		}
+
+		& button {
+			width: 70%;
+		}
+	}
+}

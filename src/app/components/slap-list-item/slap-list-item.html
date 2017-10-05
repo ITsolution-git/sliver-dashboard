@@ -1,14 +1,14 @@
 
 <div class="md-list-item-text" layout="row" flex layout-align="space-between center" ng-click="$ctrl.openItemDialog()($event, 'edit', $ctrl.item.type, $ctrl.item)">
     <span flex style="overflow: hidden; text-overflow: ellipsis;">{{$ctrl.title}}</span>
-    <span flex="10" ng-if="$ctrl.item.type == 'sales'" class="text-center">
+    <span flex="11" ng-if="$ctrl.item.type == 'sales'" class="text-center">
         <small>
             SALE UNITS
             <br/>   
             {{$ctrl.item.saleUnit}} Units
         </small>
     </span>
-    <span flex="10"  class="text-center">
+    <span flex="11"  class="text-center">
         <small>
             DUE DATE
             <br/>

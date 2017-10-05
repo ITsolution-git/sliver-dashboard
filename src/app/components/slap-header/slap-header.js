@@ -2,10 +2,21 @@
     'use strict';
 
     var slapHeader = {
-        binding: {},
-        controller: function ($auth, $state, userService, $window, $rootScope, CONFIG) {
+        binding: {
+            // step: '='
+        },
+        controller: function ($auth, $state, userService, $window, $rootScope, CONFIG, stepService) {
             var vm = this;
-            
+
+            // vm.step = $rootScope.stepActive;
+            // vm.stepAc = step;
+
+            // $rootScope.$watch($rootScope.stepActive, function (newValue, oldValue) {
+            //     vm.step = $rootScope.stepActive;
+            //     vm.apply();
+            //     console.log(vm.step);
+            // });
+
             $rootScope.$on('SlapAccounUpdated', function (event, user) {
                 vm.user = user;
                 vm.avatarUrl = CONFIG.api + "/v1/user/avatar/" + user.avatarId;
