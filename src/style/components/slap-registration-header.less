@@ -6,9 +6,13 @@ slap-registration-header {
 
     .header {
         background: #0e7cb5;
-        height: 31px;
+        min-height: 31px;
         position: absolute;
-        width: 100%; 
+        width: 100%;
+        padding: 10px 30px;
+        display: flex;
+        align-items: center;
+        line-height: 14px;
     }
 
     .header>div {
@@ -16,11 +20,18 @@ slap-registration-header {
         margin-top: -4px;
         margin-left: 20px;
     }
-
+    .header-icon {
+        margin-right: 5px;
+    }
+    .phone {
+        display: inline-flex;
+        align-items: center;
+        line-height: 18px;
+    }
     span {
-        font-size: 12px; 
-        font-weight: normal;     
-        line-height: 1; 
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1;
         color: #fff;
         margin-left: 5px;
     }
@@ -28,5 +39,60 @@ slap-registration-header {
     a {
         color: #fff;
         font-size: 12px;
+
+        &:hover {
+            color: #fff;
+            opacity: 0.7;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:focus {
+            color: #fff;
+            text-decoration: none;
+
+        }
+    }
+}
+
+.main-footer {
+
+    a {
+        &:hover {
+            transition: all 0.4s ease-in-out;
+        }
+        &:focus {
+            color: #0e7cb5;
+            text-decoration: none;
+        }
+    }
+}
+
+
+
+@media (min-width: 992px) {
+
+    slap-registration-header {
+        width: 100%;
+        font-family: 'Raleway', Helvetica, Arial, Lucida, sans-serif;
+        letter-spacing: 1px;
+        font-weight: 600;
+    
+        .header {
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+
+
+
+
+@media (min-width: 300px) {
+    .header {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }

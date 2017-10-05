@@ -7,7 +7,7 @@
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>leave
                     </a>
             </div>
-            <div class="header-contents">
+            <div class="header-contents hed-step">
                 <div class="col-md-3 header-logo">
                     <img src="/images/logo.png" alt="logo">
                 </div>
@@ -30,10 +30,10 @@
                 </div>
             </div>
         </header>
-        <article class="container signup">
+        <article class="container signup plan">
                 <slap-notifications notifications="vm.notifications"></slap-notifications>
-            <div class=" registration" layout="row">
-                <div class=" registration-sidebar" flex="30">
+            <div class=" registration plan sig-plan" layout="row">
+                <div class=" registration-sidebar col-xs-12 col-sm-8 col-md-5 reg-sidebar plan">
                     <div class="promo-sidebar">
                         <div class="registration-sidebar-header">
                             <h3 class="text-center">promo code</h3>
@@ -80,10 +80,10 @@
                         </div>
                     </div>
                 </div>
-                <div class=" registration-content" flex="70">
+                <div class=" registration-content col-xs-12 col-sm-12 col-md-7 plan">
                     <form name="registerForm">
-                        <div layout="row">
-                            <md-input-container class="md-block" flex="50">
+                        <div layout="row" class="form-column">
+                            <md-input-container class="md-block not-flex" flex="50" >
                                 <label>Name</label>
                                 <input md-maxlength="30" required name="name" ng-model="vm.user.name" ng-disabled="vm.isRenew"/>
 
@@ -94,7 +94,7 @@
                                 <!--</div>-->
                             </md-input-container>
 
-                            <md-input-container class="md-block" flex="50"  >
+                            <md-input-container class="md-block not-flex" flex="50"  >
                                 <label>Last Name</label>
                                 <input md-maxlength="30" required name="lastName" ng-model="vm.user.lastName"  ng-disabled="vm.isRenew"/>
 
@@ -106,7 +106,7 @@
                             </md-input-container>
                         </div>
 
-                        <md-input-container class="md-block" >
+                        <md-input-container class="md-block not-flex" >
                             <label for="businessName">Business Name</label>
                             <input required name="businessName" ng-model="vm.user.businessName" id="businessName"  ng-disabled="vm.isRenew"/>
 
@@ -117,8 +117,8 @@
                             </div>
                         </md-input-container>
 
-                        <div layout="row">
-                            <md-input-container class="md-block" flex="50">
+                        <div layout="row" class="form-column">
+                            <md-input-container class="md-block not-flex" flex="50">
                                 <label for="email">Email</label>
                                 <input name="email" ng-model="vm.user.email" id="email"
                                        required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"   ng-disabled="vm.isRenew"/>
@@ -130,7 +130,7 @@
                                 </div>
                             </md-input-container>
 
-                            <md-input-container class="md-block" flex="50">
+                            <md-input-container class="md-block not-flex" flex="50">
                                 <label for="phone">Phone Number</label>
                                 <input ng-pattern="/^[0-9]{1,12}$/" name="phone" required maxlength="12" minlength="9"
                                 ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
@@ -142,8 +142,8 @@
                             </md-input-container>
                         </div>
 
-                        <div layout="row" ng-if="!vm.isRenew">
-                            <md-input-container class="md-block" flex="50">
+                        <div layout="row" ng-if="!vm.isRenew" class="form-column">
+                            <md-input-container class="md-block not-flex" flex="50">
                                 <label for="password">Password</label>
                                 <input required type="password" name="password" ng-model="vm.user.password"
                                        minlength="6" md-maxlength="30" id="password"/>
@@ -155,7 +155,7 @@
                                 </div>
                             </md-input-container>
 
-                            <md-input-container class="md-block" flex="50">
+                            <md-input-container class="md-block not-flex" flex="50">
                                 <label for="confirm">Confirm Password</label>
                                 <input required type="password" name="confirm" ng-model="vm.user.confirmPassword"
                                        minlength="6" md-maxlength="30" pass-compare="vm.user.password" id="confirm"/>
@@ -172,9 +172,9 @@
                             You will use same Payment information as previous account.
                         </section>
                         <section ng-if="!vm.isRenew">
-                            <div layout="row">
+                            <div layout="row" class="form-column">
 
-                                <md-input-container class="md-block" flex="50">
+                                <md-input-container class="md-block not-flex" flex="50">
                                     <label for="creditCard">Credit Card Number</label>
                                     <input
                                         name="creditCard"
@@ -191,7 +191,7 @@
                                     </div>
                                 </md-input-container>
 
-                                <md-input-container class="md-block" flex="50">
+                                <md-input-container class="md-block not-flex" flex="50">
                                     <label for="exp_date">Expiration Date</label>
                                     <input
                                         name="expDate"
@@ -209,8 +209,8 @@
                                 </md-input-container>
                             </div>
 
-                            <div layout="row">
-                                <md-input-container class="md-block" flex="50">
+                            <div layout="row" class="form-column">
+                                <md-input-container class="md-block not-flex" flex="50">
                                     <label for="code">Security Code</label>
                                     <input name="cvc" required ng-model="vm.user.card.cvc" type="password"
                                         ng-maxlength="4" ng-minlength="3" id="code"/>
@@ -222,7 +222,7 @@
                                     </div>
                                 </md-input-container>
 
-                                <md-input-container class="md-block" flex="50">
+                                <md-input-container class="md-block not-flex" flex="50">
                                     <label for="billing">Billing Address</label>
                                     <input name="address" required ng-model="vm.user.billingAddress"
                                         id="billing"/>
@@ -236,9 +236,10 @@
                             </div>
                         </section>
 
-                        <md-input-container class="md-block">
-                            <md-checkbox name="tos" ng-model="vm.user.check" required>
-                                I agree with <span class="text-main-color"><a target='_blank' ng-click="vm.openTOS($event)"><i class="fa fa-external-link" aria-hidden="true"></i> Terms & Conditions</a></span>
+                        <md-input-container class="md-block not-flex ">
+                            <md-checkbox name="tos" ng-model="vm.user.check"  required class="agree">
+                                <span class="sp-font">I agree with</span>
+                                <span class="sp-font text-main-color"><a class="tern-link" target='_blank' ng-click="vm.openTOS($event)"><i class="fa fa-external-link " aria-hidden="true"></i> Terms & Conditions</a></span>
                             </md-checkbox>
                             <div ng-messages="registerForm.tos.$error" ng-hide="registerForm.tos.$modelValue">
                                 <div ng-message="required">

@@ -2,12 +2,12 @@
 <div class="container-fluid ">
     <div class="row">
         <header class="container signup">
-            <div class="col-md-12 leave">
+            <div class="col-md-12 leave outline-0">
                     <a ui-sref="login">
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>leave
                     </a>
             </div>
-            <div class="header-contents">
+            <div class="header-contents hed-step">
                 <div class="col-md-3 header-logo">
                     <img src="/images/logo.png" alt="logo">
                 </div>
@@ -38,8 +38,8 @@
                             BEST plan. In about 30 days you will be focused, clear, challenged and supported - and armed with
                             a rock solid plan to bring to life!</p>
             </div>
-            <div class="col-md-6 col-md-offset-3">
-                <div class="col-md-6 outline-0" ng-repeat="build in vm.builds" ng-click="vm.chooseBuild(build,$event)">
+            <div class="col-md-6 col-md-offset-3 plan-item plan">
+                <div class="col-xs-12 col-sm-8 col-md-6 outline-0 plan-item" ng-repeat="build in vm.builds" ng-click="vm.chooseBuild(build,$event)">
                     <div class="rectangle build step2" ng-class="{'rectangle-active': build._id == vm.build._id}">
                         <div class="rectangle-header">
                             <h3 ng-show="build.buildType == 2">pay now</h3>
