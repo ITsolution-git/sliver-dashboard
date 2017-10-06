@@ -301,7 +301,7 @@
         <div class="alert alert-danger" ng-if="!revenues" style="margin: 0px">
             This account have <strong> no revenue streams </strong> yet.
         </div>
-        <table class="table table-responsive table-bordered table-striped table-hover" ng-if="revenues"  >
+        <table class="table table-responsive table-bordered table-striped table-hover" ng-if="revenues">
             <thead  class="thead-default"> 
                 <tr>
                     <th rowspan="4" >Name</th>
@@ -343,17 +343,17 @@
             <tbody class="table-striped">
                 <tr ng-repeat="revenue in revenues">
                     <td>{{revenue.name}}</td>
-                    <td>{{revenue.sellingPrice}} $</td>
-                    <td>{{revenue.unit}}</td>
+                    <td class="slapsters-metrics">{{revenue.sellingPrice}} $</td>
+                    <td class="slapsters-metrics">{{revenue.unit}}</td>
                     <td>{{revenue.actualUnit}}</td>
-                    <td>{{revenue.quaterSale[0].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[0].actualUnit}}</td>
-                    <td>{{revenue.quaterSale[1].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[1].actualUnit}}</td>
-                    <td>{{revenue.quaterSale[2].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[2].actualUnit}}</td>
-                    <td>{{revenue.quaterSale[3].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[3].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[0].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[0].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[1].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[1].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[2].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[2].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[3].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[3].actualUnit}}</td>
                 </tr>
 
                 <tr>
