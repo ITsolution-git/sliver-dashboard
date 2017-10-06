@@ -14,6 +14,7 @@
         }
 
         var vm = this;
+        vm.cellPhone = '';
         vm.isRenew = false;
 
         vm.plan = productStorage.getPlan();
@@ -60,6 +61,11 @@
             }
             vm.user.isRenew = vm.isRenew;
             vm.user.renewFrom = productStorage.getRenewFrom();
+            vm.user.extrainfo = {
+                                    workPhone: vm.user.phone,
+                                    cellPhone: vm.cellPhone,
+                                    contactMethod:'',
+                                    textNotes:'',}
             $auth.signup(vm.user)
             .then(
                 function (response) {                        
@@ -80,7 +86,6 @@
 
                                 }
                             )
-                            
                         }
                         
                         if (response.data.token) {
