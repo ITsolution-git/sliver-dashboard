@@ -99,7 +99,7 @@
                 </md-input-container>
 
                 <md-input-container class="md-block">
-                    <label for="phone">Text Notes</label>
+                    <label for="phone">Details about SLAPster personality & preferences</label>
                     <input name="phone"  ng-model="user.extrainfo.textNotes"  id="textNotes"/>
 
                     <div ng-messages="form.textNotes.$error" ng-hide="form.textNotes.$valid">
@@ -335,7 +335,7 @@
             <tbody class="table-striped">
                 <tr ng-repeat="revenue in revenues">
                     <td>{{revenue.name}}</td>
-                    <td>{{revenue.sellingPrice}}</td>
+                    <td>{{revenue.sellingPrice}} $</td>
                     <td>{{revenue.unit}}</td>
                     <td>{{revenue.actualUnit}}</td>
                     <td>{{revenue.quaterSale[0].targetUnit}}</td>
