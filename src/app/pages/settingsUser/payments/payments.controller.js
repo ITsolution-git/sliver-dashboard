@@ -48,7 +48,7 @@
         $scope.list = new NgTableParams({},
             {
                 getData: function (params) {
-                    return paymentsService.getAllPayments()
+                    return paymentsService.getStripePayments()
                         .then(function (response) {
                             return paymentsService.transformationData(response.data);
                         });
