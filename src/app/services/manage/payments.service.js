@@ -13,6 +13,7 @@
         this.transformationData = transformationData;
         this.getAllPaymentsByUser = getAllPaymentsByUser;
         this.chargeUser = chargeUser;
+        this.toggleSubscription = toggleSubscription;
         //////////////////////////////////
 
         function transformationData(data) {
@@ -53,6 +54,13 @@
             return adminApiService.rest.all('payments').all('charge').all(userId).post(product);
         }
 
+        function toggleSubscription(user) {
+            let userId = user._id;
+            let enable = !user.pausingPayment;
+            return adminApiService.rest.all('payments').all('subscription').all('toggle').all(userId).post({
+                "enable": enable
+            });
+        }
         
     }
 }());

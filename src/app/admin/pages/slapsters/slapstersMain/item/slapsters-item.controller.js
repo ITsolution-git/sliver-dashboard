@@ -371,7 +371,7 @@
         function togglePayment() {
             $scope.user.pausingPayment = !$scope.user.pausingPayment;
             createOrSave();
-             
+            // paymentsService.toggleSubscription($scope.user);
         }
 
         function charge (type) {
@@ -389,6 +389,7 @@
             if(!product) {
                 alert('No Product Yet, Add meeting products. Try with seed.');
             }
+
             paymentsService.chargeUser(product, $scope.userID)
                 .then(function(resp){
                     toaster.pop({type: 'success', body: 'Success'});
