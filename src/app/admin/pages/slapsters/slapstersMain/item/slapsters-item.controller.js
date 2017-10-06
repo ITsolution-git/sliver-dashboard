@@ -6,7 +6,7 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
+    function AdminSlapstersItemController($scope, $state, pageService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
@@ -20,6 +20,8 @@
             excuteItems: excuteItems,
 
             userData: [],
+            defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
+            strategies: [],
 
             userID: $stateParams.user_id,
             ROLES: adminUserService.ROLES,
@@ -201,6 +203,8 @@
             
             //For Succes Metrics
 
+            
+
             _.each($scope.revenues, function(revenue, revenueID){
                 revenue.actualUnit = 0;
                 revenue.unit = 0;
@@ -213,14 +217,18 @@
                         progress: 0
                     });
                 _.each($scope.quaters, function(quater, QID){
-
                     revenue.quaterSale[QID].targetUnit = +quater.units[revenue.name]; 
+                    var i = $scope.defaultStrategies.length;
+                    while (i--) {
+                        if ($scope.defaultStrategies[i].id === quater.strategy.id) {
+                           $scope.strategies.push($scope.defaultStrategies[i].name);
+                        }
+                    }
                     var salesItems = $scope.excuteItems.filter(function(item){ 
                         return +item.title == +revenue.id && 
                                 item.type == 'sales' &&
                                 moment(item.dueDate).isBetween(quater.start, quater.end, 'day', '[]'); 
                     });
-                    
                     
                     _.each(salesItems, function(item){
                         if(item.progress == 100)
