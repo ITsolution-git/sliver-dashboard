@@ -3,7 +3,7 @@
     <!--<md-select ng-model="selectedUserID" ng-change="changeUser(selectedUserID)" style="margin: 0px" aria-label="SLAP-select">
         <md-option ng-repeat="user in accounts" ng-value="user._id">{{$index+1}} YEAR  {{user.createdAt | date: 'yyyy-MM-dd'}}</md-option>
     </md-select>-->
-    <select class="form-control" ng-model="selectedUserID" ng-change="changeUser(selectedUserID)" style="margin: 0px; width: 300px; font-size: 19px" aria-label="SLAP-select">
+    <select class="form-control" ng-model="selectedUserID" ng-change="changeUser(selectedUserID)" style="margin: 0px; width: 300px; font-size: 19px; height: 35px;" aria-label="SLAP-select">
         <option ng-repeat="user in accounts" ng-value="user._id">{{$index+1}} YEAR  {{user.createdAt | date: 'yyyy-MM-dd'}}</option>
     </select>
     <div class="md-errors-spacer"></div>
@@ -301,23 +301,31 @@
         <div class="alert alert-danger" ng-if="!revenues" style="margin: 0px">
             This account have <strong> no revenue streams </strong> yet.
         </div>
-        <table class="table table-responsive table-bordered table-striped table-hover" ng-if="revenues"  >
+        <table class="table table-responsive table-bordered table-striped table-hover" ng-if="revenues">
             <thead  class="thead-default"> 
                 <tr>
-                    <th rowspan="3" >Name</th>
-                    <th rowspan="3" >Price</th>
-                    <th rowspan="2" colspan="2">Anual</th>
+                    <th rowspan="4" >Name</th>
+                    <th rowspan="4" >Price</th>
+                    <th rowspan="3" colspan="2">Anual</th>
                     <th colspan="2">Q1</th>
                     <th colspan="2">Q2</th>
                     <th colspan="2">Q3</th>
                     <th colspan="2">Q4</th>
                 </tr>
                 <tr>
-                    <th colspan="2">{{quaters[0].monthsString}}</th>
-                    <th colspan="2">{{quaters[1].monthsString}}</th>
-                    <th colspan="2">{{quaters[2].monthsString}}</th>
-                    <th colspan="2">{{quaters[3].monthsString}}</th>
+                        <th colspan="2">{{strategies[0]}}</th>
+                        <th colspan="2">{{strategies[1]}}</th>
+                        <th colspan="2">{{strategies[2]}}</th>
+                        <th colspan="2">{{strategies[3]}}</th>
+                    
                 </tr>
+                <tr>
+                        <th colspan="2">{{quaters[0].monthsString}}</th>
+                        <th colspan="2">{{quaters[1].monthsString}}</th>
+                        <th colspan="2">{{quaters[2].monthsString}}</th>
+                        <th colspan="2">{{quaters[3].monthsString}}</th>
+                </tr>
+                
                 <tr>
                     <th>Goal</th>
                     <th>Actual</th>
@@ -335,17 +343,17 @@
             <tbody class="table-striped">
                 <tr ng-repeat="revenue in revenues">
                     <td>{{revenue.name}}</td>
-                    <td>{{revenue.sellingPrice}} $</td>
-                    <td>{{revenue.unit}}</td>
+                    <td class="slapsters-metrics">{{revenue.sellingPrice}} $</td>
+                    <td class="slapsters-metrics">{{revenue.unit}}</td>
                     <td>{{revenue.actualUnit}}</td>
-                    <td>{{revenue.quaterSale[0].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[0].actualUnit}}</td>
-                    <td>{{revenue.quaterSale[1].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[1].actualUnit}}</td>
-                    <td>{{revenue.quaterSale[2].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[2].actualUnit}}</td>
-                    <td>{{revenue.quaterSale[3].targetUnit}}</td>
-                    <td>{{revenue.quaterSale[3].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[0].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[0].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[1].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[1].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[2].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[2].actualUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[3].targetUnit}}</td>
+                    <td class="slapsters-metrics">{{revenue.quaterSale[3].actualUnit}}</td>
                 </tr>
 
                 <tr>
@@ -583,10 +591,10 @@
                             
                             <td>
                                 <a ng-click="openItemDialog($event, 'edit', item)"style="margin:0px">
-                                    Edit
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
                                 <a ng-click="openDeleteItemDialog($event, item)" style="margin:0px">
-                                    Delete
+                                        <i class="fa fa-user-times" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>
