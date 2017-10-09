@@ -97,13 +97,15 @@
             $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 3), $scope.userAllData.actionPlan.connectingStrategyStrategizing[2]));
             $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 4), $scope.userAllData.actionPlan.connectingStrategyStrategizing[3]));
             $scope.currentQuater = $scope.quaters[0];
-            
-            for (var j = 0; j < 4; j++){
-            for (var i = 0; i < $scope.defaultStrategies.length; i++) {
-                if ($scope.defaultStrategies[i].id === $scope.userAllData.actionPlan.connectingStrategyStrategizing[j].strategy.id) {
-                   $scope.strategies.push($scope.defaultStrategies[i].name);
+
+            for (var j = 0; j < 4; j++) {
+                for (var i = 0; i < $scope.defaultStrategies.length; i++) {
+                    if ($scope.defaultStrategies[i].id === $scope.userAllData.actionPlan.connectingStrategyStrategizing[j].strategy.id) {
+                        $scope.strategies.push($scope.defaultStrategies[i].name);
+                        break;
+                    }
                 }
-            }}
+            }
 
 
             console.log($scope.strategies);
