@@ -97,16 +97,14 @@
             $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 3), $scope.userAllData.actionPlan.connectingStrategyStrategizing[2]));
             $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 4), $scope.userAllData.actionPlan.connectingStrategyStrategizing[3]));
             $scope.currentQuater = $scope.quaters[0];
-           
-        
+            
+            for (var j = 0; j < 4; j++){
             for (var i = 0; i < $scope.defaultStrategies.length; i++) {
-                for (var j = 0; j < 4; j++){
                 if ($scope.defaultStrategies[i].id === $scope.userAllData.actionPlan.connectingStrategyStrategizing[j].strategy.id) {
                    $scope.strategies.push($scope.defaultStrategies[i].name);
                 }
             }}
 
-            console.log($scope.strategies);
             _.each($scope.quaters, function (qut){
                 if(/*!$scope.currentQuater && */moment().isBetween(qut.start, qut.end, 'day', '[]')) {
                     $scope.currentQuater = qut;
