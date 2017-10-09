@@ -6,8 +6,9 @@
         .controller('PaymentsController', PaymentsController);
 
     /* @ngInject */
-    function PaymentsController($scope,paymentsService,NgTableParams) {
-
+    function PaymentsController($scope,paymentsService,NgTableParams, pageService) {
+        pageService
+        .setPageTitle('Account');
         function getValue(row) {
             return row[this.field];
         }

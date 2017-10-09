@@ -18,7 +18,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Cashflow Capacity Catch 22');
+            .setPageTitle('SLAPmindset');
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);

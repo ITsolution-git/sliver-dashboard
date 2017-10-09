@@ -26,7 +26,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('World Around You');
+            .setPageTitle('Action Plan');
 
         if ($scope.data.eventsByMonth.length == 0) {
             $scope.data.eventsByMonth = actionplanService.getDefaultEvents();

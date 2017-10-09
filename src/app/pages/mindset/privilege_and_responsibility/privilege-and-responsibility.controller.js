@@ -62,7 +62,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Privilege and Responsibility');
+            .setPageTitle('SLAPmindset');
 
         userService.getUser().then(function (user) {
             if (!_.isEmpty(user)) {

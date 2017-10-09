@@ -22,7 +22,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Are You Stuck?');
+            .setPageTitle('SLAPmindset');
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);

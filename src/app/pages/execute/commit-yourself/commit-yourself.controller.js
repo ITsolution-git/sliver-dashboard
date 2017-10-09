@@ -17,7 +17,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Action Plan');
+            .setPageTitle('Execute Prep');
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);

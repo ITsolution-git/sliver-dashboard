@@ -6,8 +6,9 @@
         .controller('SlapWorldController', SlapWorldController);
 
     /* @ngInject */
-    function SlapWorldController($scope, $state) {
-
+    function SlapWorldController($scope, $state, pageService) {
+        pageService
+        .setPageTitle('SLAPworld');
 
     }
 }());

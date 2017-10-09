@@ -21,7 +21,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Your Commitment To Us');
+            .setPageTitle('SLAPmindset');
 
 
 

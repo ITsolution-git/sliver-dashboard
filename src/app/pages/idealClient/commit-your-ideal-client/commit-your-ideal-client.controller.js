@@ -55,7 +55,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Statement');
+            .setPageTitle('Ideal Client');
 
         function sendData(direction) {
 

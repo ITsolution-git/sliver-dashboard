@@ -28,7 +28,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('SLAP | Personal Expenses');
+            .setPageTitle('1 Year Goal');
 
         function addNewExpense(model) {
 
