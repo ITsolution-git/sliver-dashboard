@@ -105,6 +105,8 @@
                 }
             }}
 
+
+            console.log($scope.strategies);
             _.each($scope.quaters, function (qut){
                 if(/*!$scope.currentQuater && */moment().isBetween(qut.start, qut.end, 'day', '[]')) {
                     $scope.currentQuater = qut;
