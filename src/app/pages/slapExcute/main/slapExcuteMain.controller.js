@@ -87,7 +87,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'SLAPexcute', path: 'main'})
-            .setPageTitle("SLAPExcute");
+            .setPageTitle("Execute");
         
         $timeout(activate);
         function activate() {
