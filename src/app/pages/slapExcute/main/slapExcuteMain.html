@@ -133,9 +133,13 @@
 		
 	</section>
 
-	<div class="md-toolbar-tools">You are using {{strategies[currentQuater.nth - 1]}} to connect with your Ideal Client to Hit Your Quarterly Goals</div>
+	<md-card layout="row">
+		<md-card-content class="strategy-info">
+			You are using {{strategies[currentQuater.nth - 1]}} to connect with your Ideal Client to Hit Your Quarterly Goals
+		</md-card-content>
+	</md-card>
 
-	<section layout="column" layout="column" ng-if="mainView=='tab'">
+	<section layout="column" ng-if="mainView=='tab'">
 		<md-toolbar>
 			<div class="md-toolbar-tools" layout="row">
 				<md-tabs md-selected="tabs.selectedIndex" flex="50">
