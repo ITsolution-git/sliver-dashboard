@@ -115,7 +115,7 @@
                     console.log(err);
                 });
             }
-            commonDialogService.openDeleteItemDialog(event, 'Do you really want to delete?', success);
+            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this?', 'Delete', success);
 
         }
 

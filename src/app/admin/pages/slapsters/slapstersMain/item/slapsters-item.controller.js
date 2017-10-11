@@ -6,7 +6,7 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($scope, $state, pageService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
+    function AdminSlapstersItemController($auth,$scope, $state, pageService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
@@ -30,6 +30,7 @@
             selectedUserID: '',
             deleteItem: deleteItem,
             createOrSave: createOrSave,
+            adminBuild: adminBuild,
 
             changeUser: changeUser,
 
@@ -564,6 +565,18 @@
                 
             });
         }
+
+        function adminBuild(item) {
+                        apiService.adminToken = $auth.getToken();
+            
+                        adminUserService.getToken(item._id).then(function (res){
+        
+                            $auth.setToken(res.data.token);
+                            $state.go('home');
+                            document.location.reload(true);
+                            
+                        });
+                    }
 
     }
 }());

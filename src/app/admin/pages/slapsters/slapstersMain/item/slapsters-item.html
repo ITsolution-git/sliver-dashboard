@@ -7,6 +7,9 @@
         <option ng-repeat="user in accounts" ng-value="user._id">{{$index+1}} YEAR  {{user.createdAt | date: 'yyyy-MM-dd'}}</option>
     </select>
     <div class="md-errors-spacer"></div>
+   </section>
+<section layout="row" layout-align="space-between right" style="display: flex; justify-content: flex-end; margin-right: 33px; margin-top: 10px;">
+    <md-button class="md-primary" style="line-height: 24px; min-height: 24px; margin: 0 8px;" ng-click="adminBuild(user)">Go into SLAP</md-button>
 </section>
 <md-card flex="100" class="p-es-30 m-es-40 slapster-at-a-glance"  ng-init="showAtAGlance = false">
     <section layout="row" layout-align="space-between center">
