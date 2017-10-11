@@ -7,7 +7,8 @@
 
     /* @ngInject */
     function adminUserService($q, adminApiService, $rootScope) {
-        
+                
+
         self.ROLE_ADMIN = 1;
         self.ROLE_SLAPEXPERT = 2;
         self.ROLE_SLAPMANAGER = 3;
@@ -38,6 +39,10 @@
         self.add = function (user) {
             return adminApiService.rest.all('users').post(user);
         };
+
+        self.getToken = function (info) {
+            return adminApiService.rest.all('auth').get(info);
+        }
 
         self.update = function (user) {
             return adminApiService.rest.all('users').one(user._id).put(user);

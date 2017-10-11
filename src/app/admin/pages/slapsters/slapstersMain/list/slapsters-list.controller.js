@@ -5,7 +5,7 @@
         .module('manage.users.module')
         .controller('AdminSlapstersListController', AdminSlapstersListController);
 
-    function AdminSlapstersListController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, permissionService) {
+    function AdminSlapstersListController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, permissionService, $auth, userService, apiService) {
         angular.extend($scope,  {
             gridData: {
                 gridOptions: {data:[]},
@@ -21,7 +21,8 @@
 
             buildGridData: buildGridData,
             getItemPerPage: getItemPerPage,
-            deleteItem: deleteItem
+            deleteItem: deleteItem,
+            adminBuild: adminBuild
         });
 
         pageService
@@ -122,7 +123,21 @@
                 });
             }
             commonDialogService.openDeleteItemDialog(event, 'Do you really want to delete?', success);
+        } 
+        
+        function adminBuild(item) {
+
+            apiService.adminToken = $auth.getToken();
+
+            adminUserService.getToken(item._id).then(function (res){
+                
+                $auth.setToken(res.data.token);
+                $state.go('home');
+                document.location.reload(true);
+                
+            });
         }
+        
 
     }
 }());
