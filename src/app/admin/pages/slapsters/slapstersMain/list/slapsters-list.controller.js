@@ -27,7 +27,7 @@
 
         pageService
             .reset()
-            .addCrumb({name: 'Slpasters', path: 'slapsters.list'})
+            .addCrumb({name: 'Slapsters', path: 'slapsters.list'})
             .setPageTitle('Slapsters');
 
 
