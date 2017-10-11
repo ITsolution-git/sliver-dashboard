@@ -369,6 +369,7 @@ md-headline {
 .flex-tool {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 15px;
   & md-tabs {
     flex-grow: 1;
   }
@@ -444,6 +445,7 @@ md-headline {
       margin-bottom: 20px;
     }
   }
+
 
 }
 
@@ -535,6 +537,10 @@ md-headline {
       }
 
     }
+
+    .over-table {
+      overflow-x: scroll;
+    }
   }
 
   .slap-color {
@@ -580,9 +586,22 @@ md-headline {
     font-size: 1vw;
   }
 
+  .over-table {
+    overflow-x: scroll;
+  }
+
   .sect-name {
     font-size: 2vw;
   }
+  .item-hidden-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    & span {
+      font-size: 14px;
+    }
+  }
+
 
 }
 
@@ -603,6 +622,18 @@ md-headline {
       flex-grow: 1;
       width: 70%;
     }
+  }
+
+  .item-hidden-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    & span {
+      font-size: 14px;
+    }
+  }
+  .sel-name {
+    margin-right: 15px;
   }
 }
 
@@ -633,4 +664,47 @@ md-headline {
       width: 70%;
     }
   }
+
+  .progress-ui {
+    display: none;
+  }
+
+  .sel-name {
+    font-size: 3.5vw !important;
+    margin-right: 5px;
+  }
+  .sales-un {
+    font-size: 3.5vw !important;
+  }
+
+  .items-tbody td{
+    vertical-align: middle !important;
+    font-size: 12px;
+  }
+
+
+  .text-color-main button{
+    font-size: 12px;
+    min-height: 25px;
+    min-width: 80px;
+    line-height: 25px;
+  }
+
+  .item-results {
+  }
+
+
+}
+
+.item-hidden-text {
+  display: flex;
+  justify-content: center;
+}
+
+.progress-ui {
+  margin-right: 5px;
+}
+
+.sel-name {
+  margin-right: 15px;
 }

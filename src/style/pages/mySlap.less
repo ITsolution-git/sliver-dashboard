@@ -123,7 +123,15 @@
     min-height: 50px;
 }
 
+.print-logo {
+    position: absolute;
+    visibility: hidden;
+}
+
 @media print {
+
+    body {color: red;}
+
     @page { 
         size: auto; 
         margin: 0mm;
@@ -131,6 +139,13 @@
 
     body {
         min-height: 0;
+    }
+
+    .print-logo {
+        margin-top: 20px;
+        width: 60px;
+        position: relative;
+        visibility: visible;
     }
     .slap-header {
         display: none;
@@ -196,12 +211,17 @@
 
     .show-summary {
         display: none;
-        // margin-top: -50px;
     }
 
     .list-quater {
         margin-top: 50px; 
         display: flex;
         height: 100px;
+    }
+
+
+    .fourth-step {
+        padding-top: 20px;
+        page-break-inside: avoid;
     }
 }
