@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('manage.users.module')
-        .controller('AdminSlapstersItemController', AdminSlapstersItemController);
+        .module('reports.archivedAccounts.module')
+        .controller('AdminArchivedAccountsItemController', AdminArchivedAccountsItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($scope, $state, pageService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
+    function AdminArchivedAccountsItemController($scope, $state, pageService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
@@ -113,7 +113,7 @@
         pageService
             .reset()
             .setShowBC(true)
-            .addCrumb({name: 'Slapster', path: 'slapsters.list'});
+            .addCrumb({name: 'Reports', path: 'archive.list'});
 
         $timeout(activate);
         function activate() {
@@ -320,15 +320,14 @@
             var success = function(){
 
                 adminUserService.delete($scope.user).then(function() {
-                    toaster.pop({type: 'success', body: 'User archived.'});
-                    $state.go('users.list');
+                    toaster.pop({type: 'success', body: 'User removed.'});
+                    $state.go('archive.list');
                 })
                 .catch(function(err) {
                     console.log(err);
                 });
             }
-            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Archive', success);
-
+            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Delete', success);
         }
 
         function changeUser(user_id) {
@@ -550,7 +549,7 @@
                 .textContent('Are you sure you want to remove this account?')
                 .ariaLabel('Archive')
                 .targetEvent($event)
-                .ok('Archive Account')
+                .ok('Delete')
                 .cancel('No');
 
             $mdDialog.show(confirm).then(function() {

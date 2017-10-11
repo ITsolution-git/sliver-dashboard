@@ -67,14 +67,14 @@
             var success = function(){
 
                 adminUserService.delete($scope.user).then(function() {
-                    toaster.pop({type: 'success', body: 'User deleted.'});
+                    toaster.pop({type: 'success', body: 'User archived.'});
                     $state.go('users.list');
                 })
                 .catch(function(err) {
                     console.log(err);
                 });
             }
-            commonDialogService.openDeleteItemDialog(event, 'Do you really want to delete?', success);
+            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Archive', success);
 
         }
 

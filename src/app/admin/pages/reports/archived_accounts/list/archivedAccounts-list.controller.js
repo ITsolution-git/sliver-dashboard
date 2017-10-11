@@ -2,16 +2,16 @@
     'use strict';
 
     angular
-        .module('manage.users.module')
-        .controller('AdminSlapstersListController', AdminSlapstersListController);
+        .module('reports.archivedAccounts.module')
+        .controller('AdminArchivedAccountsListController', AdminArchivedAccountsListController);
 
-    function AdminSlapstersListController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, permissionService, $auth, userService, apiService) {
+    function AdminArchivedAccountsListController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, permissionService, $auth, userService, apiService) {
         angular.extend($scope,  {
             gridData: {
                 gridOptions: {data:[]},
                 gridActions: {}
             },
-            slpasters: [],
+            users: [],
             searchKeyword: '',
             dataloaded: false,
             dataReady: false,
@@ -21,42 +21,29 @@
 
             buildGridData: buildGridData,
             getItemPerPage: getItemPerPage,
-            deleteItem: deleteItem,
-            adminBuild: adminBuild
+            deleteItem: deleteItem
         });
 
         pageService
             .reset()
-            .addCrumb({name: 'Slpasters', path: 'slapsters.list'})
-            .setPageTitle('Slapsters');
+            .addCrumb({name: 'Archive', path: 'archive.list'})
+            .setPageTitle('Archived Accounts');
 
 
         $timeout(activate);
         function activate() {
             reloadData();
-            
         }
+
         function getItemPerPage(value) {
             $scope.itemPerPage = value;
         }
+
         function reloadData() {
             $scope.dataloaded = false;
             adminUserService.list()
             .then(function (response) {
-                var slapsters = response.data.filter(function(user) {
-                    return user.role == 4;
-                });
-                slapsters = permissionService.filterSlapstersByPermission(slapsters);
-
-                var accounts = _.groupBy(slapsters, function(user) { return user.businessName; });
-                $scope.slpasters = [];
-                _.each(accounts, function(account){
-                    $scope.slpasters.push({
-                        current: account[0],  //TODO: select appropriate slapsters
-                        accounts: account
-                    });
-                });
-                
+                $scope.users = response.data;
                 $scope.dataloaded = true;
                 buildGridData();
             });
@@ -65,13 +52,13 @@
     
         function buildGridData() {
             var data = {}; 
+            
             $scope.dataReady = false;
             $timeout(function(){
 
-                var filtered = $scope.slpasters.filter(function(slapster){
+                var filtered = $scope.users.filter(function(user){
                     var valid = false;
-                    var user = slapster.current;
-                    if (user.status === 'deleted') return valid;
+                    
                     if ($scope.searchKeyword.trim() != ''){
                             if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
@@ -81,23 +68,17 @@
                             valid = true;
                             if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                    } else { valid = true; }
+                        }else if (user.status === 'archived') valid = true;
+                        
                     return valid;
                 })
 
-                data.data =  [];
-                _.each(filtered, function(slapster){
-                    var user = slapster.current;
-                    
+                data.data = filtered.map(function(user){
                     var role = _.find($scope.ROLES, {id: user.role});
                     user.displayRole = role ? role.name : '';
                     var status = _.find($scope.STATUSES, {id: user.status});
                     user.displayStatus = status ? status.name : '';
-
-
-                    user.countslapyear = slapster.accounts.length;
-                    
-                    data.data.push(user);
+                    return user;
                 });
 
                 data.urlSync = false;

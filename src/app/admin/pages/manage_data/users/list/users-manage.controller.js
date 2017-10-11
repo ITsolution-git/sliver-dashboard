@@ -58,6 +58,7 @@
 
                 var filtered = $scope.users.filter(function(user){
                     var valid = false;
+                    if (user.status === 'archived') return valid;
                     if ($scope.searchKeyword.trim() != ''){
                             if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;

@@ -11,7 +11,7 @@
 
         me.user = null;
         me.rolePermModel = [
-            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers']},
+            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
             {role: self.ROLE_SLAPEXPERT, perms: ['canAdmin', 'canSlpasters', 'canEmailTemplates']},
             {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports', 'canUsers']},
             {role: self.ROLE_SLAPSTER, perms: ['canBuild']},
@@ -26,7 +26,7 @@
             {permName: 'canEmailTemplates', 'sref': 'emailtemplates.list', 'name': 'Email Templates'},
             {permName: 'canUsers', 'sref': 'users.list', 'name': 'Users'},
             {permName: 'canAdmin', sref: 'admin.home', 'name': 'Admin'},
-
+            {permName: 'canDelete', 'sref': 'archive.list', 'name': 'Archived Accounts'},
             {permName: 'canBuild', 'sref': 'home', 'name': 'Build'},
             
         ];
@@ -35,7 +35,8 @@
             {
                 menuName: 'Reports', 
                 children: [
-                    {menuName: 'Build Reports', needPerm: 'canBuildReports'}
+                    {menuName: 'Build Reports', needPerm: 'canBuildReports'},
+                    {menuName: 'Archived Accounts', needPerm: 'canDelete'},
                 ]
             },
             {

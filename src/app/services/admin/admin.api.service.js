@@ -43,9 +43,9 @@
                         params = params || {};
                         //console.log(element, operation, what, url, headers, params);
                         // params['access-token'] = $auth.getToken();
-                        if (apiService.adminToken != '') {
+                        if (apiService.adminToken != undefined) 
                             headers.AdminToken = apiService.adminToken;
-                        }
+                        
                         headers.Authorization = 'Bearer ' + token;
                     }
                 });
