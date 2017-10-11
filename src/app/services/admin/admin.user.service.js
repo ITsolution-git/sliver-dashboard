@@ -17,7 +17,6 @@
 
         self.STATUS_ACTIVE = 'active';
         self.STATUS_INACTIVE = 'inactive';
-        self.STATUS_DELETED = 'deleted';
 
         self.ROLES = [
             {id: 1, name: "Admin"},
@@ -28,8 +27,8 @@
 
         self.STATUSES = [
             {id: 'active', name: "Active"},
-            {id: 'inactive', name: "Inactive"},
-            {id: 'deleted', name: "Deleted"}];
+            {id: 'inactive', name: "Inactive"}
+            ];
 
         self.get = function (id) {
             // console.log(user);
