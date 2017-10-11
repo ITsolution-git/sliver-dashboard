@@ -22,7 +22,6 @@
             buildGridData: buildGridData,
             getItemPerPage: getItemPerPage,
             deleteItem: deleteItem,
-            adminBuild: adminBuild
         });
 
         pageService
@@ -122,21 +121,21 @@
                     console.log(err);
                 });
             }
-            commonDialogService.openDeleteItemDialog(event, 'Do you really want to delete?', success);
+            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Archive', success);
         } 
         
-        function adminBuild(item) {
+        // function adminBuild(item) {
 
-            apiService.adminToken = $auth.getToken();
+        //     apiService.adminToken = $auth.getToken();
 
-            adminUserService.getToken(item._id).then(function (res){
+        //     adminUserService.getToken(item._id).then(function (res){
                 
-                $auth.setToken(res.data.token);
-                $state.go('home');
-                document.location.reload(true);
+        //         $auth.setToken(res.data.token);
+        //         $state.go('home');
+        //         document.location.reload(true);
                 
-            });
-        }
+        //     });
+        // }
         
 
     }
