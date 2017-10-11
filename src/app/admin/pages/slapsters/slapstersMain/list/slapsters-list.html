@@ -109,7 +109,7 @@
                             {{item.countslapyear}}
                         </td>
                         <td>
-                            <button ng-click="adminBuild(item)">Login As User</button>
+                            <md-button class="md-primary" style="line-height: 24px; min-height: 24px; margin: 0 8px;" ng-click="adminBuild(item)">Go into SLAP</md-button>
                             <a ui-sref="slapsters.item({bizname: item.businessName, user_id:item._id, mode:'view'})" style="margin:0px">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </a>
