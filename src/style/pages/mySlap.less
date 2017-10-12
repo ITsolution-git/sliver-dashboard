@@ -1,3 +1,5 @@
+* { -webkit-print-color-adjust: exact; }
+
 .print {
     width: 72px;
     height: 24px;
@@ -128,17 +130,29 @@
     visibility: hidden;
 }
 
-@media print {
+#footer {
+    visibility: hidden;
+}
+.print-footer {
+    display: none;
+}
 
-    body {color: red;}
 
-    @page { 
-        size: auto; 
-        margin: 0mm;
-    }
+@media print and (color){
 
     body {
         min-height: 0;
+    }
+
+    @page {
+        size: auto;
+        margin: 5mm;
+    }
+
+
+
+    .logo .panel-title {
+        color: red !important;
     }
 
     .print-logo {
@@ -163,7 +177,7 @@
     .slap-container {
         padding-top: 0;
     }
-    
+
     .panel-default {
         border: none;
     }
@@ -173,15 +187,29 @@
     }
 
     .p-w-xs-70 {
-        margin-top: 20px; 
+        margin-top: 20px;
         font-size: 12px;
-        height: 200px;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+    }
+    .bord {
+        border-bottom: 4px solid #ebeceb;
     }
 
     .panel .panel-default {
         margin-bottom: 0;
+    }
+
+    .slap-page p , span {
+        color: #576875 !important;
+    }
+
+    .aqua-green {
+        color: #50cfe3 !important;
+    }
+
+    .step3-summary .content-box .grey-circle-box .grey-circle {
+        background-color: rgba(55, 60, 55, 0.1) !important;
     }
     .slap-page .panel {
         margin: 0;
@@ -194,7 +222,7 @@
         display: none;
     }
     .panel-body {
-        padding: 0; 
+        padding: 0;
     }
     .years {
         display: none;
@@ -214,14 +242,14 @@
     }
 
     .list-quater {
-        margin-top: 50px; 
+        margin-top: 50px;
         display: flex;
         height: 100px;
     }
 
 
     .fourth-step {
-        padding-top: 20px;
         page-break-inside: avoid;
     }
+
 }
