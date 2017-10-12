@@ -70,7 +70,7 @@
                 var filtered = $scope.slpasters.filter(function(slapster){
                     var valid = false;
                     var user = slapster.current;
-                    if (user.status === 'deleted') return valid;
+                    if (user.status === 'archived') return valid;
                     if ($scope.searchKeyword.trim() != ''){
                             if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
