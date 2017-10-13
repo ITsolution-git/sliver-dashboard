@@ -354,8 +354,8 @@
 					<section layout="row" layout-align="space-between center">
 						<a ng-if="!revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail"><i class="material-icons">add_circle</i></a>
 						<a ng-if="revenueGrid.showDetail" ng-click="revenueGrid.showDetail=!revenueGrid.showDetail"><i class="material-icons">remove_circle</i></a>
-
-						<section ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" class="sect-name sel-name">{{revenueGrid.revenue.name}}</section>
+						
+						<section flex ng-click="revenueGrid.showDetail=!revenueGrid.showDetail" class="sect-name sel-name">{{revenueGrid.revenue.name}}</section>
 
 						<section flex class="progress-ui" style="position:relative">
 							<uib-progress style="display: flex;" class="two-line-bar" 	max="revenueGrid.totalSalesItemCount" ng-if="revenueGrid.totalSalesItemCount != 0">
