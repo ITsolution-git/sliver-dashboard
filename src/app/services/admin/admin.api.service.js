@@ -5,14 +5,15 @@
         .module('app.services')
         .service('adminApiService', adminApiService);
 
-    function adminApiService($rootScope, $auth, Restangular, toaster, CONFIG) {
+    function adminApiService($rootScope, $auth, Restangular, toaster, CONFIG, apiService) {
         var me = this;
-
+        
         // --- vars ---
 
         me.headers = {
             'Content-Type': 'application/json'
         };
+
 
         me.rest = Restangular.withConfig(function (RestangularConfigurer) {
             RestangularConfigurer
@@ -40,8 +41,11 @@
                     var token = $auth.getToken();
                     if (token) {
                         params = params || {};
-                        // console.log(element, operation, what, url, headers, params);
+                        //console.log(element, operation, what, url, headers, params);
                         // params['access-token'] = $auth.getToken();
+                        if (apiService.adminToken != undefined) 
+                            headers.AdminToken = apiService.adminToken;
+                        
                         headers.Authorization = 'Bearer ' + token;
                     }
                 });

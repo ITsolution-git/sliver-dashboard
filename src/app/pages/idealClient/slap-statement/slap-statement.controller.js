@@ -21,7 +21,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('SLAPstatement');
+            .setPageTitle('Ideal Client');
 
 
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {

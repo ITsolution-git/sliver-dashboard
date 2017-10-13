@@ -17,7 +17,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Your Business With/Without a SLAP');
+            .setPageTitle('SLAPmindset');
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);

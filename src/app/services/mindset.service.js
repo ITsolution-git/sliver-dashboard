@@ -8,9 +8,9 @@
     function mindsetService() {
         var _sliders = [
             {
-                name: 'I Know I Am In Charge Of My Business Success',
-                left: 'I am a victim of circumstance',
-                right: 'I am SO IN CHARGE!!',
+                name: 'I totally understand that accepting structure and accountability is necessary to succeed',
+                left: 'I don\'t really think I need help',
+                right: 'Please! I am so ready!',
                 value: 0,
                 options: {
                     floor: -5,
@@ -21,9 +21,9 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'every day i evaluate my Actions to see if they are getting my results',
-                left: 'What/My actions = my results?',
-                right: 'I know exactly what to do',
+                name: 'I will ask for help when I need it',
+                left: 'Asking for help is really hard for me',
+                right: 'I will ask for help!',
                 value: 0,
                 options: {
                     floor: -5,
@@ -34,9 +34,9 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'I am proactive, not reactive',
-                left: 'I can never catch my breath',
-                right: 'I run my day and my life',
+                name: 'I will show up for my SLAPexpert and SLAPmanager calls',
+                left: 'I have a hard time sticking to routine',
+                right: 'You can count on me',
                 value: 0,
                 options: {
                     floor: -5,
@@ -47,9 +47,9 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'I say no more than I say yes.',
-                left: 'What does no mean?',
-                right: 'No is my favorite word!',
+                name: 'I will use SLAPschool and SLAPworld',
+                left: 'Maybe',
+                right: 'I am so excited to connect with the community and resources!',
                 value: 0,
                 options: {
                     floor: -5,
@@ -60,9 +60,9 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'I spend my time and money well',
-                left: 'I don\'t even know how I spend my time and money',
-                right: 'Got it!',
+                name: 'I will login to SLAPcenter a minimum of once a week and update my Actions and Results',
+                left: 'Probably not',
+                right: 'You bet!',
                 value: 0,
                 options: {
                     floor: -5,
@@ -77,9 +77,9 @@
 
         var _stuckSliders = [
             {
-                name: 'I Know I Am In Charge Of My Business Success',
-                left: 'i am a victim of circumstance',
-                right: 'i am SO IN CHARGE!!',
+                name: 'I know I am in charge of my business success',
+                left: 'I am a victim of my circumstance',
+                right: 'I take ownership of my reality',
                 value: 0,
                 options: {
                     floor: -5,
@@ -90,9 +90,9 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'every day i evaluate my Actions to see if they are getting my results',
-                left: 'What/My actions = my results?',
-                right: 'I know exactly what to do',
+                name: 'I ensure my daily time is spent on activities getting me results',
+                left: 'I am so busy I don\'t have time to think',
+                right: 'I am completely strategic',
                 value: 0,
                 options: {
                     floor: -5,
@@ -105,7 +105,7 @@
             },{
                 name: 'I am proactive, not reactive',
                 left: 'I can never catch my breath',
-                right: 'I run my day and my life',
+                right: 'I am always a step ahead',
                 value: 0,
                 options: {
                     floor: -5,
@@ -116,9 +116,9 @@
                     hideLimitLabels: true
                 }
             },{
-                name: 'I say no more than I say yes.',
-                left: 'What does no mean?',
-                right: 'No is my favorite word!',
+                name: 'I say no more than I say yes',
+                left: 'I say Yes ALL the time',
+                right: 'I say No ALL the time',
                 value: 0,
                 options: {
                     floor: -5,
@@ -130,8 +130,8 @@
                 }
             },{
                 name: 'I spend my time and money well',
-                left: 'I don\'t even know how I spend my time and money',
-                right: 'Go it!',
+                left: 'I honestly don\'t know how I spend all my time and money',
+                right: 'I have a time and money budget!',
                 value: 0,
                 options: {
                     floor: -5,

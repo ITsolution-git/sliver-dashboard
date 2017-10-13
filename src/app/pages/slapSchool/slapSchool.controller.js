@@ -6,7 +6,9 @@
         .controller('SlapSchoolController', SlapSchoolController);
 
     /* @ngInject */
-    function SlapSchoolController($scope, $state, data, toaster) {
+    function SlapSchoolController($scope, $state, data, toaster, pageService) {
+        pageService
+        .setPageTitle('SLAPschool');
         
         var arr = [];
         var webinars = data.webinars;
@@ -26,6 +28,8 @@
         $scope.duration_ = 0;
 
 
+
+
         $scope.isStart = function(start, duration, e, url) {
             
             e.preventDefault();
@@ -38,7 +42,8 @@
             else {
                 toaster.pop({type: 'success', body: "This webinar is not live right now.  Please come back and join us when it starts!  It will be good!", timeout: 3000})
             }
-        }   
+        }  
+
     }
 
 }());

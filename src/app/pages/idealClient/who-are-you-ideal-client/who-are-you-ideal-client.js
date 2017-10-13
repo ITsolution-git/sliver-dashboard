@@ -184,7 +184,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Who Are Your Ideal Clients');
+            .setPageTitle('Ideal Client');
 
 
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {

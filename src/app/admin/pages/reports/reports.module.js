@@ -4,6 +4,7 @@
     angular
         .module('adminapp.pages.reports', [
             'reports.financialTracker.module',
-            'reports.reportBuilder.module'
+            'reports.reportBuilder.module',
+            'reports.archivedAccounts.module'
         ]);
 }());

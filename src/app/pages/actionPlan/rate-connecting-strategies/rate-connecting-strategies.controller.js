@@ -42,7 +42,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle(stepService.getActiveStep().name);
+            .setPageTitle('Action Plan');
 
 
         function sendData(direction) {

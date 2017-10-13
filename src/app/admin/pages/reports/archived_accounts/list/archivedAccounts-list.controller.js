@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-        .module('manage.users.module')
-        .controller('AdminUsersManageController', AdminUsersManageController);
+        .module('reports.archivedAccounts.module')
+        .controller('AdminArchivedAccountsListController', AdminArchivedAccountsListController);
 
-    function AdminUsersManageController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService) {
+    function AdminArchivedAccountsListController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, permissionService, $auth, userService, apiService) {
         angular.extend($scope,  {
             gridData: {
                 gridOptions: {data:[]},
@@ -26,8 +26,8 @@
 
         pageService
             .reset()
-            .addCrumb({name: 'Users', path: 'users.list'})
-            .setPageTitle('Manage Users');
+            .addCrumb({name: 'Archive', path: 'archive.list'})
+            .setPageTitle('Archived Accounts');
 
 
         $timeout(activate);
@@ -58,7 +58,7 @@
 
                 var filtered = $scope.users.filter(function(user){
                     var valid = false;
-                    if (user.status === 'archived') return valid;
+                    
                     if ($scope.searchKeyword.trim() != ''){
                             if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
@@ -68,7 +68,8 @@
                             valid = true;
                             if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
-                        }else { valid = true; }
+                        }else if (user.status === 'archived') valid = true;
+                        
                     return valid;
                 })
 
@@ -102,8 +103,22 @@
                     console.log(err);
                 });
             }
-            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Archive', success);
+            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Delete',  success);
+        } 
+        
+        function adminBuild(item) {
+
+            apiService.adminToken = $auth.getToken();
+
+            adminUserService.getToken(item._id).then(function (res){
+                
+                $auth.setToken(res.data.token);
+                $state.go('home');
+                document.location.reload(true);
+                
+            });
         }
+        
 
     }
 }());

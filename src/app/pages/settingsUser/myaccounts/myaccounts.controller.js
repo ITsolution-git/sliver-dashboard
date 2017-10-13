@@ -22,7 +22,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('My accounts');
+            .setPageTitle('Account');
 
         activate();
         $scope.onFileSelect = function (file) {     

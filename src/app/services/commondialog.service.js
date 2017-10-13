@@ -10,14 +10,14 @@
         var service = this;
         service.openDeleteItemDialog = openDeleteItemDialog;
 
-        function openDeleteItemDialog($event, title, success, fail) {
+        function openDeleteItemDialog($event, title, ok, success, fail) {
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                 .title('Confirm Delete')
                 .textContent(title)
                 .ariaLabel('Delete')
                 .targetEvent($event)
-                .ok('Delete')
+                .ok(ok)
                 .cancel('No');
 
             $mdDialog.show(confirm).then(success, function() {

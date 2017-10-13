@@ -9,6 +9,7 @@
         var me = this;
 
         // --- vars ---
+        me.adminToken;
 
         me.headers = {
             'Content-Type': 'application/json'
@@ -37,7 +38,7 @@
                     var token = $auth.getToken();
                     if (token) {
                         params = params || {};
-                        // console.log(element, operation, what, url, headers, params);
+                        //console.log(element, operation, what, url, headers, params);
                         // params['access-token'] = $auth.getToken();
                         headers.Authorization = 'Bearer ' + token;
                     }

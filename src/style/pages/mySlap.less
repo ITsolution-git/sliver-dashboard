@@ -1,3 +1,5 @@
+* { -webkit-print-color-adjust: exact; }
+
 .print {
     width: 72px;
     height: 24px;
@@ -123,14 +125,37 @@
     min-height: 50px;
 }
 
-@media print {
-    @page { 
-        size: auto; 
-        margin: 0mm;
-    }
+.print-logo {
+    position: absolute;
+    visibility: hidden;
+}
+
+#footer {
+    visibility: hidden;
+}
+.print-footer {
+    display: none;
+}
+
+
+@media print and (color){
 
     body {
         min-height: 0;
+    }
+
+    @page {
+        size: auto;
+        margin: 5mm;
+    }
+
+
+
+    .print-logo {
+        margin-top: 20px;
+        width: 60px;
+        position: relative;
+        visibility: visible;
     }
     .slap-header {
         display: none;
@@ -148,7 +173,7 @@
     .slap-container {
         padding-top: 0;
     }
-    
+
     .panel-default {
         border: none;
     }
@@ -158,15 +183,29 @@
     }
 
     .p-w-xs-70 {
-        margin-top: 20px; 
+        margin-top: 20px;
         font-size: 12px;
-        height: 200px;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+    }
+    .bord {
+        border-bottom: 4px solid #ebeceb;
     }
 
     .panel .panel-default {
         margin-bottom: 0;
+    }
+
+    .slap-page p , span {
+        color: #576875 !important;
+    }
+
+    .aqua-green {
+        color: #50cfe3 !important;
+    }
+
+    .step3-summary .content-box .grey-circle-box .grey-circle {
+        background-color: rgba(55, 60, 55, 0.1) !important;
     }
     .slap-page .panel {
         margin: 0;
@@ -179,7 +218,7 @@
         display: none;
     }
     .panel-body {
-        padding: 0; 
+        padding: 0;
     }
     .years {
         display: none;
@@ -196,12 +235,20 @@
 
     .show-summary {
         display: none;
-        // margin-top: -50px;
     }
 
     .list-quater {
-        margin-top: 50px; 
+        margin-top: 50px;
         display: flex;
         height: 100px;
+    }
+
+
+    .fourth-step {
+        page-break-inside: avoid;
+    }
+
+    .revenue-summary li {
+        page-break-inside: avoid;
     }
 }

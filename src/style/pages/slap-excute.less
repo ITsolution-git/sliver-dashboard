@@ -1,217 +1,215 @@
 .slap-excute {
-	margin: 20px;	
-	// color: @color-text-main;
-	font-family: MuseoSansCyrl;
-  	font-size: 18px;
-  	font-weight: 200;
-  	line-height: 1.78;
-  	text-align: left;
-  	color: #373c37;
-	p, span {
-		// font-size: 24px;
-		// font-weight: 300;
-		// line-height: 1.17;
-		// letter-spacing: -0.5px;
-		// color: #33444d;
-	}
-	small {
-		font-size: 18px;
-		font-weight: 100;
-		line-height: 1.56;
-		text-align: left;
-		color: #576875;
-		display: flex;
-		text-align: center;
-	}
+  margin: 20px;
+  // color: @color-text-main;
+  font-family: MuseoSansCyrl;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.78;
+  text-align: left;
+  color: #373c37;
+  p, span {
+    // font-size: 24px;
+    // font-weight: 300;
+    // line-height: 1.17;
+    // letter-spacing: -0.5px;
+    // color: #33444d;
+  }
+  small {
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 1.56;
+    text-align: left;
+    color: #576875;
+    display: flex;
+    text-align: center;
+  }
 
-	.progress-span {
-		font-size: 10px;
-		font-weight: 200;
-		line-height: 2.4;
-		text-align: left;
-  		color: #373c37;
-		padding-top: 10px;
-		  
-	}
+  .progress-span {
+    font-size: 10px;
+    font-weight: 200;
+    line-height: 2.4;
+    text-align: left;
+    color: #373c37;
+    padding-top: 10px;
 
-	md-card {
-		color: @color-text-main;
-	}
-	.layout-row>.flex-20 {
-	  	font-family: MuseoSansCyrl;
-  		font-size: 18px;
-  		font-weight: 200;
-  		line-height: 1.78;
-  		text-align: left;
-		color: #373c37;
-	}
+  }
 
-	.md-button {
-  		font-weight: 200;
-		color: @color-main-blue;
-		&.md-primary {
-    	border-radius: 30px;
-    	padding-left: 10px;
-		padding-right: 10px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		// padding: 10px;
-		// font-size: 15px;
-		
-	border: 1px solid @color-dark-gray;
-	  	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-		}
+  md-card {
+    color: @color-text-main;
+  }
+  .layout-row > .flex-20 {
+    font-family: MuseoSansCyrl;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 1.78;
+    text-align: left;
+    color: #373c37;
+  }
 
-		&[disabled] {
-		  color : rgba(0, 0, 0, 0.26);
-		  background-color: transparent;
-		}	
+  .md-button {
+    font-weight: 200;
+    color: @color-main-blue;
+    &.md-primary {
+      border-radius: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      // padding: 10px;
+      // font-size: 15px;
 
-	}
-.progress {
-	z-index: 1;
-	height: 16px;
-	font-family: MuseoSansCyrl;
-}
-	.one-line-bar.progress {
-		margin-bottom: 0px;
-		border-radius: 20px;
+      border: 1px solid @color-dark-gray;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    }
 
-		.progress-bar {
-			border-radius: 20px;
-			span {
-				float: right;
-				margin-right: 10px;
-			}
-		}
-	}
+    &[disabled] {
+      color: rgba(0, 0, 0, 0.26);
+      background-color: transparent;
+    }
 
-	.two-line-bar.progress {
-		margin-bottom: 0px;
-		border-radius: 10px;
-		top: 10px;
-		.progress-bar {
-			left: -2px;
-			border-radius: 10px;
-			&.actual {
-				height: 16px;
-  				border-radius: 100px;
-  				background-color: @color-progress;
-			}	
-			&.projected {
-				position: relative;
-				z-index: -1;
-				height: 16px;
-				border-radius: 100px;
-				background-color: @color-sales;
-			}
-		}
-	}
-	.progress-container {
-		position: relative;
-		width: 100%;
-		height: 200px;
-		display: flex;
-		justify-content: center;
-		.progress-text-result {
-			width: 150px;
-			text-align: center;
-			position: relative;
-			//padding: 15px;
-			margin-right: 30px;
-			p {
-				font-size: 1.3em;
-				font-weight: 200;
-			}
-			small {
-				text-transform: uppercase;
-				font-size: 0.6em;
-				display: flex;
-				text-align: center;
-			}
-		}
+  }
+  .progress {
+    z-index: 1;
+    height: 16px;
+    font-family: MuseoSansCyrl;
+  }
+  .one-line-bar.progress {
+    margin-bottom: 0px;
+    border-radius: 20px;
 
-		.progress-text {
-			width: 150px;
-			text-align: center;
-			position: relative;
-			//padding: 15px;
-			padding: 0 10px;
-			margin-right: 30px;
-			p {
-				font-size: 1.3em;
-				font-weight: 200;
-			}
-			small {
-				text-transform: uppercase;
-				font-size: 0.6em;
-				display: flex;
-				text-align: center;
-			}
-		}
+    .progress-bar {
+      border-radius: 20px;
+      span {
+        float: right;
+        margin-right: 10px;
+      }
+    }
+  }
 
-	}
+  .two-line-bar.progress {
+    margin-bottom: 0px;
+    border-radius: 10px;
+    top: 10px;
+    .progress-bar {
+      left: -2px;
+      border-radius: 10px;
+      &.actual {
+        height: 16px;
+        border-radius: 100px;
+        background-color: @color-progress;
+      }
+      &.projected {
+        position: relative;
+        z-index: -1;
+        height: 16px;
+        border-radius: 100px;
+        background-color: @color-sales;
+      }
+    }
+  }
+  .progress-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    .progress-text-result {
+      width: 150px;
+      text-align: center;
+      position: relative;
+      //padding: 15px;
+      margin-right: 30px;
+      p {
+        font-size: 1.3em;
+        font-weight: 200;
+      }
+      small {
+        text-transform: uppercase;
+        font-size: 0.6em;
+        display: flex;
+        text-align: center;
+      }
+    }
 
-	md-toolbar {
-		background-color: rgba(0, 0, 0, 0);
-		padding: 0px 8px 0px;
-	}
+    .progress-text {
+      width: 150px;
+      text-align: center;
+      position: relative;
+      //padding: 15px;
+      padding: 0 10px;
+      margin-right: 30px;
+      p {
+        font-size: 1.3em;
+        font-weight: 200;
+      }
+      small {
+        text-transform: uppercase;
+        font-size: 0.6em;
+        display: flex;
+        text-align: center;
+      }
+    }
 
-	.select-menu {
-		max-width: 160px;
-		margin-right: 10px;
-		margin-left: 14px;
-	}	
+  }
 
-	a.icon-btn {
-		color: @color-dark-gray;
-		cursor: pointer;
-		&:hover {
-			color: @color-aqua;
-		}
-	}
+  md-toolbar {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0px 8px 0px;
+  }
 
+  .select-menu {
+    max-width: 160px;
+    margin-right: 10px;
+    margin-left: 14px;
+  }
 
-	md-list-item:hover {
-			background-color: rgb(244, 244, 244);
-			transition: 1 ease-in-out 0.5s;
-			
-	}
-	
-	md-list-item.list-item-action {
-		border-left: 5px solid @color-action;
+  a.icon-btn {
+    color: @color-dark-gray;
+    cursor: pointer;
+    &:hover {
+      color: @color-aqua;
+    }
+  }
 
-		.progress-bar {
-			background-color: @color-action;
-		}
-	}
+  md-list-item:hover {
+    background-color: rgb(244, 244, 244);
+    transition: 1 ease-in-out 0.5s;
 
-	md-list-item.list-item-sales {
-		border-left: 5px solid @color-sales;
-		.progress-bar {
-			background-color: @color-sales;
-		}
-	}
+  }
 
-	md-list-item.list-item-reflextion {
-		border-left: 5px solid @color-reflextion;
-		.progress-bar {
-			background-color: @color-reflextion;
-		}
-    
-	}
+  md-list-item.list-item-action {
+    border-left: 5px solid @color-action;
+
+    .progress-bar {
+      background-color: @color-action;
+    }
+  }
+
+  md-list-item.list-item-sales {
+    border-left: 5px solid @color-sales;
+    .progress-bar {
+      background-color: @color-sales;
+    }
+  }
+
+  md-list-item.list-item-reflextion {
+    border-left: 5px solid @color-reflextion;
+    .progress-bar {
+      background-color: @color-reflextion;
+    }
+
+  }
 
   md-list-item:before {
     min-height: 0px;
   }
 }
 
-
 // Dialog Customize
 
 md-dialog.excute-dialog {
-	padding: 20px;
-	font-size: 16px;
+  padding: 20px;
+  font-size: 16px;
 
   a {
     cursor: pointer;
@@ -228,89 +226,485 @@ md-dialog.excute-dialog {
   }
 
   md-input-container {
-  	margin: 0px;
+    margin: 0px;
   }
   .md-label, md-slider-container span {
-  	color: @color-text-main;
+    color: @color-text-main;
   }
 
   md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple {
-  	color: @color-aqua;
-  	.md-icon {
-			background-color: @color-aqua;	
-  	}
+    color: @color-aqua;
+    .md-icon {
+      background-color: @color-aqua;
+    }
   }
 
   md-datepicker {
-  	input {
-  		min-width: 200px;
-  	}
+    input {
+      min-width: 200px;
+    }
   }
 
 }
 
 md-content.tab-content {
   // background: radial-gradient(farthest-corner at 60% 55%, white, #dfdee3); /* Standard syntax */
-	background: #f8f8f8;
+  background: #f8f8f8;
 }
-
 
 a {
   cursor: pointer;
 }
 
 .md-list-item-text {
-	outline: none;
+  outline: none;
 }
 
 md-select-menu md-content {
-	min-height: 300px;
+  min-height: 300px;
 }
-
 
 md-select span {
-	color: #373c37 !important;
+  color: #373c37 !important;
 }
 
-
 md-headline {
-	font-size: 24px;
-	font-weight: 900;
-	line-height: 1.17;
-	letter-spacing: -0.5px;
-	text-align: left;
-	color: #33444d;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.17;
+  letter-spacing: -0.5px;
+  text-align: left;
+  color: #33444d;
 }
 
 .text-color-strong {
-	font-family: MuseoSansCyrl;
-	font-size: 16px;
-	font-weight: 300;
-	line-height: 1;
-	color: #33444d;
+  font-family: MuseoSansCyrl;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  color: #33444d;
 }
 
 .round-progress-wrapper {
-	width: 30px !important;
-	position: static !important;
+  width: 30px !important;
+  position: static !important;
 }
+
 .inline-flx {
-	display: inline-flex;
+  display: inline-flex;
 }
 
-.quarter-menu{
-	min-height: 300px;
+.quarter-menu {
+  min-height: 300px;
 }
 
-.quarter-menu > md-select-menu{
-	min-height: 300px;
+.quarter-menu > md-select-menu {
+  min-height: 300px;
 }
 
 .review-res {
-	width: 15%;
-	padding: 0 20px;
+  width: 15%;
+  padding: 0 20px;
 }
 
 .btn-sal {
-	width: 10%;
+  width: 10%;
+}
+
+.prog {
+  display: flex;
+  & .text-color-strong {
+    flex-grow: 1;
+    width: 20%;
+    text-align: center;
+  }
+
+  & section {
+    flex-grow: 10;
+    width: 100%;
+  }
+
+  & button {
+    flex-grow: 1;
+    width: 20%;
+  }
+}
+
+.strategy-info {
+  font-weight: 200;
+}
+
+.flex-section {
+  display: flex;
+  justify-content: center;
+  //flex-wrap: wrap;
+}
+
+.flex-card {
+  max-width: 32%;
+  flex-grow: 1;
+  margin: 10px;
+  & md-card-content {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.card-text {
+  & span {
+    font-size: 1vw;
+  }
+  & small {
+    font-size: 1vw;
+  }
+  & p span {
+    font-size: 1vw;
+  }
+
+  & button {
+    font-size: 1vw;
+  }
+}
+
+.flex-tool {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  & md-tabs {
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1250px) {
+  .flex-card {
+    & md-card-content {
+      & section {
+        min-width: 50%;
+      }
+    }
+  }
+
+  .cycl-text {
+    width: 50% !important;
+    padding: 0 10px;
+    margin-left: -25%;
+    margin-right: 0 !important;
+    font-size: 1.2vw;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .flex-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  .flex-card {
+    max-width: 100%;
+    & md-card-content {
+      & section {
+        min-width: 50%;
+      }
+    }
+  }
+
+  .cycl-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50% !important;
+    padding: 0 10px;
+    //font-size: 1.2vw;
+  }
+
+  .card-text {
+    & span {
+      font-size: 2vw;
+    }
+    & small {
+      font-size: 2vw;
+    }
+    & p span {
+      font-size: 2vw;
+    }
+
+    & button {
+      font-size: 2vw;
+    }
+  }
+
+  .flex-tool {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    & md-tabs {
+      flex-basis: 100%;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+  }
+
+
+}
+
+.filter-type {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: right;
+  color: #33444d;
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .flex-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  .flex-card {
+    max-width: 100%;
+    & md-card-content {
+      & section {
+        min-width: 50%;
+      }
+    }
+  }
+
+  .cycl-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50% !important;
+    padding: 0 10px;
+    font-size: 4vw;
+  }
+
+  .card-text {
+    & span {
+      font-size: 3vw;
+    }
+    & small {
+      font-size: 3vw;
+    }
+    & p span {
+      font-size: 3vw;
+    }
+
+    & button {
+      font-size: 2.5vw;
+    }
+  }
+
+  .slap-excute .select-menu {
+    max-width: 100%;
+  }
+
+  .flex-tool {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    & md-tabs {
+      flex-basis: 40%;
+      margin-bottom: 20px;
+    }
+
+    & h4 {
+      flex-grow: 1;
+      flex-basis: 40%;
+      margin-bottom: 20px;
+    }
+
+    & md-tab {
+      font-size: 2vw;
+    }
+
+    .filter-type {
+      font-size: 3vw;
+      text-align: inherit;
+    }
+
+    & slap-color {
+
+      & span {
+        font-size: 2vw !important;
+      }
+      & slap-color-switch {
+        margin-bottom: 5px;
+      }
+
+    }
+
+    .over-table {
+      overflow-x: scroll;
+    }
+  }
+
+  .slap-color {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+  }
+
+  .type-flex {
+    display: flex;
+    & span {
+      font-size: 2vw;
+    }
+    & slap-color-switch span {
+      font-size: 2vw;
+    }
+
+  }
+
+  slap-list-item {
+    & span {
+      font-size: 3.5vw !important;
+      max-width: 40% !important;
+      & small {
+        font-size: 3vw !important;
+      }
+    }
+  }
+
+  .text-center {
+    padding: 0 !important;
+  }
+
+  .flex-filt {
+    margin: 10px;
+  }
+
+  .slap-color slap-color-switch {
+    margin-bottom: 5px;
+  }
+
+  .tesult-item section {
+    font-size: 1vw;
+  }
+
+  .over-table {
+    overflow-x: scroll;
+  }
+
+  .sect-name {
+    font-size: 2vw;
+  }
+  .item-hidden-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    & span {
+      font-size: 14px;
+    }
+  }
+
+
+}
+
+@media (min-width: 601px) and (max-width: 1130px) {
+  .prog {
+    & .text-color-strong {
+      flex-grow: 1;
+      width: 70%;
+      text-align: center;
+    }
+
+    & section {
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    & button {
+      flex-grow: 1;
+      width: 70%;
+    }
+  }
+
+  .item-hidden-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    & span {
+      font-size: 14px;
+    }
+  }
+  .sel-name {
+    margin-right: 15px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .slap-excute {
+    margin: 10px;
+  }
+
+  md-card {
+    margin: 5px;
+  }
+
+  .prog {
+    flex-direction: column;
+    align-self: center;
+
+    & .text-color-strong {
+      width: 90%;
+      text-align: center;
+    }
+
+    & section {
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    & button {
+      width: 70%;
+    }
+  }
+
+  .progress-ui {
+    display: none;
+  }
+
+  .sel-name {
+    font-size: 3.5vw !important;
+    margin-right: 5px;
+  }
+  .sales-un {
+    font-size: 3.5vw !important;
+  }
+
+  .items-tbody td{
+    vertical-align: middle !important;
+    font-size: 12px;
+  }
+
+
+  .text-color-main button{
+    font-size: 12px;
+    min-height: 25px;
+    min-width: 80px;
+    line-height: 25px;
+  }
+
+  .item-results {
+  }
+
+
+}
+
+.item-hidden-text {
+  display: flex;
+  justify-content: center;
+}
+
+.progress-ui {
+  margin-right: 5px;
+}
+
+.sel-name {
+  margin-right: 15px;
 }

@@ -66,8 +66,8 @@
                         <th sortable="email" class="sortable">
                             <span>Email</span>
                         </th>
-                        <th sortable="countslapyear" class="sortable">
-                            <span>SLAP YEAR</span>
+                        <th>
+                            <span>Status</span>
                         </th>
 
                         <!--<th class="st-sort-disable th-dropdown">
@@ -106,10 +106,11 @@
                             {{item.displayStatus}}
                         </td>-->
                         <td>
-                            {{item.countslapyear}}
+                            {{item.status}}
                         </td>
                         <td>
-                            <a ui-sref="slapsters.item({bizname: item.businessName, user_id:item._id, mode:'view'})" style="margin:0px">
+                            <!-- <md-button class="md-primary" style="line-height: 24px; min-height: 24px; margin: 0 8px;" ng-click="adminBuild(item)">Go into SLAP</md-button> -->
+                            <a ui-sref="archive.item({bizname: item.businessName, user_id:item._id, mode:'view'})" style="margin:0px">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </a>
                             <a ng-click="deleteItem($event, item)" style="margin:0px">

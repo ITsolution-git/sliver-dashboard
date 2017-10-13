@@ -99,7 +99,7 @@
                     showStaticTextBlock: false
                 }
             },*/ {
-                name: 'Get SLAPn!',
+                name: 'SLAPmindset',
                 sref: 'mindset.slapStartDate',
                 model: {
                     data: {
@@ -460,7 +460,7 @@
                 },
                 videoUrl: 'http://content.jwplatform.com/videos/klwkQrRp-CZ1S4g0I.mp4'
             }, {
-                name: 'Review Start Date',
+                name: 'Action Plan',
                 sref: 'actionPlan.doubleCheckStartDate',
                 model: {
                     showVideoBlock: false,

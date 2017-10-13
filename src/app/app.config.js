@@ -132,7 +132,7 @@
         $authProvider.signupUrl = CONFIG.api + '/v1/auth/signup';
         $authProvider.tokenRoot = 'data';//compensates success response macro
         $authProvider.withCredentials = false;
-        $authProvider.baseUrl = CONFIG.api + '/';
+        $authProvider.baseUrl = '/';
         $authProvider.unlinkUrl = CONFIG.api + '/auth/unlink/';
         $authProvider.tokenName = 'token';
         $authProvider.tokenPrefix = 'satellizer';

@@ -30,7 +30,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Year Goal');
+            .setPageTitle('1 Year Goal');
             
         function getData() {
             // var urls = _.get($state.current, 'params.prev.sref').split('.');

@@ -55,7 +55,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Statement');
+            .setPageTitle('SLAPstatement');
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);

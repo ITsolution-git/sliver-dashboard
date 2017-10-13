@@ -20,7 +20,7 @@
             .reset()
             .setShowBC(false)
             .addCrumb({name: 'Dashboard', path: 'home'})
-            .setPageTitle('Year Goal');
+            .setPageTitle('1 Year Goal');
 
         function sendData(direction) {
             stepService.updateActiveModel($scope);
