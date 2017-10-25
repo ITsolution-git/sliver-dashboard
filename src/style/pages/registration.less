@@ -1,3 +1,7 @@
+.cent-content {
+  display: flex;
+}
+
 .step-login {
   position: absolute;
   right: 3.3%;
@@ -48,6 +52,7 @@
     margin-right: 7px;
   }
 }
+
 
 @media (min-width: 401px ) and (max-width: 991px) {
   .header-contents {
@@ -237,6 +242,9 @@
 
   .signup .plan {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .plan-item {
     padding: 0;
@@ -335,4 +343,91 @@
   .sp-font{
     font-size: 14px !important;
   }
+
+  .add-plan {
+    margin-left: 0 !important;
+    & h2 {
+      margin-bottom: 20px !important;
+    }
+    & button {
+      margin-bottom: 15px !important;
+    }
+  }
+}
+
+
+
+.plan {
+  display: flex;
+  justify-content: center ;
+}
+
+
+.add-plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  & i:hover {
+    .text::after {
+      content: 'Top plans';
+      position: absolute;
+      font-size: 12px;
+    }
+  }
+}
+
+//button
+.button__holder{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &:after{
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0; right: 0; bottom: 0; left: 0;
+    //background: rgba(26, 26, 26, 0.7);
+    //opacity: 0.7;
+  }
+  h2{
+    margin-bottom: 50px;
+    text-align: center;
+  }
+}
+.plan-plus {
+  position: relative;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  background: #0e7cb5;
+  border-radius: 50%;
+  border: none;
+  transition: box-shadow 400ms cubic-bezier(.2,0,.7,1), transform 200ms cubic-bezier(.2,0,.7,1);
+  &:focus {
+    outline: none;
+    background-color: #0e7cb5 !important;
+  }
+  &:after{
+    content: attr(data-after);
+    font-size: 1em;
+    line-height: 1em;
+    color: #fff;
+  }
+  &:hover{
+    box-shadow: 0 0 1px 15px rgba(14, 124, 181, 0.4),
+    0 0 1px 30px rgba(14, 124, 181, 0.1),
+    0 0 1px 45px rgba(14, 124, 181, 0.1);
+  }
+
+}
+
+.animated .flipInY{
+    animation-duration: 1.5s;
 }

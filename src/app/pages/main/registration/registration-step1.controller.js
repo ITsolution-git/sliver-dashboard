@@ -6,7 +6,7 @@
         .controller('RegistrationStep1Controller', RegistrationStep1Controller);
 
     /* @ngInject */
-    function RegistrationStep1Controller(productsService,productStorage,toaster, pageService) {
+    function RegistrationStep1Controller($scope, productsService,productStorage,toaster, pageService) {
 
         var vm = this;
         // TODO set pageservice for registration page1 2, 3
@@ -15,8 +15,19 @@
         vm.timeList = ['1 group session per month', '1 private session per month' ,'4 private sessions per month', '2 group  and 1 private sessions per month','custom experience'];
         pageService.reset().setPageTitle(' Step1').addCrumb({name: 'Step1', path: 'signup/step1'});
         productsService.getPlans().then(function(response) {
+
             vm.plans = response.data;
-            
+
+            function deletePlan(dataPlans) {
+                dataPlans.shift();
+            }
+
+            deletePlan(vm.plans);
+
+            vm.plansBasic = vm.plans.slice(0,3);
+            vm.plansTop = vm.plans.slice(3);
+
+
             if (productStorage.isRenew()) {
                 vm.isRenew = true;
 
@@ -51,5 +62,24 @@
 
             return;
         };
+
+        vm.showPlans = true;
+        vm.togglePlans = function () {
+            vm.showPlans = !vm.showPlans;
+            $scope.$emit("togglePlans")
+        };
+
+        vm.getPlans = function () {
+            if(vm.showPlans){
+                vm.titlePlans = 'Top plans';
+                vm.iconPlan = '+';
+                return vm.plansBasic;
+            } else {
+                vm.titlePlans = 'Basic plans';
+                vm.iconPlan = '←';
+                return vm.plansTop;
+            }
+        }
+
     }
 }());
