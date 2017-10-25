@@ -13,7 +13,7 @@
             
             employment: ['Employment', 'Doesn’t Work', 'owns a big business', 'owns a small business', 'works a senior level job', 'works a mid level job', 'works a junior level job'],
 
-            location: ['Location', ' a City', ' the suburbs', 'somewhere Rural'],
+            location: ['Location', ' the City', ' the suburbs', 'somewhere Rural'],
             home: ['Home', 'Condo', 'Apartment', 'House', 'Farm', 'Other'],
             transit: ['Transit', 'Car', 'Biking', 'Train', 'Walking', 'Flying', 'Subway'],
             age: ['Age','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81-90'],
