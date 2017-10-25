@@ -615,7 +615,11 @@
         <button-switch visible="showExpertHours"></button-switch>
     </section>
     <section class="  sample-show-hide"  ng-show="showExpertHours">
-        Activity
+        <section layout="row" flex="100">
+            <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
+                Record Client Interaction
+            </md-button>
+        </section>
     </section>
 </md-card>
 
