@@ -404,7 +404,7 @@
         function charge (type) {
             if($scope.user.pausingPayment)
                 return toaster.pop({type: 'error', body: 'This user was paused payment.'});
-            var productName = ''
+            var productName = '';
             if( type == 0 ) {// 1:! meeting
                 productName = 'Missing 1:1 Call';
             } else if( type == 1 ) { // Group meeting 
