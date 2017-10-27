@@ -18,6 +18,7 @@
         vm.isRenew = false;
 
         vm.plan = productStorage.getPlan();
+        vm.costProduct = vm.plan.costProduct;
         vm.build = productStorage.getBuild();
         vm.notifications = [];
 
@@ -112,6 +113,8 @@
             couponService.validCoupon(vm.user.code,vm.plan._id)
                 .then(function(response) {
                     productStorage.setCoupon(response.data);
+                    vm.discontName = response.data.name + " Discount" ;
+                    vm.amount = response.data.amount;
                     vm.calculateTodayPayment = productStorage.calculateTodayPayment();
                     vm.calculateMonthlyPayment = productStorage.calculateMonthlyPayment();
                     vm.useCoupon = true;

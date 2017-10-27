@@ -57,12 +57,15 @@
                                 <hr>
                                 <!--<div>-->
                                     <p class="leftstr">{{vm.plan.productName}}</p>
-                                    <p class="rightstr">${{ vm.plan.costProduct }}</p>
+                                    <p class="rightstr">{{ vm.costProduct | currency : $ : 0}}</p>
+                                    <p class="leftstr">{{vm.discontName}}</p>
+                                    <p class="rightstr">{{vm.amount | currency : $ : 0}}</p>
+
                                     <p class="leftstr">SLAPbuild</p>
-                                    <p class="rightstr" ng-show="vm.build">${{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment }}</p>
+                                    <p class="rightstr" ng-show="vm.build">${{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment}}</p>
                                     <p class="rightstr" ng-hide="vm.build">-</p>
                                     <div style="clear: left"></div>
-                                    <p class="text-center attention">today's total ${{ vm.calculateTodayPayment }}</p>
+                                    <p class="text-center attention">today's total ${{ vm.calculateTodayPayment}}</p>
                                 <!--</div>-->
                             </div>
                             <div class="payment-content">
@@ -70,11 +73,11 @@
                                 <hr>
                                 <!--<div>-->
                                 <p class="leftstr">{{vm.plan.productName}}</p>
-                                <p class="rightstr">${{ vm.plan.costProduct }}</p>
+                                <p class="rightstr">{{ vm.plan.costProduct | currency : $ : 0}}</p>
                                 <p class="leftstr">SLAPbuild</p>
                                 <p class="rightstr">{{vm.build.buildType == 1 ? ('$'+ vm.build.costProduct) : '-' }}</p>
                                 <div style="clear: left"></div>
-                                <p class="text-center attention">monthly total ${{ vm.calculateMonthlyPayment }}</p>
+                                <p class="text-center attention">monthly total {{ vm.calculateMonthlyPayment | currency : $ : 0}}</p>
                                 <!--</div>-->
                             </div>
                         </div>
