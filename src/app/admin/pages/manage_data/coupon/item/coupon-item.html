@@ -66,7 +66,9 @@
 
                                     <select
                                         name="" id="applyOn" ng-model="coupon.plan" class="form-control"
-                                            ng-options="plan.productName for plan in plans track by plan._id"></select>
+                                            ng-options="plan.productName for plan in plans track by plan._id">
+                                        <option value="">All Plans</option>
+                                    </select>
 
                                     <div class="help-block help-block-error" ng-show="errors['expertHours']"
                                          ng-bind-html="errors['expertHours']"></div>
