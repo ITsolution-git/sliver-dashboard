@@ -18,10 +18,12 @@
             activityData: activityData,
             paymentData: [],
             excuteItems: excuteItems,
+            changeStripeSubscription: changeStripeSubscription,
 
             userData: [],
             defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
             strategies: [],
+            startPlan: '',
 
             userID: $stateParams.user_id,
             ROLES: adminUserService.ROLES,
@@ -35,7 +37,6 @@
             openSlapexpertDialog: openSlapexpertDialog,
             dialogCharge: dialogCharge,
 
-            changeUser: changeUser,
 
             //Journey
             isJouneyItemDone: isJouneyItemDone,
@@ -132,6 +133,8 @@
 
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
+
+                $scope.startPlan = $scope.user.planId;
 
                 $scope.actFilter.startDate = new Date();
                 $scope.actFilter.endDate = new Date();
@@ -316,6 +319,20 @@
             });
         }
 
+        function changeStripeSubscription(event) {
+            if ($scope.user.planId != $scope.startPlan) {
+                var success = function(){
+                    createOrSave(event);
+                }
+                commonDialogService.openDeleteItemDialog(event, 'When you change a SLAPsters Plan - it automatically changes their monthly subscription and their SLAPexpert Hours.   Are you sure you want to do this?  Do you have approval from the client?',
+                'Change', success);
+                $scope.startPlan = $scope.user.planId;
+            }
+            else {
+                $scope.user.planId = $scope.startPlan;createOrSave(event);
+            }
+        }
+
         function update() {
             // return adminUserService.update(Restangular.stripRestangular($scope.user));
             return $scope.user.save();
@@ -389,9 +406,9 @@
                 return toaster.pop({type: 'error', body: 'This user was paused payment.'});
             var productName = ''
             if( type == 0 ) {// 1:! meeting
-                productName = 'Missing 1:1 Meeting';
+                productName = 'Missing 1:1 Call';
             } else if( type == 1 ) { // Group meeting 
-                productName = 'Missing Group Meeting';
+                productName = 'Missing Group Call';
             }
             if(!confirm('Charging user for ' + productName))
                 return;
