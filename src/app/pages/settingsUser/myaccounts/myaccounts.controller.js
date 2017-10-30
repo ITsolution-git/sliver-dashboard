@@ -64,9 +64,8 @@
             if ($scope.userAllData && $scope.userAllData.slapMindset && $scope.userAllData.slapMindset.slapStartDate)
             {
                 var startDate = $scope.userAllData.slapMindset.slapStartDate;
-                $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 4), $scope.userAllData.actionPlan.connectingStrategyStrategizing[3]));
-                $scope.startDate = $scope.quaters[0].start.toDate();
-
+                var m = new Date(startDate.year+1,startDate.month-1,1);
+                $scope.startDate = moment(m);
                 if (moment().isAfter(moment($scope.startDate)))
                     $scope.canRenew = true;
             }

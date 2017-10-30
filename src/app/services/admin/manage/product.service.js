@@ -68,7 +68,7 @@
         };
 
         self.delete = function(product) {
-            return adminApiService.rest.all('products').one(product._id).post();
+            return adminApiService.rest.all('products').one(product._id).remove();
         };
 
         self.getActivePlans = function() {
