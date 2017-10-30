@@ -18,6 +18,7 @@
         };
 
         $scope.typeChange = function () {
+            $scope.product.programName = 'SLAPbuild Payment Plan';
             $scope.product.typeProduct = $scope.product.switchProduct ? productsService.TYPE_PLAN : productsService.TYPE_BUILD;
             $scope.product.amountFirstPayment = $scope.product.switchProduct ? null : $scope.product.amountFirstPayment;
             // $scope.product.buildType = $scope.product.switchProduct ? null : productsService.BUILD_INSTALLMENTS;
@@ -31,7 +32,7 @@
             $scope.product.buildType = $scope.product.switchBuildType ? productsService.BUILD_INSTALLMENTS : productsService.BUILD_ONETIME;
             $scope.product.billingFrequency = $scope.product.switchBuildType ?  $scope.product.billingFrequency : 1;
             $scope.product.amountFirstPayment = $scope.product.switchBuildType ? $scope.product.amountFirstPayment : null;
-
+            $scope.product.programName = $scope.product.switchBuildType ? 'SLAPbuild Payment Plan' : 'SLAPbuild One Time';
         };
 
         $scope.errors = {};
