@@ -83,7 +83,7 @@
             stepService.getApiData('yourStatement')  //TODO: request api? data service
                 .then(function (response) {
                     if (response && response.status === 200) {
-
+                        $scope.clientName = _.get(response, 'data.yourStatement.fourth', []);
                         angular.extend($scope.model, {
                             stepOneSummary: _.get(response, 'data.yourStatement', {})
                         });
