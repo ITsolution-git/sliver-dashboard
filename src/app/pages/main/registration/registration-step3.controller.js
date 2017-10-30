@@ -114,7 +114,7 @@
                 .then(function(response) {
                     productStorage.setCoupon(response.data);
                     vm.discontName = response.data.name + " Discount" ;
-                    vm.amount = response.data.amount;
+                    vm.amountCoupon = productStorage.getAmountCoupon();
                     vm.calculateTodayPayment = productStorage.calculateTodayPayment();
                     vm.calculateMonthlyPayment = productStorage.calculateMonthlyPayment();
                     vm.useCoupon = true;

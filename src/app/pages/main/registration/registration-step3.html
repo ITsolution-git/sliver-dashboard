@@ -59,7 +59,7 @@
                                     <p class="leftstr">{{vm.plan.productName}}</p>
                                     <p class="rightstr">{{ vm.costProduct | currency : $ : 0}}</p>
                                     <p class="leftstr">{{vm.discontName}}</p>
-                                    <p class="rightstr">{{vm.amount | currency : $ : 0}}</p>
+                                    <p class="rightstr">{{vm.amountCoupon | currency : $ : 0}}</p>
 
                                     <p class="leftstr">SLAPbuild</p>
                                     <p class="rightstr" ng-show="vm.build">${{vm.build.buildType == 2 ? vm.build.costProduct : vm.build.amountFirstPayment}}</p>
