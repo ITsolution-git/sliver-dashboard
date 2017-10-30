@@ -384,7 +384,7 @@
         }
 
         function loadPayments() {
-            return paymentsService.getStripePayments($stateParams.user_id)
+            return paymentsService.getStripePaymentsByUser($stateParams.user_id)
             .then(function (response) {
                 return $scope.paymentData = response.data;
             }).catch(function(err) { console.log(err); $state.go('slapsters'); });

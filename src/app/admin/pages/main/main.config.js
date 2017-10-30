@@ -53,6 +53,11 @@
                 },
                 parent: 'admin',
                 url: '/myaccounts',
+                resolve: {
+                    userAllData: function (stepService) {
+                        return stepService.getAllUserData(this)
+                    }
+                },
                 views: {
                     content: {
                         controller: 'MyaccountsController',
