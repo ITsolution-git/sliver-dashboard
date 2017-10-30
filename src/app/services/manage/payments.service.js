@@ -15,6 +15,7 @@
         this.chargeUser = chargeUser;
         this.toggleSubscription = toggleSubscription;
         this.getStripePayments = getStripePayments;
+        this.getStripePaymentsByUser = getStripePaymentsByUser;
         //////////////////////////////////
 
         function transformationData(data) {
@@ -47,8 +48,12 @@
             return apiService.rest.all('payments').getList();
         }
 
-        function getStripePayments(userId) {
+        function getStripePayments() {
             return apiService.rest.all('stripe-payments').getList();
+        }
+
+        function getStripePaymentsByUser(userId) {
+            return adminApiService.rest.all('stripe-payments').all(userId).getList();
         }
 
         function getAllPaymentsByUser(userId) {
