@@ -61,9 +61,10 @@
             .then(function(isAdmin){
                 $scope.isAdmin = isAdmin;
             });
-            if ($scope.userAllData && $scope.userAllData.slapMindset && $scope.userAllData.slapMindset.slapStartDate)
+            if ($scope.userAllData && $scope.userAllData.slapMindset && $scope.userAllData.slapMindset.slapStartDate && $scope.userAllData.actionPlan)
             {
                 var startDate = $scope.userAllData.slapMindset.slapStartDate;
+
                 $scope.quaters.push( _.merge(actionplanService.getNthQuater(startDate, 4), $scope.userAllData.actionPlan.connectingStrategyStrategizing[3]));
                 $scope.startDate = $scope.quaters[0].start.toDate();
 
