@@ -217,14 +217,14 @@
         </div>
     </div>
 
-    <div class="panel panel-default p-es-10" ng-if="!isAdmin">
-        <h3> Renew Account </h3>
+    <div class="panel panel-default p-es-10" ng-if="canRenew && !isAdmin">
+        <h3> Start Building Next Year's SLAP </h3>
         <p>
-            You can renew account with same basic information.
+            Once you are in Q4 you are able to set up your next year's SLAP account which will have your SLAPstatement, Ideal Client and all Account History pre-loaded and ready for you to take this year's lessons and apply them your SLAP for next year!
         </p>
         <div>
             <button class="btn btn-primary pull-right" ng-click="renewAccount()">
-                Renew Account
+                Set Up Next SLAP!
             </button>
         </div>  
         <div class="clearfix"></div>
