@@ -12,11 +12,11 @@
                             Previous SLAPs
                         </a> 
                         <ul class="dropdown-menu">
-                                <li ng-repeat="user in user.accounts">
-                                    <a ng-click="selectSLAPyear(user)">
+                                <li ng-repeat="account in user.accounts">
+                                    <a ng-click="selectSLAPyear(account)">
                                         <span style="font-size: 16px; color:blue">{{'YEAR ' + ($index+1) + ' '}}</span>
-                                        {{ user.createdAt | date: 'yyyy-MM-dd'}}
-                                        <span class="label label-primary" ng-if="user._id == user._id">current</span>
+                                        {{ account.createdAt | date: 'yyyy-MM-dd'}}
+                                        <span class="label label-primary" ng-if="user._id == account._id">current</span>
                                     </a>
                                 </li>
                         </ul>
