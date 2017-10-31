@@ -104,6 +104,14 @@
             return _plan.costProduct;
         };
 
+        this.getAmountCoupon = function () {
+            if(_coupon.typeCoupon) {
+                _plan.amountCoupon = (_plan.costProduct * _coupon.amount) / 100;
+                return _plan.amountCoupon;
+            }
+            return _plan.amountCoupon = _coupon.amount;
+        }
+
         this._calculateCoupon = function() {
             if(_coupon.typeCoupon) {
                 return _plan.costProduct = _plan.costProduct - (_plan.costProduct * _coupon.amount) / 100;

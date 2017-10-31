@@ -27,6 +27,11 @@
                 },
                 parent: 'withNavbar',
                 url: '/account',
+                resolve: {
+                    userAllData: function (stepService) {
+                        return stepService.getAllUserData(this)
+                    }
+                },
                 views: {
                     content: {
                         controller: 'MyaccountsController',

@@ -139,6 +139,13 @@
                     }
                 });
 
+            stepService.getApiData('yourStatement') //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+                        $scope.clientName = _.get(response, 'data.yourStatement.fourth', []);
+                        var originalData = _.clone($scope.data);
+                    }
+                });
 
 
             stepService.getApiData('whatsHappening')  //TODO: request api? data service

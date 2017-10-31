@@ -77,6 +77,14 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="programName" ng-show="product.switchProduct">Program Name</label>
+                                    <label for="programName">Program Name</label>
+                                    <input readonly type="text" class="form-control" id="programName"
+                                           ng-model="product.programName">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group" ng-class="{'has-error' : errors['billingFrequency']}">
                                     <label for="billingFrequency" ng-show="product.switchProduct">Billing Frequency*</label>
                                     <label for="billingFrequency" ng-hide="product.switchProduct">Billing Frequency*</label>

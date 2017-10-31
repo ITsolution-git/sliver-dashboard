@@ -1,0 +1,120 @@
+<md-dialog aria-label="List dialog" class="activity-dialog p-t-es-40">
+	<section layout="column">
+		<form layout="row" layout-wrap layout-align="center center" name="form">
+			<md-input-container flex="50">
+				<label>Date</label>
+				<md-datepicker ng-model="formData.extra.date" name="Date"></md-datepicker>
+				<div ng-messages="formData.extra.date.$error">
+					<div ng-message="valid">The entered value is not a date!</div>
+					<div ng-message="required">This date is required!</div>
+					<div ng-message="mindate">Date is too early!</div>
+					<div ng-message="maxdate">Date is too late!</div>
+				</div>
+			</md-input-container>
+			<md-input-container flex="25">
+				<label>Hours</label>
+				<md-select placeholder="Hours" ng-model="formData.extra.hours">
+					
+					<md-option ng-repeat="h in [] | range:13" ng-value={{h+1}}>{{h+1}}</md-option>
+
+				</md-select>
+			</md-input-container>
+
+			<md-input-container flex="25">
+				<label>Minutes</label>
+				<md-select placeholder="Minutes" ng-model="formData.extra.minutes">
+							
+					<md-option ng-repeat="m in [] | range:61" ng-value={{m+1}}>{{m+1}}</md-option>
+		
+				</md-select>
+			</md-input-container>
+
+			<md-input-container flex="100" style:"margin-top: 10px !important">
+					<input placeholder="Write detailed notes about your how this SLAPster is doing and what was discussed on this call?" ng-model="formData.notes">
+				</md-input-container>
+	
+				<md-input-container flex="100">
+					<input placeholder="What were key priorities that came out for the SLAPster to focus on until your next call?" ng-model="formData.extra.priorities">
+				</md-input-container>
+	
+				<md-input-container flex="100">
+					<input placeholder="Are there any specific items the SLAPmanagers should follow up on?" ng-model="formData.extra.spec">
+				</md-input-container>
+
+
+			<md-input-container flex="100">
+				<label>Call length</label>
+				<input ng-model="formData.extra.callLength">
+			</md-input-container>
+
+			<md-input-container md-no-float flex="50">
+				<md-select placeholder="Tool used for call" ng-model="formData.extra.tool">
+					<md-option ng-value=1>Zoom video call</md-option>
+					<md-option ng-value=2>Personal cell phone</md-option>
+				</md-select>
+			</md-input-container>
+
+			<md-input-container md-no-float flex="50" >
+				<md-select placeholder="Rate SLAPmindset" ng-model="formData.extra.mindset">
+					<md-option ng-value=1>1</md-option>
+					<md-option ng-value=2>2</md-option>
+					<md-option ng-value=3>3</md-option>
+					<md-option ng-value=4>4</md-option>
+					<md-option ng-value=5>5</md-option>
+				</md-select>
+			</md-input-container>
+
+			<md-input-container md-no-float flex="50">
+				<md-select placeholder="How well do they know and use their SLAPstatement?" ng-model="formData.extra.statement">
+					<md-option ng-value=1>1</md-option>
+					<md-option ng-value=2>2</md-option>
+					<md-option ng-value=3>3</md-option>
+					<md-option ng-value=4>4</md-option>
+					<md-option ng-value=5>5</md-option>
+				</md-select>
+			</md-input-container>
+
+			<md-input-container md-no-float flex="50">
+				<md-select placeholder="How well do they know and understand their annual and quarterly goals?" ng-model="formData.extra.goals">
+					<md-option ng-value=1>1</md-option>
+					<md-option ng-value=2>2</md-option>
+					<md-option ng-value=3>3</md-option>
+					<md-option ng-value=4>4</md-option>
+					<md-option ng-value=5>5</md-option>
+				</md-select>
+			</md-input-container>
+
+			<md-input-container md-no-float flex="50">
+				<md-select placeholder="How well do they know and understand their current Connecting Strategy and Action Items?" ng-model="formData.extra.items">
+					<md-option ng-value=1>1</md-option>
+					<md-option ng-value=2>2</md-option>
+					<md-option ng-value=3>3</md-option>
+					<md-option ng-value=4>4</md-option>
+					<md-option ng-value=5>5</md-option>
+				</md-select>
+			</md-input-container>
+
+			<md-input-container md-no-float flex="50">
+				<md-select placeholder="Rate their status that our SLAPmanagers can use to support them until your next call" ng-model="formData.extra.rate">
+					<md-option ng-value=1>SLAPstar!</md-option>
+					<md-option ng-value=2>Doing ok but needs to use SLAP better/more</md-option>
+					<md-option ng-value=3>Using SLAP but results are poor </md-option>
+					<md-option ng-value=4>SLAPstuck</md-option>
+					<md-option ng-value=5>Completely Off Track</md-option>
+					<md-option ng-value=6>They are unhappy with Silver Lining / SLAP</md-option>
+					<md-option ng-value=7>Ego / Something in the way of them accepting our help</md-option>
+				</md-select>
+			</md-input-container>
+			
+
+		</form>
+	</section>
+
+	<md-dialog-actions >
+		<md-button ng-click="updateNotes($event)" class="md-primary">
+			Sumbit
+		</md-button>
+		<md-button ng-click="closeDialog()" class="md-primary">Close</md-button>
+
+	</md-dialog-actions>
+</md-dialog>

@@ -309,9 +309,11 @@ a:hover {
     &::before, &::after {
       content: '';
       position: absolute;
-      border: 10px solid transparent;
       border-top: 10px solid #EFEFEF;
+      border: 10px solid transparent;
       bottom: -20px;
+      left: 50%;
+      margin-left: -10px;
     }
 
     &::after {
@@ -609,11 +611,12 @@ a:hover {
 
           .leftstr, .rightstr {
             float: left;
-            width: 50%;
+            width: 65%;
             text-transform: none;
           }
 
           .rightstr {
+            width: 35%;
             text-align: right;
           }
 
@@ -934,6 +937,14 @@ a:hover {
 
 @media (max-width: 1200px) {
   .rectangle {
-      min-height: 370px;
+      min-height: 300px;
   }
+}
+
+.fixed-width {
+  width: 300px !important;
+}
+
+.md-errors-spacer {
+  min-height: 35px !important;
 }

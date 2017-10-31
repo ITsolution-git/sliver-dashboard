@@ -6,18 +6,22 @@
         .controller('MyaccountsController', MyaccountsController);
 
     /* @ngInject */
-    function MyaccountsController($scope, $rootScope, pageService, productStorage, $state, userService, $auth, toaster, permissionService, Upload, CONFIG) {
+    function MyaccountsController($scope, $rootScope, actionplanService, userAllData, $q, stepService, pageService, productStorage, $state, userService, $auth, toaster, permissionService, Upload, CONFIG) {
         $scope.renewAccount = renewAccount;
         $scope.Upload = Upload;
         $scope.user = {};
+        $scope.userAllData = userAllData;
         $scope.notifications = [];
         $scope.notifications_card = [];
+        $scope.quaters = [];
         $scope.saveBasic = saveBasic;
         $scope.changePassword = changePassword;
         $scope.changeCreditCard = changeCreditCard;
         $scope.getCreditCard = getCreditCard;
         $scope.stateData = $state.current.data;
         $scope.downloadFinished = true;
+        $scope.canRenew = false;
+        $scope.startDate = Date;
         pageService
             .reset()
             .setShowBC(false)
@@ -57,7 +61,17 @@
             .then(function(isAdmin){
                 $scope.isAdmin = isAdmin;
             });
+            if ($scope.userAllData && $scope.userAllData.slapMindset && $scope.userAllData.slapMindset.slapStartDate)
+            {
+                var startDate = $scope.userAllData.slapMindset.slapStartDate;
+                var m = new Date(startDate.year+1,startDate.month-1,1);
+                $scope.startDate = moment(m);
+                if (moment().isAfter(moment($scope.startDate)))
+                    $scope.canRenew = true;
+            }
         }
+
+
 
         function addNotification(notifications, newNotification) {
             var existing = _.find(notifications, {name: newNotification.name});

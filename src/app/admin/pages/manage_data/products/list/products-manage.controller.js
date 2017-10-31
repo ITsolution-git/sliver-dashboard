@@ -21,7 +21,7 @@
                 show: true,
                 format: 'raw',
                 getValue: function (row) {
-                    return '<a href="' + $state.href('plans.item', {product_id: row['_id']}) + '">' + row['productName'] + '</a>';
+                    return '<a>' + row['productName'] + '</a>';
                 }
             }, {
                 field: "productDescription",

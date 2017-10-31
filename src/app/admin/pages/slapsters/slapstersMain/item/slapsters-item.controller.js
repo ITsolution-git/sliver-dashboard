@@ -18,10 +18,12 @@
             activityData: activityData,
             paymentData: [],
             excuteItems: excuteItems,
+            changeStripeSubscription: changeStripeSubscription,
 
             userData: [],
             defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
             strategies: [],
+            startPlan: '',
 
             userID: $stateParams.user_id,
             ROLES: adminUserService.ROLES,
@@ -31,8 +33,10 @@
             deleteItem: deleteItem,
             createOrSave: createOrSave,
             adminBuild: adminBuild,
+            openExpertDialog: openExpertDialog,
+            openSlapexpertDialog: openSlapexpertDialog,
+            dialogCharge: dialogCharge,
 
-            changeUser: changeUser,
 
             //Journey
             isJouneyItemDone: isJouneyItemDone,
@@ -107,6 +111,7 @@
             openDeleteItemDialog: openDeleteItemDialog,
             closeDialog: closeDialog,
             updateItem: updateItem,
+            updateNotes: updateNotes,
             formData: {},
         });
         
@@ -128,6 +133,8 @@
 
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
+
+                $scope.startPlan = $scope.user.planId;
 
                 $scope.actFilter.startDate = new Date();
                 $scope.actFilter.endDate = new Date();
@@ -312,6 +319,20 @@
             });
         }
 
+        function changeStripeSubscription(event) {
+            if ($scope.user.planId != $scope.startPlan) {
+                var success = function(){
+                    createOrSave(event);
+                }
+                commonDialogService.openDeleteItemDialog(event, 'When you change a SLAPsters Plan - it automatically changes their monthly subscription and their SLAPexpert Hours.   Are you sure you want to do this?  Do you have approval from the client?',
+                'Change', success);
+                $scope.startPlan = $scope.user.planId;
+            }
+            else {
+                $scope.user.planId = $scope.startPlan;createOrSave(event);
+            }
+        }
+
         function update() {
             // return adminUserService.update(Restangular.stripRestangular($scope.user));
             return $scope.user.save();
@@ -363,7 +384,7 @@
         }
 
         function loadPayments() {
-            return paymentsService.getAllPaymentsByUser($stateParams.user_id)
+            return paymentsService.getStripePaymentsByUser($stateParams.user_id)
             .then(function (response) {
                 return $scope.paymentData = response.data;
             }).catch(function(err) { console.log(err); $state.go('slapsters'); });
@@ -375,14 +396,19 @@
             // paymentsService.toggleSubscription($scope.user);
         }
 
+        function dialogCharge(type) {
+            charge(type);
+            closeDialog();
+        }
+
         function charge (type) {
             if($scope.user.pausingPayment)
                 return toaster.pop({type: 'error', body: 'This user was paused payment.'});
-            var productName = ''
+            var productName = '';
             if( type == 0 ) {// 1:! meeting
-                productName = 'Missing 1:1 Meeting';
+                productName = 'Missing 1:1 Call';
             } else if( type == 1 ) { // Group meeting 
-                productName = 'Missing Group Meeting';
+                productName = 'Missing Group Call';
             }
             if(!confirm('Charging user for ' + productName))
                 return;
@@ -507,6 +533,78 @@
                 autoWrap: true
             });
         }
+
+        function openSlapexpertDialog($event, item) {
+                var newForm = {
+                    type: 'slapexpert',
+                    title: '',
+                    extra: {
+                        date: '',
+                        hours: '',
+                        minutes: '',
+                        callLength: 0,
+                        tool: '',
+                        mindset: 0,
+                        statement: 0,
+                        goals: 0,
+                        items: 0,
+                        rate: 0,
+                        priorities: '',
+                        spec: '',
+                    },
+                    notes: '',
+                    userId: $scope.userID,
+                };
+                
+                $scope.formData = newForm;
+                
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope, 
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/slapexpert-dialog/slapexpert-dialog.html',
+                controller: 'SlapexpertDialogController',
+                autoWrap: true
+            });
+        }
+
+        function openExpertDialog($event, item) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.confirm()
+                .title('Record Client Interaction?')
+                .textContent('Record Client Interaction?')
+                .ariaLabel('CIN')
+                .targetEvent($event)
+                .ok('Attended Meeting - record CIN')
+                .cancel('Missed Meeting - charge cancellation fee');
+        
+                $mdDialog.show(confirm).then(function() {
+                    openSlapexpertDialog($event, item);
+                    }, function () {
+                        $mdDialog.show({
+                            clickOutsideToClose: true,
+                            targetEvent: $event,
+                            scope: $scope, 
+                            preserveScope: true,
+                            templateUrl: 'admin/components/dialogs/meeting-dialog/meeting-dialog.html',
+                            controller: 'MeetingDialogController',
+                            autoWrap: true
+                        });
+                    });
+        }
+
+        
+
+        function updateNotes($event) {       
+            activityService.add($scope.formData)
+                .then(function(response){
+                    $scope.activityData.push(response.data);
+                    showToast('Added Activity');
+                    buildActivityGridData();
+                });
+            $mdDialog.hide($event);
+        }
         
         function updateItem($event) {
             if ($scope.curMode == 'add') {
@@ -528,7 +626,6 @@
             } 
             $mdDialog.hide($event);
         }
-        
 
         function showToast(message) {
             var toast = $mdToast.simple()
@@ -562,21 +659,21 @@
                     buildActivityGridData();
                 });
             }, function() {
-                
             });
         }
 
         function adminBuild(item) {
-                        apiService.adminToken = $auth.getToken();
-            
-                        adminUserService.getToken(item._id).then(function (res){
-        
-                            $auth.setToken(res.data.token);
-                            $state.go('home');
-                            document.location.reload(true);
-                            
-                        });
-                    }
+            apiService.adminToken = $auth.getToken();
 
-    }
+            adminUserService.getToken(item._id).then(function (res){
+            
+                $auth.setToken(res.data.token);
+                $state.go('home');
+                document.location.reload(true);
+            });
+        }
+
+
+    
+}
 }());

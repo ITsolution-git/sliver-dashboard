@@ -15,7 +15,7 @@
                 show: true,
                 format: 'raw',
                 getValue: function (row) {
-                    return '<a href="' + $state.href('coupon.item', {coupon_id: row['_id']}) + '">' + row['name'] + '</a>';
+                    return '<a>' + row['name'] + '</a>';
                 }
             },{
                 field: "typeCoupon",

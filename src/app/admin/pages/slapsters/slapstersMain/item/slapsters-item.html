@@ -126,7 +126,7 @@
 
                 <md-input-container >
                     <label>SLAPProgram</label>
-                    <md-select ng-model="user.planId"  aria-label="plan-select">
+                    <md-select ng-model="user.planId" aria-label="plan-select">
                         <md-option ng-repeat="product in programData | filter: {buildType: 1}" ng-value="product._id">{{product.productName}}</md-option>
                     </md-select>    
 					<div class="md-errors-spacer"></div>
@@ -170,7 +170,7 @@
             
 
             <section layout="row" layout-align="end center" flex="100">
-                <md-button ng-click="createOrSave($event)" class="md-primary" >
+                <md-button ng-click="changeStripeSubscription($event)" class="md-primary" >
                     Save
                 </md-button>
                 <md-button ng-click="deleteItem($event)" class="md-warn">
@@ -615,7 +615,11 @@
         <button-switch visible="showExpertHours"></button-switch>
     </section>
     <section class="  sample-show-hide"  ng-show="showExpertHours">
-        Activity
+        <section layout="row" flex="100">
+            <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
+                Record Client Interaction
+            </md-button>
+        </section>
     </section>
 </md-card>
 
