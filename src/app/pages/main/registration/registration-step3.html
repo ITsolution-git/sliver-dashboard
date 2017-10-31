@@ -33,7 +33,7 @@
         <article class="container signup plan">
                 <slap-notifications notifications="vm.notifications"></slap-notifications>
             <div class=" registration plan sig-plan" layout="row">
-                <div class=" registration-sidebar col-xs-12 col-sm-8 col-md-4 reg-sidebar plan">
+                <div class=" registration-sidebar col-xs-12 col-sm-8 col-md-5 reg-sidebar plan">
                     <div class="promo-sidebar">
                         <div class="registration-sidebar-header">
                             <h3 class="text-center">promo code</h3>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=" registration-content col-xs-12 col-sm-12 col-md-8 plan">
+                <div class=" registration-content col-xs-12 col-sm-12 col-md-7 plan">
                     <form name="registerForm">
                         <div layout="row" class="form-column">
                             <md-input-container class="md-block not-flex" flex="50" >
@@ -121,7 +121,7 @@
                         </md-input-container>
 
                         <div layout="row" class="form-column">
-                            <md-input-container class="md-block not-flex" flex="50" >
+                            <md-input-container class="md-block not-flex" flex="50">
                                 <label for="email">Email</label>
                                 <input name="email" ng-model="vm.user.email" id="email"
                                        required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"   ng-disabled="vm.isRenew"/>
@@ -133,7 +133,7 @@
                                 </div>
                             </md-input-container>
 
-                            <md-input-container class="md-block fixed-width not-flex" flex="50">
+                            <md-input-container class="md-block not-flex" flex="50">
                                 <label for="phone">Work Phone Number</label>
                                 <input ng-pattern="/^[0-9]{1,12}$/" name="phone" required maxlength="12" minlength="9"
                                 ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
@@ -266,7 +266,7 @@
         </article>
         <div class="row">
             <div class="next-bottom">
-                <button class="col-md-12 finish" ng-click="vm.signup($event, registerForm)">
+                <button class="col-md-12 finish" ng-disabled="vm.buttonDisabled" ng-click="vm.signup($event, registerForm)">
                     <span>Finish
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </span>
