@@ -103,6 +103,7 @@
             buildActivityGridData: buildActivityGridData,
             activityTypes: activityService.activityTypes,
             activityFilter: {Milestone:true},
+            changeUser: changeUser,
 
             //Activity dialog
 
