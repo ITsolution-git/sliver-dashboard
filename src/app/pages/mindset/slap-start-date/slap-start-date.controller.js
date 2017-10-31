@@ -6,7 +6,7 @@
         .controller('SlapStartDateController', SlapStartDateController);
 
     /* @ngInject */
-    function SlapStartDateController($scope, $state, pageService, stepService, activeStep, excuteItemService, excuteItems, $q) {
+    function SlapStartDateController($scope, $state, userService, pageService, stepService, activeStep, excuteItemService, excuteItems, $q) {
         $scope.videoUrl = activeStep.videoUrl;
         $scope.visible = true;
         $scope.changed = false;
@@ -19,6 +19,9 @@
         // for(var i = 0; i<19; i++){
         //     $scope.years.push(i+2000);
         // }
+        userService.loadUser().then(function (user) {
+            $scope.user = angular.copy(user, {});
+        })
         $scope.notifications = [];
 
         angular.extend($scope, activeStep.model, {
