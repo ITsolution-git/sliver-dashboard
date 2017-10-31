@@ -23,7 +23,7 @@
                     <!--<hr>-->
 
                     <table ng-table-dynamic="list with cols" class="table table-hover table-vertical-align ng-cloak  payment">
-                        <tr ng-repeat="row in $data">
+                        <tr ng-repeat="row in $data" ng-class="item.status == 0 ? 'bg-danger':''">
                             <td ng-repeat="col in $columns" ng-switch="col.format" ng-class="col.style">
                                 <div class="item" ng-switch-when="raw" ng-bind-html="col.getValue(row)"></div>
                                 <div class="item" ng-switch-when="compile" compile="col.getValue(row)"></div>
