@@ -16,6 +16,7 @@
         var vm = this;
         vm.cellPhone = '';
         vm.isRenew = false;
+        vm.buttonDisabled = false;
 
         vm.plan = productStorage.getPlan();
         vm.costProduct = vm.plan.costProduct;
@@ -55,9 +56,12 @@
 
         function signup(event,form) {
             event.preventDefault();
+            
+            vm.buttonDisabled = true;
 
             if(!vm.isRenew && form.$invalid) {
                 toaster.pop({type: 'error', body: "You cannot finalize this process until all fields are completed.", timeout: 2000});
+                vm.buttonDisabled = false;
                 return;
             }
             vm.user.isRenew = vm.isRenew;
@@ -99,6 +103,7 @@
                     }
                 )
                 .catch( function(err) {
+                    vm.buttonDisabled = false;
                     if (err.data.message != "Failed create customer") 
                     toaster.pop({type: 'error', body: err.data.message ? err.data.message : err.data.errmsg });
                     else addNotification(vm.notifications, {name: 'Server Error', type: 'error', message:"So sorry - something has gone wrong on our end.  Try again and if it still doesn't work email support@smallbizsilverlining.com", show: true});
