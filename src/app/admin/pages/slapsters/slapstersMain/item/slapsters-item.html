@@ -415,7 +415,8 @@
                 <tbody>
                     <tr ng-repeat="item in paymentData">
                         <td>{{item.programName}}</td>
-                        <td>{{item.costProduct | currency}}</td>
+                        <td ng-if="!item.status">{{item.status}}</td> 
+                        <td ng-if="item.status">{{item.costProduct | currency}}</td>
                         <td>{{item.promoCode}}</td>
                         <td>{{item.discount | currency}}</td>
                         <td   ng-class="item.status ? '' : 'bg-danger' ">{{item.status == 0 ? 'Declined' : 'Paid'}}</td>
