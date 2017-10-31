@@ -22,7 +22,7 @@
             var dataTable = [];
 
             data.forEach(function (item) {
-                // var row = {};
+                var row = {};
                 // row.paymentDate = item.paymentDate;
                 // row.programName = item.products.map(function (prod) {
                 //     return prod.name;
