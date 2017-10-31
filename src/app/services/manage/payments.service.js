@@ -48,8 +48,8 @@
             return apiService.rest.all('payments').getList();
         }
 
-        function getStripePayments() {
-            return apiService.rest.all('stripe-payments').getList();
+        function getStripePayments(count) {
+            return apiService.rest.all('stripe-payments').all(count).getList();
         }
 
         function getStripePaymentsByUser(userId) {
