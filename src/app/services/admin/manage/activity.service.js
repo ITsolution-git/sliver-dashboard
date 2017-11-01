@@ -19,7 +19,7 @@
             { id: "Pause & Reflect", name: "Pause & Reflect", show: true },
             { id: "Sales", name: "Sales", show: true },
             { id: "Communication", name: "Communication", show: true },
-            { id: "SLAPexpert", name: "SLAPexpert", show: true },
+            { id: "SLAPexpert", name: "slapexpert", show: true },
             { id: "SLAPassistant", name: "SLAPassistant", show: true },
             { id: "SLAPworld", name: "SLAPworld", show: true },
             { id: "SLAPschool", name: "SLAPschool", show: true },
