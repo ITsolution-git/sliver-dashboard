@@ -15,7 +15,7 @@
 				<label>Hours</label>
 				<md-select required name="hours" placeholder="Hours" ng-model="formData.extra.hours">
 					
-					<md-option ng-repeat="h in [] | range:13" ng-value={{h+1}}>{{h+1}}</md-option>
+					<md-option ng-repeat="h in [] | range:25" ng-value={{h+1}}>{{h+1}}</md-option>
 
 				</md-select>
 				<div ng-messages="form.hours.$error" ng-hide="form.hours.$valid">
