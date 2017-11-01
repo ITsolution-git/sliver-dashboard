@@ -132,6 +132,9 @@
 
                 buildActivityGridData();
 
+                $scope.activityTypes
+                .filter(function(type){ return type.show = false; })
+
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
 
@@ -330,7 +333,8 @@
                 $scope.startPlan = $scope.user.planId;
             }
             else {
-                $scope.user.planId = $scope.startPlan;createOrSave(event);
+                $scope.user.planId = $scope.startPlan;
+                createOrSave(event);
             }
         }
 
@@ -351,7 +355,20 @@
                 });
             }
             commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Archive', success);
+        }
 
+        function deleteAction(event) {
+            var success = function(){
+
+                adminUserService.delete($scope.user).then(function() {
+                    toaster.pop({type: 'success', body: 'Action Delete.'});
+                    $state.go('users.list');
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+            }
+            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this action?', 'Delete', success);
         }
 
         function changeUser(user_id) {
@@ -456,11 +473,9 @@
             
             $scope.activityGridReady = false;
             $timeout(function(){
-
                 var types = $scope.activityTypes
                 .filter(function(type){ return type.show == true; })
                 .map(function(type){return type.name});
-
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
                     if ($scope.actFilter.searchKeyword.trim() != ''){
@@ -646,10 +661,10 @@
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                 .title('Confirm Delete')
-                .textContent('Are you sure you want to remove this account?')
-                .ariaLabel('Archive')
+                .textContent('Are you sure you want to remove this action?')
+                .ariaLabel('Delete')
                 .targetEvent($event)
-                .ok('Archive Account')
+                .ok('Delete')
                 .cancel('No');
 
             $mdDialog.show(confirm).then(function() {
