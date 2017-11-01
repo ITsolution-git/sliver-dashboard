@@ -396,8 +396,8 @@
         <h3>Payments</h3>
         <button-switch visible="showPayments"></button-switch>
     </section>
-    <section class="  sample-show-hide"  ng-show="showPayments" layout="row" layout-align="space-between center">
-        <section>
+    <section style="justify-content: left" class="sample-show-hide"  ng-show="showPayments" layout="row"  layout-align="space-between center">
+        <section style="flex-basis: 70%">
             <div class="alert alert-danger" ng-if="user.pausingPayment">
                 This account was <strong>paused Payment</strong>.
             </div>
@@ -425,7 +425,7 @@
                 </tbody>
             </table>
         </section>
-        <section layout="column">
+        <section class="charge-buttons" layout="column">
             <button class="btn btn-primary" ng-click="charge(0)">
                 Charge 1:1 Meeting
             </button>
