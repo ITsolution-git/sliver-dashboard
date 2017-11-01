@@ -687,9 +687,11 @@
             apiService.adminToken = $auth.getToken();
 
             adminUserService.getToken(item._id).then(function (res){
-            
-                var url = $state.href('login',{token: res.data.token})
-                window.open(url, '_blank');
+                $auth.setToken(res.data.token);
+                $state.go('home');
+                document.location.reload(true);
+                //var url = $state.href('login',{token: res.data.token})
+                //window.open(url, '_blank');
             });
         }
 
