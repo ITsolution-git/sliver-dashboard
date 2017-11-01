@@ -396,8 +396,8 @@
         <h3>Payments</h3>
         <button-switch visible="showPayments"></button-switch>
     </section>
-    <section class="  sample-show-hide"  ng-show="showPayments" layout="row" layout-align="space-between center">
-        <section>
+    <section style="justify-content: left" class="sample-show-hide"  ng-show="showPayments" layout="row"  layout-align="space-between center">
+        <section style="flex-basis: 70%">
             <div class="alert alert-danger" ng-if="user.pausingPayment">
                 This account was <strong>paused Payment</strong>.
             </div>
@@ -425,7 +425,7 @@
                 </tbody>
             </table>
         </section>
-        <section layout="column">
+        <section class="charge-buttons" layout="column">
             <button class="btn btn-primary" ng-click="charge(0)">
                 Charge 1:1 Meeting
             </button>
@@ -468,6 +468,20 @@
     </section>
 </md-card>
 
+<md-card flex="100" class="p-es-30 m-es-40 slapster-expert-hours"  ng-init="showExpertHours = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>Expert Hours</h3>
+        <button-switch visible="showExpertHours"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showExpertHours">
+        <section layout="row" flex="100">
+            <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
+                Record Client Interaction
+            </md-button>
+        </section>
+    </section>
+</md-card>
 
 <md-card flex="100" class="p-es-30 m-es-40 slapster-activity"  ng-init="showActivity = true">
     <section layout="row" layout-align="space-between center">
@@ -513,7 +527,6 @@
                     </md-input-container>
                 </form>
             </section>
-
             <section layout="row" flex="50" layout-wrap> 
                 <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>
                 <span ng-repeat-end>&nbsp&nbsp</span>
@@ -617,19 +630,6 @@
     </section>
 </md-card>
 
-<md-card flex="100" class="p-es-30 m-es-40 slapster-expert-hours"  ng-init="showExpertHours = true">
-    <section layout="row" layout-align="space-between center">
 
-        <h3>Expert Hours</h3>
-        <button-switch visible="showExpertHours"></button-switch>
-    </section>
-    <section class="  sample-show-hide"  ng-show="showExpertHours">
-        <section layout="row" flex="100">
-            <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
-                Record Client Interaction
-            </md-button>
-        </section>
-    </section>
-</md-card>
 
 </div>
