@@ -17,7 +17,7 @@
             dataReady: false,
             ROLES: adminUserService.ROLES,
             STATUSES: adminUserService.STATUSES,
-            itemPerPage: 5,
+            itemPerPage: 50,
 
             buildGridData: buildGridData,
             getItemPerPage: getItemPerPage,
