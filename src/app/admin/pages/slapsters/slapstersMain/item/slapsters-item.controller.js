@@ -120,7 +120,7 @@
         pageService
             .reset()
             .setShowBC(true)
-            .addCrumb({name: 'SLAPster', path: 'slapsters.list'});
+            .addCrumb({name: 'SLAPsters', path: 'slapsters.list'});
 
         $timeout(activate);
         function activate() {
@@ -612,7 +612,7 @@
 
         
 
-        function updateNotes($event) {       
+        function updateNotes($event) { 
             activityService.add($scope.formData)
                 .then(function(response){
                     $scope.activityData.push(response.data);
@@ -683,9 +683,8 @@
 
             adminUserService.getToken(item._id).then(function (res){
             
-                $auth.setToken(res.data.token);
-                $state.go('home');
-                document.location.reload(true);
+                var url = $state.href('login',{token: res.data.token})
+                window.open(url, '_blank');
             });
         }
 
