@@ -26,8 +26,8 @@
 
         pageService
             .reset()
-            .addCrumb({name: 'Slapsters', path: 'slapsters.list'})
-            .setPageTitle('Slapsters');
+            .addCrumb({name: 'SLAPsters', path: 'slapsters.list'})
+            .setPageTitle('SLAPsters');
 
 
         $timeout(activate);

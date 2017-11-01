@@ -120,7 +120,7 @@
         pageService
             .reset()
             .setShowBC(true)
-            .addCrumb({name: 'Slapster', path: 'slapsters.list'});
+            .addCrumb({name: 'SLAPster', path: 'slapsters.list'});
 
         $timeout(activate);
         function activate() {
