@@ -612,7 +612,12 @@
 
         
 
-        function updateNotes($event) { 
+        function updateNotes($event, form) { 
+            if(form.$invalid) {
+                toaster.pop({type: 'error', body: "You cannot finalize this process until all fields are completed.", timeout: 2000});
+                vm.buttonDisabled = false;
+                return;
+            }
             activityService.add($scope.formData)
                 .then(function(response){
                     $scope.activityData.push(response.data);
