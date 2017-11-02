@@ -10,7 +10,7 @@
         angular.extend($scope,  {
             user: {},
             userID: $stateParams.user_id,
-            ROLES: adminUserService.ROLES.filter(function (role){return role.id != 5}),
+            ROLES: adminUserService.ROLES.filter(function (role) {return role.id < 4}),
             STATUSES: adminUserService.STATUSES,
 
             deleteItem: deleteItem,
@@ -30,6 +30,7 @@
             .reset()
             .setShowBC(true)
             .addCrumb({name: 'Users', path: 'users.list'});
+
 
         if (!$scope.userID) {
             pageService
