@@ -1,0 +1,92 @@
+<div layout="column" style="width: 100%;">
+    <md-card flex="100" class="p-es-30 m-w-es-40">
+        <form layout="row" layout-wrap layout-align="center center" name="form">
+            <md-input-container flex="100">
+                <label>Partner Organization Name</label>
+                <input ng-model="partner.businessName" required name="businessName">
+                <div ng-messages="form.businessName.$error">
+                    <ng-message when="required">Partner Organization Name is required.</ng-message>
+                </div>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>First Name</label>
+                <input ng-model="partner.name" required name="name">
+                <div ng-messages="form.name.$error">
+                    <ng-message when="required">First Name is required.</ng-message>
+                </div>
+            </md-input-container>
+
+            <md-input-container flex="50">
+                <label>Last Name</label>
+                <input ng-model="partner.lastName" required name="lastName">
+                <div ng-messages="form.lastName.$error">
+                    <ng-message when="required">Last Name is required.</ng-message>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label for="email">Email</label>
+                <input name="email" ng-model="partner.email" id="email" required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                <div ng-messages="form.email.$error" ng-hide="form.email.$valid">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Only letters and numbers are allowed (a-z,A-Z)
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label for="additional_email">Additional email</label>
+                <input name="additional_email" ng-model="partner.additional_email" id="additional_email" required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                <div ng-messages="form.additional_email.$error" ng-hide="form.additional_email.$valid">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Only letters and numbers are allowed (a-z,A-Z)
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label for="phone">Phone Number</label>
+                <input name="phone" required ng-model="partner.phone" id="phone" />
+                <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid">
+                    <ng-message when="required">Phone Number is required.</ng-message>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label for="revenue">% Revenue Share owed to Partner</label>
+                <input name="revenue" required ng-model="partner.revenue_percent" id="revenue" />
+                <div ng-messages="form.revenue.$error" ng-hide="form.phone.$valid">
+                    <ng-message when="required">% Revenue Share owed to Partner is required.</ng-message>
+                </div>
+            </md-input-container>
+            <md-input-container flex="100">
+                <label>Overview of Partnership</label>
+                <input ng-model="partner.partnership_overview" required name="partnership">
+                <div ng-messages="form.partnership.$error">
+                    <ng-message when="required">Overview of Partnership is required.</ng-message>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label for="promocode">Promo Codes associated with Partner</label>
+                <md-select name="promocode" ng-model="partner.promocode">
+                   <md-option ng-repeat="coupon in coupons" value="{{coupon._id}}">{{coupon.code}}</md-option>
+                </md-select>
+                <div class="md-errors-spacer"></div>
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label for="snapshot">Partner to receive SLAPsnapshot</label>
+                <!-- {{partner.snapshot}} -->
+                <md-select name="snapshot" ng-model="partner.snapshot">
+                    <md-option ng-value="'Weekly'">Weekly</md-option>
+                    <md-option ng-value="'Monthly'">Monthly</md-option>
+                    <md-option ng-value="'Quarterly'">Quarterly</md-option>
+                </md-select>
+                <div class="md-errors-spacer"></div>
+            </md-input-container>
+
+            <section layout="row" layout-align="end center" flex="100">
+                <md-button ng-click="createOrSave($event)" class="md-primary">
+                    {{partnerId ? 'Save' : 'Create'}}
+                </md-button>
+            </section>
+        </form>
+
+    </md-card>
+</div>

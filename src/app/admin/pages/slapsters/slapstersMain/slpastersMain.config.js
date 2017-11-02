@@ -62,6 +62,11 @@
                         .then(function (response) {
                             return response.data;
                         }).catch(function(err) { console.log(err); $state.go('slapsters'); });
+                    },
+                    partners: function (partnerService, $state) {
+                        return partnerService.list().then(function(response){
+                            return response.data;
+                        }).catch(function (err) { console.log(err); $state.go('slapsters'); });
                     }
                 },
                 url: '/{user_id}',

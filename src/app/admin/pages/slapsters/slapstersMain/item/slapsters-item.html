@@ -48,7 +48,7 @@
                 <md-input-container >
                     <label>Partner/Affiliate</label>
                     <md-select ng-model="user.partnerId"  aria-label="partner-select">
-                        <md-option ng-repeat="user in userData | filter: {role: 5}" ng-value="user._id">{{user.name + ' ' + user.lastName}}</md-option>
+                        <md-option ng-repeat="partner in partners" ng-value="partner._id">{{partner.name + ' ' + partner.lastName}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
                 </md-input-container>

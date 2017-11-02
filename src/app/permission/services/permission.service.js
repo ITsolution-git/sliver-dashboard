@@ -11,7 +11,7 @@
 
         me.user = null;
         me.rolePermModel = [
-            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
+            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters','canPartners', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
             {role: self.ROLE_SLAPEXPERT, perms: ['canAdmin', 'canSlpasters', 'canEmailTemplates']},
             {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports', 'canUsers']},
             {role: self.ROLE_SLAPSTER, perms: ['canBuild']},
@@ -23,6 +23,7 @@
             {permName: 'canBuildReports', 'sref': 'reports.list', 'name': 'Build Reports'},
             {permName: 'canPlans', 'sref': 'plans.list', 'name': 'Plans'},
             {permName: 'canPromocodes', 'sref': 'coupon.list', 'name': 'Promo Codes'},
+            {permName: 'canPartners', 'sref': 'partners.list', 'name': 'Partners' },
             {permName: 'canEmailTemplates', 'sref': 'emailtemplates.list', 'name': 'Email Templates'},
             {permName: 'canUsers', 'sref': 'users.list', 'name': 'Users'},
             {permName: 'canAdmin', sref: 'admin.home', 'name': 'Admin'},
@@ -43,6 +44,7 @@
                 menuName: 'Admin', 
                 children: [
                     {menuName: 'Plans', needPerm: 'canPlans'},
+                    {menuName: 'Partners', needPerm: 'canPartners'},
                     {menuName: 'Promo Codes', needPerm: 'canPromocodes'},
                     {menuName: 'Email Templates', needPerm: 'canEmailTemplates'},
                     {menuName: 'Users', needPerm: 'canUsers'},
