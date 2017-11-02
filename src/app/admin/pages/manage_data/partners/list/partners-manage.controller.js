@@ -40,7 +40,15 @@
                 show: true,
                 format: 'raw',
                 getValue: getValue
-            }, {
+            },
+            {
+                field: "businessName",
+                title: "Business Name",
+                show: true,
+                format: 'raw',
+                getValue: getValue
+            }, 
+            {
                 field: "email",
                 title: "Email",
                 show: true,
