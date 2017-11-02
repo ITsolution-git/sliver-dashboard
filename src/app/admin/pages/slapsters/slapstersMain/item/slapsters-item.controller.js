@@ -6,7 +6,7 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($auth,$scope, $state, pageService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
+    function AdminSlapstersItemController($auth,$scope, $state, pageService, userService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
@@ -17,6 +17,7 @@
             promocodeData: promocodeData,
             activityData: activityData,
             paymentData: [],
+            curUser: userService.getStoredUser(),
             excuteItems: excuteItems,
             changeStripeSubscription: changeStripeSubscription,
 
@@ -104,6 +105,7 @@
             activityTypes: activityService.activityTypes,
             activityFilter: {Milestone:true},
             changeUser: changeUser,
+            isAdmin: isAdmin,
 
             //Activity dialog
 
@@ -115,7 +117,7 @@
             updateNotes: updateNotes,
             formData: {},
         });
-        
+
 
         pageService
             .reset()
@@ -142,7 +144,7 @@
 
                 $scope.actFilter.startDate = new Date();
                 $scope.actFilter.endDate = new Date();
-                
+     
                 if(!startDate)
                     return;
                     
@@ -693,6 +695,11 @@
                 //var url = $state.href('login',{token: res.data.token})
                 //window.open(url, '_blank');
             });
+        }
+
+        function isAdmin() {
+            if($scope.curUser.role == 1 || $scope.curUser.role == 3) return true;
+            else return false;
         }
 
 

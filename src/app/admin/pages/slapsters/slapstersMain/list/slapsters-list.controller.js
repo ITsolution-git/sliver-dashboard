@@ -15,6 +15,7 @@
             searchKeyword: '',
             dataloaded: false,
             dataReady: false,
+            isAdmin: false,
             ROLES: adminUserService.ROLES,
             STATUSES: adminUserService.STATUSES,
             itemPerPage: 50,
@@ -35,6 +36,10 @@
             reloadData();
             
         }
+        var user = userService.getStoredUser()
+        if(user.role == 1 || user.role == 3) $scope.isAdmin = true;
+
+
         function getItemPerPage(value) {
             $scope.itemPerPage = value;
         }

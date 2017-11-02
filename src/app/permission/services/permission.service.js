@@ -12,8 +12,8 @@
         me.user = null;
         me.rolePermModel = [
             {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
-            {role: self.ROLE_SLAPEXPERT, perms: ['canAdmin', 'canSlpasters', 'canEmailTemplates']},
-            {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports', 'canUsers']},
+            {role: self.ROLE_SLAPEXPERT, perms: ['canAdmin', 'canSlpasters']},
+            {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
             {role: self.ROLE_SLAPSTER, perms: ['canBuild']},
             {role: self.ROLE_PARTNER, perms:['canAdmin', 'canSlpasters', 'canBuildReports']},
         ];
@@ -25,10 +25,9 @@
             {permName: 'canPromocodes', 'sref': 'coupon.list', 'name': 'Promo Codes'},
             {permName: 'canEmailTemplates', 'sref': 'emailtemplates.list', 'name': 'Email Templates'},
             {permName: 'canUsers', 'sref': 'users.list', 'name': 'Users'},
-            {permName: 'canAdmin', sref: 'admin.home', 'name': 'Admin'},
+            {permName: 'canAdmin', 'sref': 'admin.home', 'name': 'Admin'},
             {permName: 'canDelete', 'sref': 'archive.list', 'name': 'Archived Accounts'},
             {permName: 'canBuild', 'sref': 'home', 'name': 'Build'},
-            
         ];
 
         me.menuModel = [
@@ -81,7 +80,6 @@
             } else {
                 return _.orderBy(slapsters, ['createdAt']);
             }
-            
         }
 
         me.allPerms = function() {
