@@ -14,7 +14,7 @@
 <md-card flex="100" class="p-es-30 m-es-40 slapster-at-a-glance"  ng-init="showAtAGlance = false">
     <section layout="row" layout-align="space-between center">
 
-        <h3>SLAPster At a Glance</h3>
+        <h3 class="no-capitalize">SLAPster-at-a-Glance!</h3>
         <button-switch visible="showAtAGlance"></button-switch>
     </section>
     <section class="  sample-show-hide"  ng-show="showAtAGlance">
@@ -23,7 +23,7 @@
             <section layout="column" flex="50">
                 <md-input-container >
                     <label>Business Name</label>
-                    <input ng-model="user.businessName" required name="businessName">
+                    <input ng-disabled="!isAdmin()" ng-model="user.businessName" required name="businessName">
                     <div ng-messages="form.businessName.$error">
                         <ng-message when="required">Business Name is required.</ng-message>
                     </div>
@@ -31,7 +31,7 @@
                 
                 <md-input-container >
                     <label>First Name</label>
-                    <input ng-model="user.name" required name="name">
+                    <input ng-disabled="!isAdmin()" ng-model="user.name" required name="name">
                     <div ng-messages="form.name.$error">
                         <ng-message when="required">First Name is required.</ng-message>
                     </div>
@@ -39,7 +39,7 @@
                 
                 <md-input-container >
                     <label>Last Name</label>
-                    <input ng-model="user.lastName" required name="lastName">
+                    <input ng-disabled="!isAdmin()" ng-model="user.lastName" required name="lastName">
                     <div ng-messages="form.lastName.$error">
                         <ng-message when="required">Last Name is required.</ng-message>
                     </div>
@@ -47,7 +47,7 @@
 
                 <md-input-container >
                     <label>Partner/Affiliate</label>
-                    <md-select ng-model="user.partnerId"  aria-label="partner-select">
+                    <md-select ng-disabled="!isAdmin()" ng-model="user.partnerId"  aria-label="partner-select">
                         <md-option ng-repeat="partner in partners" ng-value="partner._id">{{partner.name + ' ' + partner.lastName}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
@@ -55,7 +55,7 @@
 
                 <md-input-container class="md-block">
                     <label for="email">Email</label>
-                    <input name="email" ng-model="user.email" id="email"
+                    <input ng-disabled="!isAdmin()" name="email" ng-model="user.email" id="email"
                             required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
                     <div ng-messages="form.email.$error" ng-hide="form.email.$valid">
@@ -67,7 +67,7 @@
 
                 <md-input-container class="md-block">
                     <label for="phone">Phone Number</label>
-                    <input name="phone" required ng-model="user.phone"  id="phone"/>
+                    <input ng-disabled="!isAdmin()" name="phone" required ng-model="user.phone"  id="phone"/>
 
                     <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid">
                         <ng-message when="required">Phone Number is required.</ng-message>
@@ -76,7 +76,7 @@
 
                 <md-input-container class="md-block">
                     <label for="phone">Work Phone Number</label>
-                    <input name="phone"  ng-model="user.extrainfo.workPhone"  id="workPhone"/>
+                    <input ng-disabled="!isAdmin()" name="phone"  ng-model="user.extrainfo.workPhone"  id="workPhone"/>
 
                     <div ng-messages="form.workPhone.$error" ng-hide="form.workPhone.$valid">
                         <!--<ng-message when="required">Phone Number is required.</ng-message>-->
@@ -85,7 +85,7 @@
 
                 <md-input-container class="md-block">
                     <label for="phone">Cell Phone  Number</label>
-                    <input name="phone"  ng-model="user.extrainfo.cellPhone"  id="cellPhone"/>
+                    <input ng-disabled="!isAdmin()" name="phone"  ng-model="user.extrainfo.cellPhone"  id="cellPhone"/>
 
                     <div ng-messages="form.cellPhone.$error" ng-hide="form.cellPhone.$valid">
                         <!--<ng-message when="required">Phone Number is required.</ng-message>-->
@@ -94,7 +94,7 @@
 
                 <md-input-container class="md-block">
                     <label for="phone">Prefered Contact Method</label>
-                    <input name="phone"  ng-model="user.extrainfo.contactMethod"  id="contactMethod"/>
+                    <input ng-disabled="!isAdmin()" name="phone"  ng-model="user.extrainfo.contactMethod"  id="contactMethod"/>
 
                     <div ng-messages="form.contactMethod.$error" ng-hide="form.contactMethod.$valid">
                         <!--<ng-message when="required">Phone Number is required.</ng-message>-->
@@ -103,7 +103,7 @@
 
                 <md-input-container class="md-block">
                     <label for="phone">Details about SLAPster personality & preferences</label>
-                    <input name="phone"  ng-model="user.extrainfo.textNotes"  id="textNotes"/>
+                    <input ng-disabled="!isAdmin()" name="phone"  ng-model="user.extrainfo.textNotes"  id="textNotes"/>
 
                     <div ng-messages="form.textNotes.$error" ng-hide="form.textNotes.$valid">
                         <!--<ng-message when="required">Phone Number is required.</ng-message>-->
@@ -133,7 +133,7 @@
                 </md-input-container>
                 <md-input-container ng-if="user.stripeSubscription">
                     <label>SLAPProgram</label>
-                    <md-select  ng-model="user.planId" aria-label="plan-select">
+                    <md-select ng-disabled="!isAdmin()"  ng-model="user.planId" aria-label="plan-select">
                         <md-option ng-repeat="product in programData | filter: {buildType: 1}" ng-value="product._id">{{product.productName}}</md-option>
                     </md-select>    
 					<div class="md-errors-spacer"></div>
@@ -143,12 +143,12 @@
                 <section flex="100" layout="row">
                     <md-input-container flex="70">
                         <label>Promo Code</label>
-                        <md-select ng-model="user.couponId"  aria-label="coupon-select">
+                        <md-select ng-disabled="!isAdmin()" ng-model="user.couponId"  aria-label="coupon-select">
                             <md-option ng-repeat="promocode in promocodeData" ng-value="promocode._id">{{promocode.name}}</md-option>
                         </md-select>
                         <div class="md-errors-spacer"></div>
                     </md-input-container>
-                    <md-button class="md-primary" ng-click="user.couponId = null"  flex="30" style="margin-bottom: 30px">
+                    <md-button ng-disabled="!isAdmin()" class="md-primary" ng-click="user.couponId = null"  flex="30" style="margin-bottom: 30px">
                         Delete
                     </md-button>
                 </section>
@@ -163,7 +163,7 @@
 
                 <md-input-container >
                     <label>SLAPexpert</label>
-                    <md-select ng-model="user.expertId"  aria-label="expert-select">
+                    <md-select ng-disabled="!isAdmin()" ng-model="user.expertId"  aria-label="expert-select">
                         <md-option ng-repeat="user in userData | filter: {role: 2}" ng-value="user._id">{{user.name +' ' + user.lastName}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
@@ -178,10 +178,10 @@
             
 
             <section layout="row" layout-align="end center" flex="100">
-                <md-button ng-click="changeStripeSubscription($event)" class="md-primary" >
+                <md-button ng-disabled="!isAdmin()" ng-click="changeStripeSubscription($event)" class="md-primary" >
                     Save
                 </md-button>
-                <md-button ng-click="deleteItem($event)" class="md-warn">
+                <md-button ng-disabled="!isAdmin()" ng-click="deleteItem($event)" class="md-warn">
                     Remove Account
                 </md-button>
             </section>
@@ -396,8 +396,8 @@
         <h3>Payments</h3>
         <button-switch visible="showPayments"></button-switch>
     </section>
-    <section class="  sample-show-hide"  ng-show="showPayments" layout="row" layout-align="space-between center">
-        <section>
+    <section style="justify-content: left" class="sample-show-hide"  ng-show="showPayments" layout="row"  layout-align="space-between center">
+        <section style="flex-basis: 70%">
             <div class="alert alert-danger" ng-if="user.pausingPayment">
                 This account was <strong>paused Payment</strong>.
             </div>
@@ -425,7 +425,7 @@
                 </tbody>
             </table>
         </section>
-        <section layout="column">
+        <section ng-if="isAdmin()" class="charge-buttons" layout="column">
             <button class="btn btn-primary" ng-click="charge(0)">
                 Charge 1:1 Meeting
             </button>
@@ -468,11 +468,25 @@
     </section>
 </md-card>
 
+<md-card flex="100" class="p-es-30 m-es-40 slapster-expert-hours"  ng-init="showExpertHours = true">
+    <section layout="row" layout-align="space-between center">
+
+        <h3>Expert Hours</h3>
+        <button-switch visible="showExpertHours"></button-switch>
+    </section>
+    <section class="  sample-show-hide"  ng-show="showExpertHours">
+        <section layout="row" flex="100">
+            <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
+                Record Client Interaction
+            </md-button>
+        </section>
+    </section>
+</md-card>
 
 <md-card flex="100" class="p-es-30 m-es-40 slapster-activity"  ng-init="showActivity = true">
     <section layout="row" layout-align="space-between center">
 
-        <h3>Activity</h3>
+        <h3>Client Interactions & Activity</h3>
         <button-switch visible="showActivity"></button-switch>
     </section>
     <section class="  sample-show-hide"  ng-show="showActivity">
@@ -513,7 +527,6 @@
                     </md-input-container>
                 </form>
             </section>
-
             <section layout="row" flex="50" layout-wrap> 
                 <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>
                 <span ng-repeat-end>&nbsp&nbsp</span>
@@ -617,19 +630,6 @@
     </section>
 </md-card>
 
-<md-card flex="100" class="p-es-30 m-es-40 slapster-expert-hours"  ng-init="showExpertHours = true">
-    <section layout="row" layout-align="space-between center">
 
-        <h3>Expert Hours</h3>
-        <button-switch visible="showExpertHours"></button-switch>
-    </section>
-    <section class="  sample-show-hide"  ng-show="showExpertHours">
-        <section layout="row" flex="100">
-            <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
-                Record Client Interaction
-            </md-button>
-        </section>
-    </section>
-</md-card>
 
 </div>

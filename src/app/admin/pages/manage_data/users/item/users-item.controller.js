@@ -10,11 +10,12 @@
         angular.extend($scope,  {
             user: {},
             userID: $stateParams.user_id,
-            ROLES: adminUserService.ROLES,
+            ROLES: adminUserService.ROLES.filter(function (role) {return role.id < 4}),
             STATUSES: adminUserService.STATUSES,
 
             deleteItem: deleteItem,
             createOrSave: createOrSave,
+            isBusiness: isBusiness,
 
             showSetPasswordDialog: showSetPasswordDialog,
             password: {
@@ -29,6 +30,7 @@
             .reset()
             .setShowBC(true)
             .addCrumb({name: 'Users', path: 'users.list'});
+
 
         if (!$scope.userID) {
             pageService
@@ -55,8 +57,14 @@
                 toaster.pop({type: 'error', body: err.data.message});
             });
         }
+        
+        function isBusiness() {
+            if ($scope.user.role == 1 || $scope.user.role == 2 || $scope.user.role == 3) return true;
+            else false;
+        }
 
         function update() {
+            if (isBusiness()) $scope.user.businessName = "Silver Lining";
             if($scope.userID){
                 return $scope.user.save();
             } else {

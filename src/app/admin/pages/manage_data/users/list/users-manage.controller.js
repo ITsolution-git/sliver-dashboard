@@ -59,14 +59,15 @@
                 var filtered = $scope.users.filter(function(user){
                     var valid = false;
                     if (user.status === 'archived') return valid;
+                    if (user.role === 4 || user.role === 5) return valid;
                     if ($scope.searchKeyword.trim() != ''){
-                            if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.businessName.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
-                            if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.name.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
-                            if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.lastName.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
-                            if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.email.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
                         }else { valid = true; }
                     return valid;

@@ -4,7 +4,7 @@
 			<md-input-container flex="50">
 				<label>Date</label>
 				<md-datepicker ng-model="formData.extra.date" name="Date"></md-datepicker>
-				<div ng-messages="formData.extra.date.$error">
+				<div ng-messages="form.date.$error">
 					<div ng-message="valid">The entered value is not a date!</div>
 					<div ng-message="required">This date is required!</div>
 					<div ng-message="mindate">Date is too early!</div>
@@ -13,89 +13,142 @@
 			</md-input-container>
 			<md-input-container flex="25">
 				<label>Hours</label>
-				<md-select placeholder="Hours" ng-model="formData.extra.hours">
+				<md-select required name="hours" placeholder="Hours" ng-model="formData.extra.hours">
 					
-					<md-option ng-repeat="h in [] | range:13" ng-value={{h+1}}>{{h+1}}</md-option>
+					<md-option ng-repeat="h in [] | range:25" ng-value={{h+1}}>{{h+1}}</md-option>
 
 				</md-select>
+				<div ng-messages="form.hours.$error" ng-hide="form.hours.$valid">
+						<div ng-message-exp="['required']">
+						
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container flex="25">
 				<label>Minutes</label>
-				<md-select placeholder="Minutes" ng-model="formData.extra.minutes">
+				<md-select name="minutes" required placeholder="Minutes" ng-model="formData.extra.minutes">
 							
 					<md-option ng-repeat="m in [] | range:61" ng-value={{m+1}}>{{m+1}}</md-option>
 		
 				</md-select>
+				<div ng-messages="form.minutes.$error" ng-hide="form.minutes.$valid">
+						<div ng-message-exp="['required']">
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container flex="100" style:"margin-top: 10px !important">
-					<input placeholder="Write detailed notes about your how this SLAPster is doing and what was discussed on this call?" ng-model="formData.notes">
+					<input  required name="notes" placeholder="Write detailed notes about your how this SLAPster is doing and what was discussed on this call?" ng-model="formData.notes">
+					<div ng-messages="form.notes.$error" ng-hide="form.notes.$valid">
+							<div ng-message-exp="['required']">
+							</div>
+						</div>
 				</md-input-container>
 	
 				<md-input-container flex="100">
-					<input placeholder="What were key priorities that came out for the SLAPster to focus on until your next call?" ng-model="formData.extra.priorities">
+					<input required name="priorities" placeholder="What were key priorities that came out for the SLAPster to focus on until your next call?" ng-model="formData.extra.priorities">
+					<div ng-messages="form.priorities.$error" ng-hide="form.priorities.$valid">
+							<div ng-message-exp="['required']">
+							</div>
+						</div>
 				</md-input-container>
 	
 				<md-input-container flex="100">
-					<input placeholder="Are there any specific items the SLAPmanagers should follow up on?" ng-model="formData.extra.spec">
+					<input required name="specific" placeholder="Are there any specific items the SLAPmanagers should follow up on?" ng-model="formData.extra.spec">
+					<div ng-messages="form.specific.$error" ng-hide="form.specific.$valid">
+							<div ng-message-exp="['required']">
+							</div>
+						</div>
 				</md-input-container>
 
 
 			<md-input-container flex="100">
 				<label>Call length</label>
-				<input ng-model="formData.extra.callLength">
+				<input ng-pattern="/^[0-9]{1,12}$/" maxlength="3" minlength="1" required name="call-length" ng-model="formData.extra.callLength">
+				<div ng-messages="form.call-length.$error" ng-hide="form.call-length.$valid">
+						<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container md-no-float flex="50">
-				<md-select placeholder="Tool used for call" ng-model="formData.extra.tool">
+				<md-select required name="tool" placeholder="Tool used for call" ng-model="formData.extra.tool">
 					<md-option ng-value=1>Zoom video call</md-option>
-					<md-option ng-value=2>Personal cell phone</md-option>
+					<md-option ng-value=2>Appear</md-option>
+					<md-option ng-value=3>In video call</md-option>
+					<md-option ng-value=4>Line2 Phone</md-option>
+					<md-option ng-value=5>Personal cell phone</md-option>
 				</md-select>
+				<div ng-messages="form.tool.$error" ng-hide="form.tool.$valid">
+						<div ng-message-exp="['required']">
+							
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container md-no-float flex="50" >
-				<md-select placeholder="Rate SLAPmindset" ng-model="formData.extra.mindset">
+				<md-select required name="slapmindset" placeholder="Rate SLAPmindset" ng-model="formData.extra.mindset">
 					<md-option ng-value=1>1</md-option>
 					<md-option ng-value=2>2</md-option>
 					<md-option ng-value=3>3</md-option>
 					<md-option ng-value=4>4</md-option>
 					<md-option ng-value=5>5</md-option>
 				</md-select>
+				<div ng-messages="form.slapmindset.$error" ng-hide="form.slapmindset.$valid">
+						<div ng-message-exp="['required']">
+							
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container md-no-float flex="50">
-				<md-select placeholder="How well do they know and use their SLAPstatement?" ng-model="formData.extra.statement">
+				<md-select required name="slapstatement" placeholder="How well do they know and use their SLAPstatement?" ng-model="formData.extra.statement">
 					<md-option ng-value=1>1</md-option>
 					<md-option ng-value=2>2</md-option>
 					<md-option ng-value=3>3</md-option>
 					<md-option ng-value=4>4</md-option>
 					<md-option ng-value=5>5</md-option>
 				</md-select>
+				<div ng-messages="form.slapstatement.$error" ng-hide="form.slapstatement.$valid">
+						<div ng-message-exp="['required']">
+							
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container md-no-float flex="50">
-				<md-select placeholder="How well do they know and understand their annual and quarterly goals?" ng-model="formData.extra.goals">
+				<md-select required name="guaterly" placeholder="How well do they know and understand their annual and quarterly goals?" ng-model="formData.extra.goals">
 					<md-option ng-value=1>1</md-option>
 					<md-option ng-value=2>2</md-option>
 					<md-option ng-value=3>3</md-option>
 					<md-option ng-value=4>4</md-option>
 					<md-option ng-value=5>5</md-option>
 				</md-select>
+				<div ng-messages="form.guaterly.$error" ng-hide="form.guaterly.$valid">
+						<div ng-message-exp="['required']">
+							
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container md-no-float flex="50">
-				<md-select placeholder="How well do they know and understand their current Connecting Strategy and Action Items?" ng-model="formData.extra.items">
+				<md-select required name="connecting" placeholder="How well do they know and understand their current Connecting Strategy and Action Items?" ng-model="formData.extra.items">
 					<md-option ng-value=1>1</md-option>
 					<md-option ng-value=2>2</md-option>
 					<md-option ng-value=3>3</md-option>
 					<md-option ng-value=4>4</md-option>
 					<md-option ng-value=5>5</md-option>
 				</md-select>
+				<div ng-messages="form.connecting.$error" ng-hide="form.connecting.$valid">
+						<div ng-message-exp="['required']">
+							
+						</div>
+					</div>
 			</md-input-container>
 
 			<md-input-container md-no-float flex="50">
-				<md-select placeholder="Rate their status that our SLAPmanagers can use to support them until your next call" ng-model="formData.extra.rate">
+				<md-select required name="slapmanager" md-container-class="slapster-rate-select" placeholder="Rate their status that our SLAPmanagers can use to support them until your next call" ng-model="formData.extra.rate">
 					<md-option ng-value=1>SLAPstar!</md-option>
 					<md-option ng-value=2>Doing ok but needs to use SLAP better/more</md-option>
 					<md-option ng-value=3>Using SLAP but results are poor </md-option>
@@ -104,6 +157,11 @@
 					<md-option ng-value=6>They are unhappy with Silver Lining / SLAP</md-option>
 					<md-option ng-value=7>Ego / Something in the way of them accepting our help</md-option>
 				</md-select>
+				<div ng-messages="form.slapmanager.$error" ng-hide="form.slapmanager.$valid">
+						<div ng-message-exp="['required']">
+							
+						</div>
+					</div>
 			</md-input-container>
 			
 
@@ -111,7 +169,7 @@
 	</section>
 
 	<md-dialog-actions >
-		<md-button ng-click="updateNotes($event)" class="md-primary">
+		<md-button ng-click="updateNotes($event, form)" class="md-primary">
 			Sumbit
 		</md-button>
 		<md-button ng-click="closeDialog()" class="md-primary">Close</md-button>

@@ -17,6 +17,7 @@
             promocodeData: promocodeData,
             activityData: activityData,
             paymentData: [],
+            curUser: userService.getStoredUser(),
             excuteItems: excuteItems,
             changeStripeSubscription: changeStripeSubscription,
             partners: partners,
@@ -104,6 +105,7 @@
             activityTypes: activityService.activityTypes,
             activityFilter: {Milestone:true},
             changeUser: changeUser,
+            isAdmin: isAdmin,
 
             //Activity dialog
 
@@ -115,12 +117,12 @@
             updateNotes: updateNotes,
             formData: {},
         });
-        
+
 
         pageService
             .reset()
             .setShowBC(true)
-            .addCrumb({name: 'Slapster', path: 'slapsters.list'});
+            .addCrumb({name: 'SLAPsters', path: 'slapsters.list'});
 
         $timeout(activate);
         function activate() {
@@ -132,6 +134,9 @@
 
                 buildActivityGridData();
 
+                $scope.activityTypes
+                .filter(function(type){ return type.show = false; })
+
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
 
@@ -139,7 +144,7 @@
 
                 $scope.actFilter.startDate = new Date();
                 $scope.actFilter.endDate = new Date();
-                
+     
                 if(!startDate)
                     return;
                     
@@ -330,7 +335,8 @@
                 $scope.startPlan = $scope.user.planId;
             }
             else {
-                $scope.user.planId = $scope.startPlan;createOrSave(event);
+                $scope.user.planId = $scope.startPlan;
+                createOrSave(event);
             }
         }
 
@@ -351,7 +357,20 @@
                 });
             }
             commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this account?', 'Archive', success);
+        }
 
+        function deleteAction(event) {
+            var success = function(){
+
+                adminUserService.delete($scope.user).then(function() {
+                    toaster.pop({type: 'success', body: 'Action Delete.'});
+                    $state.go('users.list');
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+            }
+            commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to remove this action?', 'Delete', success);
         }
 
         function changeUser(user_id) {
@@ -456,11 +475,9 @@
             
             $scope.activityGridReady = false;
             $timeout(function(){
-
                 var types = $scope.activityTypes
                 .filter(function(type){ return type.show == true; })
                 .map(function(type){return type.name});
-
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
                     if ($scope.actFilter.searchKeyword.trim() != ''){
@@ -537,8 +554,8 @@
 
         function openSlapexpertDialog($event, item) {
                 var newForm = {
-                    type: 'slapexpert',
-                    title: '',
+                    type: 'SLAPexpert',
+                    title: 'Client interaction',
                     extra: {
                         date: '',
                         hours: '',
@@ -597,7 +614,12 @@
 
         
 
-        function updateNotes($event) {       
+        function updateNotes($event, form) { 
+            if(form.$invalid) {
+                toaster.pop({type: 'error', body: "You cannot finalize this process until all fields are completed.", timeout: 2000});
+                vm.buttonDisabled = false;
+                return;
+            }
             activityService.add($scope.formData)
                 .then(function(response){
                     $scope.activityData.push(response.data);
@@ -646,10 +668,10 @@
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                 .title('Confirm Delete')
-                .textContent('Are you sure you want to remove this account?')
-                .ariaLabel('Archive')
+                .textContent('Are you sure you want to remove this action?')
+                .ariaLabel('Delete')
                 .targetEvent($event)
-                .ok('Archive Account')
+                .ok('Delete')
                 .cancel('No');
 
             $mdDialog.show(confirm).then(function() {
@@ -667,11 +689,17 @@
             apiService.adminToken = $auth.getToken();
 
             adminUserService.getToken(item._id).then(function (res){
-            
                 $auth.setToken(res.data.token);
                 $state.go('home');
                 document.location.reload(true);
+                //var url = $state.href('login',{token: res.data.token})
+                //window.open(url, '_blank');
             });
+        }
+
+        function isAdmin() {
+            if($scope.curUser.role == 1 || $scope.curUser.role == 3) return true;
+            else return false;
         }
 
 
