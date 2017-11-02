@@ -16,9 +16,13 @@
             createOrSave: createOrSave,
 
         });
+        pageService
+            .reset()
+            .setShowBC(true)
+            .addCrumb({ name: 'Partners', path: 'partners.list' });
         if (!$scope.partnerId) {
             pageService
-                .addCrumb({ name: 'Add', path: 'partners.add' })
+                .addCrumb({ name: 'Add', path: 'partners.item' })
                 .setPageTitle('Create Partner');
             $scope.partner = {};
         } else {
@@ -40,6 +44,7 @@
 
         function update() {
             if ($scope.partnerId) {
+
                 return partnerService.update($scope.partner);
             } else {
                 return partnerService.add($scope.partner);
