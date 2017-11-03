@@ -6,16 +6,16 @@
         .controller('AdminSLAPExpertReportsItemController', AdminSLAPExpertReportsItemController);
 
     /* @ngInject */
-    function AdminSLAPExpertReportsItemController($scope, $state, pageService, allPartners, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService) {
+    function AdminSLAPExpertReportsItemController($scope, $state, expertReportService, pageService, allExperts, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService) {
         angular.extend($scope,  {
             report: {},
             reportID: $stateParams.report_id,
-            users: allPartners,
-            partners: [{
-                name: 'John',
+            users: allExperts,
+            expert: '',
+            startDate: '',
+            endDate: '',
 
-            }],
-            startDate: ''
+            buildReport: buildReport,
         });
 
 
@@ -25,11 +25,18 @@
             .addCrumb({name: 'SLAPexpert Reports', path: 'reports.slapexpert.item'})
             .setPageTitle('SLAPexpert Reports');
 
-        console.log($scope.users);
 
         $scope.printSlap = function () {
             window.print();
         };
+
+        function buildReport() {
+            return expertReportService.post({expertId: $scope.expert, from: $scope.startDate, to: $scope.endDate})
+            .then(function (resolve) {$scope.report = resolve.data;})
+            .catch(function (e) {console.log(e);})
+        }
+
+
         //
     //     $timeout(function(){
     //         activate();

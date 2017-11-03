@@ -23,29 +23,6 @@
                 controller: 'AdminSLAPexpertReportsManageController',
                 templateUrl: 'admin/pages/reports/slap-expert_reports/list/SLAPexpertReports-manage.html'
             })
-            .state('reports.slapexpert.add', {
-                data: {
-                    access: 'admin',
-                    isAdminPage: true
-                },
-                resolve: {
-
-                    allProducts: function (productsService, $state) {
-                        return productsService.getAllProducts().then(function(response) {
-                            return  response.data;
-                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
-                    },
-                    allCoupons: function (couponService, $state) {
-                        return couponService.list()
-                            .then(function (response) {
-                                return response.data;
-                            }).catch(function(err) { console.log(err); $state.go('slapsters'); });
-                    },
-                },
-                url: '/addslapexpert',
-                controller: 'AdminSLAPexpertReportsItemController',
-                templateUrl: 'admin/pages/reports/slap-expert_reports/item/SLAPexpertReports-item.html'
-            })
             .state('reports.slapexpert.item', {
                 data: {
                     access: 'admin',
@@ -54,11 +31,11 @@
                 },
 
                 resolve: {
-                    allPartners: function (adminUserService, $state) {
+                    allExperts: function (adminUserService, $state) {
                         return adminUserService.list()
                             .then(function (response) {
                                 return response.data.filter(function (item) {
-                                    return item.role === 5;
+                                    return item.role === 2;
                                 });
                             }).catch(function(err) { console.log(err); $state.go('reports.slapexpert.item'); });
                     }
