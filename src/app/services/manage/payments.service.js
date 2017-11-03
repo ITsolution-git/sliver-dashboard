@@ -22,7 +22,7 @@
             var dataTable = [];
 
             data.forEach(function (item) {
-                // var row = {};
+                if (!item.status) item.amountCharges = 'Declined';
                 // row.paymentDate = item.paymentDate;
                 // row.programName = item.products.map(function (prod) {
                 //     return prod.name;
@@ -48,8 +48,8 @@
             return apiService.rest.all('payments').getList();
         }
 
-        function getStripePayments() {
-            return apiService.rest.all('stripe-payments').getList();
+        function getStripePayments(count) {
+            return apiService.rest.all('stripe-payments').all(count).getList();
         }
 
         function getStripePaymentsByUser(userId) {

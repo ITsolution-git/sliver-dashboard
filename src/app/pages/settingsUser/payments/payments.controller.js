@@ -46,15 +46,22 @@
             }
         ];
 
-        $scope.list = new NgTableParams({},
+        $scope.list = new NgTableParams({count: 10},
             {
+                counts: [10, 20, 30, 40, 50],
                 getData: function (params) {
-                    return paymentsService.getStripePayments()
+                    return paymentsService.getStripePayments($scope.list.count())
                         .then(function (response) {
+
                             return paymentsService.transformationData(response.data);
                         });
-                }
+                },
+                dataset: this.getData
+
+
             }
         );
+
+
     }
 }());
