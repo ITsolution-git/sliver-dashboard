@@ -1,9 +1,9 @@
 <div layout="column" style="width: 100%;">
 <md-card flex="100" class="p-es-30 m-w-es-40">
     <form layout="row" layout-wrap layout-align="center center" name="form">
-        <md-input-container  flex="100">
+        <md-input-container ng-if="!isBusiness()"  flex="100">
             <label>Business Name</label>
-            <input ng-model="user.businessName" required name="businessName">
+            <input  ng-model="user.businessName" required name="businessName">
             <div ng-messages="form.businessName.$error">
                 <ng-message when="required">Business Name is required.</ng-message>
             </div>

@@ -44,9 +44,9 @@
                     access: '@'
                 },
                 parent: 'default',
-                url: '/?refer',
+                url: '/?refer&token',
                 resolve: {
-                    activeStep: function (stepService, $state) {
+                    activeStep: function ($auth, $stateParams, stepService, $state) {
                         return stepService.resolveActiveStep(this)
                             .then(function (active) {
                                 if (active) {
@@ -73,7 +73,7 @@
                 data: {
                     access: '?'
                 },
-                url: '/login?email',
+                url: '/login?email&token',
                 parent: 'withNavbarWithoutLinks',
                 views: {
                     content: {

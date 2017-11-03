@@ -15,9 +15,10 @@
             searchKeyword: '',
             dataloaded: false,
             dataReady: false,
+            isAdmin: false,
             ROLES: adminUserService.ROLES,
             STATUSES: adminUserService.STATUSES,
-            itemPerPage: 5,
+            itemPerPage: 50,
 
             buildGridData: buildGridData,
             getItemPerPage: getItemPerPage,
@@ -26,8 +27,8 @@
 
         pageService
             .reset()
-            .addCrumb({name: 'Slapsters', path: 'slapsters.list'})
-            .setPageTitle('Slapsters');
+            .addCrumb({name: 'SLAPsters', path: 'slapsters.list'})
+            .setPageTitle('SLAPsters');
 
 
         $timeout(activate);
@@ -35,6 +36,10 @@
             reloadData();
             
         }
+        var user = userService.getStoredUser()
+        if(user.role == 1 || user.role == 3) $scope.isAdmin = true;
+
+
         function getItemPerPage(value) {
             $scope.itemPerPage = value;
         }
@@ -72,13 +77,13 @@
                     var user = slapster.current;
                     if (user.status === 'archived') return valid;
                     if ($scope.searchKeyword.trim() != ''){
-                            if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.businessName.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
-                            if (user.name.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.name.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
-                            if (user.lastName.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.lastName.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
-                            if (user.email.toLowerCase().indexOf($scope.searchKeyword) != -1)
+                            if (user.email.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;
                     } else { valid = true; }
                     return valid;
