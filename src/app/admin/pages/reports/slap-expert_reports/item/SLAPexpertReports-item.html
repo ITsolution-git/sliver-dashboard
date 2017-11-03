@@ -1,0 +1,66 @@
+
+<div layout="column" style="width: 100%;" class="reports-item-container">
+    <md-card flex="100" class="p-es-50 m-w-es-40">
+        <div class="pull-right" layout="row" layout-align="end start">
+            <button class="print" ng-click="printSlap()">
+                <i class="fa fa-print" aria-hidden="true"></i>
+                Print
+            </button>
+
+        </div>
+        <form layout="row" layout-wrap layout-align="center end" name="form">
+            <md-input-container flex="30">
+                <label>Which Partner</label>
+                <md-select ng-model="partners" required>
+                    <md-option ng-repeat="user in users" ng-value="user._id">{{user.name}}</md-option>
+                </md-select>
+                <div class="md-errors-spacer"></div>
+            </md-input-container>
+            <div flex="70"  class="partner-reports" layout-align="center end">
+                <md-input-container flex="35">
+                    <label>Start Date</label>
+                    <md-datepicker ng-model="startDate"  name="startDate" ></md-datepicker>
+                    <div ng-messages="form.startDate.$error">
+                        <div ng-message="valid">The entered value is not a date!</div>
+                        <div ng-message="required">This date is required!</div>
+                        <div ng-message="mindate">Date is too early!</div>
+                        <div ng-message="maxdate">Date is too late!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="35">
+                    <label>End Date</label>
+                    <md-datepicker ng-model="report.filter.endDate" md-min-date="report.filter.startDate" name="endDate" required></md-datepicker>
+                    <div ng-messages="form.endDate.$error">
+                        <div ng-message="valid">The entered value is not a date!</div>
+                        <div ng-message="required">This date is required!</div>
+                        <div ng-message="mindate">Date is too early!</div>
+                        <div ng-message="maxdate">Date is too late!</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-primary mar-button" ui-sref="reports.add">
+                    Build Report
+                </md-button>
+            </div>
+        </form>
+
+
+
+        <md-input-container flex="100" layout="column" layout-align="">
+                <span>Partner Name: </span>
+                <span>Reviewing Data for period from XXX to XXX</span>
+                <span>Total number of SLAPsters assigned to SLAPexpert:</span>
+                <span>Total number of SLAPsters assigned to SLAPexpert</span>
+                <div>
+                    <span>groupSLAP:</span>
+                    <span>monthlySLAP:</span>
+                    <span>seriousSLAP:</span>
+                    <span>masterSLAP:</span>
+                    <span>teamSLAP:</span>
+                    <span>accessSLAP:</span>
+                </div>
+
+                <span>Total Number of SLAPexpert Hours Worked:</span>
+                <span>Total Number of Missed Meetings:</span>
+        </md-input-container>
+    </md-card>
+</div>

@@ -11,9 +11,9 @@
 
         me.user = null;
         me.rolePermModel = [
-            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters','canPartners', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
+            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters','canPartners', 'canBuildReports','canPartnerReports','canSLAPexpertReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
             {role: self.ROLE_SLAPEXPERT, perms: ['canAdmin', 'canSlpasters']},
-            {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
+            {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports', 'canPartnerReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
             {role: self.ROLE_SLAPSTER, perms: ['canBuild']},
             {role: self.ROLE_PARTNER, perms:['canAdmin', 'canSlpasters', 'canBuildReports']},
         ];
@@ -21,6 +21,8 @@
         me.permModel = [
             {permName: 'canSlapsters', 'sref': 'slapsters.list', 'name': 'Slapsters'},
             {permName: 'canBuildReports', 'sref': 'reports.list', 'name': 'Build Reports'},
+            {permName: 'canPartnerReports', 'sref': 'reports.partner.item', 'name': 'Partner Reports'},
+            {permName: 'canSLAPexpertReports', 'sref': 'reports.slapexpert.item', 'name': 'SLAPexpert Reports'},
             {permName: 'canPlans', 'sref': 'plans.list', 'name': 'Plans'},
             {permName: 'canPromocodes', 'sref': 'coupon.list', 'name': 'Promo Codes'},
             {permName: 'canPartners', 'sref': 'partners.list', 'name': 'Partners' },
@@ -29,6 +31,7 @@
             {permName: 'canAdmin', 'sref': 'admin.home', 'name': 'Admin'},
             {permName: 'canDelete', 'sref': 'archive.list', 'name': 'Archived Accounts'},
             {permName: 'canBuild', 'sref': 'home', 'name': 'Build'},
+            
         ];
 
         me.menuModel = [
@@ -36,6 +39,8 @@
                 menuName: 'Reports', 
                 children: [
                     {menuName: 'Build Reports', needPerm: 'canBuildReports'},
+                    {menuName: 'Partner Reports', needPerm: 'canPartnerReports'},
+                    {menuName: 'SLAPexpert Reports', needPerm: 'canSLAPexpertReports'},
                     {menuName: 'Archived Accounts', needPerm: 'canDelete'},
                 ]
             },
@@ -82,6 +87,7 @@
             } else {
                 return _.orderBy(slapsters, ['createdAt']);
             }
+            
         }
 
         me.allPerms = function() {
