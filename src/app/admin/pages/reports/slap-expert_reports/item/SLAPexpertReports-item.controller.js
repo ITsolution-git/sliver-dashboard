@@ -14,6 +14,7 @@
             expert: '',
             startDate: '',
             endDate: '',
+            visibleReport: false,
 
             buildReport: buildReport,
         });
@@ -31,6 +32,7 @@
         };
 
         function buildReport() {
+            $scope.visibleReport = true;
             return expertReportService.post({expertId: $scope.expert, from: $scope.startDate, to: $scope.endDate})
             .then(function (resolve) {$scope.report = resolve.data;})
             .catch(function (e) {console.log(e);})
