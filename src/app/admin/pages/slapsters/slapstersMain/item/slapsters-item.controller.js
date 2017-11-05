@@ -620,6 +620,7 @@
                 vm.buttonDisabled = false;
                 return;
             }
+            $scope.formData.extra.date = new Date($scope.formData.extra.date.getFullYear(), $scope.formData.extra.date.getMonth(), $scope.formData.extra.date.getDate(), $scope.formData.extra.hours, $scope.formData.extra.minutes);
             activityService.add($scope.formData)
                 .then(function(response){
                     $scope.activityData.push(response.data);

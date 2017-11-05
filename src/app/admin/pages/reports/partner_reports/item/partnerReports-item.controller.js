@@ -6,16 +6,15 @@
         .controller('AdminPartnerReportsItemController', AdminPartnerReportsItemController);
 
     /* @ngInject */
-    function AdminPartnerReportsItemController($scope, $state, pageService, allPartners, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService) {
+    function AdminPartnerReportsItemController($scope, $state, partnerReportService, pageService, allPartners, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService) {
         angular.extend($scope,  {
             report: {},
             reportID: $stateParams.report_id,
             users: allPartners,
-            partners: [{
-                name: 'John',
-
-            }],
-            startDate: ''
+            partner: '',
+            startDate: '',
+            endDate: '',
+            buildReport: buildReport,
         });
 
 
@@ -25,11 +24,17 @@
             .addCrumb({name: 'Partner Reports', path: 'reports.partner.item'})
             .setPageTitle('Partner Reports');
 
-        console.log($scope.users);
 
         $scope.printSlap = function () {
             window.print();
         };
+
+        function buildReport() {
+            $scope.visibleReport = true;
+            return partnerReportService.post({partnerId: $scope.partner, from: $scope.startDate, to: $scope.endDate})
+            .then(function (resolve) {$scope.report = resolve.data;})
+            .catch(function (e) {console.log(e);})
+        }
         //
     //     $timeout(function(){
     //         activate();
