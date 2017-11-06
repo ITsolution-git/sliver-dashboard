@@ -7,6 +7,10 @@
   margin-left: 30px;
 }
 
+.reports {
+  margin-top: 30px;
+}
+
 .item-report  {
   padding-right: 10px;
 }
@@ -15,12 +19,33 @@
   display: none;
 }
 
-.container-report span {
-  margin-bottom: 20px;
+.container-report {
+  color: #576875;
+  & span {
+    display: block;
+    font-size: 1.3em;
+    line-height: 1.78em;
+    margin-bottom: 20px;
+    border-bottom: 1px dotted #0db9f0;
+  }
+  & :last-child {
+    border-bottom: none;
+  }
+
+  & :nth-of-type(4) {
+    border-bottom: none;
+  }
+
+}
+
+  & ul{
+    & li {
+    font-size: 1.3em;
+  }
+
 }
 
 .list-report {
-  //margin-top: -10px;
   margin-left: 15px;
 }
 
