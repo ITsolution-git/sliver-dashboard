@@ -37,7 +37,7 @@
                         <div ng-message="maxdate">Date is too late!</div>
                     </div>
                 </md-input-container>
-                <md-button class="md-primary mar-button" ng-click="buildReport()">
+                <md-button class="md-primary mar-button" ng-click="buildReport()" ng-disabled="disableButton">
                     Build Report
                 </md-button>
             </div>
@@ -45,7 +45,7 @@
     </md-card>
 </div>
 
-<div layout="column" style="width: 100%;" ng-if="!report.expertName" class="reports-item-container reports" ng-class="(visibleReport)? 'animated fadeIn' : 'hideReport'">
+<div layout="column" style="width: 100%;" ng-if="!report.expertName" class="reports-item-container reports" ng-class="(visibleMess)? 'animated fadeIn' : 'hideReport'">
     <md-card flex="100" class="p-es-50 m-w-es-40 ">
         <h1>No reports for this date range.</h1>
     </md-card>
