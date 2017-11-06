@@ -30,10 +30,10 @@
         };
 
         function buildReport() {
-            $scope.visibleReport = true;
-            return partnerReportService.post({partnerId: $scope.partner, from: $scope.startDate, to: $scope.endDate})
-            .then(function (resolve) {$scope.report = resolve.data;})
-            .catch(function (e) {console.log(e);})
+            if ($scope.partner && $scope.startDate && $scope.endDate)
+                return partnerReportService.post({partnerId: $scope.partner, from: $scope.startDate, to: $scope.endDate})
+                .then(function (resolve) { $scope.visibleReport = true; $scope.report = resolve.data;})
+                .catch(function (e) {console.log(e);})
         }
         //
     //     $timeout(function(){

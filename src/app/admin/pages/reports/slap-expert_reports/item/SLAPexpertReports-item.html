@@ -45,8 +45,12 @@
     </md-card>
 </div>
 
-
-<div layout="column" style="width: 100%;" class="reports-item-container reports" ng-class="(visibleReport)? 'animated fadeIn' : 'hideReport'">
+<div layout="column" style="width: 100%;" ng-if="!report.expertName" class="reports-item-container reports" ng-class="(visibleReport)? 'animated fadeIn' : 'hideReport'">
+    <md-card flex="100" class="p-es-50 m-w-es-40 ">
+        <h1>No reports for this date range.</h1>
+    </md-card>
+</div>
+<div layout="column" style="width: 100%;" ng-if="report.expertName" class="reports-item-container reports" ng-class="(visibleReport)? 'animated fadeIn' : 'hideReport'">
     <md-card flex="100" class="p-es-50 m-w-es-40 ">
         <md-input-container class='container-report' flex="100" layout="column" >
             <span>SLAPexpert Name: {{report.expertName}}</span>
