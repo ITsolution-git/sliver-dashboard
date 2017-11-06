@@ -57,8 +57,12 @@
                 <li class="item-report" ng-repeat="(key,value) in report.countAssignedUsersByPlan">{{key}}: {{value}}</li>
             </ul>
             </span>
-            <span>Total income generated: {{report.totalIncome}}</span>
-            <span>Total Revenue Share due to Partner: {{report.totalShareToPartner}}</span>
+            <span>Total income generated: {{report.totalIncome | currency}}</span>
+            <span>Total Real Users Fees: {{report.sum | currency}}</span>
+            <span>Total Revenue Share due to Partner: {{report.totalShareToPartner | currency}}</span>
+            <span>Total Revenue Share due to Partner: {{report.totalShareToPartner | currency}}</span>
+
         </md-input-container>
+            
     </md-card>
 </div>
