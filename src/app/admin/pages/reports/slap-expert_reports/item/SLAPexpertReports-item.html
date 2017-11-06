@@ -62,7 +62,7 @@
                 <li class="item-report" ng-repeat="(key,value) in report.countAssignedUsersByPlan">{{key}}: {{value}}</li>
             </ul>
             </span>
-            <span>Total Number of SLAPexpert Hours Worked: {{report.totalHours}}</span>
+            <span>Total Number of SLAPexpert Hours Worked: {{report.totalHours | number:2}}</span>
             <span>Total Number of Missed Meetings: {{report.totalMissedMeetings}}</span>
         </md-input-container>
     </md-card>
