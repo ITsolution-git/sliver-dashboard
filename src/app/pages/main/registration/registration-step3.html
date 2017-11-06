@@ -133,7 +133,7 @@
                                 </div>
                             </md-input-container>
 
-                            <md-input-container class="md-block not-flex" flex="50">
+                            <md-input-container class="md-block fixed-width not-flex" flex="50">
                                 <label for="phone">Work Phone Number</label>
                                 <input ng-pattern="/^[0-9]{1,12}$/" name="phone" required maxlength="12" minlength="9"
                                 ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
@@ -156,7 +156,7 @@
                         </md-input-container>
  
                         <div layout="row" ng-if="!vm.isRenew" class="form-column">
-                            <md-input-container class="md-block not-flex" flex="50">
+                            <md-input-container class="md-block fixed-width not-flex" flex="50">
                                 <label for="password">Password</label>
                                 <input required type="password" name="password" ng-model="vm.user.password"
                                        minlength="6" md-maxlength="30" id="password"/>
