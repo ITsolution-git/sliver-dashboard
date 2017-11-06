@@ -11,7 +11,7 @@
         <form layout="row" layout-wrap layout-align="center end" name="form">
             <md-input-container flex="30">
                 <label>Which Partner</label>
-                <md-select ng-model="partners" required>
+                <md-select ng-model="partner" required>
                     <md-option ng-repeat="user in users" ng-value="user._id">{{user.name}}</md-option>
                 </md-select>
                 <div class="md-errors-spacer"></div>
