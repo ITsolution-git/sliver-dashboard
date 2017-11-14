@@ -9,6 +9,7 @@
 
         angular.extend($scope,  {
             userAllData: userAllData, //All user data from finishedsteps api
+            idealClientName: userAllData.statement.yourStatement.fourth, 
             excuteItems: excuteItems,
             reflextionData: excuteItemService.reflextionData,
             startDate: moment().toDate(), //Plan start Date
