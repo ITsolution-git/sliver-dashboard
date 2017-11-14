@@ -95,13 +95,19 @@
                     </div>
                 </div>
             </div>
+            <h1 class="title-prog" ng-if="vm.getPlans().dataName === 'plansTop'">Specialty Programs</h1>
         </header>
-        <article class="container signup plan cont-center animated" animate-plans>
-
-                <div class="col-xs-12 col-sm-8 col-md-2 outline-0 plan-item"  ng-repeat="plan in vm.getPlans()"  ng-click="vm.choosePlan(plan,$event)" >
+        <article  class="container  signup plan cont-center animated" animate-plans>
+                <div class="col-xs-12 col-sm-8 col-md-2 outline-0 plan-item front"
+                     ng-repeat="plan in vm.getPlans().data"
+                     ng-click="vm.choosePlan(plan,$event)" >
                     <div class="rectangle" ng-class="{'rectangle-active': plan._id == vm.plan._id}">
                         <div class="rectangle-header">
-                            <h3>{{ plan.productName }}</h3>
+                            <h3 class="prodName">{{ plan.productName }}</h3>
+                            <span class="invite-only" ng-if="plan.productName === 'masterSLAP'">Invite-Only</span>
+                            <span class="invite-only" ng-if="plan.productName === 'teamSLAP'">For businesses with teams
+                                of 10+ people</span>
+
                         </div>
                         <div class="rectangle-content">
                             <div class="amount-plan">
@@ -109,10 +115,10 @@
                             </div>
                             <p class="text-center per">per month</p>
                             <!--<ul class="plan-list" ng-if="plan._id == vm.plans[0]._id">-->
-                                <!--<li>SLAPcenter</li>-->
-                                <!--<li>SLAPmanager</li>-->
-                                <!--<li>SLAPschool</li>-->
-                                <!--<li>SLAPworld</li>-->
+                            <!--<li>SLAPcenter</li>-->
+                            <!--<li>SLAPmanager</li>-->
+                            <!--<li>SLAPschool</li>-->
+                            <!--<li>SLAPworld</li>-->
                             <!--</ul>-->
                             <!-- <p class="plan-self text-center" ng-if="plan._id != vm.plans[0]._id">SLAPexpert</p> -->
                             <ul class="plan-list text-center" >
@@ -123,18 +129,26 @@
                             </ul>
                             <i class="fa fa-plus slap-fa"  aria-hidden="true"></i> <!-- ng-if="plan._id != vm.plans[0]._id" -->
                             <div class="plan-group">
-                                <p class="expert text-center">SLAPexpert<br>({{vm.timeList[$index ]}})</p>
+                                <p class="expert text-center" ng-if="vm.getPlans().dataName === 'plansBasic'">SLAPexpert
+                                    <br>({{vm.timeListBase[$index ]}})</p>
+                                <p class="expert text-center top-size"
+                                   ng-if="vm.getPlans().dataName === 'plansTop'">SLAPexpert
+                                    <br>({{vm.timeListTop[$index ]}})</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="add-plan">
-                    <div class="button__holder">
-                        <h2>{{vm.titlePlans}}</h2>
-                        <button class="plan-plus" ng-click="vm.togglePlans()" data-after="{{vm.iconPlan}}"></button>
+
+
+
+                    <div class="add-plan">
+                        <div class="button__holder">
+                            <!--<h2>{{vm.titlePlans}}</h2>-->
+                            <button class="plan-plus" ng-click="vm.togglePlans()" data-after="{{vm.iconPlan}}"></button>
+                        </div>
                     </div>
-                </div>
+        </article>
 
         </article>
         <div class="container signup next-bottom">

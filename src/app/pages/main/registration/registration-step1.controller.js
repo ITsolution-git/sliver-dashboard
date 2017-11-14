@@ -12,20 +12,23 @@
         // TODO set pageservice for registration page1 2, 3
         vm.active = null;
         
-        vm.timeList = ['1 group session per month', '1 private session per month' ,'4 private sessions per month', '2 group  and 1 private sessions per month','custom experience'];
+        vm.timeListBase = ['1 private session per quarter', '1 group session per month', '1 private session per' +
+        ' month' ,'4 private sessions per' +
+        ' month', '2 group  and 1 private sessions per month','custom experience'];
+        vm.timeListTop = ['2 group sessions and 1 private session with a SLAPexpert each month','2 private sessions with a SLAPexpert each month plus all templates and tools to create team-wide accountability and results'];
         pageService.reset().setPageTitle(' Step1').addCrumb({name: 'Step1', path: 'signup/step1'});
         productsService.getPlans().then(function(response) {
 
             vm.plans = response.data;
 
-            function deletePlan(dataPlans) {
-                dataPlans.shift();
-            }
+            // function deletePlan(dataPlans) {
+            //     dataPlans.shift();
+            // }
+            //
+            // deletePlan(vm.plans);
 
-            deletePlan(vm.plans);
-
-            vm.plansBasic = vm.plans.slice(0,3);
-            vm.plansTop = vm.plans.slice(3);
+            vm.plansBasic = vm.plans.slice(0,4);
+            vm.plansTop = vm.plans.slice(4);
 
 
             if (productStorage.isRenew()) {
@@ -71,13 +74,20 @@
 
         vm.getPlans = function () {
             if(vm.showPlans){
-                vm.titlePlans = 'Top plans';
+                // vm.titlePlans = 'Top plans';
                 vm.iconPlan = '+';
-                return vm.plansBasic;
+                return {
+                    data: vm.plansBasic,
+                    dataName: 'plansBasic'
+                };
             } else {
-                vm.titlePlans = 'Basic plans';
+                // vm.titlePlans = 'Basic plans';
                 vm.iconPlan = '←';
-                return vm.plansTop;
+                return {
+                    data: vm.plansTop,
+                    dataName: 'plansTop'
+
+                }
             }
         }
 
