@@ -34,11 +34,12 @@
         }
 
         function finishBuild() {
+            var stepBeforeUpdate = angular.copy(stepService.getFinishedSteps());
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
             var urls = activeStep.sref.split('.');
-
-            return stepService.sendApiData(urls[urls.length - 1], {})
+            var stepAfterUpdate = angular.copy(stepService.getFinishedSteps());
+            return stepService.sendApiData(urls[urls.length - 1], { firstTime: stepBeforeUpdate.length !== stepAfterUpdate.length})
                 .then(function () {
                     $state.go('slapExcute.main');
                 });
