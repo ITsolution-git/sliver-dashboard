@@ -61,11 +61,23 @@
                 <li class="item-report" ng-repeat="(key,value) in report.countAssignedUsersByPlan">{{key}}: {{value}}</li>
             </ul>
             </span>
-            <span>Total income generated: {{report.totalIncome | currency}}</span>
-            <span>Total income actually paid: {{report.sum | currency}}</span>
+            <span>Total Income Collected from SLAPsters: {{report.totalIncome | currency}}</span>
+            <span>Total Monthly Revenue from all SLAPsters associated with Partner: {{report.sum | currency}}</span>
             <span>Total Revenue Share due to Partner: {{report.totalShareToPartner | currency}}</span>
 
         </md-input-container>
             
+    </md-card>
+
+    <md-card flex="100" class="p-es-50 m-w-es-40 ">
+        <table> 
+        <tr>
+            <th>SLAPsters name</th>
+        </tr>
+        <tr ng-repeat="item in report.slapsters">
+            <td>{{item.name}}</td>
+        </tr>
+        
+        </table>
     </md-card>
 </div>
