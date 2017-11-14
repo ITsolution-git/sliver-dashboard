@@ -112,6 +112,8 @@
             curMode: '',
             openItemDialog: openItemDialog,
             openDeleteItemDialog: openDeleteItemDialog,
+            openManagerAccountabilityDialog: openManagerAccountabilityDialog,
+            openManagerOnboardingDialog: openManagerOnboardingDialog,
             closeDialog: closeDialog,
             updateItem: updateItem,
             updateNotes: updateNotes,
@@ -553,38 +555,38 @@
         }
 
         function openSlapexpertDialog($event, item) {
-                var newForm = {
-                    type: 'SLAPexpert',
-                    title: 'Client interaction',
-                    extra: {
-                        date: '',
-                        hours: '',
-                        minutes: '',
-                        callLength: 0,
-                        tool: '',
-                        mindset: 0,
-                        statement: 0,
-                        goals: 0,
-                        items: 0,
-                        rate: 0,
-                        priorities: '',
-                        spec: '',
-                    },
-                    notes: '',
-                    userId: $scope.userID,
-                };
-                
-                $scope.formData = newForm;
-                
-            $mdDialog.show({
-                clickOutsideToClose: true,
-                targetEvent: $event,
-                scope: $scope, 
-                preserveScope: true,
-                templateUrl: 'admin/components/dialogs/slapexpert-dialog/slapexpert-dialog.html',
-                controller: 'SlapexpertDialogController',
-                autoWrap: true
-            });
+            var newForm = {
+                type: 'SLAPexpert',
+                title: 'Client interaction',
+                extra: {
+                    date: '',
+                    hours: '',
+                    minutes: '',
+                    callLength: 0,
+                    tool: '',
+                    mindset: 0,
+                    statement: 0,
+                    goals: 0,
+                    items: 0,
+                    rate: 0,
+                    priorities: '',
+                    spec: '',
+                },
+                notes: '',
+                userId: $scope.userID,
+            };
+            
+            $scope.formData = newForm;
+            
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            targetEvent: $event,
+            scope: $scope, 
+            preserveScope: true,
+            templateUrl: 'admin/components/dialogs/slapexpert-dialog/slapexpert-dialog.html',
+            controller: 'SlapexpertDialogController',
+            autoWrap: true
+        });
         }
 
         function openExpertDialog($event, item) {
@@ -611,8 +613,72 @@
                         });
                     });
         }
+        function openManagerAccountabilityDialog($event, item){
+            var newForm = {
+                type: 'SLAPmanager',
+                title: 'Accountability Call',
+                extra: {
+                    // date: '',
+                    // hours: '',
+                    // minutes: '',
+                    lasttime_logged:'',
+                    what_discussion:'',
+                    when_last_call:'',
+                    when_next_call:'',
+                    they_happy:'',
+                    slap_expert_schedule:'',
+                    when_slapster_slapschool:'',
+                    discuss_events:'',
+                    slapster_progress:'',
+                    when_slapster_slapworld:'',
+                    discuss_progress_in_slapworld:'',
+                    key_priorities:''
 
+                },
+                notes: '',
+                userId: $scope.userID,
+            };
+
+            $scope.formData = newForm;
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/slapmanager-accountability-dialog/slapmanager-account-dialog.html',
+                controller: 'SlapManagerAccountDialogController',
+                autoWrap: true
+            });
+            // $mdDialog.show({
+            //     clickOutsideToClose: true,
+            //     targetEvent: $event,
+            //     scope: $scope,
+            //     preserveScope: true,
+                
+            //     autoWrap: true
+            // });
+        }
         
+        function openManagerOnboardingDialog($event, item){
+            var newForm = {
+                type: 'SLAPmanager',
+                title: 'Onboarding Call',
+                extra: {},
+                notes: '',
+                userId: $scope.userID,
+            };
+
+            $scope.formData = newForm;
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/slapmanager-onboarding-dialog/slapmanager-onboard-dialog.html',
+                controller: 'SlapManagerOnboardingDialogController',
+                autoWrap: true
+            });
+        }
 
         function updateNotes($event, form) { 
             if(form.$invalid) {
@@ -620,7 +686,9 @@
                 vm.buttonDisabled = false;
                 return;
             }
-            $scope.formData.extra.date = new Date($scope.formData.extra.date.getFullYear(), $scope.formData.extra.date.getMonth(), $scope.formData.extra.date.getDate(), $scope.formData.extra.hours, $scope.formData.extra.minutes);
+            if ($scope.formData.extra.date){
+                $scope.formData.extra.date = new Date($scope.formData.extra.date.getFullYear(), $scope.formData.extra.date.getMonth(), $scope.formData.extra.date.getDate(), $scope.formData.extra.hours, $scope.formData.extra.minutes);
+            }
             activityService.add($scope.formData)
                 .then(function(response){
                     $scope.activityData.push(response.data);

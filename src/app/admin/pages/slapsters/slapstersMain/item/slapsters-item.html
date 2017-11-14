@@ -471,14 +471,21 @@
 <md-card flex="100" class="p-es-30 m-es-40 slapster-expert-hours"  ng-init="showExpertHours = true">
     <section layout="row" layout-align="space-between center">
 
-        <h3>Expert Hours</h3>
+        <h3>SLAPexpert & SLAPmanager Calls</h3>
         <button-switch visible="showExpertHours"></button-switch>
     </section>
     <section class="  sample-show-hide"  ng-show="showExpertHours">
         <section layout="row" flex="100">
             <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
-                Record Client Interaction
+                 SLAPexpert Call
             </md-button>
+            <md-button class="md-primary pull-right" ng-click="openManagerAccountabilityDialog($event, item)">
+                 SLAPmanager Accountability Call
+            </md-button>
+            <md-button class="md-primary pull-right" ng-click="openManagerOnboardingDialog($event, item)">
+                 SLAPmanager Onboarding Call
+            </md-button>
+             
         </section>
     </section>
 </md-card>

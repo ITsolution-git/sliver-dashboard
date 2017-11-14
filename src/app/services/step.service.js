@@ -651,11 +651,14 @@
         this.getAllStepDataByUser = getAllStepDataByUser;
         
         this.checkStepsIsFinishedSection = checkStepsIsFinishedSection;
-
+        this.getFinishedSteps = getFinishedSteps;
         this.sendApiData = sendApiData;
         this.getApiData = getApiData;
         this.mySlapStateForButton = 'Excute';
 
+        function getFinishedSteps(){
+            return finishedSteps;
+        }
         ///////////////////////////////
 
         function sendApiData(url, data) {
