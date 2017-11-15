@@ -479,7 +479,7 @@
             $timeout(function(){
                 var types = $scope.activityTypes
                 .filter(function(type){ return type.show == true; })
-                .map(function(type){return type.name});
+                .map(function(type){return type.id});
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
                     if ($scope.actFilter.searchKeyword.trim() != ''){
@@ -688,6 +688,9 @@
             }
             if ($scope.formData.extra.date){
                 $scope.formData.extra.date = new Date($scope.formData.extra.date.getFullYear(), $scope.formData.extra.date.getMonth(), $scope.formData.extra.date.getDate(), $scope.formData.extra.hours, $scope.formData.extra.minutes);
+            }
+            if ($scope.formData.extra.hours || $scope.formData.extra.minutes) {
+                $scope.formData.extra.callLength = $scope.formData.extra.hours * 60 + $scope.formData.extra.minutes;
             }
             activityService.add($scope.formData)
                 .then(function(response){
