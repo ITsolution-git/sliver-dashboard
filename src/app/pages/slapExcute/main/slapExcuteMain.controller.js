@@ -440,9 +440,12 @@
                         return !elem.revenue.deleted;
                     });
                     var id = item ? item.id : nonDeleted[0].revenue.id;
+                    var revenue = item ? item : nonDeleted[0].revenue;
                     var newForm = {
                         type: 'sales',
                         title: id,
+                        revenue: revenue,
+                        name: revenue.name,
                         notes: '',
                         dueDate: moment($scope.today).format($rootScope.dateFormat),
                         progress: 0,

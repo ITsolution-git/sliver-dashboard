@@ -78,8 +78,8 @@
 			<form layout="row" layout-wrap layout-align="center center" name="form">
 				
 				<md-input-container flex="100">
-					<md-select ng-model="formData.title" aria-label="ti">
-						<md-option ng-value="revenue.id" ng-repeat="revenue in revenues | filter : {deleted:false}">{{revenue.name}}</md-option>
+					<md-select  ng-change="change()"  ng-model="formData.revenue" aria-label="ti">
+						<md-option   ng-value="revenue" ng-repeat="revenue in revenues | filter : {deleted:false}">{{revenue.name}}</md-option>
 					</md-select>
 					<div class="md-errors-spacer"></div>
 				</md-input-container>
