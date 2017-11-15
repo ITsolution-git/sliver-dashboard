@@ -138,7 +138,10 @@
                 buildActivityGridData();
 
                 $scope.activityTypes
-                .filter(function(type){ return type.show = false; })
+                .filter(function(type){ return type.show = false; });
+
+
+                $scope.activityTypesSlice = $scope.activityTypes.slice(4);
 
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
