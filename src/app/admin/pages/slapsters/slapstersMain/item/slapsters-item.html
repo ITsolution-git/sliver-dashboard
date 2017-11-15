@@ -498,10 +498,10 @@
     </section>
     <section class="  sample-show-hide"  ng-show="showActivity">
 
-        <section layout="row" flex="100">
-            <md-button class="md-primary pull-right" ng-click="openItemDialog($event, 'add')">
+        <section style="display: flex; justify-content: flex-end;" layout="row" flex="100">
+            <button class="btn btn-primary"  ng-click="openItemDialog($event, 'add')">
                 Create Activity
-            </md-button>
+            </button>
         </section>
 
         <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
