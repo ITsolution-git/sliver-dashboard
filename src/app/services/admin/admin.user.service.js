@@ -41,7 +41,7 @@
 
         self.getToken = function (info) {
             return adminApiService.rest.all('auth').get(info);
-        }
+        };
 
         self.update = function (user) {
             return adminApiService.rest.all('users').one(user._id).put(user);
@@ -54,6 +54,11 @@
         self.delete = function(user) {
             return adminApiService.rest.all('users').one(user._id).remove();
         };
+
+        self.activate = function (id) {
+            return adminApiService.rest.all('activate-user').get(id);
+        };
+
         return self;
     }
 })();

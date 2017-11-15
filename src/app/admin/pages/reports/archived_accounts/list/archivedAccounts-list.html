@@ -113,6 +113,9 @@
                             <a ui-sref="archive.item({bizname: item.businessName, user_id:item._id, mode:'view'})" style="margin:0px">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </a>
+                            <a ng-click="activateAccount($event, item)" style="margin:0px">
+                                <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                            </a>
                             <a ng-click="deleteItem($event, item)" style="margin:0px">
                                     <i class="fa fa-user-times" aria-hidden="true"></i>
                             </a>
