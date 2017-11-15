@@ -593,8 +593,11 @@
                             <th sortable="updatedByUserName" class="sortable">
                                 <span>Updated By</span>
                             </th>
-                            <th sortable="createdAtStr" class="sortable">
+                            <th sortable="createDate" class="sortable">
                                 <span>Date</span>
+                            </th>
+                            <th sortable="createTime" class="sortable">
+                                <span>Time</span>
                             </th>
                             <th sortable="notes" class="sortable">
                                 <span>Notes</span>
@@ -615,10 +618,13 @@
                                 {{item.updatedByUserName}}
                             </td>
                             <td>
-                                {{item.createdAtStr}}
+                                {{item.createdDate}}
                             </td>
                             <td>
-                                <span  style="overflow: hidden; text-overflow: ellipsis;">{{item.notes}}</span>
+                                {{item.createdTime}}
+                            </td>
+                            <td>
+                                <a style="margin:0px" ng-click="openNotes($event, item.notes)">Read more</a>
                             </td>
                             
                             <td>

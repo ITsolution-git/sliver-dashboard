@@ -37,6 +37,7 @@
             openExpertDialog: openExpertDialog,
             openSlapexpertDialog: openSlapexpertDialog,
             dialogCharge: dialogCharge,
+            openNotes: openNotes,
 
 
             //Journey
@@ -510,7 +511,8 @@
                     // user.displayRole = role ? role.name : '';
                     var updateBy = _.find($scope.userData, {_id: act.updatedBy});
                     act.updatedByUserName = updateBy ? updateBy.name + ' ' + updateBy.lastName : 'Admin';
-                    act.createdAtStr = moment(act.createdAt).format('llll');
+                    act.createdDate = moment(act.createdAt).format('MM/DD/YYYY');
+                    act.createdTime = moment(act.createdAt).format('h:mm A');
                     return act;
                 });
 
@@ -755,6 +757,17 @@
                 });
             }, function() {
             });
+        }
+
+        function openNotes($event, item) {
+            var confirm = $mdDialog.alert()
+                .title('Note')
+                .textContent(item)
+                .ariaLabel('Note')
+                .targetEvent($event)
+                .ok('Ok')
+
+            $mdDialog.show(confirm)
         }
 
         function adminBuild(item) {
