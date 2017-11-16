@@ -81,9 +81,15 @@
         <table> 
         <tr>
             <th>SLAPsters name</th>
+            <th>Quarter/Month they are currently in</th>
+            <th>Quarterly Goal</th>
+            <th>Annual Goal</th>
         </tr>
         <tr ng-repeat="item in report.slapsters">
             <td>{{item.name}}</td>
+            <td>{{item.currentQuater.number}}/{{item.currentMonth}}</td> 
+            <td>{{item.annualGoal | number: 0}}%</td> 
+            <td>{{item.quaterlyGoal | number: 0}}%</td> 
         </tr>
         
         </table>
