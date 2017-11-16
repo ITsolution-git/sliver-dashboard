@@ -44,7 +44,10 @@
         };
 
         // --- init ---
-
+        $scope.formSubmit = function (event) {
+            event.preventDefault();
+            $scope.submit();
+        }
 
     }
 })();
