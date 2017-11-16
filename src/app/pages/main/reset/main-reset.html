@@ -13,7 +13,7 @@
 
                         <div class="form-group" ng-class="{'has-error':errors.email}">
                             <input type="text" ng-model="email" class="form-control" name="email"
-                                   placeholder="Email">
+                                   placeholder="Email" ng-keypress="($event.which === 13)? formSubmit($event) : false">
                             <div class="help-block help-block-error" ng-show="errors.email"
                                  ng-bind-html="errors.email | joinBr"></div>
                         </div>
