@@ -89,9 +89,11 @@
             <td>{{item.name}}</td>
             <td>{{item.currentQuater.number}}/{{item.currentMonth}}</td> 
             <td ng-if="item.annualGoal > 0">{{item.annualGoal | number: 0}}%</td> 
-            <td ng-if="item.annualGoal ==='Not Exist'">{{item.annualGoal}}%</td>
+            <td ng-if="item.annualGoal ==='Not Exist'">{{item.annualGoal}}</td>
+            <td ng-if="!item.annualGoal">Not Exist</td>
             <td ng-if="item.quaterlyGoal > 0">{{item.quaterlyGoal | number: 0}}%</td> 
-            <td ng-if="item.quaterlyGoal ==='Not Exist'">{{item.quaterlyGoal}}%</td>
+            <td ng-if="item.quaterlyGoal ==='Not Exist'">{{item.quaterlyGoal}}</td>
+            <td ng-if="!item.quaterlyGoal">{{Not Exist}}</td>
         </tr>
         
         </table>
