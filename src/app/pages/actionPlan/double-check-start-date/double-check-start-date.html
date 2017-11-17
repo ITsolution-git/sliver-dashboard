@@ -36,7 +36,7 @@
                 <p class="heading2">Choose Your Start Date</p>
 
                 <p class="heading3">I will start to put my SLAP into Action no later than the first day of <br>
-                    <select ng-model="data.slapStartDate" class="outline-0 dropdown-box active" ng-disabled="!user.stripeSubscription">
+                    <select ng-model="data.slapStartDate" class="outline-0 dropdown-box active" ng-disabled="!user.stripeSubscription && user.role == 4">
                         <!-- <option ng-if="data.year && data.month" value="{{data.month}}">{{months[data.month-1].name}} {{data.year}}</option> -->
                         <option ng-repeat="date in startdates track by $index" value="{{date.month.id+'_'+date.year}}">{{date.month.name+' '+date.year}}</option>
                     </select>

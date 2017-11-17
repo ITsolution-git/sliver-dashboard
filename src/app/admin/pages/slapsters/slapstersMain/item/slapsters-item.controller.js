@@ -561,6 +561,7 @@
         function openSlapexpertDialog($event, item) {
             var newForm = {
                 type: 'SLAPexpert',
+                typeForPopUp: 'SLAPexpert Call',
                 title: 'SLAPexpert Call',
                 extra: {
                     date: '',
@@ -620,6 +621,7 @@
         function openManagerAccountabilityDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
+                typeForPopUp:'Accountability Call',
                 title: 'Accountability Call',
                 extra: {
                     // date: '',
@@ -666,6 +668,7 @@
         function openManagerOnboardingDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
+                typeForPopUp: 'Onboarding Call',
                 title: 'Onboarding Call',
                 extra: {},
                 notes: '',
