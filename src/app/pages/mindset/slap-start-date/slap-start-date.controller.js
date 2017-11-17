@@ -33,7 +33,6 @@
         });
 
         var beforeSave = moment({year: $scope.data.year, month: +$scope.data.month - 1, day:1});
-
         if ($scope.data.year === null) {
             $scope.data.year = currentYear
             // $scope.data.year = 2017;            
@@ -43,19 +42,55 @@
             $scope.data.month = currentMonth;
         }
         else var startMonth = $scope.data.month;
+        
+        var filteredMonth = [];
+        for (var i = 0; i < 4; i++) {   
+            filteredMonth[i] = moment(new Date()).add(i, 'M').get('month') + 1;
+        } 
+        $scope.allMonths = [{ id: 1, name: 'January' }, { id: 2, name: 'February' }, { id: 3, name: 'March' }, { id: 4, name: 'April' }, { id: 5, name: 'May' },
+        { id: 6, name: 'June' }, { id: 7, name: 'July' }, { id: 8, name: 'August' }, { id: 9, name: 'September' }, { id: 10, name: 'October' }, { id: 11, name: 'November' },
+        { id: 12, name: 'December' }];
+        $scope.months = $scope.allMonths.filter(function(month){
+                return ~filteredMonth.indexOf(month.id);
+            });
 
-        $scope.$watch('data.month', function (value) {
-            if (value != startMonth) {
-                if (value !== undefined) {
-                    if (+value < +currentMonth) {
-                        $scope.data.year = currentYear + 1;
-                    } else {
-                        $scope.data.year = currentYear;
-                    }
-                    $scope.changed = true;
-                }
+        $scope.years = $scope.months.map(function(month){
+            if (+month.id < +currentMonth) {
+                return currentYear + 1;
+            } else {
+                return currentYear;
             }
         });
+        if ($scope.data.year && $scope.data.month) {
+            var month = $scope.allMonths[$scope.data.month - 1];
+            $scope.data.slapStartDate = $scope.data.month + '_' + $scope.data.year;
+            if ($scope.data.year != currentYear && $scope.data.month != currentMonth){
+                $scope.years.push($scope.data.year);
+                $scope.months.push(month);
+            }
+            $scope.startdates = $scope.months.map(function(month,indx){
+                return{
+                    month: month,
+                    year: $scope.years[indx]
+                }
+            }).sort(function(date1, date2){
+                return date1.year - date2.year; 
+            });
+            
+        };
+        
+        // $scope.$watch('data.month', function (value) {
+        //     if (value.split('_')[0]; != startMonth) {
+        //         if (value !== undefined) {
+        //             if (+value < +currentMonth) {
+        //                 $scope.data.year = currentYear + 1;
+        //             } else {
+        //                 $scope.data.year = currentYear;
+        //             }
+        //             $scope.changed = true;
+        //         }
+        //     }
+        // });
 
         pageService
             .reset()
@@ -64,8 +99,14 @@
             .setPageTitle(stepService.getActiveStep().name);
 
         function sendData(direction) {
-            $scope.data.year = +$scope.data.year;
-
+            var startdate = $scope.data.slapStartDate.split('_');
+            $scope.data.month = startdate[0];
+            $scope.data.year = +startdate[1];
+            //$scope.data.year = +$scope.data.year;
+            if ($scope.data.year != beforeSave.get('year') + 1 && $scope.data.month != beforeSave.get('month') + 1) {
+                $scope.changed = true;
+            }
+            delete $scope.data.slapStartDate
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
