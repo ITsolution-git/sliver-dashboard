@@ -562,7 +562,7 @@
         function openSlapexpertDialog($event, item) {
             var newForm = {
                 type: 'SLAPexpert',
-                title: 'Client interaction',
+                title: 'SLAPexpert Call',
                 extra: {
                     date: '',
                     hours: '',
