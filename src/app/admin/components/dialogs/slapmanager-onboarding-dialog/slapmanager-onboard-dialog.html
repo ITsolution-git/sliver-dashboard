@@ -1,8 +1,49 @@
 <md-dialog fullscreen="true" aria-label="List dialog" class="activity-dialog p-t-es-40">
     <section layout="column">
         <form layout="row" layout-wrap layout-align="center center" name="form">
+
+            <div class="date-slapmanager">
+
+                <md-input-container flex="50">
+                    <label>Date</label>
+                    <md-datepicker ng-model="formData.extra.date" name="Date"></md-datepicker>
+                    <div ng-messages="form.date.$error">
+                        <div ng-message="valid">The entered value is not a date!</div>
+                        <div ng-message="required">This date is required!</div>
+                        <div ng-message="mindate">Date is too early!</div>
+                        <div ng-message="maxdate">Date is too late!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="25">
+                    <label>Hours</label>
+                    <md-select required name="hours" placeholder="Hours" ng-model="formData.extra.hours">
+
+                        <md-option ng-repeat="h in [] | range:10" ng-value={{h}}>{{h}}</md-option>
+
+                    </md-select>
+                    <div ng-messages="form.hours.$error" ng-hide="form.hours.$valid">
+                        <div ng-message-exp="['required']">
+
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex="25">
+                    <label>Minutes</label>
+                    <md-select name="minutes" required placeholder="Minutes"
+                               md-container-class="slapster-minutes-select" ng-model="formData.extra.minutes">
+
+                        <md-option ng-repeat="m in [] | range:4" ng-value={{m*15}}>{{m*15}}</md-option>
+
+                    </md-select>
+                    <div ng-messages="form.minutes.$error" ng-hide="form.minutes.$valid">
+                        <div ng-message-exp="['required']">
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
             
-            <md-input-container flex="100" style: "margin-top: 10px !important">
+            <md-input-container flex="100" style="margin-top: 10px !important">
                 <textarea required name="notes" placeholder="Write detailed notes about how this SLAPster is doing and what was discussed on the call"
                     ng-model="formData.notes">
                 <div ng-messages="form.notes.$error" ng-hide="form.notes.$valid">
