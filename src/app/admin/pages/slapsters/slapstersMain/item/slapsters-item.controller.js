@@ -158,7 +158,7 @@
                 angular.extend($scope.quaters[1], _.merge(actionplanService.getNthQuater(startDate, 2), $scope.buildData.actionPlan.whatsHappening[1]));
                 angular.extend($scope.quaters[2], _.merge(actionplanService.getNthQuater(startDate, 3), $scope.buildData.actionPlan.whatsHappening[2]));
                 angular.extend($scope.quaters[3], _.merge(actionplanService.getNthQuater(startDate, 4), $scope.buildData.actionPlan.whatsHappening[3]));
-
+ 
                 $scope.startDate = $scope.quaters[0].start.toDate();
                 $scope.endDate = $scope.quaters[3].end.toDate();
 
@@ -493,8 +493,7 @@
                             valid = true;
                     } else { valid = true; }
 
-
-                    if (moment(activity.createdAt).isBetween($scope.actFilter.startDate, $scope.actFilter.endDate, 'day', '[]'))
+                    if (moment(activity.createdAt).isBetween(moment($scope.actFilter.startDate), moment($scope.actFilter.endDate), 'day', '[]'))
                         valid &= true;
                     else
                         valid &= false;
@@ -562,6 +561,7 @@
         function openSlapexpertDialog($event, item) {
             var newForm = {
                 type: 'SLAPexpert',
+                typeForPopUp: 'SLAPexpert Call',
                 title: 'SLAPexpert Call',
                 extra: {
                     date: '',
@@ -621,6 +621,7 @@
         function openManagerAccountabilityDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
+                typeForPopUp:'Accountability Call',
                 title: 'Accountability Call',
                 extra: {
                     // date: '',
@@ -667,6 +668,7 @@
         function openManagerOnboardingDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
+                typeForPopUp: 'Onboarding Call',
                 title: 'Onboarding Call',
                 extra: {},
                 notes: '',

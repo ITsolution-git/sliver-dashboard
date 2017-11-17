@@ -66,10 +66,10 @@
                     <mark class="blue-mark">{{value}}</mark></li>
             </ul>
             </span>
+            <span>Total Monthly Revenue from all SLAPsters associated with Partner: <mark
+                class="blue-mark">{{report.sum | currency}}</mark></span>
             <span>Total Income Collected from SLAPsters: <mark class="blue-mark">{{report.totalIncome |
                 currency}}</mark></span>
-            <span>Total Monthly Revenue from all SLAPsters associated with Partner: <mark
-                    class="blue-mark">{{report.sum | currency}}</mark></span>
             <span>Total Revenue Share due to Partner: <mark class="blue-mark">{{report.totalShareToPartner |
                 currency}}</mark></span>
 
@@ -89,12 +89,12 @@
             <td>{{item.name}}</td>
             <td ng-if="item.currentQuater.number">{{item.currentQuater.number}}/{{item.currentMonth}}</td> 
             <td ng-if="!item.currentQuater.number">{{item.currentQuater}}/{{item.currentMonth}}</td> 
+            <td ng-if="item.quaterlyGoal == 'N/A'">{{item.quaterlyGoal}}</td> 
+            <td ng-if="item.annualGoal == 'N/A'">{{item.annualGoal}}</td> 
             <td ng-if="item.quaterlyGoal > 0">{{item.quaterlyGoal | number: 0}}%</td> 
-            <td ng-if="item.quaterlyGoal ==='Not Exist!'">{{item.quaterlyGoal}}</td>
-            <td ng-if="!item.quaterlyGoal">{{Not Exist}}</td>
             <td ng-if="item.annualGoal > 0">{{item.annualGoal | number: 0}}%</td> 
-            <td ng-if="item.annualGoal ==='Not Exist!'">{{item.annualGoal}}</td>
-            <td ng-if="!item.annualGoal">Not Exist</td>
+            <td ng-if="!item.quaterlyGoal">{{item.quaterlyGoal | number: 0}}%</td> 
+            <td ng-if="!item.annualGoal">{{item.annualGoal | number: 0}}%</td>
         </tr>
         
         </table>
