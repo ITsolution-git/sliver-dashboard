@@ -54,7 +54,7 @@
                     {menuName: 'Promo Codes', needPerm: 'canPromocodes'},
                     {menuName: 'Email Templates', needPerm: 'canEmailTemplates'},
                     {menuName: 'Users', needPerm: 'canUsers'},
-                    {menuName: 'Test Users', needPerm: 'canTestUsers'}
+                    {menuName: 'Demo Accounts', needPerm: 'canTestUsers'}
                 ]
             },
         ]
