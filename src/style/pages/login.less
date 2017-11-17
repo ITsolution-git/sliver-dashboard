@@ -290,12 +290,13 @@ a:hover {
 .rectangle {
 
   //border: 1px solid grey;
-  min-height: 470px;
+  min-height: 545px;
   padding-bottom: 10px;
   background-color: #ffffff;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
   .rectangle-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
@@ -309,8 +310,8 @@ a:hover {
     &::before, &::after {
       content: '';
       position: absolute;
-      border-top: 10px solid #EFEFEF;
       border: 10px solid transparent;
+      border-top: 10px solid #EFEFEF;
       bottom: -20px;
       left: 50%;
       margin-left: -10px;
@@ -503,7 +504,7 @@ a:hover {
     border-bottom: 1px solid @main-blue-color;
     background-color: @main-blue-color;
 
-    h3 {
+    h3, span {
       color: #ffffff;
     }
 
@@ -939,4 +940,12 @@ a:hover {
   .rectangle {
       min-height: 370px;
   }
+}
+
+.fixed-width {
+  width: 300px !important;
+}
+
+.md-errors-spacer {
+  min-height: 35px !important;
 }

@@ -6,16 +6,15 @@
         .controller('AdminPartnerReportsItemController', AdminPartnerReportsItemController);
 
     /* @ngInject */
-    function AdminPartnerReportsItemController($scope, $state, pageService, allPartners, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService) {
+    function AdminPartnerReportsItemController($scope, $state, partnerReportService, pageService, allPartners, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService) {
         angular.extend($scope,  {
             report: {},
             reportID: $stateParams.report_id,
             users: allPartners,
-            partners: [{
-                name: 'John',
-
-            }],
-            startDate: ''
+            partner: '',
+            startDate: '',
+            endDate: '',
+            buildReport: buildReport,
         });
 
 
@@ -25,11 +24,31 @@
             .addCrumb({name: 'Partner Reports', path: 'reports.partner.item'})
             .setPageTitle('Partner Reports');
 
-        console.log($scope.users);
 
         $scope.printSlap = function () {
             window.print();
         };
+
+        function buildReport() {
+            $scope.disableButton = true;
+            if ($scope.partner && $scope.startDate && $scope.endDate){
+                return partnerReportService.post({partnerId: $scope.partner, from: $scope.startDate, to: $scope.endDate})
+                .then(function (resolve) {
+                    $scope.report = resolve.data;
+                    if($scope.report){
+                        $scope.visibleReport = true;
+                        $scope.visibleMess = false;
+                    }else {
+                        $scope.visibleReport = false;
+                        $scope.visibleMess = true;
+                    }
+                    $scope.disableButton = false;
+                })
+                    .catch(function (e) { $scope.disableButton = false;  console.log(e);})
+            } else {
+                $scope.disableButton = false; 
+            }
+        }
         //
     //     $timeout(function(){
     //         activate();

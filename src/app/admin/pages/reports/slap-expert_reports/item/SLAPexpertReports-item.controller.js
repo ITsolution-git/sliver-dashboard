@@ -14,8 +14,6 @@
             expert: '',
             startDate: '',
             endDate: '',
-            visibleReport: false,
-
             buildReport: buildReport,
         });
 
@@ -32,10 +30,22 @@
         };
 
         function buildReport() {
-            $scope.visibleReport = true;
-            return expertReportService.post({expertId: $scope.expert, from: $scope.startDate, to: $scope.endDate})
-            .then(function (resolve) {$scope.report = resolve.data;})
-            .catch(function (e) {console.log(e);})
+            $scope.disableButton = true;
+            if ($scope.expert && $scope.startDate && $scope.endDate){
+                return expertReportService.post({expertId: $scope.expert, from: $scope.startDate, to: $scope.endDate})
+                    .then(function (resolve) {
+                        $scope.report = resolve.data;
+                        if($scope.report){
+                            $scope.visibleReport = true;
+                            $scope.visibleMess = false;
+                        }else {
+                            $scope.visibleReport = false;
+                            $scope.visibleMess = true;
+                        }
+                        $scope.disableButton = false;
+                    })
+                    .catch(function (e) { $scope.disableButton = false; console.log(e);})
+            } else { $scope.disableButton = false; }
         }
 
 

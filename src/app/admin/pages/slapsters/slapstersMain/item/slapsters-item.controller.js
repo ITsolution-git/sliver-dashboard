@@ -37,6 +37,7 @@
             openExpertDialog: openExpertDialog,
             openSlapexpertDialog: openSlapexpertDialog,
             dialogCharge: dialogCharge,
+            openNotes: openNotes,
 
 
             //Journey
@@ -112,6 +113,8 @@
             curMode: '',
             openItemDialog: openItemDialog,
             openDeleteItemDialog: openDeleteItemDialog,
+            openManagerAccountabilityDialog: openManagerAccountabilityDialog,
+            openManagerOnboardingDialog: openManagerOnboardingDialog,
             closeDialog: closeDialog,
             updateItem: updateItem,
             updateNotes: updateNotes,
@@ -135,7 +138,10 @@
                 buildActivityGridData();
 
                 $scope.activityTypes
-                .filter(function(type){ return type.show = false; })
+                .filter(function(type){ return type.show = false; });
+
+
+                $scope.activityTypesSlice = $scope.activityTypes.slice(4);
 
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
@@ -152,7 +158,7 @@
                 angular.extend($scope.quaters[1], _.merge(actionplanService.getNthQuater(startDate, 2), $scope.buildData.actionPlan.whatsHappening[1]));
                 angular.extend($scope.quaters[2], _.merge(actionplanService.getNthQuater(startDate, 3), $scope.buildData.actionPlan.whatsHappening[2]));
                 angular.extend($scope.quaters[3], _.merge(actionplanService.getNthQuater(startDate, 4), $scope.buildData.actionPlan.whatsHappening[3]));
-
+ 
                 $scope.startDate = $scope.quaters[0].start.toDate();
                 $scope.endDate = $scope.quaters[3].end.toDate();
 
@@ -477,7 +483,7 @@
             $timeout(function(){
                 var types = $scope.activityTypes
                 .filter(function(type){ return type.show == true; })
-                .map(function(type){return type.name});
+                .map(function(type){return type.id});
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
                     if ($scope.actFilter.searchKeyword.trim() != ''){
@@ -487,8 +493,7 @@
                             valid = true;
                     } else { valid = true; }
 
-
-                    if (moment(activity.createdAt).isBetween($scope.actFilter.startDate, $scope.actFilter.endDate, 'day', '[]'))
+                    if (moment(activity.createdAt).isBetween(moment($scope.actFilter.startDate), moment($scope.actFilter.endDate), 'day', '[]'))
                         valid &= true;
                     else
                         valid &= false;
@@ -508,7 +513,8 @@
                     // user.displayRole = role ? role.name : '';
                     var updateBy = _.find($scope.userData, {_id: act.updatedBy});
                     act.updatedByUserName = updateBy ? updateBy.name + ' ' + updateBy.lastName : 'Admin';
-                    act.createdAtStr = moment(act.createdAt).format('llll');
+                    act.createdDate = moment(act.createdAt).format('MM/DD/YYYY');
+                    act.createdTime = moment(act.createdAt).format('h:mm A');
                     return act;
                 });
 
@@ -553,38 +559,39 @@
         }
 
         function openSlapexpertDialog($event, item) {
-                var newForm = {
-                    type: 'SLAPexpert',
-                    title: 'Client interaction',
-                    extra: {
-                        date: '',
-                        hours: '',
-                        minutes: '',
-                        callLength: 0,
-                        tool: '',
-                        mindset: 0,
-                        statement: 0,
-                        goals: 0,
-                        items: 0,
-                        rate: 0,
-                        priorities: '',
-                        spec: '',
-                    },
-                    notes: '',
-                    userId: $scope.userID,
-                };
-                
-                $scope.formData = newForm;
-                
-            $mdDialog.show({
-                clickOutsideToClose: true,
-                targetEvent: $event,
-                scope: $scope, 
-                preserveScope: true,
-                templateUrl: 'admin/components/dialogs/slapexpert-dialog/slapexpert-dialog.html',
-                controller: 'SlapexpertDialogController',
-                autoWrap: true
-            });
+            var newForm = {
+                type: 'SLAPexpert',
+                typeForPopUp: 'SLAPexpert Call',
+                title: 'SLAPexpert Call',
+                extra: {
+                    date: '',
+                    hours: '',
+                    minutes: '',
+                    callLength: 0,
+                    tool: '',
+                    mindset: 0,
+                    statement: 0,
+                    goals: 0,
+                    items: 0,
+                    rate: 0,
+                    priorities: '',
+                    spec: '',
+                },
+                notes: '',
+                userId: $scope.userID,
+            };
+            
+            $scope.formData = newForm;
+            
+        $mdDialog.show({
+            clickOutsideToClose: true,
+            targetEvent: $event,
+            scope: $scope, 
+            preserveScope: true,
+            templateUrl: 'admin/components/dialogs/slapexpert-dialog/slapexpert-dialog.html',
+            controller: 'SlapexpertDialogController',
+            autoWrap: true
+        });
         }
 
         function openExpertDialog($event, item) {
@@ -611,14 +618,86 @@
                         });
                     });
         }
+        function openManagerAccountabilityDialog($event, item){
+            var newForm = {
+                type: 'SLAPmanager',
+                typeForPopUp:'Accountability Call',
+                title: 'Accountability Call',
+                extra: {
+                    // date: '',
+                    // hours: '',
+                    // minutes: '',
+                    lasttime_logged:'',
+                    what_discussion:'',
+                    when_last_call:'',
+                    when_next_call:'',
+                    they_happy:'',
+                    slap_expert_schedule:'',
+                    when_slapster_slapschool:'',
+                    discuss_events:'',
+                    slapster_progress:'',
+                    when_slapster_slapworld:'',
+                    discuss_progress_in_slapworld:'',
+                    key_priorities:''
 
+                },
+                notes: '',
+                userId: $scope.userID,
+            };
+
+            $scope.formData = newForm;
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/slapmanager-accountability-dialog/slapmanager-account-dialog.html',
+                controller: 'SlapManagerAccountDialogController',
+                autoWrap: true
+            });
+            // $mdDialog.show({
+            //     clickOutsideToClose: true,
+            //     targetEvent: $event,
+            //     scope: $scope,
+            //     preserveScope: true,
+                
+            //     autoWrap: true
+            // });
+        }
         
+        function openManagerOnboardingDialog($event, item){
+            var newForm = {
+                type: 'SLAPmanager',
+                typeForPopUp: 'Onboarding Call',
+                title: 'Onboarding Call',
+                extra: {},
+                notes: '',
+                userId: $scope.userID,
+            };
+
+            $scope.formData = newForm;
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/slapmanager-onboarding-dialog/slapmanager-onboard-dialog.html',
+                controller: 'SlapManagerOnboardingDialogController',
+                autoWrap: true
+            });
+        }
 
         function updateNotes($event, form) { 
             if(form.$invalid) {
                 toaster.pop({type: 'error', body: "You cannot finalize this process until all fields are completed.", timeout: 2000});
                 vm.buttonDisabled = false;
                 return;
+            }
+            if ($scope.formData.extra.date){
+                $scope.formData.extra.date = new Date($scope.formData.extra.date.getFullYear(), $scope.formData.extra.date.getMonth(), $scope.formData.extra.date.getDate(), $scope.formData.extra.hours, $scope.formData.extra.minutes);
+            }
+            if ($scope.formData.extra.hours || $scope.formData.extra.minutes) {
+                $scope.formData.extra.callLength = $scope.formData.extra.hours * 60 + $scope.formData.extra.minutes;
             }
             activityService.add($scope.formData)
                 .then(function(response){
@@ -683,6 +762,17 @@
                 });
             }, function() {
             });
+        }
+
+        function openNotes($event, item) {
+            var confirm = $mdDialog.alert()
+                .title('Note')
+                .textContent(item)
+                .ariaLabel('Note')
+                .targetEvent($event)
+                .ok('Ok')
+
+            $mdDialog.show(confirm)
         }
 
         function adminBuild(item) {

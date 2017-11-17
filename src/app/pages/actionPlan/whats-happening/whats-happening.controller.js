@@ -58,6 +58,13 @@
             // var urls = _.get($state.current, 'params.prev.sref').split('.');
             var url = 'allMindsetUser';
 
+            stepService.getApiData('yourStatement') //TODO: Think over the dynamics url
+                .then(function (response) {
+                    if (response && response.status === 200) {
+                        $scope.clientName = _.get(response, 'data.yourStatement.fourth', []);
+                        var originalData = _.clone($scope.data);
+                    }
+                });
             // return stepService.getApiData(urls[urls.length - 1])
             stepService.getApiData(url) //TODO: Think over the dynamics url
                 .then(function (response) {

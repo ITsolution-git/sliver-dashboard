@@ -13,9 +13,9 @@
         function openDeleteItemDialog($event, title, ok, success, fail) {
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
-                .title('Confirm Delete')
+                .title(title)
                 .textContent(title)
-                .ariaLabel('Delete')
+                .ariaLabel(title)
                 .targetEvent($event)
                 .ok(ok)
                 .cancel('No');

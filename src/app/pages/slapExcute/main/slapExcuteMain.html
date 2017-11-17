@@ -134,8 +134,10 @@
 	</section>
 
 	<md-card layout="row">
-		<md-card-content class="strategy-info">
-			You are using {{strategies[currentQuater.nth - 1]}} to connect with your Ideal Client to Hit Your Quarterly Goals
+		<md-card-content class="strategy-info" ng-if="idealClientName && strategies[currentQuater.nth - 1]">
+			You are using <span class="text-aqua"><b>{{strategies[currentQuater.nth - 1]}} </b> </span> to connect with <span class="text-aqua">
+				<b>{{idealClientName}}</b>
+				</span> to Hit Your Quarterly Goals
 		</md-card-content>
 	</md-card>
 

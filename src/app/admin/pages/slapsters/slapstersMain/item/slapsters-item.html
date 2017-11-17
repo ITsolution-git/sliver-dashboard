@@ -471,14 +471,22 @@
 <md-card flex="100" class="p-es-30 m-es-40 slapster-expert-hours"  ng-init="showExpertHours = true">
     <section layout="row" layout-align="space-between center">
 
-        <h3>Expert Hours</h3>
+        <h3>SLAPexpert & SLAPmanager Calls</h3>
         <button-switch visible="showExpertHours"></button-switch>
     </section>
-    <section class="  sample-show-hide"  ng-show="showExpertHours">
-        <section layout="row" flex="100">
-            <md-button class="md-primary pull-right" ng-click="openExpertDialog($event, item)">
-                Record Client Interaction
-            </md-button>
+    <section class=" sample-show-hide"  ng-show="showExpertHours">
+        <section layout="row" flex="50" class="calls-ex-mn">
+                <button class="btn btn-primary" ng-click="openExpertDialog($event, item)">
+                    SLAPexpert Call
+                </button>
+                <button class="btn  btn-primary" ng-click="openManagerAccountabilityDialog($event, item)">
+                    SLAPmanager Accountability Call
+                </button>
+                <button class="btn  btn-primary" ng-click="openManagerOnboardingDialog($event, item)">
+                    SLAPmanager Onboarding Call
+                </button>
+
+             
         </section>
     </section>
 </md-card>
@@ -491,10 +499,10 @@
     </section>
     <section class="  sample-show-hide"  ng-show="showActivity">
 
-        <section layout="row" flex="100">
-            <md-button class="md-primary pull-right" ng-click="openItemDialog($event, 'add')">
+        <section style="display: flex; justify-content: flex-end;" layout="row" flex="100">
+            <button class="btn btn-primary"  ng-click="openItemDialog($event, 'add')">
                 Create Activity
-            </md-button>
+            </button>
         </section>
 
         <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
@@ -586,8 +594,11 @@
                             <th sortable="updatedByUserName" class="sortable">
                                 <span>Updated By</span>
                             </th>
-                            <th sortable="createdAtStr" class="sortable">
+                            <th sortable="createDate" class="sortable">
                                 <span>Date</span>
+                            </th>
+                            <th sortable="createTime" class="sortable">
+                                <span>Time</span>
                             </th>
                             <th sortable="notes" class="sortable">
                                 <span>Notes</span>
@@ -608,10 +619,13 @@
                                 {{item.updatedByUserName}}
                             </td>
                             <td>
-                                {{item.createdAtStr}}
+                                {{item.createdDate}}
                             </td>
                             <td>
-                                <span  style="overflow: hidden; text-overflow: ellipsis;">{{item.notes}}</span>
+                                {{item.createdTime}}
+                            </td>
+                            <td>
+                                <a style="margin:0px" ng-click="openNotes($event, item.notes)">Read more</a>
                             </td>
                             
                             <td>

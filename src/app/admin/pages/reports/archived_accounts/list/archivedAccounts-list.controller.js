@@ -21,7 +21,8 @@
 
             buildGridData: buildGridData,
             getItemPerPage: getItemPerPage,
-            deleteItem: deleteItem
+            deleteItem: deleteItem,
+            activateAccount: activateAccount
         });
 
         pageService
@@ -111,13 +112,23 @@
             apiService.adminToken = $auth.getToken();
 
             adminUserService.getToken(item._id).then(function (res){
-                
                 $auth.setToken(res.data.token);
                 $state.go('home');
                 document.location.reload(true);
-                
             });
         }
+
+        function activateAccount(event, item) {
+            var success = function () {
+                adminUserService.activate(item._id).then(function () {
+                reloadData();
+            })
+            .catch (function (err) {
+                console.log(err);
+            });
+        }
+        commonDialogService.openDeleteItemDialog(event, 'Are you sure you want to activate this account?', 'Activate', success);
+    }
         
 
     }

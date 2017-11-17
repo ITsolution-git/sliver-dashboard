@@ -7,6 +7,9 @@
 
     /* @ngInject */
     function ItemDialogController($scope, $state) {
-
+        $scope.change = function (revenue){
+           $scope.formData.title = $scope.formData.revenue.id;
+           $scope.formData.name = $scope.formData.revenue.name;
+        }
     }
 }());

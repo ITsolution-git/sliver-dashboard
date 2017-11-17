@@ -39,6 +39,17 @@
             $scope.itemPerPage = value;
         }
 
+        $scope.ROLES.forEach(function (item) {
+           if(item.name === 'SLAPExpert'){
+                item.name = 'SLAPexpert';
+           }
+
+           if(item.name === 'SLAPManager') {
+               item.name = 'SLAPmanager'
+           }
+        });
+
+
         function reloadData() {
             $scope.dataloaded = false;
             adminUserService.list()
@@ -59,7 +70,7 @@
                 var filtered = $scope.users.filter(function(user){
                     var valid = false;
                     if (user.status === 'archived') return valid;
-                    if (user.role === 4 || user.role === 5) return valid;
+                    if (user.role === 4 || user.role === 5 || user.role === 6) return valid;
                     if ($scope.searchKeyword.trim() != ''){
                             if (user.businessName.toLowerCase().indexOf($scope.searchKeyword.toLowerCase()) != -1)
                             valid = true;

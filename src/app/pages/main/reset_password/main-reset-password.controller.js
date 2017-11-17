@@ -45,7 +45,10 @@
                         $scope.errors = {};
                     }
                     $scope.errors.password = [response.data[0].error];
-                });
+
+                }).catch( function (res) {
+                    toaster.pop({type: 'error', body: res.data.message, timeout: 3000});
+                })
             }
         };
     }

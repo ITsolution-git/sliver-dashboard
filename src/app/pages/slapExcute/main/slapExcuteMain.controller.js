@@ -9,6 +9,7 @@
 
         angular.extend($scope,  {
             userAllData: userAllData, //All user data from finishedsteps api
+            idealClientName: userAllData.statement.yourStatement.fourth, 
             excuteItems: excuteItems,
             reflextionData: excuteItemService.reflextionData,
             startDate: moment().toDate(), //Plan start Date
@@ -439,9 +440,12 @@
                         return !elem.revenue.deleted;
                     });
                     var id = item ? item.id : nonDeleted[0].revenue.id;
+                    var revenue = item ? item : nonDeleted[0].revenue;
                     var newForm = {
                         type: 'sales',
                         title: id,
+                        revenue: revenue,
+                        name: revenue.name,
                         notes: '',
                         dueDate: moment($scope.today).format($rootScope.dateFormat),
                         progress: 0,

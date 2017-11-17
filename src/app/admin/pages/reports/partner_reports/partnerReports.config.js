@@ -65,13 +65,12 @@
                     //             return response.data;
                     //         }).catch(function(err) { console.log(err); $state.go('reports.list'); });
                     // },
-                    allPartners: function (adminUserService, $state) {
-                        return adminUserService.list()
-                            .then(function (response) {
-                                return response.data.filter(function (item) {
-                                    return item.role === 5;
-                                });
-                            }).catch(function(err) { console.log(err); $state.go('reports.partner.item'); });
+                    allPartners: function (partnerService, $state) {
+                        return partnerService.list()
+                        .then(function (response) {
+                            return response.data;
+                        })
+                        .catch(function(err) { console.log(err); $state.go('reports.partner.item'); });
                     }
                 },
                 url: '/{partner_report_id}',

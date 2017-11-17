@@ -1,17 +1,16 @@
 
-<div layout="column" style="width: 100%;" class="reports-item-container">
+<div layout="column" style="width: 100%;" class="reports-item-container report-search">
     <md-card flex="100" class="p-es-50 m-w-es-40">
         <div class="pull-right" layout="row" layout-align="end start">
             <button class="print" ng-click="printSlap()">
                 <i class="fa fa-print" aria-hidden="true"></i>
                 Print
             </button>
-
         </div>
         <form layout="row" layout-wrap layout-align="center end" name="form">
             <md-input-container flex="30">
                 <label>Which Partner</label>
-                <md-select ng-model="partners" required>
+                <md-select ng-model="partner" required>
                     <md-option ng-repeat="user in users" ng-value="user._id">{{user.name}}</md-option>
                 </md-select>
                 <div class="md-errors-spacer"></div>
@@ -29,7 +28,7 @@
                 </md-input-container>
                 <md-input-container flex="35">
                     <label>End Date</label>
-                    <md-datepicker ng-model="report.filter.endDate" md-min-date="report.filter.startDate" name="endDate" required></md-datepicker>
+                    <md-datepicker ng-model="endDate" md-min-date="startDate" name="endDate" required></md-datepicker>
                     <div ng-messages="form.endDate.$error">
                         <div ng-message="valid">The entered value is not a date!</div>
                         <div ng-message="required">This date is required!</div>
@@ -37,30 +36,73 @@
                         <div ng-message="maxdate">Date is too late!</div>
                     </div>
                 </md-input-container>
-                <md-button class="md-primary mar-button" ui-sref="reports.add">
+                <md-button class="md-primary mar-button" ng-click="buildReport()" ng-disabled="disableButton">
                     Build Report
                 </md-button>
             </div>
         </form>
-
-
-
-        <md-input-container flex="100" layout="column" layout-align="">
-                <span>Partner Name: </span>
-                <span>Reviewing Data for period from XXX to XXX</span>
-                <span>Total number of SLAPsters assigned to Partner:</span>
-                <span>Total number of SLAPsters assigned to Partner</span>
-                <div>
-                    <span>groupSLAP:</span>
-                    <span>monthlySLAP:</span>
-                    <span>seriousSLAP:</span>
-                    <span>masterSLAP:</span>
-                    <span>teamSLAP:</span>
-                    <span>accessSLAP:</span>
-                </div>
-
-                <span>Total income generated:</span>
-                <span>Total Revenue Share due to Partner:</span>
-        </md-input-container>
     </md-card>
+</div>
+<div class="title-div">
+    <h2 class="h2-title">Partner Report</h2>
+</div>
+<div layout="column" style="width: 100%;" class="reports-item-container reports" ng-class="(visibleMess)? 'animated fadeIn' : 'hideReport'">
+    <md-card flex="100" class="p-es-50 m-w-es-40 ">
+        <h1>No reports for this date range.</h1>
+    </md-card>
+</div>
+<div layout="column" style="width: 100%;" class="reports-item-container reports" ng-class="(visibleReport)? 'animated fadeIn' : 'hideReport'">
+    <md-card flex="100" class="p-es-50 m-w-es-40 ">
+        <md-input-container class='container-report' flex="100" layout="column" >
+            <span>Partner Name: <mark class="blue-mark">{{report.partnerName}}</mark></span>
+            <span>Reviewing Data for period from <mark class="blue-mark">{{report.from | date : 'shortDate'}}</mark> to
+                <mark class="blue-mark">{{report.to | date: 'shortDate'}}</mark></span>
+            <span>Total number of SLAPsters assigned to Partner: <mark class="blue-mark">{{report.countAssignedUsers
+                }}</mark></span>
+            <span>Total number of SLAPsters assigned to Partner by Plans:</span>
+            <span>
+                <ul class="list-report">
+                <li class="item-report" ng-repeat="(key,value) in report.countAssignedUsersByPlan">{{key}}:
+                    <mark class="blue-mark">{{value}}</mark></li>
+            </ul>
+            </span>
+            <span>Total Monthly Revenue from all SLAPsters associated with Partner: <mark
+                class="blue-mark">{{report.sum | currency}}</mark></span>
+            <span>Total Income Collected from SLAPsters: <mark class="blue-mark">{{report.totalIncome |
+                currency}}</mark></span>
+            <span>Total Revenue Share due to Partner: <mark class="blue-mark">{{report.totalShareToPartner |
+                currency}}</mark></span>
+
+        </md-input-container>
+            
+    </md-card>
+
+    <md-card flex="100" class="p-es-50 m-w-es-40 ">
+        <table> 
+        <tr>
+            <th>SLAPsters name</th>
+            <th>Quarter/Month they are currently in</th>
+            <th>Quarterly Goal</th>
+            <th>Annual Goal</th>
+        </tr>
+        <tr ng-repeat="item in report.slapsters">
+            <td>{{item.name}}</td>
+            <td ng-if="item.currentQuater.number">{{item.currentQuater.number}}/{{item.currentMonth}}</td> 
+            <td ng-if="!item.currentQuater.number">{{item.currentQuater}}/{{item.currentMonth}}</td> 
+            <td ng-if="item.quaterlyGoal == 'N/A'">{{item.quaterlyGoal}}</td> 
+            <td ng-if="item.annualGoal == 'N/A'">{{item.annualGoal}}</td> 
+            <td ng-if="item.quaterlyGoal > 0">{{item.quaterlyGoal | number: 0}}%</td> 
+            <td ng-if="item.annualGoal > 0">{{item.annualGoal | number: 0}}%</td> 
+            <td ng-if="!item.quaterlyGoal">{{item.quaterlyGoal | number: 0}}%</td> 
+            <td ng-if="!item.annualGoal">{{item.annualGoal | number: 0}}%</td>
+        </tr>
+        
+        </table>
+    </md-card>
+</div>
+
+<hr class="footer-hr">
+<div class="footer-print">
+    <img src="/images/silverLining.jpg" alt="">
+    <span>www.smallbizsilverlining.com</span>
 </div>

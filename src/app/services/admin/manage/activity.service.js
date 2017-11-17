@@ -15,12 +15,12 @@
 
         this.activityTypes = [
             { id: "Milestone", name: "Milestone", show: true },
-            { id: "ActionItem", name: "ActionItem", show: true },
+            { id: "ActionItem", name: "Action Item", show: true },
             { id: "Pause & Reflect", name: "Pause & Reflect", show: true },
             { id: "Sales", name: "Sales", show: true },
             { id: "Communication", name: "Communication", show: true },
             { id: "SLAPexpert", name: "SLAPexpert", show: true },
-            { id: "SLAPassistant", name: "SLAPassistant", show: true },
+           // { id: "SLAPassistant", name: "SLAPassistant", show: true },
             { id: "SLAPworld", name: "SLAPworld", show: true },
             { id: "SLAPschool", name: "SLAPschool", show: true },
             { id: "SLAPmanager", name: "SLAPmanager", show: true }

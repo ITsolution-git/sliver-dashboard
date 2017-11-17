@@ -1,24 +1,25 @@
 <md-dialog aria-label="List dialog" class="activity-dialog p-t-es-40">
 	<section layout="column">
 		<form layout="row" layout-wrap layout-align="center center" name="form">
-			<md-input-container  flex="50">
-				<label>Activity</label>
+			<md-input-container  flex="60">
+				<label>2-5 Word summary of Activity</label>
 				<input ng-model="formData.title" required name="title">
 				<div ng-messages="form.title.$error">
 					<ng-message when="required">Activity is required.</div>
 				</div>
 			</md-input-container>
 			
-			<md-input-container flex="50">
-				<md-select ng-model="formData.type">
-					<md-option ng-value="type.name" ng-repeat="type in activityTypes">{{type.name}}</md-option>
+			<md-input-container flex="40">
+				<label class="type-lable">Type</label>
+				<md-select ng-model="formData.type" md-container-class="type-menu">
+					<md-option ng-value="type.id" ng-repeat="type in activityTypesSlice">{{type.name}}</md-option>
 				</md-select>
 				<div class="md-errors-spacer"></div>
 			</md-input-container>
 
 			<md-input-container flex="100">
-				<label>Notes</label>
-				<input ng-model="formData.notes">
+				<label>Detailed Notes</label>
+				<textarea class="textarea-activity" ng-model="formData.notes" rows="1" cols="20" resize=""></textarea>
 			</md-input-container>
 
 		</form>
