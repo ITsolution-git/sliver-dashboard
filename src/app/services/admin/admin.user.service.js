@@ -14,6 +14,7 @@
         self.ROLE_SLAPMANAGER = 3;
         self.ROLE_SLAPSTER = 4;
         self.ROLE_PARTNER = 5;
+        self.ROLE_TEST = 6;
 
         self.STATUS_ACTIVE = 'active';
         self.STATUS_INACTIVE = 'inactive';
@@ -23,7 +24,8 @@
             {id: 2, name: "SLAPExpert"},
             {id: 3, name: "SLAPManager"},
             {id: 4, name: "SLAPster"},
-            {id: 5, name: "Partner"}];
+            {id: 5, name: "Partner"},
+            {id: 6, name : "Test"}];
 
         self.STATUSES = [
             {id: 'active', name: "Active"},
@@ -49,6 +51,9 @@
 
         self.list = function () {
             return adminApiService.rest.all('users').getList();
+        };
+        self.listTestUsers = function () {
+            return adminApiService.rest.all('test-users').getList();
         };
 
         self.delete = function(user) {

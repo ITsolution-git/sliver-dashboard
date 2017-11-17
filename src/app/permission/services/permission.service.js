@@ -11,10 +11,11 @@
 
         me.user = null;
         me.rolePermModel = [
-            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters','canPartners', 'canBuildReports','canPartnerReports','canSLAPexpertReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
+            {role: self.ROLE_ADMIN, perms: ['canAdmin', 'canSlpasters', 'canPartners', 'canBuildReports', 'canPartnerReports', 'canSLAPexpertReports', 'canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete','canTestUsers']},
             {role: self.ROLE_SLAPEXPERT, perms: ['canAdmin', 'canSlpasters']},
-            {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports', 'canPartnerReports','canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete']},
+            {role: self.ROLE_SLAPMANAGER, perms: ['canAdmin', 'canSlpasters', 'canBuildReports', 'canPartnerReports', 'canPlans', 'canPromocodes', 'canEmailTemplates', 'canUsers', 'canDelete','canTestUsers']},
             {role: self.ROLE_SLAPSTER, perms: ['canBuild']},
+            { role: self.ROLE_TEST, perms: ['canBuild'] },
             {role: self.ROLE_PARTNER, perms:['canAdmin', 'canSlpasters', 'canBuildReports']},
         ];
 
@@ -28,6 +29,7 @@
             {permName: 'canPartners', 'sref': 'partners.list', 'name': 'Partners' },
             {permName: 'canEmailTemplates', 'sref': 'emailtemplates.list', 'name': 'Email Templates'},
             {permName: 'canUsers', 'sref': 'users.list', 'name': 'Users'},
+            {permName: 'canTestUsers', 'sref': 'testusers.list', 'name': 'Test Users' },
             {permName: 'canAdmin', 'sref': 'admin.home', 'name': 'Admin'},
             {permName: 'canDelete', 'sref': 'archive.list', 'name': 'Archived Accounts'},
             {permName: 'canBuild', 'sref': 'home', 'name': 'Build'},
@@ -52,6 +54,7 @@
                     {menuName: 'Promo Codes', needPerm: 'canPromocodes'},
                     {menuName: 'Email Templates', needPerm: 'canEmailTemplates'},
                     {menuName: 'Users', needPerm: 'canUsers'},
+                    {menuName: 'Test Users', needPerm: 'canTestUsers'}
                 ]
             },
         ]
@@ -73,6 +76,7 @@
         // self.ROLE_SLAPMANAGER = 3;
         // self.ROLE_SLAPSTER = 4;
         // self.ROLE_PARTNER = 5;
+        // self.ROL_TEST = 6
 
         me.filterSlapstersByPermission = function(slapsters) {
             var user = userService.getStoredUser();
@@ -156,7 +160,9 @@
                     ((me.user.role == adminUserService.ROLE_ADMIN) || 
                      (me.user.role == adminUserService.ROLE_SLAPEXPERT) || 
                      (me.user.role == adminUserService.ROLE_SLAPMANAGER) || 
-                     (me.user.role == adminUserService.ROLE_PARTNER)));
+                     (me.user.role == adminUserService.ROLE_PARTNER))||
+                    (me.user.role ==  adminUserService.ROLE_TEST) 
+                    );
             });
         };
 
