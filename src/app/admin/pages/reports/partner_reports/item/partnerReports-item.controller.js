@@ -31,7 +31,7 @@
 
         function buildReport() {
             $scope.disableButton = true;
-            if ($scope.partner && $scope.startDate && $scope.endDate)
+            if ($scope.partner && $scope.startDate && $scope.endDate){
                 return partnerReportService.post({partnerId: $scope.partner, from: $scope.startDate, to: $scope.endDate})
                 .then(function (resolve) {
                     $scope.report = resolve.data;
@@ -44,7 +44,10 @@
                     }
                     $scope.disableButton = false;
                 })
-                .catch(function (e) {console.log(e);})
+                    .catch(function (e) { $scope.disableButton = false;  console.log(e);})
+            } else {
+                $scope.disableButton = false; 
+            }
         }
         //
     //     $timeout(function(){

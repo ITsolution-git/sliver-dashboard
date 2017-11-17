@@ -31,7 +31,7 @@
 
         function buildReport() {
             $scope.disableButton = true;
-            if ($scope.expert && $scope.startDate && $scope.endDate)
+            if ($scope.expert && $scope.startDate && $scope.endDate){
                 return expertReportService.post({expertId: $scope.expert, from: $scope.startDate, to: $scope.endDate})
                     .then(function (resolve) {
                         $scope.report = resolve.data;
@@ -45,6 +45,7 @@
                         $scope.disableButton = false;
                     })
                     .catch(function (e) { $scope.disableButton = false; console.log(e);})
+            } else { $scope.disableButton = false; }
         }
 
 
