@@ -42,7 +42,7 @@
             $scope.data.month = currentMonth;
         }
         else var startMonth = $scope.data.month;
-        
+        $scope.data.slapStartDate = $scope.data.month + '_' + $scope.data.year;
         var filteredMonth = [];
         for (var i = 0; i < 4; i++) {   
             filteredMonth[i] = moment(new Date()).add(i, 'M').get('month') + 1;
@@ -63,8 +63,8 @@
         });
         if ($scope.data.year && $scope.data.month) {
             var month = $scope.allMonths[$scope.data.month - 1];
-            $scope.data.slapStartDate = $scope.data.month + '_' + $scope.data.year;
-            if ($scope.data.year != currentYear && $scope.data.month != currentMonth){
+            $scope.data.slapStartDate = $scope.data.month + '_' + $scope.data.year;            
+            if ( !($scope.data.year == currentYear && $scope.data.month == currentMonth)){
                 $scope.years.push($scope.data.year);
                 $scope.months.push(month);
             }
@@ -73,9 +73,11 @@
                     month: month,
                     year: $scope.years[indx]
                 }
+                
             }).sort(function(date1, date2){
                 return date1.year - date2.year; 
             });
+            console.log($scope.startdates);
             
         };
         
