@@ -7,6 +7,7 @@
             'manage.coupon.module',
             'manage.users.module',
             'manage.emailtemplates.module',
-            'manage.partners.module'
+            'manage.partners.module',
+            'manage.testusers.module'
         ]);
 }());

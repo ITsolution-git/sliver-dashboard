@@ -1,0 +1,115 @@
+<div layout="column" style="width: 100%;">
+    <md-card flex="100" class="p-es-30 m-w-es-40">
+        <section>
+            <md-button class="md-primary pull-right" ui-sref="testusers.add">
+                New Test User
+            </md-button>
+        </section>
+
+        <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
+            <md-input-container class="md-icon-float md-block" flex="50" style="margin: 0px">
+                <md-icon>
+                    <i class="material-icons">search</i>
+                </md-icon>
+                <input ng-model="searchKeyword" ng-change="buildGridData()" type="text" placeholder="Search">
+            </md-input-container>
+        </div>
+
+        <div grid-data class='slap-grid' id="users-grid" grid-options="gridData.gridOptions" grid-actions="gridData.gridActions"
+            ng-if="dataReady">
+            <div layout-gt-sm="row" layout-sm="column" layout-align="center">
+                <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
+                    <span>{{filtered.length}} items total</span>
+                </div>
+                <div flex-gt-sm="75" flex-xs="100">
+                    <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+                        <grid-pagination max-size="5" boundary-links="true" class="pagination mdl-shadow--2dp" total-items="paginationOptions.totalItems"
+                            ng-model="paginationOptions.currentPage" ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                        <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                            <md-select ng-change=getItemPerPage(paginationOptions.itemsPerPage) ng-init="paginationOptions.itemsPerPage = itemPerPage"
+                                ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
+                                <md-option value="5">5</md-option>
+                                <md-option value="10">10</md-option>
+                                <md-option value="20">20</md-option>
+                                <md-option value="50">50</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th sortable="businessName" class="sortable">
+                                <span>Business Name</span>
+                            </th>
+                            <th class="st-sort-disable th-dropdown">
+                                <!-- <md-select filter-by="displayRole" filter-type="select" ng-model="selectedTypeStr" placeholder="Filter By Type" ng-change="filter()">
+                                    <md-option value="">All </md-option>
+                                    <md-option ng-value="role.name" ng-repeat="role in ROLES">
+                                        {{role.name}}
+                                    </md-option>
+                                </md-select> -->
+                                <span>Role</span>
+                            </th>
+
+                            <th sortable="name" class="sortable">
+                                <span>First Name</span>
+                            </th>
+                            <th sortable="lastName" class="sortable">
+                                <span>Last Name</span>
+                            </th>
+                            <th sortable="email" class="sortable">
+                                <span>Email</span>
+                            </th>
+
+                            <th class="st-sort-disable th-dropdown">
+                                <md-select filter-by="displayStatus" filter-type="select" ng-model="selectedStatusStr" placeholder="Filter By Status" ng-change="filter()">
+                                    <md-option value="">All</md-option>
+                                    <md-option value="{{status.name}}" ng-repeat="status in STATUSES">
+                                        {{status.name}}
+                                    </md-option>
+                                </md-select>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr grid-item>
+                            <td>
+                                {{item.businessName}}
+                            </td>
+                            <td>
+                                {{item.displayRole}}
+                            </td>
+                            <td>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                {{item.lastName}}
+                            </td>
+                            <td>
+                                {{item.email}}
+                            </td>
+                            <td>
+                                {{item.displayStatus}}
+                            </td>
+                            <td>
+                                <a ui-sref="testusers.item({user_id:item._id, mode:'edit'})" style="margin:0px">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                                <a ui-sref="slapsters.item({user_id:item._id})" style="margin:0px" ng-if="item.role == 6">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                </a>
+                                <a ng-click="deleteItem($event, item)" style="margin:0px">
+                                    <i class="fa fa-user-times" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </md-card>
+</div>
