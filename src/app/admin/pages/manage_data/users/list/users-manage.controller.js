@@ -39,6 +39,17 @@
             $scope.itemPerPage = value;
         }
 
+        $scope.ROLES.forEach(function (item) {
+           if(item.name === 'SLAPExpert'){
+                item.name = 'SLAPexpert';
+           }
+
+           if(item.name === 'SLAPManager') {
+               item.name = 'SLAPmanager'
+           }
+        });
+
+
         function reloadData() {
             $scope.dataloaded = false;
             adminUserService.list()
