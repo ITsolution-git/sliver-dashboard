@@ -44,7 +44,7 @@
                         }
                         $scope.disableButton = false;
                     })
-                    .catch(function (e) {console.log(e);})
+                    .catch(function (e) { $scope.disableButton = false; console.log(e);})
         }
 
 

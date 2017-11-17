@@ -56,6 +56,14 @@
             <span>SLAPexpert Name: {{report.expertName}}</span>
             <span>Reviewing Data for period from {{report.from | date : 'shortDate'}} to {{report.to | date: 'shortDate'}}</span>
             <span>Total number of SLAPsters assigned to SLAPexpert: {{report.countAssignedUsers}}</span>
+            <span>
+                Slapsters Business Names:
+                <ul class="list-report">
+                    <li class="item-report" ng-repeat="bussinessName in report.UsersBussinessName">
+                        {{bussinessName}}
+                    </li>
+                </ul>
+            </span>
             <span>Total number of SLAPsters assigned to SLAPexpert by Plans:</span>
             <span>
                 <ul class="list-report">
