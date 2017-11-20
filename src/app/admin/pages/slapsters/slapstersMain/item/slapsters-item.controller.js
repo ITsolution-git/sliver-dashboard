@@ -6,7 +6,7 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($auth, $scope, partners, $state, pageService, userService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
+    function AdminSlapstersItemController($auth, $scope, partners, $state, pageService, userService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems, actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
@@ -15,7 +15,6 @@
             programData: productData.filter(function(pro){return pro.typeProduct == 1}),
             extraProductData: productData.filter(function(pro){return pro.typeProduct == 3 }),
             promocodeData: promocodeData,
-            activityData: activityData,
             paymentData: [],
             curUser: userService.getStoredUser(),
             excuteItems: excuteItems,
@@ -134,8 +133,13 @@
                 activatePayments();
 
                 initializeIdealJourney();
-
-                buildActivityGridData();
+                 activityService.list($stateParams.user_id)
+                .then(function (response) {
+                    $scope.activityData = response.data;
+                    buildActivityGridData();
+                }).catch(function (err) { console.log(err); $state.go('slapsters'); });
+            
+                
 
                 $scope.activityTypes
                 .filter(function(type){ return type.show = false; });
