@@ -54,7 +54,7 @@
                 <md-input-container flex="100" style="margin-top: 10px !important">
                     <input required name="notes"
                            placeholder="How is the SLAPster doing? Did you learn anything new or of importance from your call?"
-                           ng-model="formData.notes">
+                           ng-model="formData.extra.notes">
                     <div ng-messages="form.notes.$error" ng-hide="form.notes.$valid">
                         <div ng-message-exp="['required']"></div>
                     </div>

@@ -561,9 +561,9 @@
         function openSlapexpertDialog($event, item) {
             var newForm = {
                 type: 'SLAPexpert',
-                typeForPopUp: 'SLAPexpert Call',
                 title: 'SLAPexpert Call',
                 extra: {
+                    typeForPopUp: 'SLAPexpert Call',
                     date: '',
                     hours: '',
                     minutes: '',
@@ -621,9 +621,9 @@
         function openManagerAccountabilityDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
-                typeForPopUp:'Accountability Call',
                 title: 'Accountability Call',
                 extra: {
+                    typeForPopUp:'Accountability Call',
                     // date: '',
                     // hours: '',
                     // minutes: '',
@@ -668,9 +668,10 @@
         function openManagerOnboardingDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
-                typeForPopUp: 'Onboarding Call',
                 title: 'Onboarding Call',
-                extra: {},
+                extra: {
+                    typeForPopUp: 'Onboarding Call',
+                },
                 notes: '',
                 userId: $scope.userID,
             };
@@ -765,14 +766,23 @@
         }
 
         function openNotes($event, item) {
+            console.log(item);
             var confirm = $mdDialog.alert()
                 .title('Note')
-                .textContent(item)
+                // .textContent()
                 .ariaLabel('Note')
                 .targetEvent($event)
                 .ok('Ok')
-
-            $mdDialog.show(confirm)
+            $scope.item = item;
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/read-more-dialog/read-more-dialog.html',
+                // controller: 'ReadMoreDialogController',
+                autoWrap: true
+            });
         }
 
         function adminBuild(item) {
