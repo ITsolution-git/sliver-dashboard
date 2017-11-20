@@ -63,7 +63,7 @@
         });
         if ($scope.data.year && $scope.data.month) {
             var month = $scope.allMonths[$scope.data.month - 1];
-            $scope.data.slapStartDate = $scope.data.month + '_' + $scope.data.year;            
+            $scope.data.slapStartDate = $scope.data.month + '_' + $scope.data.year;      
             if ( !($scope.data.year == currentYear && $scope.data.month == currentMonth)){
                 $scope.years.push($scope.data.year);
                 $scope.months.push(month);
@@ -73,11 +73,11 @@
                     month: month,
                     year: $scope.years[indx]
                 }
-                
+            
             }).sort(function(date1, date2){
                 return date1.year - date2.year; 
             });
-            console.log($scope.startdates);
+            $scope.startdates = _.uniqWith($scope.startdates, _.isEqual);
             
         };
         
