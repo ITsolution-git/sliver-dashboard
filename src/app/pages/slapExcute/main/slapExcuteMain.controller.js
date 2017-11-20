@@ -767,7 +767,7 @@
             var endDate = moment($scope.endDate);
             var startDate = moment($scope.startDate);
 
-            if (tempReflext == 'week') {
+            /*if (tempReflext == 'week') {
                 $scope.dueDate = moment().day(-2).format('YYYY-MM-DD'); //last friday;
                 if(!( moment($scope.dueDate).isBetween(moment($scope.startDate), moment($scope.endDate), 'day', '[]') )){
                     showToast('Can\'t reflext last week');
@@ -787,7 +787,7 @@
                     showToast('Can\'t reflext last month');
                     $mdDialog.hide();
                 }
-            }
+            }*/
         }
 
         function addAllReflextion(type) {

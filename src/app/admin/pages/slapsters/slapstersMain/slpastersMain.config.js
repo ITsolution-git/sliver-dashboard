@@ -57,12 +57,6 @@
                             return response.data;
                         }).catch(function(err) { console.log(err); $state.go('slapsters'); });
                     },
-                    activityData: function (activityService, $stateParams, $state) {
-                        return activityService.list($stateParams.user_id)
-                        .then(function (response) {
-                            return response.data;
-                        }).catch(function(err) { console.log(err); $state.go('slapsters'); });
-                    },
                     partners: function (partnerService, $state) {
                         return partnerService.list().then(function(response){
                             return response.data;

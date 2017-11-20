@@ -6,7 +6,7 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($auth, $scope, partners, $state, pageService, userService,  adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems,  actionplanService, paymentsService, activityService, apiService, permissionService) {
+    function AdminSlapstersItemController($auth, $scope, partners, $state, pageService, userService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, excuteItems, actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
@@ -15,7 +15,6 @@
             programData: productData.filter(function(pro){return pro.typeProduct == 1}),
             extraProductData: productData.filter(function(pro){return pro.typeProduct == 3 }),
             promocodeData: promocodeData,
-            activityData: activityData,
             paymentData: [],
             curUser: userService.getStoredUser(),
             excuteItems: excuteItems,
@@ -134,12 +133,16 @@
                 activatePayments();
 
                 initializeIdealJourney();
-
-                buildActivityGridData();
+                 activityService.list($stateParams.user_id)
+                .then(function (response) {
+                    $scope.activityData = response.data;
+                    buildActivityGridData();
+                }).catch(function (err) { console.log(err); $state.go('slapsters'); });
+            
+                
 
                 $scope.activityTypes
-                .filter(function(type){ return type.show = false; });
-
+                .filter(function(type){ return type.show = true; });
 
                 $scope.activityTypesSlice = $scope.activityTypes.slice(4);
 
@@ -148,7 +151,7 @@
 
                 $scope.startPlan = $scope.user.planId;
 
-                $scope.actFilter.startDate = new Date();
+                //$scope.actFilter.startDate = new Date();
                 $scope.actFilter.endDate = new Date();
      
                 if(!startDate)
@@ -290,7 +293,6 @@
             _.each($scope.quaters, function(quater, QID){
                 $scope.anualInfo.quaterSale[QID].progress = $scope.anualInfo.quaterSale[QID].targetRevenueSum ? $scope.anualInfo.quaterSale[QID].actualRevenueSum / $scope.anualInfo.quaterSale[QID].targetRevenueSum * 100 : 0;
             });
-
         }
 
         function reloadData() {
@@ -506,8 +508,9 @@
                     
                     return valid;
                 })
-
                 
+                filtered = filtered.reverse();
+
                 data.data = filtered.map(function(act){
                     // var role = _.find($scope.ROLES, {id: user.role});
                     // user.displayRole = role ? role.name : '';
@@ -517,6 +520,7 @@
                     act.createdTime = moment(act.createdAt).format('h:mm A');
                     return act;
                 });
+               
 
                 data.urlSync = false;
                 $scope.activityGridData = {
@@ -525,6 +529,8 @@
                 };
                 $scope.activityGridReady = true;
             })
+
+            
             
         }
 
