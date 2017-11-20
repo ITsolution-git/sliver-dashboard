@@ -6,7 +6,7 @@
         .controller('AdminSlapstersItemController', AdminSlapstersItemController);
 
     /* @ngInject */
-    function AdminSlapstersItemController($auth, $scope, partners, $state, pageService, userService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, activityData, excuteItems, actionplanService, paymentsService, activityService, apiService, permissionService) {
+    function AdminSlapstersItemController($auth, $scope, partners, $state, pageService, userService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, buildData, productData, promocodeData, excuteItems, actionplanService, paymentsService, activityService, apiService, permissionService) {
 
         angular.extend($scope,  {
             
