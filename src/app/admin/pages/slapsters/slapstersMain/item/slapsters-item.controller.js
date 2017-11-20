@@ -138,8 +138,7 @@
                 buildActivityGridData();
 
                 $scope.activityTypes
-                .filter(function(type){ return type.show = false; });
-
+                .filter(function(type){ return type.show = true; });
 
                 $scope.activityTypesSlice = $scope.activityTypes.slice(4);
 
@@ -148,7 +147,7 @@
 
                 $scope.startPlan = $scope.user.planId;
 
-                $scope.actFilter.startDate = new Date();
+                //$scope.actFilter.startDate = new Date();
                 $scope.actFilter.endDate = new Date();
      
                 if(!startDate)
@@ -290,7 +289,6 @@
             _.each($scope.quaters, function(quater, QID){
                 $scope.anualInfo.quaterSale[QID].progress = $scope.anualInfo.quaterSale[QID].targetRevenueSum ? $scope.anualInfo.quaterSale[QID].actualRevenueSum / $scope.anualInfo.quaterSale[QID].targetRevenueSum * 100 : 0;
             });
-
         }
 
         function reloadData() {
@@ -506,8 +504,9 @@
                     
                     return valid;
                 })
-
                 
+                filtered = filtered.reverse();
+
                 data.data = filtered.map(function(act){
                     // var role = _.find($scope.ROLES, {id: user.role});
                     // user.displayRole = role ? role.name : '';
@@ -517,6 +516,7 @@
                     act.createdTime = moment(act.createdAt).format('h:mm A');
                     return act;
                 });
+               
 
                 data.urlSync = false;
                 $scope.activityGridData = {
@@ -525,6 +525,8 @@
                 };
                 $scope.activityGridReady = true;
             })
+
+            
             
         }
 
