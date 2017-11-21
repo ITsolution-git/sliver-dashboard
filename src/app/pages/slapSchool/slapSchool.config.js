@@ -25,5 +25,32 @@
                     } 
                 }
             })
+            .state('slapSchool.trainingTools', {
+                data: {
+                    access: '@'
+                },
+                parent: 'withNavbar',
+                url: '/school/training',
+                views: {
+                    content: {
+                        controller: 'TrainingToolsController',
+                        templateUrl: 'pages/slapSchool/training-tools/training-tools.html'
+                    }
+                },
+                resolve: {
+                    activeStep: function (stepService, $state) {
+                        return stepService.getApiData('rateConnectingStrategies')
+                            .then(function (active) {
+                                if (active) {
+                                    return active;
+                                }
+                                return stepService.getLastFinished()
+                                .then(function (finishedStep) {
+                                    $state.go('slapSchool.trainingTools');
+                                });
+                            })
+                    }
+                }
+            })
     }
 }());

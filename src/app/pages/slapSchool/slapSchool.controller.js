@@ -28,7 +28,9 @@
         $scope.duration_ = 0;
 
 
-
+        $scope.openTraining = function() {
+            $state.go('slapSchool.trainingTools');
+        }
 
         $scope.isStart = function(start, duration, e, url) {
             
