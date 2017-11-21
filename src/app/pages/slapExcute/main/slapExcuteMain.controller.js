@@ -409,7 +409,6 @@
                 if ($scope.curMode == 'add') {
                     var newForm = {
                         type: 'action',
-                        fromExecute: true,
                         title: '',
                         notes: '',
                         dueDate: moment().format($rootScope.dateFormat),
@@ -459,7 +458,6 @@
                 $mdDialog.show({
                     clickOutsideToClose: true,
                     targetEvent: $event,
-                    fromExecute: true,
                     scope: $scope, 
                     preserveScope: true,
                     templateUrl: 'components/dialogs/item-dialog/item-dialog.html',
@@ -509,7 +507,8 @@
                             title: $scope.formData.title,
                             notes: $scope.formData.notes,
                             dueDate: $scope.formData.dueDate,
-                            progress: $scope.formData.progress
+                            progress: $scope.formData.progress,
+                            fromExecute: true,
                         }).then(function(item){
                             $scope.excuteItems.push(item.data);
                             showToast('Added!');
@@ -573,6 +572,7 @@
                     });
                 } else if ($scope.formData.type == 'reflextion') {
                     $scope.formData.progress = 100;
+                    $scope.formData.fromExecute = true,
                     $scope.excuteItems.post($scope.formData).then(function(item){
                         $q.all($scope.formData.feeling.actions.filter(function(item) { return item.added == true;})
                         .map(function(item){
@@ -580,6 +580,7 @@
                                 type: 'action',
                                 title: item.title,
                                 notes: '',
+                                
                                 dueDate: $scope.formData.dueDate,
                                 progress: 0
                             });
@@ -595,6 +596,7 @@
                 }
             } else if($scope.curMode == 'edit') {
                 if ($scope.formData.type == 'action') {
+                    $scope.formData.fromExecute = true;
                     $scope.formData.save()
                     .then(function(response){
                         var index = _.findIndex($scope.excuteItems, {_id: $scope.formData._id});
@@ -612,6 +614,7 @@
                         dataUpdated();
                     });
                 } else if ($scope.formData.type == 'reflextion') {
+                    $scope.formData.fromExecute = true;
                     $scope.formData.progress = 100;
                     $scope.formData.save()
                     .then(function(response){
