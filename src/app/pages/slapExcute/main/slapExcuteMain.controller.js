@@ -409,6 +409,7 @@
                 if ($scope.curMode == 'add') {
                     var newForm = {
                         type: 'action',
+                        fromExecute: true,
                         title: '',
                         notes: '',
                         dueDate: moment().format($rootScope.dateFormat),
@@ -458,6 +459,7 @@
                 $mdDialog.show({
                     clickOutsideToClose: true,
                     targetEvent: $event,
+                    fromExecute: true,
                     scope: $scope, 
                     preserveScope: true,
                     templateUrl: 'components/dialogs/item-dialog/item-dialog.html',
