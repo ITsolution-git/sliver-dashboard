@@ -536,7 +536,7 @@
                 </form>
             </section>
             <section layout="row" flex="50" layout-wrap> 
-                <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>
+                <slap-color-switch color="#0e7cb5" ng-if="!type.hideButton" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>
                 <span ng-repeat-end>&nbsp&nbsp</span>
             </section>
         </section>
@@ -551,14 +551,14 @@
                     <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
                         <grid-pagination max-size="5"
                             boundary-links="true"
-                            class="pagination mdl-shadow--2dp"
+                            class="pagination mdl-shadow--2dp" 
                             ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
                             total-items="paginationOptions.totalItems"
                             ng-model="paginationOptions.currentPage"
                             ng-change="reloadGrid()"
                             items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                         <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                            <md-select ng-init="paginationOptions.itemsPerPage = '5'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
+                            <md-select ng-init="paginationOptions.itemsPerPage = '20'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
                                 
                                 <md-option value="5">5</md-option>
                                 <md-option value="10">10</md-option>
@@ -625,7 +625,7 @@
                                 {{item.createdTime}}
                             </td>
                             <td>
-                                <a style="margin:0px" ng-click="openNotes($event, item.notes)">Read more</a>
+                                <a style="margin:0px" ng-click="openNotes($event, item)">Read more</a>
                             </td>
                             
                             <td>

@@ -1,0 +1,75 @@
+<div class="slap-page rate-connect-strategy" scroll-top>
+            <div class="panel panel-default">
+        
+                <div class="panel-body slap-work-panel">
+        
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button-switch visible="showFormBlock"></button-switch>
+        
+                            <p class="logo panel-title">Training & Tools</p>
+                        </div>
+                    </div>
+        
+                    <div class="row sample-show-hide" ng-hide="showFormBlock">
+                        <div class="col-xs-12 padding-l-r-30 margin-b-24">
+                            <p class="heading2"></p>
+                        </div>
+                        <div class="col-xs-12" id="strategy-container">
+                            <svg ng-if="!showResponsiveView">
+                                <line ng-attr-x1="{{center.x}}" ng-attr-y1="{{center.y}}" ng-attr-x2="{{pos.x}}" ng-attr-y2="{{pos.y}}" ng-repeat="pos in positions" style="stroke:#50cfe3;stroke-width:2" ng-if="rateConnectingStrategies[$index].rating != 0"/>
+                            </svg>
+                            <div id="empty-client"  ng-if="!showResponsiveView">
+                                <img src="/images/person-avatar.png" />
+                                <p class="text-center name-client-summary">
+                                    {{clientName}}
+                                </p>
+                            </div>
+                            <div  ng-if="!showResponsiveView">
+                                <div class="strategy-box" ng-repeat="strategy in rateConnectingStrategies">
+                                    <img src="/images/logo.jpg" />
+                                    <div class="overlap">
+                                    </div>
+                                    <div class="content content-training">
+                                            <span class="plus"><i>+</i></span>
+                                        <!-- <i class="fa fa-times-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i> -->
+                                        <br/>
+                                        <span class="title"  ng-click="openVideoBox(strategy)">
+                                            {{getStrategyName(strategy.id)}}
+                                            <!--{{strategy.name}}-->
+                                        </span>
+                                        <br/>
+                                        <span class="desc">How Relevant?</span>
+                                        <slap-rating rate="strategy.rating">
+                                        </slap-rating>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="showResponsiveView" class="row">
+                                <div class="strategy-box resp-strategy-box col-xs-6" ng-repeat="strategy in rateConnectingStrategies">
+                                    <img src="/images/logo.jpg" />
+                                    <div class="overlap">
+                                    </div>
+                                    <div class="content content-training">
+                                        <span class="plus"><i>+</i></span>
+                                            <!-- <i class="fa fa-times-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i>                                             -->
+                                        <br/>
+                                        <span class="title"  ng-click="openVideoBox(strategy)">
+                                            <!--{{strategy.name}}-->
+                                             {{getStrategyName(strategy.id)}}
+                                        </span>
+                                        <br/>
+                                        <span class="desc">How Relevant?</span>
+                                        <slap-rating rate="strategy.rating">
+                                        </slap-rating>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        
+        <slap-footer send="sendData" forward="forward"></slap-footer>

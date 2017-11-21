@@ -142,8 +142,7 @@
                 
 
                 $scope.activityTypes
-                .filter(function(type){ return type.show = false; });
-
+                .filter(function(type){ return type.show = true; });
 
                 $scope.activityTypesSlice = $scope.activityTypes.slice(4);
 
@@ -152,7 +151,7 @@
 
                 $scope.startPlan = $scope.user.planId;
 
-                $scope.actFilter.startDate = new Date();
+                //$scope.actFilter.startDate = new Date();
                 $scope.actFilter.endDate = new Date();
      
                 if(!startDate)
@@ -294,7 +293,6 @@
             _.each($scope.quaters, function(quater, QID){
                 $scope.anualInfo.quaterSale[QID].progress = $scope.anualInfo.quaterSale[QID].targetRevenueSum ? $scope.anualInfo.quaterSale[QID].actualRevenueSum / $scope.anualInfo.quaterSale[QID].targetRevenueSum * 100 : 0;
             });
-
         }
 
         function reloadData() {
@@ -484,9 +482,16 @@
             var data = {}; 
             
             $scope.activityGridReady = false;
+            var indexofManager = _.findIndex($scope.activityTypes, ['id','SLAPmanager']);
+            var indexOfAssistant = _.findIndex($scope.activityTypes, ['id', 'SLAPassistant']);
+            $scope.activityTypes[indexOfAssistant].hidden = $scope.activityTypes[indexofManager].show;
+            $scope.activityTypes[indexOfAssistant].show = $scope.activityTypes[indexofManager].show;
             $timeout(function(){
+
                 var types = $scope.activityTypes
-                .filter(function(type){ return type.show == true; })
+                .filter(function(type){ 
+                    return type.show || type.hidden; 
+                })
                 .map(function(type){return type.id});
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
@@ -510,8 +515,9 @@
                     
                     return valid;
                 })
-
                 
+                filtered = filtered.reverse();
+
                 data.data = filtered.map(function(act){
                     // var role = _.find($scope.ROLES, {id: user.role});
                     // user.displayRole = role ? role.name : '';
@@ -521,6 +527,7 @@
                     act.createdTime = moment(act.createdAt).format('h:mm A');
                     return act;
                 });
+               
 
                 data.urlSync = false;
                 $scope.activityGridData = {
@@ -529,6 +536,8 @@
                 };
                 $scope.activityGridReady = true;
             })
+
+            
             
         }
 
@@ -565,9 +574,9 @@
         function openSlapexpertDialog($event, item) {
             var newForm = {
                 type: 'SLAPexpert',
-                typeForPopUp: 'SLAPexpert Call',
                 title: 'SLAPexpert Call',
                 extra: {
+                    typeForPopUp: 'SLAPexpert Call',
                     date: '',
                     hours: '',
                     minutes: '',
@@ -625,9 +634,9 @@
         function openManagerAccountabilityDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
-                typeForPopUp:'Accountability Call',
                 title: 'Accountability Call',
                 extra: {
+                    typeForPopUp:'Accountability Call',
                     // date: '',
                     // hours: '',
                     // minutes: '',
@@ -672,9 +681,10 @@
         function openManagerOnboardingDialog($event, item){
             var newForm = {
                 type: 'SLAPmanager',
-                typeForPopUp: 'Onboarding Call',
                 title: 'Onboarding Call',
-                extra: {},
+                extra: {
+                    typeForPopUp: 'Onboarding Call',
+                },
                 notes: '',
                 userId: $scope.userID,
             };
@@ -769,14 +779,23 @@
         }
 
         function openNotes($event, item) {
+            console.log(item);
             var confirm = $mdDialog.alert()
                 .title('Note')
-                .textContent(item)
+                // .textContent()
                 .ariaLabel('Note')
                 .targetEvent($event)
                 .ok('Ok')
-
-            $mdDialog.show(confirm)
+            $scope.item = item;
+            $mdDialog.show({
+                clickOutsideToClose: true,
+                targetEvent: $event,
+                scope: $scope,
+                preserveScope: true,
+                templateUrl: 'admin/components/dialogs/read-more-dialog/read-more-dialog.html',
+                // controller: 'ReadMoreDialogController',
+                autoWrap: true
+            });
         }
 
         function adminBuild(item) {
