@@ -536,7 +536,7 @@
                 </form>
             </section>
             <section layout="row" flex="50" layout-wrap> 
-                <slap-color-switch color="#0e7cb5" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>
+                <slap-color-switch color="#0e7cb5" ng-if="!type.hideButton" name="{{type.name}}" value="type.show" static="false" ng-repeat-start="type in activityTypes" ng-click="buildActivityGridData()"></slap-color-switch>
                 <span ng-repeat-end>&nbsp&nbsp</span>
             </section>
         </section>

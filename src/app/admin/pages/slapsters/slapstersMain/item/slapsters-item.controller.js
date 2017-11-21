@@ -482,9 +482,16 @@
             var data = {}; 
             
             $scope.activityGridReady = false;
+            var indexofManager = _.findIndex($scope.activityTypes, ['id','SLAPmanager']);
+            var indexOfAssistant = _.findIndex($scope.activityTypes, ['id', 'SLAPassistant']);
+            $scope.activityTypes[indexOfAssistant].hidden = $scope.activityTypes[indexofManager].show;
+            $scope.activityTypes[indexOfAssistant].show = $scope.activityTypes[indexofManager].show;
             $timeout(function(){
+
                 var types = $scope.activityTypes
-                .filter(function(type){ return type.show == true; })
+                .filter(function(type){ 
+                    return type.show || type.hidden; 
+                })
                 .map(function(type){return type.id});
                 var filtered = $scope.activityData.filter(function(activity){
                     var valid = false;
