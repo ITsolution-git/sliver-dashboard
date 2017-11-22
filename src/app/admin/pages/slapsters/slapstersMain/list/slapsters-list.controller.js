@@ -52,7 +52,7 @@
                 });
                 slapsters = permissionService.filterSlapstersByPermission(slapsters);
 
-                var accounts = _.groupBy(slapsters, function(user) { return user.businessName; });
+                var accounts = _.groupBy(slapsters, function(user) { return user.email; });
                 $scope.slpasters = [];
                 _.each(accounts, function(account){
                     $scope.slpasters.push({
