@@ -65,7 +65,7 @@
             </md-input-container>
             <md-input-container class="md-block" flex="50">
                 <label for="promocode">Promo Codes associated with Partner</label>
-                <md-select name="promocode" ng-model="partner.promocode">
+                <md-select multiple name="promocode" ng-model="partner.promocode">
                    <md-option ng-repeat="coupon in coupons" value="{{coupon._id}}">{{coupon.code}}</md-option>
                 </md-select>
                 <div class="md-errors-spacer"></div>

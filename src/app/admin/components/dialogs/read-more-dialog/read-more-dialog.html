@@ -4,6 +4,7 @@
             <h2 ng-if="item.extra.typeForPopUp === 'SLAPexpert Call'">Attended Meeting</h2>
             <h2 ng-if="item.extra.typeForPopUp === 'Accountability Call'">SLAPmanager Accountability Call</h2>
             <h2 ng-if="item.extra.typeForPopUp === 'Onboarding Call'"> SLAPmanager Onboarding Call</h2>
+            <h2 ng-if="!item.extra.typeForPopUp"> {{item.title}}</h2>
         </div>
     </md-toolbar>
     <md-dialog-content>
@@ -544,7 +545,9 @@
             </div>
 
         </section>
-
+        <section ng-if="!item.extra.typeForPopUp">
+            {{item.notes}}
+        </section>
     </md-dialog-content>
 
     <md-dialog-actions>

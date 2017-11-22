@@ -86,7 +86,7 @@
             }
 
             if(_build) {
-                return _plan.costProduct + (_build.buildType == 2 ? _build.costProduct : _build.amountFirstPayment);
+                return _build.buildType == 2 ? _build.costProduct : _build.amountFirstPayment;
             }
             return _plan.costProduct;
         };

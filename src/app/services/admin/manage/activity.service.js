@@ -14,16 +14,16 @@
         this.LIMITED = 3;
 
         this.activityTypes = [
-            { id: "Milestone", name: "Milestone", show: true },
-            { id: "ActionItem", name: "Action Item", show: true },
-            { id: "Pause & Reflect", name: "Pause & Reflect", show: true },
-            { id: "Sales", name: "Sales", show: true },
-            { id: "Communication", name: "Communication", show: true },
-            { id: "SLAPexpert", name: "SLAPexpert", show: true },
-           // { id: "SLAPassistant", name: "SLAPassistant", show: true },
-            { id: "SLAPworld", name: "SLAPworld", show: true },
-            { id: "SLAPschool", name: "SLAPschool", show: true },
-            { id: "SLAPmanager", name: "SLAPmanager", show: true }
+            { id: "Milestone", name: "Milestone", show: false },
+            { id: "ActionItem", name: "Action Item", show: false },
+            { id: "Pause & Reflect", name: "Pause & Reflect", show: false },
+            { id: "Sales", name: "Sales", show: false },
+            { id: "Communication", name: "Communication", show: false },
+            { id: "SLAPexpert", name: "SLAPexpert", show: false },
+            { id: "SLAPassistant", name: "SLAPassistant", show: false, hidden: true, hideButton:true },
+            { id: "SLAPworld", name: "SLAPworld", show: false },
+            { id: "SLAPschool", name: "SLAPschool", show: false },
+            { id: "SLAPmanager", name: "SLAPmanager", show: false }
         ];
 
         this.add = function(activity) {

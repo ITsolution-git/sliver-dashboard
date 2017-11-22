@@ -13,14 +13,10 @@
         var arr = [];
         var webinars = data.webinars;
 
-        $scope.description = true;
-
         data.forEach(function(item){
             arr.push(item.name);
         });
-
         var result = [];
-
         data.forEach(function(item){
             result = item.webinars;
         });
@@ -38,6 +34,11 @@
         });
 
         $scope.duration_ = 0;
+
+
+        $scope.openTraining = function() {
+            $state.go('slapSchool.trainingTools');
+        }
 
         $scope.isStart = function(start, duration, e, url) {
             e.preventDefault();
