@@ -27,12 +27,12 @@
         });
         $scope.cols = [
             {
-                field: "name",
-                title: "Name",
+                field: "businessName",
+                title: "Business Name",
                 show: true,
                 format: 'raw',
                 getValue: function (row) {
-                    return '<a href="' + $state.href('partners.item', { partner_id: row['_id'] }) + '">' + row['name'] + '</a>';
+                    return '<a href="' + $state.href('partners.item', { partner_id: row['_id'] }) + '">' + row['businessName'] + '</a>';
                 }
             }, {
                 field: "lastName",
@@ -42,8 +42,8 @@
                 getValue: getValue
             },
             {
-                field: "businessName",
-                title: "Business Name",
+                field: "name",
+                title: "Name",
                 show: true,
                 format: 'raw',
                 getValue: getValue
