@@ -13,10 +13,14 @@
         var arr = [];
         var webinars = data.webinars;
 
+        $scope.description = true;
+
         data.forEach(function(item){
             arr.push(item.name);
         });
+
         var result = [];
+
         data.forEach(function(item){
             result = item.webinars;
         });
@@ -25,13 +29,17 @@
             result[i].name = arr[i];
         }
         $scope.data = result;
+
+        $scope.data.forEach(function (item) {
+
+            var topic = item.topic.split('ft. ');
+            item.topic = topic;
+            return item;
+        });
+
         $scope.duration_ = 0;
 
-
-
-
         $scope.isStart = function(start, duration, e, url) {
-            
             e.preventDefault();
             var now = moment();
             var start_ = moment(start);
