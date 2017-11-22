@@ -56,10 +56,12 @@
             
             $scope.dataReady = false;
             $timeout(function(){
-
-                var filtered = $scope.users.filter(function(user){
+                var archived = _.uniqBy($scope.users, 'email');
+                var filtered = archived.filter(function(user){
                     var valid = false;
                     
+
+
                     if ($scope.searchKeyword.trim() != ''){
                             if (user.businessName.toLowerCase().indexOf($scope.searchKeyword) != -1)
                             valid = true;
