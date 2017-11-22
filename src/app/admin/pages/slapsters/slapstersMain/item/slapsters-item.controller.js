@@ -142,7 +142,7 @@
                 
 
                 $scope.activityTypes
-                .filter(function(type){ return type.show = true; });
+                .filter(function(type){ return type.show = false; });
 
                 $scope.activityTypesSlice = $scope.activityTypes.slice(4);
 
