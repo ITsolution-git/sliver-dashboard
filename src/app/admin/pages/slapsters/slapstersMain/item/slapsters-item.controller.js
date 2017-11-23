@@ -779,7 +779,6 @@
         }
 
         function openNotes($event, item) {
-            console.log(item);
             var confirm = $mdDialog.alert()
                 .title('Note')
                 // .textContent()
