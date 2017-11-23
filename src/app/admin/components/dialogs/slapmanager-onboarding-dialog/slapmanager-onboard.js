@@ -7,6 +7,6 @@
 
     /* @ngInject */
     function SlapManagerOnboardingDialogController($scope, $state) {
-
+        $scope.formData.journey = {name: 'Onboarding Call', section: 'onboard'}
     }
 }());

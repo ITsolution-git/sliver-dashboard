@@ -48,7 +48,7 @@
                 <md-input-container >
                     <label>Partner/Affiliate</label>
                     <md-select ng-disabled="!isAdmin()" ng-model="user.partnerId"  aria-label="partner-select">
-                        <md-option ng-repeat="partner in partners" ng-value="partner._id">{{partner.name + ' ' + partner.lastName}}</md-option>
+                        <md-option ng-repeat="partner in partners" ng-value="partner._id">{{partner.businessName}}</md-option>
                     </md-select>
 					<div class="md-errors-spacer"></div>
                 </md-input-container>
@@ -217,30 +217,27 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{isJouneyItemDone('start', 'Account Created') ? '✔' : ''}}Account Created<br/>
-                        {{isJouneyItemDone('start', 'T&C Signed') ? '✔' : ''}}T&C Signed<br/>
-                        {{isJouneyItemDone('start', 'Payment Set Up') ? '✔' : ''}}Payment Set Up<br/>
-                        {{isJouneyItemDone('start', 'Onboarding Call Set') ? '✔' : ''}}Onboard Call Set<br/>
-                        {{isJouneyItemDone('start', 'SE Calls Set') ? '✔' : ''}}SE Calls Set<br/>
+                    <td>{{isJouneyItemDone('start', 'Account Created') ? '✔': ''}}Account Created {{isJouneyItemDone('start', 'Account Created').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('start', 'Onboarding Call Set') ? '✔' : ''}}Onboard Call Set {{isJouneyItemDone('start', 'Onboarding Call Set').createdAt | date:short}}<br/>
                     </td>
                     <td>
-                        {{isJouneyItemDone('onboard', 'Call Happened') ? '✔' : ''}}Call Happened<br/>
-                        {{isJouneyItemDone('onboard', 'Profile 100%') ? '✔' : ''}}Profile 100%<br/>
-                        {{isJouneyItemDone('onboard', 'SM Calls Set') ? '✔' : ''}}SM Calls Set<br/>
+                        {{isJouneyItemDone('onboard', 'Onboarding Call') ? '✔' : ''}}Call Happened {{isJouneyItemDone('onboard', 'Onboarding Call').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('onboard', 'SM Calls Set') ? '✔' : ''}}SM Calls Set {{isJouneyItemDone('onboard', 'SM Calls Set').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('start', 'SE Calls Set') ? '✔' : ''}}SE Calls Set {{isJouneyItemDone('start', 'SE Calls Set').createdAt | date:short}}<br/>
                     </td>
                     <td>
-                        {{isJouneyItemDone('build', 'Step1 Done') ? '✔' : ''}}Step 1 Done<br/>
-                        {{isJouneyItemDone('build', 'Step2 Done') ? '✔' : ''}}Step 2 Done<br/>
-                        {{isJouneyItemDone('build', 'Step3 Done') ? '✔' : ''}}Step 3 Done<br/>
-                        {{isJouneyItemDone('build', 'Step4 Done') ? '✔' : ''}}Step 4 Done<br/>
+                        {{isJouneyItemDone('build', 'Step1 Done') ? '✔' : ''}}Step 1 Done {{isJouneyItemDone('build', 'Step1 Done').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('build', 'Step2 Done') ? '✔' : ''}}Step 2 Done {{isJouneyItemDone('build', 'Step2 Done').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('build', 'Step3 Done') ? '✔' : ''}}Step 3 Done {{isJouneyItemDone('build', 'Step3 Done').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('build', 'Step4 Done') ? '✔' : ''}}Step 4 Done {{isJouneyItemDone('build', 'Step4 Done').createdAt | date:short}}<br/>
                     </td>
                     <td>
-                        {{isJouneyItemDone('approve', 'Review Done') ? '✔' : ''}}Review Done<br/>
-                        {{isJouneyItemDone('approve', 'SLAP Updated') ? '✔' : ''}}SLAP Updated<br/>
-                        {{isJouneyItemDone('approve', 'Full Approval') ? '✔' : ''}}Full Approval<br/>
+                        {{isJouneyItemDone('approve', 'Review Done') ? '✔' : ''}}Review Done {{isJouneyItemDone('approve', 'Review Done').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('approve', 'SLAP Updated') ? '✔' : ''}}SLAP Updated {{isJouneyItemDone('approve', 'SLAP Updated').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('approve', 'Full Approval') ? '✔' : ''}}Full Approval {{isJouneyItemDone('approve', 'Full Approval').createdAt | date:short}}<br/>
                     </td>
                     <td>
-                        {{isJouneyItemDone('excute', 'Execute Call Set') ? '✔' : ''}}Call Happened<br/>
+                        {{isJouneyItemDone('excute', 'Execute Call Set') ? '✔' : ''}}Call Happened {{isJouneyItemDone('excute', 'Execute Call Set').createdAt | date:short}}<br/>
                     </td>
                     <td>
                         {{quaters[0].quaterProgress['action'] >= 100 ? '✔' : ''}}
@@ -249,10 +246,9 @@
                         {{anualInfo.quaterSale[0].progress.toFixed(2)}}% of Sales <br/>
                         {{quaters[0].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[0].quaterProgress['reflextion']}}% of P&R <br/>
-
-                        {{isJouneyItemDone('q1', 'SLAPstuff Sent') ? '✔' : ''}}SLAPstuff Out<br/>
-                        {{isJouneyItemDone('q1', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary<br/>
-                        x/3 Paid 
+                        {{isJouneyItemDone('q1', 'Accountability Call') ? '✔' : ''}}Q1 Feedback Call {{isJouneyItemDone('q1', 'Accountability Call').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('q1', 'SLAPstuff Sent') ? '✔' : ''}}SLAPstuff Out {{isJouneyItemDone('q1', 'SLAPstuff Sent').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('q1', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary {{isJouneyItemDone('q1', 'Quarterly Summary').createdAt | date:short}}<br/>
                     </td>
                     <td>
                         {{quaters[1].quaterProgress['action'] >= 100 ? '✔' : ''}}
@@ -261,9 +257,8 @@
                         {{anualInfo.quaterSale[1].progress.toFixed(2)}}% of Sales <br/>
                         {{quaters[1].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[1].quaterProgress['reflextion']}}% of P&R <br/>
-                        {{isJouneyItemDone('q2', 'SLAPbuddy Connected') ? '✔' : ''}}SLAPbuddy Connected<br/>
-                        {{isJouneyItemDone('q2', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary<br/>
-                        x/3 Paid 
+                        {{isJouneyItemDone('q2', 'SLAPbuddy Connected') ? '✔' : ''}}SLAPbuddy Connected {{isJouneyItemDone('q2', 'SLAPbuddy Connected').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('q2', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary {{isJouneyItemDone('q2', 'Quarterly Summary').createdAt | date:short}}<br/>
                     </td>
                     <td>
                         {{quaters[2].quaterProgress['action'] >= 100 ? '✔' : ''}}
@@ -273,9 +268,8 @@
                         {{quaters[2].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[2].quaterProgress['reflextion']}}% of P&R <br/>
 
-                        {{isJouneyItemDone('q3', 'Q3 Hustle Call Set') ? '✔' : ''}}Q3 Hustle Call Set<br/>
-                        {{isJouneyItemDone('q3', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary<br/>
-                        x/3 Paid 
+                        {{isJouneyItemDone('q3', 'Q3 Hustle Call Set') ? '✔' : ''}}Q3 Hustle Call Set {{isJouneyItemDone('q3', 'Q3 Hustle Call Set').createdAt | date:short}}<br/>
+                        {{isJouneyItemDone('q3', 'Quarterly Summary') ? '✔' : ''}}Quarterly Summary {{isJouneyItemDone('q3', 'Quarterly Summary').createdAt | date:short}}<br/>
                     </td>
                     <td>
                         {{quaters[3].quaterProgress['action'] >= 100 ? '✔' : ''}}
@@ -284,12 +278,11 @@
                         {{anualInfo.quaterSale[3].progress.toFixed(2)}}% of Sales <br/>
                         {{quaters[3].quaterProgress['reflextion'] >= 100 ? '✔' : ''}}
                         {{quaters[3].quaterProgress['reflextion']}}% of P&R <br/>
-                        {{isJouneyItemDone('q4', 'Renewal Confirmed') ? '✔' : ''}}Renewal Confirmed<br/>
-                        x/3 Paid 
+                        {{isJouneyItemDone('q4', 'Renewal Confirmed') ? '✔' : ''}}Renewal Confirmed {{isJouneyItemDone('q4', 'Renewal Confirmed').createdAt | date:short}}<br/>
                     </td>
                     <td>
                         Annual Report<br/>
-                        Next Year Account Created<br/>
+                        {{isJouneyItemDone('renew', 'Account Renewed') ? '✔' : ''}}Next Year Account Created {{isJouneyItemDone('renew', 'Account Renewed').createdAt | date:short}}<br/>
                     </td>
                 </tr>
             </tbody>
@@ -453,13 +446,13 @@
             <table class="table table-responsive table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <td> Scheduled Call</td>
-                        <td>Completion</td>
+                        <td>Milestone</td>
+                        <td>Confirmed Completion</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in SMmilestones">
-                        <td>{{item.title}}</td>
+                        <td>{{item.title}} {{isJouneyItemDone(item.journey.section, item.journey.name).createdAt | date: short }}</td>
                         <td ng-click="toggleSMmilestone(item)">{{isJouneyItemDone(item.journey.section, item.journey.name) ? '✔' : ''}}</td>
                     </tr>
                 </tbody>

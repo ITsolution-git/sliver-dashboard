@@ -35,7 +35,7 @@
                 return partnerReportService.post({partnerId: $scope.partner, from: $scope.startDate, to: $scope.endDate})
                 .then(function (resolve) {
                     $scope.report = resolve.data;
-                    if($scope.report){
+                    if($scope.report != "No reports for this date range."){
                         $scope.visibleReport = true;
                         $scope.visibleMess = false;
                     }else {
