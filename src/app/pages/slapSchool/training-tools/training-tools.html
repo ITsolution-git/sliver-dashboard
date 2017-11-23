@@ -1,6 +1,6 @@
 <div class="slap-page rate-connect-strategy" scroll-top>
-            <div class="panel panel-default">
-        
+            <div class="panel panel-default animated fadeIn">
+
                 <div class="panel-body slap-work-panel">
         
                     <div class="row">
@@ -15,7 +15,8 @@
                         <div class="col-xs-12 padding-l-r-30 margin-b-24">
                             <p class="heading2"></p>
                         </div>
-                        <div class="col-xs-12" id="strategy-container">
+                        <div class="col-xs-12" id="strategy-container" style="display: flex;
+    justify-content: center;">
                             <svg ng-if="!showResponsiveView">
                                 <line ng-attr-x1="{{center.x}}" ng-attr-y1="{{center.y}}" ng-attr-x2="{{pos.x}}" ng-attr-y2="{{pos.y}}" ng-repeat="pos in positions" style="stroke:#50cfe3;stroke-width:2" ng-if="rateConnectingStrategies[$index].rating != 0"/>
                             </svg>
@@ -71,4 +72,3 @@
                 </div>
             </div>
         </div>
-        
