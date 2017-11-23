@@ -375,7 +375,9 @@
 
                 _.each(salesItems, function(item) {
                     item.typeStr = item.progress == 100 ? 'Closed Sale' : 'Projected Sale';
-                    item.salesGoalShare = totalSalesItemCount / item.saleUnit;
+                    if (totalSalesItemCount > 0)
+                        item.salesGoalShare = (item.saleUnit * 100) / totalSalesItemCount;
+                    else item.salesGoalShare = 0;
                     item.amount = +revenue.sellingPrice * item.saleUnit;
                     item.salesGoalShare = item.salesGoalShare.toFixed(2);
                 });
