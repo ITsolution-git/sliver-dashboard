@@ -21,11 +21,15 @@
         };
 
         this.update = function(report) {
-            return report.save();
+            return adminApiService.rest.all('report').one(report._id).customPUT(report);
         };
 
         this.delete = function(report) {
             return report.remove();
+        }
+
+        this.run = function(id) { 
+            return adminApiService.rest.all('report-run').one(id).get();
         }
 
     }
