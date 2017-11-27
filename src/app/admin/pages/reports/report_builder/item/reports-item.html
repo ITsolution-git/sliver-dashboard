@@ -1,9 +1,9 @@
 
 <div layout="column" style="width: 100%;" class="reports-item-container">
-<md-card flex="100" class="p-es-30 m-w-es-40">
+<md-card flex="100" class="p-es-30 m-w-es-40 card-reports">
     <form layout="row" layout-wrap layout-align="center center" name="form">
         <md-input-container  flex="100">
-            <label>Name</label>
+            <label >Name</label>
             <input ng-model="report.name" required name="name">
             <div ng-messages="form.name.$error">
                 <ng-message when="required">Name is required.</ng-message>
@@ -13,7 +13,7 @@
 
 
         <md-input-container flex="25">
-            <label>Start Date</label>
+            <label >Start Date</label>
             <md-datepicker ng-model="report.filter.startDate" md-max-date="report.filter.endDate" name="startDate"></md-datepicker>
             <div ng-messages="form.startDate.$error">
                 <div ng-message="valid">The entered value is not a date!</div>
@@ -23,7 +23,7 @@
             </div>
         </md-input-container>
         <md-input-container flex="25">
-            <label>End Date</label>
+            <label >End Date</label>
             <md-datepicker ng-model="report.filter.endDate" md-min-date="report.filter.startDate" name="endDate"></md-datepicker>
             <div ng-messages="form.endDate.$error">
                 <div ng-message="valid">The entered value is not a date!</div>
@@ -36,7 +36,7 @@
         </section>
 
 
-        <span flex="100"  class="subtitle">Based in</span>
+        <span flex="100"  class="subtitle ">Based in</span>
         <md-input-container flex="50">
             <md-select aria-label="basedIn" ng-model="report.filter.country">
                 <md-option ng-repeat="country in COUNTRIES" ng-value="country.id">{{country.name}}</md-option>
@@ -46,7 +46,7 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">Associated with SLAPexpert</span>
+        <span flex="100"  class="subtitle ">Associated with SLAPexpert</span>
         <md-input-container flex="50">
             <md-select md-container-class="type-menu" aria-label="slapExpert" ng-model="report.filter.expert" multiple>
                 <md-option ng-repeat="ex in expert" ng-value="ex._id">{{ex.name}}</md-option>
@@ -56,7 +56,7 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">Associated with Partner</span>
+        <span flex="100"  class="subtitle " >Associated with Partner</span>
         <md-input-container flex="50">
             <md-select md-container-class="type-menu" aria-label="slapPartner" ng-model="report.filter.partner" multiple>
                 <md-option ng-repeat="pa in partner" ng-value="pa._id">{{pa.name}}</md-option>
@@ -66,7 +66,7 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">SLAPstatus</span>
+        <span flex="100"  class="subtitle ">SLAPstatus</span>
         <md-input-container flex="50">
             <md-select aria-label="slapStatus" ng-model="report.filter.slapStatus">
                 <md-option ng-repeat="status in slapStatuses" ng-value="status.id">{{status.name}}</md-option>
@@ -87,7 +87,7 @@
         </section>
 
 
-        <span flex="100"  class="subtitle">Whose Status Is</span>
+        <span flex="100"  class="subtitle ">Whose Status Is</span>
         <md-input-container flex="50">
             <md-select  aria-label="status" ng-model="report.filter.status">
                 <md-option ng-repeat="status in STATUSES" ng-value="status.id">{{status.name}}</md-option>
@@ -97,7 +97,7 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">Associated With Plan</span>
+        <span flex="100"  class="subtitle ">Associated With Plan</span>
         <md-input-container flex="100">
         <md-select md-container-class="type-menu" aria-label="plan" ng-model="report.filter.products" multiple>
             <md-option ng-repeat="item in allProducts" ng-value="item._id">{{item.productName}}</md-option>
@@ -108,7 +108,7 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">Associated With Coupon</span>
+        <span flex="100"  class="subtitle ">Associated With Coupon</span>
         <md-input-container flex="100">
         <md-select md-container-class="type-menu" aria-label="coupon" ng-model="report.filter.coupons" multiple>
             <md-option ng-repeat="item in allCoupons" ng-value="item._id">{{item.name}}</md-option>
@@ -119,7 +119,7 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">Did These Activities</span>
+        <span flex="100"  class="subtitle ">Did These Activities</span>
         <md-input-container flex="100">
         <md-select md-container-class="type-menu" aria-label="act" ng-model="report.filter.activities" multiple>
             <md-option ng-repeat="item in ActivitiesAll" ng-value="item.id">{{item.name}}</md-option>
@@ -141,7 +141,7 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">Associated With Strategy</span>
+        <span flex="100"  class="subtitle ">Associated With Strategy</span>
         <md-input-container flex="100">
         <md-select md-container-class="type-menu" aria-label="strategy" ng-model="report.filter.strategies" multiple>
             <md-option ng-repeat="item in allStrategies" ng-value="item.id">{{item.name}}</md-option>
@@ -174,20 +174,30 @@
         <section flex>
         </section>
 
-        <section ng-if="res.users.length">
-            <table class="table school-body">
-                <tr>
-                <th scope="col" class="grow-10">Business Name</th>
-                <th scope="col" class="grow-10">First Name</th>
-                <th scope="col" class="grow-10">Last Name</th>
-                </tr>
-                <tr class="main-tr" ng-repeat="user in res.users">
-                    <td>{{user.businessName}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.lastName}}</td>
-                </tr>
-            </table>
+        <span flex="100"  class="subtitle">Goal Progress</span>
+        <section flex="100" layout="row" layout="row" >
+            <span>From</span>
+            <md-input-container>
+                <input aria-label="from" ng-model="report.filter.goalProgress.from" />
+            </md-input-container>
+            <span>% To</span>
+            <md-input-container>
+                <input aria-label="to" ng-model="report.filter.goalProgress.to" />
+            </md-input-container>
+            <span>% Of</span>
+
+            <md-input-container>
+                <md-select aria-label="type" ng-model="report.filter.goalProgress.type">
+                    <md-option value="annual">Annual</md-option>
+                    <md-option value="quaterly">Quaterly</md-option>
+                </md-select>
+                <div class="md-errors-spacer"></div>
+            </md-input-container>
         </section>
+        <section flex>
+        </section>
+
+
 
         <section layout="row" layout-align="end center" flex="100" >
 
@@ -205,3 +215,54 @@
 
 </md-card>
 </div>
+
+<md-card ng-if="res.users.length" flex="100" class="p-es-30 m-w-es-40">
+<section ng-if="!report.filter.slapStatus">         
+    <div class="pull-right">
+        <button class="print" ng-click="printSlap()">
+            <i class="fa fa-print" aria-hidden="true"></i>
+            Print
+        </button>
+    </div>
+    <table class="table school-body">
+        <tr>
+        <th scope="col" class="grow-10">Business Name</th>
+        <th scope="col" class="grow-10">First Name</th>
+        <th scope="col" class="grow-10">Last Name</th>
+        <th scope="col" class="grow-10">In build</th>
+        </tr>
+        <tr class="main-tr" ng-repeat="user in res.users">
+            <td>{{user.businessName}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.inBuild ? user.inBuild : 'Yes'}}</td>
+        </tr>
+    </table>
+</section>
+        <section  ng-if="report.filter.slapStatus">         
+            <div class="pull-right">
+                <button class="print" ng-click="printSlap()">
+                    <i class="fa fa-print" aria-hidden="true"></i>
+                    Print
+                </button>
+            </div>
+            <table class="table school-body">
+                <tr>
+                <th scope="col" class="grow-10">Business Name</th>
+                <th scope="col" class="grow-10">First Name</th>
+                <th scope="col" class="grow-10">Last Name</th>
+                <th scope="col" class="grow-10">Current Quater</th>
+                <th scope="col" class="grow-10">Annual Goal</th>
+                <th scope="col" class="grow-10">Quaterly Goal</th>
+                </tr>
+                <tr class="main-tr" ng-repeat="user in res.users">
+                    <td>{{user.businessName}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.currentQuater}}</td> 
+                    <td>{{user.annualGoal | number: 2}}</td>
+                    <td>{{user.quaterlyGoal | number: 2}}</td>
+                </tr>
+            </table>
+        </section>
+        </md-card>
