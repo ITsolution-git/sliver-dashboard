@@ -6,19 +6,22 @@
         .controller('AdminReportsItemController', AdminReportsItemController);
 
     /* @ngInject */
-    function AdminReportsItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, allProducts, allCoupons, actionplanService) {
+    function AdminReportsItemController($scope, allPartners, allExperts, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, allProducts, allCoupons, actionplanService) {
         angular.extend($scope,  {
             report: {},
             reportID: $stateParams.report_id,
             ROLES: adminUserService.ROLES,
             STATUSES: adminUserService.STATUSES,
+            res: [],
+            expert: allExperts,
+            partner: allPartners,
 
             deleteItem: deleteItem,
             createOrSave: createOrSave,
 
             runReportBuilder: runReportBuilder,
 
-            COUNTRIES: [{id: 0, name: 'International'},{id: 0, name: 'Canada'},{id: 0, name: 'United States'}, ],
+            COUNTRIES: [{id: 0, name: 'International'},{id: 1, name: 'Canada'},{id: 2, name: 'United States'}, ],
 
             //Products
             allProducts: allProducts,
@@ -43,6 +46,9 @@
             allScores: [{id:1, name:'Red'}, {id:2, name:'Yellow'}, {id:1, name:'Green'}],
             //Strategies
             allStrategies: actionplanService.getDefaultConnectingStrategies(),
+            pausingPaymentsStatus: [{id: 1, name: 'Paused'}, {id: 0, name: 'Active'}],
+            declinedStatus: [{id: 0, name: 'Declined'}, {id: 1, name: 'Money'}],
+            buildStatus: [{id: 0, name: 'Less then 30 days'}, {id: 1, name: 'More then 30 days'}],
 
         }); 
 
@@ -84,6 +90,10 @@
             }
         }
         function createOrSave(event) {
+
+            if (!$scope.report.filter.slapStatus) 
+                $scope.report.filter.quaters = [];
+            else delete $scope.report.filter.buildStatus;
             
             update().then(function(){
                 toaster.pop({type: 'success', body: 'Report saved.'});
@@ -130,7 +140,11 @@
         }
 
         function runReportBuilder() { 
-            return reportService.run($scope.reportID);
+            return update().then(function() {
+                return reportService.run($scope.reportID).then(function(res) {
+                    $scope.res = res.data;
+                })
+            })
         }
 
 

@@ -46,6 +46,26 @@
         <section flex>
         </section>
 
+        <span flex="100"  class="subtitle">Associated with SLAPexpert</span>
+        <md-input-container flex="50">
+            <md-select md-container-class="type-menu" aria-label="slapExpert" ng-model="report.filter.expert" multiple>
+                <md-option ng-repeat="ex in expert" ng-value="ex._id">{{ex.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        <section flex>
+        </section>
+
+        <span flex="100"  class="subtitle">Associated with Partner</span>
+        <md-input-container flex="50">
+            <md-select md-container-class="type-menu" aria-label="slapPartner" ng-model="report.filter.partner" multiple>
+                <md-option ng-repeat="pa in partner" ng-value="pa._id">{{pa.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        <section flex>
+        </section>
+
         <span flex="100"  class="subtitle">SLAPstatus</span>
         <md-input-container flex="50">
             <md-select aria-label="slapStatus" ng-model="report.filter.slapStatus">
@@ -56,10 +76,20 @@
         <section flex>
         </section>
 
+        <span flex="100" ng-if="!report.filter.slapStatus" class="subtitle">Build Status</span>
+        <md-input-container ng-if="!report.filter.slapStatus" flex="50">
+            <md-select  aria-label="buildStatus" ng-model="report.filter.buildStatus">
+                <md-option ng-repeat="status in buildStatus" ng-value="status.id">{{status.name}}</md-option>
+            </md-select>
+            <div class="md-errors-spacer"></div>
+        </md-input-container>
+        <section flex>
+        </section>
+
 
         <span flex="100"  class="subtitle">Whose Status Is</span>
         <md-input-container flex="50">
-            <md-select aria-label="status" ng-model="report.filter.status">
+            <md-select  aria-label="status" ng-model="report.filter.status">
                 <md-option ng-repeat="status in STATUSES" ng-value="status.id">{{status.name}}</md-option>
             </md-select>
             <div class="md-errors-spacer"></div>
@@ -69,7 +99,7 @@
 
         <span flex="100"  class="subtitle">Associated With Plan</span>
         <md-input-container flex="100">
-        <md-select aria-label="plan" ng-model="report.filter.products" multiple>
+        <md-select md-container-class="type-menu" aria-label="plan" ng-model="report.filter.products" multiple>
             <md-option ng-repeat="item in allProducts" ng-value="item._id">{{item.productName}}</md-option>
         </md-select> 
         <div class="md-errors-spacer"></div>
@@ -80,7 +110,7 @@
 
         <span flex="100"  class="subtitle">Associated With Coupon</span>
         <md-input-container flex="100">
-        <md-select aria-label="coupon" ng-model="report.filter.coupons" multiple>
+        <md-select md-container-class="type-menu" aria-label="coupon" ng-model="report.filter.coupons" multiple>
             <md-option ng-repeat="item in allCoupons" ng-value="item._id">{{item.name}}</md-option>
         </md-select> 
         <div class="md-errors-spacer"></div>
@@ -91,7 +121,7 @@
 
         <span flex="100"  class="subtitle">Did These Activities</span>
         <md-input-container flex="100">
-        <md-select aria-label="act" ng-model="report.filter.activities" multiple>
+        <md-select md-container-class="type-menu" aria-label="act" ng-model="report.filter.activities" multiple>
             <md-option ng-repeat="item in ActivitiesAll" ng-value="item.id">{{item.name}}</md-option>
         </md-select> 
         <div class="md-errors-spacer"></div>
@@ -100,9 +130,9 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">They Are In</span>
-        <md-input-container flex="100">
-        <md-select aria-label="quater" ng-model="report.filter.quaters" multiple>
+        <span flex="100" ng-if="report.filter.slapStatus" class="subtitle">They Are In</span>
+        <md-input-container ng-if="report.filter.slapStatus" flex="100">
+        <md-select  aria-label="quater" ng-model="report.filter.quaters" multiple>
             <md-option ng-repeat="item in allQuaters" ng-value="item.id">{{item.name}}</md-option>
         </md-select> 
         <div class="md-errors-spacer"></div>
@@ -113,7 +143,7 @@
 
         <span flex="100"  class="subtitle">Associated With Strategy</span>
         <md-input-container flex="100">
-        <md-select aria-label="strategy" ng-model="report.filter.strategies" multiple>
+        <md-select md-container-class="type-menu" aria-label="strategy" ng-model="report.filter.strategies" multiple>
             <md-option ng-repeat="item in allStrategies" ng-value="item.id">{{item.name}}</md-option>
         </md-select> 
         <div class="md-errors-spacer"></div>
@@ -122,28 +152,41 @@
         <section flex>
         </section>
 
-        <span flex="100"  class="subtitle">Goal Progress</span>
-        <section flex="100" layout="row" layout="row" >
-            
-            <span>From</span>
-            <md-input-container>
-                <input aria-label="from" ng-model="report.filter.goalProgress.from" />
-            </md-input-container>
-            <span>% To</span>
-            <md-input-container>
-                <input aria-label="to" ng-model="report.filter.goalProgress.to" />
-            </md-input-container>
-            <span>% Of</span>
-
-            <md-input-container>
-                <md-select aria-label="type" ng-model="report.filter.goalProgress.type">
-                    <md-option value="annual">Annual</md-option>
-                    <md-option value="quaterly">Quaterly</md-option>
-                </md-select>
-                <div class="md-errors-spacer"></div>
-            </md-input-container>
-        </section>
+        <span flex="100"  class="subtitle">User payment status</span>
+        <md-input-container flex="100">
+        <md-select aria-label="paymentStatus" ng-model="report.filter.paymentStatus">
+            <md-option ng-repeat="item in pausingPaymentsStatus" ng-value="item.id">{{item.name}}</md-option>
+        </md-select> 
+        <div class="md-errors-spacer"></div>
+        </md-input-container>
+        
         <section flex>
+        </section>
+
+        <span flex="100"  class="subtitle">Declined / Money Owed To Us</span>
+        <md-input-container flex="100">
+        <md-select aria-label="declinedStatus" ng-model="report.filter.declinedStatus">
+            <md-option ng-repeat="item in declinedStatus" ng-value="item.id">{{item.name}}</md-option>
+        </md-select> 
+        <div class="md-errors-spacer"></div>
+        </md-input-container>
+        
+        <section flex>
+        </section>
+
+        <section ng-if="res.users.length">
+            <table class="table school-body">
+                <tr>
+                <th scope="col" class="grow-10">Business Name</th>
+                <th scope="col" class="grow-10">First Name</th>
+                <th scope="col" class="grow-10">Last Name</th>
+                </tr>
+                <tr class="main-tr" ng-repeat="user in res.users">
+                    <td>{{user.businessName}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.lastName}}</td>
+                </tr>
+            </table>
         </section>
 
         <section layout="row" layout-align="end center" flex="100" >
