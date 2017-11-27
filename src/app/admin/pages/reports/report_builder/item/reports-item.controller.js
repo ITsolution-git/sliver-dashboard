@@ -56,7 +56,7 @@
         pageService
             .reset()
             .setShowBC(true)
-            .addCrumb({name: 'Build Reports', path: 'reports.list'});
+            .addCrumb({name: 'Report Builder', path: 'reports.list'});
 
         $timeout(function(){
             activate();
@@ -66,7 +66,7 @@
             if (!$scope.reportID) {
                 pageService
                     .addCrumb({name: 'Add', path: 'reports.add'})
-                    .setPageTitle('Build Reports');
+                    .setPageTitle('Report Builder');
 
                 $scope.report = {};
                 $scope.report.filter = {};
