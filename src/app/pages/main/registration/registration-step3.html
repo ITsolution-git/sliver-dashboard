@@ -113,7 +113,8 @@
                             <label for="businessName">Business Name</label>
                             <input required name="businessName" ng-model="vm.user.businessName" id="businessName"  ng-disabled="vm.isRenew"/>
 
-                            <div ng-messages="registerForm.businessName.$error" ng-hide="registerForm.businessName.$valid">
+                            <div ng-messages="registerForm.businessName.$error"
+                                 ng-hide="registerForm.businessName.$valid || registerForm.businessName.$pristine">
                                 <div ng-message-exp="['required', 'maxlength']">
 
                                 </div>
@@ -126,7 +127,8 @@
                                 <input name="email" ng-model="vm.user.email" id="email"
                                        required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"   ng-disabled="vm.isRenew"/>
 
-                                <div ng-messages="registerForm.email.$error" ng-hide="registerForm.email.$valid">
+                                <div ng-messages="registerForm.email.$error"
+                                     ng-hide="registerForm.email.$valid || registerForm.email.$pristine ">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                                         Enter your email address
                                     </div>
@@ -137,7 +139,8 @@
                                 <label for="phone">Work Phone Number</label>
                                 <input ng-pattern="/^[0-9]{1,12}$/" name="phone" required maxlength="12" minlength="9"
                                 ng-model="vm.user.phone"  id="phone"  ng-disabled="vm.isRenew"/>
-                                <div ng-messages="registerForm.phone.$error" ng-hide="registerForm.phone.$valid">
+                                <div ng-messages="registerForm.phone.$error"
+                                     ng-hide="registerForm.phone.$valid || registerForm.phone.$pristine ">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                                         Please enter your phone number with no other symbols or spaces.  Just the 9-12 numbers!
                                     </div>
@@ -148,7 +151,7 @@
                             <label for="cellPhone">Cell Phone Number</label>
                             <input ng-pattern="/^[0-9]{1,12}$/" name="cellPhone" maxlength="12" minlength="9"
                             ng-model="vm.cellPhone"  id="phone"  ng-disabled="vm.isRenew"/>
-                            <div ng-messages="registerForm.cellPhone.$error" ng-hide="registerForm.cellPhone.$valid">
+                            <div ng-messages="registerForm.cellPhone.$error" ng-hide="registerForm.cellPhone.$valid || registerForm.cellPhone.$pristine">
                                 <div ng-message-exp="['minlength', 'maxlength', 'pattern']">
                                     Please enter your phone number with no other symbols or spaces.  Just the 9-12 numbers!
                                 </div>
@@ -161,7 +164,8 @@
                                 <input required type="password" name="password" ng-model="vm.user.password"
                                        minlength="6" md-maxlength="30" id="password"/>
 
-                                <div ng-messages="registerForm.password.$error" role="alert" ng-hide="registerForm.password.$valid">
+                                <div ng-messages="registerForm.password.$error" role="alert"
+                                     ng-hide="registerForm.password.$valid || registerForm.password.$pristine">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength']">
                                         Password should be at least 6 until 30 characters
                                     </div>
@@ -173,7 +177,8 @@
                                 <input required type="password" name="confirm" ng-model="vm.user.confirmPassword"
                                        minlength="6" md-maxlength="30" pass-compare="vm.user.password" id="confirm"/>
 
-                                <div ng-messages="registerForm.confirm.$error" role="alert" ng-hide="registerForm.confirm.$valid">
+                                <div ng-messages="registerForm.confirm.$error" role="alert"
+                                     ng-hide="registerForm.confirm.$valid || registerForm.confirm.$pristine">
                                     <div ng-message-exp="['required', 'minlength', 'maxlength']">
                                         Passwords are not the same
                                     </div>
@@ -197,7 +202,8 @@
                                         id="creditCard"
                                         />
 
-                                    <div ng-messages="registerForm.creditCard.$error" ng-hide="registerForm.creditCard.$valid">
+                                    <div ng-messages="registerForm.creditCard.$error"
+                                         ng-hide="registerForm.creditCard.$valid || registerForm.creditCard.$pristine">
                                         <div ng-message-exp="['required', 'pattern']">
                                             Enter a valid credit card number
                                         </div>
@@ -214,7 +220,8 @@
                                         id="exp_date"
                                         />
 
-                                    <div ng-messages="registerForm.expDate.$error" ng-hide="registerForm.expDate.$valid">
+                                    <div ng-messages="registerForm.expDate.$error"
+                                         ng-hide="registerForm.expDate.$valid || registerForm.expDate.$pristine">
                                         <div ng-message-exp="['required', 'pattern']">
                                             Enter a valid expiration date
                                         </div>
@@ -228,7 +235,7 @@
                                     <input name="cvc" required ng-model="vm.user.card.cvc" type="password"
                                         ng-maxlength="4" ng-minlength="3" id="code"/>
 
-                                    <div ng-messages="registerForm.cvc.$error" ng-hide="registerForm.cvc.$valid">
+                                    <div ng-messages="registerForm.cvc.$error" ng-hide="registerForm.cvc.$valid || registerForm.cvc.$pristine">
                                         <div ng-message-exp="['required', 'pattern']">
                                             Enter a valid security code (CVV)
                                         </div>
@@ -240,7 +247,8 @@
                                     <input name="address" required ng-model="vm.user.billingAddress"
                                         id="billing"/>
 
-                                    <div ng-messages="registerForm.address.$error" ng-hide="registerForm.address.$valid">
+                                    <div ng-messages="registerForm.address.$error"
+                                         ng-hide="registerForm.address.$valid || registerForm.address.$pristine">
                                         <div ng-message-exp="['required', 'pattern']">
                                             Enter a valid billing address (ZIP code)
                                         </div>
@@ -254,7 +262,7 @@
                                 <span class="sp-font">I agree with</span>
                                 <span class="sp-font text-main-color"><a class="tern-link" target='_blank' ng-click="vm.openTOS($event)"><i class="fa fa-external-link " aria-hidden="true"></i> Terms & Conditions</a></span>
                             </md-checkbox>
-                            <div ng-messages="registerForm.tos.$error" ng-hide="registerForm.tos.$modelValue">
+                            <div ng-messages="registerForm.tos.$error" ng-hide="registerForm.tos.$modelValue || registerForm.tos.$pristine">
                                 <div ng-message="required">
                                     You must accept the terms of service before you can proceed.
                                 </div>
