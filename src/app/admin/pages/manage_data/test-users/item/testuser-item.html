@@ -46,7 +46,7 @@
                 <label for="email">Email</label>
                 <input name="email" ng-model="user.email" id="email" required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-                <div ng-messages="form.email.$error" ng-hide="form.email.$valid">
+                <div ng-messages="form.email.$error" ng-hide="form.email.$valid || form.email.$pristine">
                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                         Only letters and numbers are allowed (a-z,A-Z)
                     </div>
@@ -57,7 +57,7 @@
                 <label for="phone">Phone Number</label>
                 <input name="phone" required ng-model="user.phone" id="phone" />
 
-                <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid">
+                <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid || form.phone.$pristine">
                     <ng-message when="required">Phone Number is required.</ng-message>
                 </div>
             </md-input-container>
@@ -67,7 +67,7 @@
                 <label for="password">Password</label>
                 <input required type="password" name="password" ng-model="user.password" minlength="6" md-maxlength="30" id="password" />
 
-                <div ng-messages="form.password.$error" role="alert" ng-hide="form.password.$valid">
+                <div ng-messages="form.password.$error" role="alert" ng-hide="form.password.$valid || form.password.$pristine">
                     <div ng-message-exp="['required', 'minlength', 'maxlength']">
                         Password should be at least 6 until 30 characters
                     </div>
@@ -79,7 +79,7 @@
                 <input required type="password" name="confirm" ng-model="password.confirm_password" minlength="6" md-maxlength="30" pass-compare="user.password"
                     id="confirm" />
 
-                <div ng-messages="form.confirm.$error" role="alert" ng-hide="form.confirm.$valid">
+                <div ng-messages="form.confirm.$error" role="alert" ng-hide="form.confirm.$valid || form.confirm.$pristine">
                     <div ng-message-exp="['required', 'minlength', 'maxlength']">
                         Passwords are not the same
                     </div>

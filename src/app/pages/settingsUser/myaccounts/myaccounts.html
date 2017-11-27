@@ -158,7 +158,7 @@
                             id="creditCard"
                             />
 
-                        <div ng-messages="creditform.creditCard.$error" ng-hide="creditform.creditCard.$valid">
+                        <div ng-messages="creditform.creditCard.$error" ng-hide="creditform.creditCard.$valid || creditform.creditCard.$pristine">
                             <div ng-message-exp="['required', 'pattern']">
                                 Enter a valid credit card number
                             </div>
@@ -175,7 +175,7 @@
                             id="exp_date"
                             />
 
-                        <div ng-messages="creditform.expDate.$error" ng-hide="creditform.expDate.$valid">
+                        <div ng-messages="creditform.expDate.$error" ng-hide="creditform.expDate.$valid || creditform.expDate.$pristine">
                             <div ng-message-exp="['required', 'pattern']">
                                 Enter a valid expiration date
                             </div>
@@ -189,7 +189,8 @@
                         <input name="cvc" required ng-model="user.card.cvc" type="password"
                             ng-maxlength="4" ng-minlength="3" id="code"/>
 
-                        <div ng-messages="creditform.cvc.$error" ng-hide="creditform.cvc.$valid">
+                        <div ng-messages="creditform.cvc.$error"
+                             ng-hide="creditform.cvc.$valid || creditform.cvc.$pristine">
                             <div ng-message-exp="['required', 'pattern']">
                                 Enter a valid security code (CVV)
                             </div>
@@ -201,7 +202,7 @@
                         <input name="address" required ng-model="user.card.billingAddress"
                             id="billing"/>
 
-                        <div ng-messages="creditform.address.$error" ng-hide="creditform.address.$valid">
+                        <div ng-messages="creditform.address.$error" ng-hide="creditform.address.$valid || creditform.address.$pristine">
                             <div ng-message-exp="['required', 'pattern']">
                                 Enter a valid billing address (ZIP code)
                             </div>
