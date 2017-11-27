@@ -1,0 +1,160 @@
+.container-button {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+
+  & .btn-item {
+    outline: none;
+    box-shadow: none;
+    background: #0e7cb5;
+    border-radius: 100px;
+    border: solid 1.5px rgba(51, 68, 77, 0.1);
+    padding: 12px 40px 12px 30px;
+    margin-left: 15px;
+    font-size: 0.75em;
+    line-height: 0.88;
+    text-align: center;
+    & a{
+      color: #ffffff;
+      margin-left: -10px;
+
+      & i {
+        margin-right: 10px;
+      }
+    }
+
+    &:hover {
+      & a{
+        transition: all 0.2s ease-in-out 0.1s;
+
+      }
+      opacity: 0.9;
+      background-color: #1694D7;
+      transition: all 0.2s ease-in-out 0.1s;
+    }
+  }
+
+}
+
+.slap-tools-panel {
+  display: flex;
+  //justify-content: center;
+}
+
+.tools-mod {
+  position: static !important;
+}
+
+.strategy-tool-container {
+  display: flex;
+  width: auto !important;
+}
+
+.content-tool {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.title-tool {
+  display: block;
+  font-size: 29px;
+  line-height: 0.59;
+  letter-spacing: -0.6px;
+  color: #373c37;
+  text-transform: uppercase;
+  margin-top: 13px;
+  font-weight: 600;
+}
+
+.container-video {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-top: 15px;
+
+  & .slap-page .panel .panel-title {
+    display: none !important;
+  }
+
+  & .video-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: flex-end;
+
+    & .video-tool {
+        min-height: auto;
+        & video {
+          object-position: auto;
+          padding-left: 0;
+        }
+    }
+
+  }
+}
+
+.container-document {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  & .btn-row {
+    display: flex;
+    flex-grow: 1;
+    //flex-basis: 50%;
+    margin-bottom: 15px;
+
+    & :nth-child(2){
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+  }
+
+}
+.document-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  //flex-basis: 32%;
+  background: inherit;
+  box-shadow: none;
+  border: 2px solid #c2ccd1;
+  padding: 5px 10px;
+  color: #6e6e6e;
+
+  &:hover {
+    cursor: default;
+  }
+
+  &:focus{
+    background: inherit;
+  }
+
+  & .btn-text {
+    width: 170px;
+    color: #6e6e6e;
+    & i {
+      margin-right: 10px;
+    }
+  }
+
+  & .btn-dow {
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+      transition: all 0.1s ease-in 0.2s;
+    }
+  }
+
+}
+
+.vid-tol {
+  flex-basis: 32%;
+  flex-grow: 1;
+}
+
