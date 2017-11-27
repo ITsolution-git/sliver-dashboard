@@ -27,7 +27,7 @@
                 <label for="email">Email</label>
                 <input name="email" ng-model="partner.email" id="email" required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-                <div ng-messages="form.email.$error" ng-hide="form.email.$valid">
+                <div ng-messages="form.email.$error" ng-hide="form.email.$valid || form.email.$pristine">
                     <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                         Only letters and numbers are allowed (a-z,A-Z)
                     </div>
@@ -45,14 +45,14 @@
             <md-input-container class="md-block" flex="50">
                 <label for="phone">Phone Number</label>
                 <input name="phone" required ng-model="partner.phone" id="phone" />
-                <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid">
+                <div ng-messages="form.phone.$error" ng-hide="form.phone.$valid || form.phone.$pristine">
                     <ng-message when="required">Phone Number is required.</ng-message>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex="50">
                 <label for="revenue">% Revenue Share owed to Partner</label>
                 <input name="revenue" required ng-model="partner.revenue_percent" id="revenue" ng-pattern="/^\d+$/"/>
-                <div ng-messages="form.revenue.$error" ng-hide="form.phone.$valid">
+                <div ng-messages="form.revenue.$error" ng-hide="form.phone.$valid || form.phone.$pristine">
                     <ng-message when="required">% Revenue Share owed to Partner is required.</ng-message>
                 </div>
             </md-input-container>

@@ -50,6 +50,21 @@
                             return response.data;
                         }).catch(function(err) { console.log(err); $state.go('slapsters'); });
                     },
+                    allPartners: function (partnerService, $state) {
+                        return partnerService.list()
+                        .then(function (response) {
+                            return response.data;
+                        })
+                        .catch(function(err) { console.log(err); $state.go('reports.partner.item'); });
+                    },
+                    allExperts: function (adminUserService, $state) {
+                        return adminUserService.list()
+                        .then(function (response) {
+                            return response.data.filter(function (item) {
+                                return item.role === 2;
+                            });
+                        }).catch(function(err) { console.log(err); $state.go('reports.slapexpert.item'); });
+                    }
                 },
                 url: '/add',
                 controller: 'AdminReportsItemController',
@@ -72,6 +87,21 @@
                             return response.data;
                         }).catch(function(err) { console.log(err); $state.go('reports.list'); });
                     },
+                    allPartners: function (partnerService, $state) {
+                        return partnerService.list()
+                        .then(function (response) {
+                            return response.data;
+                        })
+                        .catch(function(err) { console.log(err); $state.go('reports.partner.item'); });
+                    },
+                    allExperts: function (adminUserService, $state) {
+                        return adminUserService.list()
+                        .then(function (response) {
+                            return response.data.filter(function (item) {
+                                return item.role === 2;
+                            });
+                        }).catch(function(err) { console.log(err); $state.go('reports.slapexpert.item'); });
+                    }
                 },
                 url: '/{report_id}',
                 controller: 'AdminReportsItemController',

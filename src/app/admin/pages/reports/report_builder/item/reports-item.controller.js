@@ -6,55 +6,57 @@
         .controller('AdminReportsItemController', AdminReportsItemController);
 
     /* @ngInject */
-    function AdminReportsItemController($scope, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, allProducts, allCoupons, actionplanService) {
+    function AdminReportsItemController($scope, allPartners, allExperts, $state, pageService, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, allProducts, allCoupons, actionplanService) {
         angular.extend($scope,  {
             report: {},
             reportID: $stateParams.report_id,
             ROLES: adminUserService.ROLES,
             STATUSES: adminUserService.STATUSES,
+            res: [],
+            expert: allExperts,
+            partner: allPartners,
 
             deleteItem: deleteItem,
             createOrSave: createOrSave,
 
-            COUNTRIES: [{id: 0, name: 'International'},{id: 0, name: 'Canada'},{id: 0, name: 'United States'}, ],
+            runReportBuilder: runReportBuilder,
+
+            COUNTRIES: [{id: 0, name: 'International'},{id: 1, name: 'Canada'},{id: 2, name: 'United States'}, ],
 
             //Products
             allProducts: allProducts,
-            transformProductChip: transformProductChip,
-            queryProductSearch: queryProductSearch,
             selectedProduct: null,
             searchProductText: null,
             //Coupons
             allCoupons: allCoupons,
-            transformCouponChip: transformCouponChip,
-            queryCouponSearch: queryCouponSearch,
             selectedCoupon: null,
             searchCouponText: null,
+            ActivitiesAll: [{id: 11, name: 'Have Logged In', dateRange: false}, {id: 1, name: 'Have Not Logged In', dateRange: false},
+            {id: 2, name: 'SE Calls Scheduled', dateRange: false}, {id: 3, name: 'SM Accountability Calls Scheduled', dateRange: false}, 
+            {id: 4, name: 'Onboarding Call Happened', dateRange: true}, {id: 5, name: 'Execute Onboarding Call Happened', dateRange: true}, 
+            {id: 6, name: 'SLAPexpert Call Happend', dateRange: true}, {id: 7, name: 'Q1 Feedback Call Happened', dateRange: true}, 
+            {id: 8, name: 'Q4 Hustle Call Happened', dateRange: true}, {id: 9, name: 'Renewal Confirmed', dateRange: true}, 
+            {id: 10, name: 'SLAPstuff Sent', dateRange: true}],
+            slapStatuses: [{id: 0, name: 'In Build'}, {id: 1, name: 'In Execute'}],
             //Activities
-            allActivities: [{id: 0, name: 'All'},{id: 1, name: 'Logged In'},{id: 2, name: 'Did not log in'},{id: 3, name: 'Completed Build Step 1'},{id: 4, name: 'Completed Build Step 1'},{id: 5, name: 'Completed Build Step 1'},{id: 6, name: 'Completed Build Step 1'},{id: 7, name: 'Commited Build'},{id: 8, name: 'Submitted their SLAP'},{id: 9, name: 'Submitted Weekly Reflection'},{id: 10, name: 'Submitted Monthly Reflection'},{id: 11, name: 'Submitted Quarterly Reflection'},{id: 12, name: 'Updated Sales Tracker'},{id: 13, name: 'Updated Action Items'}],
-            transformActivityChip: transformActivityChip,
-            queryActivitySearch: queryActivitySearch,
-
+            allActivities: [{id: 0, name: 'Logged In'},{id: 1, name: 'Did not log in'},{id: 2, name: 'Completed Build Step 1'},{id: 3, name: 'Completed Build Step 2'},{id: 4, name: 'Completed Build Step 3'},{id: 5, name: 'Completed Build Step 4'},{id: 6, name: 'Commited Build'},{id: 7, name: 'Submitted their SLAP'},{id: 8, name: 'Submitted Weekly Reflection'},{id: 9, name: 'Submitted Monthly Reflection'},{id: 10, name: 'Submitted Quarterly Reflection'},{id: 11, name: 'Updated Sales Tracker'},{id: 12, name: 'Updated Action Items'}],
             //Quaters
-            allQuaters: [{id:0,name:'All'}, {id:1, name:'Q1'}, {id:2, name:'Q2'}, {id:1, name:'Q3'},{id:4, name:'Q4'}],
-            transformQuaterChip: transformQuaterChip,
-            queryQuaterSearch: queryQuaterSearch,
+            allQuaters: [{id:1, name:'Q1'}, {id:2, name:'Q2'}, {id:3, name:'Q3'},{id:4, name:'Q4'}],
             //Score
-            allScores: [{id:0,name:'All'}, {id:1, name:'Red'}, {id:2, name:'Yellow'}, {id:1, name:'Green'}],
-            transformScoreChip: transformScoreChip,
-            queryScoreSearch: queryScoreSearch,
+            allScores: [{id:1, name:'Red'}, {id:2, name:'Yellow'}, {id:1, name:'Green'}],
             //Strategies
             allStrategies: actionplanService.getDefaultConnectingStrategies(),
-            transformStrategyChip: transformStrategyChip,
-            queryStrategySearch: queryStrategySearch,
+            pausingPaymentsStatus: [{id: 1, name: 'Paused'}, {id: 0, name: 'Active'}],
+            declinedStatus: [{id: 0, name: 'Declined'}, {id: 1, name: 'Money'}],
+            buildStatus: [{id: 0, name: 'Less then 30 days'}, {id: 1, name: 'More then 30 days'}],
 
-        });
+        }); 
 
 
         pageService
             .reset()
             .setShowBC(true)
-            .addCrumb({name: 'Build Reports', path: 'reports.list'});
+            .addCrumb({name: 'Report Builder', path: 'reports.list'});
 
         $timeout(function(){
             activate();
@@ -64,7 +66,7 @@
             if (!$scope.reportID) {
                 pageService
                     .addCrumb({name: 'Add', path: 'reports.add'})
-                    .setPageTitle('Build Reports');
+                    .setPageTitle('Report Builder');
 
                 $scope.report = {};
                 $scope.report.filter = {};
@@ -88,6 +90,10 @@
             }
         }
         function createOrSave(event) {
+
+            if (!$scope.report.filter.slapStatus) 
+                $scope.report.filter.quaters = [];
+            else delete $scope.report.filter.buildStatus;
             
             update().then(function(){
                 toaster.pop({type: 'success', body: 'Report saved.'});
@@ -99,7 +105,7 @@
 
         function update() {
             if($scope.reportID){
-                return $scope.report.save();
+                return reportService.update($scope.report);
             } else {
                 return reportService.add($scope.report);
             }
@@ -133,114 +139,12 @@
             });
         }
 
-
-
-        //Products
-        function transformProductChip(chip) {
-            if (angular.isObject(chip)) {
-                return chip;
-            }
-            return null;
-        }
-
-        function queryProductSearch (query) {
-            if(query)
-                return $scope.allProducts.filter(function(item){
-                    return item.productName.toLowerCase().indexOf(query.toLowerCase()) != -1;
-                });
-            else
-                return $scope.allProducts;
-        }
-        //Coupons
-
-        function transformCouponChip(chip) {
-            if (angular.isObject(chip)) {
-                return chip;
-            }
-            return null;
-        }
-
-        function queryCouponSearch (query) {
-            if(query)
-                return $scope.allCoupons.filter(function(item){
-                    return item.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
-                });
-            else
-                return $scope.allCoupons;
-        }
-
-        //Activities
-        
-        function transformActivityChip(chip) {
-            return chip;
-            if (angular.isObject(chip)) {
-                return chip;
-            }
-            return null;
-        }
-        function queryActivitySearch (query) {
-            if(query)
-                return $scope.allActivities.filter(function(item){
-                    return item.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
-                });
-            else
-                return $scope.allActivities;
-        }
-
-        //Strategies
-        
-        function transformStrategyChip(chip) {
-            return chip;
-            if (angular.isObject(chip)) {
-                return chip;
-            }
-            return null;
-        }
-        function queryStrategySearch (query) {
-            if(query)
-                return $scope.allStrategies.filter(function(item){
-                    return item.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
-                });
-            else
-                return $scope.allStrategies;
-        }
-
-
-        //Scores
-        
-        function transformScoreChip(chip) {
-            return chip;
-            if (angular.isObject(chip)) {
-                return chip;
-            }
-            return null;
-        }
-        function queryScoreSearch (query) {
-            if(query)
-                return $scope.allScores.filter(function(item){
-                    return item.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
-                });
-            else
-                return $scope.allScores;
-        }
-
-
-        //Quaters
-        
-        function transformQuaterChip(chip) {
-            return chip;
-            if (angular.isObject(chip)) {
-                return chip;
-            }
-            return null;
-        }
-        function queryQuaterSearch (query) {
-            if(query)
-                return $scope.allQuaters.filter(function(item){
-                    return item.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
-                });
-            else
-                return $scope.allQuaters;
+        function runReportBuilder() { 
+            return update().then(function() {
+                return reportService.run($scope.reportID).then(function(res) {
+                    $scope.res = res.data;
+                })
+            })
         }
 
 
