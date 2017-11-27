@@ -66,8 +66,8 @@
                 
             }
 
-            stepService.updateActiveModel($scope);
-            stepService.setFinishActiveStep();
+            // stepService.updateActiveModel($scope);
+            // stepService.setFinishActiveStep();
 
             // stepService.updateActiveModel($scope);
             // stepService.setFinishActiveStep();
