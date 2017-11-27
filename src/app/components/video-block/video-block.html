@@ -1,18 +1,17 @@
 <div class="video-container">
 
-        <div class="video-panel" style="width: calc(100% - 80px)">
+        <div  ng-if="!$ctrl.dis" class="video-panel" style="width: calc(100% - 80px)">
             <p class="panel-title video-title">LEARN</p>
         </div>
-
-    <div class="video-content sample-show-hide row sample-show-hide outline-0" ng-hide="$ctrl.visible">
-        <div class="z-in outline-0" ng-click="$ctrl.playVideo();$ctrl.videoActiv()"></div>
+    <div class="video-content video-tool sample-show-hide row sample-show-hide outline-0" ng-hide="$ctrl.visible">
+        <div class="z-in z-in-{{$ctrl.idvideo}} outline-0" ng-click="$ctrl.playVideo($ctrl.idvideo);$ctrl.videoActiv()"></div>
         <div>
-            <video controls preload="none" class="col-sm-12 hidden-xs" poster="/images/movie-logo.png">
+            <video controls preload="none" class="col-sm-12 hidden-xs main-video" poster="/images/movie-logo.png">
                 <source ng-src="{{$ctrl.video}}" type="video/mp4">
             </video>
 
             <video controls preload="none" class="col-xs-12 visible-xs video-panel-small" poster="/images/movie-logo.png">
-                <source ng-src="{{video}}" type="video/mp4">
+                <source ng-src="{{$ctrl.video}}" type="video/mp4">
             </video>
         </div>
 

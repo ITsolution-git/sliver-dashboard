@@ -6,7 +6,7 @@
         .controller('TrainingToolsController', TrainingToolsController);
 
     function TrainingToolsController($scope, activeStep, pageService, stepService, $state, $timeout, actionplanService, $uibModal, $window, idealclientService) {
-        console.log(activeStep);
+
 
 
         angular.extend($scope, {
@@ -65,21 +65,24 @@
                 removeNotification($scope.notifications, 'Valid Video');
                 
             }
-                
+
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
 
-            var nextprevStep = stepService.getNextAndPrevStep();
-            var urls = activeStep.sref.split('.');
+            // stepService.updateActiveModel($scope);
+            // stepService.setFinishActiveStep();
 
-            return stepService.sendApiData(urls[urls.length - 1], $scope.data)
-                .then(function () {
-                    $scope.saved = true;
-                    if(direction == 'forward')  
-                        $state.go(nextprevStep.nextStep.sref); 
-                    else if(direction == 'backward')
-                        $state.go(nextprevStep.prevStep.sref);
-                });
+            // var nextprevStep = stepService.getNextAndPrevStep();
+            // var urls = activeStep.sref.split('.');
+            //
+            // return stepService.sendApiData(urls[urls.length - 1], $scope.data)
+            //     .then(function () {
+            //         $scope.saved = true;
+            //         if(direction == 'forward')
+            //             $state.go(nextprevStep.nextStep.sref);
+            //         else if(direction == 'backward')
+            //             $state.go(nextprevStep.prevStep.sref);
+            //     });
         }
 
         function setPosition() {
