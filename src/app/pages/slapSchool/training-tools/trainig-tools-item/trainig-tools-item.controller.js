@@ -26,7 +26,33 @@
 
         // console.log($scope.defaultStrategies);
         // console.log($scope.data);
-        $scope.videoUrl = $scope.data.trainig.videos;
+        $scope.videoUrl = function () {
+            if($scope.data.trainig.videos.length % 3 !== 0){
+                var totalLength = 0;
+                if($scope.data.trainig.videos.length < 3){
+                    totalLength = 3;
+                }
+
+                if($scope.data.trainig.videos.length > 3 && $scope.data.trainig.videos.length < 6){
+                    totalLength = 6;
+                }
+
+                if ($scope.data.trainig.videos.length > 6 ) {
+                    totalLength = 9;
+                }
+                var remainder = totalLength - $scope.data.trainig.videos.length;
+                console.log(remainder);
+                for(var i = 0; i < remainder; i++  ){
+                    $scope.data.trainig.videos.push('none');
+                }
+
+                return $scope.data.trainig.videos;
+            }else {
+                console.log($scope.data.trainig.videos);
+
+                return $scope.data.trainig.videos;
+            }
+        }
 
 
         // $scope.openTraining = function (strategy_id) {

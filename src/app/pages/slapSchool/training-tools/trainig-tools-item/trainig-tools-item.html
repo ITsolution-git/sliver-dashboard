@@ -38,7 +38,7 @@
 
                 <div class="container-video">
                     <div class="video-row">
-                        <video-block ng-repeat="item in videoUrl" class="video-block-600 vid-tol" visible="showVideoBlock" video="item" dis="true" idvideo="$index"></video-block>
+                        <video-block ng-repeat="item in videoUrl() track by $index " class="video-block-600 vid-tol" visible="showVideoBlock" video="item" dis="true" idvideo="$index"></video-block>
                     </div>
                     <!--<div class="video-row">-->
                         <!--<video-block ng-repeat="item1 in [0,1,2]" class="video-block-600 vid-tol" visible="showVideoBlock" video="videoUrl[item1 + 3]" dis="true" idvideo="item1+3"></video-block>-->
