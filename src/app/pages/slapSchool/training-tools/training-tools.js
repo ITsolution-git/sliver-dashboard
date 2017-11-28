@@ -133,32 +133,32 @@
             });
         }
 
-        function openVideoBox(strategy) {
-            strategy.video = actionplanService.getDefaultConnectingStrategies()[strategy.id - 1].video;
-
-
-            var modalInstance = $uibModal.open({
-                component: 'strategyVideoBox',
-                size: 'lg',
-                resolve: {
-                    strategy: function () {
-                        return strategy;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (value) {
-                strategy.rating = value.strategy.rating;
-                strategy.reason = value.strategy.reason;
-                if (value.action == 'saveAndNext') {
-                    openVideoBox($scope.rateConnectingStrategies[(value.strategy.id) % 10]);
-                } else if (value.action == 'saveAndPrev') {
-                    openVideoBox($scope.rateConnectingStrategies[(value.strategy.id + 10 - 2) % 10]);
-                }
-            }, function () {
-                
-            });
-        }
+        // function openVideoBox(strategy) {
+        //         strategy.video = actionplanService.getDefaultConnectingStrategies()[strategy.id - 1].video;
+        //
+        //
+        //         var modalInstance = $uibModal.open({
+        //             component: 'strategyVideoBox',
+        //             size: 'lg',
+        //             resolve: {
+        //                 strategy: function () {
+        //                     return strategy;
+        //                 }
+        //             }
+        //     });
+        //
+        //     modalInstance.result.then(function (value) {
+        //         strategy.rating = value.strategy.rating;
+        //         strategy.reason = value.strategy.reason;
+        //         if (value.action == 'saveAndNext') {
+        //             openVideoBox($scope.rateConnectingStrategies[(value.strategy.id) % 10]);
+        //         } else if (value.action == 'saveAndPrev') {
+        //             openVideoBox($scope.rateConnectingStrategies[(value.strategy.id + 10 - 2) % 10]);
+        //         }
+        //     }, function () {
+        //
+        //     });
+        // }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             if ($scope.saved != true) {
                 sendData();
