@@ -552,12 +552,12 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4',
-                        'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4',
-                        'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4',
-                        'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4',
-                        'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4',
-                        'http://content.jwplatform.com/videos/NX9P49PE-CZ1S4g0I.mp4',
+                        'http://content.jwplatform.com/videos/cQ78Uar8-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/8eLSteNQ-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/cfJt2wPt-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/hIrUfWcP-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/UwPJgBZn-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/EVbdckoz-LQ8oa9pv.mp4',
                     ],
                     books: ['first-book']}
             },
@@ -677,13 +677,13 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        '',
-                        '',
-                        '',
-                        '',
-                        '',
-                        '',
-                        ''
+                        'http://content.jwplatform.com/videos/acWVTDXi-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/7qnvcRxp-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/mb5vDgM1-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/NJv7Kgsq-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/quccYCOE-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/7D1anqtS-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/VB9sj48Z-GL1ajTKI.mp4',
                     ],
                     books: [
                         'first-book'
@@ -742,13 +742,8 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        '',
-                        '',
-                        '',
-                        '',
-                        '',
-                        '',
-                        ''
+                        'http://content.jwplatform.com/videos/Iv7BB8zD-vTkf1oei.mp4',
+
                     ],
                     books: [
                         'first-book'
