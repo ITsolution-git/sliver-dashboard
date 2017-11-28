@@ -103,14 +103,16 @@
   flex-direction: column;
   & .btn-row {
     display: flex;
-    flex-grow: 1;
-    //flex-basis: 50%;
+    //flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    //flex-basis: 32%;
     margin-bottom: 15px;
 
-    & :nth-child(2){
-      margin-left: 5px;
-      margin-right: 5px;
-    }
+    //& :nth-child(2){
+    //  margin-left: 5px;
+    //  margin-right: 5px;
+    //}
 
   }
 
@@ -119,13 +121,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 1;
-  //flex-basis: 32%;
+  //flex-grow: 1;
+  flex-basis: 32.7%;
   background: inherit;
   box-shadow: none;
   border: 2px solid #c2ccd1;
   padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 10px;
   color: #6e6e6e;
+
+  & a {
+    color: #6e6e6e;
+  }
 
   &:hover {
     cursor: default;
@@ -155,7 +163,7 @@
 }
 
 .vid-tol {
-  flex-basis: 32%;
+  flex-basis: 32.7%;
   flex-grow: 1;
 
 }

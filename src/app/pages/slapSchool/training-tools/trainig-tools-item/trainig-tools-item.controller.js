@@ -26,6 +26,13 @@
 
         // console.log($scope.defaultStrategies);
         // console.log($scope.data);
+        // $scope.docUrl = function () {
+        //
+        // }
+
+        $scope.docUrl = $scope.data.trainig.books;
+        console.log($scope.docUrl);
+
         $scope.videoUrl = function () {
             if($scope.data.trainig.videos.length % 3 !== 0){
                 var totalLength = 0;
@@ -48,9 +55,10 @@
 
                 return $scope.data.trainig.videos;
             }else {
-                console.log($scope.data.trainig.videos);
+                // console.log($scope.data.trainig.videos);
 
                 return $scope.data.trainig.videos;
+
             }
         }
 

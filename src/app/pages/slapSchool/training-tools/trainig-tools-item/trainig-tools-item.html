@@ -40,34 +40,27 @@
                     <div class="video-row">
                         <video-block ng-repeat="item in videoUrl() track by $index " class="video-block-600 vid-tol" visible="showVideoBlock" video="item" dis="true" idvideo="$index"></video-block>
                     </div>
-                    <!--<div class="video-row">-->
-                        <!--<video-block ng-repeat="item1 in [0,1,2]" class="video-block-600 vid-tol" visible="showVideoBlock" video="videoUrl[item1 + 3]" dis="true" idvideo="item1+3"></video-block>-->
-                    <!--</div>-->
-                        <!--<div class="video-row">-->
-                            <!--<video-block ng-repeat="item2 in [0,1,2]" class="video-block-600 vid-tol" visible="showVideoBlock" video="videoUrl[item2 + 6]" dis="true" idvideo="item2+6"></video-block>-->
-
-                    <!--</div>-->
 
                 </div>
                 <div class="container-document">
                     <div class="btn-row">
-                        <button class="document-btn" ng-repeat="item in [1,2,3]">
+                        <button class="document-btn" ng-repeat="item in docUrl">
                             <span class="btn-text">
                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                Document {{item}}
+                                Document {{$index + 1}}
                             </span>
-                            <i class="fa fa-download btn-dow" aria-hidden="true"></i>
+                            <a href="{{item}}" ><i class="fa fa-download btn-dow" aria-hidden="true"></i></a>
                         </button>
                     </div>
-                    <div class="btn-row">
-                        <button class="document-btn " ng-repeat="item in [1,2,3]">
-                            <span class="btn-text">
-                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                Document {{item + 3}}
-                            </span>
-                            <i class="fa fa-download btn-dow" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                    <!--<div class="btn-row">-->
+                        <!--<button class="document-btn " ng-repeat="item in [1,2,3]">-->
+                            <!--<span class="btn-text">-->
+                                <!--<i class="fa fa-file-pdf-o" aria-hidden="true"></i>-->
+                                <!--Document {{item + 3}}-->
+                            <!--</span>-->
+                            <!--<i class="fa fa-download btn-dow" aria-hidden="true"></i>-->
+                        <!--</button>-->
+                    <!--</div>-->
                 </div>
 
 

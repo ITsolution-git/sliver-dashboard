@@ -559,7 +559,19 @@
                         'http://content.jwplatform.com/videos/UwPJgBZn-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/EVbdckoz-LQ8oa9pv.mp4',
                     ],
-                    books: ['first-book']}
+                    books: [
+                        'https://drive.google.com/open?id=1O_oz0T34o6Br3D_X24bpT0J486S_OiQf',
+                        'https://drive.google.com/open?id=1-VYsZNhS2KjWvGR2qLaTQVdFaZyRyd38',
+                        'https://drive.google.com/open?id=1s-6rpA3ysDIXsr0TrS_Rg68nFeg6kVD0',
+                        'https://drive.google.com/open?id=19EKki_3XWMT4Uis2lp2WPEqGJnSdtyJp',
+                        'https://drive.google.com/open?id=1HR06WZV5uAPo0Gw4ytcJOArQUmyKsqUI',
+                        'https://drive.google.com/open?id=19qEGkVbb1v5dw-P7KShN8Wd682HKozk1',
+                        'https://drive.google.com/open?id=1YUOdk7Ax-w23ioBfL-vfHkfWA0kW00yz',
+                        'https://drive.google.com/open?id=1sjMgO153ezo3Ih2IEXS3IlZd0XTD1bK2',
+                        'https://drive.google.com/open?id=1tcHtJ0dsHGVVfXvM4XLkcd4eCF6qF4TU',
+                        'https://drive.google.com/open?id=1be3JqtvkTe6zsaUY1oFA6Sk_ciLakp2G'
+                    ]
+                }
             },
             {
                 id: 2,
@@ -578,7 +590,11 @@
                         'http://content.jwplatform.com/videos/VwkPnU6Z-LQ8oa9pv.mp4'
                     ],
                     books: [
-                        'first-book'
+                        'https://drive.google.com/open?id=1h8dECHbhTwZtkDzuCK-ad4IDp0OU0r_G',
+                        'https://drive.google.com/open?id=10fiF4_Bb_JAoVrDATuBfwKwxuqd5YeYL',
+                        'https://drive.google.com/open?id=1Izrp8CkewgJQ2MPm-MRQrQBuctxLoEWt',
+                        'https://drive.google.com/open?id=1iKyKBf0Eeiz3pzlSNzquXOs3HgLbFCif',
+                        'https://drive.google.com/open?id=1UzZBg4dmhkNialja_8UT4fQUJZh0egQ5',
                     ]
                 }
             },
@@ -600,7 +616,10 @@
                         'http://content.jwplatform.com/videos/OB5VMxdA-LQ8oa9pv.mp4'
                     ],
                     books: [
-                        'first-book'
+                        'https://drive.google.com/open?id=1IgMA7NK0onMTVidtA4OHurSKF2dgTY80',
+                        'https://drive.google.com/open?id=1M9aZk31ZS5FUQw7h2jCsK_aV_ooPu8I8',
+                        'https://drive.google.com/open?id=1zNlpTmvdCawh5w2N2xbPR2AgGOna2SpO',
+                        'https://drive.google.com/open?id=1VGEtdd9eruzZEw3oU9Q0x8AvVuKbYyZl',
                     ]
                 }
             },
@@ -643,7 +662,18 @@
                         'http://content.jwplatform.com/videos/JMFjhN4U-LQ8oa9pv.mp4',
                     ],
                     books: [
-                        'first-book'
+                        'https://drive.google.com/open?id=1mcp3dAjmIwUERfAmBPHA9igYp5tsAOeD',
+                        'https://drive.google.com/open?id=1g0ZPu4fp6JQvlZGf1H6sK_Tv-6MtVI8L',
+                        'https://drive.google.com/open?id=1ShNNv_UkDTGqz867UpWI04RngKtIR8MI',
+                        'https://drive.google.com/open?id=19FL_4K4UNgCX4t4OBiJyBq9iIc_HXu72',
+                        'https://drive.google.com/open?id=1MNj3kIBg7TOoA_AoU0GrjBP9dSHUuyQQ',
+                        'https://drive.google.com/open?id=1vdrZdA6-sVInMFxUZNiPjOim-NOXgfZ_',
+                        'https://drive.google.com/open?id=1wU652FBU89N-jBdh9apGt9F0XEpPbo_1',
+                        'https://drive.google.com/open?id=17VlIHs4SKi2r81_BChaSfVaHqYgavFPI',
+                        'https://drive.google.com/open?id=19mKtfwQfvxvUlYQJT43cQzOIpMEyNrhi',
+                        'https://drive.google.com/open?id=1Jft8E0A64hnjOZeY9SC0S3VtcUC2Jwa1',
+                        'https://drive.google.com/open?id=1HXYLo4unDSgDSdvzDpfkFsgat08PqbUi',
+                        'https://drive.google.com/open?id=1vAGupiuqGD-_cEbCSBHwh8pe7OyvAM9y'
                     ]
                 }
             },
@@ -665,7 +695,12 @@
                         'http://content.jwplatform.com/videos/nig7CYBh-LQ8oa9pv.mp4'
                     ],
                     books: [
-                        'first-book'
+                        'https://drive.google.com/open?id=18kLo7z9BkiRgL__JjlqtMzqMbQpnygwT',
+                        'https://drive.google.com/open?id=1wSzDxxEaP1dCSR84wPh2X0paYTWyAumb',
+                        'https://drive.google.com/open?id=1Zeb2Oc8mHmdrl6RRTHKyfPc9TUGCXrl8',
+                        'https://drive.google.com/open?id=1UctoQOdqUfx0vIgQ9jC7Pva089GWld-p',
+                        'https://drive.google.com/open?id=14crrBjpdZs7TwjYdVCjCbws7qE9M_9XT',
+                        'https://drive.google.com/open?id=1ywxPP_ycqeNaxS246a1YZN12svH0f95m'
                     ]
                 }
             },
@@ -708,7 +743,9 @@
                         'http://content.jwplatform.com/videos/REhbIkcM-LQ8oa9pv.mp4'
                     ],
                     books: [
-                        'first-book'
+                        'https://drive.google.com/open?id=1L0l6SdfzVYCcmUove3Mx-M3T2zJkh1hk',
+                        'https://drive.google.com/open?id=1khXnh_-xAkSvAwHWHBXKPC1u6rAKL0N6',
+                        'https://drive.google.com/open?id=1CtAtf-SCOgKC38N5IWw_u-yFgvvoxB8H'
                     ]
                 }
             },
@@ -730,7 +767,10 @@
                         'http://content.jwplatform.com/videos/8LZ6H2V1-GL1ajTKI.mp4',
                     ],
                     books: [
-                        'first-book'
+                        'https://drive.google.com/open?id=1h0xB-N8g5lWt4eL1QMCLDRYD1wR2Jrz8',
+                        'https://drive.google.com/open?id=1dxDrbwmJQv2MZ4iDRjL5XBl_kVvuSKAJ',
+                        'https://drive.google.com/open?id=1I_gVtxSGn_JH2bxj2sPX20OCWuNdE1iZ',
+                        'https://drive.google.com/open?id=1J2hgjFczMIa8DzemexaC8XM9RzSsTpJo'
                     ]
                 }
             },
@@ -746,7 +786,8 @@
 
                     ],
                     books: [
-                        'first-book'
+                        'https://drive.google.com/open?id=17MGrIN8xU26SmU9OOn3nOTEkccqecNVa',
+                        'https://drive.google.com/open?id=1VFaRTRZOBDKPi_JHk09k-LfyEmlhQ0YP'
                     ]
                 }
             },
