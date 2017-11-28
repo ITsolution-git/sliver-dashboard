@@ -18,6 +18,7 @@
 
             deleteItem: deleteItem,
             createOrSave: createOrSave,
+            printSlap: printSlap,
 
             runReportBuilder: runReportBuilder,
 
@@ -93,7 +94,6 @@
 
             if (!$scope.report.filter.slapStatus) 
                 $scope.report.filter.quaters = [];
-            else delete $scope.report.filter.buildStatus;
             
             update().then(function(){
                 toaster.pop({type: 'success', body: 'Report saved.'});
@@ -145,6 +145,10 @@
                     $scope.res = res.data;
                 })
             })
+        }
+
+        function printSlap() {
+            window.print();
         }
 
 

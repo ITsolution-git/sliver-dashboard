@@ -567,24 +567,194 @@
                 video:'http://content.jwplatform.com/videos/Oju0w8U8-CZ1S4g0I.mp4',
                 rating: 0,
                 reason:'',
-                trainig: {videos: ['first-video'], books: ['first-book']}
+                trainig: {
+                    videos: [
+                        'http://content.jwplatform.com/videos/uCpea9S5-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/ZqxAzjKP-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/r4ScfBG2-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/qUCrOHLg-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/pZ2e8qmp-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/wwaTndJ5-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/VwkPnU6Z-LQ8oa9pv.mp4'
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
             },
             {
-                id: 3, name: 'Partnerships', video:'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 3,
+                name: 'Partnerships',
+                video:'http://content.jwplatform.com/videos/W9nOxJ5M-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        'http://content.jwplatform.com/videos/w2bRrWe3-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/lSuGpIod-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/RabDr2hv-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/iQcooHtu-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/4EgDjddo-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/Cc6R4FFP-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/BA5F03yh-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/OB5VMxdA-LQ8oa9pv.mp4'
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
             {
-                id: 4, name: 'Hit List', video:'http://content.jwplatform.com/videos/NX9P49PE-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 4,
+                name: 'Hit List',
+                video:'http://content.jwplatform.com/videos/NX9P49PE-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        ''
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
             {
-                id: 5, name: 'Events', video:'http://content.jwplatform.com/videos/NOM9ntVR-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 5,
+                name: 'Events',
+                video:'http://content.jwplatform.com/videos/NOM9ntVR-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        'http://content.jwplatform.com/videos/HxASNP8Q-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/vYDhS2Fg-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/9GReoI6J-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/BipnPBhG-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/oTJHl1RR-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/ECPeo4L9-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/kd35KBbo-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/JMFjhN4U-LQ8oa9pv.mp4',
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
             {
-                id: 6, name: 'Media', video:'http://content.jwplatform.com/videos/1LDN7hzb-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 6,
+                name: 'Media',
+                video:'http://content.jwplatform.com/videos/1LDN7hzb-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        'http://content.jwplatform.com/videos/4MPLVmlx-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/4dtI7MO5-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/Re6Gboar-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/O0JhQYmz-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/teVU7NZb-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/2SfZQezz-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/xeMf9uOa-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/nig7CYBh-LQ8oa9pv.mp4'
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
             {
-                id: 7, name: 'Special Deals', video:'http://content.jwplatform.com/videos/uVYTE4Kq-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 7,
+                name: 'Special Deals',
+                video:'http://content.jwplatform.com/videos/uVYTE4Kq-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        ''
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
             {
-                id: 8, name: 'Online Connecting', video:'http://content.jwplatform.com/videos/891qCjsf-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 8,
+                name: 'Online Connecting',
+                video:'http://content.jwplatform.com/videos/891qCjsf-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        'http://content.jwplatform.com/videos/UIKOt7fz-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/UJ0ZYypc-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/UU5QZ9MN-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/ozhAbLET-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/eP9RKlEu-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/NCXfXUS8-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/Iz6FytOt-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/REhbIkcM-LQ8oa9pv.mp4'
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
             {
-                id: 9, name: 'Loyalty', video:'http://content.jwplatform.com/videos/mwVZPB6K-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 9,
+                name: 'Loyalty',
+                video:'http://content.jwplatform.com/videos/mwVZPB6K-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        'http://content.jwplatform.com/videos/6DwX7lsR-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/JSikeYAg-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/2Q3N48qV-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/vn4Ibd1U-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/UVqpE3ss-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/fpCxljPt-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/o8TOFXCS-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/8LZ6H2V1-GL1ajTKI.mp4',
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
             {
-                id: 10, name: 'SLAPnap', video:'http://content.jwplatform.com/videos/sG2Jy0bq-CZ1S4g0I.mp4', rating: 0, reason:''},
+                id: 10,
+                name: 'SLAPnap',
+                video:'http://content.jwplatform.com/videos/sG2Jy0bq-CZ1S4g0I.mp4',
+                rating: 0,
+                reason:'',
+                trainig: {
+                    videos: [
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        ''
+                    ],
+                    books: [
+                        'first-book'
+                    ]
+                }
+            },
         ];
 
         var _monthLongNames = ["January", "February", "March", "April", "May","June", "July", "August", "September", "October","November", "December"];
