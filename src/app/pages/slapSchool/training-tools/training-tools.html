@@ -36,8 +36,9 @@
                                                   ui-sref="slapSchool.trainingToolsItem({strategy_id: $index})"><i>+</i></span>
                                         <!-- <i class="fa fa-times-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i> -->
                                         <br/>
-                                        <span class="title">
+                                        <span class="title"  ng-click="openVideoBox(strategy)">
                                             {{getStrategyName(strategy.id)}}
+
                                             <!--{{strategy.name}}-->
                                         </span>
                                         <br/>
@@ -56,7 +57,7 @@
                                         <span class="plus"><i>+</i></span>
                                             <!-- <i class="fa fa-times-circle-o" aria-hidden="true"  ng-click="openVideoBox(strategy)"></i>                                             -->
                                         <br/>
-                                        <span class="title">
+                                        <span class="title"  ng-click="openVideoBox(strategy)">
                                             <!--{{strategy.name}}-->
                                              {{getStrategyName(strategy.id)}}
                                         </span>
