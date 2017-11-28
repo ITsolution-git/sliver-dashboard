@@ -18,7 +18,7 @@
             center: {},
             idealClientSelects: idealclientService.getClientSliders(),
             defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
-            openVideoBox: openVideoBox,
+            // openVideoBox: openVideoBox,
             showResponsiveView: false,
             notifications: [],
             getStrategyName: getStrategyName

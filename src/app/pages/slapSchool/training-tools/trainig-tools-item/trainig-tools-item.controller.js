@@ -31,7 +31,6 @@
         // }
 
         $scope.docUrl = $scope.data.trainig.books;
-        console.log($scope.docUrl);
 
         $scope.videoUrl = function () {
             if($scope.data.trainig.videos.length % 3 !== 0){
