@@ -10,7 +10,7 @@
 
 
         angular.extend($scope, {
-            rateConnectingStrategies: activeStep.data.rateConnectingStrategies,
+            // rateConnectingStrategies: activeStep.data.rateConnectingStrategies,
             forward: true,
             sendData: sendData,
             saved: false,
@@ -24,9 +24,9 @@
             getStrategyName: getStrategyName
         });
 
-        if ($scope.rateConnectingStrategies.length == 0) {
-            $scope.rateConnectingStrategies = actionplanService.getDefaultConnectingStrategies();
-        }
+        // if ($scope.rateConnectingStrategies.length == 0) {
+        //     $scope.rateConnectingStrategies = actionplanService.getDefaultConnectingStrategies();
+        // }
        getData();
 
         function getData() {
@@ -49,11 +49,11 @@
 
         function sendData(direction) {
             var hasViewedAllVideos = true;
-            $scope.rateConnectingStrategies.forEach(function(strategy){
-                if (strategy.rating === 0){
-                    hasViewedAllVideos = false;
-                }
-            });
+            // $scope.rateConnectingStrategies.forEach(function(strategy){
+            //     if (strategy.rating === 0){
+            //         hasViewedAllVideos = false;
+            //     }
+            // });
             if (!hasViewedAllVideos && direction == 'forward') {
                 addNotification($scope.notifications, {name: 'Valid Video', type: 'error', message:'You must watch all videos and rate each Connecting Strategy before you can go to the next step.', show: true});
 
