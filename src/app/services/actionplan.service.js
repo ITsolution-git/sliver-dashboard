@@ -557,7 +557,7 @@
                         'http://content.jwplatform.com/videos/cfJt2wPt-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/hIrUfWcP-GL1ajTKI.mp4',
                         'http://content.jwplatform.com/videos/UwPJgBZn-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/EVbdckoz-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/EVbdckoz-LQ8oa9pv.mp4'
                     ],
                     books: [
                         'https://drive.google.com/open?id=1O_oz0T34o6Br3D_X24bpT0J486S_OiQf',
@@ -594,7 +594,7 @@
                         'https://drive.google.com/open?id=10fiF4_Bb_JAoVrDATuBfwKwxuqd5YeYL',
                         'https://drive.google.com/open?id=1Izrp8CkewgJQ2MPm-MRQrQBuctxLoEWt',
                         'https://drive.google.com/open?id=1iKyKBf0Eeiz3pzlSNzquXOs3HgLbFCif',
-                        'https://drive.google.com/open?id=1UzZBg4dmhkNialja_8UT4fQUJZh0egQ5',
+                        'https://drive.google.com/open?id=1UzZBg4dmhkNialja_8UT4fQUJZh0egQ5'
                     ]
                 }
             },
@@ -619,7 +619,7 @@
                         'https://drive.google.com/open?id=1IgMA7NK0onMTVidtA4OHurSKF2dgTY80',
                         'https://drive.google.com/open?id=1M9aZk31ZS5FUQw7h2jCsK_aV_ooPu8I8',
                         'https://drive.google.com/open?id=1zNlpTmvdCawh5w2N2xbPR2AgGOna2SpO',
-                        'https://drive.google.com/open?id=1VGEtdd9eruzZEw3oU9Q0x8AvVuKbYyZl',
+                        'https://drive.google.com/open?id=1VGEtdd9eruzZEw3oU9Q0x8AvVuKbYyZl'
                     ]
                 }
             },
@@ -659,7 +659,7 @@
                         'http://content.jwplatform.com/videos/oTJHl1RR-GL1ajTKI.mp4',
                         'http://content.jwplatform.com/videos/ECPeo4L9-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/kd35KBbo-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/JMFjhN4U-LQ8oa9pv.mp4',
+                        'http://content.jwplatform.com/videos/JMFjhN4U-LQ8oa9pv.mp4'
                     ],
                     books: [
                         'https://drive.google.com/open?id=1mcp3dAjmIwUERfAmBPHA9igYp5tsAOeD',
@@ -718,7 +718,7 @@
                         'http://content.jwplatform.com/videos/NJv7Kgsq-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/quccYCOE-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/7D1anqtS-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/VB9sj48Z-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/VB9sj48Z-GL1ajTKI.mp4'
                     ],
                     books: [
                         'first-book'
@@ -764,7 +764,7 @@
                         'http://content.jwplatform.com/videos/UVqpE3ss-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/fpCxljPt-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/o8TOFXCS-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/8LZ6H2V1-GL1ajTKI.mp4',
+                        'http://content.jwplatform.com/videos/8LZ6H2V1-GL1ajTKI.mp4'
                     ],
                     books: [
                         'https://drive.google.com/open?id=1h0xB-N8g5lWt4eL1QMCLDRYD1wR2Jrz8',
@@ -782,7 +782,7 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/Iv7BB8zD-vTkf1oei.mp4',
+                        'http://content.jwplatform.com/videos/Iv7BB8zD-vTkf1oei.mp4'
 
                     ],
                     books: [

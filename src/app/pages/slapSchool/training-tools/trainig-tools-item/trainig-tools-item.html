@@ -15,17 +15,17 @@
     justify-content: center;">
 
                 <div class="item-tool">
-                    <div class="strategy-box tools-mod">
+                    <div class="strategy-box strategy-tool tools-mod">
                         <img src="/images/logo.jpg"/>
                         <div class="overlap">
                         </div>
                         <div class="content content-training">
-                            <span class="plus"><i>+</i></span>
+                            <span class="plus plus-def"><i>+</i></span>
                             <span class="title ng-binding">{{data.name}}</span>
                             <br/>
                             <br/>
                             <span class="desc">How Relevant?</span>
-                            <slap-rating rate="data.rating"></slap-rating>
+                            <slap-rating rate="data.rating" disabled-rate="disabledRate"></slap-rating>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
 
                 <div class="container-video">
                     <div class="video-row">
-                        <video-block ng-repeat="item in videoUrl() track by $index " class="video-block-600 vid-tol" visible="showVideoBlock" video="item" dis="true" idvideo="$index"></video-block>
+                        <video-block ng-repeat="item in videoUrl" class="video-block-600 vid-tol" visible="showVideoBlock" video="item" dis="true" idvideo="$index"></video-block>
                     </div>
 
                 </div>
@@ -46,23 +46,13 @@
                     <div class="btn-row">
                         <button class="document-btn" ng-repeat="item in docUrl">
                             <span class="btn-text">
-                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
                                 Document {{$index + 1}}
                             </span>
-                            <a href="{{item}}" ><i class="fa fa-download btn-dow" aria-hidden="true"></i></a>
+                            <a href="{{item}}" target="_blank"><i class="fa fa-download btn-dow" aria-hidden="true"></i></a>
                         </button>
                     </div>
-                    <!--<div class="btn-row">-->
-                        <!--<button class="document-btn " ng-repeat="item in [1,2,3]">-->
-                            <!--<span class="btn-text">-->
-                                <!--<i class="fa fa-file-pdf-o" aria-hidden="true"></i>-->
-                                <!--Document {{item + 3}}-->
-                            <!--</span>-->
-                            <!--<i class="fa fa-download btn-dow" aria-hidden="true"></i>-->
-                        <!--</button>-->
-                    <!--</div>-->
                 </div>
-
 
             </div>
 

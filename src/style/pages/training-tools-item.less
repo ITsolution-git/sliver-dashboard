@@ -81,7 +81,7 @@
 
   & .video-row {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-bottom: 10px;
     align-items: flex-end;
@@ -122,7 +122,7 @@
   justify-content: space-between;
   align-items: center;
   //flex-grow: 1;
-  flex-basis: 32.7%;
+  flex-basis: 32.4%;
   background: inherit;
   box-shadow: none;
   border: 2px solid #c2ccd1;
@@ -144,7 +144,10 @@
   }
 
   & .btn-text {
-    width: 170px;
+    width: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     color: #6e6e6e;
     & i {
       margin-right: 10px;
@@ -164,7 +167,22 @@
 
 .vid-tol {
   flex-basis: 32.7%;
-  flex-grow: 1;
+  //margin-right: 10px;
 
 }
 
+.rate-none:hover {
+
+  cursor: default !important;
+}
+
+.plus-def {
+
+  &:hover {
+    cursor: default;
+  }
+  & i:hover{
+    cursor: default;
+    opacity: 1;
+  }
+}

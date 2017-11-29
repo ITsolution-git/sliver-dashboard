@@ -20,10 +20,12 @@
             defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
             openVideoBox: openVideoBox,
             showResponsiveView: false,
-
             notifications: [],
             getStrategyName: getStrategyName
         });
+
+        $scope.activeTool = activeStep.data.rateConnectingStrategies;
+        $scope.disabledRate = true;
 
         if ($scope.rateConnectingStrategies.length == 0) {
             $scope.rateConnectingStrategies = actionplanService.getDefaultConnectingStrategies();
@@ -67,23 +69,6 @@
                 
             }
 
-            // stepService.updateActiveModel($scope);
-            // stepService.setFinishActiveStep();
-
-            // stepService.updateActiveModel($scope);
-            // stepService.setFinishActiveStep();
-
-            // var nextprevStep = stepService.getNextAndPrevStep();
-            // var urls = activeStep.sref.split('.');
-            //
-            // return stepService.sendApiData(urls[urls.length - 1], $scope.data)
-            //     .then(function () {
-            //         $scope.saved = true;
-            //         if(direction == 'forward')
-            //             $state.go(nextprevStep.nextStep.sref);
-            //         else if(direction == 'backward')
-            //             $state.go(nextprevStep.prevStep.sref);
-            //     });
         }
 
         function setPosition() {
