@@ -142,7 +142,7 @@
             // Coupon for ALL
             if (!_coupon.plan) {
                 // User have Build PLAN
-                if (_build) {
+                if (_build && _build.amountFirstPayment) {
                     this._calculateCouponForBuild()
                 }
                 // User have PLAN + BUILD
@@ -167,6 +167,7 @@
             }
             return _build.amountFirstPayment = _build.amountFirstPayment - _coupon.amount;
         }
+
         this._calculateCouponForBuild = function(){
             //this._calculateCouponForBuildToday();
             if (_coupon.typeCoupon){
@@ -174,12 +175,15 @@
             }
             return _build.costProduct = _build.costProduct - _coupon.amount;
         }
+
         this._calculateCouponForPlan = function () {
             if (_coupon.typeCoupon) {
                 return _plan.costProduct = _plan.costProduct - (_plan.costProduct * _coupon.amount) / 100;
             }
             return _plan.costProduct = _plan.costProduct - _coupon.amount;
         }
+
+
 
     }
 }());
