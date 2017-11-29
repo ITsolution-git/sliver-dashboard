@@ -10,7 +10,7 @@
 
 
         angular.extend($scope, {
-            rateConnectingStrategies: activeStep.data.rateConnectingStrategies,
+            // rateConnectingStrategies: activeStep.data.rateConnectingStrategies,
             forward: true,
             sendData: sendData,
             saved: false,
@@ -18,18 +18,18 @@
             center: {},
             idealClientSelects: idealclientService.getClientSliders(),
             defaultStrategies: actionplanService.getDefaultConnectingStrategies(),
-            openVideoBox: openVideoBox,
+            // openVideoBox: openVideoBox,
             showResponsiveView: false,
             notifications: [],
             getStrategyName: getStrategyName
         });
 
-        $scope.activeTool = activeStep.data.rateConnectingStrategies;
+        // $scope.activeTool = activeStep.data.rateConnectingStrategies;
         $scope.disabledRate = true;
 
-        if ($scope.rateConnectingStrategies.length == 0) {
-            $scope.rateConnectingStrategies = actionplanService.getDefaultConnectingStrategies();
-        }
+        // if ($scope.rateConnectingStrategies.length == 0) {
+        //     $scope.rateConnectingStrategies = actionplanService.getDefaultConnectingStrategies();
+        // }
        getData();
 
         function getData() {
@@ -52,11 +52,11 @@
 
         function sendData(direction) {
             var hasViewedAllVideos = true;
-            $scope.rateConnectingStrategies.forEach(function(strategy){
-                if (strategy.rating === 0){
-                    hasViewedAllVideos = false;
-                }
-            });
+            // $scope.rateConnectingStrategies.forEach(function(strategy){
+            //     if (strategy.rating === 0){
+            //         hasViewedAllVideos = false;
+            //     }
+            // });
             if (!hasViewedAllVideos && direction == 'forward') {
                 addNotification($scope.notifications, {name: 'Valid Video', type: 'error', message:'You must watch all videos and rate each Connecting Strategy before you can go to the next step.', show: true});
 
@@ -119,32 +119,32 @@
             });
         }
 
-        function openVideoBox(strategy) {
-                strategy.video = actionplanService.getDefaultConnectingStrategies()[strategy.id - 1].video;
-
-
-                var modalInstance = $uibModal.open({
-                    component: 'strategyVideoBox',
-                    size: 'lg',
-                    resolve: {
-                        strategy: function () {
-                            return strategy;
-                        }
-                    }
-                });
-
-            modalInstance.result.then(function (value) {
-                strategy.rating = value.strategy.rating;
-                strategy.reason = value.strategy.reason;
-                if (value.action == 'saveAndNext') {
-                    openVideoBox($scope.rateConnectingStrategies[(value.strategy.id) % 10]);
-                } else if (value.action == 'saveAndPrev') {
-                    openVideoBox($scope.rateConnectingStrategies[(value.strategy.id + 10 - 2) % 10]);
-                }
-            }, function () {
-
-            });
-        }
+        // function openVideoBox(strategy) {
+        //         strategy.video = actionplanService.getDefaultConnectingStrategies()[strategy.id - 1].video;
+        //
+        //
+        //         var modalInstance = $uibModal.open({
+        //             component: 'strategyVideoBox',
+        //             size: 'lg',
+        //             resolve: {
+        //                 strategy: function () {
+        //                     return strategy;
+        //                 }
+        //             }
+        //         });
+        //
+        //     modalInstance.result.then(function (value) {
+        //         strategy.rating = value.strategy.rating;
+        //         strategy.reason = value.strategy.reason;
+        //         if (value.action == 'saveAndNext') {
+        //             openVideoBox($scope.rateConnectingStrategies[(value.strategy.id) % 10]);
+        //         } else if (value.action == 'saveAndPrev') {
+        //             openVideoBox($scope.rateConnectingStrategies[(value.strategy.id + 10 - 2) % 10]);
+        //         }
+        //     }, function () {
+        //
+        //     });
+        // }
         $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             if ($scope.saved != true) {
                 sendData();

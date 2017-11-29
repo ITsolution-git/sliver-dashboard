@@ -14,7 +14,8 @@
         $scope.data = $scope.defaultStrategies[$scope.strategy_id];
 
         $scope.disabledRate = true;
-        $scope.docUrl = $scope.data.trainig.books;
+
+        $scope.docUrl = $scope.data.trainig.documents;
 
         $scope.videoUrl = $scope.data.trainig.videos;
 

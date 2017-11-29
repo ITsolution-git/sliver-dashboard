@@ -559,7 +559,7 @@
                         'http://content.jwplatform.com/videos/UwPJgBZn-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/EVbdckoz-LQ8oa9pv.mp4'
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=1O_oz0T34o6Br3D_X24bpT0J486S_OiQf',
                         'https://drive.google.com/open?id=1-VYsZNhS2KjWvGR2qLaTQVdFaZyRyd38',
                         'https://drive.google.com/open?id=1s-6rpA3ysDIXsr0TrS_Rg68nFeg6kVD0',
@@ -589,7 +589,7 @@
                         'http://content.jwplatform.com/videos/wwaTndJ5-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/VwkPnU6Z-LQ8oa9pv.mp4'
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=1h8dECHbhTwZtkDzuCK-ad4IDp0OU0r_G',
                         'https://drive.google.com/open?id=10fiF4_Bb_JAoVrDATuBfwKwxuqd5YeYL',
                         'https://drive.google.com/open?id=1Izrp8CkewgJQ2MPm-MRQrQBuctxLoEWt',
@@ -615,7 +615,7 @@
                         'http://content.jwplatform.com/videos/BA5F03yh-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/OB5VMxdA-LQ8oa9pv.mp4'
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=1IgMA7NK0onMTVidtA4OHurSKF2dgTY80',
                         'https://drive.google.com/open?id=1M9aZk31ZS5FUQw7h2jCsK_aV_ooPu8I8',
                         'https://drive.google.com/open?id=1zNlpTmvdCawh5w2N2xbPR2AgGOna2SpO',
@@ -639,8 +639,8 @@
                         '',
                         ''
                     ],
-                    books: [
-                        'first-book'
+                    documents: [
+                        ''
                     ]
                 }
             },
@@ -661,7 +661,7 @@
                         'http://content.jwplatform.com/videos/kd35KBbo-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/JMFjhN4U-LQ8oa9pv.mp4'
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=1mcp3dAjmIwUERfAmBPHA9igYp5tsAOeD',
                         'https://drive.google.com/open?id=1g0ZPu4fp6JQvlZGf1H6sK_Tv-6MtVI8L',
                         'https://drive.google.com/open?id=1ShNNv_UkDTGqz867UpWI04RngKtIR8MI',
@@ -694,7 +694,7 @@
                         'http://content.jwplatform.com/videos/xeMf9uOa-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/nig7CYBh-LQ8oa9pv.mp4'
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=18kLo7z9BkiRgL__JjlqtMzqMbQpnygwT',
                         'https://drive.google.com/open?id=1wSzDxxEaP1dCSR84wPh2X0paYTWyAumb',
                         'https://drive.google.com/open?id=1Zeb2Oc8mHmdrl6RRTHKyfPc9TUGCXrl8',
@@ -720,7 +720,7 @@
                         'http://content.jwplatform.com/videos/7D1anqtS-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/VB9sj48Z-GL1ajTKI.mp4'
                     ],
-                    books: [
+                    documents: [
                         'first-book'
                     ]
                 }
@@ -742,7 +742,7 @@
                         'http://content.jwplatform.com/videos/Iz6FytOt-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/REhbIkcM-LQ8oa9pv.mp4'
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=1L0l6SdfzVYCcmUove3Mx-M3T2zJkh1hk',
                         'https://drive.google.com/open?id=1khXnh_-xAkSvAwHWHBXKPC1u6rAKL0N6',
                         'https://drive.google.com/open?id=1CtAtf-SCOgKC38N5IWw_u-yFgvvoxB8H'
@@ -766,7 +766,7 @@
                         'http://content.jwplatform.com/videos/o8TOFXCS-LQ8oa9pv.mp4',
                         'http://content.jwplatform.com/videos/8LZ6H2V1-GL1ajTKI.mp4'
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=1h0xB-N8g5lWt4eL1QMCLDRYD1wR2Jrz8',
                         'https://drive.google.com/open?id=1dxDrbwmJQv2MZ4iDRjL5XBl_kVvuSKAJ',
                         'https://drive.google.com/open?id=1I_gVtxSGn_JH2bxj2sPX20OCWuNdE1iZ',
@@ -785,7 +785,7 @@
                         'http://content.jwplatform.com/videos/Iv7BB8zD-vTkf1oei.mp4'
 
                     ],
-                    books: [
+                    documents: [
                         'https://drive.google.com/open?id=17MGrIN8xU26SmU9OOn3nOTEkccqecNVa',
                         'https://drive.google.com/open?id=1VFaRTRZOBDKPi_JHk09k-LfyEmlhQ0YP'
                     ]

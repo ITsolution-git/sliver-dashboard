@@ -1,5 +1,5 @@
 <div class="slap-page rate-connect-strategy" scroll-top>
-    <div ng-if="activeTool" class="panel panel-default animated fadeIn">
+    <div class="panel panel-default animated fadeIn">
 
         <div class="panel-body slap-work-panel">
 
@@ -20,7 +20,7 @@
                     <svg ng-if="!showResponsiveView">
                         <line ng-attr-x1="{{center.x}}" ng-attr-y1="{{center.y}}" ng-attr-x2="{{pos.x}}"
                               ng-attr-y2="{{pos.y}}" ng-repeat="pos in positions" style="stroke:#50cfe3;stroke-width:2"
-                              ng-if="rateConnectingStrategies[$index].rating != 0"/>
+                              />
                     </svg>
                     <div id="empty-client" ng-if="!showResponsiveView">
                         <img src="/images/person-avatar.png"/>
@@ -29,7 +29,7 @@
                         </p>
                     </div>
                     <div ng-if="!showResponsiveView">
-                        <div class="strategy-box strategy-tool" ng-repeat="strategy in rateConnectingStrategies">
+                        <div class="strategy-box strategy-tool" ng-repeat="strategy in defaultStrategies">
                             <img src="/images/logo.jpg"/>
                             <div class="overlap">
                             </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div ng-if="showResponsiveView" class="row">
                         <div class="strategy-box resp-strategy-box col-xs-6 strategy-tool"
-                             ng-repeat="strategy in rateConnectingStrategies">
+                             ng-repeat="strategy in defaultStrategies">
                             <img src="/images/logo.jpg"/>
                             <div class="overlap">
                             </div>
@@ -71,16 +71,4 @@
 
         </div>
     </div>
-
-    <div  ng-if="!activeTool" class="panel panel-default animated fadeIn">
-
-        <div class="panel-body slap-work-panel">
-
-            <div class="row">
-                <h1 class="info-tool">You must build your SLAP in order!</h1>
-            </div>
-        </div>
-    </div>
-
-
 </div>

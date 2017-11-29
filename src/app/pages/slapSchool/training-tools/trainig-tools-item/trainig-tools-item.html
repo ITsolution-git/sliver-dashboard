@@ -44,12 +44,13 @@
                 </div>
                 <div class="container-document">
                     <div class="btn-row">
-                        <button class="document-btn" ng-repeat="item in docUrl">
+                        <button ng-if="item" class="document-btn" ng-repeat="item in docUrl">
                             <span class="btn-text">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                                 Document {{$index + 1}}
                             </span>
-                            <a href="{{item}}" target="_blank"><i class="fa fa-download btn-dow" aria-hidden="true"></i></a>
+                            <a  href="{{item}}" target="_blank"><i class="fa fa-download btn-dow"
+                                                                   aria-hidden="true"></i></a>
                         </button>
                     </div>
                 </div>
