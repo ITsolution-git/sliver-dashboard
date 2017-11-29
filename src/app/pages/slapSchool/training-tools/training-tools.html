@@ -24,7 +24,7 @@
                     </svg>
                     <div id="empty-client" ng-if="!showResponsiveView">
                         <img src="/images/person-avatar.png"/>
-                        <p class="text-center name-client-summary">
+                        <p ng-if="clientName.length != 0" class="text-center name-client-summary">
                             {{clientName}}
                         </p>
                     </div>
