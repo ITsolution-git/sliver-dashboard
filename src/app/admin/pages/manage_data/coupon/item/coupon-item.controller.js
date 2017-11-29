@@ -27,7 +27,7 @@
             $scope.coupon.code = couponService.generateCoupon();
         };
 
-        productsService.getActivePlans().then(function(response) {
+        productsService.getALLActivePlans().then(function(response) {
             $scope.plans = response.data;
         });
 

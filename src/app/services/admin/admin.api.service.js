@@ -31,7 +31,7 @@
                             break;
 
                         default:
-                            toaster.pop({type: 'error', body: response.statusText || 'Server error'});
+                            toaster.pop({ type: 'error', body: (response.data && response.data.message) || response.statusText || 'Server error'});
                     }
                     if (response.status === 401) {
                         $rootScope.$broadcast('authUnauthorized');

@@ -74,7 +74,9 @@
         self.getActivePlans = function() {
             return adminApiService.rest.all('plans').getList();
         };
-
+        self.getALLActivePlans = function () {
+            return adminApiService.rest.all('allplans').getList();
+        };
         self.all = function() {
             return apiService.rest.all('products');
         };

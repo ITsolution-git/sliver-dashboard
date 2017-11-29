@@ -47,8 +47,8 @@
             return coupon.remove();
         }
 
-        this.validCoupon = function(code,planId) {
-            return apiService.rest.all('coupon').one(code).one(planId).get();
+        this.validCoupon = function(code,planId,buildId) {
+            return apiService.rest.all('coupon').one(code).one(planId).one(buildId).get();
         }
     }
 }());

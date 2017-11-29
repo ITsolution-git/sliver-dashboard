@@ -17,7 +17,7 @@
         vm.cellPhone = '';
         vm.isRenew = false;
         vm.buttonDisabled = false;
-
+        productStorage.resetCoupon();
         vm.plan = productStorage.getPlan();
         vm.costProduct = vm.plan.costProduct;
         vm.build = productStorage.getBuild();
@@ -115,7 +115,7 @@
                 return;
             }
 
-            couponService.validCoupon(vm.user.code,vm.plan._id)
+            couponService.validCoupon(vm.user.code, vm.plan._id, vm.build ? vm.build._id :null)
                 .then(function(response) {
                     productStorage.setCoupon(response.data);
                     vm.discontName = response.data.name + " Discount" ;
