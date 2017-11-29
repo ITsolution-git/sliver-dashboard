@@ -81,7 +81,8 @@
 
   & .video-row {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     margin-bottom: 10px;
     align-items: flex-end;
 
@@ -102,14 +103,16 @@
   flex-direction: column;
   & .btn-row {
     display: flex;
-    flex-grow: 1;
-    //flex-basis: 50%;
+    //flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    //flex-basis: 32%;
     margin-bottom: 15px;
 
-    & :nth-child(2){
-      margin-left: 5px;
-      margin-right: 5px;
-    }
+    //& :nth-child(2){
+    //  margin-left: 5px;
+    //  margin-right: 5px;
+    //}
 
   }
 
@@ -118,13 +121,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 1;
-  //flex-basis: 32%;
+  //flex-grow: 1;
+  flex-basis: 32.4%;
   background: inherit;
   box-shadow: none;
   border: 2px solid #c2ccd1;
   padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 10px;
   color: #6e6e6e;
+
+  & a {
+    color: #6e6e6e;
+  }
 
   &:hover {
     cursor: default;
@@ -135,7 +144,10 @@
   }
 
   & .btn-text {
-    width: 170px;
+    width: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     color: #6e6e6e;
     & i {
       margin-right: 10px;
@@ -154,7 +166,27 @@
 }
 
 .vid-tol {
-  flex-basis: 32%;
-  flex-grow: 1;
+  flex-basis: 32.7%;
+  //margin-right: 10px;
+
 }
 
+.rate-none:hover {
+
+  cursor: default !important;
+}
+
+.rate-none:focus {
+  outline: none !important;
+}
+
+.plus-def {
+
+  &:hover {
+    cursor: default;
+  }
+  & i:hover{
+    cursor: default;
+    opacity: 1;
+  }
+}
