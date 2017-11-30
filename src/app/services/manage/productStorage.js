@@ -163,24 +163,30 @@
             
             if (_coupon.typeCoupon) {
                 _build.amountFirstPayment = _build.amountFirstPayment - (_build.amountFirstPayment * _coupon.amount) / 100;
-                return _build.amountFirstPayment;
+                return _build.amountFirstPayment = _build.amountFirstPayment > 0? _build.amountFirstPayment:0;
             }
-            return _build.amountFirstPayment = _build.amountFirstPayment - _coupon.amount;
+             _build.amountFirstPayment = _build.amountFirstPayment - _coupon.amount;
+            return _build.amountFirstPayment = _build.amountFirstPayment > 0 ? _build.amountFirstPayment : 0;
         }
 
         this._calculateCouponForBuild = function(){
             //this._calculateCouponForBuildToday();
             if (_coupon.typeCoupon){
-                return _build.costProduct = _build.costProduct - (_build.costProduct * _coupon.amount) / 100;
+                 _build.costProduct = _build.costProduct - (_build.costProduct * _coupon.amount) / 100;
+                return _build.costProduct = _build.costProduct > 0 ? _build.costProduct: 0;
+
             }
-            return _build.costProduct = _build.costProduct - _coupon.amount;
+            _build.costProduct = _build.costProduct - _coupon.amount;
+            return _build.costProduct = _build.costProduct > 0 ? _build.costProduct : 0;
         }
 
         this._calculateCouponForPlan = function () {
             if (_coupon.typeCoupon) {
-                return _plan.costProduct = _plan.costProduct - (_plan.costProduct * _coupon.amount) / 100;
+                 _plan.costProduct = _plan.costProduct - (_plan.costProduct * _coupon.amount) / 100;
+                return _plan.costProduct = _plan.costProduct > 0 ? _plan.costProduct: 0;
             }
-            return _plan.costProduct = _plan.costProduct - _coupon.amount;
+            _plan.costProduct = _plan.costProduct - _coupon.amount;
+            return _plan.costProduct = _plan.costProduct > 0 ? _plan.costProduct : 0;
         }
 
 
