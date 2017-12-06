@@ -6,8 +6,14 @@
         .controller('AdminPartnerReportsItemController', AdminPartnerReportsItemController);
 
     /* @ngInject */
-    function AdminPartnerReportsItemController($scope, $state, partnerReportService, pageService, allPartners, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService) {
+    function AdminPartnerReportsItemController($scope, $state, partnerReportService, pageService, allPartners, adminUserService, NgTableParams, $mdToast, $q, Restangular, $mdDialog, $timeout, $rootScope, commonDialogService, $stateParams, toaster, reportService, actionplanService, $window) {
+        
         angular.extend($scope,  {
+            gridData: {
+                gridOptions: {data:[]},
+                gridActions: {}
+            },            
+            dataReady: false,
             report: {},
             reportID: $stateParams.report_id,
             users: allPartners,
@@ -15,26 +21,50 @@
             startDate: '',
             endDate: '',
             buildReport: buildReport,
+            selectedYear: (new Date()).getFullYear(),
+            getYears: getYears,
+            selectedMonth: (new Date()).getMonth() + 1,
+            getMonths: getMonths
         });
 
-
         pageService
-            .reset()
+            .reset() 
             .setShowBC(true)
             .addCrumb({name: 'Partner Reports', path: 'reports.partner.item'})
             .setPageTitle('Partner Reports');
 
 
         $scope.printSlap = function () {
-            window.print();
+            $window.print();
+            // $timeout(function() {
+            //     $window.print();
+            // })
+    //         var contentToPrint = $('#partner-report').html();
+    //         var windowPopup = window.open('', '_blank', 'width=500,height=500');
+    //         windowPopup.document.open();
+    //         windowPopup.document.write('<html><head><link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    // rel="stylesheet"><link rel="stylesheet" type="text/css" href="/../css/vendor.css" /><link rel="stylesheet" type="text/css" href="/../css/custom/custom.css" /><link rel="stylesheet" type="text/css" href="/../css/style.css" /><link rel="stylesheet" type="text/css" href="/../css/materializestyle.css" /><link rel="stylesheet" type="text/css" href="/../css/materialize.css" /><script src="./vendor.js"></script><script type="text/javascript" src="/js/plugins/jquery-1.11.2.min.js"></script><script type="text/javascript" src="./materialize.js"></script><script type="text/javascript" src="./plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script></head><body onload="window.print()">' + contentToPrint + '</body></html>');
+    //         windowPopup.document.close();            
         };
 
         function buildReport() {
             $scope.disableButton = true;
-            if ($scope.partner && $scope.startDate && $scope.endDate){
-                return partnerReportService.post({partnerId: $scope.partner, from: $scope.startDate, to: $scope.endDate})
+            $scope.dataReady = false;
+            var startDate = new Date($scope.selectedYear, $scope.selectedMonth, 1)
+            var endDate = new Date($scope.selectedYear, $scope.selectedMonth + 1, 0)
+            if ($scope.partner && startDate && endDate){
+                return partnerReportService.post({partnerId: $scope.partner, from: startDate, to: endDate})
                 .then(function (resolve) {
                     $scope.report = resolve.data;
+                    $scope.gridData = {
+                        gridOptions: {
+                            data: $scope.report.slapsters,
+                            urlSync: false, 
+                        },
+                        gridActions: {},
+                    };
+                    if ($scope.report.slapsters)
+                        $scope.dataReady = true;
                     if($scope.report != "No reports for this date range."){
                         $scope.visibleReport = true;
                         $scope.visibleMess = false;
@@ -48,6 +78,23 @@
             } else {
                 $scope.disableButton = false; 
             }
+        }
+
+        function getYears() {
+            var years = [];
+            for (var i = 2000; i < (new Date()).getFullYear() + 1; i++) {
+                years.push(i);
+            }
+            return years;
+        }
+
+        function getMonths() {
+            var months = [];
+            var limit = ($scope.selectedYear === (new Date()).getFullYear()) ? (new Date()).getMonth() + 1 : 12;
+            for (var i = 1; i <= limit; i++) {
+                months.push(i);
+            }
+            return months;
         }
         //
     //     $timeout(function(){

@@ -201,7 +201,7 @@
 
         <section layout="row" layout-align="end center" flex="100" >
 
-            <md-button ng-click="runReportBuilder()" class="md-primary" ng-disabled="form.$invalid">
+            <md-button ng-click="runReportBuilder()" class="md-primary">
                 Run
             </md-button>
             <md-button ng-click="createOrSave($event)" class="md-primary" ng-disabled="form.$invalid">
@@ -216,53 +216,110 @@
 </md-card>
 </div>
 
-<md-card ng-if="res.users.length" flex="100" class="p-es-30 m-w-es-40">
-<section ng-if="!report.filter.slapStatus">         
-    <div class="pull-right">
-        <button class="print" ng-click="printSlap()">
-            <i class="fa fa-print" aria-hidden="true"></i>
-            Print
-        </button>
-    </div>
-    <table class="table school-body">
-        <tr>
-        <th scope="col" class="grow-10">Business Name</th>
-        <th scope="col" class="grow-10">First Name</th>
-        <th scope="col" class="grow-10">Last Name</th>
-        <th scope="col" class="grow-10">In build</th>
-        </tr>
-        <tr class="main-tr" ng-repeat="user in res.users">
-            <td>{{user.businessName}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.inBuild ? user.inBuild : 'Yes'}}</td>
-        </tr>
-    </table>
-</section>
-        <section  ng-if="report.filter.slapStatus">         
-            <div class="pull-right">
-                <button class="print" ng-click="printSlap()">
-                    <i class="fa fa-print" aria-hidden="true"></i>
-                    Print
-                </button>
-            </div>
-            <table class="table school-body">
-                <tr>
-                <th scope="col" class="grow-10">Business Name</th>
-                <th scope="col" class="grow-10">First Name</th>
-                <th scope="col" class="grow-10">Last Name</th>
-                <th scope="col" class="grow-10">Current Quater</th>
-                <th scope="col" class="grow-10">Annual Goal</th>
-                <th scope="col" class="grow-10">Quaterly Goal</th>
-                </tr>
-                <tr class="main-tr" ng-repeat="user in res.users">
-                    <td>{{user.businessName}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.lastName}}</td>
-                    <td>{{user.currentQuater}}</td> 
-                    <td>{{user.annualGoal | number: 2}}</td>
-                    <td>{{user.quaterlyGoal | number: 2}}</td>
-                </tr>
-            </table>
-        </section>
-        </md-card>
+<md-card ng-if="res.users.length || is_running" flex="100" class="p-es-30 m-w-es-40">
+    <section ng-if="!report.filter.slapStatus">         
+        <div class="pull-right">
+            <button class="print" ng-click="printSlap()">
+                <i class="fa fa-print" aria-hidden="true"></i>
+                Print
+            </button>
+        </div>
+        <div grid-data class='slap-grid' id="users-grid"
+         grid-options="gridData.gridOptions" grid-actions="gridData.gridActions" ng-if="dataReady">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th sortable="businessName" class="sortable">
+                            <span>Business Name</span>
+                        </th>
+                        <th sortable="name" class="sortable">
+                            <span>First Name</span>
+                        </th>
+                        <th sortable="lastName" class="sortable">
+                            <span>Last Name</span>
+                        </th>
+                        <th sortable="email" class="sortable">
+                            <span>Email</span>
+                        </th>
+                        <th sortable="inBuild" class="sortable">
+                            <span>In Build</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr grid-item>
+                        <td>
+                            {{item.businessName}}
+                        </td>
+                        <td> 
+                            {{item.name}}
+                        </td> 
+                        <td>
+                            {{item.lastName}}
+                        </td> 
+                        <td>
+                            {{item.email}}
+                        </td> 
+                        <td>
+                            {{user.inBuild ? user.inBuild : 'Yes'}}
+                        </td> 
+                    </tr>
+                </tbody>
+            </table> 
+        </div>   
+    </section>
+    <section  ng-if="report.filter.slapStatus">         
+        <div class="pull-right">
+            <button class="print" ng-click="printSlap()">
+                <i class="fa fa-print" aria-hidden="true"></i>
+                Print
+            </button>
+        </div>
+        <div grid-data class='slap-grid' id="users-grid"
+         grid-options="gridData.gridOptions" grid-actions="gridData.gridActions" ng-if="dataReady">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th sortable="businessName" class="sortable">
+                            <span>Business Name</span>
+                        </th>
+                        <th sortable="name" class="sortable">
+                            <span>First Name</span>
+                        </th>
+                        <th sortable="lastName" class="sortable">
+                            <span>Last Name</span>
+                        </th>
+                        <th sortable="email" class="sortable">
+                            <span>Email</span>
+                        </th>
+                        <th sortable="currentQuater" class="sortable">
+                            <span>Current Quater</span>
+                        </th>                        
+                        <th sortable="annualGoal" class="sortable">
+                            <span>Annual Goal</span>
+                        </th>
+                        <th sortable="quaterlyGoal" class="sortable">
+                            <span>Quaterly Goal</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr grid-item>
+                        <td>{{user.businessName}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.currentQuater}}</td> 
+                        <td>{{user.annualGoal | number: 2}}</td>
+                        <td>{{user.quaterlyGoal | number: 2}}</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>           
+    </section>
+</md-card>
+
+<md-card ng-if="!res.users" flex="100" class="p-es-30 m-w-es-40">
+<md-card flex="100" class="p-es-50 m-w-es-40 ">
+    <h1>No matching slapsters </h1>
+</md-card>
+</md-card>

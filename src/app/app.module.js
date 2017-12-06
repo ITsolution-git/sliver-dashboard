@@ -17,6 +17,7 @@
                 'ngMaterial',
                 'ngAria',
                 'ngMessages',
+                'AngularPrint',
 
                 'ngTable',
                 
@@ -24,7 +25,6 @@
                 'restangular',
                 'satellizer',
                 'toaster',
-                'ui.router',
                 'ui.bootstrap',
                 'ui.mask',
                 'frapontillo.bootstrap-switch',
@@ -37,6 +37,7 @@
                 'angular.filter',
                 'dataGrid', 
                 'pagination',
+                'ui.router',
                 //Sub modules
                 'app.services',
                 'app.filters',
