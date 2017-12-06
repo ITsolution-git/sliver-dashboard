@@ -155,7 +155,7 @@
                     },
                     gridActions: {},
                 };                
-                if ($scope.res.users.length > 0)
+                if ($scope.res.users)
                     $scope.dataReady = true;
             })
         }
