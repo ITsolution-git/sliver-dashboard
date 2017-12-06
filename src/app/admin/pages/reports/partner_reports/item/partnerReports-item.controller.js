@@ -50,8 +50,8 @@
         function buildReport() {
             $scope.disableButton = true;
             $scope.dataReady = false;
-            var startDate = new Date($scope.selectedYear, $scope.selectedMonth, 1)
-            var endDate = new Date($scope.selectedYear, $scope.selectedMonth + 1, 0)
+            var startDate = new Date($scope.selectedYear, $scope.selectedMonth - 1, 1)
+            var endDate = new Date($scope.selectedYear, $scope.selectedMonth, 0)
             if ($scope.partner && startDate && endDate){
                 return partnerReportService.post({partnerId: $scope.partner, from: startDate, to: endDate})
                 .then(function (resolve) {
