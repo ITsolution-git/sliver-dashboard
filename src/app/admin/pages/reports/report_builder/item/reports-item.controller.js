@@ -21,7 +21,7 @@
             printSlap: printSlap,
 
             runReportBuilder: runReportBuilder,
-
+            is_running: false, 
             COUNTRIES: [{id: 0, name: 'International'},{id: 1, name: 'Canada'},{id: 2, name: 'United States'}, ],
 
             //Products
@@ -30,7 +30,7 @@
             searchProductText: null,
             //Coupons
             allCoupons: allCoupons,
-            selectedCoupon: null,
+             selectedCoupon: null,
             searchCouponText: null,
             ActivitiesAll: [{id: 11, name: 'Have Logged In', dateRange: false}, {id: 1, name: 'Have Not Logged In', dateRange: false},
             {id: 2, name: 'SE Calls Scheduled', dateRange: false}, {id: 3, name: 'SM Accountability Calls Scheduled', dateRange: false}, 
@@ -50,7 +50,11 @@
             pausingPaymentsStatus: [{id: 1, name: 'Paused'}, {id: 0, name: 'Active'}],
             declinedStatus: [{id: 0, name: 'Declined'}, {id: 1, name: 'Money'}],
             buildStatus: [{id: 0, name: 'Less then 30 days'}, {id: 1, name: 'More then 30 days'}],
-
+            gridData: {
+                gridOptions: {data:[]},
+                gridActions: {}
+            },  
+            dataReady: false,
         }); 
 
 
@@ -139,11 +143,20 @@
             });
         }
 
-        function runReportBuilder() { 
-            return update().then(function() {
-                return reportService.run($scope.reportID).then(function(res) {
-                    $scope.res = res.data;
-                })
+        function runReportBuilder() {
+            $scope.is_running = true;
+            $scope.dataReady = false;
+            return reportService.run($scope.report).then(function(res){
+                $scope.res = res.data;
+                $scope.gridData = {
+                    gridOptions: {
+                        data: $scope.res.users,
+                        urlSync: false, 
+                    },
+                    gridActions: {},
+                };                
+                if ($scope.res.users)
+                    $scope.dataReady = true;
             })
         }
 
