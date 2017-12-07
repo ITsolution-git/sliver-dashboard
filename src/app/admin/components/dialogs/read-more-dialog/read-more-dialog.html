@@ -159,9 +159,9 @@
                     </md-input-container>
                 </div>
                 <md-input-container flex="100" style="margin-top: 10px !important">
-                    <input
+                    <textarea
                             placeholder="How is the SLAPster doing? Did you learn anything new or of importance from your call?"
-                            ng-model="item.extra.notes" disabled>
+                            ng-model="item.extra.notes" disabled> </textarea>
                 </md-input-container>
 
                 <div class="item-mark">
@@ -218,9 +218,9 @@
 
                 <md-input-container flex="100" style="margin-top: 10px !important">
 
-                    <input required name="specificNotes"
+                    <textarea required name="specificNotes"
                            placeholder=" Do you have any specific notes for the SLAPexpert that they should follow up on on their next call?"
-                           ng-model="item.extra.specificNotes" disabled>
+                           ng-model="item.extra.specificNotes" disabled></textarea>
 
                     <div class="errors" ng-messages="form.specificNotes.$error">
                         <div ng-message="required">Required</div>
