@@ -440,6 +440,7 @@
 
 
         function filterActionItemsByMonth(monthID) {
+            console.log('here');
             return $scope.actionItems.filter(function(item){
                 return moment(item.dueDate).month() == monthID;
             });
