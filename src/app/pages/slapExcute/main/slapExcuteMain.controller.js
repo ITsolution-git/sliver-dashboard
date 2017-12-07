@@ -307,12 +307,16 @@
                     now = moment().startOf('day');
 
                 if ($scope.filter.status == 'overdue') {
-
+           
+                    if(item.progress == 100){
+                        isValid = false;
+                    }
                     if (!(moment(item.dueDate).isBetween(dateRange.start, moment.min(now, dateRange.end), 'day', '[)'))) {
                         isValid = false;
                     }
 
-                } else {
+                } 
+                else {
                     // if (dateRange.start.isBefore($scope.today)) {
                     if (!(moment(item.dueDate).isBetween( moment.max(now, dateRange.start), dateRange.end, 'day', '[]'))) {
                         isValid = false;
@@ -320,7 +324,9 @@
                 }
 
                 $scope.filter.periodStr = 'From ' + dateRange.start.format('YYYY-MM-DD') + '  To ' + dateRange.end.format('YYYY-MM-DD');
-                
+                if ($scope.filter.status == "done" && item.progress == 100) {
+                    isValid = true;
+                }
 
                 if(isValid)
                     results.push(item);
