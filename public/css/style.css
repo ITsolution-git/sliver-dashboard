@@ -20980,7 +20980,6 @@ md-select-menu {
 .plus i {
   font-style: normal;
   font-size: 25px !important;
-  line-height: 25px;
 }
 .plus :hover {
   cursor: pointer;
