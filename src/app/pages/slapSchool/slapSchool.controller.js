@@ -45,8 +45,7 @@
             var now = moment();
             var start_ = moment(start);
             start_.add(duration, 'minutes');
-
-            if ((now._d >= start_._d) && (now._d <= start_._d))
+            if (moment(now).isBetween(moment(start),moment(start_),'hours',[]))
                 window.open(url, '_blank');
             else {
                 toaster.pop({type: 'success', body: "This webinar is not live right now.  Please come back and join us when it starts!  It will be good!", timeout: 3000})
