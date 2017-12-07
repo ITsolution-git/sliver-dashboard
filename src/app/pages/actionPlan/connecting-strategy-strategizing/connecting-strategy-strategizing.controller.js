@@ -24,6 +24,8 @@
             autoExpand: autoExpand,
             init: init,
             revenues: [],
+            actionItemsByMonth: [],
+
 
             checkValidity: checkValidity,
             notifications: [],
@@ -57,7 +59,14 @@
             $scope.autoExpand('strategy-description');
             },500);
         }
-        
+
+
+        for (var i = 0; i < 12; i++) 
+        $scope.actionItemsByMonth[i] = [];
+        $scope.actionItems.forEach(function(item){
+            $scope.actionItemsByMonth[moment(item.dueDate).month()].push(item);
+        });
+       
 
         function getData() {
             // var urls = _.get($state.current, 'params.prev.sref').split('.');
@@ -188,7 +197,7 @@
             
             var force = false;
 
-            var monthActions = filterActionItemsByMonth(monthID);
+            var monthActions = $scope.actionItemsByMonth[monthID];
 
             if (monthActions.length > 0) {
                 var lastItem = monthActions[monthActions.length - 1];
@@ -203,7 +212,7 @@
                 var year = $scope.startDate.year;
                 if (monthID < $scope.startDate.month-1)
                     year++;
-                $scope.actionItems.push({
+                    $scope.actionItemsByMonth[monthID].push({
                     type: 'action', 
                     dueDate: moment({ year: year, month: monthID, day: 1 }).endOf('month').format('YYYY-MM-DD'),
                     progress: 0, 
@@ -219,6 +228,7 @@
         
 
         function checkActionCompleted(action, monthID, evt, currentIndex) {
+            console.log('checkActionCompleted')
             if (action.title.trim() != '') {
                 addNewActions(monthID, evt, currentIndex);
             } else {
@@ -226,6 +236,7 @@
         }
         
         function checkValidity(value, evt) {
+            console.log('checkValidity')
             if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
                 addNotification($scope.notifications, {name: 'Invalid Number', type: 'error', message:'Please provide valid Amount.', show: true});
@@ -252,7 +263,6 @@
             } else {
                 existing.show = true;
             }
-            
         }
 
         function removeNotificaton(notifications, name) {
@@ -291,10 +301,18 @@
             stepService.setFinishActiveStep();
             //loadDefaultActionItems
 
+            var res = [];
+            $scope.actionItemsByMonth.forEach(function (el) 
+                { 
+                    res = res.concat(el)
+                })
+            $scope.actionItems = res;
+
             //TODO delete only updated strategy quater and reload data for that quater.
             if($scope.qStgChanged[0] || $scope.qStgChanged[1] || $scope.qStgChanged[2] || $scope.qStgChanged[3]) {
                 
                 //Delete all actions iteas and reload again
+
                 $q.all($scope.actionItems.filter(function(item){
                     if (item.type=='action' && item.isPriorItem == 1){
                         return item.remove();
@@ -323,7 +341,6 @@
 
             return stepService.sendApiData(url, $scope.data)
                 .then(function () {
-
                     if (($scope.pageName != 'actionItems') && ($scope.pageName != 'commitToYourActionPlan')) { //Do not save when current page is not Action Items
                         $scope.saved = true;
                         stepService.setRequestApiFlag();
@@ -396,16 +413,16 @@
 
         function deleteAction(action, month, nthQut) {
             
-            if ($scope.actionItems.length > 1) {
+            if ($scope.actionItemsByMonth[month].length > 1) {
                 $scope.quaterActionsChanged[nthQut] = true;
                 if (!_.isUndefined(action._id)) {
                     action.remove().then(function(response){
-                        _.remove($scope.actionItems, function (n) {
+                        _.remove($scope.actionItemsByMonth[month], function (n) {
                             return n === action;
                         });
                     });
                 } else {
-                    _.remove($scope.actionItems, function (n) {
+                    _.remove($scope.actionItemsByMonth[month], function (n) {
                             return n === action;
                         });
                 }
@@ -421,17 +438,20 @@
             });
         }
 
+
         function filterActionItemsByMonth(monthID) {
             return $scope.actionItems.filter(function(item){
                 return moment(item.dueDate).month() == monthID;
             });
         }
 
-        $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+
+        var deregisterStateChangeStart =  $scope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             if ($scope.saved != true) {
                 sendData();
             }
-        });
+            deregisterStateChangeStart();
+        }); 
 
         $scope.checkChanges = function (nthQut){
             $scope.quaterActionsChanged[nthQut] = true;
