@@ -40,7 +40,9 @@
         this.setBuild = function(build) {
             _build = build;
         };
-
+        this.resetCoupon = function(){
+            _coupon = null;
+        }
         this.setRenewFrom = function(id) {
             _renewFrom = id;
         }
@@ -105,19 +107,89 @@
         };
 
         this.getAmountCoupon = function () {
-            if(_coupon.typeCoupon) {
+            if (!_coupon.plan){
+                if (_build){
+                    return this.getAmountCouponPlanAll();
+                }
+                return this.getAmountCouponPlan();
+                
+            }
+            if (_coupon.plan.typeProduct == 2 && _coupon.plan.buildType == 1) {
+                return this.getAmountCouponBuild();
+            }
+            return this.getAmountCouponPlan();
+            
+        }
+        this.getAmountCouponPlanAll = function(){
+            return this.getAmountCouponPlan() + this.getAmountCouponBuild();
+        }
+        this.getAmountCouponPlan = function(){
+            if (_coupon.typeCoupon) {
                 _plan.amountCoupon = (_plan.costProduct * _coupon.amount) / 100;
                 return _plan.amountCoupon;
             }
             return _plan.amountCoupon = _coupon.amount;
         }
-
-        this._calculateCoupon = function() {
-            if(_coupon.typeCoupon) {
-                return _plan.costProduct = _plan.costProduct - (_plan.costProduct * _coupon.amount) / 100;
+        this.getAmountCouponBuild = function(){
+            if (_coupon.typeCoupon) {
+                _build.amountCoupon = (_build.costProduct * _coupon.amount) / 100;
+                return _build.amountCoupon;
             }
-            return _plan.costProduct = _plan.costProduct - _coupon.amount;
+            return _build.amountCoupon = _coupon.amount;
         }
+        this._calculateCoupon = function() {
+            
+            // Coupon for ALL
+            if (!_coupon.plan) {
+                // User have Build PLAN
+                if (_build && _build.amountFirstPayment) {
+                    this._calculateCouponForBuild()
+                }
+                // User have PLAN + BUILD
+                return this._calculateCouponForPlan();
+                
+            }
+            // coupon only for BUILD
+            if (_coupon.plan.typeProduct == 2 && _coupon.plan.buildType == 1) {
+                return this._calculateCouponForBuild();
+            }
+
+
+            // coupin only for PLAN 
+            return this._calculateCouponForPlan();
+        }
+        
+        this._calculateCouponForBuildToday = function(){
+            
+            if (_coupon.typeCoupon) {
+                _build.amountFirstPayment = _build.amountFirstPayment - (_build.amountFirstPayment * _coupon.amount) / 100;
+                return _build.amountFirstPayment = _build.amountFirstPayment > 0? _build.amountFirstPayment:0;
+            }
+             _build.amountFirstPayment = _build.amountFirstPayment - _coupon.amount;
+            return _build.amountFirstPayment = _build.amountFirstPayment > 0 ? _build.amountFirstPayment : 0;
+        }
+
+        this._calculateCouponForBuild = function(){
+            //this._calculateCouponForBuildToday();
+            if (_coupon.typeCoupon){
+                 _build.costProduct = _build.costProduct - (_build.costProduct * _coupon.amount) / 100;
+                return _build.costProduct = _build.costProduct > 0 ? _build.costProduct: 0;
+
+            }
+            _build.costProduct = _build.costProduct - _coupon.amount;
+            return _build.costProduct = _build.costProduct > 0 ? _build.costProduct : 0;
+        }
+
+        this._calculateCouponForPlan = function () {
+            if (_coupon.typeCoupon) {
+                 _plan.costProduct = _plan.costProduct - (_plan.costProduct * _coupon.amount) / 100;
+                return _plan.costProduct = _plan.costProduct > 0 ? _plan.costProduct: 0;
+            }
+            _plan.costProduct = _plan.costProduct - _coupon.amount;
+            return _plan.costProduct = _plan.costProduct > 0 ? _plan.costProduct : 0;
+        }
+
+
 
     }
 }());
