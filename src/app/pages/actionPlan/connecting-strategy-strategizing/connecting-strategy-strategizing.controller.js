@@ -187,7 +187,6 @@
 
         function checkRevenue(revenue){
             if(revenue === ''){
-                console.log(revenue);
                 return revenue = 0;
             }
         }
@@ -228,7 +227,6 @@
         
 
         function checkActionCompleted(action, monthID, evt, currentIndex) {
-            console.log('checkActionCompleted')
             if (action.title.trim() != '') {
                 addNewActions(monthID, evt, currentIndex);
             } else {
@@ -236,7 +234,6 @@
         }
         
         function checkValidity(value, evt) {
-            console.log('checkValidity')
             if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
                 addNotification($scope.notifications, {name: 'Invalid Number', type: 'error', message:'Please provide valid Amount.', show: true});
@@ -440,7 +437,6 @@
 
 
         function filterActionItemsByMonth(monthID) {
-            console.log('here');
             return $scope.actionItems.filter(function(item){
                 return moment(item.dueDate).month() == monthID;
             });
