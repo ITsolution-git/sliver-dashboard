@@ -1,0 +1,29 @@
+<div class="video-container">
+
+    <!--<div ng-if ="$ctrl.showTitle" class="container-item-tool">-->
+        <!--<span class="title-item-tool">Title of video</span>-->
+    <!--</div>-->
+
+    <md-tooltip
+            md-direction="top">
+            {{$ctrl.video.title}}
+    </md-tooltip>
+
+    <div class="video-content video-tool sample-show-hide row sample-show-hide outline-0">
+        <div>
+            <video controls preload="none" poster="{{$ctrl.video.poster}}" class="col-sm-12 hidden-xs main-video video-index-{{$ctrl.idvideo}}">
+                <source ng-src="{{$ctrl.video.link }}" type="video/mp4">
+
+            </video>
+
+            <video controls preload="none" poster="{{$ctrl.video.poster}}" class="col-xs-12 visible-xs video-panel-small">
+                <source ng-src="{{$ctrl.video.link}}" type="video/mp4">
+            </video>
+        </div>
+
+
+
+        
+    </div>
+</div>
+

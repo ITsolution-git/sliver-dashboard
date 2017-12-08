@@ -5,7 +5,6 @@
         templateUrl: 'components/video-block/video-block.html',
         controller: videoController,
         bindings: {
-            visible: '=',
             video: '=',
             dis: '=',
             idvideo: '='
@@ -21,14 +20,12 @@
           }
 
         };
-        vm.playVideo = function (index) {
-            index  = index == undefined ? 0 : index;
+        vm.playVideo = function () {
             if(vm.video !== undefined) {
-                $('video.main-video')[index].play();
-                $('.z-in-'+index).hide();
+                $('video.main-video')[0].play();
+                $('.z-in').hide();
             }else {
-                console.log('sd',index);
-                $('video.main-video')[index].play();
+                $('video.main-video')[0].pause();
                 $('.z-in').hide();
 
             }
