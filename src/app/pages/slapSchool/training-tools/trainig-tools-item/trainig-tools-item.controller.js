@@ -16,8 +16,8 @@
         $scope.disabledRate = true;
 
         $scope.docUrl = $scope.data.trainig.documents;
-
         $scope.videoUrl = $scope.data.trainig.videos;
+
 
 
     }
