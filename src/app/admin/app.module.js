@@ -8,7 +8,8 @@
 
                 'ngAnimate',
                 'ngSanitize',
-
+                'AngularPrint',
+                
                 'ui.router',
                 'ui.select',
                 'ui.bootstrap',

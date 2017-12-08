@@ -28,9 +28,8 @@
             return report.remove();
         }
 
-        this.run = function(id) { 
-            return adminApiService.rest.all('report-run').one(id).get();
+        this.run = function(report) {
+            return adminApiService.rest.all('run-report').post(report);
         }
-
     }
 }());
