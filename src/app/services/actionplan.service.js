@@ -552,24 +552,80 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/cQ78Uar8-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/8eLSteNQ-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/cfJt2wPt-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/hIrUfWcP-GL1ajTKI.mp4',
-                        'http://content.jwplatform.com/videos/UwPJgBZn-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/EVbdckoz-LQ8oa9pv.mp4'
+                        {
+                            title: 'Silver Standards for the Best Possible Branding and Identity Quarter',
+                            link: 'http://content.jwplatform.com/videos/cQ78Uar8-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/EVbdckoz-480.jpg'
+                        },
+                        {
+                            title: 'MIstakes to Avoid during a Branding and Identity Quarter',
+                            link: 'http://content.jwplatform.com/videos/8eLSteNQ-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/UwPJgBZn-480.jpg'
+                        },
+                        {   title: 'You Did a Brand Audit. Now What',
+                            link: 'http://content.jwplatform.com/videos/cfJt2wPt-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/hIrUfWcP-320.jpg'
+                        },
+                        {
+                            title: 'Branding and Identity overview video',
+                            link: 'http://content.jwplatform.com/videos/hIrUfWcP-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/cfJt2wPt-480.jpg'
+                        },
+
+                        {
+                            title: 'Key Follow Up to do After a Branding and Identity Quarter',
+                            link: 'http://content.jwplatform.com/videos/UwPJgBZn-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/8eLSteNQ-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Branding and Identity Quarter',
+                            link: 'http://content.jwplatform.com/videos/EVbdckoz-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/cQ78Uar8-480.jpg'
+                        }
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=1O_oz0T34o6Br3D_X24bpT0J486S_OiQf',
-                        'https://drive.google.com/open?id=1-VYsZNhS2KjWvGR2qLaTQVdFaZyRyd38',
-                        'https://drive.google.com/open?id=1s-6rpA3ysDIXsr0TrS_Rg68nFeg6kVD0',
-                        'https://drive.google.com/open?id=19EKki_3XWMT4Uis2lp2WPEqGJnSdtyJp',
-                        'https://drive.google.com/open?id=1HR06WZV5uAPo0Gw4ytcJOArQUmyKsqUI',
-                        'https://drive.google.com/open?id=19qEGkVbb1v5dw-P7KShN8Wd682HKozk1',
-                        'https://drive.google.com/open?id=1YUOdk7Ax-w23ioBfL-vfHkfWA0kW00yz',
-                        'https://drive.google.com/open?id=1sjMgO153ezo3Ih2IEXS3IlZd0XTD1bK2',
-                        'https://drive.google.com/open?id=1tcHtJ0dsHGVVfXvM4XLkcd4eCF6qF4TU',
-                        'https://drive.google.com/open?id=1be3JqtvkTe6zsaUY1oFA6Sk_ciLakp2G'
+                        {
+                            title: 'Website Site Map Tutorial',
+                            link: 'https://drive.google.com/open?id=1O_oz0T34o6Br3D_X24bpT0J486S_OiQf'
+                        },
+                        {
+                            title: 'Website Site Map Template - Branding & Identity - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=1-VYsZNhS2KjWvGR2qLaTQVdFaZyRyd38'
+                        },
+                        {
+                            title: 'Standard Action Items for Branding and Identity Strategy',
+                            link: 'https://drive.google.com/open?id=1s-6rpA3ysDIXsr0TrS_Rg68nFeg6kVD0'
+                        },
+                        {
+                            title: 'Sample Survey to Send to Your Network',
+                            link: 'https://drive.google.com/open?id=19EKki_3XWMT4Uis2lp2WPEqGJnSdtyJp'
+                        },
+                        {
+                            title: 'Sample Survey to Send to your Internal Team',
+                            link: 'https://drive.google.com/open?id=1HR06WZV5uAPo0Gw4ytcJOArQUmyKsqUI'
+                        },
+                        {
+                            title: 'Sample Survey to send to Clients for Brand Audit',
+                            link: 'https://drive.google.com/open?id=19qEGkVbb1v5dw-P7KShN8Wd682HKozk1'
+                        },
+                        {
+                            title: 'Identity Piece Checklist Tutorial',
+                            link: 'https://drive.google.com/open?id=1YUOdk7Ax-w23ioBfL-vfHkfWA0kW00yz'
+                        },
+                        {
+                            title: 'How to Pick a Good Design Company Tutorial',
+                            link: 'https://drive.google.com/open?id=1sjMgO153ezo3Ih2IEXS3IlZd0XTD1bK2'
+
+                        },
+                        {
+                            title: 'Branding-Guidelines-Questionnaire-Tutorial',
+                            link: 'https://drive.google.com/open?id=1tcHtJ0dsHGVVfXvM4XLkcd4eCF6qF4TU'
+
+                        },
+                        {
+                            title: 'Branding Questionnaire for You and Your Team',
+                            link: 'https://drive.google.com/open?id=1be3JqtvkTe6zsaUY1oFA6Sk_ciLakp2G'
+                        }
                     ]
                 }
             },
@@ -581,20 +637,65 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/uCpea9S5-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/ZqxAzjKP-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/r4ScfBG2-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/qUCrOHLg-GL1ajTKI.mp4',
-                        'http://content.jwplatform.com/videos/pZ2e8qmp-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/wwaTndJ5-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/VwkPnU6Z-LQ8oa9pv.mp4'
+
+                        {
+                            title: 'Relationships are More Valuable than  Transactions',
+                            link: 'http://content.jwplatform.com/videos/uCpea9S5-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/uCpea9S5-480.jpg'
+                        },{
+                            title: 'Mistakes to Avoid During a Referral Quarter',
+                            link: 'http://content.jwplatform.com/videos/ZqxAzjKP-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/ZqxAzjKP-480.jpg'
+                        },
+                        {
+                            title: 'How To Be Pleasantly Persistent',
+                            link: 'http://content.jwplatform.com/videos/r4ScfBG2-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/r4ScfBG2-480.jpg'
+                        },
+                        {
+                            title: 'Referrals strategy overview video',
+                            link: 'http://content.jwplatform.com/videos/qUCrOHLg-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/qUCrOHLg-320.jpg'
+                        },
+                        {
+                            title: 'Silver Standards for the Best Possible Referral Quarter',
+                            link: 'http://content.jwplatform.com/videos/pZ2e8qmp-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/pZ2e8qmp-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Referrals Quarter',
+                            link: 'http://content.jwplatform.com/videos/wwaTndJ5-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/wwaTndJ5-480.jpg'
+
+                        },
+                        {
+                            title: 'The Number 1 Way to Get Referrals',
+                            link: 'http://content.jwplatform.com/videos/VwkPnU6Z-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/VwkPnU6Z-480.jpg'
+                        },
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=1h8dECHbhTwZtkDzuCK-ad4IDp0OU0r_G',
-                        'https://drive.google.com/open?id=10fiF4_Bb_JAoVrDATuBfwKwxuqd5YeYL',
-                        'https://drive.google.com/open?id=1Izrp8CkewgJQ2MPm-MRQrQBuctxLoEWt',
-                        'https://drive.google.com/open?id=1iKyKBf0Eeiz3pzlSNzquXOs3HgLbFCif',
-                        'https://drive.google.com/open?id=1UzZBg4dmhkNialja_8UT4fQUJZh0egQ5'
+                        {
+                            title: 'Standard Action Items for Referral Strategy',
+                            link: 'https://drive.google.com/open?id=1h8dECHbhTwZtkDzuCK-ad4IDp0OU0r_G'
+                        },
+                        {
+                            title: 'Sample Referral Emails',
+                            link: 'https://drive.google.com/open?id=10fiF4_Bb_JAoVrDATuBfwKwxuqd5YeYL'
+                        },
+                        {
+                            title: 'Referrals Strategy Tracking Spreadsheet',
+                            link: 'https://drive.google.com/open?id=1Izrp8CkewgJQ2MPm-MRQrQBuctxLoEWt'
+                        },
+                        {
+                            title: 'Referral Strategy Getting Started Guide',
+                            link: 'https://drive.google.com/open?id=1iKyKBf0Eeiz3pzlSNzquXOs3HgLbFCif'
+                        },
+                        {
+                            title: 'How to Draft your Referral Email',
+                            link: 'https://drive.google.com/open?id=1UzZBg4dmhkNialja_8UT4fQUJZh0egQ5'
+                        }
+
                     ]
                 }
             },
@@ -606,20 +707,65 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/w2bRrWe3-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/lSuGpIod-GL1ajTKI.mp4',
-                        'http://content.jwplatform.com/videos/RabDr2hv-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/iQcooHtu-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/4EgDjddo-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/Cc6R4FFP-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/BA5F03yh-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/OB5VMxdA-LQ8oa9pv.mp4'
+                        {
+                            title: 'Mistakes to Avoid During a Partnerships Quarter',
+                            link: 'http://content.jwplatform.com/videos/w2bRrWe3-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/w2bRrWe3-480.jpg'
+                        },
+                        {
+                            title: 'Partnerships Strategy overview video',
+                            link: 'http://content.jwplatform.com/videos/lSuGpIod-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/lSuGpIod-320.jpg'
+                        },
+                        {
+                            title: 'Silver Standards for the Best Partnerships Quarter',
+                            link: 'http://content.jwplatform.com/videos/RabDr2hv-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/RabDr2hv-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Partnerships Quarter',
+                            link: 'http://content.jwplatform.com/videos/iQcooHtu-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/iQcooHtu-480.jpg'
+                        },
+                        {
+                            title: 'Be Open to the Big Idea',
+                            link: 'http://content.jwplatform.com/videos/4EgDjddo-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/4EgDjddo-480.jpg'
+                        },
+                        {
+                            title: 'Go Straight to the Top',
+                            link: 'http://content.jwplatform.com/videos/Cc6R4FFP-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/Cc6R4FFP-480.jpg'
+
+                        },
+                        {
+                            title: 'Make Your Hit List',
+                            link: 'http://content.jwplatform.com/videos/BA5F03yh-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/BA5F03yh-480.jpg'
+                        },
+                        {
+                            title: 'Investigate, Don\'t Pitch',
+                            link: 'http://content.jwplatform.com/videos/OB5VMxdA-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/OB5VMxdA-480.jpg'
+                        }
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=1IgMA7NK0onMTVidtA4OHurSKF2dgTY80',
-                        'https://drive.google.com/open?id=1M9aZk31ZS5FUQw7h2jCsK_aV_ooPu8I8',
-                        'https://drive.google.com/open?id=1zNlpTmvdCawh5w2N2xbPR2AgGOna2SpO',
-                        'https://drive.google.com/open?id=1VGEtdd9eruzZEw3oU9Q0x8AvVuKbYyZl'
+                        {
+                            title: 'Partnerships Tracking Spreadsheet',
+                            link: 'https://drive.google.com/open?id=1IgMA7NK0onMTVidtA4OHurSKF2dgTY80'
+                        },
+                        {
+                            title: 'Partnerships Strategy Get Started Guide',
+                            link: 'https://drive.google.com/open?id=1M9aZk31ZS5FUQw7h2jCsK_aV_ooPu8I8'
+                        },
+                        {
+                            title: 'Guide to the First Meeting',
+                            link: 'https://drive.google.com/open?id=1zNlpTmvdCawh5w2N2xbPR2AgGOna2SpO'
+                        },
+                        {
+                            title: 'Campaign Examples for Partnership Strategy',
+                            link: 'https://drive.google.com/open?id=1VGEtdd9eruzZEw3oU9Q0x8AvVuKbYyZl'
+                        }
                     ]
                 }
             },
@@ -631,16 +777,17 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        '',
-                        '',
-                        '',
-                        '',
-                        '',
-                        '',
-                        ''
+                        {
+                            title: '',
+                            link: '',
+                            poster: ''
+                        }
                     ],
                     documents: [
-                        ''
+                        {
+                            title: '',
+                            link: ''
+                        }
                     ]
                 }
             },
@@ -652,28 +799,96 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/HxASNP8Q-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/vYDhS2Fg-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/9GReoI6J-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/BipnPBhG-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/oTJHl1RR-GL1ajTKI.mp4',
-                        'http://content.jwplatform.com/videos/ECPeo4L9-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/kd35KBbo-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/JMFjhN4U-LQ8oa9pv.mp4'
+                        {
+                            title: 'Should You Host Events',
+                            link: 'http://content.jwplatform.com/videos/HxASNP8Q-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/HxASNP8Q-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Events Quarter',
+                            link: 'http://content.jwplatform.com/videos/vYDhS2Fg-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/vYDhS2Fg-480.jpg'
+                        },
+                        {
+                            title: 'Can You Partner with Existing Events',
+                            link: 'http://content.jwplatform.com/videos/9GReoI6J-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/9GReoI6J-480.jpg'
+                        },
+                        {
+                            title: 'Silver Standards for the Best Possible Events Quarter',
+                            link: 'http://content.jwplatform.com/videos/BipnPBhG-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/BipnPBhG-480.jpg'
+                        },
+                        {
+                            title: 'Events Strategy overview video',
+                            link: 'http://content.jwplatform.com/videos/oTJHl1RR-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/oTJHl1RR-320.jpg'
+                        },
+                        {
+                            title: 'Mistakes to Avoid During an Events Quarter',
+                            link: 'http://content.jwplatform.com/videos/ECPeo4L9-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/ECPeo4L9-480.jpg'
+                        },
+                        {
+                            title: 'What about Public Speaking',
+                            link: 'http://content.jwplatform.com/videos/kd35KBbo-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/kd35KBbo-480.jpg'
+                        },
+                        {
+                            title: 'What Events Should You Go To',
+                            link: 'http://content.jwplatform.com/videos/JMFjhN4U-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/JMFjhN4U-480.jpg'
+                        }
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=1mcp3dAjmIwUERfAmBPHA9igYp5tsAOeD',
-                        'https://drive.google.com/open?id=1g0ZPu4fp6JQvlZGf1H6sK_Tv-6MtVI8L',
-                        'https://drive.google.com/open?id=1ShNNv_UkDTGqz867UpWI04RngKtIR8MI',
-                        'https://drive.google.com/open?id=19FL_4K4UNgCX4t4OBiJyBq9iIc_HXu72',
-                        'https://drive.google.com/open?id=1MNj3kIBg7TOoA_AoU0GrjBP9dSHUuyQQ',
-                        'https://drive.google.com/open?id=1vdrZdA6-sVInMFxUZNiPjOim-NOXgfZ_',
-                        'https://drive.google.com/open?id=1wU652FBU89N-jBdh9apGt9F0XEpPbo_1',
-                        'https://drive.google.com/open?id=17VlIHs4SKi2r81_BChaSfVaHqYgavFPI',
-                        'https://drive.google.com/open?id=19mKtfwQfvxvUlYQJT43cQzOIpMEyNrhi',
-                        'https://drive.google.com/open?id=1Jft8E0A64hnjOZeY9SC0S3VtcUC2Jwa1',
-                        'https://drive.google.com/open?id=1HXYLo4unDSgDSdvzDpfkFsgat08PqbUi',
-                        'https://drive.google.com/open?id=1vAGupiuqGD-_cEbCSBHwh8pe7OyvAM9y'
+                        {
+                            title: 'Venue Contract Template - Events - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=1mcp3dAjmIwUERfAmBPHA9igYp5tsAOeD'
+                        },
+                        {
+                            title: 'Standard Invitation',
+                            link: 'https://drive.google.com/open?id=1g0ZPu4fp6JQvlZGf1H6sK_Tv-6MtVI8L'
+                        },
+                        {
+                            title: 'Standard Action Items for Events Strategy',
+                            link: 'https://drive.google.com/open?id=1ShNNv_UkDTGqz867UpWI04RngKtIR8MI'
+                        },
+                        {
+                            title: 'List of Ways to Partner',
+                            link: 'https://drive.google.com/open?id=19FL_4K4UNgCX4t4OBiJyBq9iIc_HXu72'
+                        },
+                        {
+                            title: 'List of Event Ideas',
+                            link: 'https://drive.google.com/open?id=1MNj3kIBg7TOoA_AoU0GrjBP9dSHUuyQQ'
+                        },
+                        {
+                            title: 'Events Strategy Getting Started Guide',
+                            link: 'https://drive.google.com/open?id=1vdrZdA6-sVInMFxUZNiPjOim-NOXgfZ_'
+                        },
+                        {
+                            title: 'Event Strategy Overview - Events - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=1wU652FBU89N-jBdh9apGt9F0XEpPbo_1'
+                        },
+                        {
+                            title: 'Event Execution Checklist - Events - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=17VlIHs4SKi2r81_BChaSfVaHqYgavFPI'
+                        },
+                        {
+                            title: 'Event Budget Template - Events - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=19mKtfwQfvxvUlYQJT43cQzOIpMEyNrhi'
+                        },
+                        {
+                            title: 'Equipment Rental Contract Template - Events - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=1Jft8E0A64hnjOZeY9SC0S3VtcUC2Jwa1'
+                        },
+                        {
+                            title: 'Corporate Sponsorship Package Template - Events - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=1HXYLo4unDSgDSdvzDpfkFsgat08PqbUi'
+                        },
+                        {
+                            title: 'Catering Contract Template - Events - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=1vAGupiuqGD-_cEbCSBHwh8pe7OyvAM9y'
+                        }
                     ]
                 }
             },
@@ -685,22 +900,73 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/4MPLVmlx-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/4dtI7MO5-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/Re6Gboar-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/O0JhQYmz-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/teVU7NZb-GL1ajTKI.mp4',
-                        'http://content.jwplatform.com/videos/2SfZQezz-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/xeMf9uOa-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/nig7CYBh-LQ8oa9pv.mp4'
+
+                        {
+                            title: 'How To Become an Expert',
+                            link: 'http://content.jwplatform.com/videos/4MPLVmlx-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/4MPLVmlx-480.jpg'
+                        },
+                        {
+                            title: 'How To Get the Media\'s Attention',
+                            link: 'http://content.jwplatform.com/videos/4dtI7MO5-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/4dtI7MO5-480.jpg'
+                        },
+                        {
+                            title: 'Do You Need a Publicist',
+                            link: 'http://content.jwplatform.com/videos/Re6Gboar-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/Re6Gboar-480.jpg'
+                        },
+                        {
+                            title: 'How To Leverage Media Coverage',
+                            link: 'http://content.jwplatform.com/videos/O0JhQYmz-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/O0JhQYmz-480.jpg'
+                        },
+                        {
+                            title: 'Media Strategy overview video',
+                            link: 'http://content.jwplatform.com/videos/teVU7NZb-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/teVU7NZb-320.jpg'
+                        },
+                        {
+                            title: 'Mistakes to Avoid During a Media Quarter',
+                            link: 'http://content.jwplatform.com/videos/2SfZQezz-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/2SfZQezz-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Media Quarter',
+                            link: 'http://content.jwplatform.com/videos/xeMf9uOa-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/xeMf9uOa-480.jpg'
+                        },
+                        {
+                            title: 'Silver Standards for the Best Possible Media Quarter',
+                            link: 'http://content.jwplatform.com/videos/nig7CYBh-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/nig7CYBh-480.jpg'
+                        }
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=18kLo7z9BkiRgL__JjlqtMzqMbQpnygwT',
-                        'https://drive.google.com/open?id=1wSzDxxEaP1dCSR84wPh2X0paYTWyAumb',
-                        'https://drive.google.com/open?id=1Zeb2Oc8mHmdrl6RRTHKyfPc9TUGCXrl8',
-                        'https://drive.google.com/open?id=1UctoQOdqUfx0vIgQ9jC7Pva089GWld-p',
-                        'https://drive.google.com/open?id=14crrBjpdZs7TwjYdVCjCbws7qE9M_9XT',
-                        'https://drive.google.com/open?id=1ywxPP_ycqeNaxS246a1YZN12svH0f95m'
+                        {
+                            title: 'Standard Action Items for Media Strategy',
+                            link: 'https://drive.google.com/open?id=18kLo7z9BkiRgL__JjlqtMzqMbQpnygwT'
+                        },
+                        {
+                            title: 'Media Strategy Getting Started Guide',
+                            link: 'https://drive.google.com/open?id=1wSzDxxEaP1dCSR84wPh2X0paYTWyAumb'
+                        },
+                        {
+                            title: 'Media Contact Tracking Spreadsheet',
+                            link: 'https://drive.google.com/open?id=1Zeb2Oc8mHmdrl6RRTHKyfPc9TUGCXrl8'
+                        },
+                        {
+                            title: 'Media Advisory Template - Media - Silver Lining Ltd',
+                            link: 'https://drive.google.com/open?id=1UctoQOdqUfx0vIgQ9jC7Pva089GWld-p'
+                        },
+                        {
+                            title: 'Four Ways to Get Media Coverage',
+                            link: 'https://drive.google.com/open?id=14crrBjpdZs7TwjYdVCjCbws7qE9M_9XT'
+                        },
+                        {
+                            title: 'Campaign Examples for Media Strategy',
+                            link: 'https://drive.google.com/open?id=1ywxPP_ycqeNaxS246a1YZN12svH0f95m'
+                        }
                     ]
                 }
             },
@@ -712,16 +978,48 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/acWVTDXi-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/7qnvcRxp-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/mb5vDgM1-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/NJv7Kgsq-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/quccYCOE-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/7D1anqtS-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/VB9sj48Z-GL1ajTKI.mp4'
+
+                        {
+                            title: 'Incentive Based Sales overview video',
+                            link: 'http://content.jwplatform.com/videos/VB9sj48Z-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/VB9sj48Z-320.jpg'
+                        },
+                        {
+                            title: 'How to Create Urgency',
+                            link: 'http://content.jwplatform.com/videos/7D1anqtS-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/7D1anqtS-480.jpg'
+                        },
+                        {
+                            title: 'Mistakes to Avoid during an Incentive Based Sales Quarter',
+                            link: 'http://content.jwplatform.com/videos/quccYCOE-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/quccYCOE-480.jpg'
+                        },
+                        {
+                            title: 'How to Craft Your Offer',
+                            link: 'http://content.jwplatform.com/videos/NJv7Kgsq-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/NJv7Kgsq-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Incentive Based Sales Quarter',
+                            link: 'http://content.jwplatform.com/videos/mb5vDgM1-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/mb5vDgM1-480.jpg'
+                        },
+                        {
+                            title: 'Silver Standards for the Best Incentive Based Sales Quarter',
+                            link: 'http://content.jwplatform.com/videos/7qnvcRxp-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/7qnvcRxp-480.jpg'
+                        },
+                        {
+                            title: 'Who Should Receive Your Offer',
+                            link: 'http://content.jwplatform.com/videos/acWVTDXi-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/acWVTDXi-480.jpg'
+                        }
                     ],
                     documents: [
-                        'first-book'
+                        {
+                            title: '',
+                            link: ''
+                        }
                     ]
                 }
             },
@@ -733,19 +1031,60 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/UIKOt7fz-GL1ajTKI.mp4',
-                        'http://content.jwplatform.com/videos/UJ0ZYypc-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/UU5QZ9MN-GL1ajTKI.mp4',
-                        'http://content.jwplatform.com/videos/ozhAbLET-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/eP9RKlEu-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/NCXfXUS8-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/Iz6FytOt-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/REhbIkcM-LQ8oa9pv.mp4'
+                        {
+                            title: 'Online Connecting overview video',
+                            link: 'http://content.jwplatform.com/videos/UIKOt7fz-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/UIKOt7fz-320.jpg'
+                        },
+                        {
+                            title: 'It\'s a Conversation!',
+                            link: 'http://content.jwplatform.com/videos/UJ0ZYypc-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/UJ0ZYypc-480.jpg'
+                        },
+                        {
+                            title: 'Mistakes To Avoid During an Online Connecting Quarter',
+                            link: 'http://content.jwplatform.com/videos/UU5QZ9MN-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/UU5QZ9MN-480.jpg'
+                        },
+                        {
+                            title: 'Online is a Giant Networking Event',
+                            link: 'http://content.jwplatform.com/videos/ozhAbLET-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/ozhAbLET-480.jpg'
+                        },
+                        {
+                            title: 'Should You be Blogging',
+                            link: 'http://content.jwplatform.com/videos/eP9RKlEu-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/eP9RKlEu-480.jpg'
+                        },
+                        {
+                            title: 'Silver Standards for the Best Possible Online Connecting Quarter',
+                            link: 'http://content.jwplatform.com/videos/NCXfXUS8-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/NCXfXUS8-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Online Connecting Quarter',
+                            link: 'http://content.jwplatform.com/videos/Iz6FytOt-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/Iz6FytOt-480.jpg'
+                        },
+                        {
+                            title: 'What to do After the Online Connecting Quarter Ends',
+                            link: 'http://content.jwplatform.com/videos/REhbIkcM-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/REhbIkcM-480.jpg'
+                        }
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=1L0l6SdfzVYCcmUove3Mx-M3T2zJkh1hk',
-                        'https://drive.google.com/open?id=1khXnh_-xAkSvAwHWHBXKPC1u6rAKL0N6',
-                        'https://drive.google.com/open?id=1CtAtf-SCOgKC38N5IWw_u-yFgvvoxB8H'
+                        {
+                            title: 'Standard Action Items for Online Connecting',
+                            link: 'https://drive.google.com/open?id=1L0l6SdfzVYCcmUove3Mx-M3T2zJkh1hk'
+                        },
+                        {
+                            title: 'Online Connecting Strategy Getting Started Guide',
+                            link: 'https://drive.google.com/open?id=1khXnh_-xAkSvAwHWHBXKPC1u6rAKL0N6'
+                        },
+                        {
+                            title: 'Great Ways to Use Social Media',
+                            link: 'https://drive.google.com/open?id=1CtAtf-SCOgKC38N5IWw_u-yFgvvoxB8H'
+                        }
                     ]
                 }
             },
@@ -757,20 +1096,64 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/6DwX7lsR-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/JSikeYAg-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/2Q3N48qV-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/vn4Ibd1U-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/UVqpE3ss-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/fpCxljPt-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/o8TOFXCS-LQ8oa9pv.mp4',
-                        'http://content.jwplatform.com/videos/8LZ6H2V1-GL1ajTKI.mp4'
+                        {
+                            title: 'Silver Standards for the Best Possible Loyalty Quarter',
+                            link: 'http://content.jwplatform.com/videos/6DwX7lsR-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/6DwX7lsR-480.jpg'
+                        },
+                        {
+                            title: 'Mistakes to Avoid During a Loyalty Quarter',
+                            link: 'http://content.jwplatform.com/videos/JSikeYAg-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/JSikeYAg-480.jpg'
+                        },
+                        {
+                            title: 'What Can You Do for Your Clients',
+                            link: 'http://content.jwplatform.com/videos/2Q3N48qV-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/2Q3N48qV-480.jpg'
+                        },
+                        {
+                            title: 'Top 5 Tips for a Successful Loyalty Quarter',
+                            link: 'http://content.jwplatform.com/videos/vn4Ibd1U-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/vn4Ibd1U-480.jpg'
+                        },
+                        {
+                            title: 'Celebrate Special Occasions',
+                            link: 'http://content.jwplatform.com/videos/UVqpE3ss-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/UVqpE3ss-480.jpg'
+                        },
+                        {
+                            title: 'How to Build Loyalty All Year',
+                            link: 'http://content.jwplatform.com/videos/fpCxljPt-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/fpCxljPt-480.jpg'
+                        },
+                        {
+                            title: 'How Do You Know What Your Clients Want',
+                            link: 'http://content.jwplatform.com/videos/o8TOFXCS-LQ8oa9pv.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/o8TOFXCS-480.jpg'
+                        },
+                        {
+                            title: 'Loyalty overview video',
+                            link: 'http://content.jwplatform.com/videos/8LZ6H2V1-GL1ajTKI.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/8LZ6H2V1-320.jpg'
+                        }
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=1h0xB-N8g5lWt4eL1QMCLDRYD1wR2Jrz8',
-                        'https://drive.google.com/open?id=1dxDrbwmJQv2MZ4iDRjL5XBl_kVvuSKAJ',
-                        'https://drive.google.com/open?id=1I_gVtxSGn_JH2bxj2sPX20OCWuNdE1iZ',
-                        'https://drive.google.com/open?id=1J2hgjFczMIa8DzemexaC8XM9RzSsTpJo'
+                        {
+                            title: 'Standard Action Items for Loyalty Strategy',
+                            link: 'https://drive.google.com/open?id=1h0xB-N8g5lWt4eL1QMCLDRYD1wR2Jrz8'
+                        },
+                        {
+                            title: 'Loyalty Strategy Getting Started Guide',
+                            link: 'https://drive.google.com/open?id=1dxDrbwmJQv2MZ4iDRjL5XBl_kVvuSKAJ'
+                        },
+                        {
+                            title: 'Loyalty Idea Checklist',
+                            link: 'https://drive.google.com/open?id=1I_gVtxSGn_JH2bxj2sPX20OCWuNdE1iZ'
+                        },
+                        {
+                            title: 'Campaign Ideas for a Loyalty Strategy',
+                            link: 'https://drive.google.com/open?id=1J2hgjFczMIa8DzemexaC8XM9RzSsTpJo'
+                        }
                     ]
                 }
             },
@@ -782,12 +1165,21 @@
                 reason:'',
                 trainig: {
                     videos: [
-                        'http://content.jwplatform.com/videos/Iv7BB8zD-vTkf1oei.mp4'
-
+                        {
+                            title: 'Living Slap Day-to-day',
+                            link: 'http://content.jwplatform.com/videos/Iv7BB8zD-vTkf1oei.mp4',
+                            poster: 'http://content.jwplatform.com/thumbs/Iv7BB8zD-720.jpg'
+                        }
                     ],
                     documents: [
-                        'https://drive.google.com/open?id=17MGrIN8xU26SmU9OOn3nOTEkccqecNVa',
-                        'https://drive.google.com/open?id=1VFaRTRZOBDKPi_JHk09k-LfyEmlhQ0YP'
+                        {
+                            title: 'Reflective and Empathic Listening How to Communicate',
+                            link: 'https://drive.google.com/open?id=17MGrIN8xU26SmU9OOn3nOTEkccqecNVa'
+                        },
+                        {
+                            title: 'Internal Proposal Pricing Worksheet for XYZ Real Estate Staging company',
+                            link: 'https://drive.google.com/open?id=1VFaRTRZOBDKPi_JHk09k-LfyEmlhQ0YP'
+                        }
                     ]
                 }
             },

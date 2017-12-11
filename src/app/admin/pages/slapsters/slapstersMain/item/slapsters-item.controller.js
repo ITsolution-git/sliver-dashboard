@@ -522,10 +522,7 @@
                     // var role = _.find($scope.ROLES, {id: user.role});
                     // user.displayRole = role ? role.name : '';
                     var updateBy = _.find($scope.userData, {_id: act.updatedBy});
-                    act.updatedByUserName = updateBy ? roles[updateBy.role-1] : 'Admin';
-                    if (act.updatedByUserName == "SLAPster" || act.updatedByUserName == "TEST") {
-                      act.updatedByUserName = updateBy.name + " " + updateBy.lastName;
-                    }
+                    act.updatedByUserName = updateBy ? updateBy.name + " " + updateBy.lastName : 'Admin';
                     act.createdDate = moment(act.createdAt).format('MM/DD/YYYY');
                     act.createdTime = moment(act.createdAt).format('h:mm A');
                     return act;

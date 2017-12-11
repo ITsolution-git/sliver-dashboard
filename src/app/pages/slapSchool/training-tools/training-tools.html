@@ -1,8 +1,11 @@
 <div class="slap-page rate-connect-strategy" scroll-top>
+    <div class="container-button">
+    <section layout="row" layout-align="start center">
+        <md-button ui-sref="slapSchool" style="color:#0e7cb5;"><i class="fa fa-arrow-left" style="color:#0e7cb5;" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Back</md-button>
+    </section>
+    </div>
     <div class="panel panel-default animated fadeIn">
-
         <div class="panel-body slap-work-panel">
-
             <div class="row">
                 <div class="col-md-12">
                     <button-switch visible="showFormBlock"></button-switch>
@@ -35,12 +38,11 @@
                             </div>
                             <div class="content content-training">
                                             <span class="plus"
-                                                  ui-sref="slapSchool.trainingToolsItem({strategy_id: $index})"><i>+</i></span>
-                                <br/>
+                                                  ui-sref="slapSchool.trainingToolsItem({strategy_id: $index})"><i>+</i>
+                                            </span>
                                 <span class="title">
                                             {{getStrategyName(strategy.id)}}
-                                        </span>
-                                <br/>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -52,11 +54,9 @@
                             </div>
                             <div class="content content-training">
                                 <span class="plus"><i>+</i></span>
-                                <br/>
                                 <span class="title">
                                              {{getStrategyName(strategy.id)}}
-                                        </span>
-                                <br/>
+                                </span>
                             </div>
                         </div>
                     </div>

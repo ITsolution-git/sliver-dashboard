@@ -63,6 +63,15 @@
             </table>
             <md-card class="m-l-es-0 m-r-es-0 p-l-es-10 p-r-es-10 p-t-es-10" layout-align="start center" style="justify-content: center"><p class="text-center">New SLAPschool Events Are released every December, April and August.</p>
                 <p class="text-center">Stay tuned for new exciting Upcoming Events and check out the Past Events Archive to listen to a recording of one of our best SLAPschool Events!</p></md-card>
+                <md-card class="m-l-es-0 m-r-es-0 p-l-es-10 p-r-es-10 p-t-es-10 card" flex="100" layout="row" layout-align="space-around center">
+                    <label>It would be great if SLAPschool</label>
+                    <md-select name="suggestionType" ng-model="suggestionType" multiple flex="35">
+                        <md-option ng-repeat="type in types" value="{{type.text}}">{{type.text}}</md-option>
+                    </md-select>
+                    <textarea flex="30" ng-model="suggestionText" placeholder="Enter suggestion"></textarea>  
+                    <md-button ng-disabled="!suggestionType.length || !suggestionText.length" ng-click="sendSuggestion()">Apply</md-button>
+                </md-card>
         </div>
     </div>
 </div>
+
