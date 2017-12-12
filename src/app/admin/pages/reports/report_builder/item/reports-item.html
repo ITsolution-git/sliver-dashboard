@@ -9,29 +9,6 @@
                 <ng-message when="required">Name is required.</ng-message>
             </div>
         </md-input-container>
-
-
-
-        <md-input-container flex="25">
-            <label >Start Date</label>
-            <md-datepicker ng-model="report.filter.startDate" md-max-date="report.filter.endDate" name="startDate"></md-datepicker>
-            <div ng-messages="form.startDate.$error">
-                <div ng-message="valid">The entered value is not a date!</div>
-                <div ng-message="required">This date is required!</div>
-                <div ng-message="mindate">Date is too early!</div>
-                <div ng-message="maxdate">Date is too late!</div>
-            </div>
-        </md-input-container>
-        <md-input-container flex="25">
-            <label >End Date</label>
-            <md-datepicker ng-model="report.filter.endDate" md-min-date="report.filter.startDate" name="endDate"></md-datepicker>
-            <div ng-messages="form.endDate.$error">
-                <div ng-message="valid">The entered value is not a date!</div>
-                <div ng-message="required">This date is required!</div>
-                <div ng-message="mindate">Date is too early!</div>
-                <div ng-message="maxdate">Date is too late!</div>
-            </div>
-        </md-input-container>
         <section flex>
         </section>
 
@@ -216,7 +193,7 @@
 </md-card>
 </div>
 
-<md-card ng-if="res.users.length || is_running" flex="100" class="p-es-30 m-w-es-40">
+<md-card ng-if="res.users.length > 0 || is_running" flex="100" class="p-es-30 m-w-es-40">
     <section ng-if="!report.filter.slapStatus">         
         <div class="pull-right">
             <button class="print" ng-click="printSlap()">
@@ -261,7 +238,7 @@
                             {{item.email}}
                         </td> 
                         <td>
-                            {{user.inBuild ? user.inBuild : 'Yes'}}
+                            {{item.finishedSteps.length < 46 ? 'Yes' : 'No'}}
                         </td> 
                     </tr>
                 </tbody>
@@ -305,12 +282,13 @@
                 </thead>
                 <tbody>
                     <tr grid-item>
-                        <td>{{user.businessName}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.lastName}}</td>
-                        <td>{{user.currentQuater}}</td> 
-                        <td>{{user.annualGoal | number: 2}}</td>
-                        <td>{{user.quaterlyGoal | number: 2}}</td>
+                        <td>{{item.businessName}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.lastName}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.currentQuater}}</td> 
+                        <td>{{item.annualGoal | number: 2}}</td>
+                        <td>{{item.quaterlyGoal | number: 2}}</td>
                     </tr>
                 </tbody>
             </table> 
@@ -318,6 +296,6 @@
     </section>
 </md-card>
 
-<md-card ng-if="!res.users && is_running" flex="100" class="p-es-50 m-w-es-40 ">
+<md-card ng-if="(!res.users || res.users.length == 0) && is_running" flex="100" class="p-es-50 m-w-es-40 ">
     <h1>No matching slapsters </h1>
 </md-card>

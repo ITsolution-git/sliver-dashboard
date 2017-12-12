@@ -21423,6 +21423,9 @@ md-input-container lable {
 .reports-item-container md-select {
   margin: 0px;
 }
+#partner-report .slapster-detail {
+  width: 500px;
+}
 .partner-reports {
   padding-left: 50px !important;
 }
@@ -21490,6 +21493,10 @@ ul li {
     width: 60px;
     position: relative;
     visibility: visible;
+  }
+  md-card {
+    visibility: visible;
+    position: relative;
   }
   .breadcrumb {
     display: none;

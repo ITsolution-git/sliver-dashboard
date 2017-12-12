@@ -1,5 +1,5 @@
 
-<div layout="column" style="width: 100%;" class="reports-item-container report-search">
+<div layout="column" style="width: 100%;" class="reports-item-container report-search admin-partner-reports">
     <md-card flex="100" class="p-es-50 m-w-es-40">
         <div class="pull-right" layout="row" layout-align="end start">
             <button class="print" ng-click="printSlap()">
@@ -92,7 +92,7 @@
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th sortable="name" class="sortable">
+                            <th sortable="name" class="sortable slapster-detail">
                                 <span>SLAPsters name</span>
                             </th>
                             <th sortable="currentQuater.number" class="sortable">
@@ -109,11 +109,11 @@
                     <tbody>
                         <tr grid-item>
                             <td>
-                                <div> {{item.name}} {{item.lastName}} </div>
-                                <div>
+                                <div class="slapster-detail"> {{item.name}} {{item.lastName}} </div>
+                                <div class="slapster-detail">
                                 {{item.title}}
                                 </div>
-                                <div>
+                                <div class="slapster-detail">
                                     {{item.notes}}
                                 </div>
                             </td>
