@@ -6,13 +6,16 @@
         .controller('SlapSchoolController', SlapSchoolController);
 
     /* @ngInject */
-    function SlapSchoolController($scope, $state, data, toaster, pageService) {
+    function SlapSchoolController($scope, $state, data, toaster, pageService, userService) {
         pageService
         .setPageTitle('SLAPschool');
         
         var arr = [];
+        
         var webinars = data.webinars;
-
+        $scope.suggestionType = [];
+        $scope.types = [{id: 0, text: "Did a SLAPschool Event"}, {id: 1, text: "Added a Training or Tool"}, {id: 2, text: "Created an FAQ"}]
+        $scope.suggestionText = "";
         data.forEach(function(item){
             arr.push(item.name);
         });
@@ -45,13 +48,21 @@
             var now = moment();
             var start_ = moment(start);
             start_.add(duration, 'minutes');
-
-            if ((now._d >= start_._d) && (now._d <= start_._d))
+            if (moment(now).isBetween(moment(start),moment(start_),'hours',[]))
                 window.open(url, '_blank');
             else {
                 toaster.pop({type: 'success', body: "This webinar is not live right now.  Please come back and join us when it starts!  It will be good!", timeout: 3000})
             }
         }  
+
+        $scope.sendSuggestion = function() {
+            userService.sendSuggestion({suggestionType: $scope.suggestionType, suggestionText: $scope.suggestionText}).then(function() {
+                $scope.suggestionType = [];
+                $scope.suggestionText = "";
+                toaster.pop({type: 'success', body: "Success!", timeout: 3000})
+            })
+
+        }
 
     }
 

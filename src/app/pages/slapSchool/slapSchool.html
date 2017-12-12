@@ -13,11 +13,10 @@
                         <a target='_blank' href="https://slapcenter.zendesk.com/hc/en-us">Methodology FAQ</a>
                     </button>
                     <button class="btn-school">
-                        <a>Past Events Archive</a>
+                        <a target="_blank" href="https://www.youtube.com/channel/UCtvdC97a8Tfc0QI87VXEjOg">Past Events Archive</a>
                     </button>
                 </div>
             </div>
-
 
             <table class="table school-body">
                 <thead>
@@ -60,12 +59,19 @@
                         </button>
                     </td>
                 </tr>
-                </tbody>
+                </tbody>                
             </table>
-        </div>
-        <div class="wrap-btn">
-            <button class="btn btn-primary button-oval button-forward outline-0 btn-plus button-school"
-                    data-after="+"></button>
+            <md-card class="m-l-es-0 m-r-es-0 p-l-es-10 p-r-es-10 p-t-es-10" layout-align="start center" style="justify-content: center"><p class="text-center">New SLAPschool Events Are released every December, April and August.</p>
+                <p class="text-center">Stay tuned for new exciting Upcoming Events and check out the Past Events Archive to listen to a recording of one of our best SLAPschool Events!</p></md-card>
+                <md-card class="m-l-es-0 m-r-es-0 p-l-es-10 p-r-es-10 p-t-es-10 card" flex="100" layout="row" layout-align="space-around center">
+                    <label>It would be great if SLAPschool</label>
+                    <md-select name="suggestionType" ng-model="suggestionType" multiple flex="35">
+                        <md-option ng-repeat="type in types" value="{{type.text}}">{{type.text}}</md-option>
+                    </md-select>
+                    <textarea flex="30" ng-model="suggestionText" placeholder="Enter suggestion"></textarea>  
+                    <md-button ng-disabled="!suggestionType.length || !suggestionText.length" ng-click="sendSuggestion()">Apply</md-button>
+                </md-card>
         </div>
     </div>
 </div>
+

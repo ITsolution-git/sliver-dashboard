@@ -135,6 +135,10 @@
             //TODO ;;change password;
         }
 
+        me.sendSuggestion = function (messageObject) {
+            return apiService.rest.all('send-suggestion').post(messageObject)
+        }
+
         me.getCreditCard = function() {
             
             return apiService.rest.all('me').one('current-card').get().then(function(last4){

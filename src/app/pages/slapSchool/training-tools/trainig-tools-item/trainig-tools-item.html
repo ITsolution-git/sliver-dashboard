@@ -1,14 +1,11 @@
-<div class="container-button">
-    <button class="btn-item" ui-sref="slapSchool.trainingTools">
-        <a>
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-            Back
-        </a>
-    </button>
-</div>
-
 
 <div class="slap-page rate-connect-strategy" scroll-top>
+    <div class="container-button">
+        <section layout="row" layout-align="start center">
+            <md-button ui-sref="slapSchool.trainingTools" style="color:#0e7cb5;">
+                <i class="fa fa-arrow-left" style="color:#0e7cb5;" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Back</md-button>
+        </section>
+    </div>
     <div class="panel panel-default animated fadeIn">
         <div class="panel-body slap-tools-panel">
             <div class="strategy-tool-container" id="strategy-container" style="display: flex;
@@ -21,11 +18,7 @@
                         </div>
                         <div class="content content-training">
                             <span class="plus plus-def"><i>+</i></span>
-                            <span class="title ng-binding">{{data.name}}</span>
-                            <br/>
-                            <br/>
-                            <span class="desc">How Relevant?</span>
-                            <slap-rating rate="data.rating" disabled-rate="disabledRate"></slap-rating>
+                            <span class="title">{{data.name}}</span>
                         </div>
                     </div>
                 </div>
@@ -33,23 +26,34 @@
 
             <div class="content-tool">
                 <div class="title-container">
-                    <span class="title-tool">{{data.name}}</span>
+                    <span class="title-trainig">Training</span>
                 </div>
 
                 <div class="container-video">
                     <div class="video-row">
-                        <video-block ng-repeat="item in videoUrl" class="video-block-600 vid-tol" visible="showVideoBlock" video="item" dis="true" idvideo="$index"></video-block>
-                    </div>
+                        <video-block-tools ng-repeat="item in videoUrl" class="video-block-600 vid-tol"
+                                     video="item" idvideo="$index">
 
+                        </video-block-tools>
+                    </div>
+                </div>
+
+
+                <div class="title-container">
+                    <span class="title-tools">Tools</span>
                 </div>
                 <div class="container-document">
                     <div class="btn-row">
                         <button ng-if="item" class="document-btn" ng-repeat="item in docUrl">
+                            <md-tooltip
+                                    md-direction="top">
+                                {{item.title}}
+                            </md-tooltip>
                             <span class="btn-text">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                                 Document {{$index + 1}}
                             </span>
-                            <a  href="{{item}}" target="_blank"><i class="fa fa-download btn-dow"
+                            <a  href="{{item.link}}" target="_blank"><i class="fa fa-download btn-dow"
                                                                    aria-hidden="true"></i></a>
                         </button>
                     </div>
