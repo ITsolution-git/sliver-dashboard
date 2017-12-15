@@ -179,7 +179,8 @@
             // revenue breakdown should sum 100
             var totalBreakdown = 0;
             _.each($scope.data.revenues, function(revenue) {
-                totalBreakdown += +revenue.breakdown;
+                if (revenue.breakdown && +revenue.breakdown != 0)
+                    totalBreakdown += +revenue.breakdown;
             });
             if (totalBreakdown != 100) {
                 addNotification($scope.notifications, {name: 'Breakdown Invalid', type: 'error', message:'Total Breakdown should be exactly 100.', show: true});

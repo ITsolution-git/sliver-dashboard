@@ -258,7 +258,8 @@
                 // revenue breakdown should sum 100
                 var totalBreakdown = 0;
                 _.each(nonDeleted, function(revenue) {
-                    totalBreakdown += +revenue.breakdown;
+                    if (revenue.breakdown && +revenue.breakdown != 0)
+                        totalBreakdown += +revenue.breakdown;
                 });
                 if (totalBreakdown != 100) {
                     addNotification($scope.notifications, {name: 'Breakdown Invalid', type: 'error', message:'The total Revenue Breakdown of all of your Revenue Streams must equal exactly 100%.', show: true});
@@ -298,7 +299,8 @@
 
             var totalBreakdown = 0;
             _.each(nonDeleted, function(revenue) {
-                totalBreakdown += +revenue.breakdown;
+                if (revenue.breakdown && +revenue.breakdown != 0)
+                    totalBreakdown += +revenue.breakdown;
             });
             $scope.data.totalBreakdown = totalBreakdown.toFixed(2);
 
@@ -384,9 +386,9 @@
                 }
             }
 
+            doCalculation();
             stepService.updateActiveModel($scope);
             stepService.setFinishActiveStep();
-
             var nextprevStep = stepService.getNextAndPrevStep();
             var urls = activeStep.sref.split('.');
 

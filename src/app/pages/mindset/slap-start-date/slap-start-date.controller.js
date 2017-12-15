@@ -12,7 +12,7 @@
         $scope.changed = false;
 
         var date = new Date();
-        var currentMonth = ((date.getMonth() + 1) % 12).toString();
+        var currentMonth = ((date.getMonth() + 1) % 13).toString();
         var currentYear = date.getFullYear();
         var excuteItems = excuteItems;
         // $scope.years = [];
@@ -33,12 +33,12 @@
         });
 
         var beforeSave = moment({year: $scope.data.year, month: +$scope.data.month - 1, day:1});
-        if ($scope.data.year === null) {
+        if ($scope.data.year === null || $scope.data.year === 0) {
             $scope.data.year = currentYear
             // $scope.data.year = 2017;            
         }
 
-        if ($scope.data.month === null) {
+        if ($scope.data.month === null || $scope.data.month === "0") {
             $scope.data.month = currentMonth;
         }
         else var startMonth = $scope.data.month;
