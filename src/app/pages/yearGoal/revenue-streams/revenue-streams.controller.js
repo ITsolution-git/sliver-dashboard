@@ -167,7 +167,7 @@
         }
 
         function checkValidity(value, evt, currentIndex, revenueIndex) {
-            if (value != '' && !value.match(/^\d+(\.)*\d*$/)) {
+            if (value && value != '' && value.trim()[0] != '.' && !value.trim().match(/^\d+(\.)*\d*$/)) {
                 $(evt.target).addClass('invalid');
                 addNotification($scope.notifications, {name: 'Invalid Price', type: 'error', message:'You can only enter numbers less than 100 into this field.', show: true});
 
@@ -180,7 +180,7 @@
                 }
                 $scope.forward = true;
             }
-            return value.match(/^\d+(\.)*\d*$/);
+            return (value && value.match(/^\d+(\.)*\d*$/));
         }
 
         function isExpensesValid() {
@@ -259,7 +259,7 @@
                 var totalBreakdown = 0;
                 _.each(nonDeleted, function(revenue) {
                     if (revenue.breakdown && +revenue.breakdown != 0)
-                        totalBreakdown += +revenue.breakdown;
+                        totalBreakdown = Number((totalBreakdown + (+revenue.breakdown)).toFixed(1));
                 });
                 if (totalBreakdown != 100) {
                     addNotification($scope.notifications, {name: 'Breakdown Invalid', type: 'error', message:'The total Revenue Breakdown of all of your Revenue Streams must equal exactly 100%.', show: true});
