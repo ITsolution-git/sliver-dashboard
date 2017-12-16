@@ -4,7 +4,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <!--<h1>Create Products</h1>-->
-                    <form name="couponForm" novalidate>
+                    <form name="couponForm" class="coupon-form" novalidate>
                         <div class="col-xs-12">
                             <div class="text-right col-xs-12">
                                 <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
@@ -37,23 +37,24 @@
                                 <button type="button" class="btn btn-success" ng-click="generate()">Generate</button>
                             </div>
                         </div>
-
+                        <hr>
                         <div class="row">
+                            <h4> <input type="checkbox" ng-model="isForMonthlyPay" ng-init="isForMonthlyPay=true"> Monthly Program</h4>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Coupon Type</label><br>
                                     <select
-                                        name="typeCoupon" id="typeCoupon" ng-model="coupon.typeCoupon" class="form-control">
+                                        name="typeCoupon" id="typeCoupon" ng-model="coupon.typeCoupon" class="form-control" ng-disabled="!isForMonthlyPay">
                                         <option ng-value='1' >Percentage</option>
                                         <option ng-value='0'>Fixed Amount</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group" ng-class="{'has-error' : !couponForm.amount.$valid && couponForm.amount.$dirty || couponForm.$submitted}">
+                                <div class="form-group" ng-class="{'has-error' : isForMonthlyPay && (!couponForm.amount.$valid && couponForm.amount.$dirty || couponForm.$submitted)}">
                                     <label for="couponAmount">Amount *</label>
                                     <input type="text" class="form-control" id="couponAmount" name="amount"
-                                           ng-model="coupon.amount" placeholder="{{ coupon.switchType ? '%' : 'USD' }}" required>
+                                           ng-model="coupon.amount" placeholder="{{ coupon.switchType ? '%' : 'USD' }}" ng-disabled="!isForMonthlyPay" ng-required="isForMonthlyPay">
 
                                     <div class="help-block help-block-error" ng-show="couponForm.amount.$invalid && couponForm.amount.$dirty">
                                         <span ng-show="couponForm.amount.$error.required">Required</span>
@@ -66,7 +67,7 @@
 
                                     <select
                                         name="" id="applyOn" ng-model="coupon.plan" class="form-control"
-                                            ng-options="plan.productName for plan in plans track by plan._id">
+                                            ng-options="plan.productName for plan in plans track by plan._id" ng-disabled="!isForMonthlyPay">
                                         <option value="">All Plans</option>
                                     </select>
 
@@ -75,6 +76,45 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <div class="row">
+                            <h4><input type="checkbox" ng-model="isForSlapBuild"> SlapBuild</h4>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Coupon Type</label><br>
+                                    <select
+                                        name="typeCoupon" id="typeCoupon" ng-model="coupon.slapBuild.typeCoupon" class="form-control" ng-disabled="!isForSlapBuild">
+                                        <option ng-value='1' >Percentage</option>
+                                        <option ng-value='0'>Fixed Amount</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" ng-class="{'has-error' : isForSlapBuild && (!couponForm.amount.$valid && couponForm.amount.$dirty || couponForm.$submitted)}">
+                                    <label for="couponAmount">Amount *</label>
+                                    <input type="text" class="form-control" id="couponAmount" name="amount"
+                                           ng-model="coupon.slapBuild.amount" placeholder="{{ coupon.switchType ? '%' : 'USD' }}" ng-disabled="!isForSlapBuild" ng-required="isForSlapBuild">
+
+                                    <div class="help-block help-block-error" ng-show="couponForm.amount.$invalid && couponForm.amount.$dirty">
+                                        <span ng-show="couponForm.amount.$error.required">Required</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" ng-class="{'has-error' : errors['expertHours']}">
+                                    <label for="applyOn">Apply On*</label>
+
+                                    <select
+                                        name="" id="applyOn" ng-init="coupon.slapBuild.plan=builds[0]._id" ng-model="coupon.slapBuild.plan" class="form-control" ng-options="build.productName for build in builds track by build._id" ng-disabled="!isForSlapBuild"
+                                        >
+                                    </select>
+
+                                    <div class="help-block help-block-error" ng-show="errors['expertHours']"
+                                         ng-bind-html="errors['expertHours']"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>                        
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group" ng-class="{'has-error' : errors['redemption']}">
