@@ -55,6 +55,9 @@
                 gridActions: {}
             },  
             dataReady: false,
+            itemPerPage: 50,            
+            getItemPerPage: getItemPerPage,
+            reloadData: reloadData     
         }); 
 
 
@@ -164,6 +167,31 @@
             window.print();
         }
 
+        function getItemPerPage(value) {
+            $scope.itemPerPage = value;
+        }
+        function reloadData() {
+            $scope.dataloaded = false;
+            adminUserService.list()
+            .then(function (response) {
+                var slapsters = response.data.filter(function(user) {
+                    return user.role == 4;
+                });
+                slapsters = permissionService.filterSlapstersByPermission(slapsters);
+
+                var accounts = _.groupBy(slapsters, function(user) { return user.email; });
+                $scope.slpasters = [];
+                _.each(accounts, function(account){
+                    $scope.slpasters.push({
+                        current: account[0],  //TODO: select appropriate slapsters
+                        accounts: account
+                    });
+                });
+                
+                $scope.dataloaded = true;
+                buildGridData();
+            });
+        }
 
     }
 }());
