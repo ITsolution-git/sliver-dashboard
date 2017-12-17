@@ -240,7 +240,7 @@
                         progress: 0
                     });
                 _.each($scope.quaters, function(quater, QID){
-                    revenue.quaterSale[QID].targetUnit = +quater.units[revenue.name]; 
+                    revenue.quaterSale[QID].targetUnit += quater.units[revenue.name] ? quater.units[revenue.name] : 0; 
                     var i = $scope.defaultStrategies.length;
                     while (i--) {
                         if ($scope.defaultStrategies[i].id === quater.strategy.id) {
