@@ -41,6 +41,21 @@
                 return;
             }
 
+            if (!$scope.isForMonthlyPay && !$scope.isForSlapBuild) {
+                toaster.pop({type: 'error', body: 'Please select at least one payment plan.'});
+                return;                
+            }
+            if (!$scope.isForMonthlyPay) {
+                $scope.coupon.typeCoupon = null;
+                $scope.coupon.amount = null;
+                $scope.coupon.plan = null;
+            }
+            if (!$scope.isForSlapBuild) {
+                $scope.coupon.slapBuild.typeCoupon = null;
+                $scope.coupon.slapBuild.amount = null;
+                $scope.coupon.slapBuild.plan = null;                
+            }
+
             $scope.apply().then(function () {
                 if(!$scope.couponForm.$valid) {
                     toaster.pop({type: 'error', body: 'Please fill all fields required.'});

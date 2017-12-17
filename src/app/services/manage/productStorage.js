@@ -129,7 +129,7 @@
         }
 
         this.getAmountCouponPlan = function(){
-            if (!_coupon.plan || _coupon.plan._id == _plan._id) {
+            if ((_coupon.typeCoupon && !_coupon.plan) || (_coupon.plan && _coupon.plan._id == _plan._id)) {
                 if (_coupon.typeCoupon) {
                     _plan.amountCoupon = (_plan.costProduct * _coupon.amount) / 100;
                     return _plan.amountCoupon;
@@ -152,7 +152,7 @@
 
         this._calculateCoupon = function() {
             
-            if (!_coupon.plan || _coupon.plan._id == _plan._id) {
+            if ((_coupon.typeCoupon && !_coupon.plan) || (_coupon.plan && _coupon.plan._id == _plan._id)) {
                 this._calculateCouponForPlan();
                 
             }
