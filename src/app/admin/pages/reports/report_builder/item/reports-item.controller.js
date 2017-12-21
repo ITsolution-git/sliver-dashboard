@@ -89,6 +89,7 @@
                 $scope.report.filter.goalProgress = {};
                 $scope.report.filter.startDate = new Date();
                 $scope.report.filter.endDate = new Date();
+                $scope.report.filter.buildStatus = -1;
             } else {
                 reportService.get($scope.reportID).then(function (response) {
                     $scope.report = response.data;
