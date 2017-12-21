@@ -23,7 +23,7 @@
                 show: true,
                 format: 'raw',
                 getValue: function(row) {
-                    return row['typeCoupon'] == 1 ? '<p>Percentage</p>' : '<p>Fixed Amount</p>';
+                    return row['typeCoupon'] != null ? (row['typeCoupon'] == 1 ? '<p>Percentage</p>' : '<p>Fixed Amount</p>') : '-';
                 }
             }, {
                 field: "amount",
@@ -36,7 +36,31 @@
                 show: true,
                 format: 'raw',
                 getValue: function(row) {
-                    return row['plan'] ? row['plan'].productName : 'all';
+                    return row['typeCoupon'] != null ? (row['plan'] ? row['plan'].productName : 'all') : '-';
+                }
+            }, {
+                field: "slapBuild.typeCoupon",
+                title: "Type",
+                show: true,
+                format: 'raw',
+                getValue: function(row) {
+                    return row['slapBuild']['typeCoupon'] != null ? (row['slapBuild']['typeCoupon'] == 1  ? '<p>Percentage</p>' : '<p>Fixed Amount</p>' ): '-';
+                }
+            }, {
+                field: "slapBuild.amount",
+                title: "Applied on",
+                show: true,
+                format: 'raw',
+                getValue: function(row) {
+                    return row['slapBuild']['typeCoupon'] != null ? row['slapBuild']['amount'] : '-'
+                }
+            }, {
+                field: "slapBuild.plan",
+                title: "Applied on",
+                show: true,
+                format: 'raw',
+                getValue: function(row) {
+                    return row['slapBuild']['typeCoupon'] != null ? row['slapBuild']['plan'].productName : '-'
                 }
             }, {
                 field: "redemption",
@@ -82,7 +106,7 @@
         ];
 
         function getValue(row) {
-            return row[this.field];
+            return row[this.field] ? row[this.field] : '-';
         }
 
         $scope.list = new NgTableParams({},
