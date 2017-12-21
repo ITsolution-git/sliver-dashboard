@@ -228,6 +228,10 @@
 
             
 
+
+            $scope.revenues = $scope.revenues.filter(function(revenue) {
+                return (!revenue.deleted);
+            });
             _.each($scope.revenues, function(revenue, revenueID){
                 revenue.actualUnit = 0;
                 revenue.unit = 0;
@@ -240,7 +244,7 @@
                         progress: 0
                     });
                 _.each($scope.quaters, function(quater, QID){
-                    revenue.quaterSale[QID].targetUnit += quater.units[revenue.name] ? quater.units[revenue.name] : 0; 
+                    revenue.quaterSale[QID].targetUnit += quater.units[revenue.name] ? (+quater.units[revenue.name]) : 0; 
                     var i = $scope.defaultStrategies.length;
                     while (i--) {
                         if ($scope.defaultStrategies[i].id === quater.strategy.id) {
@@ -329,7 +333,8 @@
                 
             }).catch(function(err){
                 console.log(err);
-                toaster.pop({type: 'error', body: err.message});
+                $scope.user.couponId = null
+                toaster.pop({type: 'error', body: err.data.message});
             });
         }
 

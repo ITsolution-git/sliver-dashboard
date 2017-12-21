@@ -155,7 +155,7 @@
 
                 <md-input-container >
                     <label>SLAPBuild</label>
-                    <input type="text" disabled ng-value="user.finishedSteps.length == 53 ? 'YES' : 'NO'">
+                    <input type="text" disabled ng-value="user.finishedSteps.length < 47 ? 'YES' : 'NO'">
                     <div ng-messages="form.businessName.$error">
                         <!--<ng-message when="required">Business Name is required.</ng-message>-->
                     </div>

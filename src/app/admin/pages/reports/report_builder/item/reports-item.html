@@ -207,7 +207,7 @@
                 <div flex-gt-sm="100" flex-sm="100" layout="row" layout-align="start center">            
                     <!-- <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center"> -->
                         <md-input-container flex-offset-gt-xs="5" class="items-per-page">
-                            <md-select ng-init="paginationOptions.itemsPerPage = '20'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
+                            <md-select ng-init="paginationOptions.itemsPerPage=20" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
                                 
                                 <md-option value="5">5</md-option>
                                 <md-option value="10">10</md-option>
@@ -261,7 +261,7 @@
                             {{item.email}}
                         </td> 
                         <td>
-                            {{item.finishedSteps.length < 46 ? 'Yes' : 'No'}}
+                            {{item.finishedSteps.length < 47 ? 'Yes' : 'No'}}
                         </td> 
                     </tr>
                 </tbody>
@@ -277,6 +277,29 @@
         </div>
         <div grid-data class='slap-grid' id="users-grid"
          grid-options="gridData.gridOptions" grid-actions="gridData.gridActions" ng-if="dataReady">
+            <div layout-gt-sm="row" layout-sm="column" layout-align="center">
+                <div flex-gt-sm="100" flex-sm="100" layout="row" layout-align="start center">            
+                    <!-- <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center"> -->
+                        <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                            <md-select ng-init="paginationOptions.itemsPerPage=20" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()" aria-label="page-selector">
+                                
+                                <md-option value="5">5</md-option>
+                                <md-option value="10">10</md-option>
+                                <md-option value="20">20</md-option>
+                                <md-option value="50">50</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <grid-pagination max-size="5"
+                        boundary-links="true"
+                        class="pagination mdl-shadow--2dp" 
+                        ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                        total-items="paginationOptions.totalItems"
+                        ng-model="paginationOptions.currentPage"
+                        ng-change="reloadGrid()"
+                        items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                    <!-- </div> -->
+                </div>
+            </div>         
             <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table table-responsive table-hover">
                 <thead>
                     <tr>

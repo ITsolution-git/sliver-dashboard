@@ -140,14 +140,19 @@
         }
         
         this.getAmountCouponBuild = function(){
-            if (_coupon.slapBuild.plan) {
-                if (_coupon.slapBuild.typeCoupon) {
-                    _build.amountCoupon = (_build.costProduct * _coupon.slapBuild.amount) / 100;
-                    return _build.amountCoupon;
+            if (_build) {
+                if (_coupon.slapBuild.plan) {
+                    if (_coupon.slapBuild.typeCoupon) {
+                        _build.amountCoupon = (_build.costProduct * _coupon.slapBuild.amount) / 100;
+                        return _build.amountCoupon;
+                    }
+                    return _build.amountCoupon = _coupon.slapBuild.amount;                    
                 }
-                return _build.amountCoupon = _coupon.slapBuild.amount;                    
+                return _build.amountCoupon = 0;                
             }
-            return _build.amountCoupon = 0;
+            else {
+                return 0;
+            }
         }
 
         this._calculateCoupon = function() {
@@ -163,22 +168,31 @@
         }
         
         this._calculateCouponForBuildToday = function(){
-            
-            if (_coupon.typeCoupon) {
-                _build.amountFirstPayment = _build.amountFirstPayment - (_build.amountFirstPayment * _coupon.amount) / 100;
-                return _build.amountFirstPayment = _build.amountFirstPayment > 0? _build.amountFirstPayment:0;
+            if (_build) {
+                if (_coupon.typeCoupon) {
+                    _build.amountFirstPayment = _build.amountFirstPayment - (_build.amountFirstPayment * _coupon.amount) / 100;
+                    return _build.amountFirstPayment = _build.amountFirstPayment > 0? _build.amountFirstPayment:0;
+                }
+                 _build.amountFirstPayment = _build.amountFirstPayment - _coupon.amount;
+                return _build.amountFirstPayment = _build.amountFirstPayment > 0 ? _build.amountFirstPayment : 0;                
             }
-             _build.amountFirstPayment = _build.amountFirstPayment - _coupon.amount;
-            return _build.amountFirstPayment = _build.amountFirstPayment > 0 ? _build.amountFirstPayment : 0;
+            else {
+                return 0;
+            }
         }
 
         this._calculateCouponForBuild = function(){
-            if (_coupon.slapBuild.typeCoupon){
-                 _build.costProduct = _build.costProduct - (_build.costProduct * _coupon.slapBuild.amount) / 100;
-                return _build.costProduct = _build.costProduct > 0 ? _build.costProduct: 0;
+            if (_build) {
+                if (_coupon.slapBuild.typeCoupon){
+                     _build.costProduct = _build.costProduct - (_build.costProduct * _coupon.slapBuild.amount) / 100;
+                    return _build.costProduct = _build.costProduct > 0 ? _build.costProduct: 0;
+                }
+                _build.costProduct = _build.costProduct - _coupon.slapBuild.amount;
+                return _build.costProduct = _build.costProduct > 0 ? _build.costProduct : 0;                                
             }
-            _build.costProduct = _build.costProduct - _coupon.slapBuild.amount;
-            return _build.costProduct = _build.costProduct > 0 ? _build.costProduct : 0;                
+            else {
+                return 0;
+            }
         }
 
         this._calculateCouponForPlan = function () {

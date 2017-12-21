@@ -51,7 +51,9 @@
             declinedStatus: [{id: 0, name: 'Declined'}, {id: 1, name: 'Money'}],
             buildStatus: [{id: 0, name: 'Less then 30 days'}, {id: 1, name: 'More then 30 days'}],
             gridData: {
-                gridOptions: {data:[]},
+                gridOptions: {
+                    data:[]
+                },
                 gridActions: {}
             },  
             dataReady: false,
@@ -151,14 +153,23 @@
             $scope.dataReady = false;
             return reportService.run($scope.report).then(function(res){
                 $scope.res = res.data;
+                var users = res.data.users;
+                var gridData = [];
+                users.forEach(function(user) {
+                    gridData.push(user);
+                })
                 $scope.gridData = {
                     gridOptions: {
-                        data: $scope.res.users,
-                        urlSync: false, 
+                        data: gridData,
+                        urlSync: true, 
                     },
+                    sort: {
+                        predicate: 'businessName',
+                        direction: 'asc'
+                    },                    
                     gridActions: {},
                 };                
-                if ($scope.res.users)
+                if (gridData)
                     $scope.dataReady = true;
             })
         }
