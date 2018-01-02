@@ -63,8 +63,11 @@
                         <th sortable="lastName" class="sortable">
                             <span>Last Name</span>
                         </th>
-                        <th sortable="email" class="sortable">
-                            <span>Email</span>
+                        <th sortable="currentQuarter" class="sortable">
+                            <span>Q/M</span>
+                        </th>
+                        <th sortable="lastLogin" class="sortable">
+                            <span>Last Login</span>
                         </th>
                         <th sortable="countslapyear" class="sortable">
                             <span>SLAP YEAR</span>
@@ -100,7 +103,10 @@
                             {{item.lastName}}
                         </td>
                         <td>
-                            {{item.email}}
+                            {{item.currentQuarter == "Not Started!" ? "Not Started" :  item.currentQuarter + "/" + item.currentMonth }}
+                        </td>
+                        <td>
+                            {{item.lastLogin}}
                         </td>
                         <!--<td>
                             {{item.displayStatus}}

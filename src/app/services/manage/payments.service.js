@@ -22,7 +22,7 @@
             var dataTable = [];
 
             data.forEach(function (item) {
-                if (!item.status) item.amountCharges = 'Declined';
+                // if (!item.status) item.amountCharges = 'Declined';
                 // row.paymentDate = item.paymentDate;
                 // row.programName = item.products.map(function (prod) {
                 //     return prod.name;

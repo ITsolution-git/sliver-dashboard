@@ -145,6 +145,11 @@
                 .filter(function(type){ return type.show = false; });
 
                 $scope.activityTypesSlice = $scope.activityTypes.slice(4);
+                
+                //remove slapassistant from dropdown for the type of client activity
+                $scope.activityTypesSlice = $scope.activityTypesSlice
+                .filter(function(type){ return type.name != 'SLAPassistant'; });
+
 
                 var startDate = ($scope.buildData && $scope.buildData.slapMindset && $scope.buildData.slapMindset.slapStartDate) ? $scope.buildData.slapMindset.slapStartDate : null;
                 $scope.startDate = startDate;
@@ -406,12 +411,7 @@
             loadPayments().then(function(){
                 $scope.paymentData = paymentsService.transformationData($scope.paymentData);
                 _.each($scope.paymentData, function(payment){
-
-                    var coupon = _.find($scope.promocodeData, {_id: payment.couponId });
-                    if (coupon)
-                        payment.promoCode = coupon.name;
-                    else
-                        payment.promoCode = '-';
+                    payment.promoCode = payment.couponName ? payment.couponName : '-'
                 })
             });
         }

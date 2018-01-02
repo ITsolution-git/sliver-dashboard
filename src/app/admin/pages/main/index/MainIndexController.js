@@ -4,20 +4,25 @@
         .module('adminapp.pages.main')
         .controller('AdminMainIndexController', AdminMainIndexController);
 
-    AdminMainIndexController.$inject = ['pageService'];
+    AdminMainIndexController.$inject = ['$timeout', 'pageService', 'adminStatisticService'];
 
-    function AdminMainIndexController(pageService, allUsers) {
+    function AdminMainIndexController($timeout, pageService, adminStatisticService, allUsers) {
         pageService
             .reset()
             .setShowBC(true)
             .addCrumb({name: 'Dashboard', path: 'home'})
             .setPageTitle('Dashboard');
 
+        $timeout(activate);
+        function activate() {
+            loadStatistic();
+        };
 
-
-
-
-
+        function loadStatistic() {
+            adminStatisticService.get().then(function(revenues) {
+                console.log("------revenue--------", revenues);
+            })
+        }
         var trendingLineChart;
         var data = {
             labels : ["Apple","Samsung","SONY","Motorola","Nokia","Microsoft","Xiaomi"],

@@ -103,7 +103,7 @@
 
                 <md-input-container class="md-block">
                     <label for="phone">Details about SLAPster personality & preferences</label>
-                    <input ng-disabled="!isAdmin()" name="phone"  ng-model="user.extrainfo.textNotes"  id="textNotes"/>
+                    <textarea ng-disabled="!isAdmin()" name="phone"  ng-model="user.extrainfo.textNotes"  id="textNotes"></textarea> 
 
                     <div ng-messages="form.textNotes.$error" ng-hide="form.textNotes.$valid">
                         <!--<ng-message when="required">Phone Number is required.</ng-message>-->
@@ -394,25 +394,28 @@
             <div class="alert alert-danger" ng-if="user.pausingPayment">
                 This account was <strong>paused Payment</strong>.
             </div>
-            <table class="table table-responsive table-striped table-hover table-bordered">
+            <table class="table table-responsive table-striped table-hover table-bordered slapsters-item-payment-table">
                 <thead>
                     <tr>
                         <td>Program</td>
                         <td>Amount</td>
                         <td>Promo Code</td>
                         <td>Amount Discount</td>
+                        <td>Total Amount Charged</td>
                         <td>Status</td>
+                        <td>Total Amount Owed</td>
                         <td>Date</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in paymentData">
                         <td>{{item.programName}}</td>
-                        <td ng-if="!item.status">{{item.status}}</td> 
-                        <td ng-if="item.status">{{item.costProduct | currency}}</td>
+                        <td>{{item.costProduct | currency}}</td>
                         <td>{{item.promoCode}}</td>
                         <td>{{item.discount | currency}}</td>
+                        <td>{{item.amountCharges | currency}}</td>
                         <td   ng-class="item.status ? '' : 'bg-danger' ">{{item.status == 0 ? 'Declined' : 'Paid'}}</td>
+                        <td>{{item.totalAmountOwed | currency }}</td>
                         <td>{{item.paymentDate}}</td>
                     </tr>
                 </tbody>

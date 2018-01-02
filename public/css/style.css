@@ -21400,13 +21400,22 @@ md-select-menu {
   min-height: 300px;
 }
 .textarea-activity {
-  height: 43px !important;
   white-space: nowrap;
   overflow-x: auto;
+}
+.slapsters-item-payment-table {
+  max-height: 1000px;
+  display: block;
+  overflow-y: auto;
+}
+#textNotes {
+  min-height: 90px;
+  overflow-y: auto;
 }
 md-dialog.activity-dialog {
   padding: 20px;
   font-size: 16px;
+  max-height: initial;
 }
 md-dialog.activity-dialog a {
   cursor: pointer;
