@@ -63,14 +63,14 @@
                         <th sortable="lastName" class="sortable">
                             <span>Last Name</span>
                         </th>
+                        <th sortable="countslapyear" class="sortable">
+                            <span>SLAP YEAR</span>
+                        </th>                        
                         <th sortable="currentQuarter" class="sortable">
                             <span>Q/M</span>
                         </th>
                         <th sortable="lastLogin" class="sortable">
                             <span>Last Login</span>
-                        </th>
-                        <th sortable="countslapyear" class="sortable">
-                            <span>SLAP YEAR</span>
                         </th>
 
                         <!--<th class="st-sort-disable th-dropdown">
@@ -103,17 +103,17 @@
                             {{item.lastName}}
                         </td>
                         <td>
+                            {{item.countslapyear}}
+                        </td>                        
+                        <td>
                             {{item.currentQuarter == "Not Started!" ? "Not Started" :  item.currentQuarter + "/" + item.currentMonth }}
                         </td>
                         <td>
-                            {{item.lastLogin}}
+                            {{item.lastLogin | date: 'MM-dd-yyyy'}}
                         </td>
                         <!--<td>
                             {{item.displayStatus}}
                         </td>-->
-                        <td>
-                            {{item.countslapyear}}
-                        </td>
                         <td>
                             <a ui-sref="slapsters.item({bizname: item.businessName, user_id:item._id, mode:'view'})" style="margin:0px">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>

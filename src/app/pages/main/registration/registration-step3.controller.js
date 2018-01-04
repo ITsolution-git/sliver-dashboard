@@ -6,7 +6,7 @@
         .controller('RegistrationStep3Controller', RegistrationStep3Controller);
 
     /* @ngInject */
-    function RegistrationStep3Controller($state, $window ,productStorage,toaster,$auth,couponService, pageService, userService) {
+    function RegistrationStep3Controller($state, $window ,productStorage,toaster,$auth, couponService, pageService, userService) {
         pageService.reset().setPageTitle(' Step3').addCrumb({name: 'Step3', path: 'signup/step3'});
         if(!productStorage.getPlan()) {
             $state.go('step1');

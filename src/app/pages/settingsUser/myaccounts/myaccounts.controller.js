@@ -66,7 +66,7 @@
                 var startDate = $scope.userAllData.slapMindset.slapStartDate;
                 var m = new Date(startDate.year+1,startDate.month-1,1);
                 $scope.startDate = moment(m);
-                // if (moment().isAfter(moment($scope.startDate)))
+                if (moment().isAfter(moment($scope.startDate)))
                     $scope.canRenew = true;
             }
         }

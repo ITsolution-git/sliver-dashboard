@@ -48,9 +48,8 @@
             adminUserService.list()
             .then(function (response) {
                 var slapsters = response.data.filter(function(user) {
-                    user.role == 4;
                     user.currentQuarter = user.currentQuater && user.currentQuater.number ? user.currentQuater.number : "Not Started!"
-                    return user;
+                    return user.role == 4;
                 });
                 slapsters = permissionService.filterSlapstersByPermission(slapsters);
 

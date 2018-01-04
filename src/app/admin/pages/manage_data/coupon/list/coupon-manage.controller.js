@@ -44,7 +44,7 @@
                 show: true,
                 format: 'raw',
                 getValue: function(row) {
-                    return row['slapBuild']['typeCoupon'] != null ? (row['slapBuild']['typeCoupon'] == 1  ? '<p>Percentage</p>' : '<p>Fixed Amount</p>' ): '-';
+                    return row['slapBuild'] && row['slapBuild']['typeCoupon'] != null ? (row['slapBuild']['typeCoupon'] == 1  ? '<p>Percentage</p>' : '<p>Fixed Amount</p>' ): '-';
                 }
             }, {
                 field: "slapBuild.amount",
@@ -52,7 +52,7 @@
                 show: true,
                 format: 'raw',
                 getValue: function(row) {
-                    return row['slapBuild']['typeCoupon'] != null ? row['slapBuild']['amount'] : '-'
+                    return row['slapBuild'] && row['slapBuild']['typeCoupon'] != null ? row['slapBuild']['amount'] : '-'
                 }
             }, {
                 field: "slapBuild.plan",
@@ -60,7 +60,7 @@
                 show: true,
                 format: 'raw',
                 getValue: function(row) {
-                    return row['slapBuild']['typeCoupon'] != null ? row['slapBuild']['plan'].productName : '-'
+                    return row['slapBuild'] && row['slapBuild']['typeCoupon'] != null ? row['slapBuild']['plan'].productName : '-'
                 }
             }, {
                 field: "redemption",
